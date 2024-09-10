@@ -14,7 +14,7 @@
     <div>
         <div class="competitive-inner-left">
             <div class="video-inner">
-                Test content here...
+                Test content here ...
             </div>
         </div>
 
