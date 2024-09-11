@@ -300,25 +300,7 @@
         $currentPlan = $userActivePlan;
     }
 
-    $routes = [
-        'user.redesign',
-        'user.in-painting',
-        'user.fill-spaces',
-        // 'user.decor-staging',
-        'user.ai-object-removal',
-        'user.color-texture',
-        'furniture.finding',
-        'skyColor.Index',
-        'expertChat.index',
-        'styleTransfer.Index',
-        'colorSwap.Index',
-        'collage_render.Index',
-        'user.roast-my-home',
-        'designTransfer.Index',
-        'user.convenient-redesign',
-        'floorEditor.Index',
-        'user.smart-home-ai',
-    ];
+    
 
     $currentRoute = request()->route()->getName();
     $subscription_plans = [
@@ -351,10 +333,10 @@
     <section>
         <input id="precisionUserdetails" type="hidden" value="{{ $precisionUser ? 'true' : 'false' }}" />
         <input type="hidden" id="precisionUser" value="{{ $precisionUser ? 'true' : 'false' }}">
-        {{-- <div class="gs-dashboard-wrpper">
+        <div class="gs-dashboard-wrpper">
             <div class="gs-dashboard-mobile-header">
                 <div class="gs-dashboard-left-logo">
-                    <a href="{{ route('user.dashboard') }}">
+                    <a href="">
                         <img src=" https://homedesigns-ai.b-cdn.net/webWidget/images/home-logo.svg" />
                         <img class="light-mode"
                             src=" https://homedesigns-ai.b-cdn.net/webWidget/images/light-mode/NewHomeDesignsAILogo 1.png" />
@@ -365,7 +347,65 @@
             <div class="gs-dashboard-rigtbar">
                 @yield('content')
             </div>
-        </div> --}}
+        </div>
+
+        <div id="suggestionPrecisionModal" class="modal suggestion-precion-modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content p-4 suggest-md-content">
+                    <span class="precision-md-mess mb-3">For better results and if you want to fill rooms, gardens or
+                        houses, we highly recommend using
+                        the <a href="{{ route('user.fill-spaces') }}">Fill Spaces</a> mode which can be found <a
+                            href="{{ route('user.fill-spaces') }}">here.</a></span>
+                    <a href="{{ route('user.fill-spaces') }}">
+                        <video loop="" muted="" autoplay="" playsinline="" width="100%">
+                            <source src="https://homedesigns.ai/web/images/fill-spaces-furniture.mp4"
+                                type="video/mp4">
+                        </video>
+                    </a>
+
+                    <div class="mdp-cl-btn mdl-close-btn">
+                        <span class="precision_suggestion_closebt" data-bs-dismiss="modal"
+                            id="closeSuggestionPrecisionModal">
+                            <i class="fa fa-times fa-unset" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="customAiModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content p-4 suggest-md-content">
+                    <span class="precision-md-mess"> If you want a partial redesign and
+                        your instructions to be more precise, you can try our new <a
+                            href="">Precision+</a> mode by clicking <a
+                            href="">here.</a></span>
+                    <div class="mdp-cl-btn mdl-close-btn">
+                        <span class="precision_suggestion_closebt" data-bs-dismiss="modal">
+                            <i class="fa fa-times fa-unset" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="multipleGenaerationModal" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content p-4 suggest-md-content">
+                    <span class="precision-md-mess mb-3">Are you looking for more precise designs? Check our <a
+                            href="">Precision+</a> where you can redesign exactly what
+                        you want, not just a full redesign.</span>
+                    <a href="">
+                        <video loop="" muted="" autoplay="" playsinline="" width="100%">
+                            <source src="https://homedesigns.ai/web/images/precision-upgrade.mp4" type="video/mp4">
+                        </video>
+                    </a>
+                    <div class="mdp-cl-btn mdl-close-btn">
+                        <span class="precision_suggestion_closebt" data-bs-dismiss="modal">
+                            <i class="fa fa-times fa-unset" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="modal fade gs-modal-background" id="modalUpgradePlan" role="dialog">
             <div class="modal-dialog gs-modal-container">
@@ -389,7 +429,7 @@
                             <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/premium-member-icon11.svg">
                             <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/premium-member-icon12.svg">
                         </div>
-                        {{-- <a class="gs-blue-btn" href="{{ route('premium.upgradeSoftware') }}">Limited Lifetime Deal - Upgrade Now</a> --}}
+                        <a class="gs-blue-btn" href="">Limited Lifetime Deal - Upgrade Now</a>
                     </div>
                 </div>
             </div>
@@ -464,7 +504,7 @@
             </div>
         </div>
 
-        {{-- <div id="apiUpgradeModal" class="modal" tabindex="-1" role="dialog">
+        <div id="apiUpgradeModal" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content hdc-modal">
 
@@ -482,12 +522,12 @@
                         </div>
                     @else
                         <div class="modal_footer_content">
-                            <a href="{{ route('api.index') }}"><button class="modal_footer_button">Upgrade to
+                            <a href=""><button class="modal_footer_button">Upgrade to
                                     API</button></a>
                         </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
         <div id="multipleDecorClick" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content p-4 suggest-md-content"
@@ -513,7 +553,7 @@
                             <i class="fa fa-times fa-unset" aria-hidden="true"></i>
                         </span>
                     </div>
-                    {{-- @endif --}}
+                    @endif
                 </div>
             </div>
         </div>
@@ -559,6 +599,45 @@
             </div>
         </div>
     </section>
+
+    {{-- Add image to Project pop up model --}}
+    <div id="addToprojectmodal" class="modal fade gs-modal-background" tabindex="-1" role="dialog"
+    data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog gs-modal-container" role="document">
+            <div class="modal-content gs-modal-content hdc-modal choose_project_modal">
+                <button type="button" class="gs-modal-close add_to_project_cancel_btn" data-dismiss="modal"><img
+                        src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-close-icon.svg"></button>
+                <div class="head">
+                    <p class="modal-title">Choose Project Folder to Organize your Designs</p>
+                </div>
+                <div class="body">
+                    <form id="addProjectForm">
+                        @csrf
+                        <div class="form-group">
+                            <a href="" id="openCreateProjectModal"
+                                class="redirect_to_project_btn" style="float: right" title="Create new project">+</a>
+                            <label for="selectProject">Select Project</label>
+                            <select class="nwfiles-optns" id="selectProject" name="selectedProject">
+                                <option value="" disabled selected>-- Select Project --</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="subprojectGroup" style="display: none;">
+                            <label for="selectSubProject">Select Subproject</label>
+                            <select class="nwfiles-optns" id="selectSubProject" name="selectedSubProject">
+                                <option value="" disabled selected>-- Select Sub Project --</option>
+                            </select>
+                        </div>
+                        <div class="modal_button_right_pos">
+                            <button type="button"
+                                class="btn btn-secondary add_to_project_cancel_btn mt-2">Cancel</button>
+                            <button type="button" class="btn btn-primary btn-add mt-2"
+                                onclick="addToProject()">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade gs-modal-background" id="uploading_instruction" role="dialog">
         <div class="modal-dialog gs-modal-container">
@@ -612,10 +691,10 @@
                 {{-- <button type="button" class="gs-modal-close" data-dismiss="modal"><img
                         src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-close-icon.svg"></button> --}}
                 <div class="gs-modal-uploading_instruction">
-                    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+                    {{-- <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
                     <dotlottie-player src="https://lottie.host/f153e458-6b70-4270-84a7-bb5665de0dbf/GLxYOI5N17.json"
                         background="transparent" speed="1" style="width: 300px; height: 300px;" loop
-                        autoplay></dotlottie-player>
+                        autoplay></dotlottie-player> --}}
                     <h3>Loading brilliance....</h3>
                     <p>Unleashing the AI magic!</p>
                     {{-- <div class="gs-modal-uploading_instruction_slider">
@@ -635,6 +714,26 @@
     @include('web2.designs_options.garden_types')
 
     @include('web2.designs_options.garden_styles')
+
+    <div class="modal fade gs-modal-background" id="logoutModal" role="dialog">
+        <div class="modal-dialog gs-modal-container">
+            <div class="modal-content gs-modal-content">
+                <button type="button" class="gs-modal-close" data-dismiss="modal">
+                    <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-close-icon.svg">
+                </button>
+                <h3 class="logout_heading">Are you sure you want to logout?</h3>
+                <div class="gs-project-add-new-form">
+                    <form method="POST" action="">
+                        @csrf
+                        <div class="gs-login-brn-outer">
+                            <button class="gs-login-btn" type="submit">Yes</button>
+                            <button class="gs-login-btn" data-dismiss="modal">No</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade gs-modal-background" id="errorModal" role="dialog">
         <div class="modal-dialog gs-modal-container">
@@ -1307,10 +1406,10 @@
         </div>
     </div>
     {{-- <div id="routeToRunpodType" data-route="{{ route('nextrunpod.name') }}"></div> --}}
-    {{-- <div id="routeToGetFailedResp" data-route="{{ route('failed_response.data') }}"></div>
-    <div id="deleteRenderImages" class="hidden" data-route="{{ route('image.delete') }}"></div>
-    <div id="addImagesToProject" class="hidden" data-route="{{ route('user.add-images-to-project') }}"></div>
-    <div id="addAllImagesAsFavourite" class="hidden" data-route="{{ route('user.add-images-as-favourite') }}"> --}}
+    {{-- <div id="routeToGetFailedResp" data-route="{{ route('failed_response.data') }}"></div> --}}
+    {{-- <div id="deleteRenderImages" class="hidden" data-route="{{ route('image.delete') }}"></div> --}}
+    {{-- <div id="addImagesToProject" class="hidden" data-route="{{ route('user.add-images-to-project') }}"></div> --}}
+    {{-- <div id="addAllImagesAsFavourite" class="hidden" data-route="{{ route('user.add-images-as-favourite') }}"> --}}
     </div>
     {{-- <div id="editAsPrecision" data-route="{{ route('editAs.precision') }}"></div> --}}
     @include('web2.common.design-preview')
@@ -1322,11 +1421,11 @@
     ?>
 
     {{-- new js --}}
-    <script src="{{ asset('webWidget/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('webWidget/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('webWidget/js/jquery-ui.js') }}"></script>
-    <script src="{{ asset('webWidget/js/slick.min.js') }}"></script>
-    <script src="{{ asset('webWidget/js/after-before.js') }}"></script>
+    {{-- <script src="{{ asset('webWidget/js/jquery.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('webWidget/js/bootstrap.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('webWidget/js/jquery-ui.js') }}"></script> --}}
+    {{-- <script src="{{ asset('webWidget/js/slick.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('webWidget/js/after-before.js') }}"></script> --}}
     <script src="{{ asset('webWidget/js/custom.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     {{-- new js ends --}}
@@ -1369,7 +1468,7 @@
     </script>
     <script src="{{ asset('web/js/script.js') }}?v={{ config('app.script_js_version') }}"></script>
     <script src="{{ asset('webWidget/js/custom-script.js') }}?v={{ config('app.custom_script_version') }}"></script>
-    <script src="{{ asset('webWidget/js/in-painting-v2.js') }}?v={{ config('app.custom_script_version') }}"></script>
+    {{-- <script src="{{ asset('webWidget/js/in-painting-v2.js') }}?v={{ config('app.custom_script_version') }}"></script> --}}
     <script src="{{ asset('web/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
 
@@ -1434,6 +1533,32 @@
             );
         }
         let clickCount = 1;
+
+        function myClickHandler(event) {
+            clickCount = parseInt(localStorage.getItem('clickCount')) || 1;
+            clickCount++;
+            if (clickCount === 5) {
+                event.preventDefault();
+                $.ajax({
+                    url: "{{ route('decor.clickCount') }}",
+                    type: 'post',
+                    complete: function() {},
+                    success: function(data) {
+                        if (data['success'] == true) {
+                            $("#multipleDecorClick").modal('show');
+                        } else {
+                        }
+                        clickCount = 1; // Reset click count
+                        localStorage.setItem('clickCount', clickCount);
+                    },
+                    error: function() {}
+                })
+            } else if (clickCount > 5) {
+                clickCount = 1; // Reset click count
+                localStorage.setItem('clickCount', clickCount);
+            }
+            localStorage.setItem('clickCount', clickCount);
+        }
     </script>
     <script>
     
@@ -1606,61 +1731,16 @@
         }
 
         function selectModeType(modeType, sec) {
-            $(`.gs-select-room-style-single[data-room-type="${modeType}"][onclick*="(${modeType},${sec})"]`).removeClass(
-                'active');
-            $(`.gs-select-room-style-single[data-room-type="${modeType}"][onclick*="(${modeType},${sec})"]`).addClass(
-                'active');
+            $(`#modeTypeDisplay${sec} .gs-select-room-style-single`).removeClass('active');
+            $(`#modeTypeDisplay${sec} .gs-select-room-style-single[data-room-type="${modeType}"]`).addClass('active');
             document.getElementById('selectedModeType' + sec).value = modeType;
         }
     </script>
-
+    <script>
+    </script>
     <script>
         let current_subscription = null;
         let current_subsctiption_amount = 0;
-
-        function getProductByPlan(userActivePlan) {
-            let selected_subscription_plan = $("#next_subscription_plan").find(":selected").val();
-            if (userActivePlan == selected_subscription_plan) {
-                alert("You are already using this subscription, please choose another one.");
-                return false;
-            } else if (selected_subscription_plan == "") {
-                return false;
-            }
-            $.ajax({
-                url: "/admin/getProductByPath/" + selected_subscription_plan,
-                type: "GET",
-                async: false,
-                headers: {
-                    'Access-Control-Allow-Origin': '*',
-                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
-                },
-                success: function(response) {
-                    if (response.success) {
-                        if (response.data.products[0].result != "success") {
-                            console.log("notsucces");
-                            swal({
-                                title: "Product Not found.",
-                                text: "Something went wrong please try again",
-                                icon: "error"
-                            });
-                            return false;
-                        }
-                        let amount = response.data.products[0].pricing.price.USD;
-                        let differenciate_amount = amount - current_subsctiption_amount;
-                        // current_subsctiption_amount
-                        $("#next_amount").html('USD ' + amount.toFixed(2) + ' -  USD ' +
-                            current_subsctiption_amount.toFixed(2) + ' = <strong>USD ' +
-                            differenciate_amount.toFixed(2) + '</strong>');
-                    } else {
-                        swal({
-                            title: "Product Not found.",
-                            text: "Something went wrong please try again",
-                            icon: "error"
-                        });
-                    }
-                }
-            })
-        }
 
     </script>
     {{-- <div class="elfsight-app-c277abde-f388-4053-bb82-572a308f96f1"></div> --}}

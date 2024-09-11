@@ -102,6 +102,13 @@ async function verifyPlan() {
 
 }
 
+$(".logout_user").click(function () {
+    // if (confirm("Are you sure you want to logout?") == true) {
+    // window.indexedDB.deleteDatabase('fileDatabase');
+    //     $("#logoutForm").submit();
+    // }
+
+})
 $(".btnUpgNowPopup").click(function () {
     $("#modalIndividualLimit").modal('hide');
     if ($("#buy").length) {
@@ -1121,6 +1128,8 @@ async function _generateDesign(sec, el) {
             $('.ai-upload-latest-top').removeAttr('style');
             generatedImage = result['Sucess']['generated_image'];
             originalImage = result['Sucess']['original_image'];
+            
+            let storedDesigns = JSON.parse(localStorage.getItem('designs')) || [];
             // let storedIds = result['storedIds'];
             generatedImage.forEach((item) => {
                 let design = {
@@ -1144,7 +1153,17 @@ async function _generateDesign(sec, el) {
                 let data = document.getElementById(`all_data0`);
 
                 data.insertBefore(code, data.firstChild);
+
+                storedDesigns.push({
+                    original_url: originalImage,
+                    generated_url: item,
+                    style: styleType,
+                    room_type: roomType,
+                    mode: modeType,
+                    sec: sec
+                });
             });
+            localStorage.setItem('designs', JSON.stringify(storedDesigns));
         })
         .catch(error => {
             console.error('Error:', error);

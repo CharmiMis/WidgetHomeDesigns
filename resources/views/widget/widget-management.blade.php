@@ -197,7 +197,6 @@
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0JYLHV57P"></script>
         <script>
             $(document).ready(function() {
-                loadRenders(0);
                 $('#custom_instruction0').show();
 
                 function loadFeatureContent(url) {
@@ -206,7 +205,6 @@
                         url: url,
                         method: 'GET',
                         success: function(data) {
-                            console.log("Content loaded:", data);
                             $('.feature-content').html(data);
                         },
                         error: function(xhr, status, error) {
@@ -231,23 +229,6 @@
                 $('.feature-button.active').trigger('click');
             });
 
-
-            async function loadRenders(sec) {
-                var modevalue = $('#modeValueForPage').val(); // Get the initial mode value
-                this.multipleDownloadImg = [];
-                $(`.delete_favourite_buttons`).addClass('hidden');
-                $(`.ai-upload-latest-top`).css('display', 'none');
-                get_designs.design_type = sec;
-
-                if (user && isPrivate === false) {
-                    get_designs.type = 'private';
-                } else {
-                    get_designs.type = 'public';
-                }
-
-                var response = await getRedesignGeneratedDesigns();
-
-            }
         </script>
         <script>
             window.dataLayer = window.dataLayer || [];

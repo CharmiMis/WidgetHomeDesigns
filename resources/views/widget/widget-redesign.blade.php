@@ -17,6 +17,12 @@
                 <span>Customise and Generate</span>
             </li>
         </ul>
+        {{-- <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                <span>Log Out</span>
+            </a>
+        </form> --}}
     </div>
     <div class="gs-dashboard-notice upload-image-container">
         <div class="gs-dashboard-notice-info">
@@ -70,6 +76,12 @@
                 <span>Customise and Generate</span>
             </li>
         </ul>
+        {{-- <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+                <span>Log Out</span>
+            </a>
+        </form> --}}
     </div>
 
     <div class="image-show-container image-mask-container">
@@ -106,21 +118,21 @@
                         <ul class="gs-option-flex">
                             <li class="active on-gen-disable">
                                 <a class="gs-select-category-list-inner" data-toggle="tab" href="#interior"
-                                    onclick="loadRenders(0)">
+                                    onclick="loadWidgetRenders(0)">
                                     <img src="{{ asset('webWidget/images/gs-interior-icon.svg') }}">
                                     <span>Interior</span>
                                 </a>
                             </li>
                             <li class="on-gen-disable">
                                 <a class="gs-select-category-list-inner" data-toggle="tab" href="#exterior"
-                                    onclick="loadRenders(1)">
+                                    onclick="loadWidgetRenders(1)">
                                     <img src="{{ asset('webWidget/images/gs-exterior-icon.svg') }}">
                                     <span>Exterior</span>
                                 </a>
                             </li>
                             <li class="on-gen-disable">
                                 <a class="gs-select-category-list-inner" data-toggle="tab" href="#garden"
-                                    onclick="loadRenders(2)">
+                                    onclick="loadWidgetRenders(2)">
                                     <img src="{{ asset('webWidget/images/gs-garden-icon.svg') }}">
                                     <span>Garden</span>
                                 </a>
@@ -225,7 +237,7 @@
                                                         name="selectedModeType0">
                                                     <p>3. Select Mode Type</p>
                                                     <div class="gs-select-room-style-row" id="modeTypeDisplay0">
-                                                        <div class="gs-select-room-style-single active"
+                                                        <div class="gs-select-room-style-single"
                                                             data-room-type="Beautiful Redesign"
                                                             onclick="selectModeType('Beautiful Redesign',0)">
                                                             <img
@@ -237,7 +249,7 @@
                                             </div>
                                             {{-- <div class="nwchoice-toggle" style="margin-top: 15px !important">
                                                 <span class="nw-tgtype">Private Gallery </span>
-                                                <input type="checkbox" id="nwtoggle0" onchange="loadRenders(0)"
+                                                <input type="checkbox" id="nwtoggle0" onchange="loadWidgetRenders(0)"
                                                     @checked($default_gallery == 'public')>
                                                 <label class="nwtoggle-label0" for="nwtoggle0">Toggle</label>
                                                 <span class="nw-tgtype">Public Gallery</span>
@@ -460,7 +472,7 @@
                                                         name="selectedModeType1">
                                                     <p>3. Select Mode Type </p>
                                                     <div class="gs-select-room-style-row" id="modeTypeDisplay1">
-                                                        <div class="gs-select-room-style-single active"
+                                                        <div class="gs-select-room-style-single"
                                                             data-room-type="Beautiful Redesign"
                                                             onclick="selectModeType('Beautiful Redesign',1)">
                                                             <img
@@ -472,7 +484,7 @@
                                             </div>
                                             {{-- <div class="nwchoice-toggle" style="margin-top: 15px !important">
                                                 <span class="nw-tgtype">Private Gallery </span>
-                                                <input type="checkbox" id="nwtoggle1" onchange="loadRenders(1)"
+                                                <input type="checkbox" id="nwtoggle1" onchange="loadWidgetRenders(1)"
                                                     @checked($default_gallery == 'public')>
                                                 <label class="nwtoggle-label1" for="nwtoggle1">Toggle</label>
                                                 <span class="nw-tgtype">Public Gallery</span>
@@ -703,7 +715,7 @@
                                                         name="selectedModeType2">
                                                     <p>3. Select Mode Type </p>
                                                     <div class="gs-select-room-style-row" id="modeTypeDisplay2">
-                                                        <div class="gs-select-room-style-single active"
+                                                        <div class="gs-select-room-style-single"
                                                             data-room-type="Beautiful Redesign"
                                                             onclick="selectModeType('Beautiful Redesign',2)">
                                                             <img
@@ -715,7 +727,7 @@
                                             </div>
                                             {{-- <div class="nwchoice-toggle" style="margin-top: 15px !important">
                                                 <span class="nw-tgtype">Private Gallery </span>
-                                                <input type="checkbox" id="nwtoggle2" onchange="loadRenders(2)"
+                                                <input type="checkbox" id="nwtoggle2" onchange="loadWidgetRenders(2)"
                                                     @checked($default_gallery == 'public')>
                                                 <label class="nwtoggle-label2" for="nwtoggle2">Toggle</label>
                                                 <span class="nw-tgtype">Public Gallery</span>
@@ -864,21 +876,21 @@
                 <ul class="gs-option-flex">
                     <li class="active on-gen-disable">
                         <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#interior"
-                            onclick="loadRenders(0)" data-sec="0">
+                            onclick="loadWidgetRenders(0)" data-sec="0">
                             <img src="{{ asset('webWidget/images/gs-interior-icon.svg') }}">
                             <span>Interior</span>
                         </a>
                     </li>
                     <li class="on-gen-disable">
                         <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#exterior"
-                            onclick="loadRenders(1)" data-sec="1">
+                            onclick="loadWidgetRenders(1)" data-sec="1">
                             <img src="{{ asset('webWidget/images/gs-exterior-icon.svg') }}">
                             <span>Exterior</span>
                         </a>
                     </li>
                     <li class="on-gen-disable">
                         <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#garden"
-                            onclick="loadRenders(2)" data-sec="2">
+                            onclick="loadWidgetRenders(2)" data-sec="2">
                             <img src="{{ asset('webWidget/images/gs-garden-icon.svg') }}">
                             <span>Garden</span>
                         </a>
@@ -920,3 +932,78 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        loadWidgetRenders(0);
+    });
+
+    function loadWidgetRenders(sec) {
+        // Retrieve the designs array from localStorage
+        let storedDesigns = JSON.parse(localStorage.getItem('designs')) || [];
+
+        // Check if there are any stored designs
+        if (storedDesigns.length > 0) {
+            // Get the container where images will be displayed
+            let dataContainer = document.getElementById('all_data0');
+
+            // Clear any existing content (optional, depending on how you want to handle reloading)
+            dataContainer.innerHTML = '';
+
+            // Filter the designs based on the provided 'sec' value
+            let filteredDesigns = storedDesigns.filter(design => design.sec === sec);
+
+            // Check if there are any designs after filtering
+            if (filteredDesigns.length > 0) {
+                // Iterate through the filtered designs and create the necessary HTML for each design
+                filteredDesigns.forEach(design => {
+                    // Create a new div element to wrap each design (based on your HTML structure)
+                    let designDiv = document.createElement('div');
+                    designDiv.classList.add('col-md-6', 'col-lg-4', 'col-12');
+
+                    // Generate the HTML for the image and additional info (based on your provided structure)
+                    designDiv.innerHTML = `
+                        <div class="ai-upload-latest-single">
+                            <div class="ai-upload-latest-after">
+                                <div class="ai-upload-latest-inset">
+                                    <img class="complte-img img" src="${design.generated_url}" data-item="output-image">
+                                    <div class="ai-upload-effects">
+                                        <ul class="render-overlay-data-box">
+                                            <li class="render-overlay-data">Design Style: ${design.style}</li>
+                                            <li class="render-overlay-data">Room Type: ${design.room_type}</li>
+                                            <li class="render-overlay-data">Mode Type: ${design.mode}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="ai-upload-optons">
+                                        <ul>
+                                            <li class="ai-upload-add-project-list">
+                                                <span class="ai-upload-option-tooltip">Download</span>
+                                                <a class="download" href="javascript:void(0)" data-download-url="${design.generated_url}" title="Download" download>
+                                                    <img src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-optons-icon1.svg">
+                                                </a>
+                                            </li>
+                                            <li class="ai-upload-add-project-list">
+                                                <span class="ai-upload-option-tooltip">Show</span>
+                                                <a class="ip_img_preview inpainting-preview" href="javascript:void(0)" data-img="${design.generated_url}"
+                                                    data-item="preview-btn" title="Open" onclick="previewImage('${design.original_url}', '${design.generated_url}')">
+                                                    <img src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-optons-icon2.svg">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+
+                    // Append the generated element to the container
+                    dataContainer.appendChild(designDiv);
+                });
+            } else {
+                // If no designs match the 'sec' value, display a message or handle the case
+                dataContainer.innerHTML = '<p>No designs found for this section.</p>';
+            }
+        } else {
+            console.log("No designs found in localStorage.");
+        }
+    }
+</script>

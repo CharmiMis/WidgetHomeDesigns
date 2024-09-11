@@ -17,6 +17,12 @@
             <span>Customise and Generate</span>
         </li>
     </ul>
+    {{-- <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+            <span>Log Out</span>
+        </a>
+    </form> --}}
     </div>
 
     <div class="gs-dashboard-notice upload-image-container">
@@ -70,6 +76,12 @@
         <input type="checkbox" id="toggle-btn-2" class="toggle-btn" {{ auth()->user()->light_mode == 0 ? 'checked' : '' }}>
         <label for="toggle-btn-2"></label>
     </div> --}}
+    {{-- <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+            <span>Log Out</span>
+        </a>
+    </form> --}}
     </div>
 
     <div class="ai-tool-right-top top-menu-bar-third" style="display: none">
@@ -98,7 +110,12 @@
         <input type="checkbox" id="toggle-btn-3" class="toggle-btn" {{ auth()->user()->light_mode == 0 ? 'checked' : '' }}>
         <label for="toggle-btn-3"></label>
     </div> --}}
-
+    {{-- <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
+            <span>Log Out</span>
+        </a>
+    </form> --}}
     </div>
 
     <div class="image-show-container image-mask-container">
@@ -204,21 +221,21 @@
                     <ul class="gs-option-flex designs_tabs">
                         <li class="active on-gen-disable">
                             <a class="gs-select-category-list-inner" data-toggle="tab" href="#interior"
-                                onclick="loadRenders(0)">
+                                onclick="loadWidgetRenders(0)">
                                 <img src="{{ asset('webWidget/images/gs-interior-icon.svg') }}">
                                 <span>Interior</span>
                             </a>
                         </li>
                         <li class="on-gen-disable">
                             <a class="gs-select-category-list-inner" data-toggle="tab" href="#exterior"
-                                onclick="loadRenders(1)">
+                                onclick="loadWidgetRenders(1)">
                                 <img src="{{ asset('webWidget/images/gs-exterior-icon.svg') }}">
                                 <span>Exterior</span>
                             </a>
                         </li>
                         <li class="on-gen-disable">
                             <a class="gs-select-category-list-inner" data-toggle="tab" href="#garden"
-                                onclick="loadRenders(2)">
+                                onclick="loadWidgetRenders(2)">
                                 <img src="{{ asset('webWidget/images/gs-garden-icon.svg') }}">
                                 <span>Garden</span>
                             </a>
@@ -710,21 +727,21 @@
             <ul class="gs-option-flex designs_tabs">
                 <li class="active on-gen-disable">
                     <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#interior"
-                        onclick="loadRenders(0)" data-sec="0">
+                        onclick="loadWidgetRenders(0)" data-sec="0">
                         <img src="{{ asset('webWidget/images/gs-interior-icon.svg') }}">
                         <span>Interior</span>
                     </a>
                 </li>
                 <li class="on-gen-disable">
                     <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#exterior"
-                        onclick="loadRenders(1)" data-sec="1">
+                        onclick="loadWidgetRenders(1)" data-sec="1">
                         <img src="{{ asset('webWidget/images/gs-exterior-icon.svg') }}">
                         <span>Exterior</span>
                     </a>
                 </li>
                 <li class="on-gen-disable">
                     <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#garden"
-                        onclick="loadRenders(2)" data-sec="2">
+                        onclick="loadWidgetRenders(2)" data-sec="2">
                         <img src="{{ asset('webWidget/images/gs-garden-icon.svg') }}">
                         <span>Garden</span>
                     </a>

@@ -5,6 +5,12 @@ use Illuminate\Support\ServiceProvider;
 
 return [
 
+    'GPU_SERVERLESS_BEAUTIFUL_REDESIGN_API' => env('GPU_SERVERLESS_BEAUTIFUL_REDESIGN_API'),
+    'RUNPOD_SERVERLESS_TOKEN' => env('RUNPOD_SERVERLESS_TOKEN'),
+
+    'googleBucketName' => 'generativeartbucket',
+
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
