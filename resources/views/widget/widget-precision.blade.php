@@ -1,7 +1,6 @@
 {{-- section first start --}}
 <div>
     <div class="ai-tool-right-top top-menu-bar-first">
-    {{-- <h3 class="font22">Fill Spaces</h3> --}}
     <ul>
         <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
@@ -16,12 +15,6 @@
             <span>Customise and Generate</span>
         </li>
     </ul>
-    {{-- <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
-            <span>Log Out</span>
-        </a>
-    </form> --}}
     </div>
 
     <div class="gs-dashboard-notice upload-image-container">
@@ -29,8 +22,8 @@
             <img src="{{ asset('webWidget/images/info-icon.svg') }}">
         </div>
         <div class="gs-dashboard-notice-info-text">
-            <h2>Fill Empty Spaces with Furniture and Decor!</h2>
-            <p>Furnish and decorate your empty rooms with our Fill Spaces mode. Using state-of-the-art AI, this tool helps you transform vacant areas into beautifully styled spaces tailored to your preferences. Whether you’re designing an empty living room, bedroom, or patio, Fill Spaces adds the perfect furniture and decor in seconds.</p>
+            <h2>Transform Spaces with Pinpoint Accuracy!</h2>
+            <p>Make focused changes to specific areas of your space while keeping everything else intact. Whether it's a room interior, exterior facade, or a garden section, Precision+ allows you to precisely modify selected portions quickly and easily.</p>
         </div>
         <div class="gs-dashboard-cross">
             <img src="{{ asset('webWidget/images/cross-icon.svg') }}">
@@ -39,7 +32,7 @@
     </div>
     <div class="image-background-container upload-image-container">
     <div class="ai-upload-image">
-        <input type="file" class="ai-upload-input" id="ipFilePickerFillSpaces">
+        <input type="file" class="ai-upload-input" id="ipFilePickerPrecision">
         <h3 class="font22">Upload your image </h3>
         <img src="{{ asset('webWidget/images/gs-upload-img.png') }}">
         <span>Drag and drop your image </span>
@@ -71,10 +64,6 @@
             <span>Customise and Generate</span>
         </li>
     </ul>
-    {{-- <div class="color_mode">
-        <input type="checkbox" id="toggle-btn-2" class="toggle-btn" {{ auth()->user()->light_mode == 0 ? 'checked' : '' }}>
-        <label for="toggle-btn-2"></label>
-    </div> --}}
     </div>
 
     <div class="ai-tool-right-top top-menu-bar-third" style="display: none">
@@ -108,9 +97,9 @@
     <div class="image-show-container image-mask-container">
     <div class="gs-what-to-edit-wrapper">
         <div class="gs-what-to-edit-left image-mask-container">
-            <div id="inpainting-stag-outer-fillSpace"
+            <div id="inpainting-stag-outer-inPaint"
                 class="inpainting-stag-outer d-flex align-items-center justify-content-center">
-                <div id="painting-stag-fillSpace"></div>
+                <div id="painting-stag-inPaint"></div>
             </div>
             <div class="gs-what-to-edit-tips">
                 <div class="gs-what-to-edit-tip-box">
@@ -207,21 +196,21 @@
                 <div class="gs-select-category-list">
                     <ul class="gs-option-flex designs_tabs">
                         <li class="active on-gen-disable">
-                            <a class="gs-select-category-list-inner" data-toggle="tab" href="#interior-fillSpace1"
+                            <a class="gs-select-category-list-inner" data-toggle="tab" href="#interior-inpaint1"
                                 onclick="loadWidgetRenders(0)">
                                 <img src="{{ asset('webWidget/images/gs-interior-icon.svg') }}">
                                 <span>Interior</span>
                             </a>
                         </li>
                         <li class="on-gen-disable">
-                            <a class="gs-select-category-list-inner" data-toggle="tab" href="#exterior-fillSpace1"
+                            <a class="gs-select-category-list-inner" data-toggle="tab" href="#exterior-inpaint1"
                                 onclick="loadWidgetRenders(1)">
                                 <img src="{{ asset('webWidget/images/gs-exterior-icon.svg') }}">
                                 <span>Exterior</span>
                             </a>
                         </li>
                         <li class="on-gen-disable">
-                            <a class="gs-select-category-list-inner" data-toggle="tab" href="#garden-fillSpace1"
+                            <a class="gs-select-category-list-inner" data-toggle="tab" href="#garden-inpaint1"
                                 onclick="loadWidgetRenders(2)">
                                 <img src="{{ asset('webWidget/images/gs-garden-icon.svg') }}">
                                 <span>Garden</span>
@@ -232,19 +221,19 @@
             </div>
 
             <div class="tab-content">
-                <div id="interior-fillSpace1" class="tab-pane fade in active">
+                <div id="interior-inpaint1" class="tab-pane fade in active">
                     <div class="gs-what-to-edit-tabs">
                         <div class="gs-what-to-edit-title">
                             <ul>
-                                <li class="active"><a data-toggle="tab" href="#our-preset-settings-interior-fillSpace">Our
+                                <li class="active"><a data-toggle="tab" href="#our-preset-settings-interior-inPaint">Our
                                         preset settings</a></li>
-                                <li><a data-toggle="tab" href="#your-customs-settings-interior-fillSpace">Your customs
+                                <li><a data-toggle="tab" href="#your-customs-settings-interior-inPaint">Your customs
                                         settings </a></li>
                             </ul>
                         </div>
                         <div class="gs-what-to-edit-content">
                             <div class="tab-content">
-                                <div id="our-preset-settings-interior-fillSpace" class="tab-pane show fade in active">
+                                <div id="our-preset-settings-interior-inPaint" class="tab-pane show fade in active">
                                     <div class="gs-select-automatically">
                                         {{-- <p>You can change the colors only, or also change textures, materials.</p> --}}
                                         <div class="gs-our-preset-settings ">
@@ -354,7 +343,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="your-customs-settings-interior-fillSpace" class="tab-pane show fade">
+                                <div id="your-customs-settings-interior-inPaint" class="tab-pane show fade">
                                     <div class="our-preset-settings-box">
                                         <p class="our-preset-prompt-text">You can use a custom prompt below</p>
                                         <textarea placeholder="e.g. Scandinavian dining room design, beautiful, white colors" name="cust-inst0"
@@ -391,7 +380,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="exterior-fillSpace1" class="tab-pane fade">
+                <div id="exterior-inpaint1" class="tab-pane fade">
                     <div class="gs-what-to-edit-tabs">
                         <div class="gs-what-to-edit-title">
                             <ul>
@@ -543,7 +532,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="garden-fillSpace1" class="tab-pane fade">
+                <div id="garden-inpaint1" class="tab-pane fade">
                     <div class="gs-what-to-edit-tabs">
                         <div class="gs-what-to-edit-title">
                             <ul>
@@ -713,21 +702,21 @@
         <div class="gs-select-category-list">
             <ul class="gs-option-flex designs_tabs">
                 <li class="active on-gen-disable">
-                    <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#interior-fillSpace2"
+                    <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#interior-inpaint2"
                         onclick="loadWidgetRenders(0)" data-sec="0">
                         <img src="{{ asset('webWidget/images/gs-interior-icon.svg') }}">
                         <span>Interior</span>
                     </a>
                 </li>
                 <li class="on-gen-disable">
-                    <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#exterior-fillSpace2"
+                    <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#exterior-inpaint2"
                         onclick="loadWidgetRenders(1)" data-sec="1">
                         <img src="{{ asset('webWidget/images/gs-exterior-icon.svg') }}">
                         <span>Exterior</span>
                     </a>
                 </li>
                 <li class="on-gen-disable">
-                    <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#garden-fillSpace2"
+                    <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#garden-inpaint2"
                         onclick="loadWidgetRenders(2)" data-sec="2">
                         <img src="{{ asset('webWidget/images/gs-garden-icon.svg') }}">
                         <span>Garden</span>
@@ -737,7 +726,7 @@
         </div>
     </div>
     <div class="tab-content">
-        <div id="interior-fillSpace2" class="tab-pane fade in active">
+        <div id="interior-inpaint2" class="tab-pane fade in active">
             <div class="ai-upload-latest-top" id="jumphere0" style="display: none">
                 <h3 class="font22"></h3>
                 <div class="ai-upload-add-project delete_favourite_buttons hidden">
@@ -763,7 +752,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="ai-upload-latest-wrapper row" id="all_data0_fillSpace">
+            <div class="ai-upload-latest-wrapper row" id="all_data0_inPaint">
             </div>
         </div>
     </div>
@@ -772,6 +761,7 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/4.15.0/tf.min.js"
     integrity="sha512-RMW1ZrsUb7zY5+dY2sH+dOD3aPXpgQgWysvpyj+UtMani44bvq6Nj4HQ0tB/gdbG0gJb1BhapgYvUPNve0A6kQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
 
 <script>
     $(document).ready(function() {
@@ -785,7 +775,7 @@
         // Check if there are any stored designs
         if (storedDesigns.length > 0) {
             // Get the container where images will be displayed
-            let dataContainer = document.getElementById('all_data0_fillSpace');
+            let dataContainer = document.getElementById('all_data0_inPaint');
 
             // Clear any existing content (optional, depending on how you want to handle reloading)
             dataContainer.innerHTML = '';

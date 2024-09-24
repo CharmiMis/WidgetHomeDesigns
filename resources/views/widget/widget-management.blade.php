@@ -19,21 +19,27 @@
         }
 
         .feature-buttons li {
-            margin: 0;
+            margin-top: 20px;
+            margin-left: 20px;
         }
 
         .feature-button {
-            padding: 10px 20px;
+            padding: 10px 20px !important;
             border: none;
-            background-color: #f0f0f0;
-            cursor: pointer;
+            background: #1C1E26;
+            cursor: pointer !important;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s !important;
+            color: #fff !important;
         }
 
         .feature-button.active {
-            background-color: #007bff;
+            background: radial-gradient(66.48% 68.75% at 50% 31.25%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), radial-gradient(33% 82.75% at 31.25% 76.56%, rgba(255, 255, 255, 0.219) 0%, rgba(255, 255, 255, 0.036) 100%), radial-gradient(66.95% 96.09% at 35.23% 0%, #C243FE 0%, rgba(182, 47, 246, 0.12) 100%), linear-gradient(0deg, #421CD8, #421CD8), #5B099B;
             color: white;
+        }
+
+        .feature-button:hover {
+            background: linear-gradient(180deg, #8F73FF 0%, #5B3DD5 100%);
         }
 
         .feature-content {
@@ -42,6 +48,64 @@
             border: 1px solid #111929;
             border-radius: 5px;
             background-color: #111929;
+        }
+
+        .feature-contents .custom-logo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .feature-contents .custom-logo img {
+            height: 50px;
+            width: 50px;
+        }
+        .gs-our-preset-settings .toggle-button.active {
+            background: linear-gradient(180deg, #8F73FF 0%, #5B3DD5 100%);
+            color: #fff;
+
+        }
+
+        .gs-our-preset-settings .toggle-button{
+            height: 54px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            /* background: #1C1E26; */
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 24px;
+            letter-spacing: -0.01em;
+            text-align: left;
+            color: #1c1e26;
+            padding: 2px 14px;
+            cursor: pointer;
+            transition: .3s all ease;
+            -webkit-transition: .3s all ease;
+            max-width: 196px;
+            text-align: center;
+            justify-content: center;
+            border: none;
+        }
+        .gs-our-preset-settings .button-container{
+            display: flex;
+        }
+
+        .gs-our-preset-settings .toggle-button:hover {
+            color: #fff;
+            background: linear-gradient(180deg, #5B3DD5 0%, #8F73FF 100%);
+        }
+        .button-container {
+        margin-bottom: 10px;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .ui-widget-content, .ui-widget-content a{
+            color: #fff !important;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="{{ asset('web/css/cropper.min.css') }}">
@@ -59,15 +123,31 @@
     $default_gallery = 'private';
     ?>
     <input type="hidden" id="precisionUser" value="{{ $precisionUser ? 'true' : 'false' }}">
-    <input type="hidden" class="data_page" data-page="redesign" />
     <input type="hidden" id="modeValueForPage" value="0" />
     <div class="ai-tool-wrapper">
         <div class="ai-tool-wrapper  demo-class">
-            <div class="ai-tool-right">
+            <div class="ai-tool-right" id="tabs">
                 <ul class="feature-buttons">
                     @foreach (json_decode($widgetData->accessible_features) as $feature)
                         <li>
-                            <button class="feature-button @if ($loop->first) active @endif"
+                            <a href="#{{ $feature }}" id="feature-{{ $feature }}"
+                                class="feature-button @if ($loop->first) active @endif"
+                                data-feature="{{ $feature }}"
+                                data-feature-url="{{ route('widget.showFeature', ['feature' => $feature]) }}">
+                                 {{ ucwords(str_replace('_', ' ', $feature)) }}@if ($feature === 'precision') + @endif
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+                @foreach (json_decode($widgetData->accessible_features) as $feature)
+                    <div id="{{ $feature }}">
+                        @include('widget.widget-' . $feature)
+                    </div>
+                @endforeach
+                {{-- <ul class="feature-buttons">
+                    @foreach (json_decode($widgetData->accessible_features) as $feature)
+                        <li>
+                            <button id="feature-{{ $feature }}" class="feature-button @if ($loop->first) active @endif"
                                 data-feature="{{ $feature }}"
                                 data-feature-url="{{ route('widget.showFeature', ['feature' => $feature]) }}">
                                 {{ ucwords(str_replace('_', ' ', $feature)) }}
@@ -75,161 +155,102 @@
                         </li>
                     @endforeach
                 </ul>
-                <div class="feature-content">
+                <div class="feature-contents">
+                    <div class="custom-logo">
+                        <img src="{{ asset('storage/' . $widgetData->logo) }}" alt="Custom Logo" />
+                    </div>
+                    <div id="" class="feature-content"></div>
                     <!-- Content will be loaded here -->
-                </div>
-            </div>
-        </div>
-        <template id="redesignCard">
-            <div class="col-md-6 col-lg-4 col-12">
-                <div class="ai-upload-latest-single">
-                    {{-- <div class="ai-upload-latest-before">
-                    <div class="ai-upload-latest-inset">
-                        <span class="ai-upload-title">Before</span>
-                        <img class="img" data-item="input-image">
-                        <div class="ai-upload-optons">
-                            <ul>
-                                <li class="ai-upload-add-project-list">
-                                    <span class="ai-upload-option-tooltip"> Download </span>
-                                    <a class="download" href="javascript:void(0)" data-download-url="" title="Download"
-                                        download data-item="download-input-btn">
-                                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-optons-icon1.svg">
-                                    </a>
-                                </li>
-                                <li class="ai-upload-add-project-list">
-                                    <span class="ai-upload-option-tooltip"> Show </span>
-                                    <a class="ip_img_preview inpainting-preview" href="javascript:void(0)" data-img=""
-                                        data-item="preview-btn-input" title="Open" onclick="previewImage()">
-                                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-optons-icon2.svg">
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
                 </div> --}}
-                    <div class="ai-upload-latest-after">
-                        <div class="ai-upload-latest-inset">
-                            {{-- <div class="ai-upload-selection">
-                            <div class="ai-upload-favourite">
-                                <input class="ml_dw_img" name="check" type="checkbox" onclick="getMultipleImages()">
-                                <div class="ai-upload-checked"></div>
-                            </div>
-                            <div class="ai-upload-favourite">
-                                <img class="ai-upload-favourite-checked favcheckimg" onclick="addRemovefavorite()"
-                                    src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-favourite-checked.svg" alt="">
-                            </div>
-                            <div class="ai-upload-favourite hd_image_div">
-                                <img class="hd_image" src="https://homedesigns-ai.b-cdn.net/web/images/hd_icon.png" alt="">
-                            </div>
-                        </div> --}}
-                            {{-- <span class="ai-upload-title">After</span> --}}
-                            <img class="complte-img img" src="" data-item="output-image">
-                            <div class="ai-upload-effects">
-                                <ul class="render-overlay-data-box">
-                                    <li class="render-overlay-data"></li>
-                                    <li class="render-overlay-data"></li>
-                                    <li class="render-overlay-data"></li>
-                                </ul>
-                            </div>
-                            <div class="ai-upload-optons">
-                                <ul>
-                                    <li class="ai-upload-add-project-list">
-                                        <span class="ai-upload-option-tooltip"> Download </span>
-                                        <a class="download" href="javascript:void(0)" data-download-url="" title="Download"
-                                            download data-item="download-output-btn">
-                                            <img
-                                                src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-optons-icon1.svg">
-                                        </a>
-                                    </li>
-                                    <li class="ai-upload-add-project-list">
-                                        <span class="ai-upload-option-tooltip"> Show </span>
-                                        <a class="ip_img_preview inpainting-preview" href="javascript:void(0)"
-                                            data-img="" data-item="preview-btn-output" title="Open"
-                                            onclick="previewImage()">
-                                            <img
-                                                src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-optons-icon2.svg">
-                                        </a>
-                                    </li>
-                                    {{-- <li class="ai-upload-add-project-list on-gen-disable">
-                                    <span class="ai-upload-option-tooltip"> Edit </span>
-                                    <a class="edit_generated_image" href="javascript:void(0)"
-                                        data-index="0"
-                                        data-outputImg="" data-item="edit_image"
-                                        title="Edit Image" data-sec=""
-                                        data-inputImg="">
-                                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-optons-icon3.svg">
-                                    </a>
-                                </li> --}}
-                                    {{-- <li class="ai-upload-add-project-list on-gen-disable">
-                                    <span class="ai-upload-option-tooltip"> Input </span>
-                                    <a class="use-as-input" href="javascript:void(0)"
-                                        data-img="" data-item="user_as_output_image"
-                                        title="Use as Input" data-sec="">
-                                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-image-editing-slide-icon3.svg">
-                                    </a>
-                                </li> --}}
-                                    {{-- <li class="ai-upload-add-project-list on-gen-disable">
-                                    <span class="ai-upload-option-tooltip"> HD </span>
-                                    <a class="generate_hd_img" href="javascript:void(0)" data-img="" data-sec=""
-                                        data-item="hd_quality" title="Full HD Quality">
-                                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-image-editing-slide-icon8.svg">
-                                    </a>
-                                </li> --}}
-                                    {{-- <li class="ai-upload-add-project-list on-gen-disable">
-                                    <span class="ai-upload-option-tooltip"> Feedback </span>
-                                    <a class="showFeedbackModal feedback_btn" href="javascript:void(0)" data-img=""
-                                        data-item="feedback_button" title="Add Feedback" data-id="" data-design-type="">
-                                        <img src="https://homedesigns-ai.b-cdn.net/web/images/magnifying4.svg">
-                                    </a>
-                                </li> --}}
-                                </ul>
+
+            </div>
+            <template id="redesignCard">
+                <div class="col-md-6 col-lg-4 col-12">
+                    <div class="ai-upload-latest-single">
+
+                        <div class="ai-upload-latest-after">
+                            <div class="ai-upload-latest-inset">
+
+                                <img class="complte-img img" src="" data-item="output-image">
+                                <div class="ai-upload-effects">
+                                    <ul class="render-overlay-data-box">
+                                        <li class="render-overlay-data"></li>
+                                        <li class="render-overlay-data"></li>
+                                        <li class="render-overlay-data"></li>
+                                    </ul>
+                                </div>
+                                <div class="ai-upload-optons">
+                                    <ul>
+                                        <li class="ai-upload-add-project-list">
+                                            <span class="ai-upload-option-tooltip"> Download </span>
+                                            <a class="download" href="javascript:void(0)" data-download-url=""
+                                                title="Download" download data-item="download-output-btn">
+                                                <img
+                                                    src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-optons-icon1.svg">
+                                            </a>
+                                        </li>
+                                        <li class="ai-upload-add-project-list">
+                                            <span class="ai-upload-option-tooltip"> Show </span>
+                                            <a class="ip_img_preview inpainting-preview" href="javascript:void(0)"
+                                                data-img="" data-item="preview-btn-output" title="Open"
+                                                onclick="previewImage()">
+                                                <img
+                                                    src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-optons-icon2.svg">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </template>
-        {{-- <div id="routeToFullHdImageData" data-route="{{ route('getHdImages') }}"></div> --}}
+            </template>
+
+            <template id="inPaintingCard">
+                <div class="col-md-6 col-lg-4 col-12">
+                    <div class="ai-upload-latest-single">
+                        <div class="ai-upload-latest-after">
+                            <div class="ai-upload-latest-inset">
+                                {{-- <span class="ai-upload-title">After</span> --}}
+                                <img class="complte-img img" src="" data-item="output-image">
+                                <div class="ai-upload-effects">
+                                    <ul class="render-overlay-data-box">
+                                        <li class="render-overlay-data"></li>
+                                        <li class="render-overlay-data"></li>
+                                        {{-- <li class="render-overlay-data"></li> --}}
+                                    </ul>
+                                </div>
+                                <div class="ai-upload-optons">
+                                    <ul>
+                                        <li class="ai-upload-add-project-list">
+                                            <span class="ai-upload-option-tooltip"> Download </span>
+                                            <a class="download" href="javascript:void(0)" data-download-url=""
+                                                title="Download" download data-item="download-output-btn">
+                                                <img src="{{ asset('web2/images/ai-upload-optons-icon1.svg') }}">
+                                            </a>
+                                        </li>
+                                        <li class="ai-upload-add-project-list">
+                                            <span class="ai-upload-option-tooltip"> Show </span>
+                                            <a class="ip_img_preview inpainting-preview" href="javascript:void(0)"
+                                                data-img="" data-item="preview-btn-output" title="Open"
+                                                onclick="previewImage()">
+                                                <img src="{{ asset('web2/images/ai-upload-optons-icon2.svg') }}">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+        <div id="routeToFullHdImageData" data-route="{{ route('getHdImages') }}"></div>
     @endsection
 
     @section('scripts')
         <!-- Google tag (gtag.js) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0JYLHV57P"></script>
-        <script>
-            $(document).ready(function() {
-                $('#custom_instruction0').show();
-
-                function loadFeatureContent(url) {
-                    console.log("Loading feature content from URL:", url);
-                    $.ajax({
-                        url: url,
-                        method: 'GET',
-                        success: function(data) {
-                            $('.feature-content').html(data);
-                        },
-                        error: function(xhr, status, error) {
-                            console.log("Failed to load content:", status, error);
-                            $('.feature-content').html(
-                                '<p>Failed to load content. It is under process</p>');
-                        }
-                    });
-                }
-
-                $(document).on('click', '.feature-button', function() {
-                    console.log("Button clicked:", $(this).data('feature'));
-                    $('.feature-button').removeClass('active');
-                    $(this).addClass('active');
-
-                    var url = $(this).data('feature-url');
-                    loadFeatureContent(url);
-                });
-
-                // Ensure the active button click is triggered
-                console.log("Triggering click on active button");
-                $('.feature-button.active').trigger('click');
-            });
-
-        </script>
         <script>
             window.dataLayer = window.dataLayer || [];
 

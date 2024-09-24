@@ -43,7 +43,7 @@
     </script> --}}
 
     <!-- Meta for the page start -->
-    {{-- @include('web.layout.meta_head') --}}
+    @include('web.layout.meta_head')
 
     {{-- <!-- begin Convert Experiences code-->
     <script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10042884-10043877.js"></script>
@@ -70,7 +70,58 @@
     <!-- TrustBox script -->
     <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
     <!-- End TrustBox script -->
+    <?php
+    $active_plan = '';
+    if (auth()->check()) {
+        $active_plan = auth()->user()->activePlan();
+    }
+    ?>
+{{-- new js --}}
+    {{-- <script src="{{ asset('webWidget/js/jquery.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('webWidget/js/bootstrap.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('webWidget/js/jquery-ui.js') }}"></script> --}}
+    {{-- <script src="{{ asset('webWidget/js/slick.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('webWidget/js/after-before.js') }}"></script> --}}
+    <script src="{{ asset('webWidget/js/custom.js') }}" id="custom-js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    {{-- new js ends --}}
 
+    <script src="{{ asset('web/js/wow.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
+        integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.js"
+        integrity="sha512-3FKAKNDHbfUwAgW45wNAvfgJDDdNoTi5PZWU7ak3Xm0X8u0LbDBWZEyPklRebTZ8r+p0M2KIJWDYZQjDPyYQEA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+    <script src=" {{ asset('web/js/jquery.mCustomScrollbar.js') }} "></script>
+    <script>
+        const SITE_BASE_URL = "{{ config('app.url') }}";
+        const user = JSON.parse('@json(auth()->user())');
+        const activeplan = '{{ $active_plan }}';
+        const APP_LOCAL = "{{ config('app.env') }}";
+        const GPU_SERVER_HOST = "{{ config('app.GPU_SERVER_HOST') }}";
+        const API_GPU_SERVER_HOST = "{{ config('app.API_GPU_SERVER_HOST') }}";
+        const API_BRONZE_CREDIT = "{{ config('app.API_BRONZE_CREDIT') }}";
+        const API_SILVER_CREDIT = "{{ config('app.API_SILVER_CREDIT') }}";
+        const API_GOLD_CREDIT = "{{ config('app.API_GOLD_CREDIT') }}";
+        const API_SME_CREDIT = "{{ config('app.API_SME_CREDIT') }}";
+        const GPU_SERVER_HOST_INIT = "{{ config('app.GPU_SERVER_HOST_INIT') }}";
+        const GPU_SERVER_HOST_SEG = "{{ config('app.GPU_SERVER_HOST_SEG') }}";
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
+    <script src="{{ asset('webWidget/js/cropper.min.js') }}"></script>
+    <script src="{{ asset('web/js/script.js') }}?v={{ config('app.script_js_version') }}"></script>
+    <script src="{{ asset('webWidget/js/custom-script.js') }}?v={{ config('app.custom_script_version') }}" id="custom-script-js" ></script>
+    <script src="{{ asset('webWidget/js/konva.min.js') }}"></script>
+    <script src="{{ asset('webWidget/js/jquery-cropper.js') }}"></script>
+    <script src="{{ asset('webWidget/js/in-painting-v2.js') }}?v={{ config('app.custom_script_version') }}" id="in-painting-js"></script>
+    <script src="{{ asset('web/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
     <style>
         .custom-select-wrapper .input-wrapper {
             padding: 0 0px;
@@ -172,6 +223,59 @@
             display: inline-block;
             animation: moveText 28s linear infinite;
         }
+        #widgetCustomContainerDiv .upload-loader {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            height: 300px;
+            width: 300px;
+        }
+
+        #widgetCustomContainerDiv .upload-small {
+            width: 80px;
+            height: 80px;
+            border-color: #22adff;
+            animation-delay: 0s;
+        }
+        #widgetCustomContainerDiv .upload-circle {
+            border-radius: 50%;
+            animation: pulse 1s infinite ease-in-out;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            border: 1px solid #000000;
+        }
+
+        #widgetCustomContainerDiv .upload-medium {
+            width: 100px;
+            height: 100px;
+            border-color: #22adff;
+            animation-delay: 0.2s;
+        }
+
+        #widgetCustomContainerDiv .upload-large {
+            width: 120px;
+            height: 120px;
+            border-color: #d92cff;
+            animation-delay: 0.4s;
+        }
+        #widgetCustomContainerDiv .upload-x-large {
+            width: 120px;
+            height: 120px;
+            border-color: #ccecff;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+        }
 
         @keyframes moveText {
             0% {
@@ -181,6 +285,9 @@
             100% {
                 transform: translateX(-100%);
             }
+        }
+        .ai-tool-right-top {
+            justify-content: center !important;
         }
     </style>
 </head>
@@ -300,7 +407,25 @@
         $currentPlan = $userActivePlan;
     }
 
-    
+    $routes = [
+        'user.redesign',
+        'user.in-painting',
+        'user.fill-spaces',
+        'user.decor-staging',
+        'user.ai-object-removal',
+        'user.color-texture',
+        'furniture.finding',
+        'skyColor.Index',
+        'expertChat.index',
+        'styleTransfer.Index',
+        'colorSwap.Index',
+        'collage_render.Index',
+        'user.roast-my-home',
+        'designTransfer.Index',
+        'user.convenient-redesign',
+        'floorEditor.Index',
+        'user.smart-home-ai',
+    ];
 
     $currentRoute = request()->route()->getName();
     $subscription_plans = [
@@ -336,8 +461,8 @@
         <div class="gs-dashboard-wrpper">
             <div class="gs-dashboard-mobile-header">
                 <div class="gs-dashboard-left-logo">
-                    <a href="">
-                        <img src=" https://homedesigns-ai.b-cdn.net/webWidget/images/home-logo.svg" />
+                    <a href="{{ route('user.dashboard') }}">
+                        <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/home-logo.svg" />
                         <img class="light-mode"
                             src=" https://homedesigns-ai.b-cdn.net/webWidget/images/light-mode/NewHomeDesignsAILogo 1.png" />
                     </a>
@@ -377,8 +502,8 @@
                 <div class="modal-content p-4 suggest-md-content">
                     <span class="precision-md-mess"> If you want a partial redesign and
                         your instructions to be more precise, you can try our new <a
-                            href="">Precision+</a> mode by clicking <a
-                            href="">here.</a></span>
+                            href="{{ route('user.in-painting') }}">Precision+</a> mode by clicking <a
+                            href="{{ route('user.in-painting') }}">here.</a></span>
                     <div class="mdp-cl-btn mdl-close-btn">
                         <span class="precision_suggestion_closebt" data-bs-dismiss="modal">
                             <i class="fa fa-times fa-unset" aria-hidden="true"></i>
@@ -391,9 +516,9 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content p-4 suggest-md-content">
                     <span class="precision-md-mess mb-3">Are you looking for more precise designs? Check our <a
-                            href="">Precision+</a> where you can redesign exactly what
+                            href="{{ route('user.in-painting') }}">Precision+</a> where you can redesign exactly what
                         you want, not just a full redesign.</span>
-                    <a href="">
+                    <a href="{{ route('user.in-painting') }}">
                         <video loop="" muted="" autoplay="" playsinline="" width="100%">
                             <source src="https://homedesigns.ai/web/images/precision-upgrade.mp4" type="video/mp4">
                         </video>
@@ -429,7 +554,7 @@
                             <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/premium-member-icon11.svg">
                             <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/premium-member-icon12.svg">
                         </div>
-                        <a class="gs-blue-btn" href="">Limited Lifetime Deal - Upgrade Now</a>
+                        <a class="gs-blue-btn" href="{{ route('premium.upgradeSoftware') }}">Limited Lifetime Deal - Upgrade Now</a>
                     </div>
                 </div>
             </div>
@@ -522,7 +647,7 @@
                         </div>
                     @else
                         <div class="modal_footer_content">
-                            <a href=""><button class="modal_footer_button">Upgrade to
+                            <a href="{{ route('api.index') }}"><button class="modal_footer_button">Upgrade to
                                     API</button></a>
                         </div>
                 </div>
@@ -614,7 +739,7 @@
                     <form id="addProjectForm">
                         @csrf
                         <div class="form-group">
-                            <a href="" id="openCreateProjectModal"
+                            <a href="{{ route('user.projects') }}" id="openCreateProjectModal"
                                 class="redirect_to_project_btn" style="float: right" title="Create new project">+</a>
                             <label for="selectProject">Select Project</label>
                             <select class="nwfiles-optns" id="selectProject" name="selectedProject">
@@ -689,12 +814,18 @@
         <div class="modal-dialog gs-modal-container">
             <div class="modal-content gs-modal-content">
                 {{-- <button type="button" class="gs-modal-close" data-dismiss="modal"><img
-                        src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-close-icon.svg"></button> --}}
+                        src="https://homedesigns-ai.b-cdn.net/web2/images/gs-close-icon.svg"></button> --}}
                 <div class="gs-modal-uploading_instruction">
                     {{-- <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
                     <dotlottie-player src="https://lottie.host/f153e458-6b70-4270-84a7-bb5665de0dbf/GLxYOI5N17.json"
                         background="transparent" speed="1" style="width: 300px; height: 300px;" loop
                         autoplay></dotlottie-player> --}}
+                    <div class="upload-loader">
+                        <div class="upload-circle upload-small"></div>
+                        <div class="upload-circle upload-medium"></div>
+                        <div class="upload-circle upload-large"></div>
+                        <div class="upload-circle upload-x-large"></div>
+                    </div>
                     <h3>Loading brilliance....</h3>
                     <p>Unleashing the AI magic!</p>
                     {{-- <div class="gs-modal-uploading_instruction_slider">
@@ -723,7 +854,7 @@
                 </button>
                 <h3 class="logout_heading">Are you sure you want to logout?</h3>
                 <div class="gs-project-add-new-form">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <div class="gs-login-brn-outer">
                             <button class="gs-login-btn" type="submit">Yes</button>
@@ -739,10 +870,10 @@
         <div class="modal-dialog gs-modal-container">
             <div class="modal-content gs-modal-content">
                 <button type="button" class="gs-modal-close" data-dismiss="modal">
-                    <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-close-icon.svg">
+                    <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-close-icon.svg">
                 </button>
                 <div class="error-wrapper">
-                    <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/close_icon.png" alt="">
+                    <img src="https://homedesigns-ai.b-cdn.net/web2/images/close_icon.png" alt="">
                     <h4></h4>
                 </div>
             </div>
@@ -1405,72 +1536,19 @@
             </div>
         </div>
     </div>
-    {{-- <div id="routeToRunpodType" data-route="{{ route('nextrunpod.name') }}"></div> --}}
-    {{-- <div id="routeToGetFailedResp" data-route="{{ route('failed_response.data') }}"></div> --}}
-    {{-- <div id="deleteRenderImages" class="hidden" data-route="{{ route('image.delete') }}"></div> --}}
-    {{-- <div id="addImagesToProject" class="hidden" data-route="{{ route('user.add-images-to-project') }}"></div> --}}
-    {{-- <div id="addAllImagesAsFavourite" class="hidden" data-route="{{ route('user.add-images-as-favourite') }}"> --}}
+    <div id="routeToRunpodType" data-route="{{ route('nextrunpod.name') }}"></div>
+    <div id="routeToGetFailedResp" data-route="{{ route('failed_response.data') }}"></div>
+    <div id="deleteRenderImages" class="hidden" data-route="{{ route('image.delete') }}"></div>
+    <div id="addImagesToProject" class="hidden" data-route="{{ route('user.add-images-to-project') }}"></div>
+    <div id="addAllImagesAsFavourite" class="hidden" data-route="{{ route('user.add-images-as-favourite') }}">
     </div>
-    {{-- <div id="editAsPrecision" data-route="{{ route('editAs.precision') }}"></div> --}}
+    <div id="editAsPrecision" data-route="{{ route('editAs.precision') }}"></div>
     @include('web2.common.design-preview')
-    <?php
-    $active_plan = '';
-    if (auth()->check()) {
-        $active_plan = auth()->user()->activePlan();
-    }
-    ?>
+    
 
-    {{-- new js --}}
-    {{-- <script src="{{ asset('webWidget/js/jquery.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('webWidget/js/bootstrap.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('webWidget/js/jquery-ui.js') }}"></script> --}}
-    {{-- <script src="{{ asset('webWidget/js/slick.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('webWidget/js/after-before.js') }}"></script> --}}
-    <script src="{{ asset('webWidget/js/custom.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-    {{-- new js ends --}}
+    
 
-    <script src="{{ asset('web/js/wow.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"
-        integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.js"
-        integrity="sha512-3FKAKNDHbfUwAgW45wNAvfgJDDdNoTi5PZWU7ak3Xm0X8u0LbDBWZEyPklRebTZ8r+p0M2KIJWDYZQjDPyYQEA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-
-    <script src=" {{ asset('web/js/jquery.mCustomScrollbar.js') }} "></script>
-    <script type="text/javascript" async src="https://cdn.reamaze.com/assets/reamaze-loader.js"></script>
-    <script type="text/javascript">
-        var _support = _support || { 'ui': {}, 'user': {} };
-        _support['account'] = 'homedesignsai';
-        _support['contact_custom_fields'] = _support['contact_custom_fields'] || {};
-        _support['contact_custom_fields']['rmz_form_id_75218'] = {};
-    </script>
-    <script>
-        const SITE_BASE_URL = "{{ config('app.url') }}";
-        const user = JSON.parse('@json(auth()->user())');
-        const activeplan = '{{ $active_plan }}';
-        const APP_LOCAL = "{{ config('app.env') }}";
-        const GPU_SERVER_HOST = "{{ config('app.GPU_SERVER_HOST') }}";
-        const API_GPU_SERVER_HOST = "{{ config('app.API_GPU_SERVER_HOST') }}";
-        const API_BRONZE_CREDIT = "{{ config('app.API_BRONZE_CREDIT') }}";
-        const API_SILVER_CREDIT = "{{ config('app.API_SILVER_CREDIT') }}";
-        const API_GOLD_CREDIT = "{{ config('app.API_GOLD_CREDIT') }}";
-        const API_SME_CREDIT = "{{ config('app.API_SME_CREDIT') }}";
-        const GPU_SERVER_HOST_INIT = "{{ config('app.GPU_SERVER_HOST_INIT') }}";
-        const GPU_SERVER_HOST_SEG = "{{ config('app.GPU_SERVER_HOST_SEG') }}";
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    </script>
-    <script src="{{ asset('web/js/script.js') }}?v={{ config('app.script_js_version') }}"></script>
-    <script src="{{ asset('webWidget/js/custom-script.js') }}?v={{ config('app.custom_script_version') }}"></script>
-    {{-- <script src="{{ asset('webWidget/js/in-painting-v2.js') }}?v={{ config('app.custom_script_version') }}"></script> --}}
-    <script src="{{ asset('web/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script> --}}
 
     @yield('scripts')
 
@@ -1547,6 +1625,7 @@
                         if (data['success'] == true) {
                             $("#multipleDecorClick").modal('show');
                         } else {
+                            window.location.href = "{{ route('user.decor-staging') }}";
                         }
                         clickCount = 1; // Reset click count
                         localStorage.setItem('clickCount', clickCount);
@@ -1737,11 +1816,260 @@
         }
     </script>
     <script>
+        $(document).on('click', '.delay_next_billing', function() {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('delay_next.billing') }}", // Using named route
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                    period: '1'
+                },
+                success: function(response) {
+                    if (response.success == true) {
+                        alert(response.message);
+                        //alert("No order is associated with this user account. Please contact our support team at <a href="mailto:help@homedesigns.ai">help@homedesigns.ai</a>.");
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Handle error
+                    console.error(error);
+                }
+            });
+        });
+
+        function addPremiumPlan() {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('add_premium.plan') }}", // Using named route
+                data: {
+                    _token: $('meta[name="csrf-token"]').attr('content'),
+                },
+                success: function(response) {
+                    alert("Premium Plan is added to your account for free");
+                },
+                error: function(xhr, status, error) {
+                    // Handle error
+                    console.error(error);
+                }
+            });
+        }
+
+        $(document).on('click', '.cancel_feedback_data', function() {
+            event.preventDefault(); // Prevent default action of the button
+            var selectedReason = $('input[name="cancel_reason"]:checked').val();
+            var additionalComments = $('textarea[name="additional_comments"]').val().trim();
+
+            // Validation for radio buttons and textarea
+            if (!selectedReason) {
+                alert('Please choose at least one option.');
+                return;
+            }
+
+            // if (additionalComments === "") {
+            //    alert('Please provide additional comments.');
+            //    return;
+            // }
+            var formData = $('#myCancleFeedbackForm').serialize();
+            // Make AJAX call
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('save.feedback') }}", // Update with your PHP file URL
+                data: formData,
+                success: function(response) {
+                   if (response.success) {
+                    $('#cancel_subscription_05').modal('hide');
+                    $('#cancel_subscription_06').modal('show');
+                    } else {
+                        // Handle case where response indicates failure
+                        alert('Something went wrong. Please try again.');
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Handle error
+                    console.error('Error:', error);
+                }
+            });
+        });
     </script>
     <script>
         let current_subscription = null;
         let current_subsctiption_amount = 0;
 
+        function getProductByPlan(userActivePlan) {
+            let selected_subscription_plan = $("#next_subscription_plan").find(":selected").val();
+            if (userActivePlan == selected_subscription_plan) {
+                alert("You are already using this subscription, please choose another one.");
+                return false;
+            } else if (selected_subscription_plan == "") {
+                return false;
+            }
+            $.ajax({
+                url: "/admin/getProductByPath/" + selected_subscription_plan,
+                type: "GET",
+                async: false,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                },
+                success: function(response) {
+                    if (response.success) {
+                        if (response.data.products[0].result != "success") {
+                            console.log("notsucces");
+                            swal({
+                                title: "Product Not found.",
+                                text: "Something went wrong please try again",
+                                icon: "error"
+                            });
+                            return false;
+                        }
+                        let amount = response.data.products[0].pricing.price.USD;
+                        let differenciate_amount = amount - current_subsctiption_amount;
+                        // current_subsctiption_amount
+                        $("#next_amount").html('USD ' + amount.toFixed(2) + ' -  USD ' +
+                            current_subsctiption_amount.toFixed(2) + ' = <strong>USD ' +
+                            differenciate_amount.toFixed(2) + '</strong>');
+                    } else {
+                        swal({
+                            title: "Product Not found.",
+                            text: "Something went wrong please try again",
+                            icon: "error"
+                        });
+                    }
+                }
+            })
+        }
+
+        function getSubscriptionDetails(order_id) {
+            $.ajax({
+                url: "{{ route('admin.getSubscriptionDetails') }}",
+                type: "POST",
+                data: {
+                    'order_id': order_id
+                },
+                async: false,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                },
+                success: function(resp) {
+                    if (resp.success) {
+                        if (resp.data.state == "active") {
+                            $("#btn_cancel_subscription").removeClass('d-none');
+                            $("#plan_status").html("<span class='badge bg-success'>" + resp.data.state +
+                                "</span>");
+                        } else if (resp.data.state == "canceled") {
+                            $("#plan_status").html("<span class='badge bg-info'>" + resp.data.state +
+                                "</span>");
+                        } else if (resp.data.state == "paused") {
+                            $("#plan_status").html("<span class='badge bg-warning'>" + resp.data.state +
+                                "</span>");
+                        }
+                        $("#upgradeSubcriptionModal").modal("show");
+                        if (resp.data.isPauseScheduled == true) {
+                            $("#btn_pause_subscription").addClass('d-none');
+                            $("#btn_resume_subscription").addClass('d-none');
+                            $("#btn_cancel_paused_subscription").removeClass('d-none');
+                            $("#subscription_status").html(
+                                '<div class="alert alert-warning">The subscription is scheduled to be <strong>Paused</strong> on <strong>' +
+                                resp.data.pauseDateDisplayISO8601 +
+                                '</strong> and will resume on <strong>' + resp.data
+                                .resumeDateDisplayISO8601 + '</strong></div>');
+                        } else if (resp.data.state == "canceled") {
+                            $("#btn_pause_subscription").addClass('d-none');
+                            $("#btn_resume_subscription").removeClass('d-none');
+                            $("#subscription_status").html(
+                                '<div class="alert alert-danger">The subscription is <strong>Canceled</strong> on <strong>' +
+                                resp.data.canceledDateDisplayISO8601 +
+                                '</strong> and Deactivation Date should be <strong>' + resp.data
+                                .deactivationDateDisplayISO8601 + '</strong></div>');
+                        } else {
+                            $("#subscription_status").html("");
+                            $("#btn_pause_subscription").removeClass('d-none');
+                            $("#btn_resume_subscription").addClass('d-none');
+                            $("#btn_cancel_paused_subscription").addClass('d-none');
+                        }
+                        $("#subscription_name").html(
+                            "<span><small>Current Subscription</small><br><div class='d-flex justify-content-between'><h5>" +
+                            resp.data.display + "</h5></div></span>");
+                        $("#next_subscription_plan").val(resp.data.product);
+                        current_subscription = resp.data.product;
+                        $("#next_subscription_plan").find('option[value=' + resp.data.product + ']').prop(
+                            'disabled', true);
+                        $("#subscription_id").val(resp.data.id);
+                        $("#next_amount").html("<strong>" + resp.data.nextChargeTotalDisplay + "</strong>");
+                        $("#next_date").html("<strong>" + resp.data.nextChargeDateDisplayISO8601 + "</strong>");
+                        current_subsctiption_amount = resp.data.nextChargeTotal;
+                    } else {
+                        console.log(resp.message);
+                    }
+                },
+                error: function(resp) {
+                    data = false;
+                }
+            })
+        }
+
+        function getSubscriptionDetailsBySubscriptionId(subscription_id) {
+            $.ajax({
+                url: "{{ route('admin.getSubscriptionDetailsBySubscriptionId') }}",
+                type: "POST",
+                data: {
+                    'subscription_id': subscription_id
+                },
+                async: false,
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                },
+                success: function(resp) {
+                    if (resp.success) {
+                        $("#current_active_subscription").text(resp.data.display);
+                    } else {
+                        console.log(resp.message);
+                    }
+                },
+                error: function(resp) {
+                    data = false;
+                }
+            })
+        }
+
+        function upgradeSubscription() {
+            let selected_subscription_plan = $("#next_subscription_plan").find(":selected").val();
+            let active_subscription_plan = "{{ $userActivePlan }}";
+
+            if (!selected_subscription_plan) {
+                alert('Please select a subscription plan.');
+            } else if (!selected_subscription_plan || selected_subscription_plan === active_subscription_plan) {
+                alert('You are already using this subscription, Please choose another Plan.');
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('edit_current.plan') }}", // Using named route
+                    data: {
+                        _token: $('meta[name="csrf-token"]').attr('content'),
+                        product: selected_subscription_plan
+                    },
+                    success: function(response) {
+                        if (response.success == false) {
+                            alert(response.message);
+                            $('#cancel_subscription_002').hide();
+                            $('#cancel_subscription_01').show();
+                        } else {
+                            alert("Your Subscription plan should be Changed Successfully.");
+                            $('#cancel_subscription_002').hide();
+                            window.location.reload();
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Handle error
+                        console.error(error);
+                    }
+                });
+            }
+        }
     </script>
     {{-- <div class="elfsight-app-c277abde-f388-4053-bb82-572a308f96f1"></div> --}}
 </body>

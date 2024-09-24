@@ -116,7 +116,7 @@ $(document).ready(function () {
         //         $("#ip-brush-thickness").val(ui.value);
         //     }
         // });
-        $("#amount").val($(".gs-select-range").slider("value"));
+        // $("#amount").val($(".gs-select-range").slider("value"));
 
 
         $(".our-preset-settings-range").slider({

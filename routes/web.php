@@ -43,3 +43,13 @@ Route::get('/widget-testing', function () {
 });
 
 Route::post('runpodWidget/beautiful_redesign', [WidgetController::class, 'runpodWidgetBeautifulRedesign'])->name('runpodWidget.beautiful_redesign');
+
+Route::post('runpodWidget/beautiful_redesign', [WidgetController::class, 'runpodWidgetBeautifulRedesign'])->name('runpodWidget.beautiful_redesign');
+Route::post('runpodWidget/fill_space', [WidgetController::class, 'runpodWidgetFillSpace'])->name('runpodWidget.fill_space');
+Route::post('runpodWidget/precision', [WidgetController::class, 'runpodWidgetPrecision'])->name('runpodWidget.precision');
+Route::post('runpodWidget/color-and-texture', [WidgetController::class, 'runpodWidgetColorAndTexture'])->name('runpodWidget.color-and-texture');
+Route::post('runpodWidget/paint-visualizer', [WidgetController::class, 'runpodWidgetPaintVisualizer'])->name('runpodWidget.paint-visualizer');
+
+
+//Widget response
+Route::get('/widgetData/{id}', [WidgetController::class, 'showWidgetData']);

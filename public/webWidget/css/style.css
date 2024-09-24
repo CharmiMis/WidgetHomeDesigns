@@ -9453,14 +9453,14 @@ div#painting-stag {
     padding-right: 17px;
 }
 .gs-dashboard-rigtbar {
-    width: calc(100% - 250px);
-}
-
-.gs-dashboard-rigtbar {
     width: calc(100% - 0px);
-    padding: 20px 20px 0 250px;
+    padding: 20px 20px 0 120px;
     height: 100%;
     overflow: auto;
+}
+#widgetCustomContainerDiv .gs-dashboard-rigtbar {
+    padding: 20px 20px 0 20px;
+
 }
 .gs-dashboard-links a {
     font-family: Eudoxus Sans;
@@ -9706,13 +9706,42 @@ div#painting-stag {
 }
 /*Dashboard page css end*/
 /*ai-tool-wrapper css start*/
+#widgetCustomContainerDiv .ui-tabs .ui-tabs-nav li.ui-tabs-active {
+    margin-bottom: -1px;
+    padding-bottom: 0;
+    background: transparent;
+    border: none;
+}
+#widgetCustomContainerDiv .ui-tabs .ui-tabs-nav li{
+    border: none;
+    background: transparent;
+}
+/* 
+#widgetCustomContainerDiv .gs-dashboard-notice {
+    max-width: 1240px;
+} */
+
+#widgetCustomContainerDiv .ai-tool-wrapper{
+    justify-content: center;
+    width: 100%;
+}
+
+#widgetCustomContainerDiv .feature-buttons {
+    background-color: transparent;
+    border: none;
+}
+#widgetCustomContainerDiv .ui-widget.ui-widget-content {
+    border: none;
+    width: 100%;
+    max-width: 1372px;
+}
 .ai-tool-wrapper {
-    background: linear-gradient(0deg, #262834, #262834), linear-gradient(170.59deg, rgba(12, 0, 58, 0.2) 4.88%, rgba(77, 8, 132, 0.2) 49.14%);
+    /* background: linear-gradient(0deg, #262834, #262834), linear-gradient(170.59deg, rgba(12, 0, 58, 0.2) 4.88%, rgba(77, 8, 132, 0.2) 49.14%); */
     border-radius: 20px;
     display: flex;
     flex-wrap: wrap;
     min-height: 100%;
-    background: linear-gradient(357deg, rgba(12, 0, 58, 0.2) 4.88%, rgba(77, 8, 132, 0.2) 49.14%);
+    /* background: linear-gradient(357deg, rgba(12, 0, 58, 0.2) 4.88%, rgba(77, 8, 132, 0.2) 49.14%); */
 }
 .ai-tool-left {
     width: 200px;
@@ -9803,14 +9832,13 @@ div#painting-stag {
     margin-left: auto;
 }
 .ai-tool-right {
-    width: calc(100% - 200px);
+    width: calc(100% - 100px);
     background: #2C303E;
     border-radius: 0 20px 20px 0;
     /* padding: 25px 30px; */
     box-shadow: -20px 0px 54px 0px #00000026;
     transition: .3s all ease;
     -webkit-transition: .3s all ease;
-
 }
 
 .font22
@@ -11286,12 +11314,27 @@ div#painting-stag {
     max-width: fit-content;
 }
 
+#widgetCustomContainerDiv .gs-image-editing-content{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+
+#widgetCustomContainerDiv .gs-image-editing-container{
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
 .modal.fade.in .modal-dialog {
     transform: translate(0,-0);
 }
 #modalImagePreview .gs-modal-content{
     padding: 0;
 }
+
+
+/* Content container inside modal */
+
 
 #view_all_interior_room_type .gs-modal-content,
 #view_all_interior_choose_design .gs-modal-content,
@@ -14102,6 +14145,9 @@ header {
 	background: #fff;
 	border-radius: 16px !important;
 }
+
+
+
  @media screen and (max-width: 1600px) {
     .tabs label {
     width: 200px;

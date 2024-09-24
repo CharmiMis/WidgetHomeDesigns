@@ -1,9 +1,22 @@
 // const { preview } = require("vite");
-const objectContainer = document.querySelector(".key-objects-result");
-const projectButton = document.querySelector('.add_to_project_btn');
-const deleteButton = document.querySelector('.delete_button');
-var dataPage = document.querySelector('.data_page').getAttribute('data-page');
-const selectedImages = {};
+var objectContainer;
+var projectButton;
+var deleteButton;
+var selectedImages;
+var ipsValidateImage;
+var ipsValidateTextureImage;
+var getBase64FromUrl;
+$('document').ready(function () {
+    // Store the value in localStorage
+    objectContainer = document.querySelector(".key-objects-result");
+    projectButton = document.querySelector('.add_to_project_btn');
+    deleteButton = document.querySelector('.delete_button');
+    
+    selectedImages = {};
+});
+
+
+
 var runpodName = 'first_runpod';
 var runpodType = '1';
 $("._home_login_submit").click(function () {
@@ -399,6 +412,7 @@ function attachFilesToInput(sec, files) {
 
 /** Code to handle image when user drop start*/
 var imageUploader = document.getElementsByClassName('ai-upload-image');
+// var imageUploader = document.getElementsByID('ai-upload-image-tab1');
 $.each(imageUploader, function (index, item) {
     item.addEventListener('drop', function (ev) {
         ev.preventDefault();
@@ -422,6 +436,7 @@ var clickedDiv;
 var iUnderstanClickCount = 0;
 // Display the modal when the div is clicked
 
+
 $(document).on('click', '.ai-upload-image', function(event) {
     event.stopPropagation(); // Prevent event bubbling
     
@@ -435,7 +450,7 @@ $(document).on('click', '.ai-upload-image', function(event) {
     fileInput.trigger('click');
 });
 
-$(".dimg-picker, #ipFilePicker, #ipFilePicker2").on("click", function(event){
+$(".dimg-picker, #ipFilePicker, #ipFilePickerPrecision, #ipFilePickerFillSpaces, #ipFilePicker2").on("click", function(event){
     event.stopPropagation();
 });
 
@@ -594,7 +609,7 @@ function ipsPreviewImg(section) {
     }, 2000)
 }
 
-const ipsValidateImage = (file, success, fail, min_height_width = 512) => {
+ipsValidateImage = (file, success, fail, min_height_width = 512) => {
 
     var allowedFileType = ['image/jpeg', 'image/png'];
     let fileTypeValid = allowedFileType.some((fileType) => fileType === file.type);
@@ -624,7 +639,7 @@ const ipsValidateImage = (file, success, fail, min_height_width = 512) => {
     });
 };
 
-const ipsValidateTextureImage = (file, success, fail) => {
+ipsValidateTextureImage = (file, success, fail) => {
 
     var allowedFileType = ['image/jpeg', 'image/png'];
     let fileTypeValid = allowedFileType.some((fileType) => fileType === file.type);
@@ -661,8 +676,9 @@ function updateFastSpring(userDetail = null) {
 
 function previewImage(beforeSrc,afterSrc) {
     $("#modalImagePreview").modal('show')
-    $("#mip_before").attr('src', beforeSrc);
-    $("#mip_after").attr('src', afterSrc);
+    $("#mip_before").attr('src', afterSrc);
+    // $("#mip_after").attr('src', afterSrc);
+    $("#mip_after").css('background-image', `url(${beforeSrc})`);
 }
 //get multiple images in array
 var multipleDownloadImg = [];
@@ -829,7 +845,7 @@ function _updateAiCatePillsStatus(status) {
 
 }
 
-let get_designs_config = {
+var get_designs_config = {
     url: SITE_BASE_URL + 'get-designs',
     page: 1,
     type: 'public',
@@ -895,7 +911,7 @@ function getGeneratedDesigns(type) {
     return response;
 }
 
-const getBase64FromUrl = async (url) => {
+getBase64FromUrl = async (url) => {
 
     return new Promise((resolve) => {
         $.ajax({
@@ -1056,7 +1072,7 @@ async function _generateDesign(sec, el) {
 
     document.getElementById(`jumphere0`).scrollIntoView();
 
-    var divElement = document.getElementById(`all_data0`);
+    var divElement = document.getElementById(`all_data0_${dataPage}`);
     divElement.firstElementChild.scrollIntoView();
 
     var formData = new FormData();
@@ -1071,28 +1087,20 @@ async function _generateDesign(sec, el) {
         aiAPI = "/runpodWidget/beautiful_redesign";
     }
     formData.append("data", image);
-    console.log("image",image);
     
     formData.append("prompt", styleType);
-    console.log("styleType",styleType);
 
     formData.append("roomtype", roomType);
-    console.log("roomType",roomType);
 
     formData.append("designtype", sec);
-    console.log("sec",sec);
 
     formData.append("strengthType", strengthType);
-    console.log("strengthType",strengthType);
 
     formData.append("modeType", modeType);
-    console.log("modeType",modeType);
 
     formData.append("custom_instruction", customInstructionData);
-    console.log("customInstructionData",customInstructionData);
 
     formData.append("no_of_Design", noOfDesign);
-    // console.log("formData",formData.get());
 
     await fetch(aiAPI, {
         method: 'POST',
@@ -1115,7 +1123,6 @@ async function _generateDesign(sec, el) {
             return response.json();
         })
         .then(result => {
-            console.log("result",result);
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
             $('.gs-continue-btn').removeClass('disable-btn');
             $('.on-gen-disable').removeClass('disable-btn');
@@ -1150,7 +1157,7 @@ async function _generateDesign(sec, el) {
                  addNewDesignImage(design);
                  removeLoaderDivs(noOfDesign);
                
-                let data = document.getElementById(`all_data0`);
+                let data = document.getElementById(`all_data0_${dataPage}`);
 
                 data.insertBefore(code, data.firstChild);
 
@@ -1266,7 +1273,7 @@ $('#continue').click(function () {
 //     }
 // }
 
-let progressbarValue = 25;
+var progressbarValue = 25;
 $("#survey-next-button").click(function () {
     var activeVariantNo = parseInt($(this).attr('data-active-variant'));
     var activeQuestionNo = parseInt($(this).attr('data-active-question'));
@@ -1633,7 +1640,7 @@ $(document).on('click', '.generate_hd_img', async function () {
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
     document.getElementById(`jumphere0`).scrollIntoView();
 
-    var divElement = document.getElementById(`all_data0`);
+    var divElement = document.getElementById(`all_data0_${dataPage}`);
     divElement.firstElementChild.scrollIntoView();
 
     // Disable AI category Pill
@@ -1722,7 +1729,7 @@ $(document).on('click', '.generate_hd_img', async function () {
                         // Add the generated design image to the array
                         addNewDesignImage(design);
 
-                        let data = document.getElementById(`all_data0`);
+                        let data = document.getElementById(`all_data0_${dataPage}`);
                         removeLoaderDivs(1);
                         //document.getElementById(`progid`).style.display = 'none';
 
@@ -2191,7 +2198,7 @@ function initComparisons() {
     }
 }
 
-$(document).ready(function () {
+// $(document).ready(function () {
     // localStorage.removeItem('feedbackModalClosedCount');
     var feedbackModalClosedCount = localStorage.getItem('feedbackModalClosedCount') || 0;
 
@@ -2213,7 +2220,7 @@ $(document).ready(function () {
             });
         }
     });
-});
+// });
 
 $('#submitFeedbackRating').click(function () {
     var selectedRating = $('input[name="rate"]:checked').val();
@@ -2635,7 +2642,7 @@ $('#openCreateProjectModal').click(function (e) {
     window.location.href = targetUrl;
 });
 
-$(document).ready(function () {
+// $(document).ready(function () {
     var showModal = sessionStorage.getItem('showCreateProjectModal');
     if (showModal === 'true') {
         setTimeout(function () {
@@ -2650,7 +2657,7 @@ $(document).ready(function () {
         }, 500);
         sessionStorage.setItem('showCreateProjectModal', 'false');
     }
-});
+// });
 
 var resultArray = '';
 
@@ -2959,7 +2966,7 @@ function loadSearchImg(search_img) {
     _generateProducts(0, this);
 }
 
-let copyText = document.querySelector(".upgrade_yearly_text");
+var copyText = document.querySelector(".upgrade_yearly_text");
 if (copyText) {
     copyText.querySelector("a").addEventListener("click", function () {
         let input = copyText.querySelector("input.text");
@@ -3117,7 +3124,7 @@ $(document).on('click', '.new-page-link', function () {
     // page = 1;
 });
 
-let get_designs = {
+var get_designs = {
     url: SITE_BASE_URL + 'get-designs',
 }
 
@@ -3204,8 +3211,7 @@ $(".add_all_images_as_favourite").click(function () {
 //         }
 //     }, 2000)
 // });
-
-$(".continue-parameter").click(function () {
+$(document).on('click', '.continue-parameter', function () {
     if (dataPage == 'collage_to_render'){
         if($(".custom_added_elements").length <= 0 && $(".existing_elements").length <= 0){
             let error_message = 'Please upload custom elements to proceed.';
@@ -3576,12 +3582,32 @@ function loadImageBase64FromInpainting(base64Data) {
 }
 
 function generationDivLoader(noOfDesign,inputImage){
+    
     var itemHtml = `
-			<div class="snippet dot-in-paint-loader" data-title="dot-pulse">
-                <div class="ai-upload-loader"><script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script><dotlottie-player src="https://lottie.host/68271c9d-441b-4c3e-b21f-726d10c3f490/vsHwnrlRvB.json" background="transparent" speed="1" style="width: 130px;   height: 130px;" loop autoplay></dotlottie-player>
-                </div>
-            </div>`;
-    var loaderdata = document.getElementById(`all_data0`);
+        <div class="snippet dot-in-paint-loader" data-title="dot-pulse">
+            <div class="ai-upload-loader">
+                <div class="circle-loader"></div>
+            </div>
+        </div>
+
+        <style>
+            .circle-loader {
+                border: 4px solid rgba(0, 0, 0, 0.2); /* Light grey */
+                border-top: 4px solid #3498db; /* Blue */
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                animation: spin 1s linear infinite;
+            }
+
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+    `;
+    var loaderdata = document.getElementById(`all_data0_${dataPage}`);
+    
     for (let i = 0; i < noOfDesign; i++) {
         const newFreeformSpacer = document.createElement('div');
         newFreeformSpacer.className = 'col-md-6 col-lg-4 col-12';
@@ -3595,12 +3621,13 @@ function generationDivLoader(noOfDesign,inputImage){
         newDiv.style.backgroundImage = `url(${inputImage})`;
 
         newFreeformSpacer.appendChild(newDiv);
+        
         loaderdata.insertBefore(newFreeformSpacer, loaderdata.firstElementChild);
     }
 }
 
 function removeLoaderDivs(noOfDesign) {
-    var loaderdata = document.getElementById('all_data0');
+    var loaderdata = document.getElementById(`all_data0_${dataPage}`);
 
     for (let i = 0; i < noOfDesign; i++) {
         const divToRemove = document.getElementById(`progressindicatordiv${i}`);
@@ -3624,9 +3651,9 @@ $('.first_tab_active').click(function () {
     $('.image-container').css('display', 'none');
     $('.category-container').css('display', 'none');
 });
-
 $('.second_tab_active').click(function () {
     if(dataPage != 'redesign' && dataPage != 'rostMyHome' && dataPage != 'convenient-redesign' && dataPage != 'collage_to_render' && dataPage != 'productSearch'){
+
         if (!imageLayer.hasChildren()) {
             let error_message = "Oops! You didn't upload your image.";
             $('#errorModal h4').text(error_message);

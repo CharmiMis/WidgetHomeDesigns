@@ -1,8 +1,7 @@
 {{-- section first start --}}
-<input type="hidden" class="data_page" data-page="redesign" />
 <div>
     <div class="ai-tool-right-top top-menu-bar-first">
-        <h3 class="font22">Redesign</h3>
+        {{-- <h3 class="font22">Redesign</h3> --}}
         <ul>
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
@@ -56,11 +55,11 @@
     {{-- section second start --}}
     <div class="ai-tool-right-top top-menu-bar-second" id="viewImage" style="display: none">
         <div class="ai-tool-right-back-btn">
-            <a href="javascript:void(0)" class="gs-back-btn previous_page">
+            {{-- <a href="javascript:void(0)" class="gs-back-btn previous_page">
                 <img src="{{ asset('webWidget/images/back-btn-icon.svg') }}">
                 <img class="light-mode" src="{{ asset('webWidget/images/light-mode/back-btn-icon.svg') }}">
-            </a>
-            <h3 class="font22">Redesign</h3>
+            </a> --}}
+            {{-- <h3 class="font22">Redesign</h3> --}}
         </div>
         <ul>
             <li class="active first_tab_active">
@@ -76,12 +75,6 @@
                 <span>Customise and Generate</span>
             </li>
         </ul>
-        {{-- <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
-                <span>Log Out</span>
-            </a>
-        </form> --}}
     </div>
 
     <div class="image-show-container image-mask-container">
@@ -146,15 +139,15 @@
                         <div class="gs-what-to-edit-tabs">
                             <div class="gs-what-to-edit-title">
                                 <ul>
-                                    <li class="active"><a data-toggle="tab" href="#our-preset-settings-interior">Our
+                                    <li class="active"><a data-toggle="tab" href="#our-preset-settings-interior-redesign">Our
                                             preset settings</a></li>
-                                    <li><a data-toggle="tab" href="#your-customs-settings-interior">Your customs
+                                    <li><a data-toggle="tab" href="#your-customs-settings-interior-redesign">Your customs
                                             settings </a></li>
                                 </ul>
                             </div>
                             <div class="gs-what-to-edit-content">
                                 <div class="tab-content">
-                                    <div id="our-preset-settings-interior" class="tab-pane show fade in active">
+                                    <div id="our-preset-settings-interior-redesign" class="tab-pane show fade in active">
                                         <div class="gs-select-automatically">
                                             <div class="gs-our-preset-settings ">
                                                 <div class="gs-select-room-style">
@@ -313,7 +306,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="your-customs-settings-interior" class="tab-pane show fade">
+                                    <div id="your-customs-settings-interior-redesign" class="tab-pane show fade">
                                         <div class="our-preset-settings-box">
 
                                             <label class="our-preset-prompt-text">Type your custom instructions below
@@ -322,7 +315,7 @@
                                                     onchange="customInstruction(0)"></label>
                                             <textarea
                                                 placeholder="e.g. A clean-looking living room with black and yellow textures and a coffee table made from hardwood."
-                                                name="cust-inst0" id="custom_instruction0" class="hidden"></textarea>
+                                                name="cust-inst0" id="custom_instruction0" class=""></textarea>
                                         </div>
 
                                         <div class="our-preset-settings-range-outer">
@@ -557,7 +550,7 @@
                                                     onchange="customInstruction(1)"></label>
                                             <textarea
                                                 placeholder="e.g. A clean-looking living room with black and yellow textures and a coffee table made from hardwood."
-                                                name="cust-inst1" id="custom_instruction1" class="hidden"></textarea>
+                                                name="cust-inst1" id="custom_instruction1" class=""></textarea>
                                         </div>
 
                                         <div class="our-preset-settings-range-outer">
@@ -800,7 +793,7 @@
                                                     onchange="customInstruction(2)"></label>
                                             <textarea
                                                 placeholder="e.g. A clean-looking living room with black and yellow textures and a coffee table made from hardwood."
-                                                name="cust-inst2" id="custom_instruction2" class="hidden"></textarea>
+                                                name="cust-inst2" id="custom_instruction2" class=""></textarea>
                                         </div>
 
                                         <div class="our-preset-settings-range-outer">
@@ -925,7 +918,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="ai-upload-latest-wrapper row" id="all_data0">
+                <div class="ai-upload-latest-wrapper row" id="all_data0_redesign">
 
                 </div>
             </div>
@@ -933,18 +926,22 @@
     </div>
 </div>
 <script>
+
     $(document).ready(function() {
+        console.log('here');
         loadWidgetRenders(0);
     });
 
     function loadWidgetRenders(sec) {
+        console.log('sec',sec);
         // Retrieve the designs array from localStorage
         let storedDesigns = JSON.parse(localStorage.getItem('designs')) || [];
+        console.log('storedDesigns',storedDesigns);
 
         // Check if there are any stored designs
         if (storedDesigns.length > 0) {
             // Get the container where images will be displayed
-            let dataContainer = document.getElementById('all_data0');
+            let dataContainer = document.getElementById('all_data0_redesign');
 
             // Clear any existing content (optional, depending on how you want to handle reloading)
             dataContainer.innerHTML = '';

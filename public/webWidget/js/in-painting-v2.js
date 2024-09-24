@@ -1,33 +1,55 @@
-const fileInput = document.querySelector("#ipFilePicker");
-const fileInput2 = document.querySelector("#ipFilePicker2");
-console.log('fileInput2: ', fileInput2);
-var inPaintStageContainer = document.querySelector('#inpainting-stag-outer');
-const virtualStagDesignContainer = document.querySelector('#all_data0');
-const modeValue = document.querySelector('#modeValueForPage');
-const maskingCheckbox = document.getElementById('maskingCheckbox');
-const cursorCheckbox = document.getElementById('cursorCheckbox');
-const cursorCircle = document.createElement('div');
+var dataPage = "redesign";
+var tabs = $( "#tabs" ).tabs();
+var hasTransparentPixels = false;
+var paintingStag ='';
+var imageLayer = '';
+var inPaintStageContainer = '';
+var paintingStagOriginalWidth = '';
+var paintingStagOriginalHeight = '';
+
+var hasTransparentPixels = false;
+var virtualStagDesignContainer = document.querySelector(`#all_data0_${dataPage}`);
+var modeValue = document.querySelector('#modeValueForPage');
+var maskingCheckbox = document.getElementById('maskingCheckbox');
+var cursorCheckbox = document.getElementById('cursorCheckbox');
+var cursorCircle = document.createElement('div');
 var routeFailedRespURL = document.getElementById('routeToGetFailedResp').getAttribute('data-route');
 var runpodName = 'first_runpod';
 var runpodType = '2' ;
 var inpaintPodRoute = $("#routeToRunpodType").data('route');
-// const generateDesignBtn = document.querySelector('#generateDesignBtn');
-// const promptInput = document.querySelector('#promptInput');
-// const promptInputDesign = document.querySelector('#promptInputDesign');
-// const promptInputRoomType = document.querySelector('#promptInputRoomType');
+var $imgCropPreview = $('#imgCropPreview');
+var imageCropper;
 
-const $imgCropPreview = $('#imgCropPreview');
-let imageCropper;
 var ids = []
-let cursorBrushActions = []; // Keep track of cursor brush actions
-let cursorBrushTempActions = []; // Keep track of cursor brush actions
-let isCursorBrushing = false;
-var hasTransparentPixels = false;
+var cursorBrushActions = []; // Keep track of cursor brush actions
+var cursorBrushTempActions = []; // Keep track of cursor brush actions
+var isCursorBrushing = false;
+
 var segmentation = false;
 var brushingActions = [];
 var currentActionIndex = -1;
 var checkboxMaskingLabel = [];
 
+var croppedImage = '';
+var scaleX = 1; // Horizontal flip state
+var scaleY = 1; // Vertical flip state
+var rotateDeg = 0; // Rotation state
+
+var imageOriginalHeight;
+var imageOriginalWidth;
+var scaleX;
+var scaleY;
+var scale;
+var sizes
+var isBrushing = false;
+var pixelRatio = 1;
+var mode = 'brush';
+var lastLine;
+var fileInput;
+
+
+var resizeImageWidth;
+var resizeImageHeight;
 $imgCropPreview.cropper({
     aspectRatio: 1 / 1,
     zoomable: false,
@@ -39,10 +61,248 @@ $imgCropPreview.cropper({
 });
 
 imageCropper = $imgCropPreview.data('cropper');
-var croppedImage = '';
-var scaleX = 1; // Horizontal flip state
-var scaleY = 1; // Vertical flip state
-var rotateDeg = 0; // Rotation state
+
+
+// Initialize the imageCropper variable
+
+// Disable zoomable initially
+$imgCropPreview.cropper('setZoomable', false);
+
+
+var sizeElement = document.querySelector("#ip-brush-thickness");
+var size = sizeElement ? sizeElement.value : "";
+
+var lastLin, imageLayer, brushLayer, blackLayer, imageLayerSec, blackLayerSec;
+var imageSrcNpy = '';
+var segmentHeight = '';
+var segmentWidth = '';
+tabs.on( "click", ".ui-tabs-tab", function() {
+    var panelId = $( this ).closest( "li" ).attr( "aria-controls" );
+
+    // Remove 'active' class from all tabs
+    $(".feature-button").removeClass("active");
+
+    // Add 'active' class to the clicked tab
+    $(this).find(".feature-button").addClass("active");
+
+    if(panelId == 'redesign'){
+        dataPage = 'redesign';
+    }else if(panelId == 'precision'){
+        dataPage = 'inPaint';
+        fileInput = document.querySelector("#ipFilePickerPrecision");
+        
+            var inPaintStageContainer = document.querySelector('#inpainting-stag-outer-'+dataPage);
+            var paintingStagOriginalWidth = inPaintStageContainer ? inPaintStageContainer.clientWidth : 0 ;
+            var paintingStagOriginalHeight = inPaintStageContainer ? inPaintStageContainer.clientHeight : 0 ;
+
+            paintingStag = new Konva.Stage({
+                container: 'painting-stag-'+dataPage,
+                width: paintingStagOriginalWidth,
+                height: paintingStagOriginalHeight,
+            });
+            
+            imageLayer = new Konva.Layer();
+            paintingStag.add(imageLayer);
+
+        addImageLayer();
+        addBlackLayer(paintingStag);
+        addBrushLayer();
+    }else if(panelId == 'fill_spaces'){
+        dataPage = 'fillSpace';
+        fileInput = document.querySelector("#ipFilePickerFillSpaces");
+
+            inPaintStageContainer = document.querySelector('#inpainting-stag-outer-'+dataPage);
+            paintingStagOriginalWidth = inPaintStageContainer ? inPaintStageContainer.clientWidth : 0 ;
+            paintingStagOriginalHeight = inPaintStageContainer ? inPaintStageContainer.clientHeight : 0 ;
+            
+            paintingStag = new Konva.Stage({
+                container: 'painting-stag-'+dataPage,
+                width: paintingStagOriginalWidth,
+                height: paintingStagOriginalHeight,
+            });
+
+            imageLayer = new Konva.Layer();
+            paintingStag.add(imageLayer);
+        addImageLayer();
+        addBlackLayer(paintingStag);
+        addBrushLayer();
+    } else if(panelId == 'colors_and_textures'){
+        dataPage = 'change-colors-texture';
+        fileInput = document.querySelector("#ipFilePickerColorTexture");
+
+            inPaintStageContainer = document.querySelector('#inpainting-stag-outer-'+dataPage);
+            paintingStagOriginalWidth = inPaintStageContainer ? inPaintStageContainer.clientWidth : 0 ;
+            paintingStagOriginalHeight = inPaintStageContainer ? inPaintStageContainer.clientHeight : 0 ;
+            
+
+            paintingStag = new Konva.Stage({
+                container: 'painting-stag-'+dataPage,
+                width: paintingStagOriginalWidth,
+                height: paintingStagOriginalHeight,
+            });
+
+            imageLayer = new Konva.Layer();
+            paintingStag.add(imageLayer);
+        addImageLayer();
+        addBlackLayer(paintingStag);
+        addBrushLayer();
+    } else if(panelId == 'paint_visualizer'){
+        dataPage = 'color_swap';
+        fileInput = document.querySelector("#ipFilePickerColorSwap");
+
+            inPaintStageContainer = document.querySelector('#inpainting-stag-outer-'+dataPage);
+            paintingStagOriginalWidth = inPaintStageContainer ? inPaintStageContainer.clientWidth : 0 ;
+            paintingStagOriginalHeight = inPaintStageContainer ? inPaintStageContainer.clientHeight : 0 ;
+            
+
+            paintingStag = new Konva.Stage({
+                container: 'painting-stag-'+dataPage,
+                width: paintingStagOriginalWidth,
+                height: paintingStagOriginalHeight,
+            });
+
+            imageLayer = new Konva.Layer();
+            paintingStag.add(imageLayer);
+        addImageLayer();
+        addBlackLayer(paintingStag);
+        addBrushLayer();
+    } else{
+        dataPage = '';
+        fileInput = document.querySelector("#ipFilePickerPrecision");
+    }
+
+    callAgain();
+    $(document).find('#'+panelId+' .first_tab_active .ai-tool-right-steps').click();
+    $('#input_image').val('');
+    $('#gallery0 img').attr('src', '');
+
+    clearPaintingStag();
+    tabs.tabs( "refresh" );
+});
+
+
+$('document').ready(function () {
+    var fileInput2 = document.querySelector("#ipFilePicker2");
+    
+    // const generateDesignBtn = document.querySelector('#generateDesignBtn');
+    // const promptInput = document.querySelector('#promptInput');
+    // const promptInputDesign = document.querySelector('#promptInputDesign');
+    // const promptInputRoomType = document.querySelector('#promptInputRoomType');
+    
+
+    var paintingCollageStag = new fabric.Canvas(document.getElementById("collage-render-conva"));
+    var paintingStagSec;
+    var paintingStagSecElement = document.getElementById('painting-stag-sec');
+    if (paintingStagSecElement) {
+        paintingStagSec = new Konva.Stage({
+            container: 'painting-stag-sec',
+            width: 0,
+            height: 0,
+        });
+    }
+
+    var get_inpainting_designs = {
+        url: SITE_BASE_URL + 'in-painting-designs',
+        inpainting: modeValue.value,
+    }
+    
+    var page = 1;
+
+    if(dataPage == 'style_transfer' || dataPage == 'color_swap' || dataPage == 'design_transfer' || dataPage == 'floor_editor'){
+        addSecImageLayer();
+        addSecBlackLayer();
+
+        fileInput2.addEventListener("change", async (e) => {
+            loadImageCropperForStyleTransfer();
+            e.target.value = '';
+        });
+    }
+
+    $("#ip-clearImage, #ip-undoImage, #ip-redoImage").prop('disabled', true);
+    $("#ip-clearImage, #ip-undoImage, #ip-redoImage").css('cursor', 'not-allowed');
+
+    // var b64image = sessionStorage.getItem('b64image');
+
+    // if (b64image) {
+    //     loadImageBase64FromRedesign(b64image);
+    // }
+
+    var url = window.location.href;
+    if(url.indexOf('?imageCacheId=') != -1){
+        getImageCache(GetParameterValues('imageCacheId'), function(response, error){
+            if(response.success){
+                // Redirect to the 'precision+' route
+                loadImageBase64FromRedesign(response.data);
+            }
+        });
+    }
+    else if(url.indexOf('&imageCacheId=') != -1){
+        return true;
+    }
+
+    var fillspaceb64image = sessionStorage.getItem('fillspaceb64image');
+    if (fillspaceb64image) {
+        loadImageBase64FromFurnitureRemoval(fillspaceb64image);
+    }
+
+    // callAgain();
+    
+
+    $(".gs-select-range").slider({
+        //   orientation: "vertical",
+        range: "min",
+        min: 0,
+        max: 70,
+        value: 70,
+        slide: function (event, ui) {
+            $("#amount").val(ui.value);
+            $("#ip-brush-thickness").val(ui.value);
+            size = ui.value;
+        }
+    });
+
+    $("#inUploadBtn").on('click', function () {
+        $("#ipFilePicker").trigger('click');
+    });
+    $("#inUploadBtn2").on('click', function () {
+        $("#ipFilePicker2").trigger('click');
+    });
+    $("#inUploadBtnOnModal").on('click', function () {
+        $("#ipFilePicker").trigger('click');
+    });
+
+    $("#ip-clearImage").on('click', function () {
+        $('#removeMasking').addClass('disabled');
+        $('#removeMasking').css('cursor', 'not-allowed');
+        $('#addMasking').addClass('active');
+        $('#removeMasking').removeClass('active');
+        maskingCheckbox.value = true;
+        $('.chkbox-segment ul li').removeClass('active');
+        $('.checkbox').prop('checked', false);
+        ids = [];
+        cursorBrushActions = [];
+        cursorBrushTempActions = [];
+
+        brushLayer.destroyChildren();
+        brushingActions = [];
+        currentActionIndex = -1;
+        brushLayer.draw();
+
+        $("#ip-clearImage, #ip-undoImage, #ip-redoImage").prop('disabled', true);
+        $("#ip-clearImage, #ip-undoImage, #ip-redoImage").css('cursor', 'not-allowed');
+    });
+
+    $("#ip-undoImage").on('click', function () {
+        undoBrushing();
+    });
+
+    $("#ip-redoImage").on('click', function () {
+        redoBrushing();
+    });
+
+    $('#removeMasking').addClass('disabled');
+    $('#removeMasking').css('cursor', 'not-allowed');
+});
 
 async function loadImageCropper() {
     $('#uploading_instruction').modal('hide');
@@ -147,12 +407,6 @@ async function loadImageCropper() {
     }
 }
 
-// Initialize the imageCropper variable
-imageCropper = $imgCropPreview.data('cropper');
-
-// Disable zoomable initially
-$imgCropPreview.cropper('setZoomable', false);
-var croppedImage = '';
 async function cropImageButton() {
     if (hasTransparentPixels) {
         brushLayer.destroy();
@@ -213,24 +467,6 @@ $("body").on('click', '.use-as-input-image', async function () {
     document.getElementById('inpaint-stag').scrollIntoView();
 });
 
-const sizeElement = document.querySelector("#ip-brush-thickness");
-let size = sizeElement ? sizeElement.value : "";
-
-var paintingStagOriginalWidth = inPaintStageContainer.clientWidth;
-var paintingStagOriginalHeight = inPaintStageContainer.clientHeight;
-var imageOriginalHeight;
-var imageOriginalWidth;
-var scaleX;
-var scaleY;
-var scale;
-var sizes
-var isBrushing = false;
-let pixelRatio = 1;
-let mode = 'brush';
-var lastLine;
-
-var resizeImageWidth;
-var resizeImageHeight;
 
 function calculateDynamicImageSize(width, height){
     if (width === height) {
@@ -252,25 +488,6 @@ function calculateDynamicImageSize(width, height){
         }
     }
     return {resizeImageWidth,resizeImageHeight}
-}
-
-
-var lastLin, imageLayer, brushLayer, blackLayer, imageLayerSec, blackLayerSec;
-const paintingStag = new Konva.Stage({
-    container: 'painting-stag',
-    width: paintingStagOriginalWidth,
-    height: paintingStagOriginalHeight,
-});
-
-const paintingCollageStag = new fabric.Canvas(document.getElementById("collage-render-conva"));
-let paintingStagSec;
-const paintingStagSecElement = document.getElementById('painting-stag-sec');
-if (paintingStagSecElement) {
-    paintingStagSec = new Konva.Stage({
-        container: 'painting-stag-sec',
-        width: 0,
-        height: 0,
-    });
 }
 
 // generateDesignBtn.addEventListener('click', (e) => {
@@ -308,55 +525,12 @@ function GetParameterValues(param) {
     }
 }
 
-$('document').ready(function () {
-    addImageLayer();
-    addBlackLayer();
-    addBrushLayer();
-
-    if(dataPage == 'style_transfer' || dataPage == 'color_swap' || dataPage == 'design_transfer' || dataPage == 'floor_editor'){
-        addSecImageLayer();
-        addSecBlackLayer();
-
-        fileInput2.addEventListener("change", async (e) => {
-            loadImageCropperForStyleTransfer();
-            e.target.value = '';
-        });
-    }
-
-    $("#ip-clearImage, #ip-undoImage, #ip-redoImage").prop('disabled', true);
-    $("#ip-clearImage, #ip-undoImage, #ip-redoImage").css('cursor', 'not-allowed');
-
-    // var b64image = sessionStorage.getItem('b64image');
-
-    // if (b64image) {
-    //     loadImageBase64FromRedesign(b64image);
-    // }
-
-    var url = window.location.href;
-    if(url.indexOf('?imageCacheId=') != -1){
-        getImageCache(GetParameterValues('imageCacheId'), function(response, error){
-            if(response.success){
-                // Redirect to the 'precision+' route
-                loadImageBase64FromRedesign(response.data);
-            }
-        });
-    }
-    else if(url.indexOf('&imageCacheId=') != -1){
-        return true;
-    }
-
-    var fillspaceb64image = sessionStorage.getItem('fillspaceb64image');
-    if (fillspaceb64image) {
-        loadImageBase64FromFurnitureRemoval(fillspaceb64image);
-    }
-
+function callAgain(){
     fileInput.addEventListener("change", async (e) => {
         // Show the image mask container
-        console.log("clicked");
-
         $('.image-mask-container').css('display', 'block');
         // Update the value and proceed
-        inPaintStageContainer = document.querySelector('#inpainting-stag-outer');
+        inPaintStageContainer = document.querySelector('#inpainting-stag-outer-' + dataPage);
 
         paintingStagOriginalWidth = inPaintStageContainer.clientWidth;
         paintingStagOriginalHeight = inPaintStageContainer.clientHeight;
@@ -366,66 +540,10 @@ $('document').ready(function () {
         loadImageCropper();
         e.target.value = '';
     });
-
-    $(".gs-select-range").slider({
-        //   orientation: "vertical",
-        range: "min",
-        min: 0,
-        max: 70,
-        value: 70,
-        slide: function (event, ui) {
-            $("#amount").val(ui.value);
-            $("#ip-brush-thickness").val(ui.value);
-            size = ui.value;
-        }
-    });
-
-    $("#inUploadBtn").on('click', function () {
-        $("#ipFilePicker").trigger('click');
-    });
-    $("#inUploadBtn2").on('click', function () {
-        $("#ipFilePicker2").trigger('click');
-    });
-    $("#inUploadBtnOnModal").on('click', function () {
-        $("#ipFilePicker").trigger('click');
-    });
-
-    $("#ip-clearImage").on('click', function () {
-        $('#removeMasking').addClass('disabled');
-        $('#removeMasking').css('cursor', 'not-allowed');
-        $('#addMasking').addClass('active');
-        $('#removeMasking').removeClass('active');
-        maskingCheckbox.value = true;
-        $('.chkbox-segment ul li').removeClass('active');
-        $('.checkbox').prop('checked', false);
-        ids = [];
-        cursorBrushActions = [];
-        cursorBrushTempActions = [];
-
-        brushLayer.destroyChildren();
-        brushingActions = [];
-        currentActionIndex = -1;
-        brushLayer.draw();
-
-        $("#ip-clearImage, #ip-undoImage, #ip-redoImage").prop('disabled', true);
-        $("#ip-clearImage, #ip-undoImage, #ip-redoImage").css('cursor', 'not-allowed');
-    });
-
-    $("#ip-undoImage").on('click', function () {
-        undoBrushing();
-    });
-
-    $("#ip-redoImage").on('click', function () {
-        redoBrushing();
-    });
-
-    $('#removeMasking').addClass('disabled');
-    $('#removeMasking').css('cursor', 'not-allowed');
-});
+}
 
 function addImageLayer() {
-    imageLayer = new Konva.Layer();
-    paintingStag.add(imageLayer);
+
 }
 function addSecImageLayer() {
     imageLayerSec = new Konva.Layer();
@@ -459,12 +577,23 @@ function addBrushLayer() {
     let isInside = false; // Flag to track if cursor is inside the masking area
 
     // Update cursor visibility and position on mouse move
+
+
     paintingStag.on('mousemove touchmove', function (e) {
         const pos = paintingStag.getPointerPosition();
         if (isInside) {
+            const tabsDiv = document.getElementById('tabs');
+            const paintingDiv = document.getElementById('painting-stag-'+dataPage);
+
+            const tabsRect = tabsDiv.getBoundingClientRect();
+            const paintingRect = paintingDiv.getBoundingClientRect();
+
+            const gapTop = paintingRect.top - tabsRect.top;
+            const gapLeft = paintingRect.left - tabsRect.left;
+
             cursorCircle.style.display = 'block'; // Show the cursor
-            cursorCircle.style.left = pos.x - size / 2 + 'px';
-            cursorCircle.style.top = pos.y - size / 2 + 'px';
+            cursorCircle.style.left = ((pos.x + gapLeft) - size / 2 + 0) + 'px';
+            cursorCircle.style.top = ((pos.y + gapTop) - size / 2 + 0) + 'px';
             cursorCircle.style.width = size + 'px';
             cursorCircle.style.height = size + 'px';
             cursorCircle.style.border = maskingCheckbox.value === 'true' ? '1px solid rgb(245, 244, 248)' : '1px solid rgb(199, 20, 20)';
@@ -581,7 +710,7 @@ function addBrushLayer() {
     });
 }
 
-function addBlackLayer() {
+function addBlackLayer(paintingStag) {
     blackLayer = new Konva.Layer({
         visible: false
     });
@@ -760,6 +889,7 @@ async function getMaskedImages() {
 }
 
 async function callInPaintingAPI(sec,el) {
+    // dataPage = 'fillSpace';
     page = 1;
     // getInPaintingGeneratedDesigns();
     // reapplyCheckboxStates();
@@ -805,17 +935,13 @@ async function callInPaintingAPI(sec,el) {
     var original_base64 = croppedImage;
     var masked_base64 = await getMaskedImages();
 
-    var superenhance = 0;
-    var isSubbed = false;
-    var is_staging = (APP_LOCAL == 'production') ? 'false' : 'true';
-
     var segmentType = segmentation ? segmentation : 'false';
     const promptInput = document.querySelector(`#custom_instruction${sec}`);
     const promptInputDesign = document.querySelector(`#selectedDesignStyle${sec}`);
     const promptInputRoomType = document.querySelector(`#selectedRoomType${sec}`);
     const promptSkyWeather = document.querySelector(`#weather${sec}`);
 
-    const prompColorTexture = document.querySelector(`#color_texture${sec}`);
+    const prompColorTexture = document.querySelector(`#color_texture_${dataPage}`);
     const prompMaterialTypeTexture = document.querySelector(`#material_type${sec}`);
     const prompMaterialTexture = document.querySelector(`#material${sec}`);
 
@@ -892,13 +1018,13 @@ async function callInPaintingAPI(sec,el) {
         }
     }
 
-    var updatedUsage = await verifyPlan();
+    // var updatedUsage = await verifyPlan();
 
-    if ((!updatedUsage) || !updatedUsage.status) {
-        _showUsageMessage(updatedUsage);
-        enableGenerateButton(generateDesignBtn, spinner,tabs);
-        return false;
-    }
+    // if ((!updatedUsage) || !updatedUsage.status) {
+    //     _showUsageMessage(updatedUsage);
+    //     enableGenerateButton(generateDesignBtn, spinner,tabs);
+    //     return false;
+    // }
 
     if(color != "" || material_type != ""){
         prompt = "";
@@ -919,7 +1045,7 @@ async function callInPaintingAPI(sec,el) {
         formData.append("segmentType", segmentType);
     } else if (dataPage == 'change-colors-texture') {
         // var inPaintUrl = `${GPU_SERVER_HOST_SEG}/change_color?isSubbed=${isSubbed}&superenhance=${superenhance}&no_of_Design=${noOfDesign}&designtype=${sec}&modeType=${mode}&is_transparent=${isTransparent}&is_staging=${is_staging}&segmentType=${segmentType}&objects=${checkboxMaskingLabelString}&color=${color}&material=${material_type}`;
-        var inPaintUrl = "/runpod/color-and-texture";
+        var inPaintUrl = "/runpodWidget/color-and-texture";
         // formData.append("isSubbed", isSubbed);
         // formData.append("superenhance", superenhance);
         formData.append("no_of_Design", noOfDesign);
@@ -959,9 +1085,9 @@ async function callInPaintingAPI(sec,el) {
     } else if (dataPage == 'fillSpace' || dataPage == 'inPaint') {
         // var inPaintUrl = `${GPU_SERVER_HOST_SEG}/sky_color_change?isSubbed=${isSubbed}&superenhance=${superenhance}&no_of_Design=${noOfDesign}&designtype=${sec}&is_staging=${is_staging}&weather=${skyWeather}&modeType=${mode}`;
         if(dataPage == 'inPaint'){
-            var inPaintUrl = "/runpod/precision";
+            var inPaintUrl = "/runpodWidget/precision";
         }else if(dataPage == 'fillSpace'){
-            var inPaintUrl = "/runpod/fill_space";
+            var inPaintUrl = "/runpodWidget/fill_space";
         }
         // formData.append("isSubbed", isSubbed);
         formData.append("roomtype", roomType);
@@ -980,8 +1106,8 @@ async function callInPaintingAPI(sec,el) {
         "mask": masked_base64,
         "prompt": prompt,
     };
-
     formData.append("payload", JSON.stringify(payload));
+    
     return await fetch(inPaintUrl, {
         method: 'POST',
         mode: 'cors',
@@ -1029,6 +1155,7 @@ async function callInPaintingAPI(sec,el) {
                     projectButton.disabled = false;
                     // deleteButton.disabled = false;
                     // Iterate over the list of images
+                    let storedDesigns = JSON.parse(localStorage.getItem('designs')) || [];
                     generatedImageList.forEach((image, index) => {
                         let design = {
                             id: storedIds[index],
@@ -1042,16 +1169,26 @@ async function callInPaintingAPI(sec,el) {
                         };
                         var itemHtml = generatedInPaintingItem(design);
                         addNewDesignImage(design);
-                        var data = document.getElementById(`all_data0`);
+                        var data = document.getElementById(`all_data0_${dataPage}`);
                         data.insertBefore(itemHtml, data.firstChild);
+
+                        storedDesigns.push({
+                            original_url: originalImage,
+                            generated_url: image,
+                            style: designStyle,
+                            room_type: roomType,
+                            // mode: modeType,
+                            sec: sec
+                        });
                     });
-                    getInPaintingGeneratedDesigns();
-                    reapplyCheckboxStates();
-                    setTimeout(function () {
-                        $('html, body').animate({
-                            scrollTop: virtualStagDesignContainer.offsetTop
-                        }, 100);
-                    }, 500);
+                    localStorage.setItem('designs', JSON.stringify(storedDesigns));
+                    // getInPaintingGeneratedDesigns();
+                    // reapplyCheckboxStates();
+                    // setTimeout(function () {
+                    //     $('html, body').animate({
+                    //         scrollTop: virtualStagDesignContainer.offsetTop
+                    //     }, 100);
+                    // }, 500);
                 },
                 error: function (resp) {
                     swal("Something Went Wrong!", {
@@ -1061,14 +1198,20 @@ async function callInPaintingAPI(sec,el) {
             });
         }else{
             generatedImageList = resultJsonFormat.Sucess.generated_image;
+            console.log('generatedImageList: ', generatedImageList);
+
             originalImage = resultJsonFormat.Sucess.original_image;
-            let storedIds = resultJsonFormat.storedIds;
+            // let storedIds = resultJsonFormat.storedIds;
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
             removeLoaderDivs(noOfDesign);
             $('.on-gen-disable').removeClass('disable-btn');
-            generatedImageList.forEach((image, index) => {
+
+            let storedDesigns = JSON.parse(localStorage.getItem('in-painting-designs')) || [];
+            
+            generatedImageList.forEach((image) => {
+                console.log("Image",image);
                 let design = {
-                    id: storedIds[index],
+                    // id: storedIds[index],
                     original_url: originalImage,
                     generated_url: image,
                     style: designStyle,
@@ -1077,18 +1220,30 @@ async function callInPaintingAPI(sec,el) {
                     section: sec,
                     hd_image: 0,
                 };
+
                 var itemHtml = generatedInPaintingItem(design);
-                addNewDesignImage(design);
-                var data = document.getElementById(`all_data0`);
+                // addNewDesignImage(design);
+                var data = document.getElementById(`all_data0_${dataPage}`);
                 data.insertBefore(itemHtml, data.firstChild);
+
+                storedDesigns.push({
+                    original_url: originalImage,
+                    generated_url: image,
+                    style: designStyle,
+                    room_type: roomType,
+                    sec: sec,
+                    inPainting: dataPage,
+                });
             });
-            getInPaintingGeneratedDesigns();
-            reapplyCheckboxStates();
-            setTimeout(function () {
-                $('html, body').animate({
-                    scrollTop: virtualStagDesignContainer.offsetTop
-                }, 100);
-            }, 500);
+            localStorage.setItem('in-painting-designs', JSON.stringify(storedDesigns));
+            
+            // getInPaintingGeneratedDesigns();
+            // reapplyCheckboxStates();
+            // setTimeout(function () {
+            //     $('html, body').animate({
+            //         scrollTop: virtualStagDesignContainer.offsetTop
+            //     }, 100);
+            // }, 500);
         }
     }).catch(error => {
         $('.on-gen-disable').removeClass('disable-btn');
@@ -1098,7 +1253,6 @@ async function callInPaintingAPI(sec,el) {
         // $('.precision-ultra-enhancer').removeClass('disable-btn');
         // projectButton.disabled = false;
         // deleteButton.disabled = false;
-        console.log("Something went wrong. Please try again in some time.");
         // alert("Something went wrong. Please try again in some time.");
     });
 }
@@ -1197,7 +1351,7 @@ $(document).on('click', '.full_hd_quality', async function () {
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
     document.getElementById(`jumphere0`).scrollIntoView();
 
-    var divElement = document.getElementById(`all_data0`);
+    var divElement = document.getElementById(`all_data0_${dataPage}`);
     divElement.firstElementChild.scrollIntoView();
 
     var mode = modeValue.value;
@@ -1284,7 +1438,7 @@ $(document).on('click', '.full_hd_quality', async function () {
                         var itemHtml = generatedInPaintingItem(design);
                         addNewDesignImage(design);
 
-                        var data = document.getElementById(`all_data0`);
+                        var data = document.getElementById(`all_data0_${dataPage}`);
                         data.insertBefore(itemHtml, data.firstChild);
                         // Enable AI category Pill
                         _updateAiCatePillsStatus('enable');
@@ -1314,12 +1468,7 @@ $(document).on('click', '.full_hd_quality', async function () {
 function closeCustomModal(modal) {
     $("#modalImagePreview").show();
 }
-let get_inpainting_designs = {
-    url: SITE_BASE_URL + 'in-painting-designs',
-    inpainting: modeValue.value,
-}
 
-var page = 1;
 $(document).on('click', '.new-page-link', function () {
     page = $(this).attr('data-url').split('=').pop();
     getInPaintingGeneratedDesigns();
@@ -1417,7 +1566,7 @@ $('#rotate180Button').on('click', function () {
 function loadImageBase64FromRedesign(b64image) {
 
     $('.image-mask-container').css('display', 'block');
-    inPaintStageContainer = document.querySelector('#inpainting-stag-outer');
+    inPaintStageContainer = document.querySelector('#inpainting-stag-outer-'+ dataPage);
 
     paintingStagOriginalWidth = inPaintStageContainer.clientWidth;
     paintingStagOriginalHeight = inPaintStageContainer.clientHeight;
@@ -1540,9 +1689,6 @@ async function getMaskImage(el) {
 
     $("#ip-clearImage").click();
 }
-var imageSrcNpy = '';
-var segmentHeight = '';
-var segmentWidth = '';
 async function getNpyImgFile(img) {
     imageSrcNpy = img;
     var isSubbed = true;
@@ -2018,53 +2164,56 @@ function generatedInPaintingItem(item){
     var outputImg = clone.querySelector('[data-item="output-image"]');
     // var downloadInputBtn = clone.querySelector('[data-item="download-input-btn"]');
     var downloadOutputBtn = clone.querySelector('[data-item="download-output-btn"]');
+
     // var previewInputBtn = clone.querySelector('[data-item="preview-btn-input"]');
     var previewOutputBtn = clone.querySelector('[data-item="preview-btn-output"]');
-    var fullHdBtn = clone.querySelector('[data-item="hd_quality"]');
+    // var fullHdBtn = clone.querySelector('[data-item="hd_quality"]');
     // var useAsInputImage = clone.querySelector('[data-item="user_as_input_image"]');
     // var useAsOutputImage = clone.querySelector('[data-item="user_as_output_image"]');
-    var editImage = clone.querySelector('[data-item="edit_image"]');
-    var feedback_btn = clone.querySelector('.feedback_btn');
+    // var editImage = clone.querySelector('[data-item="edit_image"]');
+    // var feedback_btn = clone.querySelector('.feedback_btn');
     // var editAsFillSpace = clone.querySelector('[data-item="edit_as_fill_space"]');
-    var checkbox = clone.querySelector('.ml_dw_img');
+    // var checkbox = clone.querySelector('.ml_dw_img');    
     var styleSpan = clone.querySelector('.render-overlay-data-box .render-overlay-data:nth-child(1)');
     var roomTypeSpan = clone.querySelector('.render-overlay-data-box .render-overlay-data:nth-child(2)');
     // var modeTypeSpan = clone.querySelector('.render-overlay-data-box .render-overlay-data:nth-child(3)');
     // var precision_enhance = clone.querySelector('.precision-ultra-enhancer');
-    var hdImageDiv = clone.querySelector('.hd_image_div');
+    // var hdImageDiv = clone.querySelector('.hd_image_div');
 
-    var dynamicClass = "favoriteImage" + item.id;
-    var favImg = clone.querySelector('.favcheckimg');
-    favImg.classList.add(dynamicClass);
+    // var dynamicClass = "favoriteImage" + item.id;
+    // var favImg = clone.querySelector('.favcheckimg');
+    // favImg.classList.add(dynamicClass);
 
-    favImg.setAttribute('onclick', `addRemovefavorite('${item.id}')`);
-    checkbox.setAttribute('onclick', `getMultipleImages('${item.id}')`);
+    // favImg.setAttribute('onclick', `addRemovefavorite('${item.id}')`);
+    // checkbox.setAttribute('onclick', `getMultipleImages('${item.id}')`);
     // previewInputBtn.setAttribute('onclick', `previewImage('${item.original_url}')`);
     previewOutputBtn.setAttribute('onclick', `previewImage('${item.original_url}','${item.generated_url}')`);
 
     // downloadBtn.href = item.generated_url;
     // downloadInputBtn.dataset.downloadUrl = item.original_url;
     downloadOutputBtn.dataset.downloadUrl = item.generated_url;
+
     // previewInputBtn.dataset.img = item.original_url;
-    previewOutputBtn.dataset.img = item.generated_url;
+    // previewOutputBtn.dataset.img = item.generated_url;
     // useAsInputImage.dataset.img = item.original_url;
     // useAsInputImage.dataset.sec = item.section;
     // useAsOutputImage.dataset.img = item.generated_url;
     // useAsOutputImage.dataset.sec = item.section;
-    fullHdBtn.dataset.img = item.generated_url;
-    fullHdBtn.dataset.sec = item.section;
+    // fullHdBtn.dataset.img = item.generated_url;
+    // fullHdBtn.dataset.sec = item.section;
 
     // editImage.dataset.inputImg = item.original_url;
-    editImage.dataset.outputImg = item.generated_url;
-    editImage.dataset.sec = item.section;
-    feedback_btn.dataset.img = item.generated_url;
-    feedback_btn.dataset.id = item.id;
+    // editImage.dataset.outputImg = item.generated_url;
+    // editImage.dataset.sec = item.section;
+    // feedback_btn.dataset.img = item.generated_url;
+    // feedback_btn.dataset.id = item.id;
     // precision_enhance.dataset.img = item.generated_url;
     // if (editAsFillSpace) {
     //     editAsFillSpace.dataset.img = item.generated_url;
     // }
     // inputImg.src = item.original_url;
     outputImg.src = item.generated_url;
+
     if (item.style !== undefined && item.style !== '' && item.style != 'N/A') {
         styleSpan.textContent = "Design Style: " + item.style;
     } else {
@@ -2081,13 +2230,13 @@ function generatedInPaintingItem(item){
     } else {
         roomTypeSpan.style.background = 'transparent';
     }
-    if (item.hd_image == 1) {
-        hdImageDiv.style.display = 'flex';
-        fullHdBtn.style.display = 'none';
-    } else {
-        hdImageDiv.style.display = 'none';
-        // fullHdBtn.style.display = 'block';
-    }
+    // if (item.hd_image == 1) {
+    //     hdImageDiv.style.display = 'flex';
+    //     fullHdBtn.style.display = 'none';
+    // } else {
+    //     hdImageDiv.style.display = 'none';
+    //     // fullHdBtn.style.display = 'block';
+    // }
 
     return clone;
 }
@@ -2223,14 +2372,6 @@ async function _generateStyleTransferDesign(sec,el){
         return;
     }
 
-    var updatedUsage = await verifyPlan();
-
-    if ((!updatedUsage) || !updatedUsage.status) {
-        _showUsageMessage(updatedUsage);
-        generateDesignBtn.disabled = false;
-        generateDesignBtn.getElementsByTagName('span')[0].style.display = 'none';
-        return false;
-    }
     if(dataPage == 'floor_editor'){
         generationDivLoader(1,croppedImage);
     }else if(dataPage == 'style_transfer'){
@@ -2252,7 +2393,7 @@ async function _generateStyleTransferDesign(sec,el){
     if(dataPage == 'color_swap'){
         formData.append("objects", checkboxMaskingLabelString);
         formData.append("rgb_color", rgb_color);
-        inPaintUrl = "/runpod/paint-visualizer"
+        inPaintUrl = "/runpodWidget/paint-visualizer"
     }else if(dataPage == 'style_transfer'){
         formData.append("no_of_texture", no_of_texture);
         inPaintUrl = "/runpod/style_transfer";
@@ -2307,7 +2448,7 @@ async function _generateStyleTransferDesign(sec,el){
         // let hdImageValue = (dataPage === 'floor_editor') ? 1 : 0;
         generatedImageList.forEach((image, index) => {
             let design = {
-                id: storedIds[index],
+                // id: storedIds[index],
                 original_url: originalImage,
                 generated_url: image,
                 style: designStyle,
@@ -2317,18 +2458,18 @@ async function _generateStyleTransferDesign(sec,el){
                 hd_image: 0,
             };
             var itemHtml = generatedInPaintingItem(design);
-            addNewDesignImage(design);
-            var data = document.getElementById(`all_data0`);
+            // addNewDesignImage(design);
+            var data = document.getElementById(`all_data0_${dataPage}`);
             data.insertBefore(itemHtml, data.firstChild);
         });
-        getInPaintingGeneratedDesigns();
-        reapplyCheckboxStates();
-        setTimeout(function () {
-            $('html, body').animate({
-                scrollTop: virtualStagDesignContainer.offsetTop
-            }, 100);
-        }, 500);
-        // Enable AI category Pill
+        // getInPaintingGeneratedDesigns();
+        // reapplyCheckboxStates();
+        // setTimeout(function () {
+        //     $('html, body').animate({
+        //         scrollTop: virtualStagDesignContainer.offsetTop
+        //     }, 100);
+        // }, 500);
+        // // Enable AI category Pill
         _updateAiCatePillsStatus('enable');
     }).catch(error => {
         // $('.full_hd_quality').removeClass('disable-btn');
@@ -2336,12 +2477,11 @@ async function _generateStyleTransferDesign(sec,el){
         // $('.precision-ultra-enhancer').removeClass('disable-btn');
         // projectButton.disabled = false;
         // deleteButton.disabled = false;
-        console.log("Something went wrong. Please try again in some time.");
         // alert("Something went wrong. Please try again in some time.");
     });
 }
 
-let collegeToRenderImages = [];
+var collegeToRenderImages = [];
 //Load Collage Image To Stag
 function loadCollageImageToStage(image) {
     $('#loading_brilliance').modal('show');
@@ -3513,7 +3653,6 @@ async function generateRoomComposer(sec,el){
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
         return;
     }
-    var dataPage = document.querySelector('.data_page').getAttribute('data-page');
     $("#submit").css("display","inline-block");
     let mergedImages = mergeImages();
     let mergedMaskedImages = mergeMaskImages();
