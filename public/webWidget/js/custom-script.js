@@ -11,7 +11,7 @@ $('document').ready(function () {
     objectContainer = document.querySelector(".key-objects-result");
     projectButton = document.querySelector('.add_to_project_btn');
     deleteButton = document.querySelector('.delete_button');
-    
+
     selectedImages = {};
 });
 
@@ -439,7 +439,7 @@ var iUnderstanClickCount = 0;
 
 $(document).on('click', '.ai-upload-image', function(event) {
     event.stopPropagation(); // Prevent event bubbling
-    
+
     var clickedDiv = $(this);
     var fileInput = clickedDiv.find('input[type="file"]');
 
@@ -964,6 +964,7 @@ function _showUsageMessage(updatedUsage) {
 var generationCount = 0;
 
 async function _generateDesign(sec, el) {
+    console.log("Gneeratedesigns");
     const generateDesignBtn = el;
     const spinner = generateDesignBtn.querySelector('span#submit');
     const tabs = document.querySelectorAll('.gs-option-flex a');
@@ -984,13 +985,14 @@ async function _generateDesign(sec, el) {
     $('input[id^="nwtoggle"]').addClass('disable-btn').prop('disabled', true);
 
     var image = document.getElementById('input_image').value;
-    const promptRoomType = document.querySelector(`#selectedRoomType${sec}`);
-    const promptStyleType = document.querySelector(`#selectedDesignStyle${sec}`);
+    const promptRoomType = document.querySelector(`#selectedRoomType${sec}-${dataPage}`);
+    const promptStyleType = document.querySelector(`#selectedDesignStyle${sec}-${dataPage}`);
     const promptModeType = document.querySelector(`#selectedModeType${sec}`);
     var roomType = promptRoomType ? promptRoomType.value : "" ;
     var styleType = promptStyleType ? promptStyleType.value : "" ;
     var modeType = promptModeType ? promptModeType.value : "" ;
     var noOfDesign = document.getElementById(`no_of_des${sec}`).value;
+    var widgetuserid = document.getElementById('widgetUserID').value;
 
     if (image == '') {
         alert("Oops! You didn't upload your image.");
@@ -1070,7 +1072,7 @@ async function _generateDesign(sec, el) {
     generationDivLoader(noOfDesign,image);
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    document.getElementById(`jumphere0`).scrollIntoView();
+    document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
 
     var divElement = document.getElementById(`all_data0_${dataPage}`);
     divElement.firstElementChild.scrollIntoView();
@@ -1078,16 +1080,16 @@ async function _generateDesign(sec, el) {
     var formData = new FormData();
     var aiAPI = null;
     if (modeType == 'Creative Redesign' || modeType == 'Fill The Room' || modeType == 'Fill The Garden' || modeType == 'Fill The Exterior') {
-        aiAPI = "/runpod/creative_redesign";
+        aiAPI = "runpod/creative_redesign";
     } else if (modeType == 'Sketch to Render') {
-        aiAPI = "/runpod/render_realistic";
+        aiAPI = "runpod/render_realistic";
     }else if(modeType == 'Convenient Redesign'){
-        aiAPI = "/runpod/intuitive_redesign";
+        aiAPI = "runpod/intuitive_redesign";
     } else {
-        aiAPI = "/runpodWidget/beautiful_redesign";
+        aiAPI = "runpodWidget/beautiful_redesign";
     }
     formData.append("data", image);
-    
+
     formData.append("prompt", styleType);
 
     formData.append("roomtype", roomType);
@@ -1101,8 +1103,9 @@ async function _generateDesign(sec, el) {
     formData.append("custom_instruction", customInstructionData);
 
     formData.append("no_of_Design", noOfDesign);
+    formData.append("widgetuserid",widgetuserid);
 
-    await fetch(aiAPI, {
+    await fetch(SITE_BASE_URL + aiAPI, {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
@@ -1117,6 +1120,21 @@ async function _generateDesign(sec, el) {
         body: formData,
     })
         .then(response => {
+            if (response.status == 401) {
+                return response.json().then(userAccess => {
+                    $('#errorModal h4').text(userAccess.error);
+                    $('#errorModal').modal('show');
+                    $(el).attr('disabled', false);
+                    $('.gs-continue-btn').removeClass('disable-btn');
+                    $('.on-gen-disable').removeClass('disable-btn');
+                    enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+                    return;
+                });
+            }
+            if (response.status == 501) {
+                modalStore.style.display = 'block';
+            }
+
             if (response.status == 501) {
                 modalStore.style.display = 'block';
             }
@@ -1135,7 +1153,7 @@ async function _generateDesign(sec, el) {
             $('.ai-upload-latest-top').removeAttr('style');
             generatedImage = result['Sucess']['generated_image'];
             originalImage = result['Sucess']['original_image'];
-            
+
             let storedDesigns = JSON.parse(localStorage.getItem('designs')) || [];
             // let storedIds = result['storedIds'];
             generatedImage.forEach((item) => {
@@ -1156,7 +1174,7 @@ async function _generateDesign(sec, el) {
                  // Add the generated design image to the array
                  addNewDesignImage(design);
                  removeLoaderDivs(noOfDesign);
-               
+
                 let data = document.getElementById(`all_data0_${dataPage}`);
 
                 data.insertBefore(code, data.firstChild);
@@ -1524,8 +1542,8 @@ async function ultraEnhancer(el) {
             formData.append("runpod_name", runpodName);
             formData.append("public", 0);
             // aiAPI = `${GPU_SERVER_HOST_INIT}/enhace?init=https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1&privateId=${resp.data.privateId}&is_staging=${is_staging}&roomtype=${roomType}&modeType=${modeType}&prompt=${styleType}&designtype=${sec}&is_custom_instruction=${customInstruction}&strengthType=${strengthType}&no_of_Design=${noOfDesign}&id=${user.uid}`;
-            aiAPI = "/runpod/precision_ehance";
-            await fetch(aiAPI, {
+            aiAPI = "runpod/precision_ehance";
+            await fetch(SITE_BASE_URL + aiAPI, {
                 method: 'POST',
                 mode: 'cors',
                 cache: 'no-cache',
@@ -1605,40 +1623,22 @@ async function ultraEnhancer(el) {
     })
 }
 $(document).on('click', '.generate_hd_img', async function () {
-    page = 1;
-    getRedesignGeneratedDesigns();
-    reapplyCheckboxStates();
-    if (user == null) {
-        showLoginModal();
-        return;
-    }
-
-    var updatedUsage = await verifyPlan();
-
-    if ((!updatedUsage) || !updatedUsage.status) {
-        _showUsageMessage(updatedUsage);
-        $(el).attr('disabled', false);
-        return;
-    }
-
-    var precisionUserValue = document.getElementById('precisionUser').value;
     var sec = $(this).data('sec');
     $('.gs-continue-btn').addClass('disable-btn');
     $('.on-gen-disable').addClass('disable-btn');
     $('.edit-button-div').addClass('disable-btn');
     // document.getElementById(`hundredid${sec}`).click();
     var image_url = $(this).data('img');
-    var inputImage = $(this).data('input-img');
+    var inputImage = $(this).data('inputimg');
     // $('.ultra-enhancer').addClass('disable-btn');
     // $('.full_hd_quality').addClass('disable-btn');
     // $('._btn_gndeisgn').addClass('disable-btn');
     // $('.precision_btn').addClass('disable-btn');
-    projectButton.disabled = true;
     // deleteButton.disabled = true;
 
     generationDivLoader(1,image_url);
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
-    document.getElementById(`jumphere0`).scrollIntoView();
+    document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
 
     var divElement = document.getElementById(`all_data0_${dataPage}`);
     divElement.firstElementChild.scrollIntoView();
@@ -1648,118 +1648,72 @@ $(document).on('click', '.generate_hd_img', async function () {
 
     $("#mip_before").attr('src', inputImage);
     $("#mip_after").attr('src', image_url);
-    var route = $("#routeToFullHdImageData").data('route');
-    var is_staging = (APP_LOCAL == 'production') ? 'false' : 'true';
-    $.ajax({
-        url: route,
-        method: "POST",
-        data: {
-            "image": image_url
+    var formData = new FormData();
+    formData.append("data", image_url);
+    formData.append("hd_image", true);
+    // aiAPI = `${GPU_SERVER_HOST}/fullhd?init=https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1&id=${user.uid}&privateId=${resp.data.privateId}&is_staging=${is_staging}&roomtype=${resp.data.room_type}&design_style=${resp.data.style}&modeType=${resp.data.mode}&roomtype=${resp.data.room_type}`;
+    aiAPI = "runpodWidget/fullHD";
+    await fetch(SITE_BASE_URL + aiAPI, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: "include",
+        headers: {
+            accept: 'multipart/form-data',
+            'Access-Control-Allow-Origin': '*',
+            "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr('content')
         },
-        success: async function (resp) {
-            if (resp.status == false) {
-                $('.gs-continue-btn').removeClass('disable-btn');
-                $('.on-gen-disable').removeClass('disable-btn');
-                // $('.ultra-enhancer').removeClass('disable-btn');
-                // $('.full_hd_quality').removeClass('disable-btn');
-                // $('._btn_gndeisgn').removeClass('disable-btn');
-                // $('.precision_btn').removeClass('disable-btn');
-                $('.edit-button-div').removeClass('disable-btn');
-                document.getElementById(`progid`).style.display = 'none';
-            } else {
-                var formData = new FormData();
-                formData.append("privateId", resp.data.privateId);
-                formData.append("roomtype", resp.data.room_type);
-                formData.append("design_style", resp.data.style);
-                formData.append("modeType", resp.data.mode);
-                formData.append("is_staging", is_staging);
-                formData.append("designtype", sec);
-                formData.append("data", resp.data.image);
-                formData.append("runpod_name", runpodName);
-                formData.append("hd_image", true);
-                // aiAPI = `${GPU_SERVER_HOST}/fullhd?init=https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1&id=${user.uid}&privateId=${resp.data.privateId}&is_staging=${is_staging}&roomtype=${resp.data.room_type}&design_style=${resp.data.style}&modeType=${resp.data.mode}&roomtype=${resp.data.room_type}`;
-                aiAPI = "/runpod/fullHD";
-                await fetch(aiAPI, {
-                    method: 'POST',
-                    mode: 'cors',
-                    cache: 'no-cache',
-                    credentials: "include",
-                    headers: {
-                        accept: 'multipart/form-data',
-                        'Access-Control-Allow-Origin': '*',
-                        "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr('content')
-                    },
-                    crossDomain: true,
-                    body: formData,
-                })
-                    .then(response => {
-                        if (response.status == 501) {
-                            modalStore.style.display = 'block';
-                        }
-                        return response.json();
-                    })
-                    .then(result => {
-                        $('.gs-continue-btn').removeClass('disable-btn');
-                        $('.on-gen-disable').removeClass('disable-btn');
-                        $('.edit-button-div').removeClass('disable-btn');
-                        projectButton.disabled = false;
-                        // deleteButton.disabled = false;
-                        var generated_image = result['Sucess']['generated_image'][0];
-                        var original_image = result['Sucess']['original_image'];
-                        let storedIds = result['storedIds'];
-
-
-                        var design = {
-                            id: storedIds[0],
-                            original_url: original_image,
-                            generated_url: generated_image,
-                            style: resp.data.style,
-                            room_type: resp.data.room_type,
-                            mode: resp.data.mode,
-                            show_data: true,
-                            section: sec,
-                            private: resp.data.privateId,
-                            precisionUserValue: precisionUserValue,
-                            hd_image: 1,
-                        }
-
-                        // var code = createDesignItem(design);
-                        var code = generatedRedesignItem(design);
-
-                        // Add the generated design image to the array
-                        addNewDesignImage(design);
-
-                        let data = document.getElementById(`all_data0_${dataPage}`);
-                        removeLoaderDivs(1);
-                        //document.getElementById(`progid`).style.display = 'none';
-
-                        data.insertBefore(code, data.firstChild);
-
-                        // Enable AI category Pill
-                        _updateAiCatePillsStatus('enable');
-                        getRedesignGeneratedDesigns();
-                        reapplyCheckboxStates();
-                    })
-                    .catch(error => {
-                        removeLoaderDivs(1);
-                        $('.gs-continue-btn').removeClass('disable-btn');
-                        $('.on-gen-disable').removeClass('disable-btn');
-                        $('.edit-button-div').removeClass('disable-btn');
-                        // $('.ultra-enhancer').removeClass('disable-btn');
-                        // $('.full_hd_quality').removeClass('disable-btn');
-                        // $('._btn_gndeisgn').removeClass('disable-btn');
-                        // $('.precision_btn').removeClass('disable-btn');
-                        projectButton.disabled = false;
-                        // deleteButton.disabled = false;
-
-                        console.error('Error:', error);
-                    });
-            }
-        },
-        error: function (resp) {
-            data = resp.responseJSON;
-        }
+        crossDomain: true,
+        body: formData,
     })
+        .then(response => {
+            if (response.status == 501) {
+                modalStore.style.display = 'block';
+            }
+            return response.json();
+        })
+        .then(result => {
+            $('.gs-continue-btn').removeClass('disable-btn');
+            $('.on-gen-disable').removeClass('disable-btn');
+            $('.edit-button-div').removeClass('disable-btn');
+            // deleteButton.disabled = false;
+            var generated_image = result['Sucess']['generated_image'][0];
+            var original_image = result['Sucess']['original_image'];
+
+            var design = {
+                original_url: original_image,
+                generated_url: generated_image,
+                section: sec,
+                hd_image: 1,
+            }
+
+            // var code = createDesignItem(design);
+            var code = generatedRedesignItem(design);
+
+            // Add the generated design image to the array
+
+            let data = document.getElementById(`all_data0_${dataPage}`);
+            removeLoaderDivs(1);
+            //document.getElementById(`progid`).style.display = 'none';
+
+            data.insertBefore(code, data.firstChild);
+
+            // Enable AI category Pill
+            _updateAiCatePillsStatus('enable');
+        })
+        .catch(error => {
+            removeLoaderDivs(1);
+            $('.gs-continue-btn').removeClass('disable-btn');
+            $('.on-gen-disable').removeClass('disable-btn');
+            $('.edit-button-div').removeClass('disable-btn');
+            // $('.ultra-enhancer').removeClass('disable-btn');
+            // $('.full_hd_quality').removeClass('disable-btn');
+            // $('._btn_gndeisgn').removeClass('disable-btn');
+            // $('.precision_btn').removeClass('disable-btn');
+            // deleteButton.disabled = false;
+
+            console.error('Error:', error);
+        });
 });
 
 function changeMode(sec) {
@@ -1928,13 +1882,13 @@ function get_access_token() {
             if (resp.success == true) {
                 let user_name = resp.data.name;
                 let user_email = resp.data.email;
-                aiAPI = `/get_token`; //`${API_GPU_SERVER_HOST}/get_token`;
+                aiAPI = `get_token`; //`${API_GPU_SERVER_HOST}/get_token`;
                 var payload = {
                     "_token": $('meta[name=csrf-token]').attr('content'),
                     "name": user_name,
                     "email": user_email,
                 };
-                fetch(aiAPI, {
+                fetch(SITE_BASE_URL + aiAPI, {
                     method: 'POST',
                     headers: {
                         'Access-Control-Allow-Origin': '*',
@@ -2692,8 +2646,8 @@ async function _generateProducts(sec, el) {
         progressButton.style.cursor = 'not-allowed';
     });
     // aiAPI = `${GPU_SERVER_HOST}/image_seperate?init=https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1&id=${user.uid}&image_type=${image_type}&is_staging=${is_staging}`;
-    aiAPI = "/runpod/image_seperate";
-    await fetch(aiAPI, {
+    aiAPI = "runpod/image_seperate";
+    await fetch(SITE_BASE_URL + aiAPI, {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
@@ -3024,7 +2978,8 @@ function setImageCache(base64Image, callback) {
 }
 var page = 1;
 function generatedRedesignItem(item) {
-    console.log("sajidtest",item);
+    console.log('item: ', item);
+    // console.log("sajidtest",item);
     var temp = document.getElementById("redesignCard");
     var clone = temp.content.cloneNode(true);
     // var inputImg = clone.querySelector('[data-item="input-image"]');
@@ -3033,7 +2988,7 @@ function generatedRedesignItem(item) {
     var downloadOutputBtn = clone.querySelector('[data-item="download-output-btn"]');
     // var previewInputBtn = clone.querySelector('[data-item="preview-btn-input"]');
     var previewOutputBtn = clone.querySelector('[data-item="preview-btn-output"]');
-    // var fullHdBtn = clone.querySelector('[data-item="hd_quality"]');
+    var fullHdBtn = clone.querySelector('[data-item="hd_quality"]');
     // var useAsInputImage = clone.querySelector('[data-item="user_as_input_image"]');
     // var useAsOutputImage = clone.querySelector('[data-item="user_as_output_image"]');
     // var editImage = clone.querySelector('[data-item="edit_image"]');
@@ -3044,7 +2999,7 @@ function generatedRedesignItem(item) {
     var roomTypeSpan = clone.querySelector('.render-overlay-data-box .render-overlay-data:nth-child(2)');
     var modeTypeSpan = clone.querySelector('.render-overlay-data-box .render-overlay-data:nth-child(3)');
     // var precision_enhance = clone.querySelector('.precision-ultra-enhancer');
-    // var hdImageDiv = clone.querySelector('.hd_image_div');
+    var hdImageDiv = clone.querySelector('.hd_image_div');
 
     // var dynamicClass = "favoriteImage" + item.id;
     // var favImg = clone.querySelector('.favcheckimg');
@@ -3063,8 +3018,9 @@ function generatedRedesignItem(item) {
     // useAsInputImage.dataset.sec = item.section;
     // useAsOutputImage.dataset.img = item.generated_url;
     // useAsOutputImage.dataset.sec = item.section;
-    // fullHdBtn.dataset.img = item.generated_url;
-    // fullHdBtn.dataset.sec = item.section;
+    fullHdBtn.dataset.inputimg = item.original_url;
+    fullHdBtn.dataset.img = item.generated_url;
+    fullHdBtn.dataset.sec = item.section;
 
     // editImage.dataset.inputImg = item.original_url;
     // editImage.dataset.outputImg = item.generated_url;
@@ -3100,14 +3056,17 @@ function generatedRedesignItem(item) {
     }
     if (item.mode !== undefined && item.mode !== '' && item.mode != 'N/A') {
         modeTypeSpan.textContent = "Mode Type: " + item.mode;
+    } else {
+        modeTypeSpan.style.background = 'transparent';
+        modeTypeSpan.style.display = 'none';
     }
 
-    // if (item.hd_image == 1) {
-    //     hdImageDiv.style.display = 'flex';
-    //     fullHdBtn.style.display = 'none';
-    // } else {
-    //     hdImageDiv.style.display = 'none';
-    // }
+    if (item.hd_image == 1) {
+        hdImageDiv.style.display = 'flex';
+        fullHdBtn.style.display = 'none';
+    } else {
+        hdImageDiv.style.display = 'none';
+    }
 
     return clone;
 }
@@ -3582,7 +3541,7 @@ function loadImageBase64FromInpainting(base64Data) {
 }
 
 function generationDivLoader(noOfDesign,inputImage){
-    
+
     var itemHtml = `
         <div class="snippet dot-in-paint-loader" data-title="dot-pulse">
             <div class="ai-upload-loader">
@@ -3607,7 +3566,7 @@ function generationDivLoader(noOfDesign,inputImage){
         </style>
     `;
     var loaderdata = document.getElementById(`all_data0_${dataPage}`);
-    
+
     for (let i = 0; i < noOfDesign; i++) {
         const newFreeformSpacer = document.createElement('div');
         newFreeformSpacer.className = 'col-md-6 col-lg-4 col-12';
@@ -3621,7 +3580,7 @@ function generationDivLoader(noOfDesign,inputImage){
         newDiv.style.backgroundImage = `url(${inputImage})`;
 
         newFreeformSpacer.appendChild(newDiv);
-        
+
         loaderdata.insertBefore(newFreeformSpacer, loaderdata.firstElementChild);
     }
 }

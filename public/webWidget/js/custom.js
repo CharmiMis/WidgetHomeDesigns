@@ -322,4 +322,176 @@ $(document).ready(function () {
     //         $('.upload-image-container').show();
     //     }
     // });
+    
+    function showCircleLoaderForDuration(duration) {
+        console.log('duration',duration);
+
+        showCircleLoader();
+
+        setTimeout(() => {
+            removeCircleLoader();
+        }, duration);
+    }
+
+    function showSquareLoaderForDuration(duration) {
+        console.log('duration',duration);
+
+        showSquareLoader();
+
+        setTimeout(() => {
+            removeSquareLoader();
+        }, duration);
+    }
+
+    function showCircleLoader() {
+        const circleLoaderHTML = `
+            <div class="circle-loader">
+                <span></span>
+            </div>
+            <style id="circle-loader-style">
+                .circle-loader {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 65%;
+                    right: 0;
+                    transform: translate(-60%, -60%);
+                    top: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    pointer-events: none;
+                }
+                .circle-loader span {
+                    border-radius: 100%;
+                    display: inline-block;
+                    position: relative;
+                    border: 1px solid black;
+                    animation: spin 3s infinite linear;
+                    transform-origin: 50% 125px;
+                    margin: 0 auto 0;
+                    width: 100px;
+                    height: 100px;
+                    top: -10%;
+                }
+                @media only screen and (max-width: 600px) {
+                .circle-loader span {
+
+                    width: 40px;
+                    height: 40px;
+                }
+                }
+                @keyframes spin {
+                    to {
+                        transform: rotate(1turn);
+                    }
+                }
+            </style>
+        `;
+
+        const container = document.querySelector('.image-mask-'+ dataPage) ;
+        const konvajsContent = container.querySelector('.konvajs-content');
+        if (konvajsContent) {
+            konvajsContent.insertAdjacentHTML('beforeend', circleLoaderHTML);
+        }
+    }
+
+    function showSquareLoader() {
+        const squareLoaderHTML = `
+        <div class="square-loader">
+            <span></span>
+        </div>
+
+        <style>
+            .square-loader {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 65%;
+                right: 0;
+                transform: translate(-60%, -60%);
+                top: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                pointer-events: none;
+            }
+
+            .square-loader span {
+                display: inline-block;
+                position: relative;
+                border: 1px solid black;
+                animation: spin 3s infinite linear;
+                margin: 0 auto 0;
+                animation: moveInSquare 3s linear infinite;
+                margin: 0 auto 0;
+                width: 80px;
+                height: 80px;
+            }
+
+            @media only screen and (max-width: 600px) {
+            .square-loader span {
+
+                width: 40px;
+                height: 40px;
+            }
+            }
+
+            @keyframes moveInSquare {
+                0% {
+                    top: 0;
+                    left: 0;
+                }
+
+                25% {
+                    top: 0;
+                    left: 80px;
+                }
+
+                50% {
+                    top: 80px;
+                    left: 80px;
+                }
+
+                75% {
+                    top: 80px;
+                    left: 0;
+                }
+
+                100% {
+                    top: 0;
+                    left: 0;
+                }
+            }
+        </style>
+            `;
+
+            const container = document.querySelector('.image-mask-'+ dataPage) ;
+            const konvajsContent = container.querySelector('.konvajs-content');
+        if (konvajsContent) {
+            konvajsContent.insertAdjacentHTML('beforeend', squareLoaderHTML);
+        }
+    }
+
+    function removeCircleLoader() {
+        const circleLoader = document.querySelector('.circle-loader');
+        const circleLoaderStyle = document.getElementById('circle-loader-style');
+        if (circleLoader) {
+            circleLoader.remove();
+        }
+        if (circleLoaderStyle) {
+            circleLoaderStyle.remove();
+        }
+    }
+
+    function removeSquareLoader() {
+        const squareLoader = document.querySelector('.square-loader');
+        const squareLoaderStyle = document.getElementById('square-loader-style');
+        if (squareLoader) {
+            squareLoader.remove();
+        }
+        if (squareLoaderStyle) {
+            squareLoaderStyle.remove();
+        }
+    }
 });

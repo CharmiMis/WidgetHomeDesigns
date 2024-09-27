@@ -102,7 +102,7 @@
 
 <div class="image-show-container image-mask-container" style="display: none">
     <div class="gs-what-to-edit-wrapper">
-        <div class="gs-what-to-edit-left image-mask-container" style="display: none">
+        <div class="gs-what-to-edit-left image-mask-container image-mask-change-colors-texture" style="display: none">
             <div id="inpainting-stag-outer-change-colors-texture"
                 class="inpainting-stag-outer d-flex align-items-center justify-content-center">
                 <div id="painting-stag-change-colors-texture"></div>
@@ -131,27 +131,27 @@
             <div class="gs-what-to-edit-tabs">
                 <div class="gs-what-to-edit-title">
                     <ul>
-                        <li class="active"><a data-toggle="tab" href="#select-automatically">Automatic Selection</a>
+                        <li class="active"><a data-toggle="tab" href="#select-automatically-colorTexture">Automatic Selection</a>
                         </li>
-                        <li><a data-toggle="tab" href="#refine-manually">Manual Selection </a></li>
+                        <li><a data-toggle="tab" href="#refine-manually-colorTexture">Manual Selection </a></li>
                     </ul>
                 </div>
                 <div class="gs-what-to-edit-content">
                     <div class="tab-content">
-                        <div id="select-automatically" class="tab-pane show fade in active">
+                        <div id="select-automatically-colorTexture" class="tab-pane show fade in active">
                             <div class="gs-select-automatically">
                                 <p>Automatically or manually select objects, with the ability to combine both
                                     methods.</p>
                                 <div class="gs-select-automatically-inner">
                                     <p>Select objects automatically</p>
-                                    <div class="chkbox-segment"></div>
+                                    <div id="chkbox-segment-change-colors-texture" class="chkbox-segment"></div>
                                 </div>
                                 <div class="gs-continue-btn-outer">
                                     <a href="javascript:void(0)" class="gs-continue-btn continue-parameter">Continue</a>
                                 </div>
                             </div>
                         </div>
-                        <div id="refine-manually" class="tab-pane show fade">
+                        <div id="refine-manually-colorTexture" class="tab-pane show fade">
                             <div class="gs-select-manually-inner">
                                 <div class="gs-select-manually-top">
                                     <p>Edit manually using the brush</p>
@@ -165,10 +165,10 @@
                                 <div class="gs-refine-manually-links">
                                     <div class="gs-refine-manually-single">
                                         <input type="hidden" id="maskingCheckbox" value="true" />
-                                        <a href="javascript:void(0)" id="removeMasking"
+                                        <a href="javascript:void(0)" id="removeMasking" class="removeMasking"
                                             onclick="toggleMasking(false)">Remove Masking</a>
                                         <a href="javascript:void(0)" id="addMasking" onclick="toggleMasking(true)"
-                                            class="active">Add
+                                            class="active addMasking">Add
                                             Masking</a>
                                     </div>
                                     <div class="gs-refine-manually-single">
@@ -184,14 +184,14 @@
                                 </div>
                             </div>
                             <div class="undo-redo-btn">
-                                <button class="ci-btn ci-btn-danger" id="ip-clearImage" title="Clear All">
+                                <button class="ci-btn ci-btn-danger ip-clearImage" id="ip-clearImage" title="Clear All">
                                     <img src="https://homedesigns-ai.b-cdn.net/web/images/deleteIcon.png"
                                         width="25px"> Clear all
                                 </button>
-                                <button class="ci-btn ci-btn-danger" id="ip-undoImage" title="Undo"><img
+                                <button class="ci-btn ci-btn-danger ip-undoImage" id="ip-undoImage" title="Undo"><img
                                         src="https://homedesigns-ai.b-cdn.net/web/images/undo.png"
                                         width="25px"></button>
-                                <button class="ci-btn ci-btn-danger" id="ip-redoImage" title="Redo"><img
+                                <button class="ci-btn ci-btn-danger ip-redoImage" id="ip-redoImage" title="Redo"><img
                                         src="https://homedesigns-ai.b-cdn.net/web/images/redo.png"
                                         width="25px"></button>
                             </div>
@@ -257,7 +257,7 @@
                                             <div class="gs-our-preset-color" data-sec="0">
                                                 <input type="hidden" id="color_texture_change-colors-texture" name="color_texture0">
                                                 <p>Select a color from the list:</p>
-                                                @include('web2.designs_options.colors_texture')
+                                                @include('widget.designs_options.colors_texture')
                                             </div>
                                             <div class="gs-our-preset-interior materials-textures-cat  materials-textures-cat-int"
                                                 style="display: none;">
@@ -324,7 +324,7 @@
                                 </div>
                                 <div id="your-customs-settings-interior-change-colors-texture" class="tab-pane show fade">
                                     <div class="our-preset-settings-box">
-                                        <textarea id="custom_instruction0" placeholder="white chalk paint" name="prompt" class="promtCustomInput"></textarea>
+                                        <textarea id="custom_instruction0-change-colors-texture" placeholder="white chalk paint" name="prompt" class="promtCustomInput"></textarea>
                                     </div>
 
                                     <div class="our-preset-settings-range-outer">
@@ -363,15 +363,15 @@
                     <div class="gs-what-to-edit-tabs">
                         <div class="gs-what-to-edit-title">
                             <ul>
-                                <li class="active"><a data-toggle="tab" href="#our-preset-settings-exterior"
+                                <li class="active"><a data-toggle="tab" href="#our-preset-settings-exterior-colorTexture1"
                                         class="presetLink">Preset Colors</a></li>
-                                <li><a data-toggle="tab" href="#your-customs-settings-exterior"
+                                <li><a data-toggle="tab" href="#your-customs-settings-exterior-colorTexture1"
                                         class="customLink">Custom Colors</a></li>
                             </ul>
                         </div>
                         <div class="gs-what-to-edit-content">
                             <div class="tab-content">
-                                <div id="our-preset-settings-exterior" class="tab-pane show fade in active">
+                                <div id="our-preset-settings-exterior-colorTexture1" class="tab-pane show fade in active">
                                     <div class="gs-select-automatically">
                                         <p>What do you want to change?</p>
                                         <div class="gs-our-preset-settings">
@@ -443,9 +443,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="your-customs-settings-exterior" class="tab-pane show fade">
+                                <div id="your-customs-settings-exterior-colorTexture1" class="tab-pane show fade">
                                     <div class="our-preset-settings-box">
-                                        <textarea id="custom_instruction1" placeholder="white chalk paint" name="prompt" class="promtCustomInput"></textarea>
+                                        <textarea id="custom_instruction1-change-colors-texture" placeholder="white chalk paint" name="prompt" class="promtCustomInput"></textarea>
                                     </div>
 
                                     <div class="our-preset-settings-range-outer">
@@ -484,15 +484,15 @@
                     <div class="gs-what-to-edit-tabs">
                         <div class="gs-what-to-edit-title">
                             <ul>
-                                <li class="active"><a data-toggle="tab" href="#our-preset-settings-garden"
+                                <li class="active"><a data-toggle="tab" href="#our-preset-settings-garden-color_swap"
                                         class="presetLink">Preset Colors</a></li>
-                                <li><a data-toggle="tab" href="#your-customs-settings-garden"
+                                <li><a data-toggle="tab" href="#your-customs-settings-garden-color_swap"
                                         class="customLink">Custom Colors</a></li>
                             </ul>
                         </div>
                         <div class="gs-what-to-edit-content">
                             <div class="tab-content">
-                                <div id="our-preset-settings-garden" class="tab-pane show fade in active">
+                                <div id="our-preset-settings-garden-color_swap" class="tab-pane show fade in active">
                                     <div class="gs-select-automatically">
                                         <p>What do you want to change?</p>
                                         <div class="gs-our-preset-settings">
@@ -565,9 +565,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="your-customs-settings-garden" class="tab-pane show fade">
+                                <div id="your-customs-settings-garden-color_swap" class="tab-pane show fade">
                                     <div class="our-preset-settings-box">
-                                        <textarea id="custom_instruction2" placeholder="white chalk paint" name="prompt" class="promtCustomInput"></textarea>
+                                        <textarea id="custom_instruction2-change-colors-texture" placeholder="white chalk paint" name="prompt" class="promtCustomInput"></textarea>
                                     </div>
 
                                     <div class="our-preset-settings-range-outer">
@@ -610,7 +610,7 @@
 
 <div class="ai-upload-latest-designs">
     <h3 class="font22">Latest Designs</h3>
-    <div class="latest-designs-info">Check your latest designs below and save them to projects or to favorites.</div>
+    {{-- <div class="latest-designs-info">Check your latest designs below and save them to projects or to favorites.</div> --}}
     <div class="gs-select-category redesign-designs-tabs">
         <div class="gs-select-category-list">
             <ul class="gs-option-flex designs_tabs">
@@ -640,9 +640,9 @@
     </div>
     <div class="tab-content">
         <div id="interior-colorTexture2" class="tab-pane fade in active">
-            <div class="ai-upload-latest-top" id="jumphere0">
+            <div class="ai-upload-latest-top" id="jumphere0-change-colors-texture">
                 <h3 class="font22"></h3>
-                <div class="ai-upload-add-project delete_favourite_buttons">
+                {{-- <div class="ai-upload-add-project delete_favourite_buttons">
                     <ul>
                         <li class="ai-upload-add-project-list edit-button-div">
                             <span class="ai-upload-option-tooltip">Delete</span>
@@ -663,7 +663,7 @@
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
             </div>
             <div class="ai-upload-latest-wrapper row" id="all_data0_change-colors-texture">
 
@@ -680,7 +680,7 @@
         var dropdownNumber = $(selectElement).attr('id').replace(dropdownId, '');
 
         // Form the ID of the associated textarea
-        var textareaId = 'custom_instruction' + dropdownNumber;
+        var textareaId = 'custom_instruction' + dropdownNumber + '-' + dataPage;
         // Get the associated textarea using the formed ID
         var textarea = $('#' + textareaId);
 
@@ -1059,13 +1059,11 @@
     });
 </script>
 <script>
-    function selectColor(event, colorName) {
-        console.log("selectColor");
+    function selectColorColorTexture(event, colorName) {
         var parentDiv = event.target.closest('.gs-our-preset-color');
         var secId = parentDiv.getAttribute('data-sec');
         var hiddenInput = document.getElementById('color_texture_' + dataPage);
-        console.log('dataPageSecID: ', dataPage);
-        var custom_instruction = document.getElementById('custom_instruction' + secId);
+        var custom_instruction = document.getElementById('custom_instruction' + secId + '-' + dataPage);
 
         var clickedLi = event.target.closest('li');
         var isActive = clickedLi.classList.contains('active');
@@ -1093,7 +1091,6 @@
             maskingCheckbox.value = "false";
         }
     }
-
     function toggleBrushingCursor(value) {
         removeCircleLoader();
         removeSquareLoader();
@@ -1134,7 +1131,7 @@
         $(".int_list_item li").click(function() {
             var materialInput = document.getElementById('material0');
             var materialTypeInput = document.getElementById('material_type0');
-            var custom_instruction = document.getElementById('custom_instruction0');
+            var custom_instruction = document.getElementById('custom_instruction0-change-colors-texture');
             materialTypeInput.value = '';
             if ($(this).hasClass("active")) {
                 $(this).removeClass("active");
@@ -1157,7 +1154,7 @@
         $(".ext_list_item li").click(function() {
             var materialInput = document.getElementById('material1');
             var materialTypeInput = document.getElementById('material_type1');
-            var custom_instruction = document.getElementById('custom_instruction1');
+            var custom_instruction = document.getElementById('custom_instruction1-change-colors-texture');
             materialTypeInput.value = '';
             if ($(this).hasClass("active")) {
                 $(this).removeClass("active");
@@ -1180,7 +1177,7 @@
         $(".gar_list_item li").click(function() {
             var materialInput = document.getElementById('material2');
             var materialTypeInput = document.getElementById('material_type2');
-            var custom_instruction = document.getElementById('custom_instruction2');
+            var custom_instruction = document.getElementById('custom_instruction2-change-colors-texture');
             materialTypeInput.value = '';
             if ($(this).hasClass("active")) {
                 $(this).removeClass("active");

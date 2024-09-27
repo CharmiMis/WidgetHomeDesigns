@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{ asset('webWidget/css/jquery-ui.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
     <link href="{{ asset('webWidget/css/stylesheet.css') }}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('webWidget/css/style.css') }}?v={{ config('app.style_css_version') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('webWidget/css/style.css') }}?v={{ config('app.widgetstyle_css_version') }}">
     {{-- <link rel="stylesheet" type="text/css" href="https://homedesigns-ai.b-cdn.net/webWidget/css/style.css?v={{ config('app.style_css_version') }}"> --}}
     <link href="{{ asset('webWidget/css/responsive.css') }}" rel="stylesheet" type="text/css">
     {{-- new css ends --}}
@@ -117,10 +117,11 @@
     </script>
     <script src="{{ asset('webWidget/js/cropper.min.js') }}"></script>
     <script src="{{ asset('web/js/script.js') }}?v={{ config('app.script_js_version') }}"></script>
-    <script src="{{ asset('webWidget/js/custom-script.js') }}?v={{ config('app.custom_script_version') }}" id="custom-script-js" ></script>
+    <script  src="{{ asset('webWidget/js/custom-script.js') }}?v={{ config('app.custom_scriptWidget_version') }}" id="custom-script-js" ></script>
     <script src="{{ asset('webWidget/js/konva.min.js') }}"></script>
     <script src="{{ asset('webWidget/js/jquery-cropper.js') }}"></script>
-    <script src="{{ asset('webWidget/js/in-painting-v2.js') }}?v={{ config('app.custom_script_version') }}" id="in-painting-js"></script>
+    <script src="{{ asset('webWidget/js/ntc.js') }}"></script>
+    <script  src="{{ asset('webWidget/js/in-painting-v2.js') }}?v={{ config('app.in_paintWidget_v2_version') }}" id="in-painting-js"></script>
     <script src="{{ asset('web/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
     <style>
         .custom-select-wrapper .input-wrapper {
@@ -286,8 +287,69 @@
                 transform: translateX(-100%);
             }
         }
-        .ai-tool-right-top {
+        /* .ai-tool-right-top {
             justify-content: center !important;
+        } */
+
+        .square-loader {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 65%;
+            right: 0;
+            transform: translate(-60%, -60%);
+            top: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .square-loader span {
+            display: inline-block;
+            position: relative;
+            border: 1px solid black;
+            animation: spin 3s infinite linear;
+            margin: 0 auto 0;
+            animation: moveInSquare 3s linear infinite;
+            margin: 0 auto 0;
+            width: 80px;
+            height: 80px;
+        }
+
+        @media only screen and (max-width: 600px) {
+        .square-loader span {
+
+            width: 40px;
+            height: 40px;
+        }
+        }
+
+        @keyframes moveInSquare {
+            0% {
+                top: 0;
+                left: 0;
+            }
+
+            25% {
+                top: 0;
+                left: 80px;
+            }
+
+            50% {
+                top: 80px;
+                left: 80px;
+            }
+
+            75% {
+                top: 80px;
+                left: 0;
+            }
+
+            100% {
+                top: 0;
+                left: 0;
+            }
         }
     </style>
 </head>
@@ -462,11 +524,11 @@
             <div class="gs-dashboard-mobile-header">
                 <div class="gs-dashboard-left-logo">
                     <a href="{{ route('user.dashboard') }}">
-                        <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/home-logo.svg" />
+                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/home-logo.svg" />
                         <img class="light-mode"
-                            src=" https://homedesigns-ai.b-cdn.net/webWidget/images/light-mode/NewHomeDesignsAILogo 1.png" />
+                            src=" https://homedesigns-ai.b-cdn.net/web2/images/light-mode/NewHomeDesignsAILogo 1.png" />
                     </a>
-                    <img class="menu-icon" src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-menu-icon.png" />
+                    {{-- <img class="menu-icon" src="https://homedesigns-ai.b-cdn.net/web2/images/gs-menu-icon.png" /> --}}
                 </div>
             </div>
             <div class="gs-dashboard-rigtbar">
@@ -836,15 +898,15 @@
         </div>
     </div>
 
-    @include('web2.designs_options.interior_room_type')
+    @include('widget.designs_options.interior_room_type')
 
-    @include('web2.designs_options.interior_design_style')
+    @include('widget.designs_options.interior_design_style')
 
-    @include('web2.designs_options.exterior_style')
+    @include('widget.designs_options.exterior_style')
 
-    @include('web2.designs_options.garden_types')
+    @include('widget.designs_options.garden_types')
 
-    @include('web2.designs_options.garden_styles')
+    @include('widget.designs_options.garden_styles')
 
     <div class="modal fade gs-modal-background" id="logoutModal" role="dialog">
         <div class="modal-dialog gs-modal-container">
@@ -1544,9 +1606,9 @@
     </div>
     <div id="editAsPrecision" data-route="{{ route('editAs.precision') }}"></div>
     @include('web2.common.design-preview')
-    
 
-    
+
+
 
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script> --}}
 
@@ -1640,7 +1702,7 @@
         }
     </script>
     <script>
-    
+
         $("#closeExtraStyleModal").click(function() {
             $("#modalStyleUpgradePlan").hide();
             location.reload();
@@ -1701,10 +1763,10 @@
     <script>
         function selectRoomType(roomType, sec) {
             // Set the selected room type in the hidden input
-            document.getElementById('selectedRoomType' + sec).value = roomType;
+            document.getElementById('selectedRoomType' + sec + '-' + dataPage).value = roomType;
 
             // Update the display
-            var roomTypeDisplay = document.getElementById('roomTypeDisplay' + sec);
+            var roomTypeDisplay = document.getElementById('roomTypeDisplay' + sec + '-' + dataPage);
             var allRoomTypes = document.getElementById('allRoomTypes' + sec);
 
             // Remove the "active" class from all room type divs in allRoomTypes
@@ -1755,11 +1817,11 @@
 
         function selectDesignStyle(style, sec) {
             // Set the selected design style in the hidden input
-            document.getElementById('selectedDesignStyle' + sec).value = style;
+            document.getElementById('selectedDesignStyle' + sec + '-' + dataPage).value = style;
 
             // Update the display logic here (if needed)
             // For example, you can highlight the selected design style visually
-            var designStyleDisplay = document.getElementById('designStyleDisplay' + sec);
+            var designStyleDisplay = document.getElementById('designStyleDisplay' + sec + '-' + dataPage);
             var allDesignStyles = document.getElementById('allDesignStyles' + sec);
 
             // Remove the "active" class from all design style divs in allDesignStyles

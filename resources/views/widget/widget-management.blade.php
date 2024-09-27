@@ -50,12 +50,13 @@
             background-color: #111929;
         }
 
-        .feature-contents .custom-logo {
+        .custom-logo {
             display: flex;
             justify-content: center;
+            padding-top: 20px;
         }
 
-        .feature-contents .custom-logo img {
+        .custom-logo img {
             height: 50px;
             width: 50px;
         }
@@ -124,6 +125,8 @@
     ?>
     <input type="hidden" id="precisionUser" value="{{ $precisionUser ? 'true' : 'false' }}">
     <input type="hidden" id="modeValueForPage" value="0" />
+    <input type="hidden" id="widgetUserID" value="{{ $widgetData->user_id }}" />
+    <input type="hidden" id="widgetThemeMode" value="{{ $widgetThemeMode }}" />
     <div class="ai-tool-wrapper">
         <div class="ai-tool-wrapper  demo-class">
             <div class="ai-tool-right" id="tabs">
@@ -134,11 +137,14 @@
                                 class="feature-button @if ($loop->first) active @endif"
                                 data-feature="{{ $feature }}"
                                 data-feature-url="{{ route('widget.showFeature', ['feature' => $feature]) }}">
-                                 {{ ucwords(str_replace('_', ' ', $feature)) }}@if ($feature === 'precision') + @endif
+                                 {{ ucwords(str_replace('_', ' ', $feature)) }}@if ($feature === 'precision')+ @endif
                             </a>
                         </li>
                     @endforeach
                 </ul>
+                <div class="custom-logo">
+                    <img src="{{ asset('storage/' . $widgetData->logo) }}" alt="Custom Logo" />
+                </div>
                 @foreach (json_decode($widgetData->accessible_features) as $feature)
                     <div id="{{ $feature }}">
                         @include('widget.widget-' . $feature)
@@ -170,7 +176,11 @@
 
                         <div class="ai-upload-latest-after">
                             <div class="ai-upload-latest-inset">
-
+                                <div class="ai-upload-selection">
+                                    <div class="ai-upload-favourite hd_image_div">
+                                        <img class="hd_image" src="https://homedesigns-ai.b-cdn.net/web/images/hd_icon.png" alt="">
+                                    </div>
+                                </div>
                                 <img class="complte-img img" src="" data-item="output-image">
                                 <div class="ai-upload-effects">
                                     <ul class="render-overlay-data-box">
@@ -198,6 +208,13 @@
                                                     src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-optons-icon2.svg">
                                             </a>
                                         </li>
+                                        <li class="ai-upload-add-project-list on-gen-disable">
+                                            <span class="ai-upload-option-tooltip"> HD </span>
+                                            <a class="generate_hd_img" href="javascript:void(0)" data-inputimg="" data-img=""
+                                                    title="Full Hd Quality" data-sec="" data-item="hd_quality">
+                                                <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-image-editing-slide-icon8.svg">
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -211,6 +228,11 @@
                     <div class="ai-upload-latest-single">
                         <div class="ai-upload-latest-after">
                             <div class="ai-upload-latest-inset">
+                                <div class="ai-upload-selection">
+                                    <div class="ai-upload-favourite hd_image_div">
+                                        <img class="hd_image" src="https://homedesigns-ai.b-cdn.net/web/images/hd_icon.png" alt="">
+                                    </div>
+                                </div>
                                 {{-- <span class="ai-upload-title">After</span> --}}
                                 <img class="complte-img img" src="" data-item="output-image">
                                 <div class="ai-upload-effects">
@@ -237,6 +259,13 @@
                                                 <img src="{{ asset('web2/images/ai-upload-optons-icon2.svg') }}">
                                             </a>
                                         </li>
+                                        <li class="ai-upload-add-project-list on-gen-disable">
+                                            <span class="ai-upload-option-tooltip"> HD </span>
+                                            <a class="full_hd_quality" href="javascript:void(0)" data-img="" data-sec=""
+                                                data-item="hd_quality" title="Full HD Quality">
+                                                <img src="{{ asset('web2/images/gs-image-editing-slide-icon8.svg') }}">
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -246,6 +275,7 @@
             </template>
         </div>
         <div id="routeToFullHdImageData" data-route="{{ route('getHdImages') }}"></div>
+        @include('web2.common.widget-design-preview')
     @endsection
 
     @section('scripts')

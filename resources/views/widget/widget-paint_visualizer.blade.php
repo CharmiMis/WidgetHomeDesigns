@@ -100,7 +100,7 @@
 
 <div class="image-show-container image-mask-container" style="display: none">
     <div class="gs-what-to-edit-wrapper">
-        <div class="gs-what-to-edit-left image-mask-container" style="display: none">
+        <div class="gs-what-to-edit-left image-mask-container image-mask-color_swap" style="display: none">
             <div id="inpainting-stag-outer-color_swap"
                 class="inpainting-stag-outer d-flex align-items-center justify-content-center">
                 <div id="painting-stag-color_swap"></div>
@@ -129,27 +129,27 @@
             <div class="gs-what-to-edit-tabs">
                 <div class="gs-what-to-edit-title">
                     <ul>
-                        <li class="active"><a data-toggle="tab" href="#select-automatically">Automatic Selection</a>
+                        <li class="active"><a data-toggle="tab" href="#select-automatically-paintVisulizer">Automatic Selection</a>
                         </li>
-                        <li><a data-toggle="tab" href="#refine-manually">Manual Selection </a></li>
+                        <li><a data-toggle="tab" href="#refine-manually-paintVisulizer">Manual Selection </a></li>
                     </ul>
                 </div>
                 <div class="gs-what-to-edit-content">
                     <div class="tab-content">
-                        <div id="select-automatically" class="tab-pane show fade in active">
+                        <div id="select-automatically-paintVisulizer" class="tab-pane show fade in active">
                             <div class="gs-select-automatically">
                                 <p>Automatically or manually select objects, with the ability to combine both
                                     methods.</p>
                                 <div class="gs-select-automatically-inner">
                                     <p>Select objects automatically</p>
-                                    <div class="chkbox-segment"></div>
+                                    <div id="chkbox-segment-color_swap" class="chkbox-segment"></div>
                                 </div>
                                 <div class="gs-continue-btn-outer">
                                     <a href="javascript:void(0)" class="gs-continue-btn continue-parameter">Continue</a>
                                 </div>
                             </div>
                         </div>
-                        <div id="refine-manually" class="tab-pane show fade">
+                        <div id="refine-manually-paintVisulizer" class="tab-pane show fade">
                             <div class="gs-select-manually-inner">
                                 <div class="gs-select-manually-top">
                                     <p>Edit manually using the brush</p>
@@ -163,10 +163,10 @@
                                 <div class="gs-refine-manually-links">
                                     <div class="gs-refine-manually-single">
                                         <input type="hidden" id="maskingCheckbox" value="true" />
-                                        <a href="javascript:void(0)" id="removeMasking"
+                                        <a href="javascript:void(0)" id="removeMasking" class="removeMasking"
                                             onclick="toggleMasking(false)">Remove Masking</a>
                                         <a href="javascript:void(0)" id="addMasking" onclick="toggleMasking(true)"
-                                            class="active">Add
+                                            class="active addMasking">Add
                                             Masking</a>
                                     </div>
                                     <div class="gs-refine-manually-single">
@@ -182,14 +182,14 @@
                                 </div>
                             </div>
                             <div class="undo-redo-btn">
-                                <button class="ci-btn ci-btn-danger" id="ip-clearImage" title="Clear All">
+                                <button class="ci-btn ci-btn-danger ip-clearImage" id="ip-clearImage" title="Clear All">
                                     <img src="https://homedesigns-ai.b-cdn.net/web/images/deleteIcon.png"
                                         width="25px"> Clear all
                                 </button>
-                                <button class="ci-btn ci-btn-danger" id="ip-undoImage" title="Undo"><img
+                                <button class="ci-btn ci-btn-danger ip-undoImage" id="ip-undoImage" title="Undo"><img
                                         src="https://homedesigns-ai.b-cdn.net/web/images/undo.png"
                                         width="25px"></button>
-                                <button class="ci-btn ci-btn-danger" id="ip-redoImage" title="Redo"><img
+                                <button class="ci-btn ci-btn-danger ip-redoImage" id="ip-redoImage" title="Redo"><img
                                         src="https://homedesigns-ai.b-cdn.net/web/images/redo.png"
                                         width="25px"></button>
                             </div>
@@ -241,7 +241,7 @@
                         </div>
                         <div id="your-customs-color-image" class="tab-pane show fade">
                             <div class="ai-upload-image upload-texture-image-container">
-                                <input type="file" class="ai-upload-input" id="ipFilePicker2">
+                                <input type="file" class="ai-upload-input" id="ipFilePicker2ColorSwap">
                                 <h3 class="font22 upload-content" style="font-size: 18px">Upload sample of paint
                                     (.jpeg, .png)</h3>
                                 <img class="upload-content"
@@ -292,10 +292,10 @@
 
 <div class="ai-upload-latest-designs">
     <h3 class="font22">Latest Designs</h3>
-    <div class="latest-designs-info">Check your latest designs below and save them to projects or to favorites.</div>
-    <div class="ai-upload-latest-top" id="jumphere0">
+    {{-- <div class="latest-designs-info">Check your latest designs below and save them to projects or to favorites.</div> --}}
+    <div class="ai-upload-latest-top" id="jumphere0-color_swap">
         <h3 class="font22"></h3>
-        <div class="ai-upload-add-project delete_favourite_buttons">
+        {{-- <div class="ai-upload-add-project delete_favourite_buttons">
             <ul>
                 <li class="ai-upload-add-project-list edit-button-div">
                     <span class="ai-upload-option-tooltip">Delete</span>
@@ -316,7 +316,7 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div> --}}
     </div>
     <div class="ai-upload-latest-wrapper row" id="all_data0_color_swap">
     </div>

@@ -1,13 +1,13 @@
 var dataPage = "redesign";
 var tabs = $( "#tabs" ).tabs();
+//console.log("tabs",tabs);
 var hasTransparentPixels = false;
-var paintingStag ='';
+var paintingStag = '';
 var imageLayer = '';
 var inPaintStageContainer = '';
 var paintingStagOriginalWidth = '';
 var paintingStagOriginalHeight = '';
 
-var hasTransparentPixels = false;
 var virtualStagDesignContainer = document.querySelector(`#all_data0_${dataPage}`);
 var modeValue = document.querySelector('#modeValueForPage');
 var maskingCheckbox = document.getElementById('maskingCheckbox');
@@ -17,7 +17,7 @@ var routeFailedRespURL = document.getElementById('routeToGetFailedResp').getAttr
 var runpodName = 'first_runpod';
 var runpodType = '2' ;
 var inpaintPodRoute = $("#routeToRunpodType").data('route');
-var $imgCropPreview = $('#imgCropPreview');
+// var $imgCropPreview = $('#imgCropPreview');
 var imageCropper;
 
 var ids = []
@@ -46,27 +46,32 @@ var pixelRatio = 1;
 var mode = 'brush';
 var lastLine;
 var fileInput;
+var fileInput2;
+var paintingCollageStag;
+var paintingStagSec;
+var paintingStagSecElement;
+
 
 
 var resizeImageWidth;
 var resizeImageHeight;
-$imgCropPreview.cropper({
-    aspectRatio: 1 / 1,
-    zoomable: false,
-    dragMode: 'none',
-    minCropBoxWidth: 512,
-    minCropBoxHeight: 512,
-    maxCropBoxWidth: 512,
-    maxCropBoxHeight: 512,
-});
+// $imgCropPreview.cropper({
+//     aspectRatio: 1 / 1,
+//     zoomable: false,
+//     dragMode: 'none',
+//     minCropBoxWidth: 512,
+//     minCropBoxHeight: 512,
+//     maxCropBoxWidth: 512,
+//     maxCropBoxHeight: 512,
+// });
 
-imageCropper = $imgCropPreview.data('cropper');
+// imageCropper = $imgCropPreview.data('cropper');
 
 
 // Initialize the imageCropper variable
 
 // Disable zoomable initially
-$imgCropPreview.cropper('setZoomable', false);
+// $imgCropPreview.cropper('setZoomable', false);
 
 
 var sizeElement = document.querySelector("#ip-brush-thickness");
@@ -77,6 +82,10 @@ var imageSrcNpy = '';
 var segmentHeight = '';
 var segmentWidth = '';
 tabs.on( "click", ".ui-tabs-tab", function() {
+    $('.gs-select-room-style-single').removeClass('active');
+
+    $('.chkbox-segment ul').empty();
+    console.log("ui-tabs-tab");
     var panelId = $( this ).closest( "li" ).attr( "aria-controls" );
 
     // Remove 'active' class from all tabs
@@ -90,7 +99,7 @@ tabs.on( "click", ".ui-tabs-tab", function() {
     }else if(panelId == 'precision'){
         dataPage = 'inPaint';
         fileInput = document.querySelector("#ipFilePickerPrecision");
-        
+        fileInput2 = document.querySelector("#ipFilePicker2ColorSwap");
             var inPaintStageContainer = document.querySelector('#inpainting-stag-outer-'+dataPage);
             var paintingStagOriginalWidth = inPaintStageContainer ? inPaintStageContainer.clientWidth : 0 ;
             var paintingStagOriginalHeight = inPaintStageContainer ? inPaintStageContainer.clientHeight : 0 ;
@@ -100,7 +109,17 @@ tabs.on( "click", ".ui-tabs-tab", function() {
                 width: paintingStagOriginalWidth,
                 height: paintingStagOriginalHeight,
             });
-            
+
+            paintingCollageStag = new fabric.Canvas(document.getElementById("collage-render-conva"));
+            paintingStagSecElement = document.getElementById('painting-stag-sec');
+            if (paintingStagSecElement) {
+                paintingStagSec = new Konva.Stage({
+                    container: 'painting-stag-sec',
+                    width: 0,
+                    height: 0,
+                });
+            }
+
             imageLayer = new Konva.Layer();
             paintingStag.add(imageLayer);
 
@@ -114,7 +133,7 @@ tabs.on( "click", ".ui-tabs-tab", function() {
             inPaintStageContainer = document.querySelector('#inpainting-stag-outer-'+dataPage);
             paintingStagOriginalWidth = inPaintStageContainer ? inPaintStageContainer.clientWidth : 0 ;
             paintingStagOriginalHeight = inPaintStageContainer ? inPaintStageContainer.clientHeight : 0 ;
-            
+
             paintingStag = new Konva.Stage({
                 container: 'painting-stag-'+dataPage,
                 width: paintingStagOriginalWidth,
@@ -133,7 +152,7 @@ tabs.on( "click", ".ui-tabs-tab", function() {
             inPaintStageContainer = document.querySelector('#inpainting-stag-outer-'+dataPage);
             paintingStagOriginalWidth = inPaintStageContainer ? inPaintStageContainer.clientWidth : 0 ;
             paintingStagOriginalHeight = inPaintStageContainer ? inPaintStageContainer.clientHeight : 0 ;
-            
+
 
             paintingStag = new Konva.Stage({
                 container: 'painting-stag-'+dataPage,
@@ -149,17 +168,28 @@ tabs.on( "click", ".ui-tabs-tab", function() {
     } else if(panelId == 'paint_visualizer'){
         dataPage = 'color_swap';
         fileInput = document.querySelector("#ipFilePickerColorSwap");
+        fileInput2 = document.querySelector("#ipFilePicker2ColorSwap");
 
             inPaintStageContainer = document.querySelector('#inpainting-stag-outer-'+dataPage);
             paintingStagOriginalWidth = inPaintStageContainer ? inPaintStageContainer.clientWidth : 0 ;
             paintingStagOriginalHeight = inPaintStageContainer ? inPaintStageContainer.clientHeight : 0 ;
-            
+
 
             paintingStag = new Konva.Stage({
                 container: 'painting-stag-'+dataPage,
                 width: paintingStagOriginalWidth,
                 height: paintingStagOriginalHeight,
             });
+
+            paintingCollageStag = new fabric.Canvas(document.getElementById("collage-render-conva"));
+            paintingStagSecElement = document.getElementById('painting-stag-sec');
+            if (paintingStagSecElement) {
+                paintingStagSec = new Konva.Stage({
+                    container: 'painting-stag-sec',
+                    width: 0,
+                    height: 0,
+                });
+            }
 
             imageLayer = new Konva.Layer();
             paintingStag.add(imageLayer);
@@ -172,6 +202,7 @@ tabs.on( "click", ".ui-tabs-tab", function() {
     }
 
     callAgain();
+    callAgainUploadPaint();
     $(document).find('#'+panelId+' .first_tab_active .ai-tool-right-steps').click();
     $('#input_image').val('');
     $('#gallery0 img').attr('src', '');
@@ -182,44 +213,22 @@ tabs.on( "click", ".ui-tabs-tab", function() {
 
 
 $('document').ready(function () {
-    var fileInput2 = document.querySelector("#ipFilePicker2");
-    
+    //var fileInput2 = document.querySelector("#ipFilePicker2");
+
     // const generateDesignBtn = document.querySelector('#generateDesignBtn');
     // const promptInput = document.querySelector('#promptInput');
     // const promptInputDesign = document.querySelector('#promptInputDesign');
     // const promptInputRoomType = document.querySelector('#promptInputRoomType');
-    
-
-    var paintingCollageStag = new fabric.Canvas(document.getElementById("collage-render-conva"));
-    var paintingStagSec;
-    var paintingStagSecElement = document.getElementById('painting-stag-sec');
-    if (paintingStagSecElement) {
-        paintingStagSec = new Konva.Stage({
-            container: 'painting-stag-sec',
-            width: 0,
-            height: 0,
-        });
-    }
 
     var get_inpainting_designs = {
         url: SITE_BASE_URL + 'in-painting-designs',
         inpainting: modeValue.value,
     }
-    
+
     var page = 1;
 
-    if(dataPage == 'style_transfer' || dataPage == 'color_swap' || dataPage == 'design_transfer' || dataPage == 'floor_editor'){
-        addSecImageLayer();
-        addSecBlackLayer();
-
-        fileInput2.addEventListener("change", async (e) => {
-            loadImageCropperForStyleTransfer();
-            e.target.value = '';
-        });
-    }
-
-    $("#ip-clearImage, #ip-undoImage, #ip-redoImage").prop('disabled', true);
-    $("#ip-clearImage, #ip-undoImage, #ip-redoImage").css('cursor', 'not-allowed');
+    $(".ip-clearImage, .ip-undoImage, .ip-redoImage").prop('disabled', true);
+    $(".ip-clearImage, .ip-undoImage, .ip-redoImage").css('cursor', 'not-allowed');
 
     // var b64image = sessionStorage.getItem('b64image');
 
@@ -246,7 +255,7 @@ $('document').ready(function () {
     }
 
     // callAgain();
-    
+
 
     $(".gs-select-range").slider({
         //   orientation: "vertical",
@@ -271,11 +280,11 @@ $('document').ready(function () {
         $("#ipFilePicker").trigger('click');
     });
 
-    $("#ip-clearImage").on('click', function () {
-        $('#removeMasking').addClass('disabled');
-        $('#removeMasking').css('cursor', 'not-allowed');
-        $('#addMasking').addClass('active');
-        $('#removeMasking').removeClass('active');
+    $(".ip-clearImage").on('click', function () {
+        $('.removeMasking').addClass('disabled');
+        $('.removeMasking').css('cursor', 'not-allowed');
+        $('.addMasking').addClass('active');
+        $('.removeMasking').removeClass('active');
         maskingCheckbox.value = true;
         $('.chkbox-segment ul li').removeClass('active');
         $('.checkbox').prop('checked', false);
@@ -288,20 +297,20 @@ $('document').ready(function () {
         currentActionIndex = -1;
         brushLayer.draw();
 
-        $("#ip-clearImage, #ip-undoImage, #ip-redoImage").prop('disabled', true);
-        $("#ip-clearImage, #ip-undoImage, #ip-redoImage").css('cursor', 'not-allowed');
+        $(".ip-clearImage, .ip-undoImage, .ip-redoImage").prop('disabled', true);
+        $(".ip-clearImage, .ip-undoImage, .ip-redoImage").css('cursor', 'not-allowed');
     });
 
-    $("#ip-undoImage").on('click', function () {
+    $(".ip-undoImage").on('click', function () {
         undoBrushing();
     });
 
-    $("#ip-redoImage").on('click', function () {
+    $(".ip-redoImage").on('click', function () {
         redoBrushing();
     });
 
-    $('#removeMasking').addClass('disabled');
-    $('#removeMasking').css('cursor', 'not-allowed');
+    $('.removeMasking').addClass('disabled');
+    $('.removeMasking').css('cursor', 'not-allowed');
 });
 
 async function loadImageCropper() {
@@ -358,47 +367,47 @@ async function loadImageCropper() {
                     }
                 }
                 // Hide or show the zoom buttons based on transparency
-                if (hasTransparentPixels) {
-                    // Destroy the existing cropper instance
-                    $imgCropPreview.cropper('destroy');
+                // if (hasTransparentPixels) {
+                //     // Destroy the existing cropper instance
+                //     $imgCropPreview.cropper('destroy');
 
-                    // Initialize a new cropper with updated options
-                    $imgCropPreview.cropper({
-                        aspectRatio: NaN, //1 / 1,
-                        dragMode: 'none',
-                        zoomable: hasTransparentPixels,
-                        minCropBoxWidth: 1024,
-                        minCropBoxHeight: 512,
-                        maxCropBoxWidth: 1024,
-                        maxCropBoxHeight: 512,
-                    });
+                //     // Initialize a new cropper with updated options
+                //     $imgCropPreview.cropper({
+                //         aspectRatio: NaN, //1 / 1,
+                //         dragMode: 'none',
+                //         zoomable: hasTransparentPixels,
+                //         minCropBoxWidth: 1024,
+                //         minCropBoxHeight: 512,
+                //         maxCropBoxWidth: 1024,
+                //         maxCropBoxHeight: 512,
+                //     });
 
-                    // Get the new cropper instance
-                    imageCropper = $imgCropPreview.data('cropper');
+                //     // Get the new cropper instance
+                //     imageCropper = $imgCropPreview.data('cropper');
 
-                    // Set zoomable option after initialization
-                    $imgCropPreview.cropper('setZoomable', hasTransparentPixels);
+                //     // Set zoomable option after initialization
+                //     $imgCropPreview.cropper('setZoomable', hasTransparentPixels);
 
-                    // Replace the image and show modal
-                    imageCropper.replace(image.result);
-                    $("#cropImageModal").modal('show');
-                    $('.upload_btns_part').show();
-                    $('#zoomInOutLabel').show();
-                    $('#zoomInButton').show();
-                    $('#zoomOutButton').show();
+                //     // Replace the image and show modal
+                //     imageCropper.replace(image.result);
+                //     $("#cropImageModal").modal('show');
+                //     $('.upload_btns_part').show();
+                //     $('#zoomInOutLabel').show();
+                //     $('#zoomInButton').show();
+                //     $('#zoomOutButton').show();
 
-                } else {
-                    if(dataPage == 'decorstaging' && !hasTransparentPixels){
-                        removeBackgroundForDecorImage(image.result);
-                    }else{
-                        loadImageToStage(image.result);
-                        croppedImage = image.result;
-                        $('.upload_btns_part').hide();
-                        $('#zoomInButton').hide();
-                        $('#zoomOutButton').hide();
-                        $('#zoomInOutLabel').hide();
-                    }
-                }
+                // } else {
+                //     if(dataPage == 'decorstaging' && !hasTransparentPixels){
+                //         removeBackgroundForDecorImage(image.result);
+                //     }else{
+                //         loadImageToStage(image.result);
+                //         croppedImage = image.result;
+                //         $('.upload_btns_part').hide();
+                //         $('#zoomInButton').hide();
+                //         $('#zoomOutButton').hide();
+                //         $('#zoomInOutLabel').hide();
+                //     }
+                // }
             }
         }, (error) => {
             ipsFailOnValidImage(error, min_height_width = 512);
@@ -542,13 +551,28 @@ function callAgain(){
     });
 }
 
+function callAgainUploadPaint(){
+    console.log('callAgainUploadPaint: ');
+    if(dataPage == 'style_transfer' || dataPage == 'color_swap' || dataPage == 'design_transfer' || dataPage == 'floor_editor'){
+        console.log('color_swap:');
+        addSecImageLayer();
+        addSecBlackLayer();
+
+        fileInput2.addEventListener("change", async (e) => {
+            loadImageCropperForStyleTransfer();
+            e.target.value = '';
+        });
+    }
+}
 function addImageLayer() {
 
 }
+
 function addSecImageLayer() {
     imageLayerSec = new Konva.Layer();
     paintingStagSec.add(imageLayerSec);
 }
+
 var lastLine;
 function addBrushLayer() {
     if (hasTransparentPixels || dataPage == 'sky-color' || dataPage == 'design_transfer' || dataPage == 'floor_editor') {
@@ -658,8 +682,8 @@ function addBrushLayer() {
             if (!hasTransparentPixels) {
                 addBrushingAction(lastLine);
             }
-            $('#removeMasking').removeClass('disabled');
-            $('#removeMasking').css('cursor', 'pointer');
+            $('.removeMasking').removeClass('disabled');
+            $('.removeMasking').css('cursor', 'pointer');
             maskingCheckbox.disabled = false;
         } else {
             // In remove masking mode
@@ -768,11 +792,11 @@ function loadImageToStage(image) {
     $('.decor_placehold').addClass('decor_hide_placehold');
     if(maskingCheckbox){
         maskingCheckbox.value = true;
-        $('#removeMasking').addClass('disabled');
-        $('#removeMasking').css('cursor', 'not-allowed');
+        $('.removeMasking').addClass('disabled');
+        $('.removeMasking').css('cursor', 'not-allowed');
     }
 
-    $("#ip-clearImage").click();
+    $(".ip-clearImage").click();
 
     const imageObj = new Image();
     imageObj.onload = async function () {
@@ -899,6 +923,7 @@ async function callInPaintingAPI(sec,el) {
     const previousPageButton = document.querySelector('.previous_page');
     const editButton = document.querySelectorAll('.edit-button-div');
     const progressBarTabs = document.querySelectorAll('.progress-bar-tab');
+    var widgetuserid = document.getElementById('widgetUserID').value;
 
     disableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
     $('.on-gen-disable').addClass('disable-btn');
@@ -912,6 +937,7 @@ async function callInPaintingAPI(sec,el) {
     var noOfDesign = document.getElementById(`no_of_des${sec}`).value;
     generationDivLoader(noOfDesign,croppedImage);
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
     if (!imageLayer.hasChildren()) {
         alert("Oops! You didn't upload your image.");
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
@@ -936,9 +962,9 @@ async function callInPaintingAPI(sec,el) {
     var masked_base64 = await getMaskedImages();
 
     var segmentType = segmentation ? segmentation : 'false';
-    const promptInput = document.querySelector(`#custom_instruction${sec}`);
-    const promptInputDesign = document.querySelector(`#selectedDesignStyle${sec}`);
-    const promptInputRoomType = document.querySelector(`#selectedRoomType${sec}`);
+    const promptInput = document.querySelector(`#custom_instruction${sec}-${dataPage}`);
+    const promptInputDesign = document.querySelector(`#selectedDesignStyle${sec}-${dataPage}`);
+    const promptInputRoomType = document.querySelector(`#selectedRoomType${sec}-${dataPage}`);
     const promptSkyWeather = document.querySelector(`#weather${sec}`);
 
     const prompColorTexture = document.querySelector(`#color_texture_${dataPage}`);
@@ -1017,6 +1043,12 @@ async function callInPaintingAPI(sec,el) {
             return;
         }
     }
+    $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
+
+    var divElement = document.getElementById(`all_data0_${dataPage}`);
+    divElement.firstElementChild.scrollIntoView();
 
     // var updatedUsage = await verifyPlan();
 
@@ -1033,7 +1065,7 @@ async function callInPaintingAPI(sec,el) {
     // var precisionUserValue = document.getElementById('precisionUser').value;
     if (dataPage == 'aiObjectRemoval' || dataPage == 'segmentPage') {
         // var inPaintUrl = `${GPU_SERVER_HOST}/img2img?isSubbed=${isSubbed}&superenhance=${superenhance}&no_of_Design=${noOfDesign}&designtype=${sec}&modeType=${mode}&is_staging=${is_staging}&segmentType=${segmentType}`;
-        var inPaintUrl = "/runpod/furniture_removal";
+        var inPaintUrl = "runpod/furniture_removal";
         formData.append("designtype", sec);
         // formData.append("isSubbed", isSubbed);
         // formData.append("superenhance", superenhance);
@@ -1045,7 +1077,7 @@ async function callInPaintingAPI(sec,el) {
         formData.append("segmentType", segmentType);
     } else if (dataPage == 'change-colors-texture') {
         // var inPaintUrl = `${GPU_SERVER_HOST_SEG}/change_color?isSubbed=${isSubbed}&superenhance=${superenhance}&no_of_Design=${noOfDesign}&designtype=${sec}&modeType=${mode}&is_transparent=${isTransparent}&is_staging=${is_staging}&segmentType=${segmentType}&objects=${checkboxMaskingLabelString}&color=${color}&material=${material_type}`;
-        var inPaintUrl = "/runpodWidget/color-and-texture";
+        var inPaintUrl = "runpodWidget/color-and-texture";
         // formData.append("isSubbed", isSubbed);
         // formData.append("superenhance", superenhance);
         formData.append("no_of_Design", noOfDesign);
@@ -1061,7 +1093,7 @@ async function callInPaintingAPI(sec,el) {
         // Need to add material_type and material
     } else if (dataPage == 'sky-color') {
         // var inPaintUrl = `${GPU_SERVER_HOST_SEG}/sky_color_change?isSubbed=${isSubbed}&superenhance=${superenhance}&no_of_Design=${noOfDesign}&designtype=${sec}&is_staging=${is_staging}&weather=${skyWeather}&modeType=${mode}`;
-        var inPaintUrl = "/runpod/sky-color-change";
+        var inPaintUrl = "runpod/sky-color-change";
         // formData.append("isSubbed", isSubbed);
         // formData.append("superenhance", superenhance);
         formData.append("no_of_Design", noOfDesign);
@@ -1071,7 +1103,7 @@ async function callInPaintingAPI(sec,el) {
         formData.append("weather", skyWeather);
     } else if (dataPage == 'decorstaging') {
         // var inPaintUrl = `${GPU_SERVER_HOST_SEG}/sky_color_change?isSubbed=${isSubbed}&superenhance=${superenhance}&no_of_Design=${noOfDesign}&designtype=${sec}&is_staging=${is_staging}&weather=${skyWeather}&modeType=${mode}`;
-        var inPaintUrl = "/runpod/decor_staging";
+        var inPaintUrl = "runpod/decor_staging";
         // formData.append("isSubbed", isSubbed);
         formData.append("roomtype", roomType);
         formData.append("design_style", designStyle);
@@ -1085,9 +1117,9 @@ async function callInPaintingAPI(sec,el) {
     } else if (dataPage == 'fillSpace' || dataPage == 'inPaint') {
         // var inPaintUrl = `${GPU_SERVER_HOST_SEG}/sky_color_change?isSubbed=${isSubbed}&superenhance=${superenhance}&no_of_Design=${noOfDesign}&designtype=${sec}&is_staging=${is_staging}&weather=${skyWeather}&modeType=${mode}`;
         if(dataPage == 'inPaint'){
-            var inPaintUrl = "/runpodWidget/precision";
+            var inPaintUrl = "runpodWidget/precision";
         }else if(dataPage == 'fillSpace'){
-            var inPaintUrl = "/runpodWidget/fill_space";
+            var inPaintUrl = "runpodWidget/fill_space";
         }
         // formData.append("isSubbed", isSubbed);
         formData.append("roomtype", roomType);
@@ -1107,8 +1139,9 @@ async function callInPaintingAPI(sec,el) {
         "prompt": prompt,
     };
     formData.append("payload", JSON.stringify(payload));
-    
-    return await fetch(inPaintUrl, {
+    formData.append("widgetuserid",widgetuserid);
+
+    return await fetch(SITE_BASE_URL + inPaintUrl, {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
@@ -1121,6 +1154,17 @@ async function callInPaintingAPI(sec,el) {
         },
         body: formData,
     }).then(response => {
+        if (response.status == 401) {
+            return response.json().then(userAccess => {
+                $('#errorModal h4').text(userAccess.error);
+                $('#errorModal').modal('show');
+                $(el).attr('disabled', false);
+                $('.gs-continue-btn').removeClass('disable-btn');
+                $('.on-gen-disable').removeClass('disable-btn');
+                enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+                return;
+            });
+        }
         if (response.status === 200) {
             return response.text();
         }
@@ -1181,7 +1225,7 @@ async function callInPaintingAPI(sec,el) {
                             sec: sec
                         });
                     });
-                    localStorage.setItem('designs', JSON.stringify(storedDesigns));
+                    // localStorage.setItem('designs', JSON.stringify(storedDesigns));
                     // getInPaintingGeneratedDesigns();
                     // reapplyCheckboxStates();
                     // setTimeout(function () {
@@ -1207,7 +1251,7 @@ async function callInPaintingAPI(sec,el) {
             $('.on-gen-disable').removeClass('disable-btn');
 
             let storedDesigns = JSON.parse(localStorage.getItem('in-painting-designs')) || [];
-            
+
             generatedImageList.forEach((image) => {
                 console.log("Image",image);
                 let design = {
@@ -1236,7 +1280,7 @@ async function callInPaintingAPI(sec,el) {
                 });
             });
             localStorage.setItem('in-painting-designs', JSON.stringify(storedDesigns));
-            
+
             // getInPaintingGeneratedDesigns();
             // reapplyCheckboxStates();
             // setTimeout(function () {
@@ -1323,25 +1367,13 @@ function generatedImageItem(item) {
 //     $("#mip_after").attr('src', src);
 // });
 $(document).on('click', '.full_hd_quality', async function () {
-    page = 1;
-    getInPaintingGeneratedDesigns();
-    reapplyCheckboxStates();
-    var updatedUsage = await verifyPlan();
-
-    if ((!updatedUsage) || !updatedUsage.status) {
-        _showUsageMessage(updatedUsage);
-        $(el).attr('disabled', false);
-        return;
-    }
     var sec = $(this).data('sec');
     $('.painting_generating_bt').addClass('disable-btn');
     $('.on-gen-disable').addClass('disable-btn');
     var image_url = $(this).data('img');
-    var inputImage = $(this).data('input-img');
     // $('.full_hd_quality').addClass('disable-btn');
     // $('.edit-as-fill-space').addClass('disable-btn');
     // $('.precision-ultra-enhancer').addClass('disable-btn');
-    projectButton.disabled = true;
     // deleteButton.disabled = true;
 
     // Disable AI category Pill
@@ -1349,120 +1381,68 @@ $(document).on('click', '.full_hd_quality', async function () {
 
     generationDivLoader(1,image_url);
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
-    document.getElementById(`jumphere0`).scrollIntoView();
+    document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
 
     var divElement = document.getElementById(`all_data0_${dataPage}`);
     divElement.firstElementChild.scrollIntoView();
 
-    var mode = modeValue.value;
-    $("#mip_before").attr('src', inputImage);
-    $("#mip_after").attr('src', image_url);
-    var route = $("#routeToFullHdImageData").data('route');
-    var is_staging = (APP_LOCAL == 'production') ? 'false' : 'true';
-    $.ajax({
-        url: route,
-        method: "POST",
-        data: {
-            "image": image_url
+    var formData = new FormData();
+    formData.append("data", image_url);
+    formData.append("hd_image", true);
+    // aiAPI = `${GPU_SERVER_HOST}/fullhd?init=https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1&id=${resp.data.user_uid}&privateId=${resp.data.privateId}&is_staging=${is_staging}&roomtype=${resp.data.room_type}&design_style=${resp.data.style}&modeType=${mode}`;
+    aiAPI = "runpodWidget/fullHD";
+    await fetch(SITE_BASE_URL + aiAPI, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: "include",
+        headers: {
+            accept: 'multipart/form-data',
+            'Access-Control-Allow-Origin': '*',
+            "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr('content')
         },
-        success: async function (resp) {
-            if(resp.status == false ){
-                $('.painting_generating_bt').removeClass('disable-btn');
-                $('.on-gen-disable').removeClass('disable-btn');
-                // $('.full_hd_quality').removeClass('disable-btn');
-                // $('.edit-as-fill-space').removeClass('disable-btn');
-                // $('.precision-ultra-enhancer').removeClass('disable-btn');
-                projectButton.disabled = false;
-                // deleteButton.disabled = false;
-                removeLoaderDivs(1);
-            }else{
-                var formData = new FormData();
-                formData.append("privateId", resp.data.privateId);
-                formData.append("roomtype", resp.data.room_type);
-                formData.append("design_style", resp.data.style);
-                formData.append("modeType", mode);
-                formData.append("is_staging", is_staging);
-                formData.append("designtype", resp.data.sec);
-                formData.append("data", resp.data.image);
-                formData.append("runpod_name", runpodName);
-                // aiAPI = `${GPU_SERVER_HOST}/fullhd?init=https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1&id=${resp.data.user_uid}&privateId=${resp.data.privateId}&is_staging=${is_staging}&roomtype=${resp.data.room_type}&design_style=${resp.data.style}&modeType=${mode}`;
-                aiAPI = "/runpod/fullHD";
-                await fetch(aiAPI, {
-                    method: 'POST',
-                    mode: 'cors',
-                    cache: 'no-cache',
-                    credentials: "include",
-                    headers: {
-                        accept: 'multipart/form-data',
-                        'Access-Control-Allow-Origin': '*',
-                        "X-CSRF-TOKEN": $("meta[name='csrf-token']").attr('content')
-                    },
-                    crossDomain: true,
-                    body: formData,
-                })
-                    .then(response => {
-                        if (response.status == 501) {
-                            modalStore.style.display = 'block';
-                        }
-                        return response.json();
-                    })
-                    .then(result => {
-                        $('.on-gen-disable').removeClass('disable-btn');
-                        $('.painting_generating_bt').removeClass('disable-btn');
-                        // $('.full_hd_quality').removeClass('disable-btn');
-                        // $('.edit-as-fill-space').removeClass('disable-btn');
-                        // $('.precision-ultra-enhancer').removeClass('disable-btn');
-                        // projectButton.disabled = false;
-                        // deleteButton.disabled = false;
-                        var generated_image = result['Sucess']['generated_image'][0];
-                        var original_image = result['Sucess']['original_image'];
-                        let storedIds = result['storedIds'];
-                        // var data = document.getElementById(`all_data${sec}`);
-                        // var newFreeformSpacer = document.createElement('div');
-                        // data.insertBefore(newFreeformSpacer, data.firstChild);
-
-                        var design = {
-                            id: storedIds[0],
-                            original_url: original_image,
-                            generated_url: generated_image,
-                            style: resp.data.style,
-                            room_type: resp.data.room_type,
-                            mode: resp.data.mode,
-                            show_data: true,
-                            section: sec,
-                            private: resp.data.privateId,
-                            // precisionUserValue: precisionUserValue,
-                            hd_image: 1,
-                        }
-                        removeLoaderDivs(1);
-                        var itemHtml = generatedInPaintingItem(design);
-                        addNewDesignImage(design);
-
-                        var data = document.getElementById(`all_data0_${dataPage}`);
-                        data.insertBefore(itemHtml, data.firstChild);
-                        // Enable AI category Pill
-                        _updateAiCatePillsStatus('enable');
-                        getInPaintingGeneratedDesigns();
-                        reapplyCheckboxStates();
-                    })
-                    .catch(error => {
-                        $('.on-gen-disable').removeClass('disable-btn');
-                        $('.painting_generating_bt').removeClass('disable-btn');
-                        removeLoaderDivs(1);
-                        // $('.full_hd_quality').removeClass('disable-btn');
-                        // $('.edit-as-fill-space').removeClass('disable-btn');
-                        // $('.precision-ultra-enhancer').removeClass('disable-btn');
-                        projectButton.disabled = false;
-                        // deleteButton.disabled = false;
-
-                        console.error('Error:', error);
-                    });
-            }
-        },
-        error: function (resp) {
-            data = resp.responseJSON;
-        }
+        crossDomain: true,
+        body: formData,
     })
+        .then(response => {
+            if (response.status == 501) {
+                modalStore.style.display = 'block';
+            }
+            return response.json();
+        })
+        .then(result => {
+            $('.on-gen-disable').removeClass('disable-btn');
+            $('.painting_generating_bt').removeClass('disable-btn');
+
+            var generated_image = result['Sucess']['generated_image'][0];
+            var original_image = result['Sucess']['original_image'];
+
+            var design = {
+                original_url: original_image,
+                generated_url: generated_image,
+                section: sec,
+                hd_image: 1,
+            }
+            removeLoaderDivs(1);
+            var itemHtml = generatedInPaintingItem(design);
+
+            var data = document.getElementById(`all_data0_${dataPage}`);
+            data.insertBefore(itemHtml, data.firstChild);
+            // Enable AI category Pill
+            _updateAiCatePillsStatus('enable');
+        })
+        .catch(error => {
+            $('.on-gen-disable').removeClass('disable-btn');
+            $('.painting_generating_bt').removeClass('disable-btn');
+            removeLoaderDivs(1);
+            // $('.full_hd_quality').removeClass('disable-btn');
+            // $('.edit-as-fill-space').removeClass('disable-btn');
+            // $('.precision-ultra-enhancer').removeClass('disable-btn');
+            // deleteButton.disabled = false;
+
+            console.error('Error:', error);
+        });
+        
 });
 
 function closeCustomModal(modal) {
@@ -1499,69 +1479,69 @@ function getInPaintingGeneratedDesigns() {
     });
     return response;
 }
-var cropperActive = true;
-var myDecorCheckbox = document.getElementById('myDecorCheckbox');
-if (myDecorCheckbox) {
-    $("#cropImageModal").on("show.bs.modal", function () {
-        $("#myDecorCheckbox").prop("checked", false);
-        cropperActive = true;
-        $imgCropPreview.cropper('enable');
-    });
-    document.getElementById('myDecorCheckbox').addEventListener('change', function () {
-        if (this.checked) {
-            if (cropperActive) {
-                $imgCropPreview.cropper('clear'); // Clear any existing crop
-                // $imgCropPreview.cropper('disable');
-                $imgCropPreview.cropper({
-                    zoomable: true,
-                });
-                cropperActive = false;
-            }
-        } else {
-            if (!cropperActive) {
-                $imgCropPreview.cropper('enable'); // Enable the cropper tool
-                $imgCropPreview.cropper('crop');  // Show the crop box manually
-                cropperActive = true;
-            }
-        }
-        if (hasTransparentPixels) {
-            $('#zoomInButton').show();
-            $('#zoomOutButton').show();
-        }
-    });
-}
-$('#zoomInButton').on('click', function () {
-    imageCropper.zoom(0.1); // Increase zoom level by 10%
-});
+// var cropperActive = true;
+// var myDecorCheckbox = document.getElementById('myDecorCheckbox');
+// if (myDecorCheckbox) {
+//     $("#cropImageModal").on("show.bs.modal", function () {
+//         $("#myDecorCheckbox").prop("checked", false);
+//         cropperActive = true;
+//         $imgCropPreview.cropper('enable');
+//     });
+//     document.getElementById('myDecorCheckbox').addEventListener('change', function () {
+//         if (this.checked) {
+//             if (cropperActive) {
+//                 $imgCropPreview.cropper('clear'); // Clear any existing crop
+//                 // $imgCropPreview.cropper('disable');
+//                 $imgCropPreview.cropper({
+//                     zoomable: true,
+//                 });
+//                 cropperActive = false;
+//             }
+//         } else {
+//             if (!cropperActive) {
+//                 $imgCropPreview.cropper('enable'); // Enable the cropper tool
+//                 $imgCropPreview.cropper('crop');  // Show the crop box manually
+//                 cropperActive = true;
+//             }
+//         }
+//         if (hasTransparentPixels) {
+//             $('#zoomInButton').show();
+//             $('#zoomOutButton').show();
+//         }
+//     });
+// }
+// $('#zoomInButton').on('click', function () {
+//     imageCropper.zoom(0.1); // Increase zoom level by 10%
+// });
 
-$('#zoomOutButton').on('click', function () {
-    imageCropper.zoom(-0.1); // Decrease zoom level by 10%
-});
+// $('#zoomOutButton').on('click', function () {
+//     imageCropper.zoom(-0.1); // Decrease zoom level by 10%
+// });
 
-$('#flipHorizontalButton').on('click', function () {
-    scaleX = scaleX === 1 ? -1 : 1;
-    imageCropper.scaleX(scaleX);
-});
+// $('#flipHorizontalButton').on('click', function () {
+//     scaleX = scaleX === 1 ? -1 : 1;
+//     imageCropper.scaleX(scaleX);
+// });
 
-$('#flipVerticalButton').on('click', function () {
-    scaleY = scaleY === 1 ? -1 : 1;
-    imageCropper.scaleY(scaleY);
-});
+// $('#flipVerticalButton').on('click', function () {
+//     scaleY = scaleY === 1 ? -1 : 1;
+//     imageCropper.scaleY(scaleY);
+// });
 
-$('#rotateLeftButton').on('click', function () {
-    rotateDeg -= 90;
-    imageCropper.rotateTo(rotateDeg);
-});
+// $('#rotateLeftButton').on('click', function () {
+//     rotateDeg -= 90;
+//     imageCropper.rotateTo(rotateDeg);
+// });
 
-$('#rotateRightButton').on('click', function () {
-    rotateDeg += 90;
-    imageCropper.rotateTo(rotateDeg);
-});
+// $('#rotateRightButton').on('click', function () {
+//     rotateDeg += 90;
+//     imageCropper.rotateTo(rotateDeg);
+// });
 
-$('#rotate180Button').on('click', function () {
-    rotateDeg += 180;
-    imageCropper.rotateTo(rotateDeg);
-});
+// $('#rotate180Button').on('click', function () {
+//     rotateDeg += 180;
+//     imageCropper.rotateTo(rotateDeg);
+// });
 
 function loadImageBase64FromRedesign(b64image) {
 
@@ -1592,8 +1572,8 @@ function addBrushingAction(action) {
     brushingActions.push(action);
     currentActionIndex = cursorBrushActions.length - 1;
     if(currentActionIndex >= 0){
-        $("#ip-clearImage, #ip-undoImage").prop('disabled', false);
-        $("#ip-clearImage, #ip-undoImage").css('cursor', 'pointer');
+        $(".ip-clearImage, .ip-undoImage").prop('disabled', false);
+        $(".ip-clearImage, .ip-undoImage").css('cursor', 'pointer');
     }
 }
 
@@ -1611,14 +1591,14 @@ function undoBrushing() {
             cursorBrushActions.splice(indexToRemove, 1);
         }
 
-        $("#ip-redoImage").prop('disabled', false);
-        $("#ip-redoImage").css('cursor', 'pointer');
+        $(".ip-redoImage").prop('disabled', false);
+        $(".ip-redoImage").css('cursor', 'pointer');
         if (currentActionIndex === -1) {
-            $("#ip-undoImage").prop('disabled', true);
-            $("#ip-undoImage").css('cursor', 'not-allowed');
+            $(".ip-undoImage").prop('disabled', true);
+            $(".ip-undoImage").css('cursor', 'not-allowed');
             if(ids.length == 0){
-                $("#ip-clearImage").prop('disabled', true);
-                $("#ip-clearImage").css('cursor', 'not-allowed');
+                $(".ip-clearImage").prop('disabled', true);
+                $(".ip-clearImage").css('cursor', 'not-allowed');
             }
         }
     }
@@ -1631,15 +1611,15 @@ function redoBrushing() {
         cursorBrushActions.push(actionToRedo);
         brushLayer.add(actionToRedo);
 
-        $("#ip-undoImage").prop('disabled', false);
-        $("#ip-undoImage").css('cursor', 'pointer');
+        $(".ip-undoImage").prop('disabled', false);
+        $(".ip-undoImage").css('cursor', 'pointer');
         if(ids.length == 0){
-            $("#ip-clearImage").prop('disabled', false);
-            $("#ip-clearImage").css('cursor', 'pointer');
+            $(".ip-clearImage").prop('disabled', false);
+            $(".ip-clearImage").css('cursor', 'pointer');
         }
         if (currentActionIndex === cursorBrushTempActions.length - 1) {
-            $("#ip-redoImage").prop('disabled', true);
-            $("#ip-redoImage").css('cursor', 'not-allowed');
+            $(".ip-redoImage").prop('disabled', true);
+            $(".ip-redoImage").css('cursor', 'not-allowed');
         }
     }
 }
@@ -1687,19 +1667,19 @@ async function getMaskImage(el) {
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
     }, 2000)
 
-    $("#ip-clearImage").click();
+    $(".ip-clearImage").click();
 }
 async function getNpyImgFile(img) {
     imageSrcNpy = img;
     var isSubbed = true;
     // var embededImgFile = `${GPU_SERVER_HOST_SEG}/get_masking?is_staging=${isSubbed}&id=${user.uid}&width=${sizes.width}&height=${sizes.height}`;
-    var embededImgFile = `/runpod/getMasking?is_staging=${isSubbed}&width=${sizes.width}&height=${sizes.height}`;
+    var embededImgFile = `runpodWidget/getMasking?is_staging=${isSubbed}&width=${sizes.width}&height=${sizes.height}`;
 
     var formData = new FormData();
 
     formData.append("data", img);
 
-    return await fetch(embededImgFile, {
+    return await fetch(SITE_BASE_URL + embededImgFile, {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
@@ -1744,9 +1724,11 @@ async function getNpyImgFile(img) {
             liElement.append(checkbox).append(labelElement);
             ulElement.append(liElement);
         });
-        $('.chkbox-segment').append(ulElement);
 
-        ulElement.on('click', 'li', function () {
+        appendUL(ulElement);
+
+        $(document).on('click', 'ul li', function () {
+        // ulElement.on('click', 'li', function () {
             var checkbox = $(this).find('input[type="checkbox"]');
             var isChecked = checkbox.prop('checked');
             checkbox.prop('checked', !isChecked);
@@ -1775,26 +1757,33 @@ async function getNpyImgFile(img) {
         alert(error);
     });
 }
+
+function appendUL(ulElement) {
+    let elementID = '';
+    elementID = "chkbox-segment-" + dataPage;
+    $("#"+elementID).append(ulElement);
+}
+
 async function loadImage(ids,segmentationValues) {
     await new Promise(resolve => setTimeout(resolve, 100));
     if (ids) {
         if(ids.length > 0){
             segmentation = true;
-            $('#removeMasking').removeClass('disabled');
-            $('#removeMasking').css('cursor', 'pointer');
-            $("#ip-clearImage").prop('disabled', false);
-            $("#ip-clearImage").css('cursor', 'pointer');
+            $('.removeMasking').removeClass('disabled');
+            $('.removeMasking').css('cursor', 'pointer');
+            $(".ip-clearImage").prop('disabled', false);
+            $(".ip-clearImage").css('cursor', 'pointer');
         }else{
             segmentation = false;
-            $('#removeMasking').addClass('disabled');
-            $('#removeMasking').css('cursor', 'not-allowed');
+            $('.removeMasking').addClass('disabled');
+            $('.removeMasking').css('cursor', 'not-allowed');
             maskingCheckbox.value = true;
-            $('#addMasking').addClass('active');
-            $('#removeMasking').removeClass('active');
+            $('.addMasking').addClass('active');
+            $('.removeMasking').removeClass('active');
             if (currentActionIndex > 0) {
-                $('#ip-clearImage').prop('disabled', false).css('cursor', 'pointer');
+                $('.ip-clearImage').prop('disabled', false).css('cursor', 'pointer');
             } else {
-                $('#ip-clearImage').prop('disabled', true).css('cursor', 'not-allowed');
+                $('.ip-clearImage').prop('disabled', true).css('cursor', 'not-allowed');
             }
         }
         await updateMask(ids,segmentationValues)
@@ -1984,6 +1973,8 @@ function loadImageBase64FromFurnitureRemoval(fillspaceb64image)
 }
 
 function changeCursor(){
+    console.log('cursorCheckbox',cursorCheckbox.value);
+
     if (cursorCheckbox.value === 'true') {
         cursorCircle.style.borderRadius = '0%';
     }
@@ -2094,8 +2085,8 @@ $(document).on('click', '.precision-ultra-enhancer', async function () {
                 formData.append("runpod_name", runpodName);
                 formData.append("public", 0);
                 // aiAPI = `${GPU_SERVER_HOST}/fullhd?init=https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1&id=${resp.data.user_uid}&privateId=${resp.data.privateId}&is_staging=${is_staging}&roomtype=${resp.data.room_type}&design_style=${resp.data.style}&modeType=${mode}`;
-                aiAPI = "/runpod/precision_ehance";
-                await fetch(aiAPI, {
+                aiAPI = "runpod/precision_ehance";
+                await fetch(SITE_BASE_URL + aiAPI, {
                     method: 'POST',
                     mode: 'cors',
                     cache: 'no-cache',
@@ -2167,18 +2158,18 @@ function generatedInPaintingItem(item){
 
     // var previewInputBtn = clone.querySelector('[data-item="preview-btn-input"]');
     var previewOutputBtn = clone.querySelector('[data-item="preview-btn-output"]');
-    // var fullHdBtn = clone.querySelector('[data-item="hd_quality"]');
+    var fullHdBtn = clone.querySelector('[data-item="hd_quality"]');
     // var useAsInputImage = clone.querySelector('[data-item="user_as_input_image"]');
     // var useAsOutputImage = clone.querySelector('[data-item="user_as_output_image"]');
     // var editImage = clone.querySelector('[data-item="edit_image"]');
     // var feedback_btn = clone.querySelector('.feedback_btn');
     // var editAsFillSpace = clone.querySelector('[data-item="edit_as_fill_space"]');
-    // var checkbox = clone.querySelector('.ml_dw_img');    
+    // var checkbox = clone.querySelector('.ml_dw_img');
     var styleSpan = clone.querySelector('.render-overlay-data-box .render-overlay-data:nth-child(1)');
     var roomTypeSpan = clone.querySelector('.render-overlay-data-box .render-overlay-data:nth-child(2)');
     // var modeTypeSpan = clone.querySelector('.render-overlay-data-box .render-overlay-data:nth-child(3)');
     // var precision_enhance = clone.querySelector('.precision-ultra-enhancer');
-    // var hdImageDiv = clone.querySelector('.hd_image_div');
+    var hdImageDiv = clone.querySelector('.hd_image_div');
 
     // var dynamicClass = "favoriteImage" + item.id;
     // var favImg = clone.querySelector('.favcheckimg');
@@ -2199,8 +2190,8 @@ function generatedInPaintingItem(item){
     // useAsInputImage.dataset.sec = item.section;
     // useAsOutputImage.dataset.img = item.generated_url;
     // useAsOutputImage.dataset.sec = item.section;
-    // fullHdBtn.dataset.img = item.generated_url;
-    // fullHdBtn.dataset.sec = item.section;
+    fullHdBtn.dataset.img = item.generated_url;
+    fullHdBtn.dataset.sec = item.section;
 
     // editImage.dataset.inputImg = item.original_url;
     // editImage.dataset.outputImg = item.generated_url;
@@ -2230,13 +2221,13 @@ function generatedInPaintingItem(item){
     } else {
         roomTypeSpan.style.background = 'transparent';
     }
-    // if (item.hd_image == 1) {
-    //     hdImageDiv.style.display = 'flex';
-    //     fullHdBtn.style.display = 'none';
-    // } else {
-    //     hdImageDiv.style.display = 'none';
-    //     // fullHdBtn.style.display = 'block';
-    // }
+    if (item.hd_image == 1) {
+        hdImageDiv.style.display = 'flex';
+        fullHdBtn.style.display = 'none';
+    } else {
+        hdImageDiv.style.display = 'none';
+        // fullHdBtn.style.display = 'block';
+    }
 
     return clone;
 }
@@ -2247,6 +2238,7 @@ $("body").on('click', '.close-decor-stag', async function () {
 
 var mainImage,textureImage = '';
 async function loadImageCropperForStyleTransfer() {
+    console.log('loadImageCropperForStyleTransfer: ');
     $('#uploading_instruction').modal('hide');
     hasTransparentPixels = false;
     const [file] = fileInput2.files;
@@ -2286,15 +2278,13 @@ function clearSecPaintingStag() {
 }
 
 async function _generateStyleTransferDesign(sec,el){
-    page = 1;
-    // getInPaintingGeneratedDesigns();
-    // reapplyCheckboxStates();
     const generateDesignBtn = el;
     const spinner = generateDesignBtn.querySelector('span#submit');
     const tabs = document.querySelectorAll('.gs-option-flex a');
     const previousPageButton = document.querySelector('.previous_page');
     const editButton = document.querySelectorAll('.edit-button-div');
     const progressBarTabs = document.querySelectorAll('.progress-bar-tab');
+    var widgetuserid = document.getElementById('widgetUserID').value;
 
     disableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
     $('.on-gen-disable').addClass('disable-btn');
@@ -2303,8 +2293,6 @@ async function _generateStyleTransferDesign(sec,el){
     // $('.precision-ultra-enhancer').addClass('disable-btn');
     // projectButton.disabled = true;
     // deleteButton.disabled = true;
-
-    $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     var checkboxMaskingLabelString = checkboxMaskingLabel.join('|');
     var mode = modeValue.value;
@@ -2380,6 +2368,13 @@ async function _generateStyleTransferDesign(sec,el){
         generationDivLoader(noOfDesign,croppedImage);
     }
 
+    $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
+
+    var divElement = document.getElementById(`all_data0_${dataPage}`);
+    divElement.firstElementChild.scrollIntoView();
+
     var formData = new FormData();
     formData.append("no_of_Design", noOfDesign);
     formData.append("segmentType", segmentType);
@@ -2388,23 +2383,24 @@ async function _generateStyleTransferDesign(sec,el){
     formData.append("texture_image", texture_base64);
     formData.append("modeType", mode);
     formData.append("designtype", sec);
+    formData.append("widgetuserid",widgetuserid);
 
     var inPaintUrl = '';
     if(dataPage == 'color_swap'){
         formData.append("objects", checkboxMaskingLabelString);
         formData.append("rgb_color", rgb_color);
-        inPaintUrl = "/runpodWidget/paint-visualizer"
+        inPaintUrl = "runpodWidget/paint-visualizer"
     }else if(dataPage == 'style_transfer'){
         formData.append("no_of_texture", no_of_texture);
-        inPaintUrl = "/runpod/style_transfer";
+        inPaintUrl = "runpod/style_transfer";
     }else if(dataPage == 'design_transfer'){
-        inPaintUrl = "/runpod/design_transfer";
+        inPaintUrl = "runpod/design_transfer";
     }else if(dataPage == 'floor_editor'){
         formData.append("no_of_texture", no_of_texture);
-        inPaintUrl = "/runpod/floor_editor";
+        inPaintUrl = "runpod/floor_editor";
     }
 
-    return await fetch(inPaintUrl, {
+    return await fetch(SITE_BASE_URL + inPaintUrl, {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
@@ -2417,6 +2413,19 @@ async function _generateStyleTransferDesign(sec,el){
         },
         body: formData,
     }).then(response => {
+        if (response.status == 401) {
+            return response.json().then(userAccess => {
+                $('#errorModal h4').text(userAccess.error);
+                $('#errorModal').modal('show');
+                $(el).attr('disabled', false);
+                $('.gs-continue-btn').removeClass('disable-btn');
+                removeLoaderDivs(noOfDesign);
+                enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+                $('.on-gen-disable').removeClass('disable-btn');
+                return;
+                return;
+            });
+        }
         if (response.status === 200) {
             return response.text();
         }
@@ -3666,7 +3675,7 @@ async function generateRoomComposer(sec,el){
     generationDivLoader(noOfDesign,croppedImage);
 
     var formData = new FormData();
-    var aiAPI = "/runpod/college_to_render";
+    var aiAPI = "runpod/college_to_render";
     formData.append("data", mergedImages.toDataURL());
     // formData.append("dataImages", JSON.stringify(imageCoordinates));
     formData.append("masked_image", mergedMaskedImages.toDataURL());
@@ -3693,7 +3702,7 @@ async function generateRoomComposer(sec,el){
     formData.append("custom_instruction", '');
     formData.append("no_of_Design", noOfDesign);
     formData.append("public", 0);
-    await fetch(aiAPI, {
+    await fetch(SITE_BASE_URL + aiAPI, {
         method: 'POST',
         mode: 'cors',
         cache: 'no-cache',
@@ -3832,76 +3841,136 @@ function generateUniqueId(prefix = 'image_id') {
     return `${prefix}_${timestamp}_${randomNum}`;
 }
 
-function removeBackgroundForDecorImage(img){
-    $('#loading_brilliance').modal('show');
-    $.ajax({
-        type: 'POST',
-        url: '/RemoveBackgroundImageRoomBlend',
-        data: {
-            data: img
-        },
-        success: function(response) {
-            $('#loading_brilliance').modal('hide');
-            hasTransparentPixels = true;
-            // Destroy the existing cropper instance
-            $imgCropPreview.cropper('destroy');
+// function removeBackgroundForDecorImage(img){
+//     $('#loading_brilliance').modal('show');
+//     $.ajax({
+//         type: 'POST',
+//         url: '/RemoveBackgroundImageRoomBlend',
+//         data: {
+//             data: img
+//         },
+//         success: function(response) {
+//             $('#loading_brilliance').modal('hide');
+//             hasTransparentPixels = true;
+//             // Destroy the existing cropper instance
+//             $imgCropPreview.cropper('destroy');
 
-            // Initialize a new cropper with updated options
-            $imgCropPreview.cropper({
-                aspectRatio: NaN, //1 / 1,
-                dragMode: 'none',
-                zoomable: hasTransparentPixels,
-                minCropBoxWidth: 1024,
-                minCropBoxHeight: 512,
-                maxCropBoxWidth: 1024,
-                maxCropBoxHeight: 512,
-            });
+//             // Initialize a new cropper with updated options
+//             $imgCropPreview.cropper({
+//                 aspectRatio: NaN, //1 / 1,
+//                 dragMode: 'none',
+//                 zoomable: hasTransparentPixels,
+//                 minCropBoxWidth: 1024,
+//                 minCropBoxHeight: 512,
+//                 maxCropBoxWidth: 1024,
+//                 maxCropBoxHeight: 512,
+//             });
 
-            // Get the new cropper instance
-            imageCropper = $imgCropPreview.data('cropper');
+//             // Get the new cropper instance
+//             imageCropper = $imgCropPreview.data('cropper');
 
-            // Set zoomable option after initialization
-            $imgCropPreview.cropper('setZoomable', hasTransparentPixels);
+//             // Set zoomable option after initialization
+//             $imgCropPreview.cropper('setZoomable', hasTransparentPixels);
 
-            // Replace the image and show modal
-            imageCropper.replace(response.data);
-            $("#cropImageModal").modal('show');
-            $('.upload_btns_part').show();
-            $('#zoomInOutLabel').show();
-            $('#zoomInButton').show();
-            $('#zoomOutButton').show();
-        },
-        error: function(error) {
-            console.error('AJAX request failed', error);
-        }
-    });
-}
+//             // Replace the image and show modal
+//             imageCropper.replace(response.data);
+//             $("#cropImageModal").modal('show');
+//             $('.upload_btns_part').show();
+//             $('#zoomInOutLabel').show();
+//             $('#zoomInButton').show();
+//             $('#zoomOutButton').show();
+//         },
+//         error: function(error) {
+//             console.error('AJAX request failed', error);
+//         }
+//     });
+// }
 
 //default masking animation
 
-function showCircleLoaderForDuration(duration) {
-    showCircleLoader();
+    function showCircleLoaderForDuration(duration) {
+        console.log('duration',duration);
 
-    setTimeout(() => {
-        removeCircleLoader();
-    }, duration);
-}
+        showCircleLoader();
 
-function showSquareLoaderForDuration(duration) {
-    showSquareLoader();
+        setTimeout(() => {
+            removeCircleLoader();
+        }, duration);
+    }
 
-    setTimeout(() => {
-        removeSquareLoader();
-    }, duration);
-}
+    function showSquareLoaderForDuration(duration) {
+        console.log('duration',duration);
 
-function showCircleLoader() {
-    const circleLoaderHTML = `
-        <div class="circle-loader">
+        showSquareLoader();
+
+        setTimeout(() => {
+            removeSquareLoader();
+        }, duration);
+    }
+
+    function showCircleLoader() {
+        const circleLoaderHTML = `
+            <div class="circle-loader">
+                <span></span>
+            </div>
+            <style id="circle-loader-style">
+                .circle-loader {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 65%;
+                    right: 0;
+                    transform: translate(-60%, -60%);
+                    top: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    pointer-events: none;
+                }
+                .circle-loader span {
+                    border-radius: 100%;
+                    display: inline-block;
+                    position: relative;
+                    border: 1px solid black;
+                    animation: spin 3s infinite linear;
+                    transform-origin: 50% 125px;
+                    margin: 0 auto 0;
+                    width: 100px;
+                    height: 100px;
+                    top: -10%;
+                }
+                @media only screen and (max-width: 600px) {
+                .circle-loader span {
+
+                    width: 40px;
+                    height: 40px;
+                }
+                }
+                @keyframes spin {
+                    to {
+                        transform: rotate(1turn);
+                    }
+                }
+            </style>
+        `;
+
+        const container = document.querySelector('.image-mask-'+ dataPage) ;
+        // var inPaintStageContainer = document.querySelector('#inpainting-stag-outer-'+dataPage);
+
+        const konvajsContent = container.querySelector('.konvajs-content');
+        if (konvajsContent) {
+            konvajsContent.insertAdjacentHTML('beforeend', circleLoaderHTML);
+        }
+    }
+
+    function showSquareLoader() {
+        const squareLoaderHTML = `
+        <div class="square-loader">
             <span></span>
         </div>
-        <style id="circle-loader-style">
-            .circle-loader {
+
+        <style>
+            .square-loader {
                 position: absolute;
                 width: 100%;
                 height: 100%;
@@ -3914,133 +3983,81 @@ function showCircleLoader() {
                 align-items: center;
                 pointer-events: none;
             }
-            .circle-loader span {
-                border-radius: 100%;
+
+            .square-loader span {
                 display: inline-block;
                 position: relative;
                 border: 1px solid black;
                 animation: spin 3s infinite linear;
-                transform-origin: 50% 125px;
                 margin: 0 auto 0;
-                width: 100px;
-                height: 100px;
-                top: -10%;
+                animation: moveInSquare 3s linear infinite;
+                margin: 0 auto 0;
+                width: 80px;
+                height: 80px;
             }
-               @media only screen and (max-width: 600px) {
-            .circle-loader span {
+
+            @media only screen and (max-width: 600px) {
+            .square-loader span {
 
                 width: 40px;
                 height: 40px;
             }
             }
-            @keyframes spin {
-                to {
-                    transform: rotate(1turn);
+
+            @keyframes moveInSquare {
+                0% {
+                    top: 0;
+                    left: 0;
+                }
+
+                25% {
+                    top: 0;
+                    left: 80px;
+                }
+
+                50% {
+                    top: 80px;
+                    left: 80px;
+                }
+
+                75% {
+                    top: 80px;
+                    left: 0;
+                }
+
+                100% {
+                    top: 0;
+                    left: 0;
                 }
             }
         </style>
-    `;
+            `;
 
-    const konvajsContent = document.querySelector('.konvajs-content');
-    if (konvajsContent) {
-        konvajsContent.insertAdjacentHTML('beforeend', circleLoaderHTML);
-    }
-}
-
-function showSquareLoader() {
-    const squareLoaderHTML = `
-       <div class="square-loader">
-        <span></span>
-    </div>
-
-    <style>
-        .square-loader {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            left: 65%;
-            right: 0;
-            transform: translate(-60%, -60%);
-            top: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            pointer-events: none;
+        const container = document.querySelector('.image-mask-'+ dataPage) ;
+        const konvajsContent = container.querySelector('.konvajs-content');
+        if (konvajsContent) {
+            konvajsContent.insertAdjacentHTML('beforeend', squareLoaderHTML);
         }
+    }
 
-        .square-loader span {
-            display: inline-block;
-            position: relative;
-            border: 1px solid black;
-            animation: spin 3s infinite linear;
-            margin: 0 auto 0;
-            animation: moveInSquare 3s linear infinite;
-            margin: 0 auto 0;
-            width: 80px;
-            height: 80px;
+    function removeCircleLoader() {
+        const circleLoader = document.querySelector('.circle-loader');
+        const circleLoaderStyle = document.getElementById('circle-loader-style');
+        if (circleLoader) {
+            circleLoader.remove();
         }
-
-        @media only screen and (max-width: 600px) {
-        .square-loader span {
-
-            width: 40px;
-            height: 40px;
+        if (circleLoaderStyle) {
+            circleLoaderStyle.remove();
         }
+    }
+
+    function removeSquareLoader() {
+        const squareLoader = document.querySelector('.square-loader');
+        const squareLoaderStyle = document.getElementById('square-loader-style');
+        if (squareLoader) {
+            squareLoader.remove();
         }
-
-        @keyframes moveInSquare {
-            0% {
-                top: 0;
-                left: 0;
-            }
-
-            25% {
-                top: 0;
-                left: 80px;
-            }
-
-            50% {
-                top: 80px;
-                left: 80px;
-            }
-
-            75% {
-                top: 80px;
-                left: 0;
-            }
-
-            100% {
-                top: 0;
-                left: 0;
-            }
+        if (squareLoaderStyle) {
+            squareLoaderStyle.remove();
         }
-    </style>
-        `;
-
-    const konvajsContent = document.querySelector('.konvajs-content');
-    if (konvajsContent) {
-        konvajsContent.insertAdjacentHTML('beforeend', squareLoaderHTML);
     }
-}
-
-function removeCircleLoader() {
-    const circleLoader = document.querySelector('.circle-loader');
-    const circleLoaderStyle = document.getElementById('circle-loader-style');
-    if (circleLoader) {
-        circleLoader.remove();
-    }
-    if (circleLoaderStyle) {
-        circleLoaderStyle.remove();
-    }
-}
-
-function removeSquareLoader() {
-    const squareLoader = document.querySelector('.square-loader');
-    const squareLoaderStyle = document.getElementById('square-loader-style');
-    if (squareLoader) {
-        squareLoader.remove();
-    }
-    if (squareLoaderStyle) {
-        squareLoaderStyle.remove();
-    }
-}
