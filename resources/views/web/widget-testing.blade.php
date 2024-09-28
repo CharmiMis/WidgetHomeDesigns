@@ -99,7 +99,7 @@
         designNowBtn.addEventListener('click', function () {
             designModal.style.display = 'flex'; // Show modal
             //embedContainer.innerHTML = ''; // Clear previous content
-            loadExternalScript('http://127.0.0.1:8000/embed.js?id=214', function () {
+            loadExternalScript('https://widget.homedesigns.ai/embed.js?id=214', function () {
                 console.log('Script loaded and UI rendered inside the modal.');
             });
         });
