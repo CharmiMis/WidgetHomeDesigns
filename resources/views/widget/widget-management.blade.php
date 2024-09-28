@@ -117,12 +117,14 @@
 @endsection
 
 @section('content')
+
     <?php
     $userActivePlan = '';
     $crossShellPlan = [];
     $precisionUser = false;
     $default_gallery = 'private';
     ?>
+    @dd($widgetData);
     <input type="hidden" id="precisionUser" value="{{ $precisionUser ? 'true' : 'false' }}">
     <input type="hidden" id="modeValueForPage" value="0" />
     <input type="hidden" id="widgetUserID" value="{{ $widgetData->user_id }}" />
@@ -142,9 +144,9 @@
                         </li>
                     @endforeach
                 </ul>
-                {{-- <div class="custom-logo">
+                <div class="custom-logo">
                     <img src="{{ asset('storage/' . $widgetData->logo) }}" alt="Custom Logo" />
-                </div> --}}
+                </div>
                 @foreach (json_decode($widgetData->accessible_features) as $feature)
                     <div id="{{ $feature }}">
                         @include('widget.widget-' . $feature)
