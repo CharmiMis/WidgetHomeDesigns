@@ -24,6 +24,7 @@ Route::get('/widget/{feature}', [WidgetController::class, 'showFeature'])->name(
 
 Route::get('/widgetData/{id}', [WidgetController::class, 'showWidgetData']);
 Route::get('/widget', [WidgetController::class, 'showWidget'])->name('widget.show');
+Route::post('getFullHd', [HomeController::class, 'getFullHDData'])->name('getHdImages');
 
 Route::post('decorCount', [HomeController::class, 'decorCount'])->name('decor.clickCount');
 
