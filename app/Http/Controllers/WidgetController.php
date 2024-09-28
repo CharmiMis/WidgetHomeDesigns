@@ -217,8 +217,8 @@ class WidgetController extends Controller
             //     $widgetHtml = 'Please verify your domain';
             //     return response($widgetHtml, 200)->header('Content-Type', 'text/html');
             // }
-            $widgetHtml = view('widget.widget-management', ['widgetData' => $widgetData, 'widgetThemeMode' => $userTheme->light_mode])->render();
             dd($userTheme,$currentDomain);
+            $widgetHtml = view('widget.widget-management', ['widgetData' => $widgetData, 'widgetThemeMode' => $userTheme->light_mode])->render();
         return response($widgetHtml, 200)->header('Content-Type', 'text/html')
                 ->header('X-User-Theme', $userTheme->light_mode);;
         // Render the Blade view to a string
