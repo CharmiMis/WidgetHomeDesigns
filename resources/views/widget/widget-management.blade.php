@@ -124,7 +124,6 @@
     $precisionUser = false;
     $default_gallery = 'private';
     ?>
-    @dd($widgetData->accessible_features);
     <input type="hidden" id="precisionUser" value="{{ $precisionUser ? 'true' : 'false' }}">
     <input type="hidden" id="modeValueForPage" value="0" />
     <input type="hidden" id="widgetUserID" value="{{ $widgetData->user_id }}" />
@@ -152,25 +151,6 @@
                         @include('widget.widget-' . $feature)
                     </div>
                 @endforeach
-                {{-- <ul class="feature-buttons">
-                    @foreach (json_decode($widgetData->accessible_features) as $feature)
-                        <li>
-                            <button id="feature-{{ $feature }}" class="feature-button @if ($loop->first) active @endif"
-                                data-feature="{{ $feature }}"
-                                data-feature-url="{{ route('widget.showFeature', ['feature' => $feature]) }}">
-                                {{ ucwords(str_replace('_', ' ', $feature)) }}
-                            </button>
-                        </li>
-                    @endforeach
-                </ul>
-                <div class="feature-contents">
-                    <div class="custom-logo">
-                        <img src="{{ asset('storage/' . $widgetData->logo) }}" alt="Custom Logo" />
-                    </div>
-                    <div id="" class="feature-content"></div>
-                    <!-- Content will be loaded here -->
-                </div> --}}
-
             </div>
             <template id="redesignCard">
                 <div class="col-md-6 col-lg-4 col-12">

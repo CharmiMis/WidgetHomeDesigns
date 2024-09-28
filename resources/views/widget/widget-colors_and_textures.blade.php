@@ -382,7 +382,7 @@
                                             <div class="gs-our-preset-color" data-sec="1">
                                                 <input type="hidden" id="color_texture1" name="color_texture1">
                                                 <p>Changing the color? Select one</p>
-                                                @include('web2.designs_options.colors_texture')
+                                                @include('widget.designs_options.colors_texture')
                                             </div>
                                             <div class="gs-our-preset-interior materials-textures-cat  materials-textures-cat-ext"
                                                 style="display: none;">
@@ -503,7 +503,7 @@
                                             <div class="gs-our-preset-color" data-sec="2">
                                                 <input type="hidden" id="color_texture2" name="color_texture2">
                                                 <p>Changing the color? Select one</p>
-                                                @include('web2.designs_options.colors_texture')
+                                                @include('widget.designs_options.colors_texture')
                                             </div>
                                             <div class="gs-our-preset-interior materials-textures-cat  materials-textures-cat-gar"
                                                 style="display: none;">

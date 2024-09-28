@@ -19111,9 +19111,11 @@ console.log('currentDomain: ', currentDomain);
 	const widgetUrl = `${apiUrl}widgetData/${uuid}?currentDomain=${currentDomain}`;
 
     const response = await fetch(widgetUrl);
+	console.log('response: ', response);
 
     if (response.ok) {
       const widgetData = await response.text(); // Get the HTML content
+	  console.log('widgetData: ', widgetData);
 	  const containerDiv = document.createElement("div");
 	  containerDiv.id = 'widgetCustomContainerDiv';
 
