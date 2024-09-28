@@ -42,7 +42,7 @@
     </script> --}}
 
     <!-- Meta for the page start -->
-    @include('web.layout.meta_head')
+    @include('web.meta_head')
 
     {{-- <!-- begin Convert Experiences code-->
     <script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10042884-10043877.js"></script>
