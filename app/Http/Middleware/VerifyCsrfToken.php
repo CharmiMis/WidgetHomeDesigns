@@ -12,6 +12,15 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+        '/widgetData/*',
+        '/widget/*',
+        'runpodWidget/*',
+        '/runpodWidget/beautiful_redesign/*',
+        'webWidget/**',
+        '/runpod/*',
+        '/runpod/getMasking/*',
+        'runpodWidget/getMasking/*',
+        '/get-base64',
+        '/runpodWidget/fullHD'
     ];
 }
