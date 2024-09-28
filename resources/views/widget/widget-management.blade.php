@@ -124,7 +124,7 @@
     $precisionUser = false;
     $default_gallery = 'private';
     ?>
-    @dd($widgetData);
+    @dd($widgetData->accessible_features);
     <input type="hidden" id="precisionUser" value="{{ $precisionUser ? 'true' : 'false' }}">
     <input type="hidden" id="modeValueForPage" value="0" />
     <input type="hidden" id="widgetUserID" value="{{ $widgetData->user_id }}" />
