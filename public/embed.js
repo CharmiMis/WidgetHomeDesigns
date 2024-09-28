@@ -19109,6 +19109,7 @@ console.log('currentDomain: ', currentDomain);
 
   async function init(currentScript) {
 	const widgetUrl = `${apiUrl}widgetData/${uuid}?currentDomain=${currentDomain}`;
+	console.log('widgetUrl: ', widgetUrl);
 
     const response = await fetch(widgetUrl);
 	console.log('response: ', response);
