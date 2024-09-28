@@ -207,19 +207,18 @@ class WidgetController extends Controller
     public function showWidgetData($id,Request $request)
     {
         $widgetData = WidgetUserData::where('user_id', $id)->firstOrFail();
-        dd($widgetData);
         $userTheme = User::where('id',$id)->select('light_mode')->first();
         $currentDomain = $request->query('currentDomain'); // Get the currentDomain from the query parameters
-
+        
         if (!$widgetData) {
             abort(404, 'Widgetd not found');
         }
         // if($widgetData && $currentDomain != $widgetData->domain_name){
-        //     $widgetHtml = 'Please verify your domain';
-        //     return response($widgetHtml, 200)->header('Content-Type', 'text/html');
-        // }
-        $widgetHtml = view('widget.widget-management', ['widgetData' => $widgetData, 'widgetThemeMode' => $userTheme->light_mode])->render();
-
+            //     $widgetHtml = 'Please verify your domain';
+            //     return response($widgetHtml, 200)->header('Content-Type', 'text/html');
+            // }
+            $widgetHtml = view('widget.widget-management', ['widgetData' => $widgetData, 'widgetThemeMode' => $userTheme->light_mode])->render();
+            dd($userTheme,$currentDomain,$widgetHtml);
         return response($widgetHtml, 200)->header('Content-Type', 'text/html')
                 ->header('X-User-Theme', $userTheme->light_mode);;
         // Render the Blade view to a string
