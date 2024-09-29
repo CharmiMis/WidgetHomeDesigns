@@ -15,7 +15,7 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
 
 ( function( factory ) {
 	"use strict";
-	
+
 	if ( typeof define === "function" && define.amd ) {
 
 		// AMD. Register as an anonymous module.
@@ -19096,12 +19096,10 @@ var fabric=fabric||{version:"4.5.0"};if("undefined"!=typeof exports?exports.fabr
 
 const apiUrl = "https://widget.homedesigns.ai/";
 (function () {
-//   const apiUrl = "https://stage.homedesigns.ai/";
+//   window.__cfRLUnblockHandlers = true;
+//   const apiUrl = "http://127.0.0.1:8000/";
 
-// Get the current domain where the script is loaded
-const currentDomain = window.location.hostname;
-console.log('currentDomain: ', currentDomain);
-
+  const currentDomain = window.location.hostname;
   var currentScript = document.currentScript;
 
   const url = new URL(currentScript.src);
@@ -19109,19 +19107,15 @@ console.log('currentDomain: ', currentDomain);
 
   async function init(currentScript) {
 	const widgetUrl = `${apiUrl}widgetData/${uuid}?currentDomain=${currentDomain}`;
-	console.log('widgetUrl: ', widgetUrl);
 
     const response = await fetch(widgetUrl);
-	console.log('response: ', response);
 
     if (response.ok) {
       const widgetData = await response.text(); // Get the HTML content
-	  console.log('widgetData: ', widgetData);
-	  const containerDiv = document.createElement("div");
+      const containerDiv = document.createElement("div");
 	  containerDiv.id = 'widgetCustomContainerDiv';
 
-	  
-	  const containerDivP = document.createElement("div");
+      const containerDivP = document.createElement("div");
 	  containerDivP.id = 'widgetCustomContainerDivParent';
 
 	  currentScript.parentNode.insertBefore(containerDivP, currentScript.nextSibling);
@@ -19142,7 +19136,7 @@ console.log('currentDomain: ', currentDomain);
 
 
       // Create a container div
-      
+
       containerDiv.classList.add("custom-widget-container");
 
       // Insert the fetched HTML content
@@ -19178,6 +19172,7 @@ console.log('currentDomain: ', currentDomain);
           let newScript = document.createElement('script');
           newScript.src = j.src;
 		  newScript.id = j.id;
+		  newScript.setAttribute('data-cfasync', 'false');
           document.body.appendChild(newScript);
         }
       });
@@ -19195,13 +19190,32 @@ console.log('currentDomain: ', currentDomain);
 
 	  // Find all script tags within the div
 	  var scripts = myDiv.getElementsByTagName('script');
-  
+
 	  // Convert HTMLCollection to Array to remove all scripts
 	  Array.from(scripts).forEach(function(script) {
 		  script.parentNode.removeChild(script);
 	  });
 
-      
+
+    //   const userTheme = response.headers.get('X-User-Theme');
+      const userTheme = document.getElementById('widgetThemeMode').value;
+      console.log("userTheme",typeof(userTheme));
+      console.log(userTheme);
+
+       // Get all body elements (should ideally be only one)
+       const bodyElements = document.getElementsByTagName('body');
+       console.log("bodyElements",bodyElements.length);
+
+       if (bodyElements.length > 0 && userTheme === '1') {
+           // Assuming you want to target the first body element
+           bodyElements[0].classList.add('light-theme');
+           containerDiv.classList.add('light-theme');
+       }else if( userTheme === '1') {
+       console.log("userTheme",typeof(userTheme));
+       document.body.classList.add('light-theme');
+       containerDiv.classList.add('light-theme');
+     }
+
         // .map(link => "<link rel='stylesheet' type='text/css' href='" + link.href + "'>")
         // .join("\n");
     } else {
@@ -19219,51 +19233,155 @@ console.log('currentDomain: ', currentDomain);
   // } else {
   //   window.addEventListener("load", init);
   // }
-})();  
+})();
 
 function showLoader() {
-  // Create loader container
-  var loader = document.createElement('div');
-  loader.id = 'customLoader';
-  loader.innerHTML = '<div class="spinner"></div>';
+    // Check if the loader already exists to prevent multiple loaders
+    if (document.getElementById('customLoaderModal')) return;
 
-  // Internal CSS for the loader
-  var style = document.createElement('style');
-  style.innerHTML = `
-      #customLoader {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(255, 255, 255, 1);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 9999;
-      }
-      .spinner {
-          border: 8px solid #f3f3f3;
-          border-top: 8px solid #3498db;
-          border-radius: 50%;
-          width: 50px;
-          height: 50px;
-          animation: spin 1s linear infinite;
-      }
-      @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-      }
-  `;
+    // Create the modal container
+    var loaderModal = document.createElement('div');
+    loaderModal.id = 'customLoaderModal';
+    loaderModal.innerHTML = `
+        <div class="modal-card">
+            <img src="https://homedesigns-ai.b-cdn.net/web2/images/light-mode/NewHomeDesignsAILogo 1.png" alt="Logo" class="modal-logo">
+            <p class="loading-text">Loading...</p>
+            <div class="loading-animation">
+                <div class="spinner"></div>
+                <p>Generating the rendering</p>
+            </div>
+            <p class="powered-by-text">Powered by <span>homedesigns.ai</span></p>
+        </div>
+    `;
 
-  // Append style and loader to the document
-  document.head.appendChild(style);
-  document.getElementById('widgetCustomContainerDivParent').appendChild(loader);
+    // Internal CSS for the modal
+    var style = document.createElement('style');
+    style.innerHTML = `
+        #customLoaderModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            backdrop-filter: blur(8px);
+        }
+
+        #customLoaderModal .modal-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
+            width: 600px;
+        }
+
+        #customLoaderModal .modal-logo {
+            width: 180px;
+            margin-bottom: 20px;
+        }
+
+        #customLoaderModal .loading-text {
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        #customLoaderModal .loading-animation {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        #customLoaderModal .animation-image {
+            width: 100px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        #customLoaderModal .powered-by-text {
+            font-size: 12px;
+            color: #777;
+        }
+
+        #customLoaderModal .powered-by-text span {
+            font-weight: bold;
+            color: #7558ea;
+        }
+
+        #customLoaderModal p{
+            margin-bottom: 0;
+        }
+
+        #customLoaderModal .loading-animation .spinner {
+            -webkit-animation: rotate 1s infinite linear;
+            animation: rotate 1s infinite linear;
+            box-shadow: 0 0 5px #191919 inset;
+            position: relative;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto auto 20px auto;
+            border-radius: 50%;
+            background: #202020;
+            background-size: 100%;
+            // background-image: linear-gradient(25deg, #9900ff 10%, rgba(0, 0, 0, 0) 60%), linear-gradient(50deg, #0099ff 10%, rgba(0, 0, 0, 0) 60%), linear-gradient(75deg, #00ffff 55%, rgba(0, 0, 0, 0) 60%);
+            background-image: linear-gradient(90deg, #C243FE, #5B099B, #421CD8);
+            width: 60px;
+            height: 60px;
+        }
+
+        .spinner:after {
+            border-radius: 50%;
+            box-shadow: 0 0 5px #191919;
+            content: "";
+            display: block;
+            position: relative;
+            margin: 10px auto;
+            width: 40px;
+            height: 40px;
+            background: #fff;
+        }
+
+        @media screen and (max-width:767px) {
+            #customLoaderModal .modal-card{
+                width: 300px;
+            }
+        }
+
+        @-webkit-keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    `;
+
+    // Append the style and loader to the document body
+    document.head.appendChild(style);
+    document.body.appendChild(loaderModal);
 }
 
+// Function to hide the loader modal
 function hideLoader() {
-  var loader = document.getElementById('customLoader');
-  if (loader) {
-      loader.remove();  // Remove loader from DOM
-  }
+    var loaderModal = document.getElementById('customLoaderModal');
+    if (loaderModal) {
+        loaderModal.remove();
+    }
 }

@@ -221,7 +221,7 @@
                                     <div class="gs-our-preset-color" data-sec="0">
                                         <input type="hidden" id="color_texture_color_swap" name="color_texture0">
                                         <p>Select a paint color from the list:</p>
-                                        @include('widget.designs_options.paint-visualizer')
+                                        @include('web2.designs_options.paint-visualizer')
                                     </div>
                                 </div>
                             </div>

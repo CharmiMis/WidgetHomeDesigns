@@ -4,7 +4,7 @@
     {{-- <div class="modal-dialog gs-modal-container">
         <div class="modal-content gs-modal-content">
             <button type="button" class="gs-modal-close" data-dismiss="modal">
-                <img src="{{ asset('web2/images/gs-close-icon.svg') }}">
+                <img src="{{ asset('webWidget/images/gs-close-icon.svg') }}">
             </button>
             {{-- <div class="gs-image-editing-slide-outer">
                 <div class="gs-image-editing-slide">
@@ -22,7 +22,7 @@
             <div class="modal-dialog  gs-image-editing-container">
                 <div class="modal-content gs-image-editing-content">
                     <button type="button" class="gs-modal-close" data-dismiss="modal">
-                        <img src="{{ asset('web2/images/gs-close-icon.svg') }}">
+                        <img src="{{ asset('webWidget/images/gs-close-icon.svg') }}">
                     </button>
                     <div class="gs-image-editing-slide-outer">
                         <div class="gs-image-editing-slide">
@@ -40,9 +40,9 @@
                         </div>
                         {{-- <div class="btn-wrap">
                             <button class="prev-btn"><span><img
-                                        src="{{ asset('web2/images/gs-slide-arrow.svg') }}"></span>Prev</button>
+                                        src="{{ asset('webWidget/images/gs-slide-arrow.svg') }}"></span>Prev</button>
                             <button class="next-btn"><span><img
-                                        src="{{ asset('web2/images/gs-slide-arrow.svg') }}"></span>Next</button>
+                                        src="{{ asset('webWidget/images/gs-slide-arrow.svg') }}"></span>Next</button>
                         </div> --}}
                     </div>
                 </div>

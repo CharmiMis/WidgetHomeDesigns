@@ -1141,6 +1141,7 @@ async function _generateDesign(sec, el) {
             return response.json();
         })
         .then(result => {
+            console.log('result: ', result);
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
             $('.gs-continue-btn').removeClass('disable-btn');
             $('.on-gen-disable').removeClass('disable-btn');
@@ -1152,6 +1153,7 @@ async function _generateDesign(sec, el) {
             }
             $('.ai-upload-latest-top').removeAttr('style');
             generatedImage = result['Sucess']['generated_image'];
+            console.log('generatedImage: ', generatedImage);
             originalImage = result['Sucess']['original_image'];
 
             let storedDesigns = JSON.parse(localStorage.getItem('designs')) || [];
@@ -2023,12 +2025,12 @@ async function addRemovefavorite(id) {
             if (response != null) {
                 if (response.is_favorite) {
                     for (let i = 0; i < imageElement.length; i++) {
-                        imageElement[i].src = '/web2/images/ai-upload-favourite-checked-1.svg';
+                        imageElement[i].src = '/webWidget/images/ai-upload-favourite-checked-1.svg';
                     }
                 }
                 else {
                     for (let i = 0; i < imageElement.length; i++) {
-                        imageElement[i].src = '/web2/images/ai-upload-favourite-checked.svg';
+                        imageElement[i].src = '/webWidget/images/ai-upload-favourite-checked.svg';
                     }
                     // if(hideImageElemnt){
                     //     $(hideImageElemnt).hide();
@@ -3130,9 +3132,9 @@ $(".add_all_images_as_favourite").click(function () {
                     const imageElements = document.getElementsByClassName(`favoriteImage${item.id}`);
                     for (let i = 0; i < imageElements.length; i++) {
                         if (item.is_favorite) {
-                            imageElements[i].src = '/web2/images/ai-upload-favourite-checked-1.svg';
+                            imageElements[i].src = '/webWidget/images/ai-upload-favourite-checked-1.svg';
                         } else {
-                            imageElements[i].src = '/web2/images/ai-upload-favourite-checked.svg';
+                            imageElements[i].src = '/webWidget/images/ai-upload-favourite-checked.svg';
                         }
                     }
                 });

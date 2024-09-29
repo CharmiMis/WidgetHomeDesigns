@@ -230,7 +230,7 @@
                                             <span class="ai-upload-option-tooltip"> Download </span>
                                             <a class="download" href="javascript:void(0)" data-download-url=""
                                                 title="Download" download data-item="download-output-btn">
-                                                <img src="{{ asset('web2/images/ai-upload-optons-icon1.svg') }}">
+                                                <img src="{{ asset('webWidget/images/ai-upload-optons-icon1.svg') }}">
                                             </a>
                                         </li>
                                         <li class="ai-upload-add-project-list">
@@ -238,14 +238,14 @@
                                             <a class="ip_img_preview inpainting-preview" href="javascript:void(0)"
                                                 data-img="" data-item="preview-btn-output" title="Open"
                                                 onclick="previewImage()">
-                                                <img src="{{ asset('web2/images/ai-upload-optons-icon2.svg') }}">
+                                                <img src="{{ asset('webWidget/images/ai-upload-optons-icon2.svg') }}">
                                             </a>
                                         </li>
                                         <li class="ai-upload-add-project-list on-gen-disable">
                                             <span class="ai-upload-option-tooltip"> HD </span>
                                             <a class="full_hd_quality" href="javascript:void(0)" data-img="" data-sec=""
                                                 data-item="hd_quality" title="Full HD Quality">
-                                                <img src="{{ asset('web2/images/gs-image-editing-slide-icon8.svg') }}">
+                                                <img src="{{ asset('webWidget/images/gs-image-editing-slide-icon8.svg') }}">
                                             </a>
                                         </li>
                                     </ul>

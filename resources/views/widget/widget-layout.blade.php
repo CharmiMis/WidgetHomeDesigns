@@ -522,7 +522,7 @@
         <div class="gs-dashboard-wrpper">
             <div class="gs-dashboard-mobile-header">
                 <div class="gs-dashboard-left-logo">
-                    <a href="{{ route('user.dashboard') }}">
+                    <a>
                         <img src="https://homedesigns-ai.b-cdn.net/web2/images/home-logo.svg" />
                         <img class="light-mode"
                             src=" https://homedesigns-ai.b-cdn.net/web2/images/light-mode/NewHomeDesignsAILogo 1.png" />
@@ -540,9 +540,9 @@
                 <div class="modal-content p-4 suggest-md-content">
                     <span class="precision-md-mess mb-3">For better results and if you want to fill rooms, gardens or
                         houses, we highly recommend using
-                        the <a href="{{ route('user.fill-spaces') }}">Fill Spaces</a> mode which can be found <a
-                            href="{{ route('user.fill-spaces') }}">here.</a></span>
-                    <a href="{{ route('user.fill-spaces') }}">
+                        the <a >Fill Spaces</a> mode which can be found <a
+                            >here.</a></span>
+                    <a >
                         <video loop="" muted="" autoplay="" playsinline="" width="100%">
                             <source src="https://homedesigns.ai/web/images/fill-spaces-furniture.mp4"
                                 type="video/mp4">
@@ -563,8 +563,8 @@
                 <div class="modal-content p-4 suggest-md-content">
                     <span class="precision-md-mess"> If you want a partial redesign and
                         your instructions to be more precise, you can try our new <a
-                            href="{{ route('user.in-painting') }}">Precision+</a> mode by clicking <a
-                            href="{{ route('user.in-painting') }}">here.</a></span>
+                            >Precision+</a> mode by clicking <a
+                            >here.</a></span>
                     <div class="mdp-cl-btn mdl-close-btn">
                         <span class="precision_suggestion_closebt" data-bs-dismiss="modal">
                             <i class="fa fa-times fa-unset" aria-hidden="true"></i>
@@ -577,9 +577,9 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content p-4 suggest-md-content">
                     <span class="precision-md-mess mb-3">Are you looking for more precise designs? Check our <a
-                            href="{{ route('user.in-painting') }}">Precision+</a> where you can redesign exactly what
+                            >Precision+</a> where you can redesign exactly what
                         you want, not just a full redesign.</span>
-                    <a href="{{ route('user.in-painting') }}">
+                    <a >
                         <video loop="" muted="" autoplay="" playsinline="" width="100%">
                             <source src="https://homedesigns.ai/web/images/precision-upgrade.mp4" type="video/mp4">
                         </video>
@@ -615,7 +615,7 @@
                             <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/premium-member-icon11.svg">
                             <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/premium-member-icon12.svg">
                         </div>
-                        <a class="gs-blue-btn" href="{{ route('premium.upgradeSoftware') }}">Limited Lifetime Deal - Upgrade Now</a>
+                        <a class="gs-blue-btn">Limited Lifetime Deal - Upgrade Now</a>
                     </div>
                 </div>
             </div>
@@ -703,12 +703,12 @@
                     </div>
                     @if ($curr_bank == 2)
                         <div class="modal_footer_content">
-                            <a href="{{ route('premium.upgradeCB') }}"><button class="modal_footer_button">Upgrade to
+                            <a><button class="modal_footer_button">Upgrade to
                                     Premium CB</button></a>
                         </div>
                     @else
                         <div class="modal_footer_content">
-                            <a href="{{ route('api.index') }}"><button class="modal_footer_button">Upgrade to
+                            <a><button class="modal_footer_button">Upgrade to
                                     API</button></a>
                         </div>
                 </div>
@@ -757,7 +757,7 @@
                                 soon.
                             </h5>
 
-                            <a href="{{ url($redirectUrl) . '#buy' }}" class="gt-stbtn">
+                            <a class="gt-stbtn">
                                 Upgrade
                             </a>
                         </div>
@@ -800,7 +800,7 @@
                     <form id="addProjectForm">
                         @csrf
                         <div class="form-group">
-                            <a href="{{ route('user.projects') }}" id="openCreateProjectModal"
+                            <a id="openCreateProjectModal"
                                 class="redirect_to_project_btn" style="float: right" title="Create new project">+</a>
                             <label for="selectProject">Select Project</label>
                             <select class="nwfiles-optns" id="selectProject" name="selectedProject">
@@ -915,7 +915,7 @@
                 </button>
                 <h3 class="logout_heading">Are you sure you want to logout?</h3>
                 <div class="gs-project-add-new-form">
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form method="POST">
                         @csrf
                         <div class="gs-login-brn-outer">
                             <button class="gs-login-btn" type="submit">Yes</button>
@@ -1597,13 +1597,13 @@
             </div>
         </div>
     </div>
-    <div id="routeToRunpodType" data-route="{{ route('nextrunpod.name') }}"></div>
+    {{-- <div id="routeToRunpodType" data-route="{{ route('nextrunpod.name') }}"></div> --}}
     <div id="routeToGetFailedResp" data-route="{{ route('failed_response.data') }}"></div>
     <div id="deleteRenderImages" class="hidden" data-route="{{ route('image.delete') }}"></div>
-    <div id="addImagesToProject" class="hidden" data-route="{{ route('user.add-images-to-project') }}"></div>
-    <div id="addAllImagesAsFavourite" class="hidden" data-route="{{ route('user.add-images-as-favourite') }}">
+    {{-- <div id="addImagesToProject" class="hidden" data-route="{{ route('user.add-images-to-project') }}"></div> --}}
+    {{-- <div id="addAllImagesAsFavourite" class="hidden" data-route="{{ route('user.add-images-as-favourite') }}"> --}}
     </div>
-    <div id="editAsPrecision" data-route="{{ route('editAs.precision') }}"></div>
+    {{-- <div id="editAsPrecision" data-route="{{ route('editAs.precision') }}"></div> --}}
     @include('web2.common.design-preview')
 
 
@@ -1679,14 +1679,14 @@
             if (clickCount === 5) {
                 event.preventDefault();
                 $.ajax({
-                    url: "{{ route('decor.clickCount') }}",
+                    url: "",
                     type: 'post',
                     complete: function() {},
                     success: function(data) {
                         if (data['success'] == true) {
                             $("#multipleDecorClick").modal('show');
                         } else {
-                            window.location.href = "{{ route('user.decor-staging') }}";
+                            window.location.href = "";
                         }
                         clickCount = 1; // Reset click count
                         localStorage.setItem('clickCount', clickCount);
@@ -1880,7 +1880,7 @@
         $(document).on('click', '.delay_next_billing', function() {
             $.ajax({
                 type: "POST",
-                url: "{{ route('delay_next.billing') }}", // Using named route
+                url: "", // Using named route
                 data: {
                     _token: $('meta[name="csrf-token"]').attr('content'),
                     period: '1'
@@ -1903,7 +1903,7 @@
         function addPremiumPlan() {
             $.ajax({
                 type: "POST",
-                url: "{{ route('add_premium.plan') }}", // Using named route
+                url: "", // Using named route
                 data: {
                     _token: $('meta[name="csrf-token"]').attr('content'),
                 },
@@ -1936,7 +1936,7 @@
             // Make AJAX call
             $.ajax({
                 type: 'POST',
-                url: "{{ route('save.feedback') }}", // Update with your PHP file URL
+                url: "", // Update with your PHP file URL
                 data: formData,
                 success: function(response) {
                    if (response.success) {
@@ -2004,7 +2004,7 @@
 
         function getSubscriptionDetails(order_id) {
             $.ajax({
-                url: "{{ route('admin.getSubscriptionDetails') }}",
+                url: "",
                 type: "POST",
                 data: {
                     'order_id': order_id
@@ -2074,7 +2074,7 @@
 
         function getSubscriptionDetailsBySubscriptionId(subscription_id) {
             $.ajax({
-                url: "{{ route('admin.getSubscriptionDetailsBySubscriptionId') }}",
+                url: "",
                 type: "POST",
                 data: {
                     'subscription_id': subscription_id
@@ -2108,7 +2108,7 @@
             } else {
                 $.ajax({
                     type: "POST",
-                    url: "{{ route('edit_current.plan') }}", // Using named route
+                    url: "", // Using named route
                     data: {
                         _token: $('meta[name="csrf-token"]').attr('content'),
                         product: selected_subscription_plan

@@ -7,7 +7,7 @@
         the home."</p>
     <div class="login-tesimonial-author">
         <div class="login-tesimonial-author-left">
-            <img src="{{ asset('web2/images/Emily.png') }}">
+            <img src="{{ asset('webWidget/images/Emily.png') }}">
         </div>
         <div class="login-tesimonial-author-right">
             <h3>Emily Watts</h3>
@@ -21,7 +21,7 @@
         them as needed."</p>
     <div class="login-tesimonial-author">
         <div class="login-tesimonial-author-left">
-            <img src="{{ asset('web2/images/Hemma.png') }}">
+            <img src="{{ asset('webWidget/images/Hemma.png') }}">
         </div>
         <div class="login-tesimonial-author-right">
             <h3>Hemma Home</h3>
@@ -34,7 +34,7 @@
         The customer service with individual app customization sold me!"</p>
     <div class="login-tesimonial-author">
         <div class="login-tesimonial-author-left">
-            <img src="{{ asset('web2/images/Kate.jpg') }}">
+            <img src="{{ asset('webWidget/images/Kate.jpg') }}">
         </div>
         <div class="login-tesimonial-author-right">
             <h3>Kate R.</h3>
@@ -49,7 +49,7 @@
         fantastic. Consistent results all the time."</p>
     <div class="login-tesimonial-author">
         <div class="login-tesimonial-author-left">
-            <img src="{{ asset('web2/images/Amer.png') }}">
+            <img src="{{ asset('webWidget/images/Amer.png') }}">
         </div>
         <div class="login-tesimonial-author-right">
             <h3>Amer Hmoud</h3>
@@ -64,7 +64,7 @@
         trust HomeDesigns AI with all my home design needs going forward."</p>
     <div class="login-tesimonial-author">
         <div class="login-tesimonial-author-left">
-            <img src="{{ asset('web2/images/Brian.png') }}">
+            <img src="{{ asset('webWidget/images/Brian.png') }}">
         </div>
         <div class="login-tesimonial-author-right">
             <h3>Brian Overton</h3>
@@ -83,7 +83,7 @@
         but fun!"</p>
     <div class="login-tesimonial-author">
         <div class="login-tesimonial-author-left">
-            <img src="{{ asset('web2/images/Kathleen.jpg') }}">
+            <img src="{{ asset('webWidget/images/Kathleen.jpg') }}">
         </div>
         <div class="login-tesimonial-author-right">
             <h3>Kathleen S.</h3>
@@ -97,7 +97,7 @@
         to life. It’s fun to play around with the possibilities!"</p>
     <div class="login-tesimonial-author">
         <div class="login-tesimonial-author-left">
-            <img src="{{ asset('web2/images/Jill.png') }}">
+            <img src="{{ asset('webWidget/images/Jill.png') }}">
         </div>
         <div class="login-tesimonial-author-right">
             <h3>Jill J.</h3>
@@ -113,7 +113,7 @@
         and they are constantly improving and adding new things. Very good!"</p>
     <div class="login-tesimonial-author">
         <div class="login-tesimonial-author-left">
-            <img src="{{ asset('web2/images/Clive.png') }}">
+            <img src="{{ asset('webWidget/images/Clive.png') }}">
         </div>
         <div class="login-tesimonial-author-right">
             <h3>Clive McGonigal</h3>
@@ -125,7 +125,7 @@
     <p>"I am a new user but has spent extensive time to use this platform for my listings. I found how AI can help me to do virtual staging saving me lots of time and money. I used the redesign and fill spaces for my work and the transformation is fabulous. I received a lot of compliments using this. Love it ."</p>
     <div class="login-tesimonial-author">
         <div class="login-tesimonial-author-left">
-            <img src="{{ asset('web2/images/login-tesimonial-author3.png') }}">
+            <img src="{{ asset('webWidget/images/login-tesimonial-author3.png') }}">
         </div>
         <div class="login-tesimonial-author-right">
             <h3>Janice Tan Yoke Lian</h3>

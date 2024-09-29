@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('failed_response_data', [HomeController::class, 'failedResponseData'])->name('failed_response.data');
+Route::post('imageDelete', [HomeController::class, 'imageDelete'])->name('image.delete');
 Route::get('user/fill-spaces', [WidgetController::class, 'fillSpaces'])->name('user.fill-spaces');
+// Route::post('next/billing', [HomeController::class, 'nextBilling'])->name('delay_next.billing');
 
 Route::get('/widget/{feature}', [WidgetController::class, 'showFeature'])->name('widget.showFeature');
 

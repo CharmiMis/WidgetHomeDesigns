@@ -55,6 +55,8 @@ var paintingStagSecElement;
 
 var resizeImageWidth;
 var resizeImageHeight;
+var mainImage,textureImage = '';
+
 // $imgCropPreview.cropper({
 //     aspectRatio: 1 / 1,
 //     zoomable: false,
@@ -2236,7 +2238,6 @@ $("body").on('click', '.close-decor-stag', async function () {
     $('#cropImageModal').modal('hide');
 });
 
-var mainImage,textureImage = '';
 async function loadImageCropperForStyleTransfer() {
     console.log('loadImageCropperForStyleTransfer: ');
     $('#uploading_instruction').modal('hide');
