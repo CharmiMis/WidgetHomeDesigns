@@ -26,6 +26,7 @@ class WidgetController extends Controller
 
     public function runpodWidgetBeautifulRedesign(Request $request)
     {
+        dd("here");
         $payloadData = $request->all();
         $request->merge(['id' => Auth::id()]);
         $mode = $request->modeType;
