@@ -3619,6 +3619,8 @@ $('.second_tab_active').click(function () {
             let error_message = "Oops! You didn't upload your image.";
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
+            $('.second_tab_active').removeClass('active');
+            $('.third_tab_active').removeClass('active');
             return;
         }
     }
@@ -3628,6 +3630,8 @@ $('.second_tab_active').click(function () {
                 let error_message = "Oops! You didn't upload your image.";
                 $('#errorModal h4').text(error_message);
                 $('#errorModal').modal('show');
+                $('.second_tab_active').removeClass('active');
+                $('.third_tab_active').removeClass('active');
                 return;
             }
     }
@@ -3637,6 +3641,8 @@ $('.second_tab_active').click(function () {
             let error_message = "Oops! You didn't upload your image.";
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
+            $('.second_tab_active').removeClass('active');
+            $('.third_tab_active').removeClass('active');
             return;
         }
     }
