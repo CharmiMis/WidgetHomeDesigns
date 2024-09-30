@@ -31,7 +31,9 @@ class WidgetController extends Controller
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
         $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+
         if ($userAccess === true) {
+            dd("here");
             $uniqueFileName = $this->generateUniqueFileName();
             if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
                 $b64image = base64_encode(file_get_contents($payloadData['data']));
@@ -60,7 +62,6 @@ class WidgetController extends Controller
 
             // $url = \Config::get('app.GPU_SERVERLESS_BEAUTIFUL_REDESIGN');
             $url = \Config::get('app.GPU_SERVERLESS_BEAUTIFUL_REDESIGN_API');
-            dd($url);
             $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
             if ($response && $response['status'] === 'COMPLETED') {
                 if (!isset($response['output']) || isset($response['output']['errors'])) {
