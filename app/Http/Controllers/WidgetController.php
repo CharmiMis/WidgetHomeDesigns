@@ -59,7 +59,7 @@ class WidgetController extends Controller
             ];
 
             // $url = \Config::get('app.GPU_SERVERLESS_BEAUTIFUL_REDESIGN');
-            $url = \Config::get('app.GPU_API_SERVERLESS_BEAUTIFUL_REDESIGN');
+            $url = \Config::get('app.GPU_SERVERLESS_BEAUTIFUL_REDESIGN_API');
 
             $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
             if ($response && $response['status'] === 'COMPLETED') {
