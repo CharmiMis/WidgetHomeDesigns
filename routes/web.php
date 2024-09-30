@@ -41,6 +41,7 @@ Route::post('runpodWidget/paint-visualizer', [WidgetController::class, 'runpodWi
 Route::post('runpodWidget/getMasking', [WidgetController::class, 'runpodWidgetGetMasking'])->name('runpodWidget.getmasking');
 Route::post('runpodWidget/fullHD', [WidgetController::class, 'runpodWidgetFullHD'])->name('runpodWidget.fullHD');
 
+Route::get('get-base64', [HomeController::class, 'downloadFile'])->name('file.download');
 
 //Widget response
 
