@@ -3598,7 +3598,7 @@ function removeLoaderDivs(noOfDesign) {
     }
 }
 
-$('.first_tab_active').click(function () {
+$(`.first_tab_active_${dataPage}`).click(function () {
     $('.top-menu-bar-first').css('display', 'flex');
     $('.upload-image-container').css('display', 'flex');
     $('.searched_product_result').css('display', 'flex');
@@ -3612,15 +3612,13 @@ $('.first_tab_active').click(function () {
     $('.image-container').css('display', 'none');
     $('.category-container').css('display', 'none');
 });
-$('.second_tab_active').click(function () {
+$(`.second_tab_active_${dataPage}`).click(function () {
     if(dataPage != 'redesign' && dataPage != 'rostMyHome' && dataPage != 'convenient-redesign' && dataPage != 'collage_to_render' && dataPage != 'productSearch'){
 
         if (!imageLayer.hasChildren()) {
             let error_message = "Oops! You didn't upload your image.";
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
-            $('.second_tab_active').removeClass('active');
-            $('.third_tab_active').removeClass('active');
             return;
         }
     }
@@ -3630,8 +3628,6 @@ $('.second_tab_active').click(function () {
                 let error_message = "Oops! You didn't upload your image.";
                 $('#errorModal h4').text(error_message);
                 $('#errorModal').modal('show');
-                $('.second_tab_active').removeClass('active');
-                $('.third_tab_active').removeClass('active');
                 return;
             }
     }
@@ -3641,8 +3637,6 @@ $('.second_tab_active').click(function () {
             let error_message = "Oops! You didn't upload your image.";
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
-            $('.second_tab_active').removeClass('active');
-            $('.third_tab_active').removeClass('active');
             return;
         }
     }
@@ -3664,7 +3658,7 @@ $('.second_tab_active').click(function () {
     $('.category-container').css('display', 'none');
 });
 
-$('.third_tab_active').click(function () {
+$(`.third_tab_active_${dataPage}`).click(function () {
     if (dataPage == 'collage_to_render'){
         if(mainImage == undefined)
             {
