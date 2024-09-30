@@ -13,7 +13,7 @@
 <body>
     <div>
         {{-- fill spaces --}}
-        <script src="https://widget.homedesigns.ai/embed.js?id=1513988" async></script>
+        <script src="https://widget.homedesigns.ai/embed.js?id=4159" async></script>
 
         {{-- redesign --}}
         {{-- <script src="http://127.0.0.1:8000/embed.js?id=228" async></script> --}}
