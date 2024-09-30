@@ -33,7 +33,6 @@ class WidgetController extends Controller
         $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
 
         if ($userAccess === true) {
-            dd("here");
             $uniqueFileName = $this->generateUniqueFileName();
             if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
                 $b64image = base64_encode(file_get_contents($payloadData['data']));
