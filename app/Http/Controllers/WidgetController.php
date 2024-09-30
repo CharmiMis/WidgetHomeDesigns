@@ -208,6 +208,7 @@ class WidgetController extends Controller
     {
         $widgetData = WidgetUserData::where('user_id', $id)->firstOrFail();
         $userTheme = User::where('id',$id)->select('light_mode')->first();
+        dd($widgetData,$userTheme);
         $currentDomain = $request->query('currentDomain'); // Get the currentDomain from the query parameters
         
         if (!$widgetData) {
