@@ -144,7 +144,9 @@
                     @endforeach
                 </ul>
                 <div class="custom-logo">
-                    <img src="{{ asset('storage/' . $widgetData->logo) }}" alt="Custom Logo" />
+                    <img src="https://homedesigns.ai/storage/{{ $widgetData->logo }}" alt="Custom Logo" />
+
+                    {{-- <img src="{{ asset('storage/' . $widgetData->logo) }}" alt="Custom Logo" /> --}}
                 </div>
                 @foreach (json_decode($widgetData->accessible_features) as $feature)
                     <div id="{{ $feature }}">
