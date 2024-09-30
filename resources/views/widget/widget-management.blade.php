@@ -143,9 +143,9 @@
                         </li>
                     @endforeach
                 </ul>
-                <div class="custom-logo">
+                {{-- <div class="custom-logo">
                     <img src="{{ asset('storage/' . $widgetData->logo) }}" alt="Custom Logo" />
-                </div>
+                </div> --}}
                 @foreach (json_decode($widgetData->accessible_features) as $feature)
                     <div id="{{ $feature }}">
                         @include('widget.widget-' . $feature)
