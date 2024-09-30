@@ -30,8 +30,8 @@ class WidgetController extends Controller
         // $request->merge(['id' => Auth::id()]);
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
-        dd($Widgetid);
         $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        dd($userAccess);
         if ($userAccess === true) {
             $uniqueFileName = $this->generateUniqueFileName();
             if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
