@@ -2,15 +2,15 @@
 <div class="ai-tool-right-top top-menu-bar-first">
     {{-- <h3 class="font22">Paint Visualizer</h3> --}}
     <ul class="progress-bar-tab">
-        <li class="active first_tab_active_color_swap">
+        <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Upload image</span>
         </li>
-        <li class="second_tab_active_color_swap">
+        <li class="second_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Select what to edit</span>
         </li>
-        <li class="third_tab_active_color_swap">
+        <li class="third_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Customise and Generate</span>
         </li>
@@ -55,15 +55,15 @@
         {{-- <h3 class="font22">Paint Visualizer</h3> --}}
     </div>
     <ul class="progress-bar-tab">
-        <li class="active first_tab_active_color_swap">
+        <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Upload image</span>
         </li>
-        <li class="active second_tab_active_color_swap">
+        <li class="active second_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Select what to edit</span>
         </li>
-        <li class="third_tab_active_color_swap">
+        <li class="third_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Customise and Generate</span>
         </li>
@@ -81,15 +81,15 @@
         {{-- <h3 class="font22">Paint Visualizer</h3> --}}
     </div>
     <ul class="progress-bar-tab">
-        <li class="active first_tab_active_color_swap">
+        <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Upload image</span>
         </li>
-        <li class="active second_tab_active_color_swap">
+        <li class="active second_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Select what to edit</span>
         </li>
-        <li class="active third_tab_active_color_swap">
+        <li class="active third_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Customise and Generate</span>
         </li>

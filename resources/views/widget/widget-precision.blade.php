@@ -2,15 +2,15 @@
 <div>
     <div class="ai-tool-right-top top-menu-bar-first">
     <ul>
-        <li class="active first_tab_active_inPaint">
+        <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Upload image</span>
         </li>
-        <li class="second_tab_active_inPaint">
+        <li class="second_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Select what to edit</span>
         </li>
-        <li class="third_tab_active_inPaint">
+        <li class="third_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Customise and Generate</span>
         </li>
@@ -51,15 +51,15 @@
         {{-- <h3 class="font22">Fill Spaces</h3> --}}
     </div>
     <ul>
-        <li class="active first_tab_active_inPaint">
+        <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Upload image</span>
         </li>
-        <li class="active second_tab_active_inPaint">
+        <li class="active second_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Select what to edit</span>
         </li>
-        <li class="third_tab_active_inPaint">
+        <li class="third_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Customise and Generate</span>
         </li>
@@ -75,15 +75,15 @@
         {{-- <h3 class="font22">Fill Spaces</h3> --}}
     </div>
     <ul>
-        <li class="active first_tab_active_inPaint">
+        <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Upload image</span>
         </li>
-        <li class="active second_tab_active_inPaint">
+        <li class="active second_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Select what to edit</span>
         </li>
-        <li class="active third_tab_active_inPaint">
+        <li class="active third_tab_active">
             <div class="ai-tool-right-steps"></div>
             <span>Customise and Generate</span>
         </li>

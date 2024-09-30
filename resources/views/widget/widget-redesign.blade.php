@@ -3,15 +3,15 @@
     <div class="ai-tool-right-top top-menu-bar-first">
         {{-- <h3 class="font22">Redesign</h3> --}}
         <ul>
-            <li class="active first_tab_active_redesign">
+            <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
                 <span>Upload image</span>
             </li>
-            <li class="second_tab_active_redesign">
+            <li class="second_tab_active">
                 <div class="ai-tool-right-steps"></div>
                 <span>Select what to edit</span>
             </li>
-            <li class="second_tab_active_redesign">
+            <li class="second_tab_active">
                 <div class="ai-tool-right-steps"></div>
                 <span>Customise and Generate</span>
             </li>
@@ -62,15 +62,15 @@
             {{-- <h3 class="font22">Redesign</h3> --}}
         </div>
         <ul>
-            <li class="active first_tab_active_redesign">
+            <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
                 <span>Upload image</span>
             </li>
-            <li class="active second_tab_active_redesign">
+            <li class="active second_tab_active">
                 <div class="ai-tool-right-steps"></div>
                 <span>Select what to edit</span>
             </li>
-            <li class="active second_tab_active_redesign">
+            <li class="active second_tab_active">
                 <div class="ai-tool-right-steps"></div>
                 <span>Customise and Generate</span>
             </li>
