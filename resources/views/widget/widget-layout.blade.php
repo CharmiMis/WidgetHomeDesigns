@@ -522,11 +522,11 @@
         <div class="gs-dashboard-wrpper">
             <div class="gs-dashboard-mobile-header">
                 <div class="gs-dashboard-left-logo">
-                    <a>
+                    {{-- <a>
                         <img src="https://homedesigns-ai.b-cdn.net/web2/images/home-logo.svg" />
                         <img class="light-mode"
                             src=" https://homedesigns-ai.b-cdn.net/web2/images/light-mode/NewHomeDesignsAILogo 1.png" />
-                    </a>
+                    </a> --}}
                     {{-- <img class="menu-icon" src="https://homedesigns-ai.b-cdn.net/web2/images/gs-menu-icon.png" /> --}}
                 </div>
             </div>
