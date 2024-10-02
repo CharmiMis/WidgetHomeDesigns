@@ -57,8 +57,7 @@
         }
 
         .custom-logo img {
-            object-fit: cover;
-            width: 70px;
+            width: 100px;
         }
         .gs-our-preset-settings .toggle-button.active {
             background: linear-gradient(180deg, #8F73FF 0%, #5B3DD5 100%);
