@@ -382,7 +382,7 @@
                                             <div class="gs-our-preset-color" data-sec="1">
                                                 <input type="hidden" id="color_texture1" name="color_texture1">
                                                 <p>Changing the color? Select one</p>
-                                                @include('web2.designs_options.colors_texture')
+                                                @include('widget.designs_options.colors_texture')
                                             </div>
                                             <div class="gs-our-preset-interior materials-textures-cat  materials-textures-cat-ext"
                                                 style="display: none;">
@@ -503,7 +503,7 @@
                                             <div class="gs-our-preset-color" data-sec="2">
                                                 <input type="hidden" id="color_texture2" name="color_texture2">
                                                 <p>Changing the color? Select one</p>
-                                                @include('web2.designs_options.colors_texture')
+                                                @include('widget.designs_options.colors_texture')
                                             </div>
                                             <div class="gs-our-preset-interior materials-textures-cat  materials-textures-cat-gar"
                                                 style="display: none;">
@@ -1015,7 +1015,7 @@
             const $presetLink = $tabPane.find('.presetLink');
             const $customLink = $tabPane.find('.customLink');
             const $textareas = $tabPane.find('.promtCustomInput');
-            const $colorListItems = $tabPane.find('#colorList li');
+            const $colorListItems = $tabPane.find('#colorListColorTexture li');
             const $colorInput = $tabPane.find('input[name^="color_texture"]');
             const $materialInput = $tabPane.find('input[name^="material_type"]');
             const $selectMoreMaterial = $tabPane.find('.select-more-details');
@@ -1104,135 +1104,135 @@
         }
     }
 </script>
-    <script>
-        const subItemsMapping = {
-            "fabrics" : ['Cotton', 'Silk', 'Wool','Linen','Velvet','Leather','Suede','Tweed','Chenille','Jacquard','Satin','Polyester','Nylon','Rayon','Cashmere'],
-            "glass" : ['Clear', 'Frosted', 'Stained', 'Tempered', 'Laminated','Shattered','Patterned','Textured','Seeded','Colored','Mirrored','Etched','Smoked','Beveled','Lead Crystal','Obscured'],
-            "wood" : ['Oak', 'Maple', 'Cherry', 'Walnut', 'Pine', 'Teak', 'Mahogany','Bamboo', 'Birch', 'Rosewood', 'Ash', 'Cedar', 'Hickory', 'Alder', 'Ebony'],
-            "stone" : ['Marble', 'Granite', 'Bricks', 'Red Bricks', 'Limestone', 'Slate','Travertine', 'Sandstone', 'Quartz', 'Onyx', 'Basalt', 'Terrazzo','Soapstone', 'Quartzite', 'Dolomite', 'Gneiss', 'Bluestone'],
-            "metal" : ['Steel', 'Aluminum', 'Brass', 'Wrought iron', 'Stainless steel', 'Chrome', 'Gold', 'Silver', 'Copper', 'Bronze', 'Titanium', 'Zinc', 'Nickel', 'Lead', 'Pewter'],
-            "ceramics and porcelain" : ['Earthenware', 'Stoneware', 'Porcelain', 'Terracotta', 'Vitreous China', 'Bone China', 'Glazed', 'Matte', 'Polished', 'Textured', 'Mosaic', 'Hand-painted', 'Crackle', 'Metallic', 'Luster'],
-            "plastics and polymers" : ['Acrylic', 'Polyethylene', 'PVC', 'Polycarbonate', 'Polypropylene', 'ABS', 'Epoxy', 'Silicone', 'Vinyl', 'Melamine', 'Phenolic', 'Urethane', 'Fiberglass', 'Nylon', 'Acetate'],
-            "paper and cardboard" : ['Wallpaper', 'Cardboard', 'Kraft', 'Parchment', 'Foil embossed', 'Textured', 'Handmade paper', 'Recycled paper', 'Flocked paper', 'Metallic paper', 'Vellum', 'Linen paper', 'Watercolor paper', 'Matte', 'Glossy'],
-            "natural fibers" : ['Jute', 'Hemp', 'Sisal', 'Coir', 'Bamboo fiber', 'Wool', 'Cotton', 'Linen', 'Silk', 'Cashmere', 'Mohair', 'Alpaca', 'Seagrass', 'Ramie', 'Abaca'],
-            "composite materials" : ['Concrete', 'Plywood', 'MDF', 'Particleboard', 'Fiberglass', 'Corian', 'Quartz composite', 'Terrazzo', 'Engineered stone', 'Laminate', 'Vinyl composite tile', 'Resin', 'Acrylic composite', 'Carbon fiber', 'Glass fiber reinforced concrete'],
-            "facade" : ['Brick', 'Natural Stone', 'Granite', 'Fieldstone', 'Limestone', 'Sandstone','Stucco', 'Wood', 'Vinyl', 'Fiber cement', 'Metal', 'Glass'],
-            "roofing" : ['Asphalt shingles', 'Metal roofing', 'Clay tiles', 'Concrete tiles', 'Slate tiles','Wooden Shakes or Shingles','Solar Tiles','Roof Tiles'],
-            "decking and walkways" : ['Composite decking', 'Natural stone pavers', 'Concrete pavers', 'Brick pavers','Treated lumber', 'Teak', 'Redwood decking', 'Pea Gravel', 'Anthracite Grey Deck', 'Crushed Granite'],
-            "outdoor fixtures and accents" : ['Wrought iron', 'Stainless steel', 'Copper', 'Natural stone', 'Ceramic tiles'],
-            "ground cover materials" : ['Mulch', 'Wood Chips', 'Grass', 'Clover', 'Moss', 'Lawn', 'Pebbles', 'River rocks', 'Ground cover plants', 'thyme', 'Sedum', 'Artificial grass', 'Decomposed granite'],
-            "planters and edging" : ['Corten steel', 'Stone', 'Fruit Trees', 'Berry Bushes', 'Plants', 'Flowers', 'Concrete', 'Natural Stone', 'Recycled plastic', 'Bamboo'],
-            "outdoor furniture and decor" : ['Teak', 'Wrought iron', 'Rattan', 'Fire Pits', 'Concrete', 'Ceramic', 'Brick'],
-            "water features and structures" : ['Natural stone', 'Fiberglass', 'Copper', 'Wood', 'Glass'],
-            "lighting" : ['LED lights', 'Solar-powered lights', 'Low-voltage halogen', 'Fiber optics'],
-        };
+<script>
+    const subItemsMapping = {
+        "fabrics" : ['Cotton', 'Silk', 'Wool','Linen','Velvet','Leather','Suede','Tweed','Chenille','Jacquard','Satin','Polyester','Nylon','Rayon','Cashmere'],
+        "glass" : ['Clear', 'Frosted', 'Stained', 'Tempered', 'Laminated','Shattered','Patterned','Textured','Seeded','Colored','Mirrored','Etched','Smoked','Beveled','Lead Crystal','Obscured'],
+        "wood" : ['Oak', 'Maple', 'Cherry', 'Walnut', 'Pine', 'Teak', 'Mahogany','Bamboo', 'Birch', 'Rosewood', 'Ash', 'Cedar', 'Hickory', 'Alder', 'Ebony'],
+        "stone" : ['Marble', 'Granite', 'Bricks', 'Red Bricks', 'Limestone', 'Slate','Travertine', 'Sandstone', 'Quartz', 'Onyx', 'Basalt', 'Terrazzo','Soapstone', 'Quartzite', 'Dolomite', 'Gneiss', 'Bluestone'],
+        "metal" : ['Steel', 'Aluminum', 'Brass', 'Wrought iron', 'Stainless steel', 'Chrome', 'Gold', 'Silver', 'Copper', 'Bronze', 'Titanium', 'Zinc', 'Nickel', 'Lead', 'Pewter'],
+        "ceramics and porcelain" : ['Earthenware', 'Stoneware', 'Porcelain', 'Terracotta', 'Vitreous China', 'Bone China', 'Glazed', 'Matte', 'Polished', 'Textured', 'Mosaic', 'Hand-painted', 'Crackle', 'Metallic', 'Luster'],
+        "plastics and polymers" : ['Acrylic', 'Polyethylene', 'PVC', 'Polycarbonate', 'Polypropylene', 'ABS', 'Epoxy', 'Silicone', 'Vinyl', 'Melamine', 'Phenolic', 'Urethane', 'Fiberglass', 'Nylon', 'Acetate'],
+        "paper and cardboard" : ['Wallpaper', 'Cardboard', 'Kraft', 'Parchment', 'Foil embossed', 'Textured', 'Handmade paper', 'Recycled paper', 'Flocked paper', 'Metallic paper', 'Vellum', 'Linen paper', 'Watercolor paper', 'Matte', 'Glossy'],
+        "natural fibers" : ['Jute', 'Hemp', 'Sisal', 'Coir', 'Bamboo fiber', 'Wool', 'Cotton', 'Linen', 'Silk', 'Cashmere', 'Mohair', 'Alpaca', 'Seagrass', 'Ramie', 'Abaca'],
+        "composite materials" : ['Concrete', 'Plywood', 'MDF', 'Particleboard', 'Fiberglass', 'Corian', 'Quartz composite', 'Terrazzo', 'Engineered stone', 'Laminate', 'Vinyl composite tile', 'Resin', 'Acrylic composite', 'Carbon fiber', 'Glass fiber reinforced concrete'],
+        "facade" : ['Brick', 'Natural Stone', 'Granite', 'Fieldstone', 'Limestone', 'Sandstone','Stucco', 'Wood', 'Vinyl', 'Fiber cement', 'Metal', 'Glass'],
+        "roofing" : ['Asphalt shingles', 'Metal roofing', 'Clay tiles', 'Concrete tiles', 'Slate tiles','Wooden Shakes or Shingles','Solar Tiles','Roof Tiles'],
+        "decking and walkways" : ['Composite decking', 'Natural stone pavers', 'Concrete pavers', 'Brick pavers','Treated lumber', 'Teak', 'Redwood decking', 'Pea Gravel', 'Anthracite Grey Deck', 'Crushed Granite'],
+        "outdoor fixtures and accents" : ['Wrought iron', 'Stainless steel', 'Copper', 'Natural stone', 'Ceramic tiles'],
+        "ground cover materials" : ['Mulch', 'Wood Chips', 'Grass', 'Clover', 'Moss', 'Lawn', 'Pebbles', 'River rocks', 'Ground cover plants', 'thyme', 'Sedum', 'Artificial grass', 'Decomposed granite'],
+        "planters and edging" : ['Corten steel', 'Stone', 'Fruit Trees', 'Berry Bushes', 'Plants', 'Flowers', 'Concrete', 'Natural Stone', 'Recycled plastic', 'Bamboo'],
+        "outdoor furniture and decor" : ['Teak', 'Wrought iron', 'Rattan', 'Fire Pits', 'Concrete', 'Ceramic', 'Brick'],
+        "water features and structures" : ['Natural stone', 'Fiberglass', 'Copper', 'Wood', 'Glass'],
+        "lighting" : ['LED lights', 'Solar-powered lights', 'Low-voltage halogen', 'Fiber optics'],
+    };
 
-        // Handle click events for initial list items
-        $(".int_list_item li").click(function() {
-            var materialInput = document.getElementById('material0');
-            var materialTypeInput = document.getElementById('material_type0');
-            var custom_instruction = document.getElementById('custom_instruction0-change-colors-texture');
-            materialTypeInput.value = '';
-            if ($(this).hasClass("active")) {
-                $(this).removeClass("active");
-                materialInput.value = '';
-                custom_instruction.disabled = false; // Enable the textarea
-                $(".select-more-details-int").slideUp();
-            } else {
-                $(".int_list_item li").removeClass("active");
-                $(this).addClass("active");
-                materialInput.value = $(this).data('item');
-                custom_instruction.disabled = true; // Disable the textarea
-                $(".select-more-details-int").slideDown();
-
-                const selectedItem = $(this).data('item');
-                updateSubItems(selectedItem, '.int_mate_list_item', 0);
-            }
-        });
-
-        // For exterior materials
-        $(".ext_list_item li").click(function() {
-            var materialInput = document.getElementById('material1');
-            var materialTypeInput = document.getElementById('material_type1');
-            var custom_instruction = document.getElementById('custom_instruction1-change-colors-texture');
-            materialTypeInput.value = '';
-            if ($(this).hasClass("active")) {
-                $(this).removeClass("active");
-                materialInput.value = '';
-                custom_instruction.disabled = false; // Enable the textarea
-                $(".select-more-details-ext").slideUp();
-            } else {
-                $(".ext_list_item li").removeClass("active");
-                $(this).addClass("active");
-                materialInput.value = $(this).data('item');
-                custom_instruction.disabled = true; // Disable the textarea
-                $(".select-more-details-ext").slideDown();
-
-                const selectedItem = $(this).data('item');
-                updateSubItems(selectedItem, '.ext_mate_list_item', 1);
-            }
-        });
-
-        // For garden materials
-        $(".gar_list_item li").click(function() {
-            var materialInput = document.getElementById('material2');
-            var materialTypeInput = document.getElementById('material_type2');
-            var custom_instruction = document.getElementById('custom_instruction2-change-colors-texture');
-            materialTypeInput.value = '';
-            if ($(this).hasClass("active")) {
-                $(this).removeClass("active");
-                materialInput.value = '';
-                custom_instruction.disabled = false; // Enable the textarea
-                $(".select-more-details-gar").slideUp();
-            } else {
-                $(".gar_list_item li").removeClass("active");
-                $(this).addClass("active");
-                materialInput.value = $(this).data('item');
-                custom_instruction.disabled = true; // Disable the textarea
-                $(".select-more-details-gar").slideDown();
-
-                const selectedItem = $(this).data('item');
-                updateSubItems(selectedItem, '.gar_mate_list_item', 2);
-            }
-        });
-
-
-
-        // Use event delegation for dynamically generated list items
-        // $(document).on('click', '.int_mate_list_item li, .ext_mate_list_item li, .gar_mate_list_item li', function() {
-        //     $(".int_mate_list_item li, .ext_mate_list_item li, .gar_mate_list_item li").removeClass("active");
-        //     $(this).addClass("active");
-        // });
-
-        $(".int_mate_list_item").on('click', 'li', function() {
-            $(".int_mate_list_item li").removeClass("active");
+    // Handle click events for initial list items
+    $(".int_list_item li").click(function() {
+        var materialInput = document.getElementById('material0');
+        var materialTypeInput = document.getElementById('material_type0');
+        var custom_instruction = document.getElementById('custom_instruction0-change-colors-texture');
+        materialTypeInput.value = '';
+        if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+            materialInput.value = '';
+            custom_instruction.disabled = false; // Enable the textarea
+            $(".select-more-details-int").slideUp();
+        } else {
+            $(".int_list_item li").removeClass("active");
             $(this).addClass("active");
+            materialInput.value = $(this).data('item');
+            custom_instruction.disabled = true; // Disable the textarea
+            $(".select-more-details-int").slideDown();
 
-            const selectedMaterialType = $(this).text();
-            $('#material_type0').val(selectedMaterialType);
-        });
-
-        $(".ext_mate_list_item").on('click', 'li', function() {
-            $(".ext_mate_list_item li").removeClass("active");
-            $(this).addClass("active");
-
-            const selectedMaterialType = $(this).text();
-            $('#material_type1').val(selectedMaterialType);
-        });
-
-        $(".gar_mate_list_item").on('click', 'li', function() {
-            $(".gar_mate_list_item li").removeClass("active");
-            $(this).addClass("active");
-
-            const selectedMaterialType = $(this).text();
-            $('#material_type2').val(selectedMaterialType);
-        });
-
-        function updateSubItems(selectedItem, subItemsSelector,sec) {
-            const subItems = subItemsMapping[selectedItem] || [];
-            const subItemsHtml = subItems.map(item => `<li>${item}</li>`).join('');
-            $(subItemsSelector).html(subItemsHtml);
-
-            $(`#material${sec}`).val(selectedItem);
+            const selectedItem = $(this).data('item');
+            updateSubItems(selectedItem, '.int_mate_list_item', 0);
         }
-    </script>
+    });
+
+    // For exterior materials
+    $(".ext_list_item li").click(function() {
+        var materialInput = document.getElementById('material1');
+        var materialTypeInput = document.getElementById('material_type1');
+        var custom_instruction = document.getElementById('custom_instruction1-change-colors-texture');
+        materialTypeInput.value = '';
+        if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+            materialInput.value = '';
+            custom_instruction.disabled = false; // Enable the textarea
+            $(".select-more-details-ext").slideUp();
+        } else {
+            $(".ext_list_item li").removeClass("active");
+            $(this).addClass("active");
+            materialInput.value = $(this).data('item');
+            custom_instruction.disabled = true; // Disable the textarea
+            $(".select-more-details-ext").slideDown();
+
+            const selectedItem = $(this).data('item');
+            updateSubItems(selectedItem, '.ext_mate_list_item', 1);
+        }
+    });
+
+    // For garden materials
+    $(".gar_list_item li").click(function() {
+        var materialInput = document.getElementById('material2');
+        var materialTypeInput = document.getElementById('material_type2');
+        var custom_instruction = document.getElementById('custom_instruction2-change-colors-texture');
+        materialTypeInput.value = '';
+        if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+            materialInput.value = '';
+            custom_instruction.disabled = false; // Enable the textarea
+            $(".select-more-details-gar").slideUp();
+        } else {
+            $(".gar_list_item li").removeClass("active");
+            $(this).addClass("active");
+            materialInput.value = $(this).data('item');
+            custom_instruction.disabled = true; // Disable the textarea
+            $(".select-more-details-gar").slideDown();
+
+            const selectedItem = $(this).data('item');
+            updateSubItems(selectedItem, '.gar_mate_list_item', 2);
+        }
+    });
+
+
+
+    // Use event delegation for dynamically generated list items
+    // $(document).on('click', '.int_mate_list_item li, .ext_mate_list_item li, .gar_mate_list_item li', function() {
+    //     $(".int_mate_list_item li, .ext_mate_list_item li, .gar_mate_list_item li").removeClass("active");
+    //     $(this).addClass("active");
+    // });
+
+    $(".int_mate_list_item").on('click', 'li', function() {
+        $(".int_mate_list_item li").removeClass("active");
+        $(this).addClass("active");
+
+        const selectedMaterialType = $(this).text();
+        $('#material_type0').val(selectedMaterialType);
+    });
+
+    $(".ext_mate_list_item").on('click', 'li', function() {
+        $(".ext_mate_list_item li").removeClass("active");
+        $(this).addClass("active");
+
+        const selectedMaterialType = $(this).text();
+        $('#material_type1').val(selectedMaterialType);
+    });
+
+    $(".gar_mate_list_item").on('click', 'li', function() {
+        $(".gar_mate_list_item li").removeClass("active");
+        $(this).addClass("active");
+
+        const selectedMaterialType = $(this).text();
+        $('#material_type2').val(selectedMaterialType);
+    });
+
+    function updateSubItems(selectedItem, subItemsSelector,sec) {
+        const subItems = subItemsMapping[selectedItem] || [];
+        const subItemsHtml = subItems.map(item => `<li>${item}</li>`).join('');
+        $(subItemsSelector).html(subItemsHtml);
+
+        $(`#material${sec}`).val(selectedItem);
+    }
+</script>

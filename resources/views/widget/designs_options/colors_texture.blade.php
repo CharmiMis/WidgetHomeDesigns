@@ -1,4 +1,4 @@
-<ul id="colorList">
+<ul id="colorListColorTexture">
     <li class="color-option" style="background-color: #FFFFFF;" onclick="selectColorColorTexture(event, 'White')"><span class="ai-upload-option-tooltip">White</span></li>
     <li class="color-option" style="background-color: #FAF9F6;" onclick="selectColorColorTexture(event, 'Off White')"><span class="ai-upload-option-tooltip">Off White</span></li>
     <li class="color-option" style="background-color: #FFFDD0;" onclick="selectColorColorTexture(event, 'Cream')"><span class="ai-upload-option-tooltip">Cream</span></li>

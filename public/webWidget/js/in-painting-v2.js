@@ -1744,8 +1744,8 @@ async function getNpyImgFile(img) {
 
         appendUL(ulElement);
 
-        $(document).on('click', 'ul li', function () {
-        // ulElement.on('click', 'li', function () {
+        // $(document).on('click', 'ul li', function () {
+        ulElement.on('click', 'li', function () {
             var checkbox = $(this).find('input[type="checkbox"]');
             var isChecked = checkbox.prop('checked');
             checkbox.prop('checked', !isChecked);
