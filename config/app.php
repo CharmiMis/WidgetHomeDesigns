@@ -90,11 +90,11 @@ return [
     'style_css_version' => 4.04, // Set your version number here
     'user_dash_css_version' => 3.41, // Set your version number here
     'main_style_css_version' => 3.40, // Set your version number here
-    'new_style_css_version' => 2.01, // Set your version number here
+    'new_style_css_version' => 2.02, // Set your version number here
     'custom_js_web2' => 1.18, // Set your version number here
-    'custom_scriptWidget_version' => 1.08, // Set your version number here
-    'in_paintWidget_v2_version' => 1.06, // Set your version number here
-    'widgetstyle_css_version' =>  1.08,
+    'custom_scriptWidget_version' => 1.09, // Set your version number here
+    'in_paintWidget_v2_version' => 1.07, // Set your version number here
+    'widgetstyle_css_version' =>  1.09,
     'api_version' => env("API_VERSION", 'v2'), // API versioning
     'test_api_token_usage' => 100,
     'JWT_SECRET_KEY' => env('JWT_SECRET_KEY'),
