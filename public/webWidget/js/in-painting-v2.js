@@ -929,6 +929,8 @@ async function callInPaintingAPI(sec,el) {
 
     disableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
     $('.on-gen-disable').addClass('disable-btn');
+    $('.modules_tabs').addClass('disable-btn');
+
     // $('.full_hd_quality').addClass('disable-btn');
     // $('.edit-as-fill-space').addClass('disable-btn');
     // $('.precision-ultra-enhancer').addClass('disable-btn');
@@ -944,6 +946,7 @@ async function callInPaintingAPI(sec,el) {
         alert("Oops! You didn't upload your image.");
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
         $('.on-gen-disable').removeClass('disable-btn');
+        $('.modules_tabs').removeClass('disable-btn');
         removeLoaderDivs(noOfDesign);
         return;
     }
@@ -954,6 +957,7 @@ async function callInPaintingAPI(sec,el) {
             $('#errorModal').modal('show');
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
             $('.on-gen-disable').removeClass('disable-btn');
+            $('.modules_tabs').removeClass('disable-btn');
             removeLoaderDivs(noOfDesign);
             return;
         }
@@ -992,6 +996,7 @@ async function callInPaintingAPI(sec,el) {
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
         removeLoaderDivs(noOfDesign);
         $('.on-gen-disable').removeClass('disable-btn');
+        $('.modules_tabs').removeClass('disable-btn');
         return;
     }
 
@@ -1003,6 +1008,7 @@ async function callInPaintingAPI(sec,el) {
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
         removeLoaderDivs(noOfDesign);
         $('.on-gen-disable').removeClass('disable-btn');
+        $('.modules_tabs').removeClass('disable-btn');
         return;
     }
 
@@ -1020,6 +1026,7 @@ async function callInPaintingAPI(sec,el) {
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
         removeLoaderDivs(noOfDesign);
         $('.on-gen-disable').removeClass('disable-btn');
+        $('.modules_tabs').removeClass('disable-btn');
         return;
     }
 
@@ -1032,6 +1039,7 @@ async function callInPaintingAPI(sec,el) {
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
             removeLoaderDivs(noOfDesign);
             $('.on-gen-disable').removeClass('disable-btn');
+            $('.modules_tabs').removeClass('disable-btn');
             return;
         }
         if (dataPage == 'change-colors-texture' && material && material_type == '') {
@@ -1042,6 +1050,7 @@ async function callInPaintingAPI(sec,el) {
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
             removeLoaderDivs(noOfDesign);
             $('.on-gen-disable').removeClass('disable-btn');
+            $('.modules_tabs').removeClass('disable-btn');
             return;
         }
     }
@@ -1163,6 +1172,7 @@ async function callInPaintingAPI(sec,el) {
                 $(el).attr('disabled', false);
                 $('.gs-continue-btn').removeClass('disable-btn');
                 $('.on-gen-disable').removeClass('disable-btn');
+                $('.modules_tabs').removeClass('disable-btn');
                 enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
                 return;
             });
@@ -1194,6 +1204,7 @@ async function callInPaintingAPI(sec,el) {
                     enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
                     removeLoaderDivs(noOfDesign);
                     $('.on-gen-disable').removeClass('disable-btn');
+                    $('.modules_tabs').removeClass('disable-btn');
                     $('ai-upload-latest-designs').scrollIntoView();
                     // $('.full_hd_quality').removeClass('disable-btn');
                     // $('.edit-as-fill-space').removeClass('disable-btn');
@@ -1251,7 +1262,7 @@ async function callInPaintingAPI(sec,el) {
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
             removeLoaderDivs(noOfDesign);
             $('.on-gen-disable').removeClass('disable-btn');
-
+            $('.modules_tabs').removeClass('disable-btn');
             let storedDesigns = JSON.parse(localStorage.getItem('in-painting-designs')) || [];
 
             generatedImageList.forEach((image) => {
@@ -1293,6 +1304,7 @@ async function callInPaintingAPI(sec,el) {
         }
     }).catch(error => {
         $('.on-gen-disable').removeClass('disable-btn');
+        $('.modules_tabs').removeClass('disable-btn');
         removeLoaderDivs(noOfDesign);
         // $('.full_hd_quality').removeClass('disable-btn');
         // $('.edit-as-fill-space').removeClass('disable-btn');
@@ -1372,6 +1384,7 @@ $(document).on('click', '.full_hd_quality', async function () {
     var sec = $(this).data('sec');
     $('.painting_generating_bt').addClass('disable-btn');
     $('.on-gen-disable').addClass('disable-btn');
+    $('.modules_tabs').addClass('disable-btn');
     var image_url = $(this).data('img');
     // $('.full_hd_quality').addClass('disable-btn');
     // $('.edit-as-fill-space').addClass('disable-btn');
@@ -1414,6 +1427,7 @@ $(document).on('click', '.full_hd_quality', async function () {
         })
         .then(result => {
             $('.on-gen-disable').removeClass('disable-btn');
+            $('.modules_tabs').removeClass('disable-btn');
             $('.painting_generating_bt').removeClass('disable-btn');
 
             var generated_image = result['Sucess']['generated_image'][0];
@@ -1435,6 +1449,7 @@ $(document).on('click', '.full_hd_quality', async function () {
         })
         .catch(error => {
             $('.on-gen-disable').removeClass('disable-btn');
+            $('.modules_tabs').removeClass('disable-btn');
             $('.painting_generating_bt').removeClass('disable-btn');
             removeLoaderDivs(1);
             // $('.full_hd_quality').removeClass('disable-btn');
@@ -2289,6 +2304,7 @@ async function _generateStyleTransferDesign(sec,el){
 
     disableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
     $('.on-gen-disable').addClass('disable-btn');
+    $('.modules_tabs').addClass('disable-btn');
     // $('.full_hd_quality').addClass('disable-btn');
     // $('.edit-as-fill-space').addClass('disable-btn');
     // $('.precision-ultra-enhancer').addClass('disable-btn');
@@ -2312,6 +2328,7 @@ async function _generateStyleTransferDesign(sec,el){
             $('#errorModal').modal('show');
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
             $('.on-gen-disable').removeClass('disable-btn');
+            $('.modules_tabs').removeClass('disable-btn');
             return;
         }
     }
@@ -2349,6 +2366,7 @@ async function _generateStyleTransferDesign(sec,el){
         $('#errorModal').modal('show');
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
         $('.on-gen-disable').removeClass('disable-btn');
+        $('.modules_tabs').removeClass('disable-btn');
         return;
     }
 
@@ -2358,6 +2376,7 @@ async function _generateStyleTransferDesign(sec,el){
         $('#errorModal').modal('show');
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
         $('.on-gen-disable').removeClass('disable-btn');
+        $('.modules_tabs').removeClass('disable-btn');
         return;
     }
 
@@ -2423,6 +2442,7 @@ async function _generateStyleTransferDesign(sec,el){
                 removeLoaderDivs(noOfDesign);
                 enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
                 $('.on-gen-disable').removeClass('disable-btn');
+                $('.modules_tabs').removeClass('disable-btn');
                 return;
                 return;
             });
@@ -2440,6 +2460,7 @@ async function _generateStyleTransferDesign(sec,el){
         let storedIds = resultJsonFormat.storedIds;
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
         $('.on-gen-disable').removeClass('disable-btn');
+        $('.modules_tabs').removeClass('disable-btn');
         if(dataPage == 'floor_editor'){
             removeLoaderDivs(1);
         }else if(dataPage == 'style_transfer'){

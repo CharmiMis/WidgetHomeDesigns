@@ -380,6 +380,7 @@
             textureImage = '';
         });
         function selectColor(event, colorName) {
+
             // Define a mapping of color names to RGB values
             const colorMap = {
                 'Alabaster White': '240,237,230',

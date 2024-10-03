@@ -1065,19 +1065,19 @@
         var hiddenInput = document.getElementById('color_texture_' + dataPage);
         var custom_instruction = document.getElementById('custom_instruction' + secId + '-' + dataPage);
 
-        var clickedLi = event.target.closest('li');
+        var clickedLi = event.target.closest('li.color-option');
         var isActive = clickedLi.classList.contains('active');
 
         // Remove active class from all list items
         var allLis = clickedLi.parentElement.querySelectorAll('li');
-        allLis.forEach(li => li.classList.remove('active'));
+        allLis.forEach(li => li.classList.remove('active')); // Remove 'active' class from all 'li' elements
 
         if (isActive) {
-            clickedLi.classList.remove('active');
+            clickedLi.classList.remove('active'); // This will work now since we removed 'active' from all before
             hiddenInput.value = '';
             custom_instruction.disabled = false;
         } else {
-            clickedLi.classList.add('active');
+            clickedLi.classList.add('active'); // Adds 'active' class to the clicked item
             hiddenInput.value = colorName;
             custom_instruction.disabled = true;
         }

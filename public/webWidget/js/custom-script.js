@@ -982,6 +982,7 @@ async function _generateDesign(sec, el) {
     $(el).attr('disabled', true);
     $('.gs-continue-btn').addClass('disable-btn');
     $('.on-gen-disable').addClass('disable-btn');
+    $('.modules_tabs').addClass('disable-btn');
     $('input[id^="nwtoggle"]').addClass('disable-btn').prop('disabled', true);
 
     var image = document.getElementById('input_image').value;
@@ -999,6 +1000,7 @@ async function _generateDesign(sec, el) {
         $(el).attr('disabled', false);
         $('.gs-continue-btn').removeClass('disable-btn');
         $('.on-gen-disable').removeClass('disable-btn');
+        $('.modules_tabs').removeClass('disable-btn');
         $('input[id^="nwtoggle"]').removeClass('disable-btn').prop('disabled', false);
 
         return;
@@ -1018,6 +1020,7 @@ async function _generateDesign(sec, el) {
         $(el).attr('disabled', false);
         $('.gs-continue-btn').removeClass('disable-btn');
         $('.on-gen-disable').removeClass('disable-btn');
+        $('.modules_tabs').removeClass('disable-btn');
         $('input[id^="nwtoggle"]').removeClass('disable-btn').prop('disabled', false);
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
         return;
@@ -1030,6 +1033,7 @@ async function _generateDesign(sec, el) {
         $(el).attr('disabled', false);
         $('.gs-continue-btn').removeClass('disable-btn');
         $('.on-gen-disable').removeClass('disable-btn');
+        $('.modules_tabs').removeClass('disable-btn');
         $('input[id^="nwtoggle"]').removeClass('disable-btn').prop('disabled', false);
 
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
@@ -1047,6 +1051,7 @@ async function _generateDesign(sec, el) {
         $(el).attr('disabled', false);
         $('.gs-continue-btn').removeClass('disable-btn');
         $('.on-gen-disable').removeClass('disable-btn');
+        $('.modules_tabs').removeClass('disable-btn');
         $('input[id^="nwtoggle"]').removeClass('disable-btn').prop('disabled', false);
 
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
@@ -1065,6 +1070,7 @@ async function _generateDesign(sec, el) {
         $(el).attr('disabled', false);
         $('.gs-continue-btn').removeClass('disable-btn');
         $('.on-gen-disable').removeClass('disable-btn');
+        $('.modules_tabs').removeClass('disable-btn');
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
         return;
     }
@@ -1127,6 +1133,7 @@ async function _generateDesign(sec, el) {
                     $(el).attr('disabled', false);
                     $('.gs-continue-btn').removeClass('disable-btn');
                     $('.on-gen-disable').removeClass('disable-btn');
+                    $('.modules_tabs').removeClass('disable-btn');
                     enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
                     return;
                 });
@@ -1145,6 +1152,7 @@ async function _generateDesign(sec, el) {
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
             $('.gs-continue-btn').removeClass('disable-btn');
             $('.on-gen-disable').removeClass('disable-btn');
+            $('.modules_tabs').removeClass('disable-btn');
             $('input[id^="nwtoggle"]').removeClass('disable-btn').prop('disabled', false);
 
             if (result.error) {
@@ -1628,6 +1636,7 @@ $(document).on('click', '.generate_hd_img', async function () {
     var sec = $(this).data('sec');
     $('.gs-continue-btn').addClass('disable-btn');
     $('.on-gen-disable').addClass('disable-btn');
+    $('.modules_tabs').addClass('disable-btn');
     $('.edit-button-div').addClass('disable-btn');
     // document.getElementById(`hundredid${sec}`).click();
     var image_url = $(this).data('img');
@@ -1677,6 +1686,7 @@ $(document).on('click', '.generate_hd_img', async function () {
         .then(result => {
             $('.gs-continue-btn').removeClass('disable-btn');
             $('.on-gen-disable').removeClass('disable-btn');
+            $('.modules_tabs').removeClass('disable-btn');
             $('.edit-button-div').removeClass('disable-btn');
             // deleteButton.disabled = false;
             var generated_image = result['Sucess']['generated_image'][0];

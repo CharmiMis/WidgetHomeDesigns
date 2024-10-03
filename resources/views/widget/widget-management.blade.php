@@ -132,7 +132,7 @@
             <div class="ai-tool-right" id="tabs">
                 <ul class="feature-buttons">
                     @foreach (json_decode($widgetData->accessible_features) as $feature)
-                        <li>
+                        <li class="modules_tabs">
                             <a href="#{{ $feature }}" id="feature-{{ $feature }}"
                                 class="feature-button @if ($loop->first) active @endif"
                                 data-feature="{{ $feature }}"
