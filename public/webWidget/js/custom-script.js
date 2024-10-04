@@ -1086,11 +1086,11 @@ async function _generateDesign(sec, el) {
     var formData = new FormData();
     var aiAPI = null;
     if (modeType == 'Creative Redesign' || modeType == 'Fill The Room' || modeType == 'Fill The Garden' || modeType == 'Fill The Exterior') {
-        aiAPI = "runpod/creative_redesign";
+        aiAPI = "runpodWidget/creative_redesign";
     } else if (modeType == 'Sketch to Render') {
-        aiAPI = "runpod/render_realistic";
+        aiAPI = "runpodWidget/render_realistic";
     }else if(modeType == 'Convenient Redesign'){
-        aiAPI = "runpod/intuitive_redesign";
+        aiAPI = "runpodWidget/intuitive_redesign";
     } else {
         aiAPI = "runpodWidget/beautiful_redesign";
     }

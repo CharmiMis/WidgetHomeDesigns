@@ -229,6 +229,20 @@
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/select-room-type10.png">
                                                             <span>Beautiful Redesign</span>
                                                         </div>
+                                                        <div class="gs-select-room-style-single"
+                                                            data-room-type="Creative Redesign"
+                                                            onclick="selectModeType('Creative Redesign',0)">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/select-room-type11.png">
+                                                            <span>Creative Redesign</span>
+                                                        </div>
+                                                        <div class="gs-select-room-style-single"
+                                                            data-room-type="Sketch to Render"
+                                                            onclick="selectModeType('Sketch to Render',0)">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/Sketch to Render.png">
+                                                            <span>Sketch to Render</span>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -456,6 +470,20 @@
                                                             <img
                                                                 src="{{ asset('webWidget/images/select-room-type10.png') }}">
                                                             <span>Beautiful Redesign</span>
+                                                        </div>
+                                                         <div class="gs-select-room-style-single"
+                                                            data-room-type="Creative Redesign"
+                                                            onclick="selectModeType('Creative Redesign',1)">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/select-room-type11.png">
+                                                            <span>Creative Redesign</span>
+                                                        </div>
+                                                        <div class="gs-select-room-style-single"
+                                                            data-room-type="Sketch to Render"
+                                                            onclick="selectModeType('Sketch to Render',1)">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/Sketch to Render.png">
+                                                            <span>Sketch to Render</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -693,6 +721,20 @@
                                                                 src="{{ asset('webWidget/images/select-room-type10.png') }}">
                                                             <span>Beautiful Redesign</span>
                                                         </div>
+                                                    </div>
+                                                    <div class="gs-select-room-style-single"
+                                                        data-room-type="Creative Redesign"
+                                                        onclick="selectModeType('Creative Redesign',2)">
+                                                        <img
+                                                            src="https://homedesigns-ai.b-cdn.net/web2/images/select-room-type11.png">
+                                                        <span>Creative Redesign</span>
+                                                    </div>
+                                                    <div class="gs-select-room-style-single"
+                                                        data-room-type="Sketch to Render"
+                                                        onclick="selectModeType('Sketch to Render',2)">
+                                                        <img
+                                                            src="https://homedesigns-ai.b-cdn.net/web2/images/Sketch to Render.png">
+                                                        <span>Sketch to Render</span>
                                                     </div>
                                                 </div>
                                             </div>

@@ -42,6 +42,8 @@ Route::post('runpodWidget/getMasking', [WidgetController::class, 'runpodWidgetGe
 Route::post('runpodWidget/fullHD', [WidgetController::class, 'runpodWidgetFullHD'])->name('runpodWidget.fullHD');
 
 Route::get('get-base64', [HomeController::class, 'downloadFile'])->name('file.download');
+Route::post('runpodWidget/creative_redesign', [WidgetController::class, 'runpodWidgetCreativeRedesign'])->name('runpodWidget.creative_redesign');
+Route::post('runpodWidget/render_realistic', [WidgetController::class, 'runpodWidgetRenderRealistic'])->name('runpodWidget.render_realistic');
 
 //Widget response
 
