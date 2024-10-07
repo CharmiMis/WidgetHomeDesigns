@@ -122,16 +122,18 @@
     $crossShellPlan = [];
     $precisionUser = false;
     $default_gallery = 'private';
+    $features = json_decode($widgetData->accessible_features);
     ?>
     <input type="hidden" id="precisionUser" value="{{ $precisionUser ? 'true' : 'false' }}">
     <input type="hidden" id="modeValueForPage" value="0" />
     <input type="hidden" id="widgetUserID" value="{{ $widgetData->user_id }}" />
     <input type="hidden" id="widgetThemeMode" value="{{ $widgetThemeMode }}" />
+    <input type="hidden" id="widgetFirstModuleDataPage" value="{{ $features[0] ?? '' }}" />
     <div class="ai-tool-wrapper">
         <div class="ai-tool-wrapper  demo-class">
             <div class="ai-tool-right" id="tabs">
                 <ul class="feature-buttons">
-                    @foreach (json_decode($widgetData->accessible_features) as $feature)
+                    @foreach ($features as $feature)
                         <li class="modules_tabs">
                             <a href="#{{ $feature }}" id="feature-{{ $feature }}"
                                 class="feature-button @if ($loop->first) active @endif"

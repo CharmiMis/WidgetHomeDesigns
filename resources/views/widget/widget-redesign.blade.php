@@ -885,64 +885,8 @@
 
     <div class="ai-upload-latest-designs">
         <h3 class="font22">Latest Designs</h3>
-        <div class="gs-select-category redesign-designs-tabs">
-            <div class="gs-select-category-list">
-                <ul class="gs-option-flex">
-                    <li class="active on-gen-disable">
-                        <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#interior"
-                            onclick="loadWidgetRenders(0)" data-sec="0">
-                            <img src="{{ asset('webWidget/images/gs-interior-icon.svg') }}">
-                            <span>Interior</span>
-                        </a>
-                    </li>
-                    <li class="on-gen-disable">
-                        <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#exterior"
-                            onclick="loadWidgetRenders(1)" data-sec="1">
-                            <img src="{{ asset('webWidget/images/gs-exterior-icon.svg') }}">
-                            <span>Exterior</span>
-                        </a>
-                    </li>
-                    <li class="on-gen-disable">
-                        <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#garden"
-                            onclick="loadWidgetRenders(2)" data-sec="2">
-                            <img src="{{ asset('webWidget/images/gs-garden-icon.svg') }}">
-                            <span>Garden</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="tab-content">
-            <div id="interior" class="tab-pane fade in active">
-                <div class="ai-upload-latest-top" id="jumphere0-redesign" style="display: none">
-                    <h3 class="font22"></h3>
-                    {{-- <div class="ai-upload-add-project delete_favourite_buttons hidden">
-                        <ul>
-                            <li class="ai-upload-add-project-list">
-                                <span class="ai-upload-option-tooltip">Delete</span>
-                                <a href="javascript:void(0)" onclick="deleteMultipleImages()">
-                                    <img src="{{ asset('webWidget/images/ai-upload-list-icon1.svg') }}">
-                                </a>
-                            </li>
-                            <li class="ai-upload-add-project-list">
-                                <span class="ai-upload-option-tooltip">Add to Favourite</span>
-                                <a href="javascript:void(0)" class="add_all_images_as_favourite">
-                                    <img src="{{ asset('webWidget/images/ai-upload-list-icon2.svg') }}">
-                                </a>
-                            </li>
-                            <li class="ai-upload-add-project-list">
-                                <span class="ai-upload-option-tooltip">Add to Project</span>
-                                <a href="javascript:void(0)" class="add_to_project_btn">
-                                    <img src="{{ asset('webWidget/images/ai-upload-list-icon3.svg') }}">
-                                </a>
-                            </li>
-                        </ul>
-                    </div> --}}
-                </div>
-                <div class="ai-upload-latest-wrapper row" id="all_data0_redesign">
+        <div class="ai-upload-latest-wrapper row" id="all_data0_redesign">
 
-                </div>
-            </div>
         </div>
     </div>
 </div>

@@ -292,32 +292,6 @@
 
 <div class="ai-upload-latest-designs">
     <h3 class="font22">Latest Designs</h3>
-    {{-- <div class="latest-designs-info">Check your latest designs below and save them to projects or to favorites.</div> --}}
-    <div class="ai-upload-latest-top" id="jumphere0-color_swap">
-        <h3 class="font22"></h3>
-        {{-- <div class="ai-upload-add-project delete_favourite_buttons">
-            <ul>
-                <li class="ai-upload-add-project-list edit-button-div">
-                    <span class="ai-upload-option-tooltip">Delete</span>
-                    <a href="javascript:void(0)" onclick="deleteMultipleImages()">
-                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-list-icon1.svg">
-                    </a>
-                </li>
-                <li class="ai-upload-add-project-list edit-button-div">
-                    <span class="ai-upload-option-tooltip">Add to Favourite</span>
-                    <a href="javascript:void(0)" class="add_all_images_as_favourite">
-                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-list-icon2.svg">
-                    </a>
-                </li>
-                <li class="ai-upload-add-project-list edit-button-div">
-                    <span class="ai-upload-option-tooltip">Add to Project</span>
-                    <a href="javascript:void(0)" class="add_to_project_btn">
-                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-list-icon3.svg">
-                    </a>
-                </li>
-            </ul>
-        </div> --}}
-    </div>
     <div class="ai-upload-latest-wrapper row" id="all_data0_color_swap">
     </div>
 </div>

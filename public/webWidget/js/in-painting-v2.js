@@ -1,6 +1,6 @@
-var dataPage = "redesign";
+var firstFeatureInput = document.getElementById('widgetFirstModuleDataPage').value;
+var dataPage = getDatapage(firstFeatureInput);
 var tabs = $( "#tabs" ).tabs();
-//console.log("tabs",tabs);
 var hasTransparentPixels = false;
 var paintingStag = '';
 var imageLayer = '';
@@ -83,11 +83,22 @@ var lastLin, imageLayer, brushLayer, blackLayer, imageLayerSec, blackLayerSec;
 var imageSrcNpy = '';
 var segmentHeight = '';
 var segmentWidth = '';
+$(document).ready(function() {
+    if(dataPage != 'redesign'){
+        const activeTab = document.querySelector('.feature-button.active');
+        // If the active tab exists, trigger a click on the parent <li> element with class "ui-tabs-tab"
+        if (activeTab) {
+            const parentTab = activeTab.closest('.modules_tabs');
+            if (parentTab) {
+                parentTab.click();  // Trigger a click on the <li> element
+            }
+        }
+    }
+});
 tabs.on( "click", ".ui-tabs-tab", function() {
     $('.gs-select-room-style-single').removeClass('active');
 
     $('.chkbox-segment ul').empty();
-    console.log("ui-tabs-tab");
     var panelId = $( this ).closest( "li" ).attr( "aria-controls" );
 
     // Remove 'active' class from all tabs
@@ -554,9 +565,7 @@ function callAgain(){
 }
 
 function callAgainUploadPaint(){
-    console.log('callAgainUploadPaint: ');
     if(dataPage == 'style_transfer' || dataPage == 'color_swap' || dataPage == 'design_transfer' || dataPage == 'floor_editor'){
-        console.log('color_swap:');
         addSecImageLayer();
         addSecBlackLayer();
 
@@ -941,7 +950,7 @@ async function callInPaintingAPI(sec,el) {
     var noOfDesign = document.getElementById(`no_of_des${sec}`).value;
     generationDivLoader(noOfDesign,croppedImage);
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
-    document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
+    // document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
     if (!imageLayer.hasChildren()) {
         alert("Oops! You didn't upload your image.");
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
@@ -1056,7 +1065,7 @@ async function callInPaintingAPI(sec,el) {
     }
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
+    // document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
 
     var divElement = document.getElementById(`all_data0_${dataPage}`);
     divElement.firstElementChild.scrollIntoView();
@@ -1255,8 +1264,6 @@ async function callInPaintingAPI(sec,el) {
             });
         }else{
             generatedImageList = resultJsonFormat.Sucess.generated_image;
-            console.log('generatedImageList: ', generatedImageList);
-
             originalImage = resultJsonFormat.Sucess.original_image;
             // let storedIds = resultJsonFormat.storedIds;
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
@@ -1266,7 +1273,6 @@ async function callInPaintingAPI(sec,el) {
             let storedDesigns = JSON.parse(localStorage.getItem('in-painting-designs')) || [];
 
             generatedImageList.forEach((image) => {
-                console.log("Image",image);
                 let design = {
                     // id: storedIds[index],
                     original_url: originalImage,
@@ -1396,7 +1402,7 @@ $(document).on('click', '.full_hd_quality', async function () {
 
     generationDivLoader(1,image_url);
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
-    document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
+    // document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
 
     var divElement = document.getElementById(`all_data0_${dataPage}`);
     divElement.firstElementChild.scrollIntoView();
@@ -1990,8 +1996,6 @@ function loadImageBase64FromFurnitureRemoval(fillspaceb64image)
 }
 
 function changeCursor(){
-    console.log('cursorCheckbox',cursorCheckbox.value);
-
     if (cursorCheckbox.value === 'true') {
         cursorCircle.style.borderRadius = '0%';
     }
@@ -2254,7 +2258,6 @@ $("body").on('click', '.close-decor-stag', async function () {
 });
 
 async function loadImageCropperForStyleTransfer() {
-    console.log('loadImageCropperForStyleTransfer: ');
     $('#uploading_instruction').modal('hide');
     hasTransparentPixels = false;
     const [file] = fileInput2.files;
@@ -2390,7 +2393,7 @@ async function _generateStyleTransferDesign(sec,el){
 
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
+    // document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
 
     var divElement = document.getElementById(`all_data0_${dataPage}`);
     divElement.firstElementChild.scrollIntoView();
@@ -2618,9 +2621,7 @@ function allowDrop(e) {
 //dragElement function called on ondrag event.
 function dragElement(e) {
     var data = e.dataTransfer.setData("id", e.target.id); //transfer the "data" i.e. id of the target dragged.
-    //console.log("Dropped element ID:", data);
     var imag = document.getElementById(data); // Get the target image info through its id.
-    //console.log("Fetched element:", imag);
 }
 
 function moveElementOnCanvas(e){
@@ -2760,9 +2761,7 @@ function moveElementOnCanvas(e){
 function dropElement(e) {
     e.preventDefault();
     var data = e.dataTransfer.getData("id");
-    // console.log("Dropped element ID:", data);
     var imag = document.getElementById(data);
-    // console.log("Fetched element:", imag);
 
     var img = new fabric.Image(imag, {
         left: e.layerX - 80,
@@ -2969,14 +2968,12 @@ function mergeImages() {
     });
 
     if (isNaN(minX) || isNaN(minY) || isNaN(maxX) || isNaN(maxY)) {
-        console.log('Error in calculating bounding box dimensions.');
         return null;
     }
     const width = maxX - minX;
     const height = maxY - minY;
 
     if (width <= 0 || height <= 0) {
-        console.log('Calculated width or height is 0, no valid merge area.');
         return null;
     }
     // Create a new canvas to hold the merged image
@@ -3078,7 +3075,6 @@ function mergeMaskImages() {
         return null;
     }
     if (objects.length === 0) {
-        console.log('No images to merge.');
         return null;
     }
 
@@ -3094,14 +3090,12 @@ function mergeMaskImages() {
     });
 
     if (isNaN(minX) || isNaN(minY) || isNaN(maxX) || isNaN(maxY)) {
-        console.log('Error in calculating bounding box dimensions.');
         return null;
     }
     const width = maxX - minX;
     const height = maxY - minY;
 
     if (width <= 0 || height <= 0) {
-        console.log('Calculated width or height is 0, no valid merge area.');
         return null;
     }
 
@@ -3757,7 +3751,6 @@ async function generateRoomComposer(sec,el){
         })
         .catch(error => {
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
-            console.error('Error:', error);
         });
 
     // var progressindicatordiv = document.getElementById(`progressindicatordiv`);
@@ -3911,8 +3904,6 @@ function generateUniqueId(prefix = 'image_id') {
 //default masking animation
 
     function showCircleLoaderForDuration(duration) {
-        console.log('duration',duration);
-
         showCircleLoader();
 
         setTimeout(() => {
@@ -3921,7 +3912,6 @@ function generateUniqueId(prefix = 'image_id') {
     }
 
     function showSquareLoaderForDuration(duration) {
-        console.log('duration',duration);
 
         showSquareLoader();
 
@@ -4082,4 +4072,23 @@ function generateUniqueId(prefix = 'image_id') {
         if (squareLoaderStyle) {
             squareLoaderStyle.remove();
         }
+    }
+
+    function getDatapage(firstFeatureInput){
+        var updatedDataPage = '';
+        if(firstFeatureInput == 'redesign'){
+            updatedDataPage = 'redesign';
+        }else if(firstFeatureInput == 'precision'){
+            updatedDataPage = 'inPaint';
+        }else if(firstFeatureInput == 'fill_spaces'){
+            updatedDataPage = 'fillSpace';
+        } else if(firstFeatureInput == 'colors_and_textures'){
+            updatedDataPage = 'change-colors-texture';
+        } else if(firstFeatureInput == 'paint_visualizer'){
+            updatedDataPage = 'color_swap';
+        } else{
+            updatedDataPage = '';
+        }
+
+        return updatedDataPage;
     }

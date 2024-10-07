@@ -131,7 +131,8 @@
             <div class="gs-what-to-edit-tabs">
                 <div class="gs-what-to-edit-title">
                     <ul>
-                        <li class="active"><a data-toggle="tab" href="#select-automatically-colorTexture">Automatic Selection</a>
+                        <li class="active"><a data-toggle="tab" href="#select-automatically-colorTexture">Automatic
+                                Selection</a>
                         </li>
                         <li><a data-toggle="tab" href="#refine-manually-colorTexture">Manual Selection </a></li>
                     </ul>
@@ -184,15 +185,16 @@
                                 </div>
                             </div>
                             <div class="undo-redo-btn">
-                                <button class="ci-btn ci-btn-danger ip-clearImage" id="ip-clearImage" title="Clear All">
+                                <button class="ci-btn ci-btn-danger ip-clearImage" id="ip-clearImage"
+                                    title="Clear All">
                                     <img src="https://homedesigns-ai.b-cdn.net/web/images/deleteIcon.png"
                                         width="25px"> Clear all
                                 </button>
-                                <button class="ci-btn ci-btn-danger ip-undoImage" id="ip-undoImage" title="Undo"><img
-                                        src="https://homedesigns-ai.b-cdn.net/web/images/undo.png"
+                                <button class="ci-btn ci-btn-danger ip-undoImage" id="ip-undoImage"
+                                    title="Undo"><img src="https://homedesigns-ai.b-cdn.net/web/images/undo.png"
                                         width="25px"></button>
-                                <button class="ci-btn ci-btn-danger ip-redoImage" id="ip-redoImage" title="Redo"><img
-                                        src="https://homedesigns-ai.b-cdn.net/web/images/redo.png"
+                                <button class="ci-btn ci-btn-danger ip-redoImage" id="ip-redoImage"
+                                    title="Redo"><img src="https://homedesigns-ai.b-cdn.net/web/images/redo.png"
                                         width="25px"></button>
                             </div>
                             <div class="gs-continue-btn-outer">
@@ -238,7 +240,8 @@
                     <div class="gs-what-to-edit-tabs">
                         <div class="gs-what-to-edit-title">
                             <ul>
-                                <li class="active"><a data-toggle="tab" href="#our-preset-settings-interior-change-colors-texture"
+                                <li class="active"><a data-toggle="tab"
+                                        href="#our-preset-settings-interior-change-colors-texture"
                                         class="presetLink">Preset Colors</a></li>
                                 <li><a data-toggle="tab" href="#your-customs-settings-interior-change-colors-texture"
                                         class="customLink">Custom Colors </a></li>
@@ -246,7 +249,8 @@
                         </div>
                         <div class="gs-what-to-edit-content">
                             <div class="tab-content">
-                                <div id="our-preset-settings-interior-change-colors-texture" class="tab-pane show fade in active">
+                                <div id="our-preset-settings-interior-change-colors-texture"
+                                    class="tab-pane show fade in active">
                                     <div class="gs-select-automatically">
                                         <p>What do you want to change?</p>
                                         <div class="gs-our-preset-settings">
@@ -255,7 +259,8 @@
                                                 <button class="toggle-button material-button">Material</button>
                                             </div>
                                             <div class="gs-our-preset-color" data-sec="0">
-                                                <input type="hidden" id="color_texture_change-colors-texture" name="color_texture0">
+                                                <input type="hidden" id="color_texture_change-colors-texture"
+                                                    name="color_texture0">
                                                 <p>Select a color from the list:</p>
                                                 @include('widget.designs_options.colors_texture')
                                             </div>
@@ -322,9 +327,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="your-customs-settings-interior-change-colors-texture" class="tab-pane show fade">
+                                <div id="your-customs-settings-interior-change-colors-texture"
+                                    class="tab-pane show fade">
                                     <div class="our-preset-settings-box">
-                                        <textarea id="custom_instruction0-change-colors-texture" placeholder="white chalk paint" name="prompt" class="promtCustomInput"></textarea>
+                                        <textarea id="custom_instruction0-change-colors-texture" placeholder="white chalk paint" name="prompt"
+                                            class="promtCustomInput"></textarea>
                                     </div>
 
                                     <div class="our-preset-settings-range-outer">
@@ -363,15 +370,17 @@
                     <div class="gs-what-to-edit-tabs">
                         <div class="gs-what-to-edit-title">
                             <ul>
-                                <li class="active"><a data-toggle="tab" href="#our-preset-settings-exterior-colorTexture1"
-                                        class="presetLink">Preset Colors</a></li>
+                                <li class="active"><a data-toggle="tab"
+                                        href="#our-preset-settings-exterior-colorTexture1" class="presetLink">Preset
+                                        Colors</a></li>
                                 <li><a data-toggle="tab" href="#your-customs-settings-exterior-colorTexture1"
                                         class="customLink">Custom Colors</a></li>
                             </ul>
                         </div>
                         <div class="gs-what-to-edit-content">
                             <div class="tab-content">
-                                <div id="our-preset-settings-exterior-colorTexture1" class="tab-pane show fade in active">
+                                <div id="our-preset-settings-exterior-colorTexture1"
+                                    class="tab-pane show fade in active">
                                     <div class="gs-select-automatically">
                                         <p>What do you want to change?</p>
                                         <div class="gs-our-preset-settings">
@@ -445,7 +454,8 @@
                                 </div>
                                 <div id="your-customs-settings-exterior-colorTexture1" class="tab-pane show fade">
                                     <div class="our-preset-settings-box">
-                                        <textarea id="custom_instruction1-change-colors-texture" placeholder="white chalk paint" name="prompt" class="promtCustomInput"></textarea>
+                                        <textarea id="custom_instruction1-change-colors-texture" placeholder="white chalk paint" name="prompt"
+                                            class="promtCustomInput"></textarea>
                                     </div>
 
                                     <div class="our-preset-settings-range-outer">
@@ -567,7 +577,8 @@
                                 </div>
                                 <div id="your-customs-settings-garden-color_swap" class="tab-pane show fade">
                                     <div class="our-preset-settings-box">
-                                        <textarea id="custom_instruction2-change-colors-texture" placeholder="white chalk paint" name="prompt" class="promtCustomInput"></textarea>
+                                        <textarea id="custom_instruction2-change-colors-texture" placeholder="white chalk paint" name="prompt"
+                                            class="promtCustomInput"></textarea>
                                     </div>
 
                                     <div class="our-preset-settings-range-outer">
@@ -610,65 +621,8 @@
 
 <div class="ai-upload-latest-designs">
     <h3 class="font22">Latest Designs</h3>
-    {{-- <div class="latest-designs-info">Check your latest designs below and save them to projects or to favorites.</div> --}}
-    <div class="gs-select-category redesign-designs-tabs">
-        <div class="gs-select-category-list">
-            <ul class="gs-option-flex designs_tabs">
-                <li class="active on-gen-disable nwai-tabs">
-                    <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#interior-colorTexture2"
-                        onclick="loadRenders(0)" data-sec="0">
-                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-interior-icon.svg">
-                        <span class="nwtb-titles">Interior</span>
-                    </a>
-                </li>
-                <li class="on-gen-disable nwai-tabs">
-                    <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#exterior-colorTexture2"
-                        onclick="loadRenders(1)" data-sec="1">
-                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-exterior-icon.svg">
-                        <span class="nwtb-titles">Exterior</span>
-                    </a>
-                </li>
-                <li class="on-gen-disable nwai-tabs">
-                    <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#garden-colorTexture2"
-                        onclick="loadRenders(2)" data-sec="2">
-                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-garden-icon.svg">
-                        <span class="nwtb-titles">Garden</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="tab-content">
-        <div id="interior-colorTexture2" class="tab-pane fade in active">
-            <div class="ai-upload-latest-top" id="jumphere0-change-colors-texture">
-                <h3 class="font22"></h3>
-                {{-- <div class="ai-upload-add-project delete_favourite_buttons">
-                    <ul>
-                        <li class="ai-upload-add-project-list edit-button-div">
-                            <span class="ai-upload-option-tooltip">Delete</span>
-                            <a href="javascript:void(0)" onclick="deleteMultipleImages()">
-                                <img src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-list-icon1.svg">
-                            </a>
-                        </li>
-                        <li class="ai-upload-add-project-list edit-button-div">
-                            <span class="ai-upload-option-tooltip">Add to Favourite</span>
-                            <a href="javascript:void(0)" class="add_all_images_as_favourite">
-                                <img src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-list-icon2.svg">
-                            </a>
-                        </li>
-                        <li class="ai-upload-add-project-list edit-button-div">
-                            <span class="ai-upload-option-tooltip">Add to Project</span>
-                            <a href="javascript:void(0)" class="add_to_project_btn">
-                                <img src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-list-icon3.svg">
-                            </a>
-                        </li>
-                    </ul>
-                </div> --}}
-            </div>
-            <div class="ai-upload-latest-wrapper row" id="all_data0_change-colors-texture">
+    <div class="ai-upload-latest-wrapper row" id="all_data0_change-colors-texture">
 
-            </div>
-        </div>
     </div>
 </div>
 <script>
@@ -1091,6 +1045,7 @@
             maskingCheckbox.value = "false";
         }
     }
+
     function toggleBrushingCursor(value) {
         removeCircleLoader();
         removeSquareLoader();
@@ -1106,25 +1061,62 @@
 </script>
 <script>
     const subItemsMapping = {
-        "fabrics" : ['Cotton', 'Silk', 'Wool','Linen','Velvet','Leather','Suede','Tweed','Chenille','Jacquard','Satin','Polyester','Nylon','Rayon','Cashmere'],
-        "glass" : ['Clear', 'Frosted', 'Stained', 'Tempered', 'Laminated','Shattered','Patterned','Textured','Seeded','Colored','Mirrored','Etched','Smoked','Beveled','Lead Crystal','Obscured'],
-        "wood" : ['Oak', 'Maple', 'Cherry', 'Walnut', 'Pine', 'Teak', 'Mahogany','Bamboo', 'Birch', 'Rosewood', 'Ash', 'Cedar', 'Hickory', 'Alder', 'Ebony'],
-        "stone" : ['Marble', 'Granite', 'Bricks', 'Red Bricks', 'Limestone', 'Slate','Travertine', 'Sandstone', 'Quartz', 'Onyx', 'Basalt', 'Terrazzo','Soapstone', 'Quartzite', 'Dolomite', 'Gneiss', 'Bluestone'],
-        "metal" : ['Steel', 'Aluminum', 'Brass', 'Wrought iron', 'Stainless steel', 'Chrome', 'Gold', 'Silver', 'Copper', 'Bronze', 'Titanium', 'Zinc', 'Nickel', 'Lead', 'Pewter'],
-        "ceramics and porcelain" : ['Earthenware', 'Stoneware', 'Porcelain', 'Terracotta', 'Vitreous China', 'Bone China', 'Glazed', 'Matte', 'Polished', 'Textured', 'Mosaic', 'Hand-painted', 'Crackle', 'Metallic', 'Luster'],
-        "plastics and polymers" : ['Acrylic', 'Polyethylene', 'PVC', 'Polycarbonate', 'Polypropylene', 'ABS', 'Epoxy', 'Silicone', 'Vinyl', 'Melamine', 'Phenolic', 'Urethane', 'Fiberglass', 'Nylon', 'Acetate'],
-        "paper and cardboard" : ['Wallpaper', 'Cardboard', 'Kraft', 'Parchment', 'Foil embossed', 'Textured', 'Handmade paper', 'Recycled paper', 'Flocked paper', 'Metallic paper', 'Vellum', 'Linen paper', 'Watercolor paper', 'Matte', 'Glossy'],
-        "natural fibers" : ['Jute', 'Hemp', 'Sisal', 'Coir', 'Bamboo fiber', 'Wool', 'Cotton', 'Linen', 'Silk', 'Cashmere', 'Mohair', 'Alpaca', 'Seagrass', 'Ramie', 'Abaca'],
-        "composite materials" : ['Concrete', 'Plywood', 'MDF', 'Particleboard', 'Fiberglass', 'Corian', 'Quartz composite', 'Terrazzo', 'Engineered stone', 'Laminate', 'Vinyl composite tile', 'Resin', 'Acrylic composite', 'Carbon fiber', 'Glass fiber reinforced concrete'],
-        "facade" : ['Brick', 'Natural Stone', 'Granite', 'Fieldstone', 'Limestone', 'Sandstone','Stucco', 'Wood', 'Vinyl', 'Fiber cement', 'Metal', 'Glass'],
-        "roofing" : ['Asphalt shingles', 'Metal roofing', 'Clay tiles', 'Concrete tiles', 'Slate tiles','Wooden Shakes or Shingles','Solar Tiles','Roof Tiles'],
-        "decking and walkways" : ['Composite decking', 'Natural stone pavers', 'Concrete pavers', 'Brick pavers','Treated lumber', 'Teak', 'Redwood decking', 'Pea Gravel', 'Anthracite Grey Deck', 'Crushed Granite'],
-        "outdoor fixtures and accents" : ['Wrought iron', 'Stainless steel', 'Copper', 'Natural stone', 'Ceramic tiles'],
-        "ground cover materials" : ['Mulch', 'Wood Chips', 'Grass', 'Clover', 'Moss', 'Lawn', 'Pebbles', 'River rocks', 'Ground cover plants', 'thyme', 'Sedum', 'Artificial grass', 'Decomposed granite'],
-        "planters and edging" : ['Corten steel', 'Stone', 'Fruit Trees', 'Berry Bushes', 'Plants', 'Flowers', 'Concrete', 'Natural Stone', 'Recycled plastic', 'Bamboo'],
-        "outdoor furniture and decor" : ['Teak', 'Wrought iron', 'Rattan', 'Fire Pits', 'Concrete', 'Ceramic', 'Brick'],
-        "water features and structures" : ['Natural stone', 'Fiberglass', 'Copper', 'Wood', 'Glass'],
-        "lighting" : ['LED lights', 'Solar-powered lights', 'Low-voltage halogen', 'Fiber optics'],
+        "fabrics": ['Cotton', 'Silk', 'Wool', 'Linen', 'Velvet', 'Leather', 'Suede', 'Tweed', 'Chenille',
+            'Jacquard', 'Satin', 'Polyester', 'Nylon', 'Rayon', 'Cashmere'
+        ],
+        "glass": ['Clear', 'Frosted', 'Stained', 'Tempered', 'Laminated', 'Shattered', 'Patterned', 'Textured',
+            'Seeded', 'Colored', 'Mirrored', 'Etched', 'Smoked', 'Beveled', 'Lead Crystal', 'Obscured'
+        ],
+        "wood": ['Oak', 'Maple', 'Cherry', 'Walnut', 'Pine', 'Teak', 'Mahogany', 'Bamboo', 'Birch', 'Rosewood',
+            'Ash', 'Cedar', 'Hickory', 'Alder', 'Ebony'
+        ],
+        "stone": ['Marble', 'Granite', 'Bricks', 'Red Bricks', 'Limestone', 'Slate', 'Travertine', 'Sandstone',
+            'Quartz', 'Onyx', 'Basalt', 'Terrazzo', 'Soapstone', 'Quartzite', 'Dolomite', 'Gneiss', 'Bluestone'
+        ],
+        "metal": ['Steel', 'Aluminum', 'Brass', 'Wrought iron', 'Stainless steel', 'Chrome', 'Gold', 'Silver',
+            'Copper', 'Bronze', 'Titanium', 'Zinc', 'Nickel', 'Lead', 'Pewter'
+        ],
+        "ceramics and porcelain": ['Earthenware', 'Stoneware', 'Porcelain', 'Terracotta', 'Vitreous China',
+            'Bone China', 'Glazed', 'Matte', 'Polished', 'Textured', 'Mosaic', 'Hand-painted', 'Crackle',
+            'Metallic', 'Luster'
+        ],
+        "plastics and polymers": ['Acrylic', 'Polyethylene', 'PVC', 'Polycarbonate', 'Polypropylene', 'ABS',
+            'Epoxy', 'Silicone', 'Vinyl', 'Melamine', 'Phenolic', 'Urethane', 'Fiberglass', 'Nylon', 'Acetate'
+        ],
+        "paper and cardboard": ['Wallpaper', 'Cardboard', 'Kraft', 'Parchment', 'Foil embossed', 'Textured',
+            'Handmade paper', 'Recycled paper', 'Flocked paper', 'Metallic paper', 'Vellum', 'Linen paper',
+            'Watercolor paper', 'Matte', 'Glossy'
+        ],
+        "natural fibers": ['Jute', 'Hemp', 'Sisal', 'Coir', 'Bamboo fiber', 'Wool', 'Cotton', 'Linen', 'Silk',
+            'Cashmere', 'Mohair', 'Alpaca', 'Seagrass', 'Ramie', 'Abaca'
+        ],
+        "composite materials": ['Concrete', 'Plywood', 'MDF', 'Particleboard', 'Fiberglass', 'Corian',
+            'Quartz composite', 'Terrazzo', 'Engineered stone', 'Laminate', 'Vinyl composite tile', 'Resin',
+            'Acrylic composite', 'Carbon fiber', 'Glass fiber reinforced concrete'
+        ],
+        "facade": ['Brick', 'Natural Stone', 'Granite', 'Fieldstone', 'Limestone', 'Sandstone', 'Stucco', 'Wood',
+            'Vinyl', 'Fiber cement', 'Metal', 'Glass'
+        ],
+        "roofing": ['Asphalt shingles', 'Metal roofing', 'Clay tiles', 'Concrete tiles', 'Slate tiles',
+            'Wooden Shakes or Shingles', 'Solar Tiles', 'Roof Tiles'
+        ],
+        "decking and walkways": ['Composite decking', 'Natural stone pavers', 'Concrete pavers', 'Brick pavers',
+            'Treated lumber', 'Teak', 'Redwood decking', 'Pea Gravel', 'Anthracite Grey Deck', 'Crushed Granite'
+        ],
+        "outdoor fixtures and accents": ['Wrought iron', 'Stainless steel', 'Copper', 'Natural stone',
+            'Ceramic tiles'
+        ],
+        "ground cover materials": ['Mulch', 'Wood Chips', 'Grass', 'Clover', 'Moss', 'Lawn', 'Pebbles',
+            'River rocks', 'Ground cover plants', 'thyme', 'Sedum', 'Artificial grass', 'Decomposed granite'
+        ],
+        "planters and edging": ['Corten steel', 'Stone', 'Fruit Trees', 'Berry Bushes', 'Plants', 'Flowers',
+            'Concrete', 'Natural Stone', 'Recycled plastic', 'Bamboo'
+        ],
+        "outdoor furniture and decor": ['Teak', 'Wrought iron', 'Rattan', 'Fire Pits', 'Concrete', 'Ceramic',
+            'Brick'
+        ],
+        "water features and structures": ['Natural stone', 'Fiberglass', 'Copper', 'Wood', 'Glass'],
+        "lighting": ['LED lights', 'Solar-powered lights', 'Low-voltage halogen', 'Fiber optics'],
     };
 
     // Handle click events for initial list items
@@ -1228,7 +1220,7 @@
         $('#material_type2').val(selectedMaterialType);
     });
 
-    function updateSubItems(selectedItem, subItemsSelector,sec) {
+    function updateSubItems(selectedItem, subItemsSelector, sec) {
         const subItems = subItemsMapping[selectedItem] || [];
         const subItemsHtml = subItems.map(item => `<li>${item}</li>`).join('');
         $(subItemsSelector).html(subItemsHtml);

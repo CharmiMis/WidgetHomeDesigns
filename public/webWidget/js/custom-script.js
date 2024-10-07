@@ -1078,7 +1078,7 @@ async function _generateDesign(sec, el) {
     generationDivLoader(noOfDesign,image);
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-    document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
+    // document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
 
     var divElement = document.getElementById(`all_data0_${dataPage}`);
     divElement.firstElementChild.scrollIntoView();
@@ -1148,7 +1148,6 @@ async function _generateDesign(sec, el) {
             return response.json();
         })
         .then(result => {
-            console.log('result: ', result);
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
             $('.gs-continue-btn').removeClass('disable-btn');
             $('.on-gen-disable').removeClass('disable-btn');
@@ -1161,7 +1160,6 @@ async function _generateDesign(sec, el) {
             }
             $('.ai-upload-latest-top').removeAttr('style');
             generatedImage = result['Sucess']['generated_image'];
-            console.log('generatedImage: ', generatedImage);
             originalImage = result['Sucess']['original_image'];
 
             let storedDesigns = JSON.parse(localStorage.getItem('designs')) || [];
@@ -1649,7 +1647,7 @@ $(document).on('click', '.generate_hd_img', async function () {
 
     generationDivLoader(1,image_url);
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
-    document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
+    // document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
 
     var divElement = document.getElementById(`all_data0_${dataPage}`);
     divElement.firstElementChild.scrollIntoView();
@@ -2990,8 +2988,6 @@ function setImageCache(base64Image, callback) {
 }
 var page = 1;
 function generatedRedesignItem(item) {
-    console.log('item: ', item);
-    // console.log("sajidtest",item);
     var temp = document.getElementById("redesignCard");
     var clone = temp.content.cloneNode(true);
     // var inputImg = clone.querySelector('[data-item="input-image"]');
