@@ -19241,10 +19241,10 @@ function showLoader() {
 
     // Create the modal container
     var loaderModal = document.createElement('div');
+	//<img src="https://homedesigns-ai.b-cdn.net/web2/images/light-mode/NewHomeDesignsAILogo 1.png" alt="Logo" class="modal-logo"></img>
     loaderModal.id = 'customLoaderModal';
     loaderModal.innerHTML = `
         <div class="modal-card">
-            <img src="https://homedesigns-ai.b-cdn.net/web2/images/light-mode/NewHomeDesignsAILogo 1.png" alt="Logo" class="modal-logo">
             <p class="loading-text">Loading...</p>
             <div class="loading-animation">
                 <div class="spinner"></div>
