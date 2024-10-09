@@ -209,6 +209,25 @@ tabs.on( "click", ".ui-tabs-tab", function() {
         addImageLayer();
         addBlackLayer(paintingStag);
         addBrushLayer();
+    } else if(panelId == 'furniture_removal'){
+        dataPage = 'aiObjectRemoval';
+        fileInput = document.querySelector("#ipFilePickeraiObjectRemoval");
+
+            inPaintStageContainer = document.querySelector('#inpainting-stag-outer-'+dataPage);
+            paintingStagOriginalWidth = inPaintStageContainer ? inPaintStageContainer.clientWidth : 0 ;
+            paintingStagOriginalHeight = inPaintStageContainer ? inPaintStageContainer.clientHeight : 0 ;
+
+            paintingStag = new Konva.Stage({
+                container: 'painting-stag-'+dataPage,
+                width: paintingStagOriginalWidth,
+                height: paintingStagOriginalHeight,
+            });
+
+            imageLayer = new Konva.Layer();
+            paintingStag.add(imageLayer);
+            addImageLayer();
+            addBlackLayer(paintingStag);
+            addBrushLayer();
     } else{
         dataPage = '';
         fileInput = document.querySelector("#ipFilePickerPrecision");
