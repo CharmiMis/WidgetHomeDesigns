@@ -30,8 +30,9 @@ class WidgetController extends Controller
         // $request->merge(['id' => Auth::id()]);
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
-        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
-        if ($userAccess == true) {
+        // $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+
+        // if ($userAccess == true) {
             $uniqueFileName = $this->generateUniqueFileName();
             if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
                 $b64image = base64_encode(file_get_contents($payloadData['data']));
@@ -84,9 +85,9 @@ class WidgetController extends Controller
                     // }
                 }
             }
-        }else{
-            return response()->json($userAccess, 401);
-        }
+        // }else{
+        //     return response()->json($userAccess, 401);
+        // }
     }
 
     public function getDataToSaveForRedesign($response, $payloadData)
