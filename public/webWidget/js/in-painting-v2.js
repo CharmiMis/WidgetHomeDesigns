@@ -240,7 +240,7 @@ tabs.on( "click", ".ui-tabs-tab", function() {
     $('#input_image').val('');
     $('#gallery0 img').attr('src', '');
     sizeElement = document.querySelector(`#ip-brush-thickness-${dataPage}`);
-    size = 70;
+    var size = sizeElement ? sizeElement.value : 70;
     clearPaintingStag();
     tabs.tabs( "refresh" );
 });
