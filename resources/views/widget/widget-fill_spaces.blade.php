@@ -163,8 +163,8 @@
                                 <div class="gs-select-manually-inner">
                                     <div class="gs-select-manually-top">
                                         <p>Edit manually using the brush</p>
-                                        <input type="hidden" value="70" id="ip-brush-thickness" />
-                                        <input class="gs-select-manually-value" type="text" id="amount"
+                                        <input type="hidden" value="70" id="ip-brush-thickness-fillSpace" />
+                                        <input class="gs-select-manually-value" type="text" id="amount-fillSpace" value="70"
                                             readonly="">
                                     </div>
                                     <div class="gs-select-design">
@@ -820,7 +820,7 @@
                 });
             } else {
                 // If no designs match the 'sec' value, display a message or handle the case
-                dataContainer.innerHTML = '<p style="color: #2e2424;">No designs found for this section.</p>';
+                //dataContainer.innerHTML = '<p style="color: #2e2424;">No designs found for this section.</p>';
             }
         } else {
             console.log("No designs found in localStorage.");

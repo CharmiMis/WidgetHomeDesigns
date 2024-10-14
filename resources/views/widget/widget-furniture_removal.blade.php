@@ -58,7 +58,7 @@
 
 <div class="image-show-container image-mask-container" style="display: none">
     <div class="gs-what-to-edit-wrapper">
-        <div class="gs-what-to-edit-left image-mask-container" style="display: none">
+        <div class="gs-what-to-edit-left image-mask-container image-mask-aiObjectRemoval" style="display: none">
             <div id="inpainting-stag-outer-aiObjectRemoval"
                 class="inpainting-stag-outer d-flex align-items-center justify-content-center">
                 <div id="painting-stag-aiObjectRemoval"></div>
@@ -89,9 +89,9 @@
                     <div class="gs-select-manually-inner">
                         <div class="gs-select-manually-top">
                             <p>Edit manually using the brush</p>
-                            {{-- <input class="gs-select-manually-value" type="text" id="amount" readonly=""> --}}
-                            <input type="hidden" value="70" id="ip-brush-thickness" />
-                            <input class="gs-select-manually-value" type="text" id="amount"
+                            {{-- <input class="gs-select-manually-value" type="text" id="amount-aiObjectRemoval" readonly=""> --}}
+                            <input type="hidden" value="70" id="ip-brush-thickness-aiObjectRemoval" />
+                            <input class="gs-select-manually-value" type="text" id="amount-aiObjectRemoval" value="70"
                                 readonly="">
                         </div>
                         <div class="gs-select-design">
@@ -100,10 +100,10 @@
                         <div class="gs-refine-manually-links">
                             <div class="gs-refine-manually-single">
                                 <input type="hidden" id="maskingCheckbox" value="true" />
-                                <a href="javascript:void(0)" id="removeMasking"
+                                <a href="javascript:void(0)" id="removeMasking" class="removeMasking"
                                     onclick="toggleMasking(false)">Remove Masking</a>
                                 <a href="javascript:void(0)" id="addMasking" onclick="toggleMasking(true)"
-                                    class="active">Add
+                                    class="active addMasking">Add
                                     Masking</a>
                             </div>
                             <div class="gs-refine-manually-single">
@@ -119,14 +119,14 @@
                         </div>
                     </div>
                     <div class="undo-redo-btn">
-                        <button class="ci-btn ci-btn-danger" id="ip-clearImage" title="Clear All">
+                        <button class="ci-btn ci-btn-danger ip-clearImage" id="ip-clearImage" title="Clear All">
                             <img src="https://homedesigns-ai.b-cdn.net/web/images/deleteIcon.png"
                                 width="25px"> Clear all
                         </button>
-                        <button class="ci-btn ci-btn-danger" id="ip-undoImage" title="Undo"><img
+                        <button class="ci-btn ci-btn-danger ip-undoImage" id="ip-undoImage" title="Undo"><img
                                 src="https://homedesigns-ai.b-cdn.net/web/images/undo.png"
                                 width="25px"></button>
-                        <button class="ci-btn ci-btn-danger" id="ip-redoImage" title="Redo"><img
+                        <button class="ci-btn ci-btn-danger ip-redoImage" id="ip-redoImage" title="Redo"><img
                                 src="https://homedesigns-ai.b-cdn.net/web/images/redo.png"
                                 width="25px"></button>
                     </div>

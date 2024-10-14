@@ -76,8 +76,8 @@ var mainImage,textureImage = '';
 // $imgCropPreview.cropper('setZoomable', false);
 
 
-var sizeElement = document.querySelector("#ip-brush-thickness");
-var size = sizeElement ? sizeElement.value : "";
+var sizeElement = document.querySelector(`#ip-brush-thickness-${dataPage}`);
+var size = sizeElement ? sizeElement.value : 70;
 
 var lastLin, imageLayer, brushLayer, blackLayer, imageLayerSec, blackLayerSec;
 var imageSrcNpy = '';
@@ -95,6 +95,7 @@ $(document).ready(function() {
         }
     }
 });
+
 tabs.on( "click", ".ui-tabs-tab", function() {
     $('.gs-select-room-style-single').removeClass('active');
 
@@ -238,7 +239,8 @@ tabs.on( "click", ".ui-tabs-tab", function() {
     $(document).find('#'+panelId+' .first_tab_active .ai-tool-right-steps').click();
     $('#input_image').val('');
     $('#gallery0 img').attr('src', '');
-
+    sizeElement = document.querySelector(`#ip-brush-thickness-${dataPage}`);
+    size = 70;
     clearPaintingStag();
     tabs.tabs( "refresh" );
 });
@@ -296,8 +298,8 @@ $('document').ready(function () {
         max: 70,
         value: 70,
         slide: function (event, ui) {
-            $("#amount").val(ui.value);
-            $("#ip-brush-thickness").val(ui.value);
+            $(`#amount-${dataPage}`).val(ui.value);
+            $(`#ip-brush-thickness-${dataPage}`).val(ui.value);
             size = ui.value;
         }
     });
@@ -943,6 +945,7 @@ async function getMaskedImages() {
 }
 
 async function callInPaintingAPI(sec,el) {
+    $('#closeModal').addClass('disable-btn');
     // dataPage = 'fillSpace';
     page = 1;
     // getInPaintingGeneratedDesigns();
@@ -1104,7 +1107,7 @@ async function callInPaintingAPI(sec,el) {
     // var precisionUserValue = document.getElementById('precisionUser').value;
     if (dataPage == 'aiObjectRemoval' || dataPage == 'segmentPage') {
         // var inPaintUrl = `${GPU_SERVER_HOST}/img2img?isSubbed=${isSubbed}&superenhance=${superenhance}&no_of_Design=${noOfDesign}&designtype=${sec}&modeType=${mode}&is_staging=${is_staging}&segmentType=${segmentType}`;
-        var inPaintUrl = "runpod/furniture_removal";
+        var inPaintUrl = "runpodWidget/furniture_removal";
         formData.append("designtype", sec);
         // formData.append("isSubbed", isSubbed);
         // formData.append("superenhance", superenhance);
@@ -1132,7 +1135,7 @@ async function callInPaintingAPI(sec,el) {
         // Need to add material_type and material
     } else if (dataPage == 'sky-color') {
         // var inPaintUrl = `${GPU_SERVER_HOST_SEG}/sky_color_change?isSubbed=${isSubbed}&superenhance=${superenhance}&no_of_Design=${noOfDesign}&designtype=${sec}&is_staging=${is_staging}&weather=${skyWeather}&modeType=${mode}`;
-        var inPaintUrl = "runpod/sky-color-change";
+        var inPaintUrl = "runpodWidget/sky-color-change";
         // formData.append("isSubbed", isSubbed);
         // formData.append("superenhance", superenhance);
         formData.append("no_of_Design", noOfDesign);
@@ -1142,7 +1145,7 @@ async function callInPaintingAPI(sec,el) {
         formData.append("weather", skyWeather);
     } else if (dataPage == 'decorstaging') {
         // var inPaintUrl = `${GPU_SERVER_HOST_SEG}/sky_color_change?isSubbed=${isSubbed}&superenhance=${superenhance}&no_of_Design=${noOfDesign}&designtype=${sec}&is_staging=${is_staging}&weather=${skyWeather}&modeType=${mode}`;
-        var inPaintUrl = "runpod/decor_staging";
+        var inPaintUrl = "runpodWidget/decor_staging";
         // formData.append("isSubbed", isSubbed);
         formData.append("roomtype", roomType);
         formData.append("design_style", designStyle);
@@ -1210,6 +1213,7 @@ async function callInPaintingAPI(sec,el) {
         }
         throw 'Server error';
     }).then(result => {
+        $('#closeModal').removeClass('disable-btn');
         $('.ai-upload-latest-top').removeAttr('style');
         var generatedImageList = ''
         var resultJsonFormat = JSON.parse(result);
@@ -1406,6 +1410,7 @@ function generatedImageItem(item) {
 //     $("#mip_after").attr('src', src);
 // });
 $(document).on('click', '.full_hd_quality', async function () {
+    $('#closeModal').addClass('disable-btn');
     var sec = $(this).data('sec');
     $('.painting_generating_bt').addClass('disable-btn');
     $('.on-gen-disable').addClass('disable-btn');
@@ -1451,6 +1456,7 @@ $(document).on('click', '.full_hd_quality', async function () {
             return response.json();
         })
         .then(result => {
+            $('#closeModal').removeClass('disable-btn');
             $('.on-gen-disable').removeClass('disable-btn');
             $('.modules_tabs').removeClass('disable-btn');
             $('.painting_generating_bt').removeClass('disable-btn');
@@ -1610,58 +1616,59 @@ function loadImageBase64FromRedesign(b64image) {
 }
 
 function addBrushingAction(action) {
-    brushingActions = brushingActions.slice(0, currentActionIndex + 1);
+    if (currentActionIndex < brushingActions.length - 1) {
+        brushingActions = brushingActions.slice(0, currentActionIndex + 1); // Discard redo stack
+        $(".ip-redoImage").prop('disabled', true).css('cursor', 'not-allowed'); // Disable redo button
+    }
+
     brushingActions.push(action);
-    currentActionIndex = cursorBrushActions.length - 1;
-    if(currentActionIndex >= 0){
-        $(".ip-clearImage, .ip-undoImage").prop('disabled', false);
-        $(".ip-clearImage, .ip-undoImage").css('cursor', 'pointer');
+    currentActionIndex = brushingActions.length - 1;  // Update index to point to the latest action
+
+    // Enable undo and clear buttons when there's at least one action
+    if (currentActionIndex >= 0) {
+        $(".ip-clearImage, .ip-undoImage").prop('disabled', false).css('cursor', 'pointer');
     }
 }
 
 function undoBrushing() {
     if (currentActionIndex >= 0) {
-        const actionToRemove = cursorBrushTempActions[currentActionIndex];
-        actionToRemove.remove(); // Assuming each action has a 'remove' method to undo it
-        currentActionIndex--;
+        const actionToRemove = brushingActions[currentActionIndex];  // Use brushingActions
+        if (actionToRemove && typeof actionToRemove.remove === 'function') {
+            actionToRemove.remove();
+            currentActionIndex--;
 
-        // Find the index of actionToRemove in cursorBrushActions
-        const indexToRemove = cursorBrushActions.indexOf(actionToRemove);
+            // Enable the redo button after an undo operation
+            $(".ip-redoImage").prop('disabled', false).css('cursor', 'pointer');
 
-        // If the index is found, remove it from cursorBrushActions
-        if (indexToRemove !== -1) {
-            cursorBrushActions.splice(indexToRemove, 1);
-        }
-
-        $(".ip-redoImage").prop('disabled', false);
-        $(".ip-redoImage").css('cursor', 'pointer');
-        if (currentActionIndex === -1) {
-            $(".ip-undoImage").prop('disabled', true);
-            $(".ip-undoImage").css('cursor', 'not-allowed');
-            if(ids.length == 0){
-                $(".ip-clearImage").prop('disabled', true);
-                $(".ip-clearImage").css('cursor', 'not-allowed');
+            // If no more actions to undo, disable undo and clear buttons
+            if (currentActionIndex === -1) {
+                $(".ip-undoImage").prop('disabled', true).css('cursor', 'not-allowed');
+                if (ids.length === 0) {
+                    $(".ip-clearImage").prop('disabled', true).css('cursor', 'not-allowed');
+                }
             }
         }
     }
 }
 
 function redoBrushing() {
-    if (currentActionIndex < cursorBrushTempActions.length - 1) {
+    if (currentActionIndex < brushingActions.length - 1) {
         currentActionIndex++;
-        const actionToRedo = cursorBrushTempActions[currentActionIndex];
-        cursorBrushActions.push(actionToRedo);
-        brushLayer.add(actionToRedo);
+        const actionToRedo = brushingActions[currentActionIndex];  // Use brushingActions
+        if (actionToRedo) {
+            cursorBrushActions.push(actionToRedo);  // If needed, push back to cursorBrushActions
+            brushLayer.add(actionToRedo);  // Assuming this is how you reapply the action
+            console.log('currentActionIndex redo', currentActionIndex);
 
-        $(".ip-undoImage").prop('disabled', false);
-        $(".ip-undoImage").css('cursor', 'pointer');
-        if(ids.length == 0){
-            $(".ip-clearImage").prop('disabled', false);
-            $(".ip-clearImage").css('cursor', 'pointer');
-        }
-        if (currentActionIndex === cursorBrushTempActions.length - 1) {
-            $(".ip-redoImage").prop('disabled', true);
-            $(".ip-redoImage").css('cursor', 'not-allowed');
+            $(".ip-undoImage").prop('disabled', false).css('cursor', 'pointer');
+            if (ids.length === 0) {
+                $(".ip-clearImage").prop('disabled', false).css('cursor', 'pointer');
+            }
+
+            // Disable redo button if all undone actions are redone
+            if (currentActionIndex === brushingActions.length - 1) {
+                $(".ip-redoImage").prop('disabled', true).css('cursor', 'not-allowed');
+            }
         }
     }
 }
@@ -2316,6 +2323,7 @@ function clearSecPaintingStag() {
 }
 
 async function _generateStyleTransferDesign(sec,el){
+    $('#closeModal').addClass('disable-btn');
     const generateDesignBtn = el;
     const spinner = generateDesignBtn.querySelector('span#submit');
     const tabs = document.querySelectorAll('.gs-option-flex a');
@@ -2474,6 +2482,7 @@ async function _generateStyleTransferDesign(sec,el){
         }
         throw 'Server error';
     }).then(result => {
+        $('#closeModal').removeClass('disable-btn');
         $('.ai-upload-latest-top').removeAttr('style');
         var resultJsonFormat = JSON.parse(result);
         var generatedImageList = ''

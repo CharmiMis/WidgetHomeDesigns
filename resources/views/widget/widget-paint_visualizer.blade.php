@@ -153,8 +153,8 @@
                             <div class="gs-select-manually-inner">
                                 <div class="gs-select-manually-top">
                                     <p>Edit manually using the brush</p>
-                                    <input type="hidden" value="70" id="ip-brush-thickness" />
-                                    <input class="gs-select-manually-value" type="text" id="amount"
+                                    <input type="hidden" value="70" id="ip-brush-thickness-color_swap" />
+                                    <input class="gs-select-manually-value" type="text" id="amount-color_swap" value="70"
                                         readonly="">
                                 </div>
                                 <div class="gs-select-design">

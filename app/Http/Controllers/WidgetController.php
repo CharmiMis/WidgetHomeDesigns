@@ -901,4 +901,69 @@ class WidgetController extends Controller
             return json_encode(['error' => 'Something went wrong. Please try again.']);
         }
     }
+
+    public function runpodWidgetFurnitureRemoval(Request $request)
+    {
+        $payloadData = $request->all();
+        $payloadImage = json_decode($request->payload, true);
+        $prompt = $payloadImage['prompt'];
+        if ($request->session()->has('inputImageSession')) {
+            $googleStorageFileImageUrl['url'] = $request->session()->get('inputImageSession');
+            $uniqueFileName = str_replace(
+                ['https://storage.googleapis.com/generativeartbucket/UserGenerations/cristian/input-', '.png'],
+                '',
+                $googleStorageFileImageUrl['url']
+            );
+
+            $request->session()->forget('inputImageSession');
+        } else {
+            $uniqueFileName = $this->generateUniqueFileName();
+            $googleStorageFileImageUrl = $this->storeImageToGoogleBucket($payloadImage['init_images'], $uniqueFileName);
+        }
+        $googleStorageFileMaskUrl = $this->storeImageToGoogleBucket($payloadImage['mask'], $uniqueFileName, $isMask = true);
+
+        if ($googleStorageFileMaskUrl == false) {
+            return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
+        }
+
+        $payload = [
+            'input' => [
+                'image' => $googleStorageFileImageUrl['url'],
+                'mask_image' => $googleStorageFileMaskUrl['url'],
+                'no_design' => intval($payloadData['no_of_Design']),
+                'unique_id' => $uniqueFileName,
+            ],
+        ];
+
+        $url = \Config::get('app.GPU_API_SERVERLESS_FURNITURE_REMOVAL');
+        $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
+        if ($response && $response['status'] === 'COMPLETED') {
+
+            // return json_encode(['error' => 'Something went wrong. Please try again.']);
+            if (!isset($response['output']) || isset($response['output']['errors'])) {
+
+                return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+            } else {
+                $result = [
+                    'Sucess' => [
+                        'original_image' => $response['output']['input_image'],
+                        'generated_image' => $response['output']['output_images'],
+                    ],
+                ];
+                return json_encode($result);
+                // $storeData = $this->getDataToSaveForPrecision($response, $payloadData, $prompt);
+                // $dataSaved = $this->saveData($storeData);
+                // if ($dataSaved) {
+                //     $result['storedIds'] = $dataSaved['storedIds'];
+
+                //     return json_encode($result);
+                // } else {
+
+                //     return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+                // }
+            }
+        } else {
+            return json_encode(['error' => 'Something went wrong. Please try again.']);
+        }
+    }
 }

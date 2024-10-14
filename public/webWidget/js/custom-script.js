@@ -964,6 +964,7 @@ function _showUsageMessage(updatedUsage) {
 var generationCount = 0;
 
 async function _generateDesign(sec, el) {
+    $('#closeModal').addClass('disable-btn');
     console.log("Gneeratedesigns");
     const generateDesignBtn = el;
     const spinner = generateDesignBtn.querySelector('span#submit');
@@ -1148,6 +1149,7 @@ async function _generateDesign(sec, el) {
             return response.json();
         })
         .then(result => {
+            $('#closeModal').removeClass('disable-btn');
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
             $('.gs-continue-btn').removeClass('disable-btn');
             $('.on-gen-disable').removeClass('disable-btn');
@@ -1631,6 +1633,7 @@ async function ultraEnhancer(el) {
     })
 }
 $(document).on('click', '.generate_hd_img', async function () {
+    $('#closeModal').addClass('disable-btn');
     var sec = $(this).data('sec');
     $('.gs-continue-btn').addClass('disable-btn');
     $('.on-gen-disable').addClass('disable-btn');
@@ -1682,6 +1685,7 @@ $(document).on('click', '.generate_hd_img', async function () {
             return response.json();
         })
         .then(result => {
+            $('#closeModal').removeClass('disable-btn');
             $('.gs-continue-btn').removeClass('disable-btn');
             $('.on-gen-disable').removeClass('disable-btn');
             $('.modules_tabs').removeClass('disable-btn');
