@@ -108,6 +108,9 @@ tabs.on( "click", ".ui-tabs-tab", function() {
     // Add 'active' class to the clicked tab
     $(this).find(".feature-button").addClass("active");
 
+    $('.interior-list li').removeClass('active');
+    $('.gs-our-preset-interior.select-more-details.select-more-details-int').hide();
+
     if(panelId == 'redesign'){
         dataPage = 'redesign';
     }else if(panelId == 'precision'){
