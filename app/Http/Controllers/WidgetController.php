@@ -30,9 +30,10 @@ class WidgetController extends Controller
         // $request->merge(['id' => Auth::id()]);
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
-        // $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        
+        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
 
-        // if ($userAccess === true) {
+        if ($userAccess == true) {
             $uniqueFileName = $this->generateUniqueFileName();
             if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
                 $b64image = base64_encode(file_get_contents($payloadData['data']));
@@ -85,9 +86,9 @@ class WidgetController extends Controller
                     // }
                 }
             }
-        // }else{
-        //     return response()->json($userAccess, 401);
-        // }
+        }else{
+            return response()->json($userAccess, 401);
+        }
     }
 
     public function getDataToSaveForRedesign($response, $payloadData)
@@ -231,8 +232,8 @@ class WidgetController extends Controller
         $payloadImage = json_decode($request->payload, true);
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
-        // $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
-        // if ($userAccess === true) {
+        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        if ($userAccess === true) {
         $prompt = $payloadImage['prompt'];
             if ($request->session()->has('inputImageSession')) {
                 $googleStorageFileImageUrl['url'] = $request->session()->get('inputImageSession');
@@ -293,9 +294,9 @@ class WidgetController extends Controller
                     // }
                 }
             }
-        // }else{
-        //     return response()->json($userAccess, 401);
-        // }
+        }else{
+            return response()->json($userAccess, 401);
+        }
     }
 
     public function runpodWidgetPrecision(Request $request){
@@ -303,10 +304,9 @@ class WidgetController extends Controller
         $payloadImage = json_decode($request->payload, true);
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
-        // $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
 
-        // if ($userAccess === true) {
-
+        if ($userAccess === true) {
             $prompt = $payloadImage['prompt'];
             if ($request->session()->has('inputImageSession')) {
                 $googleStorageFileImageUrl['url'] = $request->session()->get('inputImageSession');
@@ -373,9 +373,9 @@ class WidgetController extends Controller
             } else {
                 return json_encode(['error' => 'Something went wrong. Please try again.']);
             }
-        // }else{
-        //     return response()->json($userAccess, 401);
-        // }
+        }else{
+            return response()->json($userAccess, 401);
+        }
     }
 
     public function runpodWidgetColorAndTexture(Request $request){
@@ -383,9 +383,9 @@ class WidgetController extends Controller
         $payloadImage = json_decode($request->payload, true);
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
-        // $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
 
-        // if ($userAccess === true) {
+        if ($userAccess === true) {
             $prompt = $payloadImage['prompt'];
             if ($request->session()->has('inputImageSession')) {
                 $googleStorageFileImageUrl['url'] = $request->session()->get('inputImageSession');
@@ -455,9 +455,9 @@ class WidgetController extends Controller
             } else {
                 return json_encode(['error' => 'Something went wrong. Please try again.']);
             }
-        // }else{
-        //     return response()->json($userAccess, 401);
-        // }
+        }else{
+            return response()->json($userAccess, 401);
+        }
     }
 
     public function runpodWidgetPaintVisualizer(Request $request){
@@ -465,8 +465,8 @@ class WidgetController extends Controller
         $prompt = '';
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
-        // $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
-        // if ($userAccess === true) {
+        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        if ($userAccess === true) {
             if ($request->session()->has('inputImageSession')) {
                 $googleStorageFileImageUrl['url'] = $request->session()->get('inputImageSession');
                 $uniqueFileName = str_replace(
@@ -539,9 +539,9 @@ class WidgetController extends Controller
             } else {
                 return json_encode(['error' => 'Something went wrong. Please try again.']);
             }
-        // }else{
-        //     return response()->json($userAccess, 401);
-        // }
+        }else{
+            return response()->json($userAccess, 401);
+        }
     }
 
     public function runpodWidgetGetMasking(Request $request)
@@ -607,6 +607,7 @@ class WidgetController extends Controller
                 $percentageUsed = ($user->activeSubscription->used_credit / $user->activeSubscription->total_plan_credit) * 100;
                 $percentageLeft = intval(100 - $percentageUsed);
                 $emailData = [];
+
                 // Check conditions for send email for remaining API credits
                 if ($percentageLeft >= 49 && $percentageLeft <= 51) {
                     $emailData['percentage'] = 50;
@@ -618,7 +619,6 @@ class WidgetController extends Controller
                     $emailData['message'] = 'You have left only 10% of your credit quota. Act now to avoid any service interruptions! For questions or assistance, feel free to reach out. Appreciate your choice in our service!';
                     Mail::to($WidgetUser->email)->send(new CreditRemainStatusMail($emailData));
                 }
-                // dd($user->activeSubscription->total_plan_credit, $user->activeSubscription->used_credit + (int)$request->no_design);
                 if ($user->activeSubscription->total_plan_credit < ($user->activeSubscription->used_credit + (int) $payloadData['no_of_Design'])) {
                     $emailData['percentage'] = 0;
                     $emailData['message'] = 'Your credit usage has reached its maximum limit of 100%. For questions or assistance, feel free to reach out. Appreciate your choice in our service!';
@@ -627,7 +627,6 @@ class WidgetController extends Controller
 
                     return ['success' => false, 'error' => 'Credit not found: You currently have only '.$remainingCredit.' credits remaining.'];
                 } elseif (! empty($user->activeSubscription->extra_apis) && json_decode($user->activeSubscription->extra_apis) != null && in_array($apiName, json_decode($user->activeSubscription->extra_apis))) {
-
                     $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + (int) $payloadData['no_of_Design'];
                     $user->activeSubscription->save();
 
@@ -674,8 +673,7 @@ class WidgetController extends Controller
                     } else {
                         $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + $payloadData['no_of_Design'];
                     }
-                    $user->activeSubscription->save();
-
+                    $user->activeSubscription->save();                    
                     return true;
                 }else {
                     return ['success' => false, 'error' => 'Please Upgrade Your Current Plan'];
@@ -692,53 +690,61 @@ class WidgetController extends Controller
         $payloadData = $request->all();
         // $staticPath = 'https://storage.googleapis.com/generativeartbucket/UserGenerations/cristian/';
         // $path = $staticPath . $payloadData['data'];
-        $type = pathinfo($payloadData['data'], PATHINFO_EXTENSION);
-        $fileName = pathinfo($payloadData['data'], PATHINFO_BASENAME);
-        $data = file_get_contents($payloadData['data']);
-        // $base64 = base64_encode($data);
-        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-        $uniqueFileName = $this->generateUniqueFileName();
-        $googleStorageFileImageUrl = $this->storeImageToGoogleBucket($base64, $uniqueFileName);
 
-        if ($googleStorageFileImageUrl === false) {
-            return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
-        }
+        $mode = $request->modeType;
+        $Widgetid = $request->widgetuserid;
+        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        if ($userAccess === true) {
+            $type = pathinfo($payloadData['data'], PATHINFO_EXTENSION);
+            $fileName = pathinfo($payloadData['data'], PATHINFO_BASENAME);
+            $data = file_get_contents($payloadData['data']);
+            // $base64 = base64_encode($data);
+            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+            $uniqueFileName = $this->generateUniqueFileName();
+            $googleStorageFileImageUrl = $this->storeImageToGoogleBucket($base64, $uniqueFileName);
 
-        $payload = [
-            'input' => [
-                'image' => $googleStorageFileImageUrl['url'],
-                'unique_id' => $uniqueFileName,
-            ],
-        ];
-
-        $url = \Config::get('app.GPU_SERVERLESS_HD_GENERATE');
-        $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
-        //$this->($response, $url, $payload, 'bm4');
-        if ($response && $response['status'] === 'COMPLETED') {
-            if (!isset($response['output']) || isset($response['output']['errors'])) {
-                return json_encode(['error' => 'Something went wrong. Please try again.']);
-            } else {
-                $result = [
-                    'Sucess' => [
-                        'original_image' => $response['output']['input_image'],
-                        'generated_image' => $response['output']['output_images'],
-                    ],
-                ];
-                return json_encode($result);
-
-                // $storeData = $this->getDataToSaveForFullHDImage($response, $payloadData);
-                // $dataSaved = $this->saveData($storeData);
-                // if ($dataSaved) {
-                //     $result['storedIds'] = $dataSaved['storedIds'];
-
-                //     return json_encode($result);
-                // } else {
-
-                //     return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
-                // }
+            if ($googleStorageFileImageUrl === false) {
+                return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
             }
-        } else {
-            return json_encode(['error' => 'Something went wrong. Please try again.']);
+
+            $payload = [
+                'input' => [
+                    'image' => $googleStorageFileImageUrl['url'],
+                    'unique_id' => $uniqueFileName,
+                ],
+            ];
+
+            $url = \Config::get('app.GPU_SERVERLESS_HD_GENERATE');
+            $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
+            //$this->($response, $url, $payload, 'bm4');
+            if ($response && $response['status'] === 'COMPLETED') {
+                if (!isset($response['output']) || isset($response['output']['errors'])) {
+                    return json_encode(['error' => 'Something went wrong. Please try again.']);
+                } else {
+                    $result = [
+                        'Sucess' => [
+                            'original_image' => $response['output']['input_image'],
+                            'generated_image' => $response['output']['output_images'],
+                        ],
+                    ];
+                    return json_encode($result);
+
+                    // $storeData = $this->getDataToSaveForFullHDImage($response, $payloadData);
+                    // $dataSaved = $this->saveData($storeData);
+                    // if ($dataSaved) {
+                    //     $result['storedIds'] = $dataSaved['storedIds'];
+
+                    //     return json_encode($result);
+                    // } else {
+
+                    //     return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+                    // }
+                }
+            } else {
+                return json_encode(['error' => 'Something went wrong. Please try again.']);
+            }
+        }else{
+            return response()->json($userAccess, 401);
         }
     }
 
@@ -760,67 +766,74 @@ class WidgetController extends Controller
         $payloadData = $request->all();
         $request->merge(['id' => Auth::id()]);
 
-        $uniqueFileName = $this->generateUniqueFileName();
-        if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
-            $b64image = base64_encode(file_get_contents($payloadData['data']));
-            $googleStorageFileUrl = $this->storeImageToGoogleBucket($b64image, $uniqueFileName);
-        } else {
-            $googleStorageFileUrl = $this->storeImageToGoogleBucket($payloadData['data'], $uniqueFileName);
-        }
-
-        if ($googleStorageFileUrl === false) {
-            return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
-        }
-
-        if ($request->modeType == 'Creative Redesign') {
-            $fill_room = false;
-        } else {
-            $fill_room = true;
-        }
-
-        $payload = [
-            'input' => [
-                'image' => $googleStorageFileUrl['url'],
-                'design_type' => intval($payloadData['designtype']),
-                'room_type' => strtolower($payloadData['roomtype']),
-                'design_style' => strtolower($payloadData['prompt']),
-                'prompt' => !empty($payloadData['custom_instruction']) ? $payloadData['custom_instruction'] : '',
-                'negative_prompt' => !empty($payloadData['is_custom_negative_instruction']) ? $payloadData['is_custom_negative_instruction'] : '',
-                'ai_intervention' => $payloadData['strengthType'],
-                'no_design' => intval($payloadData['no_of_Design']),
-                'unique_id' => $uniqueFileName,
-            ],
-        ];
-
-        $url = \Config::get('app.GPU_API_SERVERLESS_CREATIVE_REDESIGN');
-        $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
-        if ($response && $response['status'] === 'COMPLETED') {
-            if (!isset($response['output']) || isset($response['output']['errors'])) {
-                return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+        $mode = $request->modeType;
+        $Widgetid = $request->widgetuserid;
+        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        if ($userAccess === true) {
+            $uniqueFileName = $this->generateUniqueFileName();
+            if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
+                $b64image = base64_encode(file_get_contents($payloadData['data']));
+                $googleStorageFileUrl = $this->storeImageToGoogleBucket($b64image, $uniqueFileName);
             } else {
-                $result = [
-                    'Sucess' => [
-                        'original_image' => $response['output']['input_image'],
-                        'generated_image' => $response['output']['output_images'],
-                    ],
-                ];
-
-                return json_encode($result);
-
-
-                // $storeData = $this->getDataToSaveForRedesign($response, $payloadData);
-                // $dataSaved = $this->saveData($storeData);
-                // if ($dataSaved) {
-                //     $result['storedIds'] = $dataSaved['storedIds'];
-
-                //     return json_encode($result);
-                // } else {
-
-                //     return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
-                // }
+                $googleStorageFileUrl = $this->storeImageToGoogleBucket($payloadData['data'], $uniqueFileName);
             }
-        } else {
-            return json_encode(['error' => 'Something went wrong. Please try again.']);
+
+            if ($googleStorageFileUrl === false) {
+                return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
+            }
+
+            if ($request->modeType == 'Creative Redesign') {
+                $fill_room = false;
+            } else {
+                $fill_room = true;
+            }
+
+            $payload = [
+                'input' => [
+                    'image' => $googleStorageFileUrl['url'],
+                    'design_type' => intval($payloadData['designtype']),
+                    'room_type' => strtolower($payloadData['roomtype']),
+                    'design_style' => strtolower($payloadData['prompt']),
+                    'prompt' => !empty($payloadData['custom_instruction']) ? $payloadData['custom_instruction'] : '',
+                    'negative_prompt' => !empty($payloadData['is_custom_negative_instruction']) ? $payloadData['is_custom_negative_instruction'] : '',
+                    'ai_intervention' => $payloadData['strengthType'],
+                    'no_design' => intval($payloadData['no_of_Design']),
+                    'unique_id' => $uniqueFileName,
+                ],
+            ];
+
+            $url = \Config::get('app.GPU_API_SERVERLESS_CREATIVE_REDESIGN');
+            $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
+            if ($response && $response['status'] === 'COMPLETED') {
+                if (!isset($response['output']) || isset($response['output']['errors'])) {
+                    return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+                } else {
+                    $result = [
+                        'Sucess' => [
+                            'original_image' => $response['output']['input_image'],
+                            'generated_image' => $response['output']['output_images'],
+                        ],
+                    ];
+
+                    return json_encode($result);
+
+
+                    // $storeData = $this->getDataToSaveForRedesign($response, $payloadData);
+                    // $dataSaved = $this->saveData($storeData);
+                    // if ($dataSaved) {
+                    //     $result['storedIds'] = $dataSaved['storedIds'];
+
+                    //     return json_encode($result);
+                    // } else {
+
+                    //     return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+                    // }
+                }
+            } else {
+                return json_encode(['error' => 'Something went wrong. Please try again.']);
+            }
+        }else{
+            return response()->json($userAccess, 401);
         }
     }
 
@@ -842,63 +855,70 @@ class WidgetController extends Controller
         $payloadData = $request->all();
         $request->merge(['id' => Auth::id()]);
 
-        $uniqueFileName = $this->generateUniqueFileName();
-        if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
-            $b64image = base64_encode(file_get_contents($payloadData['data']));
-            $googleStorageFileUrl = $this->storeImageToGoogleBucket($b64image, $uniqueFileName);
-        } else {
-            $googleStorageFileUrl = $this->storeImageToGoogleBucket($payloadData['data'], $uniqueFileName);
-        }
-
-        if ($googleStorageFileUrl === false) {
-            return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
-        }
-
-        $payload = [
-            'input' => [
-                'image' => $googleStorageFileUrl['url'],
-                'design_type' => intval($payloadData['designtype']),
-                'room_type' => strtolower($payloadData['roomtype']),
-                'design_style' => strtolower($payloadData['prompt']),
-                'prompt' => !empty($payloadData['custom_instruction']) ? $payloadData['custom_instruction'] : '',
-                'negative_prompt' => !empty($payloadData['is_custom_negative_instruction']) ? $payloadData['is_custom_negative_instruction'] : '',
-                'ai_intervention' => $payloadData['strengthType'],
-                'no_design' => intval($payloadData['no_of_Design']),
-                'unique_id' => $uniqueFileName,
-            ],
-        ];
-
-        $url = \Config::get('app.GPU_API_SERVERLESS_SKETCH_TO_RENDER');
-        $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
-        if ($response && $response['status'] === 'COMPLETED') {
-
-            // return json_encode(['error' => 'Something went wrong. Please try again.']);
-            if (!isset($response['output']) || isset($response['output']['errors'])) {
-
-                return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+        $mode = $request->modeType;
+        $Widgetid = $request->widgetuserid;
+        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        if ($userAccess === true) {
+            $uniqueFileName = $this->generateUniqueFileName();
+            if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
+                $b64image = base64_encode(file_get_contents($payloadData['data']));
+                $googleStorageFileUrl = $this->storeImageToGoogleBucket($b64image, $uniqueFileName);
             } else {
-                $result = [
-                    'Sucess' => [
-                        'original_image' => $response['output']['input_image'],
-                        'generated_image' => $response['output']['output_images'],
-                    ],
-                ];
-                return json_encode($result);
-
-
-                // $storeData = $this->getDataToSaveForRedesign($response, $payloadData);
-                // $dataSaved = $this->saveData($storeData);
-                // if ($dataSaved) {
-                //     $result['storedIds'] = $dataSaved['storedIds'];
-
-                //     return json_encode($result);
-                // } else {
-
-                //     return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
-                // }
+                $googleStorageFileUrl = $this->storeImageToGoogleBucket($payloadData['data'], $uniqueFileName);
             }
-        } else {
-            return json_encode(['error' => 'Something went wrong. Please try again.']);
+
+            if ($googleStorageFileUrl === false) {
+                return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
+            }
+
+            $payload = [
+                'input' => [
+                    'image' => $googleStorageFileUrl['url'],
+                    'design_type' => intval($payloadData['designtype']),
+                    'room_type' => strtolower($payloadData['roomtype']),
+                    'design_style' => strtolower($payloadData['prompt']),
+                    'prompt' => !empty($payloadData['custom_instruction']) ? $payloadData['custom_instruction'] : '',
+                    'negative_prompt' => !empty($payloadData['is_custom_negative_instruction']) ? $payloadData['is_custom_negative_instruction'] : '',
+                    'ai_intervention' => $payloadData['strengthType'],
+                    'no_design' => intval($payloadData['no_of_Design']),
+                    'unique_id' => $uniqueFileName,
+                ],
+            ];
+
+            $url = \Config::get('app.GPU_API_SERVERLESS_SKETCH_TO_RENDER');
+            $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
+            if ($response && $response['status'] === 'COMPLETED') {
+
+                // return json_encode(['error' => 'Something went wrong. Please try again.']);
+                if (!isset($response['output']) || isset($response['output']['errors'])) {
+
+                    return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+                } else {
+                    $result = [
+                        'Sucess' => [
+                            'original_image' => $response['output']['input_image'],
+                            'generated_image' => $response['output']['output_images'],
+                        ],
+                    ];
+                    return json_encode($result);
+
+
+                    // $storeData = $this->getDataToSaveForRedesign($response, $payloadData);
+                    // $dataSaved = $this->saveData($storeData);
+                    // if ($dataSaved) {
+                    //     $result['storedIds'] = $dataSaved['storedIds'];
+
+                    //     return json_encode($result);
+                    // } else {
+
+                    //     return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+                    // }
+                }
+            } else {
+                return json_encode(['error' => 'Something went wrong. Please try again.']);
+            }
+        }else{
+            return response()->json($userAccess, 401);
         }
     }
 
@@ -906,64 +926,77 @@ class WidgetController extends Controller
     {
         $payloadData = $request->all();
         $payloadImage = json_decode($request->payload, true);
-        $prompt = $payloadImage['prompt'];
-        if ($request->session()->has('inputImageSession')) {
-            $googleStorageFileImageUrl['url'] = $request->session()->get('inputImageSession');
-            $uniqueFileName = str_replace(
-                ['https://storage.googleapis.com/generativeartbucket/UserGenerations/cristian/input-', '.png'],
-                '',
-                $googleStorageFileImageUrl['url']
-            );
 
-            $request->session()->forget('inputImageSession');
-        } else {
-            $uniqueFileName = $this->generateUniqueFileName();
-            $googleStorageFileImageUrl = $this->storeImageToGoogleBucket($payloadImage['init_images'], $uniqueFileName);
-        }
-        $googleStorageFileMaskUrl = $this->storeImageToGoogleBucket($payloadImage['mask'], $uniqueFileName, $isMask = true);
+        $mode = $request->modeType;
+        $Widgetid = $request->widgetuserid;
+        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        if ($userAccess === true) {
+            $prompt = $payloadImage['prompt'];
+            if ($request->session()->has('inputImageSession')) {
+                $googleStorageFileImageUrl['url'] = $request->session()->get('inputImageSession');
+                $uniqueFileName = str_replace(
+                    ['https://storage.googleapis.com/generativeartbucket/UserGenerations/cristian/input-', '.png'],
+                    '',
+                    $googleStorageFileImageUrl['url']
+                );
 
-        if ($googleStorageFileMaskUrl == false) {
-            return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
-        }
-
-        $payload = [
-            'input' => [
-                'image' => $googleStorageFileImageUrl['url'],
-                'mask_image' => $googleStorageFileMaskUrl['url'],
-                'no_design' => intval($payloadData['no_of_Design']),
-                'unique_id' => $uniqueFileName,
-            ],
-        ];
-
-        $url = \Config::get('app.GPU_API_SERVERLESS_FURNITURE_REMOVAL');
-        $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
-        if ($response && $response['status'] === 'COMPLETED') {
-
-            // return json_encode(['error' => 'Something went wrong. Please try again.']);
-            if (!isset($response['output']) || isset($response['output']['errors'])) {
-
-                return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+                $request->session()->forget('inputImageSession');
             } else {
-                $result = [
-                    'Sucess' => [
-                        'original_image' => $response['output']['input_image'],
-                        'generated_image' => $response['output']['output_images'],
-                    ],
-                ];
-                return json_encode($result);
-                // $storeData = $this->getDataToSaveForPrecision($response, $payloadData, $prompt);
-                // $dataSaved = $this->saveData($storeData);
-                // if ($dataSaved) {
-                //     $result['storedIds'] = $dataSaved['storedIds'];
-
-                //     return json_encode($result);
-                // } else {
-
-                //     return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
-                // }
+                $uniqueFileName = $this->generateUniqueFileName();
+                $googleStorageFileImageUrl = $this->storeImageToGoogleBucket($payloadImage['init_images'], $uniqueFileName);
             }
-        } else {
-            return json_encode(['error' => 'Something went wrong. Please try again.']);
+            $googleStorageFileMaskUrl = $this->storeImageToGoogleBucket($payloadImage['mask'], $uniqueFileName, $isMask = true);
+
+            if ($googleStorageFileMaskUrl == false) {
+                return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
+            }
+
+            $payload = [
+                'input' => [
+                    'image' => $googleStorageFileImageUrl['url'],
+                    'mask_image' => $googleStorageFileMaskUrl['url'],
+                    'no_design' => intval($payloadData['no_of_Design']),
+                    'unique_id' => $uniqueFileName,
+                ],
+            ];
+
+            $url = \Config::get('app.GPU_API_SERVERLESS_FURNITURE_REMOVAL');
+            $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
+            if ($response && $response['status'] === 'COMPLETED') {
+
+                // return json_encode(['error' => 'Something went wrong. Please try again.']);
+                if (!isset($response['output']) || isset($response['output']['errors'])) {
+
+                    return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+                } else {
+                    $result = [
+                        'Sucess' => [
+                            'original_image' => $response['output']['input_image'],
+                            'generated_image' => $response['output']['output_images'],
+                        ],
+                    ];
+                    return json_encode($result);
+                    // $storeData = $this->getDataToSaveForPrecision($response, $payloadData, $prompt);
+                    // $dataSaved = $this->saveData($storeData);
+                    // if ($dataSaved) {
+                    //     $result['storedIds'] = $dataSaved['storedIds'];
+
+                    //     return json_encode($result);
+                    // } else {
+
+                    //     return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+                    // }
+                }
+            } else {
+                return json_encode(['error' => 'Something went wrong. Please try again.']);
+            }
+        }else{
+            return response()->json($userAccess, 401);
         }
+    }
+
+    public function customCredit()
+    {
+        // return view('web.custom-credit-request');
     }
 }

@@ -45,6 +45,7 @@ Route::get('get-base64', [HomeController::class, 'downloadFile'])->name('file.do
 Route::post('runpodWidget/creative_redesign', [WidgetController::class, 'runpodWidgetCreativeRedesign'])->name('runpodWidget.creative_redesign');
 Route::post('runpodWidget/render_realistic', [WidgetController::class, 'runpodWidgetRenderRealistic'])->name('runpodWidget.render_realistic');
 Route::post('runpodWidget/furniture_removal', [WidgetController::class, 'runpodWidgetFurnitureRemoval'])->name('runpodWidget.furniture_removal');
+Route::get('custom-credit-request', [WidgetController::class, 'customCredit'])->name('api.custom-credit');
 
 //Widget response
 
