@@ -19250,7 +19250,6 @@ function showLoader() {
                 <div class="spinner"></div>
                 <p>Generating the rendering</p>
             </div>
-            <p class="powered-by-text">Powered by <span>homedesigns.ai</span></p>
         </div>
     `;
 
