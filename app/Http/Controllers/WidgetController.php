@@ -693,8 +693,8 @@ class WidgetController extends Controller
 
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
-        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
-        if ($userAccess === true) {
+        // $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        // if ($userAccess === true) {
             $type = pathinfo($payloadData['data'], PATHINFO_EXTENSION);
             $fileName = pathinfo($payloadData['data'], PATHINFO_BASENAME);
             $data = file_get_contents($payloadData['data']);
@@ -743,9 +743,9 @@ class WidgetController extends Controller
             } else {
                 return json_encode(['error' => 'Something went wrong. Please try again.']);
             }
-        }else{
-            return response()->json($userAccess, 401);
-        }
+        // }else{
+        //     return response()->json($userAccess, 401);
+        // }
     }
 
     public function runpodWidgetCreativeRedesign(Request $request)
