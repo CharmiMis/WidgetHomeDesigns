@@ -30,6 +30,7 @@ class WidgetController extends Controller
         // $request->merge(['id' => Auth::id()]);
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
+        
         $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
 
         if ($userAccess == true) {
@@ -606,6 +607,7 @@ class WidgetController extends Controller
                 $percentageUsed = ($user->activeSubscription->used_credit / $user->activeSubscription->total_plan_credit) * 100;
                 $percentageLeft = intval(100 - $percentageUsed);
                 $emailData = [];
+
                 // Check conditions for send email for remaining API credits
                 if ($percentageLeft >= 49 && $percentageLeft <= 51) {
                     $emailData['percentage'] = 50;
@@ -991,5 +993,10 @@ class WidgetController extends Controller
         }else{
             return response()->json($userAccess, 401);
         }
+    }
+
+    public function customCredit()
+    {
+        // return view('web.custom-credit-request');
     }
 }
