@@ -34,12 +34,12 @@
         }
 
         .feature-button.active {
-            background: radial-gradient(66.48% 68.75% at 50% 31.25%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%), radial-gradient(33% 82.75% at 31.25% 76.56%, rgba(255, 255, 255, 0.219) 0%, rgba(255, 255, 255, 0.036) 100%), radial-gradient(66.95% 96.09% at 35.23% 0%, #C243FE 0%, rgba(182, 47, 246, 0.12) 100%), linear-gradient(0deg, #421CD8, #421CD8), #5B099B;
-            color: white;
+            background: var(--dark-primary);
+            color: var(--dark-text);
         }
 
         .feature-button:hover {
-            background: linear-gradient(180deg, #8F73FF 0%, #5B3DD5 100%);
+            background: var(--dark-primary);
         }
 
         .feature-content {
@@ -105,7 +105,7 @@
             cursor: pointer;
         }
         .ui-widget-content, .ui-widget-content a{
-            color: #fff !important;
+            color: var(--dark-text) !important;
         }
     </style>
     <link rel="stylesheet" type="text/css" href="{{ asset('web/css/cropper.min.css') }}">
