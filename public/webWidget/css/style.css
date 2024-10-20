@@ -10129,7 +10129,10 @@ div#painting-stag {
     justify-content: center;
 }
 .ai-upload-add-project-list a:hover{
-    background: linear-gradient(180deg, #8F73FF 0%, #5B3DD5 100%);
+    background: var(--dark-primary); 
+}
+.light-theme .ai-upload-add-project-list a:hover{
+    background: var(--light-primary); 
 }
 .ai-upload-add-project-list a:hover img {
     filter: brightness(100) invert(0);
@@ -10784,6 +10787,25 @@ div#widgetCustomContainerDiv {
 .gs-select-category-list-inner img{
     margin: 0 5px 0 0;
 }
+.gs-select-category-list-inner .gs-interior-path
+{
+    fill: var(--dark-primary);
+}
+.active .gs-select-category-list-inner .gs-interior-path,
+.gs-option-flex a:hover .gs-interior-path
+{
+    fill: var(--dark-text);
+}
+
+.light-theme .gs-select-category-list-inner .gs-interior-path
+{
+    fill: var(--light-primary);
+}
+.light-theme .active .gs-select-category-list-inner .gs-interior-path,
+.light-theme .gs-option-flex a:hover .gs-interior-path
+{
+    fill: var(--light-card);
+}
 .active .gs-select-category-list-inner{
     background: var(--dark-primary);
     color: var(--dark-text);
@@ -10791,6 +10813,8 @@ div#widgetCustomContainerDiv {
 .active .gs-select-category-list-inner img {
     filter: brightness(0) invert(1);
 }
+
+
 /*what to edit page css end*/
 
 /*customize and generate page css start*/
@@ -17558,6 +17582,23 @@ img.colorpick-eyedropper-input-trigger {
 }
 .light-theme .our-preset-settings-box textarea{
     background-color: var(--light-background2);
+    color: var(--light-text);
+}
+.light-theme .our-preset-settings-box textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: var(--light-text);
+    opacity: 1;
+  }
+  .light-theme .our-preset-settings-box textarea::-moz-placeholder { /* Firefox 19+ */
+    color: var(--light-text);
+  }
+  .light-theme .our-preset-settings-box textarea:-ms-input-placeholder { /* IE 10+ */
+    color: var(--light-text);
+  }
+  .light-theme .our-preset-settings-box textarea:-moz-placeholder { /* Firefox 18- */
+    color: var(--light-text);
+  }
+.light-theme .active .gs-select-category-list-inner {
+    background: var(--light-primary);
 }
 .light-theme .gs-what-to-edit-tip-box {
     background: var(--light-background2);
