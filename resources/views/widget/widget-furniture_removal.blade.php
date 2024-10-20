@@ -139,7 +139,7 @@
                     </div>
                     <div class="our-preset-settings-range-outer">
                         <input type="hidden" id="no_of_des0" name="no_of_des0" value="1" />
-                        <p class="font14">Select the number of designs you want to generate at once.</p>
+                        {{-- <p class="font14">Select the number of designs you want to generate at once.</p>
                         <div class="gs-select-design our-preset-range-design">
                             <div class="our-preset-settings-range" data-sec="0">
                             </div>
@@ -151,7 +151,7 @@
                                     <li>4</li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="gs-continue-btn-outer painting_generating_bt">
                         <a href="javascript:void(0)" onclick="_generateInPaintingDesign(0, this)"
