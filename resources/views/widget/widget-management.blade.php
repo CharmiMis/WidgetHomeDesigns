@@ -60,9 +60,13 @@
             width: 100px;
         }
         .gs-our-preset-settings .toggle-button.active {
-            background: linear-gradient(180deg, #8F73FF 0%, #5B3DD5 100%);
-            color: #fff;
+            background: var(--dark-primary);
+            color: var(--dark-text);
 
+        }
+        .light-theme .gs-our-preset-settings .toggle-button.active {
+            background: var(--light-primary);
+            color: var(--light-card);
         }
 
         .gs-our-preset-settings .toggle-button{
@@ -91,9 +95,13 @@
             display: flex;
         }
 
-        .gs-our-preset-settings .toggle-button:hover {
-            color: #fff;
-            background: linear-gradient(180deg, #5B3DD5 0%, #8F73FF 100%);
+        .gs-our-preset-settings .toggle-button:hover{
+            background: var(--dark-primary);
+            color: var(--dark-text);
+        }
+        .light-theme .gs-our-preset-settings .toggle-button:hover {
+            background: var(--light-primary);
+            color: var(--light-card);
         }
         .button-container {
         margin-bottom: 10px;

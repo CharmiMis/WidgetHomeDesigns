@@ -3678,10 +3678,12 @@ p.mn-hm-content {
 .inpainting-stag-outer {
     min-height: 400px;
     width: 100%;
-    border: 2px dashed #4d36a9;
+    border: 2px dashed var(--dark-primary);
     border-radius: 15px;
 }
-
+.light-theme .inpainting-stag-outer {
+    border-color: var(--light-primary);
+}
 .inpainting-stag-outer canvas{
     border-radius: 15px;
 }
