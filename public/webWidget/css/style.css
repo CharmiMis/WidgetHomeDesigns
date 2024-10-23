@@ -10619,8 +10619,8 @@ div#widgetCustomContainerDiv {
     background-image: url(../images/gs-select-automatically-check-icon.png);
 }
 .gs-select-automatically-inner li.active {
-    color: #fff;
-    background: linear-gradient(180deg, #8F73FF 0%, #5B3DD5 100%);
+    color: var(--dark-text);
+    background: var(--dark-primary);
 }
 
 .gs-continue-btn {
@@ -12802,13 +12802,13 @@ ul.gs-pro-design-inner li:hover .gs-pro-number-left h2 {
 
 }
 .gs-select-room-style-single:hover img{
-    border:1px solid rgba(117, 88, 234, 1);
+    border:1px solid var(--dark-primary);
     border-radius: 7px;
 }
 
 .gs-select-room-style-single:after{
     background: linear-gradient(6deg, var(--dark-primary) 4.84%, rgba(39, 14, 141, 0) 61.37%);
-    border-color:rgba(117, 88, 234, 1);
+    border-color:var(--dark-primary);
     position: absolute;
     top:0;
     left: 0;
