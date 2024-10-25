@@ -127,6 +127,7 @@
     <input type="hidden" id="precisionUser" value="{{ $precisionUser ? 'true' : 'false' }}">
     <input type="hidden" id="modeValueForPage" value="0" />
     <input type="hidden" id="widgetUserID" value="{{ $widgetData->user_id }}" />
+    <input type="hidden" id="widgetUserNumberOfGeneration" value="{{ $widgetData->number_of_designs }}" />
     <input type="hidden" id="widgetThemeMode" value="{{ $widgetThemeMode }}" />
     <input type="hidden" id="widgetFirstModuleDataPage" value="{{ $features[0] ?? '' }}" />
     <div class="ai-tool-wrapper">

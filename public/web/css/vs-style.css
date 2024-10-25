@@ -1,0 +1,3551 @@
+/*vs new upgrade page css here*/
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.vsufont40{
+	font-weight: 800;
+	font-size: 40px;
+	line-height: 134%;
+	letter-spacing: -0.01em;
+	color: #241C3D;
+	margin: 0;
+}
+
+.vsufont18 span{
+	color: #7558EA;
+}
+
+.vsup-container{
+    max-width: 1230px;
+    padding: 0 15px;
+    margin: auto;
+}
+
+.vsufont42{
+	font-weight: 800;
+	font-size: 42px;
+	line-height: 120%;
+	color: #1F2024;
+	margin: 0;
+    opacity: 1;
+}
+.vsufont42 span{
+	color: #7558EA;
+}
+
+.vsufont16{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgb(255 255 255 / 80%);
+    margin: 0;
+    opacity: 1;
+}
+
+.vsufont18{
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 1.83;
+	color: rgb(69 65 83 / 80%);
+	margin: 0;
+    opacity: 1;
+}
+
+.vsufont20{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.6;
+    color: rgb(69 65 83 / 80%);
+    margin: 0;
+    opacity: 1;
+}
+
+.vsu-header-step {
+    width: 33.333%;
+    background: linear-gradient(25.17deg, #181229 4.78%, #241644 93.55%);
+    box-shadow: 0px 16px 64px -16px rgba(0, 0, 0, 0.12);
+    padding: 13.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vsu-header-step span {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.43;
+    text-transform: uppercase;
+    color: #989CAC;
+    display: block;
+    margin: 0 0 0 13px;
+}
+.vsu-header-step img{
+	opacity: 0.6;
+}
+
+.vsu-header-steps-outer {
+    display: flex;
+}
+
+.vsu-header-step.active {
+    background: linear-gradient(180deg, #54BF6B 0%, #219653 100%);
+    box-shadow: 0px 12px 36px -8px rgba(0, 0, 0, 0.36), 0px 12px 64px -12px rgba(142, 115, 251, 0.48);
+}
+
+.vsu-header-step.active span {
+    color: #fff;
+}
+
+.vsu-header-step.active img{
+	opacity: 1;
+}
+
+.vsu-hero-top-wrapper img {
+    display: block;
+    margin: auto;
+}
+
+.vsu-hero-top-wrapper {
+    text-align: center;
+}
+
+.vsu-hero-thankyou {
+    padding: 19px 0 0 0;
+}
+
+.vsu-hero-section {
+    padding: 30px 0px 0px;
+    background: url(../images/vsu-upgrade-hero-banner.webp);
+    background-repeat: repeat;
+    background-position: top;
+    background-size: calc(100% - 40px) 100%;
+}
+
+.vsu-for-purchase {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+}
+
+.vsu-before-started {
+    margin: 32px 0 4px 0;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1.22;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #7558EA;
+    display: block;
+}
+
+.vsu-hero-section .vsu-hero-nobtn{
+    margin: 18px 0 32px 0;
+}
+
+.vsu-hero-nobtn {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 1.4;
+    color: #FFFFFF;
+    padding: 6px 26px;
+    display: inline-block;
+    border-radius: 30px;
+    background: #7558EA;
+}
+
+.vsu-hero-video-main {
+    background: rgb(24 18 41 / 20%);
+    padding: 22px;
+    border-radius: 26px;
+}
+
+.vsu-hero-video-wrap{
+	max-width: 810px;
+    margin: auto;
+    position: relative;
+}
+
+.vsu-hero-video-main iframe {
+    border-radius: 12px;
+}
+
+.vsu-bottom-cta-wrapper {
+    text-align: center;
+    padding: 35px 0 0 0;
+}
+
+.vsu-cta-button {
+    padding: 23px 41px;
+    width: 100%;
+    display: inline-block;
+    max-width: 545px;
+    background: linear-gradient(180deg, #9479FF 0%, #7558EA 100%);
+    box-shadow: 0px 12px 36px -8px rgba(0, 0, 0, 0.36), 0px 12px 64px -12px rgba(142, 115, 251, 0.48);
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 29px;
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    transition: all 0.3s;
+}
+
+.vsu-cta-button:hover{
+	color: #fff;
+	transform: translateY(-2px);
+	box-shadow: none;
+}
+
+.vsu-bottom-cta-wrapper .vsu-cta-button {
+    margin: 24px 0px 42px;
+}
+
+.vsu-payment-top-strip {
+    padding: 10px;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    max-width: 234px;
+    margin: auto;
+}
+
+
+.vsu-payment-logos {
+    padding: 25px 16px 20px;
+    border-radius: 10px;
+    border: 1px solid #7558EA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    position: revert;
+    border-width: 0px 1px 1px;
+    position: relative;
+}
+
+.vsu-payment-logos img {
+    display: block;
+}
+
+.vsu-payment-options {
+    width: fit-content;
+    margin: auto;
+    position: relative;
+}
+
+.vsu-payment-logos::before {
+    position: absolute;
+    width: 40px;
+    height: 100%;
+    content: "";
+    border: 1px solid #7558EA;
+    border-width: 1px 0 0 0;
+    top: 0;
+    border-radius: 10px 0;
+    left: 0;
+}
+
+.vsu-payment-logos::after {
+    position: absolute;
+    width: 40px;
+    height: 100%;
+    content: "";
+    border: 1px solid #7558EA;
+    border-width: 1px 0 0 0;
+    top: 0;
+    border-radius: 0 10px;
+    right: 0;
+}
+
+.vsu-hero-bottom-note {
+    padding: 42px 0 0 0;
+}
+
+.vsu-pricing-section .vsufont42 {
+    text-align: center;
+}
+
+.vsu-pricing-table-main {
+    width: 100%;
+    max-width: 895px;
+    margin: auto;
+    border-spacing: 0px;
+    border-collapse: unset;
+    padding: 36px 0 0;
+    position: relative;
+}
+
+.vsu-pricing-table-main::before {
+    width: 191px;
+    height: 191px;
+    background: url(../images/vsu-table-left-element.png);
+    background-repeat: no-repeat;
+    border-radius: 100%;
+    position: absolute;
+    content: "";
+    left: -60px;
+    top: 20px;
+    z-index: -1;
+    background-size: cover;
+}
+
+.vsu-pricing-table-main::after {
+    width: 119px;
+    height: 132px;
+    background: url(../images/vsu-table-right-element.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    content: "";
+    right: -30px;
+    bottom: -30px;
+    z-index: -1;
+    background-size: cover;
+}
+
+.vsu-pricing-table-main  tbody {
+    overflow: hidden;
+    background: #fff;
+}
+
+.vsu-pricing-table-main td {
+    padding: 22px 36px;
+    font-family: 'Eudoxus Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1;
+    border-bottom: 1px solid rgb(255 255 255 / 15%);
+    text-align: center;
+}
+
+.vsu-pricing-table-main tr:last-child td{
+	border-bottom: 0;
+}
+
+.vsu-pricing-table-main td:nth-child(2), .vsu-pricing-table-main td:nth-child(3) {
+    width: 25%;
+    max-width: 25%;
+    font-weight: 600;
+}
+
+.vsu-pricing-table-main td:nth-child(2) {
+    border-left: 1px solid #7558EA;
+    color: #FF0000;
+}
+
+.vsu-pricing-table-main td:nth-child(3) {
+    background: #8266F2 !important;
+    color: #8ADB53;
+    font-size: 26px;
+    line-height: 20px;
+}
+
+.vsu-pricing-table-main th:last-child strong {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.vsu-pricing-table-main td:first-child {
+    width: 50%;
+    text-align: left;
+    border-left: 1px solid #7558EA;
+}
+
+.vsu-pricing-table-main tbody tr:first-child td {
+    border-top: 1px solid #7558EA;
+}
+
+.vsu-pricing-table-main tbody tr:first-child td:first-child {
+    border-radius: 10px 0 0 0;
+}
+
+.vsu-pricing-table-main tbody tr:first-child td:last-child {
+    border-top: 1px solid rgb(255 255 255 / 15%);
+}
+
+.vsu-pricing-table-main tbody tr:last-child td {
+    border-bottom: 1px solid #7558EA;
+}
+
+.vsu-pricing-table-main tbody tr:last-child td:first-child {
+    border-radius: 0 0 0 10px;
+}
+
+.vsu-pricing-table-main tbody tr:last-child td:last-child {
+    border-radius: 0 0 10px 0;
+}
+
+.vsu-pricing-table-main tbody tr:nth-child(even) td {
+    background: #F8F6FF;
+}
+
+.vsu-pricing-table-main th {
+    padding: 15px 40px;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1;
+    letter-spacing: 0.06em;
+    color: #1E1634;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.vsu-pricing-table-main th span {
+    display: block;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(69 65 83 / 80%);
+    line-height: 30px;
+    text-transform: capitalize;
+    letter-spacing: 0;
+}.vsu-pricing-table-main td {
+    padding: 22px 36px;
+    font-family: 'Eudoxus Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1;
+    border-bottom: 1px solid rgb(255 255 255 / 15%);
+    text-align: center;
+}
+
+.vsu-pricing-table-main th:nth-child(2) {
+    border-top: 1px solid #7558EA;
+    border-left: 1px solid #7558EA;
+    border-radius: 10px 0 0 0;
+    background: #F8F6FF;
+}
+
+.vsu-pricing-table-main th:last-child {
+    border-right: 1px solid #7558EA;
+    border-radius: 0 10px 0 0;
+    border-top: 1px solid #7558EA;
+    border-left: 1px solid #7558EA;
+    background: #8266F2;
+    color: #fff;
+    line-height: 22px;
+}
+
+/*toolnip style wont work with parent class*/
+
+
+/* Tooltip styles for pricing section */
+.vsu-section-has-toolnip .tooltip {
+    background: #ffffff !important;
+    box-shadow: 0px 16px 32px -8px rgba(33, 37, 41, 0.16);
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 280px;
+    opacity: 1;
+}
+
+.vsu-section-has-toolnip .tooltip .tooltip-inner {
+    font-size: 14px;
+    line-height: 25px;
+    color: rgba(69, 65, 83, 0.8);
+    background: #fff !important;
+    padding: 0;
+    opacity: 1;
+    text-align: left;
+    font-family: "Eudoxus Sans";
+}
+
+.vsu-section-has-toolnip .tooltip.bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: #D7D7DA !important;
+}
+
+.vsu-section-has-toolnip .tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+    border-bottom-color: #D7D7DA !important;
+}
+
+.vsu-section-has-toolnip .tooltip.bs-tooltip-left .tooltip-arrow::before {
+    border-left-color: #D7D7DA !important;
+}
+
+.vsu-section-has-toolnip .tooltip.bs-tooltip-right .tooltip-arrow::before {
+    border-right-color: #D7D7DA !important;
+}
+
+.vsu-section-has-toolnip .fade.tooltip.show {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+/*toolnip style wont work with parent class*/
+
+
+.vsu-pricing-table-main td .vsu-tooltip {
+    margin: 0 0 0 12px;
+    cursor: pointer;
+    max-width: 20px;
+}
+
+.vsu-pricing-section .vsu-bottom-cta-wrapper {
+    padding: 56px 0 0 0;
+}
+
+.vsu-pricing-section .vsu-bottom-cta-wrapper p .vsu-line-through {
+    font-weight: 700;
+    font-size: 26px;
+    text-decoration-line: line-through;
+}
+
+.vsu-pricing-section .vsu-bottom-cta-wrapper p .vsu-line-through {
+    font-weight: 700;
+    font-size: 26px;
+    text-decoration-line: line-through;
+    color: rgb(69 65 83 / 80%);
+    line-height: 1;
+    padding: 0 5px;
+    display: inline-block;
+}
+
+.vsu-pricing-section .vsu-bottom-cta-wrapper p .vsu-line-actual-price {
+    font-size: 28px;
+    line-height: 1;
+    opacity: 0.8;
+}
+
+.vsu-testimonial-item {
+    margin: 0 19px;
+    box-shadow: 0px 2px 44px rgba(138, 138, 143, 0.1);
+    border-radius: 10px;
+    padding: 34px 20px;
+}
+
+.vsu-testimonial-section .container-fluid{
+	padding: 0;
+}
+
+.vsu-testimonial-section .vsu-testimonial-slider {
+    padding: 65px 0 88px;
+}
+
+.vsu-testimonail-rating span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 12.3594px;
+    line-height: 14px;
+    color: #808080;
+}
+
+.vsu-testimonail-rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 0 12px 0;
+}
+
+.vsu-testimonail-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 1.09;
+    margin: 0 0 8px 0;
+}
+
+.vsu-testimonail-content {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #808080;
+    margin: 0 0 8px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.vsu-testimonail-reviewer {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 14.625px;
+    line-height: 29px;
+    display: inline-block;
+    padding: 8px 0 0 0;
+    border-top: 1px solid #D9D9D9;
+}
+
+.vsu-testimonial-section .slick-track
+{
+    display: flex !important;
+}
+
+.vsu-testimonial-section .slick-slide
+{
+    height: inherit !important;
+}
+
+.vsu-hero-video-flowing span {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.09;
+    color: #29147E;
+    transform: rotate(10.75deg);
+    font-family: "Caveat", cursive;
+    display: inline-block;
+}
+
+.vsu-hero-video-flowing img {
+    display: block;
+    transform: rotate(70deg);
+}
+
+.vsu-hero-video-flowing {
+    position: absolute;
+    top: 0;
+    right: -200px;
+}
+
+.vsu-pricing-section {
+    position: relative;
+    padding: 58px 0 0 0;
+}
+
+
+.vsu-pricing-banner-left, .vsu-pricing-banner-right {
+    position: absolute;
+    left: 0;
+    top: -220px;
+    z-index: -1;
+}
+
+.vsu-pricing-banner-right{
+    left: unset;
+    right: 0;
+}
+
+.vsu-testimonial-bottom-wrapper {
+    text-align: center;
+    padding: 0 15px;
+    max-width: 700px;
+    margin: auto;
+}
+
+.vsu-testimonial-bottom-wrapper .vsufont42 {
+    margin: 8px 0 18px;
+}
+
+.vsu-testimonial-section {
+    padding: 0 0 65px 0;
+}
+
+.vsu-reasons-section {
+    padding: 0 20px;
+}
+
+.vsu-reasons-section-inner {
+    background: linear-gradient(70.23deg, #181229 8.78%, #241644 98.56%);
+    box-shadow: 0px 16px 64px -16px rgba(0, 0, 0, 0.12);
+    border-radius: 24px;
+    padding: 80px 0 84px;
+}
+
+.vsu-reasons-hero-title {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 62px;
+    line-height: 120%;
+    color: #fff;
+    margin: 0;
+    text-align: center;
+}
+
+.vsu-reasons-tooltip-wrap {
+    margin: 50px 0 0 0;
+    text-align: center;
+    color: #fff;
+    padding: 118px 20px 55px;
+    background: #382F72;
+    border-radius: 30px;
+    position: relative;
+}
+
+.vsu-reasons-inner-container {
+    max-width: 1050px;
+    margin: auto;
+}
+
+.vsu-reasons-sticky-title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.4;
+    color: #FFFFFF;
+    padding: 10px 30px;
+    background: linear-gradient(180deg, #9479FF 0%, #7558EA 100%);
+    border-radius: 0px 0px 20px 20px;
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 80%;
+}
+
+.vsu-reasons32-title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 120%;
+    color: #fff;
+    margin: 0;
+}
+
+.vsu-reasons-tooltip-wrap .vsu-reasons32-title {
+    margin: 0 0 8px 0;
+}
+
+.vsu-reasons-tooltip-grid {
+    padding: 56px 0 0 0 !important;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    counter-reset: reasons-counter;
+}
+
+.vsu-reasons-tooltip-title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 1.55;
+    margin: 0;
+    text-align: left;
+}
+
+.vsu-reasons-tooltip-item {
+    padding: 20px 15px 20px 60px;
+    background: #221640;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    position: relative;
+}
+
+.vsu-reasons-tooltip-item::before {
+    position: absolute;
+    counter-increment: reasons-counter;
+    content: counter(reasons-counter);
+    background: #7558EA;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 15px;
+    top: 20px;
+}
+
+.vsu-reasons-tooltip-item img{
+    cursor: pointer;
+}
+
+.vsu-reasons-tooltip-load-more {
+    padding: 34px 0 0 0;
+}
+
+.vsu-reasons-tooltip-load-more a {
+    font-weight: 800;
+    font-size: 21px;
+    line-height: 1.4;
+    text-decoration-line: underline !important;
+    color: #7558EA;
+}
+
+.vsu-reasons-tooltip-grid .vsu-reasons-tooltip-item {
+    display: none;
+}
+
+.vsu-reasons-tooltip-grid .vsu-reasons-tooltip-item.visible {
+    display: flex;
+}
+
+.vsu-reasons-imgcol img {
+    border: 15px solid rgb(255 255 255 / 10%);
+    border-radius: 20px;
+}
+
+.vsu-reasons-cta-wrapper {
+    text-align: center;
+    padding: 62px 0 0 0;
+}
+
+.vsu-reasons-cta-wrapper .vsu-cta-button {
+    margin: 0 0 44px 0;
+}
+
+.vsu-moneyback-topwrapper {
+    max-width: 700px;
+    margin: auto;
+    text-align: center;
+}
+
+.vsu-moneyback-section {
+    padding: 48px 0 0;
+}
+
+.vsu-moneyback-topwrapper .vsufont42 {
+    margin: 30px 0 0 0;
+}
+
+.vsu-moneyback-topwrapper .vsu-hero-nobtn {
+    margin: 16px 0 30px 0;
+}
+
+.vsu-moneyback-testimonials .vsu-testimonial-slider {
+    padding: 64px 0 30px 0;
+}
+
+.vsu-faq-section {
+    padding: 32px 0 60px;
+}
+
+.vsu-faq-inner .vsufont42 {
+    text-align: center;
+}
+
+.vsu-faq-wrapper {
+    padding: 60px 0 0 0;
+    max-width: 990px;
+    margin: auto;
+}
+
+.vsu-faq-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.16;
+    letter-spacing: -0.01em;
+    margin: 0;
+    transition: padding 0.3s;
+    width: calc(100% - 40px);
+}
+
+.vsu-faq-item.is-active .vsu-faq-title {
+    padding: 0 0 24px;
+    border-bottom: 1px solid rgb(69 73 72/ 0.1);
+}
+
+.vsu-faq-content {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgb(69 65 83 / 80%);
+    padding: 24px 0 0 0;
+    display: none;
+    opacity: 1;
+    margin: 0;
+}
+
+.vsu-faq-iconline {
+    height: 10px;
+    width: 2px;
+    display: inline-block;
+    background: #fff;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s;
+}
+
+.vsu-faq-icon {
+    width: 22px;
+    height: 22px;
+    background: rgb(30 22 52 / 40%);
+    border-radius: 100%;
+    position: absolute;
+    top: 36px;
+    right: 36px;
+    transition: 0.2s all;
+}
+
+.vsu-faq-iconline:nth-child(2) {
+    height: 2px;
+    width: 10px;
+}
+
+.vsu-faq-item.is-active .vsu-faq-icon {
+    background: #1E1634;
+}
+
+.vsu-faq-item.is-active .vsu-faq-icon .vsu-faq-iconline:first-child {
+    opacity: 0;
+}
+
+.vsu-faq-item:last-child {
+    margin: 0;
+}
+
+.vsu-faq-item {
+    padding: 36px;
+    background: #FDFDFD;
+    border: 1px solid rgba(69, 73, 72, 0.1);
+    border-radius: 24px;
+    cursor: pointer;
+    position: relative;
+    margin: 0 0 24px 0;
+}
+
+.vsu-compare-section {
+    padding: 70px 0 92px;
+    background: url(../images/vsu-compare-banner.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.vsu-compare-section .vsufont42 {
+    text-align: center;
+}
+
+.vsu-compare-subtitle {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 120%;
+    text-align: center;
+    display: block;
+    padding: 16px 0 0 0;
+    letter-spacing: 0.09em;
+}
+
+.vsu-compare-outer {
+    max-width: 795px;
+    margin: auto;
+    padding: 44px 0 0 0;
+}
+
+.vsu-compare-card-header {
+    padding: 32px 32px 25px;
+    background: #F3F9FF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    border-bottom: 1px solid rgb(69 73 72 / 10%);
+    position: relative;
+}
+
+.vsu-compare-card-type h6 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.16;
+    letter-spacing: -0.02em;
+    text-transform: capitalize;
+    color: #22272F;
+    margin: 0 0 0 16px;
+}
+
+.vsu-compare-card-type {
+    display: flex;
+    align-items: center;
+}
+
+.vsu-compare-card-price h6 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 1.2;
+    color: #43B0FF;
+    margin: 0;
+}
+
+.vsu-compare-card-price h6 span {
+    font-weight: 500;
+    font-size: 20px;
+    color: rgba(34, 39, 47, 0.55);
+    text-decoration: line-through;
+}
+
+.vsu-compare-card-validity {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 116%;
+    color: rgb(69 65 83 / 80%);
+    display: block;
+    padding: 9px 0 0 0;
+}
+
+.vsu-compare-card-body {
+    padding: 32px;
+}
+
+.vsu-compare-card-body ul li:last-child{
+    margin: 0;
+}
+
+.vsu-compare-card-body ul li {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #1E1634;
+    margin: 0 0 26px 0;
+    padding: 0 0 0 36px;
+    display: flex;
+    align-items: center;
+    background: url(../images/vsu-premium-lite-check.svg);
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+.vsu-compare-card-body ul li img {
+    display: block;
+    margin: 0 0 0 12px;
+    cursor: pointer;
+}
+
+.vsu-compare-card {
+    background: #FFFFFF;
+    border: 1px solid rgba(69, 73, 72, 0.1);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.vsu-compare-card-body ul li.vsu-compare-list-cross {
+    font-weight: 500;
+    text-decoration: line-through;
+    background: url(../images/vsu-premium-lite-cross.svg);
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+.vsu-compare-card-footer {
+    padding: 20px 25px 35px;
+}
+
+.vsu-compare-card-cta {
+    padding: 35px 0 0 0;
+}
+
+.vsu-compare-card-cta a {
+    padding: 16px 20px;
+    width: 100%;
+    background: linear-gradient(180deg, #72BAFF 0%, #3CA0FF 100%);
+    box-shadow: 0px 12px 36px -8px rgba(0, 0, 0, 0.36), 0px 12px 64px -12px rgba(142, 115, 251, 0.48);
+    border-radius: 8px;
+    display: inline-block;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+    font-family: "Inter", sans-serif;
+    text-align: center;
+    transition: 0.3s all;
+}
+
+.vsu-compare-card-cta a:hover{
+    box-shadow: unset;
+    transform: translateY(-2px);
+}
+
+.vsu-compare-card-cta span {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 116%;
+    color: rgb(69 65 83 / 80%);
+    display: block;
+    text-align: center;
+    padding: 16px 0 0 0;
+}
+
+.vsu-compare-card.premium-plus .vsu-compare-card-header {
+    padding: 42px 32px 34px;
+    background: url(../images/vsu-premium-plus-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.vsu-compare-card.premium-plus .vsu-compare-card-type h6 {
+    font-size: 23px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.vsu-compare-card.premium-plus .vsu-compare-card-price h6 {
+    color: #fff;
+}
+
+.vsu-compare-card.premium-plus .vsu-compare-card-price .vsu-compare-card-validity, .vsu-compare-card.premium-plus .vsu-compare-card-price h6 span {
+    color: #DCD4FC;
+}
+
+.vsu-compare-card-sticky-title {
+    display: block;
+    position: absolute;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 116%;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #7052F2;
+    padding: 7px 20px;
+    background: #FFCD06;
+    border-radius: 0px 0px 10px 10px;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.vsu-compare-card:not(.premium-plus) {
+    margin: 20px 0 0 0;
+}
+
+.vsu-compare-card.premium-plus .vsu-compare-card-body ul li {
+    background: url(../images/vsu-premium-plus-check.svg);
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+
+.vsu-compare-card.premium-plus .vsu-compare-card-cta a {
+    background: linear-gradient(180deg, #9479FF 0%, #7558EA 100%);
+}
+
+.vsu-compare-card:not(.premium-plus) .vsu-payment-logos {
+    border: 1px solid #3CA0FF;
+    border-width: 0px 1px 1px;
+}
+
+.vsu-compare-card:not(.premium-plus) .vsu-payment-logos::before, .vsu-compare-card:not(.premium-plus) .vsu-payment-logos::after{
+    border: 1px solid #3CA0FF;
+    border-width: 1px 0 0 0;
+}
+
+.vsu-faq-inner .vsu-faq-subtitle {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: rgb(69 65 83 / 60%);
+    text-align: center;
+    display: block;
+    padding: 0 0 16px 0;
+}
+
+.vsu-pagefooter-inner {
+    text-align: center;
+    max-width: 920px;
+    margin: auto;
+    padding: 0 15px;
+}
+
+.vsu-pagefooter {
+    padding: 38px 0 108px;
+    position: relative;
+}
+
+.vsu-pagefooter-cta {
+    border: 1px solid #7558EA;
+    border-radius: 30px;
+    display: inline-block;
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 625px;
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 1.4;
+    color: #7558EA;
+    margin: 20px 0px;
+    transition: all 0.3s;
+}
+
+.vsu-pagefooter-cta:hover{
+    color: #fff;
+    background: #7558EA;
+}
+
+.vsu-pagefooter::before, .vsu-pagefooter::after {
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    content: "";
+    background: linear-gradient(202.79deg, #3CA0FF 18.25%, #8569F5 57.58%);
+    mix-blend-mode: normal;
+    filter: blur(200px);
+    border-radius: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+ .vsu-pagefooter::after{
+    left: unset;
+    right: 0;
+ }
+
+
+ .vsu-reasons-grid-title {
+    font-weight: 800;
+    font-size: 21px;
+    line-height: 1.4;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+
+.vsu-reasonsgrid-outer {
+    padding: 45px 0 0 0;
+}
+
+
+/*Feature page css starts here*/
+
+
+
+.vsuft-hero-section {
+    padding: 106px 0px;
+    background: linear-gradient(70.23deg, #181229 8.78%, #241644 98.56%);
+    border-radius: 24px;
+    margin: 0 20px;
+    background-image: url(../images/vsuft-herobanner.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.vsuft-container{
+    max-width: 1180px;
+    padding: 0 15px;
+    margin: auto;
+}
+
+.vsuft-hero-imagecol {
+    width: 52%;
+}
+
+.vsuft-hero-textcol {
+    width: 48%;
+    padding: 0 30px 0 0;
+}
+
+.vsuft-hero-textcol-inner {
+    max-width: 410px;
+}
+
+.vsuft-hero-flex {
+    display: flex;
+    align-items: center;
+}
+
+.vsuft-hero-title {
+    font-weight: 800;
+    font-size: 58px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.vsuft-hero-textcol .vsufont18 {
+    line-height: 1.3;
+    color: #B4AEBE;
+    margin: 13px 0 23px;
+}
+
+.vsuft-ctabtn {
+    padding: 20px 53px;
+    background: linear-gradient(180deg, #9479FF 0%, #7558EA 100%);
+    box-shadow: 0px 12px 36px -8px rgba(0, 0, 0, 0.36), 0px 12px 64px -12px rgba(142, 115, 251, 0.48);
+    border-radius: 8px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: -0.01em;
+    display: inline-block;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.vsuft-ctabtn:hover{
+    box-shadow: unset;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.vsuft-hero-title span {
+    background: linear-gradient(230.88deg, #AE99FF 27.12%, #7558EA 51.7%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.vsuft-hero-imagecol img {
+    border-radius: 20px;
+    border: 15px solid rgb(255 255 255 / 10%);
+    display: block;
+}
+
+.vsuft-remodule-section {
+    padding: 0 0 88px;
+    position: relative;
+    z-index: 1;
+}
+.vsuft-remodule-section .vsufont42 {
+    text-align: center;
+}
+
+.vsuft-remodule-inner {
+    padding: 74px 0 0 0;
+}
+
+.vsuft-remodule-flex {
+    max-width: 1120px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    padding: 0 0 80px 0;
+}
+
+.vsuft-remodule-flex:last-child {
+    padding: 0;
+}
+
+.vsuft-remodule-textcol {
+    padding: 0 55px 0 0;
+}
+
+.vsuft-remodule-textcol, .vsuft-remodule-imagecol{
+    width: 50%;
+}
+
+.vsuft-remodule-title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(229.74deg, #9479FF 12.73%, #7558EA 56.55%), #7558EA;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    position: relative;
+    padding: 0 0 16px 0;
+    margin: 0;
+}
+
+
+.vsuft-remodule-title::after {
+    position: absolute;
+    width: 115px;
+    height: 4px;
+    background: linear-gradient(229.74deg, #9479FF 12.73%, #7558EA 56.55%);
+    border-radius: 100px;
+    content: "";
+    left: 0;
+    bottom: 0;
+}
+
+.vsuft-remodule-textcol .vsufont16 {
+    color: rgb(69 65 83 / 80%);
+    margin: 12px 0 24px;
+}
+
+.vsuft-remodule-features-title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: #1E1634;
+    margin: 0 0 24px 0;
+}
+
+.vsuft-remodule-features-list li {
+    font-size: 16px;
+    line-height: 1.25;
+    color: #1E1634;
+    padding: 0 0 0 36px;
+    margin: 0 0 18px 0;
+    background: url(../images/vsuft-recheck-icon.svg);
+    background-size: 24px;
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+
+.vsuft-remodule-features-list li:last-child{
+    margin: 0;
+}
+
+.vsuft-remodule-textcol .vsuft-ctabtn {
+    margin: 24px 0 0 0;
+}
+
+.vsuft-remodule-imagecol img {
+    background: url(image.png);
+    border: 11px solid #FFFFFF;
+    filter: drop-shadow(0px 4px 31px rgba(91, 99, 141, 0.32));
+    border-radius: 20px;
+}
+
+.vsuft-remodule-flex:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.vsuft-remodule-flex:nth-child(even) .vsuft-remodule-textcol {
+    padding: 0 0 0 55px;
+}
+
+
+.vsuft-remodule-section::before,.vsuft-remodule-section::after {
+    position: absolute;
+    width: 492px;
+    height: 492px;
+    background: #3CA0FF;
+    mix-blend-mode: normal;
+    opacity: 0.3;
+    filter: blur(200px);
+    content: "";
+    left: 0;
+    bottom: -270px;
+    z-index: -1;
+}
+
+.vsuft-remodule-section::after {
+    left: unset;
+    right: 0;
+    background: #DF1EFF;
+}
+
+.vsuft-howorks-section {
+    padding: 60px 0 100px;
+    background: linear-gradient(25.17deg, #181229 4.78%, #241644 93.55%);
+    box-shadow: 0px 16px 64px -16px rgba(0, 0, 0, 0.12);
+}
+
+.vsuft-howorks-section .vsufont42 {
+    text-align: center;
+    color: #ffffff;
+}
+
+.vsuft-howorks-flex {
+    padding: 52px 0 0 0;
+    z-index: 1;
+    position: relative;
+    width: auto;
+    display: flex;
+    margin-left: -32px;
+}
+
+.vsuft-howorks-box {
+    background: #FDFDFD;
+    border: 1px solid rgba(69, 73, 72, 0.1);
+    border-radius: 24px;
+    padding: 25px 20px 35px;
+    height: 100%;
+}
+
+.vsuft-howorks-spacing {
+    width: 25%;
+    padding-left: 32px;
+}
+
+.vsuft-howorks-box-icon {
+    width: 64px;
+    height: 64px;
+    background: #FFFFFF;
+    box-shadow: 0px 16px 32px -8px rgba(33, 37, 41, 0.16);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vsuft-howorks-box-title {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 116%;
+    letter-spacing: -0.01em;
+    text-transform: capitalize;
+    color: #1E1634;
+    margin: 0;
+}
+
+.vsuft-howorks-box-text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.48;
+    letter-spacing: -0.01em;
+    color: rgb(69 65 83 / 80%);
+    margin: 0;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.vsuft-howorks-section .vsuft-container {
+    max-width: 1200px;
+}
+
+.vsu-section-has-toolnip.vsuft-howorks-section .tooltip {
+    padding: 12px 20px;
+
+}
+
+.vsuft-retool-section {
+    padding: 88px 0 0 0;
+    background: url(../images/vsuft-retool-bg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top right;
+}
+
+.vsuft-retool-inner {
+    text-align: center;
+}
+
+.vsuft-retool-inner {
+    text-align: center;
+    max-width: 810px;
+    margin: auto;
+}
+
+.vsuft-retool-inner .vsufont42 {
+    margin: 0 0 16px 0;
+}
+
+.vsuft-retool-video-wrap {
+    margin: 38px 0 0 0;
+    background: linear-gradient(180deg, rgba(148, 121, 255, 0.4) 0%, rgba(117, 88, 234, 0.4) 100%);
+    box-shadow: 0px 12px 64px -12px rgba(142, 115, 251, 0.48);
+    border-radius: 28px;
+    padding: 23px;
+}
+
+.vsuft-retool-video-wrap iframe {
+    border-radius: 12px;
+}
+
+
+.vsuft-retool-for-wrapper {
+    padding: 88px 0 0 0;
+    text-align: center;
+}
+
+.vsuft-retool-for-wrapper .vsufont42 {
+    margin: 0 0 16px;
+}
+
+.vsuft-retool-for-grid {
+    padding: 68px 0 0 0;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 65px 55px;
+    grid-gap: 65px 55px;
+}
+
+.vsuft-retool-for-gridbox h5 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: rgb(69 65 83 / 60%);
+    margin: 24px 0 8px 0;
+}
+
+
+.vsuft-retool-for-gridbox{
+    text-align: center;
+}
+
+.vsuft-retool-for-gridbox p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.48;
+    letter-spacing: -0.01em;
+    color: rgb(69 65 83 / 80%);
+    opacity: 1;
+    margin: 0;
+}
+
+
+.vsuft-relist-section {
+    padding: 126px 0 142px;
+    background: url(../images/vsuft-listbg.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: left bottom;
+    position: relative;
+}
+
+.vsuft-relist-topwrap {
+    text-align: center;
+    max-width: 700px;
+    margin: auto;
+}
+
+.vsuft-relist-topwrap .vsufont42 {
+    margin: 0 0 16px 0;
+}
+
+
+.vsuft-relist-flex {
+    padding: 85px 0 0 0;
+    max-width: 1120px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+}
+
+.vsuft-relist-listcol, .vsuft-relist-image-col {
+    width: 50%;
+}
+
+.vsuft-relist-listcol {
+    padding: 0 55px 0 0;
+}
+
+.vsuft-relist-listcol ul li {
+    font-size: 16px;
+    line-height: 1.36;
+    color: #1E1634;
+    padding: 0 0 0 36px;
+    margin: 0 0 38px 0;
+    background: url(../images/vsuft-recheck-icon.svg);
+    background-size: 24px;
+    background-position: left top;
+    background-repeat: no-repeat;
+}
+
+.vsuft-relist-listcol ul li:last-child{
+    margin: 0;
+}
+
+.vsuft-relist-listcol .vsuft-ctabtn {
+    margin: 46px 0 0 0;
+}
+
+.vsuft-relist-image-col img {
+    border: 11px solid #FFFFFF;
+    filter: drop-shadow(0px 4px 31px rgba(91, 99, 141, 0.32));
+    border-radius: 20px;
+    display: block;
+}
+
+.vsuft-redesign-testimonial-section {
+    padding: 80px 0px;
+    background: linear-gradient(70.23deg, #181229 8.78%, #241644 98.56%);
+    box-shadow: 0px 16px 64px -16px rgba(0, 0, 0, 0.12);
+    border-radius: 24px;
+    margin: 0 20px;
+}
+
+.vsuft-redesign-testimonial-tpwrap {
+    max-width: 680px;
+    margin: auto;
+    padding: 0 15px 32px;
+    text-align: center;
+}
+
+.vsuft-redesign-testimonial-tpwrap .vsufont42 {
+    color: #fff;
+    margin: 0 0 24px 0;
+}
+
+.vsuft-redesign-testimonial-tpwrap .vsufont20 {
+    color: #fff;
+}
+
+
+.vsuft-relist-section::after,.vsuft-relist-section::before {
+    background: linear-gradient(180deg, #3CA0FF 0%, #8D72FB -60%);
+    mix-blend-mode: normal;
+    opacity: 0.3;
+    filter: blur(200px);
+    position: absolute;
+    content: "";
+    width: 492px;
+    height: 492px;
+    top: 0;
+    right: 0;
+}
+
+
+.vsuft-relist-section::before {
+    top: unset;
+    right: unset;
+    left: 0;
+    bottom: 250px;
+    background: linear-gradient(180deg, #8D72FB 80%, #3CA0FF 0%);
+}
+
+.vsu-faq-section.vsuft-faqs {
+    padding: 60px 0 100px;
+}
+
+.vsuft-logos-section {
+    padding: 44px 0 130px;
+    position: relative;
+}
+
+.vsuft-logos-topwrap {
+    text-align: center;
+    max-width: 1100px;
+    padding: 0 15px;
+    margin: auto;
+}
+
+.vsuft-logos-topwrap .vsufont18 {
+    padding: 0 0 75px 0;
+}
+
+.vsuft-logos-ustitle {
+    font-weight: 700;
+    font-size: 21px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: rgb(69 65 83 / 60%);
+    margin: 0;
+}
+
+.vsuft-logo-slider-item {
+    background: #FFFFFF;
+    border: 1.5px solid #EBEFF6;
+    border-radius: 24px;
+    height: 65px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.vsuft-logos-slider {
+    padding: 52px 0 0 0;
+}
+
+.vsuft-logos-section .vsuft-logo-slider-item, .vsbs-logos-section .vsuft-logo-slider-item, .vshome-peak-section .vsuft-logo-slider-item{
+    margin: 0 19px;
+}
+
+.vsuft-logos-slider-rtl{
+    padding: 26px 0 0 0;
+}
+
+.vsuft-logos-section::before, .vsuft-logos-section::after {
+    width: 492px;
+    height: 492px;
+    top: 90px;
+    background: #3CA0FF;
+    mix-blend-mode: normal;
+    opacity: 0.3;
+    filter: blur(200px);
+    position: absolute;
+    content: "";
+    left: 0;
+}
+
+.vsuft-logos-section::after{
+    left: unset;
+    right: 0;
+}
+
+.vsuft-logos-section-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.vsuft-logos-section-inner::before, .vsuft-logos-section-inner::after {
+    width: 320px;
+    height: 320px;
+    background: #DF1EFF;
+    mix-blend-mode: normal;
+    opacity: 0.6;
+    filter: blur(200px);
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: -300px;
+    z-index: -1;
+}
+
+.vsuft-logos-section-inner::after {
+    left: unset;
+    right: 0;
+}
+
+.vsuft-logos-bgimage {
+    position: absolute;
+    top: 90px;
+    right: 0;
+}
+
+.vsuft-flowingft-banner-outer {
+    padding: 0 20px;
+    margin: 0 0 -240px;
+}
+
+.vsuft-flowingft-banner {
+    max-width: 1200px;
+    background: linear-gradient(180deg, #9479FF 0%, #7558EA 100%);
+    box-shadow: 0px 16px 64px -16px rgba(0, 0, 0, 0.12);
+    border-radius: 24px;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+}
+
+.vsuft-flowingft-banner-inner{
+    text-align: center;
+}
+
+.vsuft-flowingft-banner-inner .vsufont42 {
+    color: #fff;
+    padding: 0 0 48px 0;
+}
+
+.vsuft-flowingft-banner-inner .vsuft-ctabtn {
+    background: #fff;
+    color: #7558EA;
+}
+
+.vsuft-flow-left,.vsuft-flow-right  {
+    position: absolute;
+    height: 100%;
+    width: auto;
+    top: 0;
+    left: 0;
+}
+
+.vsuft-flow-right{
+    left: unset;
+    right: 0;
+}
+
+
+/*new buisness page css starts here*/
+
+.vsbs-hero-top-box {
+    text-align: center;
+    max-width: 935px;
+    margin: auto;
+}
+
+.vsbs-hero-top-box .vsufont40 span {
+    background: linear-gradient(180deg, #9479FF 0%, #7558EA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.vsbs-hero-top-box .vsufont40 {
+    padding: 44px 0 38px;
+}
+
+.vsbs-hero-section {
+    padding: 46px 0 0 0;
+    position: relative;
+    
+}
+
+.vsbs-hero-section::before{
+    background: url(../images/vsbs-hero-banner.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    content: "";
+    width: 100%;
+    height: calc(100% - 118px);
+    left: 0;
+    top: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.vsbs-hero-section .vsu-hero-video-wrap {
+    margin: 38px auto 0;
+}
+
+.vsbs-hero-section .vsu-hero-video-wrap .vsu-hero-video-main {
+    background: rgba(117, 88, 234, 0.26);
+    box-shadow: 0px 16px 64px -16px rgba(0, 0, 0, 0.12);
+}
+
+.vsbs-logos-section {
+    padding: 68px 0 105px;
+    position: relative;
+}
+
+.vsbs-logos-section .vsuft-logos-slider {
+    padding: 0;
+}
+
+.vsbs-logos-section .vsu-bottom-cta-wrapper {
+    padding: 72px 0 0 0;
+}
+
+.vsbs-logos-section .vsu-bottom-cta-wrapper .vsufont18 {
+    font-size: 22px;
+    color: #454153;
+}
+
+.vsbs-logos-section::before, .vsbs-logos-section::after, .vsbs-limited-review-section::before, .vsbs-limited-review-section::after {
+    width: 492px;
+    height: 492px;
+    background: #3CA0FF;
+    mix-blend-mode: normal;
+    opacity: 0.3;
+    filter: blur(200px);
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: -220px;
+    z-index: -1;
+}
+
+.vsbs-limited-review-section::before, .vsbs-limited-review-section::after{
+    bottom: 0;
+}
+
+.vsbs-logos-section::after, .vsbs-limited-review-section::after{
+    left: unset;
+    right: 0;
+    background: #DF1EFF;
+}
+
+.vsbs-included-section {
+    padding: 0  20px;
+}
+
+.vsbs-included-inner {
+    background: linear-gradient(70.23deg, #181229 8.78%, #241644 98.56%);
+    box-shadow: 0px 16px 64px -16px rgba(0, 0, 0, 0.12);
+    border-radius: 24px;
+    padding: 80px 0 62px;
+}
+
+.vsu-reasons-hero-title span {
+    background: linear-gradient(180deg, #9479FF 0%, #7558EA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.vsbs-included-grid-item {
+    padding: 45px 25px;
+    background: #382F72;
+    border-radius: 49px;
+}
+
+.vsbs-included-grid-item-count {
+    font-weight: 800;
+    font-size: 61px;
+    color: #9479FF;
+    line-height: 1;
+    display: block;
+}
+
+.vsbs-included-grid-item-title {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 120%;
+    color: #fff;
+    margin: 0;
+    padding: 17px 0px;
+}
+
+.vsbs-included-grid-item-text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgb(255 255 255 / 80%);
+    opacity: 1;
+    margin: 0;
+    letter-spacing: 0;
+}
+
+.vsbs-included-grid-special-text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgb(255 255 255 / 80%);
+    opacity: 1;
+    letter-spacing: 0;
+    background: #23195F;
+    border-radius: 12px;
+    padding: 18px 30px;
+    display: block;
+    margin: 17px 0 0 0;
+}
+
+.vsbs-included-grid-item-image img {
+    background: url(image.png);
+    border: 15px solid rgba(148, 121, 255, 0.18);
+    border-radius: 20px;
+}
+
+.vsbs-included-grid-item-image {
+    padding: 35px 0 0 0;
+}
+
+
+.vsbs-included-grid {
+    padding: 60px 0 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 34px;
+    grid-gap: 34px;
+}
+
+.vsbs-limited-review-section {
+    padding: 85px 0 100px;
+    position: relative;
+}
+
+.vsbs-limited-review-topbox {
+    max-width: 670px;
+    margin: auto;
+    text-align: center;
+}
+
+.vsbs-limited-review-topbox .vsufont42 {
+    padding: 8px 0 18px;
+}
+
+.vsbs-limited-review-trustpilot {
+    padding: 62px 0 0 0;
+}
+
+.vsbs-up-business .vsufont42 {
+    text-align: center;
+}
+
+.vsbs-pricing-section {
+    padding: 78px 0 50px;
+    background: url(../images/vsbs-price-banner-updated.png);
+    background-repeat: no-repeat;
+    background-size: 100% 50%;
+    background-position: top center;
+}
+
+.vsbs-progressbar {
+    max-width: 680px;
+    margin: auto;
+}
+
+.vsbs-progressbar p {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 120%;
+    margin: 0 0 20px 0;
+    text-align: center;
+    opacity: 1;
+}
+
+.vsbs-progressbar .progress {
+    background: #FFFFFF;
+    border-radius: 200px;
+    box-shadow: unset;
+    height: 20px;
+    box-shadow: 0px 2px 22px rgba(117, 88, 234, 0.45);
+}
+
+.vsbs-progressbar .progress .progress-bar {
+    background: linear-gradient(180deg, #9479FF 0%, #7558EA 100%);
+    box-shadow: 0px 2px 22px rgba(117, 88, 234, 0.45);
+    border-radius: 200px;
+    height: 100%;
+}
+
+.vsbs-ricing-section .vsu-compare-outer {
+    padding: 70px 0 0 0;
+}
+
+
+.vsbs-included-inner .vsup-container {
+    padding: 0 20px;
+}
+
+.vsu-reasons-subwrapper-item {
+    position: relative;
+    padding: 100px 25px 30px;
+    background: #382F72;
+    border-radius: 49px;
+}
+
+
+.vsu-reasons-subwrapper-textcol .vsufont16 {
+    padding: 15px 0 0 0;
+}
+
+.vsu-reasons-imgcol {
+    padding: 30px 0 0 0;
+    margin: auto 0 0 0;
+}
+
+.vsu-reasons-subwrapper {
+    padding: 35px 0 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 34px;
+    grid-gap: 34px;
+}
+
+.vsu-reasons-subwrapper-flex {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+.vsuft-howorks-count span {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+    display: flex;
+    color: #FFFFFF;
+    background: linear-gradient(180deg, #9479FF 0%, #7558EA 100%);
+    box-shadow: 0px 12px 36px -8px rgba(0, 0, 0, 0.36), 0px 12px 64px -12px rgba(142, 115, 251, 0.48);
+    border-radius: 8px;
+    min-width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+.vsuft-howorks-count {
+    display: flex;
+    padding: 24px 0 8px;
+    gap: 8px;
+    align-items: flex-start;
+    align-items: center;
+}
+
+.vsbs-logos-text {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+    padding: 0 20px 50px;
+}
+
+.vsbs-pricing-top-text {
+    text-align: center;
+}
+
+.vsbs-pricing-top-text .vsuft-hero-title {
+    background: linear-gradient(180deg, #9479FF 0%, #7558EA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.vsbs-pricing-top-text {
+    text-align: center;
+    padding: 0 0 36px 0;
+}
+
+
+
+@keyframes animateWords {
+     0% {
+         transform: translateY(0%);
+    }
+     25% {
+         transform: translateY(-100%);
+    }
+     50% {
+         transform: translateY(-200%);
+    }
+     75% {
+         transform: translateY(-300%);
+    }
+     100% {
+         transform: translateY(-400%);
+    }
+}
+
+.hasvs-changing-text> span {
+     position: relative;
+     display: inline-block;
+     height: 1.25em;
+     vertical-align: bottom;
+     overflow: hidden;
+     text-transform: uppercase;
+     text-align: left;
+}
+.hasvs-changing-text > span span {
+     display: block;
+     animation: animateWords 5s infinite ease;
+}
+ 
+
+
+
+
+/*media queries starts here*/
+
+@media (max-width: 1399.98px) {
+
+.vsu-hero-section {
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
+
+.vsu-header-step span {
+    font-size: 16px;
+}
+
+.vsufont40,.vsufont42 {
+    font-size: 38px;
+}
+
+.vsu-hero-nobtn {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.vsu-hero-video-flowing span {
+    font-size: 20px;
+}
+
+.vsu-hero-video-flowing {
+    right: -165px;
+}
+
+.vsu-cta-button {
+    padding: 20px 35px;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.vsu-testimonial-item {
+    margin: 0 10px;
+}
+
+.vsu-reasons-hero-title {
+    font-size: 52px;
+}
+
+.vsu-reasons-tooltip-wrap {
+    margin: 35px 0 0 0;
+}
+
+.vsu-reasons-sticky-title {
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.vsu-pricing-table-main::before {
+    width: 160px;
+    height: 160px;
+    left: -40px;
+}
+
+.vsuft-hero-textcol-inner {
+    max-width: 100%;
+}
+
+.vsuft-hero-title {
+    font-size: 52px;
+}
+
+.vsuft-logos-topwrap .vsufont18 {
+    padding: 0 0 55px 0;
+}
+
+.vsuft-logos-section .vsuft-logo-slider-item, .vsbs-logos-section .vsuft-logo-slider-item,.vshome-peak-section .vsuft-logo-slider-item{
+    margin: 0 10px;
+}
+
+.vsuft-logos-section {
+    padding: 44px 0 110px;
+    position: relative;
+}
+
+.vsuft-logos-section-inner::before, .vsuft-logos-section-inner::after {
+    width: 220px;
+    height: 220px;
+    bottom: -200px;
+}
+
+.vsuft-logos-section::before, .vsuft-logos-section::after {
+    width: 320px;
+    height: 320px;
+}
+
+.vsbs-included-grid-item {
+    padding: 35px 25px;
+    border-radius: 25px;
+}
+
+.vsu-reasons-subwrapper-item {
+    padding: 95px 20px 30px;
+    border-radius: 25px;
+}
+
+
+}
+
+
+
+@media (max-width: 1199.98px) {
+
+.vsu-hero-video-flowing{
+    display: none;
+}
+
+.vsu-for-purchase {
+    padding: 6px 0 0 0;
+}
+
+.vsu-before-started {
+    margin: 22px 0 4px 0;
+}
+
+.vsu-pricing-table-main td {
+    padding: 22px 25px;
+}
+
+.vsu-reasons-hero-title {
+    font-size: 42px;
+}
+
+.vsu-reasons-sticky-title {
+    padding: 10px 15px;
+    border-radius: 0px 0px 15px 15px;
+    font-size: 17px;
+}
+
+.vsu-reasons-section {
+    padding: 0 15px;
+}
+
+.vsu-reasons-tooltip-title {
+    font-size: 17px;
+}
+
+.vsu-faq-item {
+    padding: 30px;
+}
+
+.vsu-faq-icon {
+    top: 30px;
+    right: 30px;
+}
+
+.vsufont20{
+    font-size: 18px;
+}
+
+.vsu-header-step span {
+    font-size: 14px;
+}
+
+.vsu-faq-section {
+    padding: 32px 0 30px;
+}
+
+.vsu-cta-button {
+    padding: 16px 35px;
+    font-size: 20px;
+    line-height: 24px;
+    width: fit-content;
+}
+
+.vsuft-hero-title {
+    font-size: 48px;
+}
+
+.vsuft-ctabtn {
+    padding: 18px 50px;
+}
+
+.vsuft-logos-section .vsuft-logo-slider-item, .vsbs-logos-section .vsuft-logo-slider-item,.vshome-peak-section .vsuft-logo-slider-item {
+    margin: 0 7.5px;
+}
+
+.vsuft-logos-bgimage {
+    width: 620px;
+}
+
+.vsuft-logos-section {
+    padding: 44px 0 80px;
+}
+
+.vsuft-remodule-textcol {
+    padding: 0 40px 0 0;
+}
+
+.vsuft-remodule-flex:nth-child(even) .vsuft-remodule-textcol {
+    padding: 0 0 0 40px;
+}
+
+.vsuft-remodule-flex {
+    padding: 0 0 65px 0;
+}
+
+.vsuft-remodule-section::before, .vsuft-remodule-section::after {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+}
+
+.vsuft-howorks-spacing {
+    padding-left: 20px;
+}
+
+.vsuft-howorks-flex {
+    margin-left: -20px;
+}
+
+.vsuft-retool-for-grid {
+    gap: 40px;
+    grid-gap: 40px;
+}
+
+.vsuft-relist-section::after, .vsuft-relist-section::before {
+    width: 320px;
+    height: 320px;
+}
+
+.vsuft-relist-section {
+    padding: 100px 0px;
+}
+
+.vsuft-relist-listcol {
+    padding: 0 40px 0 0;
+}
+
+.vsuft-relist-listcol ul li {
+    margin: 0 0 30px 0;
+}
+
+.vsuft-flowingft-banner-outer {
+    margin: 0 0 -200px;
+}
+
+.vsuft-flow-left img , .vsuft-flow-right img  {
+    height: 100%;
+    object-fit: cover;
+}
+
+.vsuft-flow-left, .vsuft-flow-right {
+    width: 260px;
+}
+
+.vsbs-hero-top-box .vsufont40 {
+    padding: 30px 0px;
+}
+
+.vsbs-logos-section {
+    padding: 68px 0 75px;
+}
+
+.vsbs-included-grid-item {
+    padding: 30px 25px;
+}
+
+.vsbs-included-grid-item-count {
+    font-size: 54px;
+}
+
+.vsbs-included-grid-item-title {
+    font-size: 28px;
+}
+.vsbs-included-grid, .vsu-reasons-subwrapper{
+    gap: 25px;
+    grid-gap: 25px;
+}
+
+
+.vsbs-limited-review-section {
+    padding: 80px 0px;
+}
+
+.vsbs-up-business .vsuft-relist-listcol ul li {
+    margin: 0 0 24px 0;
+}
+
+.vsuft-relist-flex {
+    padding: 60px 0 0 0;
+}
+
+.vsbs-pricing-section {
+    padding: 50px 0 50px;
+}
+
+.vsu-reasons32-title {
+    font-size: 28px;
+}
+
+
+}
+
+@media (max-width: 991.98px) {
+
+.vsu-header-step {
+    padding: 10px 8px;
+}
+
+.vsu-header-step span {
+    font-size: 12px;
+    margin: 0 0 0 8px;
+}
+
+.vsu-header-step img {
+    max-width: 20px;
+}
+
+.vsufont40, .vsufont42 {
+    font-size: 34px;
+    letter-spacing: 0;
+}
+
+.vsu-before-started {
+    margin: 16px 0 10px 0;
+    font-size: 24px;
+}
+
+.vsu-hero-video-main {
+    padding: 15px;
+    border-radius: 20px;
+}
+
+.vsu-pricing-table-main::after, .vsu-pricing-table-main::before{
+    display: none;
+}
+
+.vsu-pricing-table-main th {
+    padding: 15px 30px;
+}
+
+.vsu-pricing-table-main th:last-child strong img{
+    display: none;
+}
+
+.vsu-pricing-table-main td {
+    padding: 18px 25px;
+    font-size: 16px;
+}
+
+.vsu-pricing-table-main td:nth-child(3) {
+    font-size: 20px;
+}
+
+.vsu-pricing-table-main td img {
+    max-width: 20px;
+}
+
+.vsu-testimonial-section .vsu-testimonial-slider {
+    padding: 65px 0;
+}
+
+.vsu-reasons-section-inner {
+    background: linear-gradient(70.23deg, #181229 8.78%, #241644 98.56%);
+    box-shadow: 0px 16px 64px -16px rgba(0, 0, 0, 0.12);
+    border-radius: 24px;
+    padding: 60px 0px;
+}
+
+.vsu-reasons-hero-title {
+    font-size: 36px;
+}
+
+.vsu-reasons-tooltip-wrap {
+    margin: 25px 0 0 0;
+}
+
+.vsu-reasons-sticky-title {
+    width: 100%;
+    max-width: 85%;
+    font-size: 16px;
+}
+
+.vsu-reasons-tooltip-wrap {
+    padding: 90px 20px 55px;
+}
+
+.vsu-reasons32-title {
+    font-size: 28px;
+}
+
+/*.vsu-reasons-tooltip-grid {
+    grid-template-columns: repeat(2, 1fr);
+}*/
+
+.vsu-reasons-tooltip-item {
+    padding: 15px 15px 15px 50px;
+    gap: 8px;
+}
+
+.vsu-reasons-tooltip-title {
+    font-size: 14px;
+}
+
+.vsu-reasons-tooltip-item::before {
+    width: 25px;
+    height: 25px;
+    left: 15px;
+    top: 15px;
+}
+
+.vsu-reasons-tooltip-item img {
+    max-width: 15px;
+}
+
+.vsu-reasons-tooltip-grid {
+    gap: 12px;
+    padding: 40px 0 0 0 !important;
+}
+
+.vsu-reasons-tooltip-item::before {
+    width: 22px;
+    height: 22px;
+    left: 15px;
+    top: 15px;
+    font-size: 12px;
+}
+
+.vsu-reasons-tooltip-grid .vsu-reasons-tooltip-item.visible {
+    align-items: flex-start;
+}
+
+.vsu-section-has-toolnip .tooltip {
+    padding: 10px;
+    max-width: 250px;
+}
+
+.vsu-section-has-toolnip .tooltip .tooltip-inner {
+    font-size: 12px;
+    line-height: 1.3
+}
+
+.vsu-reasons-tooltip-load-more a {
+    font-size: 19px;
+}
+
+.vsu-reasons-subwrapper-textcol .vsu-reasons32-title {
+    font-size: 26px;
+}
+
+.vsu-reasons-cta-wrapper {
+    padding: 42px 0 0 0;
+}
+
+.vsu-compare-section {
+    padding: 50px 0 80px;
+}
+
+.vsu-compare-card-header {
+    padding: 30px 25px 25px;
+}
+
+.vsu-compare-card.premium-plus .vsu-compare-card-header {
+    padding: 42px 25px 34px;
+}
+
+.vsu-compare-card-body {
+    padding: 32px 25px;
+}
+
+.vsu-payment-logos {
+    padding: 25px 12px 20px;
+    gap: 10px;
+}
+
+.vsu-payment-logos img {
+    display: block;
+    max-width: 40px;
+}
+
+.vsu-faq-wrapper {
+    padding: 40px 0 0 0;
+}
+
+.vsu-faq-item {
+    border-radius: 20px;
+}
+
+.vsu-pagefooter {
+    padding: 38px 0 60px;
+}
+
+.vsuft-hero-section {
+    padding: 75px 5px;
+    margin: 0 15px;
+}
+
+.vsuft-hero-title {
+    font-size: 42px;
+}
+
+.vsuft-logos-topwrap .vsufont18 {
+    padding: 0 0 40px 0;
+}
+
+.vsuft-remodule-inner {
+    padding: 60px 0 0 0;
+}
+
+.vsuft-remodule-textcol {
+    padding: 0 30px 0 0;
+}
+.vsuft-remodule-flex:nth-child(even) .vsuft-remodule-textcol {
+    padding: 0 0 0 30px;
+}
+
+.vsuft-remodule-title {
+    font-size: 28px;
+    padding: 0 0 12px 0;
+}
+
+.vsuft-remodule-features-list li {
+    font-size: 15px;
+    margin: 0 0 15px 0;
+}
+
+.vsuft-remodule-textcol .vsufont16 {
+    margin: 10px 0 20px;
+    font-size: 15px;
+}
+
+.vsuft-remodule-features-title {
+    margin: 0 0 20px 0;
+}
+
+.vsuft-ctabtn {
+    padding: 16px 35px;
+}
+
+.vsuft-remodule-flex {
+    padding: 0 0 55px 0;
+}
+
+.vsuft-howorks-flex{
+    flex-wrap: wrap;
+    margin-bottom: -20px;
+    padding: 32px 0 0 0;
+}
+
+.vsuft-howorks-spacing {
+    padding-left: 20px;
+    padding-bottom: 20px;
+    width: 50%;
+}
+
+.vsuft-howorks-section {
+    padding: 60px 0 80px;
+}
+
+.vsuft-retool-for-grid {
+    gap: 35px 25px;
+    grid-gap: 35px 25px;
+    padding: 50px 0 0 0;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.vsuft-retool-for-gridbox p {
+    font-size: 15px;
+}
+
+.vsuft-retool-for-gridbox h5 {
+    font-size: 15px;
+    margin: 18px 0 8px 0;
+}
+
+.vsuft-relist-section {
+    padding: 80px 0px;
+}
+
+.vsuft-relist-flex {
+    padding: 50px 0 0 0;
+}
+
+.vsuft-relist-listcol ul li {
+    margin: 0 0 22px 0;
+    font-size: 15px;
+}
+
+.vsuft-relist-listcol {
+    padding: 0 30px 0 0;
+}
+
+.vsuft-redesign-testimonial-section {
+    padding: 60px 0px;
+    margin: 0 15px;
+}
+
+.vsu-faq-section.vsuft-faqs {
+    padding: 60px 0 80px;
+}
+
+.vsuft-flow-right img {
+    object-position: left;
+}
+
+.vsuft-flow-left img {
+    object-position: right;
+}
+
+.vsuft-flow-left, .vsuft-flow-right {
+    width: 180px;
+}
+
+.vsuft-flowingft-banner-inner .vsufont42 {
+    color: #fff;
+    padding: 0 0 30px 0;
+}
+
+.vsuft-logos-topwrap .vsufont18{
+    font-size: 16px;
+}
+
+.vsbs-hero-top-box .vsu-hero-nobtn {
+    font-size: 16px;
+    padding: 5px 25px;
+}
+
+.vsbs-logos-section .vsu-bottom-cta-wrapper {
+    padding: 55px 0 0 0;
+}
+
+.vsbs-included-inner {
+    padding: 60px 0px;
+}
+
+.vsbs-included-grid {
+    padding: 40px 0 0 0;
+}
+
+.vsbs-included-grid-item-image {
+    padding: 25px 0 0 0;
+}
+
+.vsbs-included-section {
+    padding: 0  15px;
+}
+
+.vsbs-included-inner .vsup-container {
+    padding: 0 15px;
+}
+
+.vsbs-included-grid, .vsu-reasons-subwrapper {
+    gap: 20px;
+    grid-gap: 20px;
+}
+
+.vsbs-included-grid-item {
+    padding: 30px 20px;
+}
+
+.vsbs-included-grid-item-count {
+    font-size: 48px;
+}
+
+.vsbs-included-grid-item-title {
+    font-size: 26px;
+    padding: 12px 0px;
+}
+
+.vsbs-included-grid-special-text {
+    padding: 15px 20px;
+}
+
+.vsbs-limited-review-section {
+    padding: 80px 0px 60px;
+}
+
+.vsbs-up-business .vsuft-relist-listcol ul li {
+    margin: 0 0 18px 0;
+}
+
+.vsbs-progressbar p {
+    font-size: 22px;
+    margin: 0 0 15px 0;
+}
+
+.vsu-reasons-imgcol {
+    padding: 20px 0 0 0;
+}
+
+.vsu-reasons-subwrapper-textcol .vsufont16 {
+    padding: 15px 0 0 0;
+    font-size: 15px;
+}
+
+
+}
+
+
+
+@media (max-width: 767.98px) {
+
+.vsu-hero-thankyou {
+    padding: 15px 0 0 0;
+    max-width: 180px;
+}
+
+.vsu-for-purchase {
+    letter-spacing: 4px;
+    font-size: 13px;
+}
+
+.vsu-before-started {
+    margin: 15px 0px;
+    font-size: 20px;
+}
+
+.vsufont40, .vsufont42 {
+    font-size: 28px;
+    letter-spacing: 0;
+}
+
+.vsu-hero-section .vsu-hero-nobtn {
+    font-size: 17px;
+    padding: 6px 20px;
+}
+
+.vsu-pricing-section {
+    padding: 40px 0 0 0;
+}
+
+.vsu-pricing-table-main th span {
+    font-size: 12px;
+    line-height: 28px;
+}
+
+.vsu-pricing-table-main th {
+    font-size: 16px;
+}
+
+.vsu-testimonial-section .vsu-testimonial-slider {
+    padding: 50px 0;
+}
+
+.vsu-testimonial-item {
+    margin: 0 7.5px;
+    padding: 30px 20px;
+}
+
+.vsu-testimonail-rating {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.vsu-testimonail-title {
+    font-size: 18px;
+}
+
+.vsu-testimonial-section {
+    padding: 0 0 45px 0;
+}
+
+.vsu-hero-nobtn {
+    font-size: 17px;
+}
+
+.vsu-reasons-tooltip-grid {
+    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.vsu-reasons-subwrapper-flex{
+    flex-wrap: wrap;
+}
+
+.vsu-reasons-sticky-title {
+    max-width: 80%;
+    font-size: 16px;
+}
+
+.vsu-cta-button {
+    padding: 14px 35px;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.vsu-compare-card:not(.premium-plus){
+    margin: 0 0 30px 0;
+}
+
+.vsu-compare-section {
+    padding: 50px 0 60px;
+}
+
+.vsu-faq-item {
+    padding: 25px;
+    margin: 0 0 20px 0px;
+}
+
+.vsu-faq-icon {
+    top: 25px;
+    right: 25px;
+}
+
+.vsu-faq-title {
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.vsu-pagefooter-cta {
+    padding: 10px 30px;
+    font-size: 18px;
+    width: fit-content;
+}
+
+.vsu-pagefooter {
+    padding: 20px 0 40px;
+}
+.vsu-header-step {
+    padding: 10px;
+    width: 100%;
+}
+
+.vsu-header-steps-outer {
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.vsu-header-step span {
+    font-size: 14px;
+}
+
+/*.vsu-hero-section .vsufont40 br {
+    display: none;
+}*/
+
+.vsu-hero-section .vsu-hero-nobtn, .vsu-hero-nobtn {
+    font-size: 14px;
+    padding: 10px;
+}
+
+.vsu-reasons-grid-title {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.vsu-reasonsgrid-outer {
+    padding: 35px 0 0 0;
+}
+
+.vsuft-hero-textcol {
+    width: 100%;
+    padding: 0 0 40px 0;
+}
+
+.vsuft-hero-imagecol {
+    width: 100%;
+}
+
+.vsuft-hero-flex {
+    flex-wrap: wrap;
+}
+
+.vsuft-hero-section {
+    padding: 60px 5px;
+    background-position: bottom;
+}
+
+.vsuft-hero-title {
+    font-size: 38px;
+}
+
+.vsuft-logos-section {
+    padding: 44px 0 60px;
+}
+.vsuft-remodule-textcol, .vsuft-remodule-imagecol{
+    width: 100%;
+}
+
+.vsuft-remodule-flex{
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+}
+
+.vsuft-remodule-textcol,.vsuft-remodule-flex:nth-child(even) .vsuft-remodule-textcol {
+    padding: 40px 0 0 0;
+}
+
+.vsuft-remodule-imagecol img{
+    width: 100%;
+}
+
+.vsuft-remodule-inner {
+    padding: 45px 0 0 0;
+}
+
+.vsuft-remodule-flex:nth-child(even) {
+    flex-direction: column-reverse;
+}
+
+.vsuft-remodule-flex {
+    padding: 0 0 45px 0;
+}
+
+.vsuft-remodule-section {
+    padding: 0 0 60px;
+}
+
+.vsuft-remodule-section::before, .vsuft-remodule-section::after {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    bottom: -100px;
+}
+
+.vsuft-retool-section {
+    padding: 60px 0 0 0;
+}
+
+.vsuft-retool-video-wrap {
+    margin: 28px 0 0 0;
+    padding: 16px;
+}
+
+.vsuft-retool-for-wrapper {
+    padding: 60px 0 0 0;
+    text-align: center;
+}
+
+.vsuft-retool-for-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.vsuft-relist-section {
+    padding: 60px 0px;
+}
+
+.vsuft-relist-listcol, .vsuft-relist-image-col{
+    width: 100%;
+}
+
+.vsuft-relist-flex{
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+}
+
+.vsuft-relist-listcol {
+    padding: 45px 0 0 0;
+}
+.vsuft-relist-image-col img{
+    width: 100%;
+}
+
+.vsuft-relist-listcol .vsuft-ctabtn {
+    margin: 35px 0 0 0;
+}
+
+.vsu-faq-section.vsuft-faqs {
+    padding: 60px 0px;
+}
+
+.vsuft-flow-left, .vsuft-flow-right {
+    width: 150px;
+}
+
+.vsuft-flowingft-banner {
+    padding: 60px 20px;
+}
+
+.vsuft-flowingft-banner-outer {
+    margin: 0 0 -170px;
+}
+
+.vsuft-howorks-section {
+    padding: 60px 0px;
+}
+
+.vsbs-included-grid, .vsu-reasons-subwrapper{
+    grid-template-columns: 1fr;
+    gap: 30px;
+    grid-gap: 30px;
+}
+.vsbs-limited-review-topbox{
+    padding: 0 15px;
+}
+
+.vsbs-limited-review-section {
+    padding: 60px 0px 40px;
+}
+
+.vsbs-hero-top-box .vsu-hero-nobtn {
+    padding: 10px 25px;
+    border-radius: 14px;
+}
+
+.vsbs-logos-section {
+    padding: 60px 0px;
+}
+
+.vsbs-included-grid, .vsu-reasons-subwrapper{
+    grid-template-columns: 1fr;
+}
+
+.vsuft-logos-ustitle{font-size: 18px;}
+
+}
+
+
+@media (max-width: 639px) {
+
+.vsu-pricing-table-main th {
+    font-size: 12px;
+    padding: 15px;
+}
+
+.vsu-pricing-table-main th span {
+    font-size: 12px;
+    line-height: normal;
+    padding: 5px 0 0 0;
+}
+
+.vsu-pricing-table-main th:last-child {
+    line-height: 16px;
+}
+
+.vsu-pricing-table-main td {
+    padding: 15px;
+    font-size: 15px;
+    line-height: normal;
+}
+
+.vsu-pricing-table-main td:nth-child(3) {
+    font-size: 18px;
+}
+
+.vsu-pricing-table-main td .vsu-tooltip {
+    margin: 0 0 0 8px;
+    cursor: pointer;
+    max-width: 15px;
+}
+
+.vsu-pricing-table-main td strong {
+    font-weight: 500;
+}
+
+.vsu-pricing-table-main td img {
+    max-width: 18px;
+}
+
+.vsu-pricing-section .vsu-bottom-cta-wrapper p .vsu-line-through {
+    font-size: 22px;
+}
+
+.vsu-pricing-section .vsu-bottom-cta-wrapper p .vsu-line-actual-price {
+    font-size: 24px;
+}
+
+.vsu-reasons-hero-title {
+    font-size: 28px;
+}
+
+.vsu-reasons-tooltip-wrap {
+    padding: 90px 15px 45px;
+}
+
+.vsu-reasons-section-inner {
+    padding: 40px 0px 60px;
+}
+
+.vsu-reasons-sticky-title {
+    max-width: calc(100% - 80px);
+    font-size: 15px;
+    padding: 10px 12px;
+}
+
+.vsu-compare-subtitle {
+    font-size: 16px;
+}
+
+.vsu-moneyback-testimonials .vsu-testimonial-slider {
+    padding: 50px 0 30px 0;
+}
+
+.vsu-compare-section {
+    padding: 35px 0 60px;
+}
+
+.vsu-faq-content {
+    padding: 20px 0 0 0;
+}
+
+.vsu-faq-item.is-active .vsu-faq-title {
+    padding: 0 0 20px;
+}
+
+.vsu-pagefooter-inner .vsufont20 {
+    font-size: 16px;
+}
+
+.vsu-pagefooter-cta {
+    padding: 10px 25px;
+    font-size: 16px;
+}
+
+.vsu-pagefooter::before, .vsu-pagefooter::after {
+    width: 300px;
+    height: 300px;
+}
+.vsu-bottom-cta-wrapper .vsufont18 br {
+    display: none;
+}
+.vsuft-flow-left, .vsuft-flow-right {
+    width: 120px;
+}
+
+.vsuft-retool-for-grid {
+    grid-gap: 30px 20px;
+}
+
+.vsuft-logos-section::before, .vsuft-logos-section::after {
+    width: 150px;
+    height: 150px;
+    top: 0;
+}
+
+.vsuft-logos-section-inner::before, .vsuft-logos-section-inner::after {
+    width: 120px;
+    height: 120px;
+    bottom: -80px;
+}
+
+.vsbs-logos-section .vsu-bottom-cta-wrapper {
+    padding: 35px 0 0 0;
+}
+
+.vsbs-logos-section .vsu-bottom-cta-wrapper .vsufont18 {
+    font-size: 18px;
+    color: #454153;
+}
+
+.vsbs-included-inner {
+    padding: 50px 0px 60px;
+}
+
+.vsbs-logos-section::before, .vsbs-logos-section::after, .vsbs-limited-review-section::before, .vsbs-limited-review-section::after{
+    width: 300px;
+    height: 300px;
+}
+
+.vsbs-limited-review-trustpilot {
+    padding: 32px 0 0 0;
+}
+
+.vsbs-pricing-section {
+    padding: 50px 0 30px;
+    background-size: auto;
+}
+
+.vsbs-progressbar p {
+    font-size: 20px;
+}
+
+/*.vsbs-hero-top-box .vsufont40 br{
+    display: none;
+}*/
+
+.vsu-hero-bottom-note {
+    padding: 25px 0 0 0;
+}
+
+.vsu-testimonial-bottom-wrapper .vsufont42 {
+    margin: 15px 0 18px;
+}
+
+.vsbs-logos-text {
+    padding: 0 20px 40px;
+}
+
+.vsuft-logos-ustitle{
+    font-size: 19px;
+}
+
+
+
+}
+
+
+
+
+@media (max-width: 575.98px) {
+
+.vsu-reasons-tooltip-grid {
+    grid-template-columns: 1fr;
+}
+.vsuft-hero-title {
+    font-size: 36px;
+}
+
+.vsuft-howorks-spacing {
+    width: 100%;
+}
+
+.vsuft-flow-left, .vsuft-flow-right {
+    width: 70px;
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+@media (max-width: 479px) {
+
+.vsu-header-step span {
+    font-size: 12px;
+}
+
+.vsu-before-started {
+    margin: 12px 0px;
+    font-size: 18px;
+}
+
+.vsu-hero-section .vsu-hero-nobtn, .vsu-hero-nobtn {
+    font-size: 14px;
+    padding: 15px;
+    border-radius: 10px;
+}
+.vsu-cta-button {
+    padding: 14px 25px;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.vsufont18 {
+    font-size: 16px;
+}
+
+.vsu-pricing-table-main th span{
+    display: none;
+}
+
+.vsu-pricing-table-main th {
+    font-size: 12px;
+    padding: 15px 6px;
+    text-transform: capitalize;
+}
+
+.vsu-pricing-table-main td {
+    padding: 15px 10px;
+    font-size: 12px;
+    line-height: normal;
+}
+
+.vsufont20 {
+    font-size: 16px;
+}
+
+.vsu-reasons-tooltip-wrap .vsu-reasons32-title {
+    margin: 0 0 12px 0;
+    font-size: 24px;
+}
+
+.vsu-reasons-sticky-title {
+    max-width: calc(100% - 60px);
+    font-size: 14px;
+    padding: 10px;
+}
+
+.vsu-testimonial-item {
+    padding: 25px 15px;
+}
+
+.vsu-compare-card-header {
+    padding: 25px 20px;
+}
+
+.vsu-compare-card-price h6 span {
+    font-size: 18px;
+}
+
+.vsu-compare-card-price h6 {
+    font-size: 24px;
+}
+
+.vsu-faq-title {
+    font-size: 16px;
+}
+
+.vsu-faq-content {
+    font-size: 15px;
+}
+
+.vsuft-hero-title {
+    font-size: 32px;
+}
+
+.vsuft-hero-section {
+    padding: 50px 5px;
+}
+
+.vsuft-retool-for-gridbox h5 {
+    margin: 16px 0 8px 0;
+    text-transform: capitalize;
+}
+
+.vsuft-retool-for-gridbox img {
+    max-width: 50px;
+}
+
+.vsuft-relist-section::after, .vsuft-relist-section::before{
+    display: none;
+}
+
+.vsuft-flow-left, .vsuft-flow-right{
+    display: none;
+}
+
+.vsuft-flowingft-banner {
+    padding: 30px 20px;
+}
+
+.vsuft-flowingft-banner-inner .vsufont42 {
+    padding: 0px 0 20px 0;
+}
+
+.vsbs-included-grid-item-count {
+    font-size: 42px;
+}
+
+.vsufont40, .vsufont42 {
+    font-size: 26px;
+    letter-spacing: 0;
+}
+
+}
+
+@media (max-width: 360px) {
+
+    .vsufont40, .vsufont42 {
+    font-size: 26px;
+    letter-spacing: 0;
+}
+
+.vsuft-retool-for-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    grid-gap: 25px;
+}
+
+.vsuft-relist-section {
+    padding: 40px 0px;
+}
+}

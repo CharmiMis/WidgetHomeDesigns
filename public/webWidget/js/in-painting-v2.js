@@ -960,6 +960,7 @@ async function callInPaintingAPI(sec,el) {
     const editButton = document.querySelectorAll('.edit-button-div');
     const progressBarTabs = document.querySelectorAll('.progress-bar-tab');
     var widgetuserid = document.getElementById('widgetUserID').value;
+    var noOfDesign = document.getElementById('widgetUserNumberOfGeneration').value;
 
     disableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
     $('.on-gen-disable').addClass('disable-btn');
@@ -972,7 +973,8 @@ async function callInPaintingAPI(sec,el) {
     // deleteButton.disabled = true;
 
     var mode = modeValue.value;
-    var noOfDesign = document.getElementById(`no_of_des${sec}`).value;
+    // var noOfDesign = document.getElementById(`no_of_des${sec}`).value;
+    
     generationDivLoader(noOfDesign,croppedImage);
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
     // document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
@@ -1185,6 +1187,7 @@ async function callInPaintingAPI(sec,el) {
     };
     formData.append("payload", JSON.stringify(payload));
     formData.append("widgetuserid",widgetuserid);
+    formData.append("no_of_Design",noOfDesign);
 
     return await fetch(SITE_BASE_URL + inPaintUrl, {
         method: 'POST',
@@ -2334,7 +2337,8 @@ async function _generateStyleTransferDesign(sec,el){
     const editButton = document.querySelectorAll('.edit-button-div');
     const progressBarTabs = document.querySelectorAll('.progress-bar-tab');
     var widgetuserid = document.getElementById('widgetUserID').value;
-
+    var noOfDesign = document.getElementById('widgetUserNumberOfGeneration').value;
+  
     disableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
     $('.on-gen-disable').addClass('disable-btn');
     $('.modules_tabs').addClass('disable-btn');
@@ -2393,6 +2397,7 @@ async function _generateStyleTransferDesign(sec,el){
     var no_of_texture = noOftexture ? noOftexture.value : "" ;
     var rgb_color = rgbColor ? rgbColor.value : "" ;
     var noOfDesign = noOfdesc ? noOfdesc : '1';
+    
     if (texture_base64 == '' && rgb_color == '' && dataPage == 'color_swap') {
         let error_message = " Oops! You didn't upload a texture image or select any color from the color picker";
         $('#errorModal h4').text(error_message);
@@ -2412,7 +2417,6 @@ async function _generateStyleTransferDesign(sec,el){
         $('.modules_tabs').removeClass('disable-btn');
         return;
     }
-
     if(dataPage == 'floor_editor'){
         generationDivLoader(1,croppedImage);
     }else if(dataPage == 'style_transfer'){
@@ -2429,7 +2433,6 @@ async function _generateStyleTransferDesign(sec,el){
     divElement.firstElementChild.scrollIntoView();
 
     var formData = new FormData();
-    formData.append("no_of_Design", noOfDesign);
     formData.append("segmentType", segmentType);
     formData.append("init_images", original_base64);
     formData.append("mask", masked_base64);
@@ -2437,6 +2440,7 @@ async function _generateStyleTransferDesign(sec,el){
     formData.append("modeType", mode);
     formData.append("designtype", sec);
     formData.append("widgetuserid",widgetuserid);
+    formData.append("no_of_Design",noOfDesign);
 
     var inPaintUrl = '';
     if(dataPage == 'color_swap'){
