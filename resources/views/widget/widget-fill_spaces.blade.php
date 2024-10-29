@@ -217,21 +217,21 @@
                     <p class="font14">Select what you want to generate</p>
                     <div class="gs-select-category-list">
                         <ul class="gs-option-flex designs_tabs">
-                            <li class="active on-gen-disable">
+                            <li class="on-gen-disable hide_int">
                                 <a class="gs-select-category-list-inner" data-toggle="tab"
                                     href="#interior-fillSpace1" onclick="loadWidgetRenders(0)">
                                     <img src="{{ asset('webWidget/images/gs-interior-icon.svg') }}">
                                     <span>Interior</span>
                                 </a>
                             </li>
-                            <li class="on-gen-disable">
+                            <li class="on-gen-disable hide_ext">
                                 <a class="gs-select-category-list-inner" data-toggle="tab"
                                     href="#exterior-fillSpace1" onclick="loadWidgetRenders(1)">
                                     <img src="{{ asset('webWidget/images/gs-exterior-icon.svg') }}">
                                     <span>Exterior</span>
                                 </a>
                             </li>
-                            <li class="on-gen-disable">
+                            <li class="on-gen-disable hide_gar">
                                 <a class="gs-select-category-list-inner" data-toggle="tab" href="#garden-fillSpace1"
                                     onclick="loadWidgetRenders(2)">
                                     <img src="{{ asset('webWidget/images/gs-garden-icon.svg') }}">
@@ -243,7 +243,7 @@
                 </div>
 
                 <div class="tab-content">
-                    <div id="interior-fillSpace1" class="tab-pane fade in active">
+                    <div id="interior-fillSpace1" class="tab-pane fade in hide_int">
                         <div class="gs-what-to-edit-tabs">
                             <div class="gs-what-to-edit-title">
                                 <ul>
@@ -412,7 +412,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="exterior-fillSpace1" class="tab-pane fade">
+                    <div id="exterior-fillSpace1" class="tab-pane fade hide_ext">
                         <div class="gs-what-to-edit-tabs">
                             <div class="gs-what-to-edit-title">
                                 <ul>
@@ -574,7 +574,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="garden-fillSpace1" class="tab-pane fade">
+                    <div id="garden-fillSpace1" class="tab-pane fade hide_gar">
                         <div class="gs-what-to-edit-tabs">
                             <div class="gs-what-to-edit-title">
                                 <ul>

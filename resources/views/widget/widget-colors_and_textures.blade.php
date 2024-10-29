@@ -210,21 +210,21 @@
                 <p class="font14">Select what kind of space you are generating</p>
                 <div class="gs-select-category-list">
                     <ul class="gs-option-flex designs_tabs">
-                        <li class="active on-gen-disable nwai-tabs">
+                        <li class="on-gen-disable nwai-tabs hide_int">
                             <a class="gs-select-category-list-inner" data-toggle="tab" href="#interior-colorTexture1"
                                 onclick="loadRenders(0)">
                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-interior-icon.svg">
                                 <span class="nwtb-titles">Interior</span>
                             </a>
                         </li>
-                        <li class="on-gen-disable nwai-tabs">
+                        <li class="on-gen-disable nwai-tabs hide_ext">
                             <a class="gs-select-category-list-inner" data-toggle="tab" href="#exterior-colorTexture1"
                                 onclick="loadRenders(1)">
                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-exterior-icon.svg">
                                 <span class="nwtb-titles">Exterior</span>
                             </a>
                         </li>
-                        <li class="on-gen-disable nwai-tabs">
+                        <li class="on-gen-disable nwai-tabs hide_gar">
                             <a class="gs-select-category-list-inner" data-toggle="tab" href="#garden-colorTexture1"
                                 onclick="loadRenders(2)">
                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-garden-icon.svg">
@@ -236,7 +236,7 @@
             </div>
 
             <div class="tab-content">
-                <div id="interior-colorTexture1" class="tab-pane fade in active" data-sec="0">
+                <div id="interior-colorTexture1" class="tab-pane fade in hide_int" data-sec="0">
                     <div class="gs-what-to-edit-tabs">
                         <div class="gs-what-to-edit-title">
                             <ul>
@@ -368,7 +368,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="exterior-colorTexture1" class="tab-pane fade" data-sec="1">
+                <div id="exterior-colorTexture1" class="tab-pane fade hide_ext" data-sec="1">
                     <div class="gs-what-to-edit-tabs">
                         <div class="gs-what-to-edit-title">
                             <ul>
@@ -494,7 +494,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="garden-colorTexture1" class="tab-pane fade" data-sec="2">
+                <div id="garden-colorTexture1" class="tab-pane fade hide_gar" data-sec="2">
                     <div class="gs-what-to-edit-tabs">
                         <div class="gs-what-to-edit-title">
                             <ul>

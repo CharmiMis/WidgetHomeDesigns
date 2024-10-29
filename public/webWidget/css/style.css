@@ -10752,6 +10752,7 @@ div#widgetCustomContainerDiv {
 .active .gs-select-category-list-inner img {
     filter: brightness(0) invert(1);
 }
+.hide_int, .hide_ext, .hide_gar { display: none !important; }
 /*what to edit page css end*/
 
 /*customize and generate page css start*/
