@@ -135,8 +135,10 @@
     <input type="hidden" id="precisionUser" value="{{ $precisionUser ? 'true' : 'false' }}">
     <input type="hidden" id="modeValueForPage" value="0" />
     <input type="hidden" id="widgetUserID" value="{{ $widgetData->user_id }}" />
+    <input type="hidden" id="widgetUserNumberOfGeneration" value="{{ $widgetData->number_of_designs }}" />
     <input type="hidden" id="widgetThemeMode" value="{{ $widgetThemeMode }}" />
     <input type="hidden" id="widgetFirstModuleDataPage" value="{{ $features[0] ?? '' }}" />
+    <input type="hidden" id="widgetAccessedSpaceTypes" value="{{ $widgetData->space_types }}" />
     <div class="ai-tool-wrapper">
         <div class="ai-tool-wrapper  demo-class">
             <div class="ai-tool-right" id="tabs">
@@ -290,6 +292,40 @@
                 if (dropdownValue) {
                     selectModeType(dropdownValue, 0);
                     localStorage.removeItem('dropdownValue');
+                }
+                let spaceTypes = $('#widgetAccessedSpaceTypes').val();
+    
+                // If spaceTypes is null or empty, set default values to include all types
+                if (!spaceTypes || spaceTypes.trim() === "") {
+                    spaceTypes = ["Interior", "Exterior", "Garden"];
+                } else {
+                    // Clean up and split the spaceTypes value if it's not empty
+                    spaceTypes = spaceTypes.replace(/[\[\]']+/g, '').split(',').map(type => type.replace(/"/g, '').trim());
+                }
+                let isFirstVisibleItem = true;
+
+                const typeClassMap = {
+                    "Interior": ".hide_int",
+                    "Exterior": ".hide_ext",
+                    "Garden": ".hide_gar"
+                };
+                spaceTypes.forEach((type) => {
+                    const targetClass = typeClassMap[type];
+                    console.log('targetClass: ', targetClass);
+                    if (targetClass) {
+                        if (isFirstVisibleItem) {
+                            console.log('isFirstVisibleItem: ', isFirstVisibleItem);
+                            $(targetClass).addClass("active in");
+                            console.log('targetClass3333333333: ', targetClass);
+                            isFirstVisibleItem = false;
+                        }
+                        $(targetClass).removeClass(targetClass.substring(1));
+                    }
+                });
+
+                if (!isFirstVisibleItem) {
+                    $('.segment-masking-container').show();
+                    console.log('Container is shown');
                 }
             });
 

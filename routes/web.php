@@ -46,6 +46,7 @@ Route::post('runpodWidget/creative_redesign', [WidgetController::class, 'runpodW
 Route::post('runpodWidget/render_realistic', [WidgetController::class, 'runpodWidgetRenderRealistic'])->name('runpodWidget.render_realistic');
 Route::post('runpodWidget/furniture_removal', [WidgetController::class, 'runpodWidgetFurnitureRemoval'])->name('runpodWidget.furniture_removal');
 Route::get('custom-credit-request', [WidgetController::class, 'customCredit'])->name('api.custom-credit');
+Route::post('custom-credit-email', [WidgetController::class, 'customCreditEmail'])->name('api.custom-credit-email');
 
 //Widget response
 

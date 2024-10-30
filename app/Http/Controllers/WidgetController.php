@@ -6,15 +6,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Lib\Curl\CurlRequestClass;
 use App\Mail\CreditRemainStatusMail;
+use App\Mail\CreditRequestEmail;
 use App\Models\PublicGallery;
 use Illuminate\Support\Facades\Validator;
 use Google\Cloud\Storage\StorageClient;
 use App\Mail\sendRundpodFailedRequest;
+use App\Models\CustomRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Models\WidgetUserData;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class WidgetController extends Controller
 {
@@ -997,6 +1001,37 @@ class WidgetController extends Controller
 
     public function customCredit()
     {
-        // return view('web.custom-credit-request');
+        return view('web.custom-credit-request');
+    }
+    public function customCreditEmail(Request $request)
+    {
+        try {
+            $emailData['fullname'] = $request->fullName;
+            $emailData['email'] = $request->email;
+            $emailData['custom_credit'] = $request->customCredit;
+            $emailData['description'] = $request->description;
+
+            $result = Mail::to('vlad@homedesigns.ai')->send(new CreditRequestEmail($emailData)); 
+            if ($result) {
+                CustomRequest::create([
+                    'fullname' => $emailData['fullname'],
+                    'email' => $emailData['email'],
+                    'custom_credit' => $emailData['custom_credit'],
+                    'description' => $emailData['description'],
+                ]);
+
+                return response()->json(['message' => 'We received your request successfully. our team will be in contact shortly!']);
+            } else {
+                return response()->json(['message' => 'Email not sent.']);
+            }
+        } catch (ModelNotFoundException $e) {
+            abort(403);
+        } catch (DecryptException $e) {
+            abort(403);
+        } catch (\Throwable $th) {
+            Log::error($th);
+
+            return back()->with('status', 'Server Error.');
+        }
     }
 }

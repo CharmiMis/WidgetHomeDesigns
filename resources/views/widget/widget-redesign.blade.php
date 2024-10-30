@@ -117,7 +117,7 @@
                     <p class="font14">Select what you want to generate</p>
                     <div class="gs-select-category-list">
                         <ul class="gs-option-flex">
-                            <li class="active on-gen-disable">
+                            <li class="on-gen-disable hide_int">
                                 <a class="gs-select-category-list-inner" data-toggle="tab" href="#interior"
                                     onclick="loadWidgetRenders(0)">
                                     <!-- <img src="{{ asset('webWidget/images/gs-interior-icon.svg') }}"> -->
@@ -129,7 +129,7 @@
                                     <span>Interior</span>
                                 </a>
                             </li>
-                            <li class="on-gen-disable">
+                            <li class="on-gen-disable hide_ext">
                                 <a class="gs-select-category-list-inner" data-toggle="tab" href="#exterior"
                                     onclick="loadWidgetRenders(1)">
                                     <!-- <img src="{{ asset('webWidget/images/gs-exterior-icon.svg') }}"> -->
@@ -143,7 +143,7 @@
                                     <span>Exterior</span>
                                 </a>
                             </li>
-                            <li class="on-gen-disable">
+                            <li class="on-gen-disable hide_gar">
                                 <a class="gs-select-category-list-inner" data-toggle="tab" href="#garden"
                                     onclick="loadWidgetRenders(2)">
                                     <!-- <img src="{{ asset('webWidget/images/gs-garden-icon.svg') }}"> -->
@@ -181,19 +181,22 @@
                 </div>
 
                 <div class="tab-content">
-                    <div id="interior" class="tab-pane fade in active">
+                    <div id="interior" class="tab-pane fade in hide_int">
                         <div class="gs-what-to-edit-tabs">
                             <div class="gs-what-to-edit-title">
                                 <ul>
-                                    <li class="active"><a data-toggle="tab" href="#our-preset-settings-interior-redesign">Our
+                                    <li class="active"><a data-toggle="tab"
+                                            href="#our-preset-settings-interior-redesign">Our
                                             preset settings</a></li>
-                                    <li><a data-toggle="tab" href="#your-customs-settings-interior-redesign">Your customs
+                                    <li><a data-toggle="tab" href="#your-customs-settings-interior-redesign">Your
+                                            customs
                                             settings </a></li>
                                 </ul>
                             </div>
                             <div class="gs-what-to-edit-content">
                                 <div class="tab-content">
-                                    <div id="our-preset-settings-interior-redesign" class="tab-pane show fade in active">
+                                    <div id="our-preset-settings-interior-redesign"
+                                        class="tab-pane show fade in active">
                                         <div class="gs-select-automatically">
                                             <div class="gs-our-preset-settings ">
                                                 <div class="gs-select-room-style">
@@ -202,29 +205,34 @@
                                                     <p>1. Select Room Type <a href="javascript:void(0)"
                                                             id="viewAllRoomTypes" data-toggle="modal"
                                                             data-target="#view_all_interior_room_type">View All</a></p>
-                                                    <div class="gs-select-room-style-row" id="roomTypeDisplay0-redesign">
+                                                    <div class="gs-select-room-style-row"
+                                                        id="roomTypeDisplay0-redesign">
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Living Room"
                                                             onclick="selectRoomType('Living Room',0)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/living room.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/living room.png">
                                                             <span>Living Room</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Bedroom"
                                                             onclick="selectRoomType('Bedroom',0)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/bedroom.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/bedroom.png">
                                                             <span>Bedroom</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Bathroom"
                                                             onclick="selectRoomType('Bathroom',0)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/bathroom.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/bathroom.png">
                                                             <span>Bathroom</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Kitchen"
                                                             onclick="selectRoomType('Kitchen',0)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/kitchen.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/kitchen.png">
                                                             <span>Kitchen</span>
                                                         </div>
                                                     </div>
@@ -236,29 +244,34 @@
                                                             data-toggle="modal"
                                                             data-target="#view_all_interior_choose_design">View All</a>
                                                     </p>
-                                                    <div class="gs-select-room-style-row" id="designStyleDisplay0-redesign">
+                                                    <div class="gs-select-room-style-row"
+                                                        id="designStyleDisplay0-redesign">
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Eclectic"
                                                             onclick="selectDesignStyle('Eclectic',0)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/eclectic.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/eclectic.png">
                                                             <span>Eclectic</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Contemporary"
                                                             onclick="selectDesignStyle('Contemporary',0)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/contemporary.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/contemporary.png">
                                                             <span>Contemporary</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Transitional"
                                                             onclick="selectDesignStyle('Transitional',0)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/transitional.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/transitional.png">
                                                             <span>Transitional</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Scandinavian"
                                                             onclick="selectDesignStyle('Scandinavian',0)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/scandinavian.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/scandinavian.png">
                                                             <span>Scandinavian</span>
                                                         </div>
                                                     </div>
@@ -399,8 +412,8 @@
                                         </div>
 
                                         <div class="our-preset-settings-range-outer">
-                                        <input type="hidden" id="no_of_des0" name="no_of_des0"
-                                                    value="1" />
+                                            <input type="hidden" id="no_of_des0" name="no_of_des0"
+                                                value="1" />
                                             {{-- <p class="font14">Select the number of designs you want to generate at
                                                 once.</p>
                                             <div class="gs-select-design our-preset-range-design">
@@ -432,19 +445,22 @@
                             </div>
                         </div>
                     </div>
-                    <div id="exterior" class="tab-pane fade">
+                    <div id="exterior" class="tab-pane fade hide_ext">
                         <div class="gs-what-to-edit-tabs">
                             <div class="gs-what-to-edit-title">
                                 <ul>
-                                    <li class="active"><a data-toggle="tab" href="#our-preset-settings-exterior-redesign">Our
+                                    <li class="active"><a data-toggle="tab"
+                                            href="#our-preset-settings-exterior-redesign">Our
                                             preset settings</a></li>
-                                    <li><a data-toggle="tab" href="#your-customs-settings-exterior-redesign">Your customs
+                                    <li><a data-toggle="tab" href="#your-customs-settings-exterior-redesign">Your
+                                            customs
                                             settings </a></li>
                                 </ul>
                             </div>
                             <div class="gs-what-to-edit-content">
                                 <div class="tab-content">
-                                    <div id="our-preset-settings-exterior-redesign" class="tab-pane show fade in active">
+                                    <div id="our-preset-settings-exterior-redesign"
+                                        class="tab-pane show fade in active">
                                         <div class="gs-select-automatically">
                                             <div class="gs-our-preset-settings ">
                                                 <div class="gs-select-room-style">
@@ -452,23 +468,27 @@
                                                         name="selectedRoomType1">
                                                     <p>1. Select House Angle
                                                     </p>
-                                                    <div class="gs-select-room-style-row" id="roomTypeDisplay1-redesign">
+                                                    <div class="gs-select-room-style-row"
+                                                        id="roomTypeDisplay1-redesign">
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Side of House"
                                                             onclick="selectRoomType('Side of House',1)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/types/side of the house.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/types/side of the house.png">
                                                             <span>Side of House</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Front of House"
                                                             onclick="selectRoomType('Front of House',1)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/types/front of the house.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/types/front of the house.png">
                                                             <span>Front of House</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Back of House"
                                                             onclick="selectRoomType('Back of House',1)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/types/back of the house.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/types/back of the house.png">
                                                             <span>Back of House</span>
                                                         </div>
                                                     </div>
@@ -480,29 +500,34 @@
                                                             data-toggle="modal"
                                                             data-target="#view_all_exterior_choose_design">View All</a>
                                                     </p>
-                                                    <div class="gs-select-room-style-row" id="designStyleDisplay1-redesign">
+                                                    <div class="gs-select-room-style-row"
+                                                        id="designStyleDisplay1-redesign">
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Modern"
                                                             onclick="selectDesignStyle('Modern',1)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/exterior styles/modern.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/exterior styles/modern.png">
                                                             <span>Modern</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Mediterranean"
                                                             onclick="selectDesignStyle('Mediterranean',1)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/exterior styles/mediterranean.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/exterior styles/mediterranean.png">
                                                             <span>Mediterranean</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="International"
                                                             onclick="selectDesignStyle('International',1)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/exterior styles/international.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/exterior styles/international.png">
                                                             <span>International</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Moody Colors"
                                                             onclick="selectDesignStyle('Moody Colors',1)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/exterior styles/moody colors.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/exterior styles/moody colors.png">
                                                             <span>Moody Colors</span>
                                                         </div>
                                                     </div>
@@ -519,7 +544,7 @@
                                                                 src="{{ asset('webWidget/images/select-room-type10.png') }}">
                                                             <span>Beautiful Redesign</span>
                                                         </div>
-                                                         <div class="gs-select-room-style-single"
+                                                        <div class="gs-select-room-style-single"
                                                             data-room-type="Creative Redesign"
                                                             onclick="selectModeType('Creative Redesign',1)">
                                                             <img
@@ -643,8 +668,8 @@
                                         </div>
 
                                         <div class="our-preset-settings-range-outer">
-                                        <input type="hidden" id="no_of_des0" name="no_of_des0"
-                                                    value="1" />
+                                            <input type="hidden" id="no_of_des0" name="no_of_des0"
+                                                value="1" />
                                             {{-- <p class="font14">Select the number of designs you want to generate at
                                                 once.</p>
                                             <div class="gs-select-design our-preset-range-design">
@@ -676,19 +701,22 @@
                             </div>
                         </div>
                     </div>
-                    <div id="garden" class="tab-pane fade">
+                    <div id="garden" class="tab-pane fade hide_gar">
                         <div class="gs-what-to-edit-tabs">
                             <div class="gs-what-to-edit-title">
                                 <ul>
-                                    <li class="active"><a data-toggle="tab" href="#our-preset-settings-garden-redesign">Our
+                                    <li class="active"><a data-toggle="tab"
+                                            href="#our-preset-settings-garden-redesign">Our
                                             preset settings</a></li>
-                                    <li><a data-toggle="tab" href="#your-customs-settings-garden-redesign">Your customs
+                                    <li><a data-toggle="tab" href="#your-customs-settings-garden-redesign">Your
+                                            customs
                                             settings </a></li>
                                 </ul>
                             </div>
                             <div class="gs-what-to-edit-content">
                                 <div class="tab-content">
-                                    <div id="our-preset-settings-garden-redesign" class="tab-pane show fade in active">
+                                    <div id="our-preset-settings-garden-redesign"
+                                        class="tab-pane show fade in active">
                                         <div class="gs-select-automatically">
                                             <div class="gs-our-preset-settings ">
                                                 <div class="gs-select-room-style">
@@ -698,29 +726,34 @@
                                                         <a href="javascript:void(0)" data-toggle="modal"
                                                             data-target="#view_all_garden_type">View All</a>
                                                     </p>
-                                                    <div class="gs-select-room-style-row" id="roomTypeDisplay2-redesign">
+                                                    <div class="gs-select-room-style-row"
+                                                        id="roomTypeDisplay2-redesign">
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Backyard"
                                                             onclick="selectRoomType('Backyard',2)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/garden/types/backyard.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/garden/types/backyard.png">
                                                             <span>Backyard</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Patio"
                                                             onclick="selectRoomType('Patio',2)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/garden/types/patio.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/garden/types/patio.png">
                                                             <span>Patio</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Terrace"
                                                             onclick="selectRoomType('Terrace',2)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/garden/types/terrace.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/garden/types/terrace.png">
                                                             <span>Terrace</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Front Yard"
                                                             onclick="selectRoomType('Front Yard',2)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/garden/types/front-yard.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/garden/types/front-yard.png">
 
                                                             <span>Front Yard</span>
                                                         </div>
@@ -732,29 +765,34 @@
                                                     <p>2. Select Design Style <a href="javascript:void(0)"
                                                             data-toggle="modal"
                                                             data-target="#view_all_garden_style">View All</a></p>
-                                                    <div class="gs-select-room-style-row" id="designStyleDisplay2-redesign">
+                                                    <div class="gs-select-room-style-row"
+                                                        id="designStyleDisplay2-redesign">
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Modern"
                                                             onclick="selectDesignStyle('Modern',2)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/garden/design styles/modern.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/garden/design styles/modern.png">
                                                             <span>Modern</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="City"
                                                             onclick="selectDesignStyle('City',2)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/garden/design styles/city.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/garden/design styles/city.png">
                                                             <span>City</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Contemporary"
                                                             onclick="selectDesignStyle('Contemporary',2)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/garden/design styles/contemporary.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/garden/design styles/contemporary.png">
                                                             <span>Contemporary</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Luxury"
                                                             onclick="selectDesignStyle('Luxury',2)">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/garden/design styles/luxury.png">
+                                                            <img
+                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/garden/design styles/luxury.png">
                                                             <span>Luxury</span>
                                                         </div>
                                                     </div>
@@ -786,7 +824,7 @@
                                                             <span>Sketch to Render</span>
                                                         </div>
                                                     </div>
-                                                    
+
                                                 </div>
                                             </div>
                                             {{-- <div class="nwchoice-toggle" style="margin-top: 15px !important">
@@ -896,8 +934,8 @@
                                         </div>
 
                                         <div class="our-preset-settings-range-outer">
-                                        <input type="hidden" id="no_of_des0" name="no_of_des0"
-                                                    value="1" />
+                                            <input type="hidden" id="no_of_des0" name="no_of_des0"
+                                                value="1" />
                                             {{-- <p class="font14">Select the number of designs you want to generate at
                                                 once.</p>
                                             <div class="gs-select-design our-preset-range-design">
@@ -943,17 +981,16 @@
     </div>
 </div>
 <script>
-
     $(document).ready(function() {
         console.log('here');
         loadWidgetRenders(0);
     });
 
     function loadWidgetRenders(sec) {
-        console.log('sec',sec);
+        console.log('sec', sec);
         // Retrieve the designs array from localStorage
         let storedDesigns = JSON.parse(localStorage.getItem('designs')) || [];
-        console.log('storedDesigns',storedDesigns);
+        console.log('storedDesigns', storedDesigns);
 
         // Check if there are any stored designs
         if (storedDesigns.length > 0) {

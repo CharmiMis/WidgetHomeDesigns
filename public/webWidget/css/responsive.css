@@ -1185,14 +1185,33 @@
     }
 
     .gs-what-to-edit-tips {
-        margin: 0px 0 20px 0;
+        margin: 10px 0 10px 0;
         order: -1;
     }
+    .gs-our-preset-settings .toggle-button {
+        height: 40px;
+        font-size: 13px;
+        padding: 2px 13px;
+        max-width: 130px;
+    }
 
+    .gs-our-preset-color li {
+        height: 24px;
+        width: 24px;
+        margin-right: 6px;
+        margin-top: 6px;
+        border: 2px solid transparent;
+    }
     .gs-dashboard-left-logo {
         padding: 0px 0 19px;
     }
-
+    .gs-select-category-list {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    .gs-what-to-edit-title {
+        margin-bottom: 10px;
+    }
     .gs-enterprise-banner-wrapper {
         border-radius: 0;
     }
@@ -1308,7 +1327,10 @@
 
     .gs-what-to-edit-tips {
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 7px;
+    }
+    .gs-what-to-edit-tip-box {
+        padding: 11px;
     }
 
     .gs-what-to-edit-tip-box p {
@@ -1334,7 +1356,31 @@
     .accordion-heading {
         display: flex;
     }
+    .image-show-container {
+        padding: 10px;
+    }
+    .our-preset-settings-range-outer {
+        padding: 8px 0 0;
+    }
+    .gs-continue-btn {
+        margin-top: 15px;
+        padding: 12px 25px;
+    }
+    .gs-what-to-edit-wrapper {
+        padding: 10px 0 10px;
+    }
+    .our-preset-settings-range-list li {
+        font-size: 13px;
+    }
 
+    .undo-redo-btn {
+        gap: 10px;
+        margin-top: 5px;
+    }
+    .undo-redo-btn .ci-btn.ci-btn-danger {
+        padding: 7px;
+        font-size: 14px;
+    }
 
 }
 
@@ -1427,6 +1473,10 @@
 
     .light-theme .gs-what-to-edit-tip-right p {
         color: #000;
+    }
+
+    .gs-our-preset-settings {
+        padding: 13px 12px 16px;
     }
 
 
