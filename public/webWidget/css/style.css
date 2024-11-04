@@ -9760,6 +9760,7 @@ div#painting-stag {
     justify-content: center;
     border: none;
     padding-top: 25px !important;
+    flex-wrap: wrap;
 }
 #widgetCustomContainerDiv .ui-widget.ui-widget-content {
     border: none;
