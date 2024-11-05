@@ -540,15 +540,15 @@
                     <div class="gs-what-to-edit-tabs">
                         <div class="gs-what-to-edit-title">
                             <ul>
-                                <li class="active"><a data-toggle="tab" href="#our-preset-settings-garden-color_swap"
+                                <li class="active"><a data-toggle="tab" href="#our-preset-settings-garden-colorTexture1"
                                         class="presetLink">Preset Colors</a></li>
-                                <li><a data-toggle="tab" href="#your-customs-settings-garden-color_swap"
+                                <li><a data-toggle="tab" href="#your-customs-settings-garden-colorTexture1"
                                         class="customLink">Custom Colors</a></li>
                             </ul>
                         </div>
                         <div class="gs-what-to-edit-content">
                             <div class="tab-content">
-                                <div id="our-preset-settings-garden-color_swap" class="tab-pane show fade in active">
+                                <div id="our-preset-settings-garden-colorTexture1" class="tab-pane show fade in active">
                                     <div class="gs-select-automatically">
                                         <p>What do you want to change?</p>
                                         <div class="gs-our-preset-settings">
@@ -621,7 +621,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="your-customs-settings-garden-color_swap" class="tab-pane show fade">
+                                <div id="your-customs-settings-garden-colorTexture1" class="tab-pane show fade">
                                     <div class="our-preset-settings-box">
                                         <textarea id="custom_instruction2-change-colors-texture" placeholder="white chalk paint" name="prompt"
                                             class="promtCustomInput"></textarea>
