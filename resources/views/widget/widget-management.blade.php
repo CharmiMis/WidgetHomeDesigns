@@ -2,6 +2,13 @@
 
 @section('styles')
     <style>
+        :root {
+            --dark-primary: {{ $primaryColor ?? '#7558EA' }}; /* Override --primary-color with dynamic value */
+        }
+
+        :root body.light-theme{
+            --light-primary: {{ $primaryColor ?? '#7558EA' }};
+        }
         .konvajs-content {
             margin: 0 auto;
         }
