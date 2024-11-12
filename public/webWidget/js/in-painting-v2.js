@@ -1223,6 +1223,17 @@ async function callInPaintingAPI(sec,el) {
         $('.ai-upload-latest-top').removeAttr('style');
         var generatedImageList = ''
         var resultJsonFormat = JSON.parse(result);
+
+        if (resultJsonFormat.error) {
+            $('#errorModal h4').text(resultJsonFormat.error);
+            $('#errorModal').modal('show');
+            $(el).attr('disabled', false);
+            enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+            removeLoaderDivs(noOfDesign);
+            $('.on-gen-disable').removeClass('disable-btn');
+            return;
+        }
+
         if(resultJsonFormat.status === false){
             $.ajax({
                 url: routeFailedRespURL,
@@ -2492,6 +2503,17 @@ async function _generateStyleTransferDesign(sec,el){
         $('#closeModal').removeClass('disable-btn');
         $('.ai-upload-latest-top').removeAttr('style');
         var resultJsonFormat = JSON.parse(result);
+
+        if (resultJsonFormat.error) {
+            $('#errorModal h4').text(resultJsonFormat.error);
+            $('#errorModal').modal('show');
+            $(el).attr('disabled', false);
+            enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+            removeLoaderDivs(noOfDesign);
+            $('.on-gen-disable').removeClass('disable-btn');
+            return;
+        }
+        
         var generatedImageList = ''
         generatedImageList = resultJsonFormat.Sucess.generated_image;
         originalImage = resultJsonFormat.Sucess.original_image;

@@ -1158,7 +1158,12 @@ async function _generateDesign(sec, el) {
             $('input[id^="nwtoggle"]').removeClass('disable-btn').prop('disabled', false);
 
             if (result.error) {
-                alert(result.error);
+                $('#errorModal h4').text(result.error);
+                $('#errorModal').modal('show');
+                $(el).attr('disabled', false);
+                enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+                removeLoaderDivs(noOfDesign);
+                $('.on-gen-disable').removeClass('disable-btn');
                 return;
             }
             $('.ai-upload-latest-top').removeAttr('style');
