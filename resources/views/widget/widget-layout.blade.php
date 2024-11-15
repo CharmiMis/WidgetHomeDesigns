@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="{{ asset('webWidget/css/jquery-ui.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
     <link href="{{ asset('webWidget/css/stylesheet.css') }}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('webWidget/css/style.css') }}?v={{ config('app.widgetstyle_css_version') }}">
-    {{-- <link rel="stylesheet" type="text/css" href="https://homedesigns-ai.b-cdn.net/webWidget/css/style.css?v={{ config('app.style_css_version') }}"> --}}
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('webWidget/css/style.css') }}?v={{ config('app.widgetstyle_css_version') }}">
     <link href="{{ asset('webWidget/css/responsive.css') }}" rel="stylesheet" type="text/css">
     {{-- new css ends --}}
 
@@ -33,20 +33,9 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Kalam&family=Karla&display=swap"
         rel="stylesheet">
     <link rel="shortcut icon" href="{{ asset('web/images/favicon.ico') }}" type="image/x-icon" />
-    {{-- <script type="text/javascript">
-        (function(w,d,u){
-            w.$productFruits = w.$productFruits || [];
-            w.productFruits=w.productFruits||{ };w.productFruits.scrV='2';
-            let a=d.getElementsByTagName('head')[0];let r=d.createElement('script');r.async=1;r.src=u;a.appendChild(r);
-        })(window,document,'https://app.productfruits.com/static/script.js');
-    </script> --}}
 
     <!-- Meta for the page start -->
     @include('web.meta_head')
-
-    {{-- <!-- begin Convert Experiences code-->
-    <script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10042884-10043877.js"></script>
-    <!-- end Convert Experiences code --> --}}
 
     <!-- Meta for the page end -->
 
@@ -75,12 +64,6 @@
         $active_plan = auth()->user()->activePlan();
     }
     ?>
-{{-- new js --}}
-    {{-- <script src="{{ asset('webWidget/js/jquery.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('webWidget/js/bootstrap.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('webWidget/js/jquery-ui.js') }}"></script> --}}
-    {{-- <script src="{{ asset('webWidget/js/slick.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('webWidget/js/after-before.js') }}"></script> --}}
     <script src="{{ asset('webWidget/js/custom.js') }}" id="custom-js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     {{-- new js ends --}}
@@ -116,11 +99,13 @@
     </script>
     <script src="{{ asset('webWidget/js/cropper.min.js') }}"></script>
     <script src="{{ asset('web/js/script.js') }}?v={{ config('app.script_js_version') }}"></script>
-    <script  src="{{ asset('webWidget/js/custom-script.js') }}?v={{ config('app.custom_scriptWidget_version') }}" id="custom-script-js" ></script>
+    <script src="{{ asset('webWidget/js/custom-script.js') }}?v={{ config('app.custom_scriptWidget_version') }}"
+        id="custom-script-js"></script>
     <script src="{{ asset('webWidget/js/konva.min.js') }}"></script>
     <script src="{{ asset('webWidget/js/jquery-cropper.js') }}"></script>
     <script src="{{ asset('webWidget/js/ntc.js') }}"></script>
-    <script  src="{{ asset('webWidget/js/in-painting-v2.js') }}?v={{ config('app.in_paintWidget_v2_version') }}" id="in-painting-js"></script>
+    <script src="{{ asset('webWidget/js/in-painting-v2.js') }}?v={{ config('app.in_paintWidget_v2_version') }}"
+        id="in-painting-js"></script>
     <script src="{{ asset('web/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
     <style>
         .custom-select-wrapper .input-wrapper {
@@ -223,6 +208,7 @@
             display: inline-block;
             animation: moveText 28s linear infinite;
         }
+
         #widgetCustomContainerDiv .upload-loader {
             display: flex;
             gap: 15px;
@@ -238,6 +224,7 @@
             border-color: #22adff;
             animation-delay: 0s;
         }
+
         #widgetCustomContainerDiv .upload-circle {
             border-radius: 50%;
             animation: pulse 1s infinite ease-in-out;
@@ -261,6 +248,7 @@
             border-color: #d92cff;
             animation-delay: 0.4s;
         }
+
         #widgetCustomContainerDiv .upload-x-large {
             width: 120px;
             height: 120px;
@@ -269,9 +257,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.5);
             }
@@ -286,6 +277,7 @@
                 transform: translateX(-100%);
             }
         }
+
         /* .ai-tool-right-top {
             justify-content: center !important;
         } */
@@ -317,11 +309,11 @@
         }
 
         @media only screen and (max-width: 600px) {
-        .square-loader span {
+            .square-loader span {
 
-            width: 40px;
-            height: 40px;
-        }
+                width: 40px;
+                height: 40px;
+            }
         }
 
         @keyframes moveInSquare {
@@ -357,12 +349,12 @@
     $colorTextureUsers = false;
     $apiUser = false;
     $customer = auth()->user();
-    $api_user = $customer ? $customer->is_api_user : 0 ;
-    $userActivePlan = $customer ? $customer->activePlan() : '' ;
+    $api_user = $customer ? $customer->is_api_user : 0;
+    $userActivePlan = $customer ? $customer->activePlan() : '';
     $curr_bank = 0;
-    $userFreeTrialPlan = $customer ? $customer->freeTrialPlan() : '' ;
-    $premiumPlan = $customer ? $customer->is_premium_plan : 0 ;
-    $planDetails = $customer ? $customer->activePlanDetails() : '' ;
+    $userFreeTrialPlan = $customer ? $customer->freeTrialPlan() : '';
+    $premiumPlan = $customer ? $customer->is_premium_plan : 0;
+    $planDetails = $customer ? $customer->activePlanDetails() : '';
     $formattedExpDate = '';
     $customerName = '';
     // Check if $planDetails is not null and has exp_date property
@@ -449,10 +441,7 @@
         $userActivePlan == 'homedesignsai-pro-7-days-trial-yearly-new'
     ) {
         $currentPlan = 'Pro Trial';
-    } elseif (
-        $userActivePlan == 'homedesignsai-individual' ||
-        $userActivePlan == 'homedesignsai-individual-2'
-    ) {
+    } elseif ($userActivePlan == 'homedesignsai-individual' || $userActivePlan == 'homedesignsai-individual-2') {
         $currentPlan = 'Individual';
     } elseif ($userActivePlan == 'homedesignsai-pro' || $userActivePlan == 'homedesignsai-pro-2') {
         $currentPlan = 'Pro';
@@ -499,7 +488,7 @@
         //'homedesignsai-teams-seven-days-trial' => 'HomeDesignsAI Teams - 7 Days Free Trial',
     ];
 
-    $fullName = $customer ? ucwords(strtolower($customer->name)) : '' ; // Ensure first letter of each word is capitalized
+    $fullName = $customer ? ucwords(strtolower($customer->name)) : ''; // Ensure first letter of each word is capitalized
     $formattedName = '';
     $names = explode(' ', $fullName);
     if (count($names) > 1) {
@@ -522,12 +511,6 @@
         <div class="gs-dashboard-wrpper">
             <div class="gs-dashboard-mobile-header">
                 <div class="gs-dashboard-left-logo">
-                    {{-- <a>
-                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/home-logo.svg" />
-                        <img class="light-mode"
-                            src=" https://homedesigns-ai.b-cdn.net/web2/images/light-mode/NewHomeDesignsAILogo 1.png" />
-                    </a> --}}
-                    {{-- <img class="menu-icon" src="https://homedesigns-ai.b-cdn.net/web2/images/gs-menu-icon.png" /> --}}
                 </div>
             </div>
             <div class="gs-dashboard-rigtbar">
@@ -540,12 +523,10 @@
                 <div class="modal-content p-4 suggest-md-content">
                     <span class="precision-md-mess mb-3">For better results and if you want to fill rooms, gardens or
                         houses, we highly recommend using
-                        the <a >Fill Spaces</a> mode which can be found <a
-                            >here.</a></span>
-                    <a >
+                        the <a>Fill Spaces</a> mode which can be found <a>here.</a></span>
+                    <a>
                         <video loop="" muted="" autoplay="" playsinline="" width="100%">
-                            <source src="https://homedesigns.ai/web/images/fill-spaces-furniture.mp4"
-                                type="video/mp4">
+                            <source src="https://homedesigns.ai/web/images/fill-spaces-furniture.mp4" type="video/mp4">
                         </video>
                     </a>
 
@@ -562,9 +543,8 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content p-4 suggest-md-content">
                     <span class="precision-md-mess"> If you want a partial redesign and
-                        your instructions to be more precise, you can try our new <a
-                            >Precision+</a> mode by clicking <a
-                            >here.</a></span>
+                        your instructions to be more precise, you can try our new <a>Precision+</a> mode by clicking
+                        <a>here.</a></span>
                     <div class="mdp-cl-btn mdl-close-btn">
                         <span class="precision_suggestion_closebt" data-bs-dismiss="modal">
                             <i class="fa fa-times fa-unset" aria-hidden="true"></i>
@@ -576,10 +556,10 @@
         <div id="multipleGenaerationModal" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content p-4 suggest-md-content">
-                    <span class="precision-md-mess mb-3">Are you looking for more precise designs? Check our <a
-                            >Precision+</a> where you can redesign exactly what
+                    <span class="precision-md-mess mb-3">Are you looking for more precise designs? Check our
+                        <a>Precision+</a> where you can redesign exactly what
                         you want, not just a full redesign.</span>
-                    <a >
+                    <a>
                         <video loop="" muted="" autoplay="" playsinline="" width="100%">
                             <source src="https://homedesigns.ai/web/images/precision-upgrade.mp4" type="video/mp4">
                         </video>
@@ -732,7 +712,6 @@
                         want to stage.</p>
                     <div class="decor_gif">
                         <img src="{{ asset('web/gif/decor_staging_gif.gif') }}" alt="Your GIF" width="100%">
-                        {{-- <button type="button" class="ci-btn uploadbtngif" data-bs-dismiss="modal" id="inUploadBtnOnModal">Upload Image</button> --}}
                     </div>
                     <div class="mdp-cl-btn mdl-close-btn">
                         <span class="precision_suggestion_closebt" data-bs-dismiss="modal">
@@ -788,7 +767,7 @@
 
     {{-- Add image to Project pop up model --}}
     <div id="addToprojectmodal" class="modal fade gs-modal-background" tabindex="-1" role="dialog"
-    data-backdrop="static" data-keyboard="false">
+        data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog gs-modal-container" role="document">
             <div class="modal-content gs-modal-content hdc-modal choose_project_modal">
                 <button type="button" class="gs-modal-close add_to_project_cancel_btn" data-dismiss="modal"><img
@@ -800,8 +779,8 @@
                     <form id="addProjectForm">
                         @csrf
                         <div class="form-group">
-                            <a id="openCreateProjectModal"
-                                class="redirect_to_project_btn" style="float: right" title="Create new project">+</a>
+                            <a id="openCreateProjectModal" class="redirect_to_project_btn" style="float: right"
+                                title="Create new project">+</a>
                             <label for="selectProject">Select Project</label>
                             <select class="nwfiles-optns" id="selectProject" name="selectedProject">
                                 <option value="" disabled selected>-- Select Project --</option>
@@ -847,15 +826,20 @@
                     <div class="gs-modal-best-right">
                         <h4>Avoid:</h4>
                         <ul>
-                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img1.png"><span>Avoid blurry
+                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img1.png"><span>Avoid
+                                    blurry
                                     image</span></li>
-                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img2.png"><span>Avoid dark image</span>
+                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img2.png"><span>Avoid
+                                    dark image</span>
                             </li>
-                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img3.png"><span>Avoid Screenshots</span>
+                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img3.png"><span>Avoid
+                                    Screenshots</span>
                             </li>
-                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img4.png"><span>Avoid Fisheye
+                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img4.png"><span>Avoid
+                                    Fisheye
                                     effect</span></li>
-                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img5.png"><span>Avoid Ultra Wide</span>
+                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img5.png"><span>Avoid
+                                    Ultra Wide</span>
                             </li>
                         </ul>
                     </div>
@@ -864,23 +848,15 @@
                 <div class="gs-modal-best-btns">
                     <a href="javascript:void(0)" class="gs-modal-best-inderstand">I Understand</a>
                     <a href="javascript:void(0)" class="gs-modal-dont-show-modal">Don’t show this again</a>
-                    {{-- <a href="#" class="gs-modal-best-inderstand"  data-dismiss="modal" data-toggle="modal" data-target="#loading_brilliance">I Understand</a> --}}
-                    {{-- <a href="#"  data-dismiss="modal" data-toggle="modal" data-target="#loading_brilliance">Don’t show this again</a> --}}
-                    {{-- <div class="redirection-link" style="display: none;">redesign-customise-generate.html</div> --}}
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade gs-modal-background" id="loading_brilliance" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal fade gs-modal-background" id="loading_brilliance" role="dialog" data-backdrop="static"
+        data-keyboard="false">
         <div class="modal-dialog gs-modal-container">
             <div class="modal-content gs-modal-content">
-                {{-- <button type="button" class="gs-modal-close" data-dismiss="modal"><img
-                        src="https://homedesigns-ai.b-cdn.net/web2/images/gs-close-icon.svg"></button> --}}
                 <div class="gs-modal-uploading_instruction">
-                    {{-- <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-                    <dotlottie-player src="https://lottie.host/f153e458-6b70-4270-84a7-bb5665de0dbf/GLxYOI5N17.json"
-                        background="transparent" speed="1" style="width: 300px; height: 300px;" loop
-                        autoplay></dotlottie-player> --}}
                     <div class="upload-loader">
                         <div class="upload-circle upload-small"></div>
                         <div class="upload-circle upload-medium"></div>
@@ -889,9 +865,6 @@
                     </div>
                     <h3>Loading brilliance....</h3>
                     <p>Unleashing the AI magic!</p>
-                    {{-- <div class="gs-modal-uploading_instruction_slider">
-                        <div class="gs-modal-uploading_instruction_slide"></div>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -947,7 +920,6 @@
             <div class="modal-content gs-modal-content">
                 <div class="modal-header">
                     <button class="pdf-icon fullscreen-icon" id="toggleFullscreen">Toggle Fullscreen</button>
-                    {{-- <button type="button" class="pdf-icon btn" id="customCloseButton">Close</button> --}}
                     <button type="button" class="gs-modal-close" data-dismiss="modal"><img
                             src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-close-icon.svg"></button>
                 </div>
@@ -978,32 +950,11 @@
                                 Click to instantly transform your space with fresh layouts and innovative styles.
                             </div>
                         </div>
-                        {{-- @if ($precisionUser == false || $api_user)
-                            <div class="gs-image-editing-tool edit_with_precision" data-img="" data-url="99">
-                                <div class="gs-image-editing-tool-icon">
-                                    <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-ai-tools-icon1.svg">
-                                </div>
-                                <span>Intuitive Redesign</span>
-                                <div class="gs-image-editing-tooltip">
-                                    Type your instructions to quickly redesign any space with ease.
-                                </div>
-                            </div>
-                        @else
-                            <div class="gs-image-editing-tool edit_with_precision" data-img="" data-url="99">
-                                <div class="gs-image-editing-tool-icon">
-                                    <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-ai-tools-icon1.svg">
-                                </div>
-                                <span>Intuitive Redesign<img
-                                    src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-prompt-lock-icon.svg"></span>
-                                <div class="gs-image-editing-tooltip">
-                                    Type your instructions to quickly redesign any space with ease.
-                                </div>
-                            </div>
-                        @endif --}}
                         @if ($precisionUser == false || $api_user)
                             <div class="gs-image-editing-tool edit_with_precision" data-img="" data-url="1">
                                 <div class="gs-image-editing-tool-icon">
-                                    <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-edit-ai-tool-icon1.svg">
+                                    <img
+                                        src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-edit-ai-tool-icon1.svg">
                                 </div>
                                 <span>Precision +</span>
                                 <div class="gs-image-editing-tooltip">
@@ -1012,7 +963,8 @@
                             </div>
                             <div class="gs-image-editing-tool edit_with_precision" data-img="" data-url="2">
                                 <div class="gs-image-editing-tool-icon">
-                                    <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-edit-ai-tool-icon2.svg">
+                                    <img
+                                        src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-edit-ai-tool-icon2.svg">
                                 </div>
                                 <span>Fill Spaces </span>
                                 <div class="gs-image-editing-tooltip">
@@ -1033,7 +985,8 @@
                             </div>
                             <div class="gs-image-editing-tool ips-bf-parent">
                                 <div class="gs-image-editing-tool-icon">
-                                    <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-edit-ai-tool-icon1.svg">
+                                    <img
+                                        src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-edit-ai-tool-icon1.svg">
                                 </div>
                                 <span>Precision + <img
                                         src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-prompt-lock-icon.svg"></span>
@@ -1044,7 +997,8 @@
                             </div>
                             <div class="gs-image-editing-tool ips-bf-parent">
                                 <div class="gs-image-editing-tool-icon">
-                                    <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-edit-ai-tool-icon2.svg">
+                                    <img
+                                        src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-edit-ai-tool-icon2.svg">
                                 </div>
                                 <span>Fill Spaces <img
                                         src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-prompt-lock-icon.svg"></span>
@@ -1066,7 +1020,8 @@
                         @if ($colorTextureUsers || $precisionUser == false || $api_user)
                             <div class="gs-image-editing-tool edit_with_precision" data-img="" data-url="5">
                                 <div class="gs-image-editing-tool-icon">
-                                    <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-edit-ai-tool-icon4.svg">
+                                    <img
+                                        src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-edit-ai-tool-icon4.svg">
                                 </div>
                                 <span>Colors and Textures</span>
                                 <div class="gs-image-editing-tooltip">
@@ -1076,7 +1031,8 @@
                         @else
                             <div class="gs-image-editing-tool ips-bf-parent">
                                 <div class="gs-image-editing-tool-icon">
-                                    <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-edit-ai-tool-icon4.svg">
+                                    <img
+                                        src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-edit-ai-tool-icon4.svg">
                                 </div>
                                 <span>Colors and Textures <img
                                         src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-prompt-lock-icon.svg"></span>
@@ -1116,7 +1072,8 @@
                         @if ($precisionUser == false || $api_user)
                             <div class="gs-image-editing-tool edit_with_precision" data-img="" data-url="7">
                                 <div class="gs-image-editing-tool-icon">
-                                    <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-ai-tools-icon11.png">
+                                    <img
+                                        src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-ai-tools-icon11.png">
                                 </div>
                                 <span>Material Swap</span>
                                 <div class="gs-image-editing-tooltip">
@@ -1126,10 +1083,12 @@
                         @else
                             <div class="gs-image-editing-tool ips-bf-parent" data-img="" data-url="7">
                                 <div class="gs-image-editing-tool-icon">
-                                    <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-ai-tools-icon11.png">
+                                    <img
+                                        src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-ai-tools-icon11.png">
                                 </div>
                                 <span>Material Swap
-                                    <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-prompt-lock-icon.svg">
+                                    <img
+                                        src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-prompt-lock-icon.svg">
                                 </span>
                                 <div class="ips-bf-child paid_feature_modal"></div>
                                 <div class="gs-image-editing-tooltip">
@@ -1149,7 +1108,8 @@
                         @if ($precisionUser == false || $api_user)
                             <div class="gs-image-editing-tool edit_with_precision" data-img="" data-url="9">
                                 <div class="gs-image-editing-tool-icon">
-                                    <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/room-composer-icon.png">
+                                    <img
+                                        src="https://homedesigns-ai.b-cdn.net/webWidget/images/room-composer-icon.png">
                                 </div>
                                 <span>Room Composer</span>
                                 <div class="gs-image-editing-tooltip">
@@ -1159,10 +1119,12 @@
                         @else
                             <div class="gs-image-editing-tool ips-bf-parent" data-img="" data-url="9">
                                 <div class="gs-image-editing-tool-icon">
-                                    <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/room-composer-icon.png">
+                                    <img
+                                        src="https://homedesigns-ai.b-cdn.net/webWidget/images/room-composer-icon.png">
                                 </div>
                                 <span>Room Composer
-                                <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-prompt-lock-icon.svg"></span>
+                                    <img
+                                        src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-prompt-lock-icon.svg"></span>
                                 <div class="ips-bf-child paid_feature_modal"></div>
                                 <div class="gs-image-editing-tooltip">
                                     Upload your room and elements to create a stylish, cohesive space.
@@ -1224,8 +1186,6 @@
                         </div>
                     </div>
                     <div class="btn-wrap">
-                        {{-- <button class="edit_generated_image" data-output-img="/webWidget/images/exterior-house-angle2.png" data-input-img="/webWidget/images/before1.png" data-index="0">Edit Image 1</button>
-                    <button class="edit_generated_image" data-output-img="/webWidget/images/exterior-mode3.png" data-input-img="/webWidget/images/exterior-style2.png" data-index="1">Edit Image 2</button> --}}
                         <!-- Add more buttons as needed -->
                         <button class="prev-btn"><span><img
                                     src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-slide-arrow.svg"></span>Prev</button>
@@ -1233,9 +1193,6 @@
                                     src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-slide-arrow.svg"></span>Next</button>
                     </div>
                 </div>
-                {{-- <div class="gs-image-editing-project-add">
-                    <a href="#" class="gs-blue-btn">Add to Project</a>
-                </div> --}}
             </div>
         </div>
     </div>
@@ -1270,7 +1227,6 @@
                             @endif
                         </strong>
                     </li>
-                    {{-- <li><span>Quantity</span> <strong> 1 User</strong></li> --}}
                     <li><span>Billing Cycle</span> <strong> Monthly</strong></li>
                     <li><span>Renewal Amount</span> <strong>--</strong></li>
                 </ul>
@@ -1292,27 +1248,27 @@
                 <div class="d-flex align-items-center mb-2">
                     <h4>Select Upgrade/Downgrade to Subscription</h4>
                     <div class="gs-tutorials-toolnip">
-                        <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/tutorail-wraning.svg" alt="">
+                        <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/tutorail-wraning.svg"
+                            alt="">
                         <div class="ai-upload-option-tooltip">
-                            <span>Upon confirming your plan change, your saved credit card will be automatically charged or prorated based on whether you upgraded or downgraded your plan. This will be processed via FastSpring.</span>
+                            <span>Upon confirming your plan change, your saved credit card will be automatically charged
+                                or prorated based on whether you upgraded or downgraded your plan. This will be
+                                processed via FastSpring.</span>
                         </div>
                     </div>
                 </div>
                 <select id="next_subscription_plan" name="next_subscription_plan" class="form-select nwfiles-optns"
-                    aria-label="Choose Plan" onchange="getProductByPlan('{{$userActivePlan}}');">
+                    aria-label="Choose Plan" onchange="getProductByPlan('{{ $userActivePlan }}');">
                     <option value="" selected disabled>Select Subscription Plan to Upgrade/Downgrade</option>
                     @foreach ($subscription_plans as $plan => $plan_display)
                         <option value="{{ $plan }}"@if ($userActivePlan == $plan) selected @endif>
                             {{ $plan_display }}</option>
-                        {{-- <option value="{{ $plan }}@if ($userActivePlan == $plan) selected @endif">{{ $plan_display }}</option> --}}
                     @endforeach
                 </select>
                 <div class="gs-modal-btns">
                     <a href="#" data-dismiss="modal" data-toggle="modal"
-                        data-target="#cancel_subscription_003" class="gs-modal-continue-btn"
-                        >Upgrade to Change Plan</a>
-                    {{-- <a href="#" class="gs-modal-continue-btn" onclick="upgradeSubscription();"
-                        id="btn_upgrade_subscription">Upgrade to Change Plan</a> --}}
+                        data-target="#cancel_subscription_003" class="gs-modal-continue-btn">Upgrade to Change
+                        Plan</a>
                 </div>
             </div>
         </div>
@@ -1326,13 +1282,15 @@
                 <div class="confirm-content">
                     <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/warning.png">
                     <h2 class="modal-title" id="modalTitle">Are you sure?</h2>
-                    <p>Clicking 'Yes' will confirm your plan change. Your saved credit card will be automatically charged for an upgrade or credited for a downgrade, based on the adjustment. </p>
+                    <p>Clicking 'Yes' will confirm your plan change. Your saved credit card will be automatically
+                        charged for an upgrade or credited for a downgrade, based on the adjustment. </p>
                     <div class="confirm-modal-button">
-                        <button id="btn_upgrade_subscription" class="gs-login-btn" onclick="upgradeSubscription();" type="button">
+                        <button id="btn_upgrade_subscription" class="gs-login-btn" onclick="upgradeSubscription();"
+                            type="button">
                             Yes
                         </button>
-                        <button class="gs-login-btn close-confirm-modal" type="button" data-dismiss="modal" data-toggle="modal"
-                        data-target="#cancel_subscription_002">
+                        <button class="gs-login-btn close-confirm-modal" type="button" data-dismiss="modal"
+                            data-toggle="modal" data-target="#cancel_subscription_002">
                             Cancel
                         </button>
                     </div>
@@ -1358,9 +1316,6 @@
                     <a href="#" class="gs-modal-cancel-btn" data-toggle="modal"
                         data-target="#cancel_subscription_01" data-dismiss="modal">Go Back</a>
                 </div>
-                {{-- <div class="gs-modal-btnpause">
-                    <a href="#">Would you like to pause instead?</a>
-                </div> --}}
             </div>
         </div>
     </div>
@@ -1456,7 +1411,8 @@
                         <div class="gs-modal-feeback-row">
                             <input type="radio" name="cancel_reason" value="5" id="gs-modal-feeback5">
                             <span></span>
-                            <label for="gs-modal-feeback5">I'm moving to a competitor. (Specify which one in the comment section)</label>
+                            <label for="gs-modal-feeback5">I'm moving to a competitor. (Specify which one in the
+                                comment section)</label>
                         </div>
                         <div class="gs-modal-additional-comment">
                             <label>Additional Comments</label>
@@ -1465,7 +1421,8 @@
                     </div>
                 </form>
                 <div class="gs-modal-btns">
-                     <a href="#" id="continue_button" class="gs-modal-continue-btn cancel_feedback_data">Continue</a>
+                    <a href="#" id="continue_button"
+                        class="gs-modal-continue-btn cancel_feedback_data">Continue</a>
                     <a href="#" class="gs-modal-cancel-btn" data-toggle="modal"
                         data-target="{{ $premiumPlan == 1 ? '#cancel_subscription_03' : '#cancel_subscription_04' }}"
                         data-dismiss="modal">Go Back</a>
@@ -1483,13 +1440,8 @@
                 <p>In order to process your cancelation request, our support team needs to confirm your cancelation
                     request.
                 </p>
-                <div data-reamaze-embed="contact" data-reamaze-embed-disable-subject="true" data-reamaze-embed-channel="support" data-reamaze-embed-form-id="75218"></div>
-
-                {{-- <div data-reamaze-embed="contact" data-reamaze-embed-disable-subject="true"
-                    data-reamaze-embed-form-id="75218"></div> --}}
-                {{-- <div class="gs-modal-btns">
-                    <a href="https://homedesigns.ai/go/support" class="gs-modal-continue-btn" id="confirmCancelBtn">Confirm Cancelation</a>
-                </div> --}}
+                <div data-reamaze-embed="contact" data-reamaze-embed-disable-subject="true"
+                    data-reamaze-embed-channel="support" data-reamaze-embed-form-id="75218"></div>
             </div>
         </div>
     </div>
@@ -1597,32 +1549,20 @@
             </div>
         </div>
     </div>
-    {{-- <div id="routeToRunpodType" data-route="{{ route('nextrunpod.name') }}"></div> --}}
     <div id="routeToGetFailedResp" data-route="{{ route('failed_response.data') }}"></div>
     <div id="deleteRenderImages" class="hidden" data-route="{{ route('image.delete') }}"></div>
-    {{-- <div id="addImagesToProject" class="hidden" data-route="{{ route('user.add-images-to-project') }}"></div> --}}
-    {{-- <div id="addAllImagesAsFavourite" class="hidden" data-route="{{ route('user.add-images-as-favourite') }}"> --}}
     </div>
-    {{-- <div id="editAsPrecision" data-route="{{ route('editAs.precision') }}"></div> --}}
     @include('web2.common.design-preview')
-
-
-
-
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script> --}}
 
     @yield('scripts')
 
     @stack('script-stack')
-    <script type="text/javascript">
-        //$productFruits.push(['init', 'jz7YULFHbhRincAX', 'en', { username: '{{$customerName}}' }]);
-    </script>
+    <script type="text/javascript"></script>
     <script>
         ire('identify', {
             customerid: "{{ $customerId }}",
             customeremail: "{{ $customerEmail }}"
         });
-        // $('[data-toggle="tooltip"]').tooltip();
         $(document).on('click', '.cancel_subscription_btn', function() {
             swal.fire({
                     title: 'Are you sure you want to cancel your active subscription?',
@@ -1701,7 +1641,6 @@
         }
     </script>
     <script>
-
         $("#closeExtraStyleModal").click(function() {
             $("#modalStyleUpgradePlan").hide();
             location.reload();
@@ -1732,23 +1671,23 @@
             }
 
             //$('#confirmCancelBtn').on('click', function(event) {
-                //event.preventDefault();
+            //event.preventDefault();
 
-                // Open the link in a new tab
-                //window.open('https://homedesigns.ai/go/support', '_blank');
+            // Open the link in a new tab
+            //window.open('https://homedesigns.ai/go/support', '_blank');
 
-                // Close the modal
-               // $('#cancel_subscription_06').modal('hide');
-           // });
+            // Close the modal
+            // $('#cancel_subscription_06').modal('hide');
+            // });
 
-            $('#cancel_subscription_002').on('shown.bs.modal', function () {
-            // Reset the dropdown value to userActivePlan
+            $('#cancel_subscription_002').on('shown.bs.modal', function() {
+                // Reset the dropdown value to userActivePlan
                 var userActivePlan = '{{ $userActivePlan }}';
-                console.log('userActivePlan',userActivePlan);
+                console.log('userActivePlan', userActivePlan);
                 $('#next_subscription_plan').val(userActivePlan);
             });
 
-            $('#cancel_subscription_05').on('hidden.bs.modal', function () {
+            $('#cancel_subscription_05').on('hidden.bs.modal', function() {
                 // Clear all form fields
                 $('#myCancleFeedbackForm')[0].reset();
 
@@ -1939,9 +1878,9 @@
                 url: "", // Update with your PHP file URL
                 data: formData,
                 success: function(response) {
-                   if (response.success) {
-                    $('#cancel_subscription_05').modal('hide');
-                    $('#cancel_subscription_06').modal('show');
+                    if (response.success) {
+                        $('#cancel_subscription_05').modal('hide');
+                        $('#cancel_subscription_06').modal('show');
                     } else {
                         // Handle case where response indicates failure
                         alert('Something went wrong. Please try again.');
@@ -2132,7 +2071,6 @@
             }
         }
     </script>
-    {{-- <div class="elfsight-app-c277abde-f388-4053-bb82-572a308f96f1"></div> --}}
 </body>
 
 </html>

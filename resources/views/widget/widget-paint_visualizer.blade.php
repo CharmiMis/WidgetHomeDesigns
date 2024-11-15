@@ -1,6 +1,5 @@
 {{-- section first start --}}
 <div class="ai-tool-right-top top-menu-bar-first">
-    {{-- <h3 class="font22">Paint Visualizer</h3> --}}
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
@@ -59,7 +58,6 @@
             <img src="https://homedesigns-ai.b-cdn.net/web2/images/back-btn-icon.svg">
             <img class="light-mode" src="https://homedesigns-ai.b-cdn.net/web2/images/light-mode/back-btn-icon.svg">
         </a>
-        {{-- <h3 class="font22">Paint Visualizer</h3> --}}
     </div>
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
@@ -85,7 +83,6 @@
             <img src="https://homedesigns-ai.b-cdn.net/web2/images/back-btn-icon.svg">
             <img class="light-mode" src="https://homedesigns-ai.b-cdn.net/web2/images/light-mode/back-btn-icon.svg">
         </a>
-        {{-- <h3 class="font22">Paint Visualizer</h3> --}}
     </div>
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
@@ -243,7 +240,6 @@
                                     <input type="hidden" id="colorPickerValue" value="">
                                 </div>
                                 <input type="text" id="colorName" placeholder="No Color Selected" readonly>
-                                {{-- <p class="custom-line"><span>OR</span></p> --}}
                             </div>
                         </div>
                         <div id="your-customs-color-image" class="tab-pane show fade">
@@ -251,8 +247,6 @@
                                 <input type="file" class="ai-upload-input" id="ipFilePicker2ColorSwap">
                                 <h3 class="font22 upload-content" style="font-size: 18px">Upload sample of paint
                                     (.jpeg, .png)</h3>
-                                <!-- <img class="upload-content"
-                                    src="https://homedesigns-ai.b-cdn.net/web2/images/gs-upload-img.png"> -->
                                     <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M18.0057 21.4075C14.5988 21.4075 11.8418 18.6506 11.8418 15.2436C11.8418 11.8367 14.5988 9.07973 18.0057 9.07973C21.4127 9.07973 24.1696 11.8367 24.1696 15.2436C24.1696 18.6506 21.4127 21.4075 18.0057 21.4075ZM18.0057 12.4419C16.4592 12.4419 15.204 13.697 15.204 15.2436C15.204 16.7902 16.4592 18.0454 18.0057 18.0454C19.5523 18.0454 20.8075 16.7902 20.8075 15.2436C20.8075 13.697 19.5523 12.4419 18.0057 12.4419Z" fill="var(--dark-primary)"/>
 <path d="M31.4542 48.3045H18.0057C5.83485 48.3045 0.634766 43.1044 0.634766 30.9335V17.485C0.634766 5.31416 5.83485 0.114075 18.0057 0.114075H26.9714C27.8904 0.114075 28.6525 0.876156 28.6525 1.79514C28.6525 2.71412 27.8904 3.4762 26.9714 3.4762H18.0057C7.67281 3.4762 3.99689 7.15212 3.99689 17.485V30.9335C3.99689 41.2665 7.67281 44.9424 18.0057 44.9424H31.4542C41.7871 44.9424 45.4631 41.2665 45.4631 30.9335V19.7265C45.4631 18.8075 46.2251 18.0454 47.1441 18.0454C48.0631 18.0454 48.8252 18.8075 48.8252 19.7265V30.9335C48.8252 43.1044 43.6251 48.3045 31.4542 48.3045Z" fill="var(--dark-primary)"/>
@@ -274,20 +268,6 @@
             <div class="gs-select-automatically">
                 <div class="our-preset-settings-range-outer">
                     <input type="hidden" id="no_of_des0" name="no_of_des0" value="1" />
-                    {{-- <p class="font14">Select the number of designs you want to generate at
-                        once.</p>
-                    <div class="gs-select-design our-preset-range-design">
-                        <div class="our-preset-settings-range" data-sec="0">
-                        </div>
-                        <div class="our-preset-settings-range-list">
-                            <ul>
-                                <li>1</li>
-                                <li>2</li>
-                                <li>3</li>
-                                <li>4</li>
-                            </ul>
-                        </div>
-                    </div> --}}
                 </div>
                 <div class="gs-continue-btn-outer">
                     <a href="javascript:void(0)" onclick="_generateStyleTransferDesign(0, this)"

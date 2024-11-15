@@ -19114,6 +19114,7 @@ const apiUrl = "https://widget.homedesigns.ai/";
       const widgetData = await response.text(); // Get the HTML content
       const containerDiv = document.createElement("div");
 	  containerDiv.id = 'widgetCustomContainerDiv';
+	  containerDiv.setAttribute('data-no-translate', 'true'); // Prevents translation
 
       const containerDivP = document.createElement("div");
 	  containerDivP.id = 'widgetCustomContainerDivParent';
@@ -19152,6 +19153,7 @@ const apiUrl = "https://widget.homedesigns.ai/";
 		  style.type = 'text/css';
 		  style.rel = 'stylesheet';
 		  style.href = l.href;
+		  style.setAttribute('data-no-translate', 'true'); // Prevents translation
 		  document.head.appendChild(style);
 	  });
 
@@ -19160,6 +19162,7 @@ const apiUrl = "https://widget.homedesigns.ai/";
 
       const style = document.createElement('style');
       style.type = 'text/css';
+	  style.setAttribute('data-no-translate', 'true'); // Prevents translation
       style.appendChild(document.createTextNode(cssStyleLinks));
       document.head.appendChild(style);
 
@@ -19173,6 +19176,7 @@ const apiUrl = "https://widget.homedesigns.ai/";
           newScript.src = j.src;
 		  newScript.id = j.id;
 		  newScript.setAttribute('data-cfasync', 'false');
+		  newScript.setAttribute('data-no-translate', 'true'); // Prevents translation
           document.body.appendChild(newScript);
         }
       });
@@ -19181,6 +19185,7 @@ const apiUrl = "https://widget.homedesigns.ai/";
         if (!j.src) {
           let newScript = document.createElement('script');
           newScript.textContent = j.innerText;
+		  newScript.setAttribute('data-no-translate', 'true'); // Prevents translation
           document.body.appendChild(newScript);
         }
       });

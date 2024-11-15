@@ -96,7 +96,6 @@
                     <div class="gs-select-manually-inner">
                         <div class="gs-select-manually-top">
                             <p>Edit manually using the brush</p>
-                            {{-- <input class="gs-select-manually-value" type="text" id="amount-aiObjectRemoval" readonly=""> --}}
                             <input type="hidden" value="70" id="ip-brush-thickness-aiObjectRemoval" />
                             <input class="gs-select-manually-value" type="text" id="amount-aiObjectRemoval" value="70"
                                 readonly="">
@@ -139,19 +138,6 @@
                     </div>
                     <div class="our-preset-settings-range-outer">
                         <input type="hidden" id="no_of_des0" name="no_of_des0" value="1" />
-                        {{-- <p class="font14">Select the number of designs you want to generate at once.</p>
-                        <div class="gs-select-design our-preset-range-design">
-                            <div class="our-preset-settings-range" data-sec="0">
-                            </div>
-                            <div class="our-preset-settings-range-list">
-                                <ul>
-                                    <li>1</li>
-                                    <li>2</li>
-                                    <li>3</li>
-                                    <li>4</li>
-                                </ul>
-                            </div>
-                        </div> --}}
                     </div>
                     <div class="gs-continue-btn-outer painting_generating_bt">
                         <a href="javascript:void(0)" onclick="_generateInPaintingDesign(0, this)"
