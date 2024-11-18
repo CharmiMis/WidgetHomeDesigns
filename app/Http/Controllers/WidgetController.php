@@ -273,7 +273,7 @@ class WidgetController extends Controller
             ];
 
             // $url = \Config::get('app.GPU_API_SERVERLESS_FILL_SPACE');
-            $url = \Config::get('app.GPU_SERVERLESS_FILL_SPACE');
+            $url = \Config::get('app.GPU_API_SERVERLESS_FILL_SPACE');
             $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
             if ($response && $response['status'] === 'COMPLETED') {
                 if (!isset($response['output']) || isset($response['output']['errors'])) {
