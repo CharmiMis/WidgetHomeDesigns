@@ -196,7 +196,7 @@
                             <div class="gs-what-to-edit-content">
                                 <div class="tab-content">
                                     <div id="our-preset-settings-interior-redesign"
-                                        class="tab-pane show fade in active">
+                                        class="tab-pane fade in active">
                                         <div class="gs-select-automatically">
                                             <div class="gs-our-preset-settings ">
                                                 <div class="gs-select-room-style">
@@ -371,7 +371,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="your-customs-settings-interior-redesign" class="tab-pane show fade">
+                                    <div id="your-customs-settings-interior-redesign" class="tab-pane fade">
                                         <div class="our-preset-settings-box">
 
                                             <label class="our-preset-prompt-text">Type your custom instructions below
@@ -460,7 +460,7 @@
                             <div class="gs-what-to-edit-content">
                                 <div class="tab-content">
                                     <div id="our-preset-settings-exterior-redesign"
-                                        class="tab-pane show fade in active">
+                                        class="tab-pane fade in active">
                                         <div class="gs-select-automatically">
                                             <div class="gs-our-preset-settings ">
                                                 <div class="gs-select-room-style">
@@ -627,7 +627,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="your-customs-settings-exterior-redesign" class="tab-pane show fade">
+                                    <div id="your-customs-settings-exterior-redesign" class="tab-pane fade">
                                         <div class="our-preset-settings-box">
 
                                             <label class="our-preset-prompt-text">Type your custom instructions below
@@ -716,7 +716,7 @@
                             <div class="gs-what-to-edit-content">
                                 <div class="tab-content">
                                     <div id="our-preset-settings-garden-redesign"
-                                        class="tab-pane show fade in active">
+                                        class="tab-pane fade in active">
                                         <div class="gs-select-automatically">
                                             <div class="gs-our-preset-settings ">
                                                 <div class="gs-select-room-style">
@@ -893,7 +893,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="your-customs-settings-garden-redesign" class="tab-pane show fade">
+                                    <div id="your-customs-settings-garden-redesign" class="tab-pane fade">
                                         <div class="our-preset-settings-box">
 
                                             <label class="our-preset-prompt-text">Type your custom instructions below
