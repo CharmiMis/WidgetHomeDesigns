@@ -9950,23 +9950,23 @@ div#painting-stag {
     position: relative;
     cursor: pointer;
 }
-.ai-tool-right-top  li::before {
-    position: absolute;
-    left: 50%;
-    top: 14px;
-    content: "";
-    height: 2px;
-    width: 110%;
-    background: var(--dark-text);
-    margin: 0 0 0 10px;
+#widgetCustomContainerDiv .ai-tool-right-top  li::before {
+    position: absolute !important;
+    left: 50% !important;
+    top: 14px !important;
+    content: "" !important;
+    height: 2px !important;
+    width: 110% !important;
+    background: var(--dark-text) !important;
+    margin: 0 0 0 10px !important;
 }
 .ai-tool-right-top li:last-child::before{
     display: none;
 }
 
 
-.ai-tool-right-top li.active {
-    color: #fff;
+#widgetCustomContainerDiv .ai-tool-right-top li.active {
+    color: #fff !important;
 }
 .ai-tool-right-top li.active .ai-tool-right-steps
 {
