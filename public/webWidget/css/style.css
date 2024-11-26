@@ -12109,9 +12109,14 @@ div.gs-image-editing-after img {
 body.modal-open {
     overflow: hidden;
 }
-.gs-continue-btn img {
-    vertical-align: top;
-    margin: 1px 10px 0 0;
+
+img{
+    opacity: 0;
+}
+
+#widgetCustomContainerDiv .gs-continue-btn img {
+    vertical-align: top !important;
+    margin: 1px 10px 0 0 !important;
 }
 
 
