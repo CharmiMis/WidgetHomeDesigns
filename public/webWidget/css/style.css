@@ -17732,8 +17732,8 @@ img.colorpick-eyedropper-input-trigger {
     color: #7558EA;
 }
 
-.light-theme .ai-tool-right-top li.active {
-    color: var(--light-primary);
+#widgetCustomContainerDiv .light-theme .ai-tool-right-top li.active {
+    color: var(--light-primary) !important;
 }
 
 .light-theme .ai-tool-right-steps {
