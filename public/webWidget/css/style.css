@@ -12110,10 +12110,6 @@ body.modal-open {
     overflow: hidden;
 }
 
-img{
-    opacity: 0;
-}
-
 #widgetCustomContainerDiv .gs-continue-btn img {
     vertical-align: top !important;
     margin: 1px 10px 0 0 !important;
