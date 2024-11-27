@@ -9957,7 +9957,7 @@ div#painting-stag {
     content: "" !important;
     height: 2px !important;
     width: 110% !important;
-    background: var(--dark-text) !important;
+    background: var(--dark-text);
     margin: 0 0 0 10px !important;
 }
 .ai-tool-right-top li:last-child::before{
