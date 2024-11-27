@@ -3741,10 +3741,12 @@ function disableGenerateButton(button, spinner,tabs,previousPageButton,editButto
         tab.style.opacity = '0.6';
         tab.style.cursor = 'not-allowed';
     });
-    previousPageButton.classList.add('disabled');
-    previousPageButton.style.pointerEvents = 'none';
-    previousPageButton.style.opacity = '0.6';
-    previousPageButton.style.cursor = 'not-allowed';
+    if (previousPageButton !== null) {
+        previousPageButton.classList.add('disabled');
+        previousPageButton.style.pointerEvents = 'none';
+        previousPageButton.style.opacity = '0.6';
+        previousPageButton.style.cursor = 'not-allowed';
+    }
 
     editButton.forEach(editButton => {
         editButton.classList.add('disabled');
@@ -3772,10 +3774,13 @@ function enableGenerateButton(button, spinner,tabs,previousPageButton,editButton
         tab.style.opacity = '1';
         tab.style.cursor = 'pointer';
     });
-    previousPageButton.classList.remove('disabled');
-    previousPageButton.style.pointerEvents = 'auto';
-    previousPageButton.style.opacity = '1';
-    previousPageButton.style.cursor = 'pointer';
+
+    if (previousPageButton !== null) {
+        previousPageButton.classList.remove('disabled');
+        previousPageButton.style.pointerEvents = 'auto';
+        previousPageButton.style.opacity = '1';
+        previousPageButton.style.cursor = 'pointer';
+    }
 
     editButton.forEach(editButtonDiv => { // Iterate over all edit-button-div li elements
         editButtonDiv.classList.remove('disabled');
