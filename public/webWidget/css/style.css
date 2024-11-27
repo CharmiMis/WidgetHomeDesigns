@@ -10539,6 +10539,9 @@ div#widgetCustomContainerDiv {
 .gs-what-to-edit-right {
     width: 44%;
 }
+.gs-what-to-edit-right .image-gallery img {
+    max-height: 232px;
+}
 .gs-what-to-edit-title {
     border-bottom: 1px solid #0A0D15;
     margin-bottom: 20px;
