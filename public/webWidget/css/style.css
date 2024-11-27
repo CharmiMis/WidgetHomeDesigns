@@ -9950,7 +9950,7 @@ div#painting-stag {
     position: relative;
     cursor: pointer;
 }
-#widgetCustomContainerDiv .ai-tool-right-top  li::before {
+.ai-tool-right-top  li::before {
     position: absolute !important;
     left: 50% !important;
     top: 14px !important;
