@@ -2,7 +2,7 @@
 
 @media screen and (max-width:1800px) {
 
-    .gs-simlar-products-list-row {
+    #widgetCustomContainerDiv .gs-simlar-products-list-row {
         grid-template-columns: repeat(4, 1fr);
     }
 
@@ -11,60 +11,60 @@
 @media screen and (max-width:1600px) {
 
     /**/
-    .gs-dashboard-list {
+    #widgetCustomContainerDiv .gs-dashboard-list {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .gs-what-to-edit-title li a {
+    #widgetCustomContainerDiv .gs-what-to-edit-title li a {
         font-size: 15px;
     }
 
-    .gs-what-to-edit-left {
+    #widgetCustomContainerDiv .gs-what-to-edit-left {
         padding: 0px 18px 0 0;
     }
 
-    .gs-what-to-edit-tip-right {
+    #widgetCustomContainerDiv .gs-what-to-edit-tip-right {
         width: 100%;
         padding: 0 0 0 12px;
         margin: 0px 0 0;
     }
 
-    .gs-select-category-list-inner img {
+    #widgetCustomContainerDiv .gs-select-category-list-inner img {
         /* display: none; */
         max-width: 31px;
         margin: 0 2px 0 0;
     }
 
-    .gs-select-category-list-inner {
+    #widgetCustomContainerDiv .gs-select-category-list-inner {
         height: 47px;
         font-size: 12px;
     }
 
-    .gs-simlar-products-left {
+    #widgetCustomContainerDiv .gs-simlar-products-left {
         width: 60%;
     }
 
-    .gs-simlar-products-right {
+    #widgetCustomContainerDiv .gs-simlar-products-right {
         width: 40%;
         padding-left: 15px;
     }
 
-    .gs-simlar-products-list-row {
+    #widgetCustomContainerDiv .gs-simlar-products-list-row {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .gs-what-to-edit-tip-box {
+    #widgetCustomContainerDiv .gs-what-to-edit-tip-box {
         padding: 11px 14px 14px 3px;
     }
 
 
 
-    .gs-enterprise-design-scope-top .gs-select-category-list-inner {
+    #widgetCustomContainerDiv .gs-enterprise-design-scope-top .gs-select-category-list-inner {
         height: 54px;
         font-size: 14px;
     }
 
-    .gs-enterprise-design-scope-top .gs-select-category-list-inner img {
+    #widgetCustomContainerDiv .gs-enterprise-design-scope-top .gs-select-category-list-inner img {
         max-width: 48px;
     }
 
@@ -73,67 +73,67 @@
 
 @media screen and (min-width:1201px) and (max-width:1600px) {
 
-    .gs-dashboard-leftbar {
+    #widgetCustomContainerDiv .gs-dashboard-leftbar {
         width: 220px;
     }
 
-    .gs-dashboard-rigtbar {
+    #widgetCustomContainerDiv .gs-dashboard-rigtbar {
         padding: 20px 20px 0 220px;
     }
 
-    .ai-tool-list li a {
+    #widgetCustomContainerDiv .ai-tool-list li a {
         font-size: 13px;
         padding: 15px 10px 15px 12px;
     }
 
-    .ai-tool-left {
+    #widgetCustomContainerDiv .ai-tool-left {
         width: 190px;
     }
 
-    .ai-tool-right {
+    #widgetCustomContainerDiv .ai-tool-right {
         width: calc(100% - 190px);
         border-radius: 0 20px 20px 0;
     }
 
-    .ai-upload-latest-single {
+    #widgetCustomContainerDiv .ai-upload-latest-single {
         gap: 22px;
         margin-bottom: 23px;
 
     }
 
-    .gs-dashboard-leftbar {
+    #widgetCustomContainerDiv .gs-dashboard-leftbar {
         padding: 15px;
     }
 
-    .gs-what-to-edit-left .gs-what-to-edit-leftimg {
+    #widgetCustomContainerDiv .gs-what-to-edit-left .gs-what-to-edit-leftimg {
         padding: 0;
     }
 
-    .font22 {
+    #widgetCustomContainerDiv .font22 {
         font-size: 23px;
     }
 
-    .gs-select-room-style-single span {
+    #widgetCustomContainerDiv .gs-select-room-style-single span {
         font-size: 12px;
     }
 
-    .gs-modal-content h3 {
+    #widgetCustomContainerDiv .gs-modal-content h3 {
         font-size: 24px;
     }
 }
 
 @media screen and (max-width:1400px) {
 
-    .gs-dashboard-ai-creatvity-right {
+    #widgetCustomContainerDiv .gs-dashboard-ai-creatvity-right {
         padding: 0 0px 0 20px;
     }
 
-    .gs-dashboard-ai-creatvity-right h3 {
+    #widgetCustomContainerDiv .gs-dashboard-ai-creatvity-right h3 {
         font-size: 29px;
         line-height: 40px;
     }
 
-    .gs-dashboard-notice-info-text {
+    #widgetCustomContainerDiv .gs-dashboard-notice-info-text {
         padding: 0 10px 0 16px;
     }
 
@@ -142,156 +142,156 @@
     } */
 
 
-    .ai-tool-right-top a {
+    #widgetCustomContainerDiv .ai-tool-right-top a {
         display: none;
     }
 
-    .ai-tool-right-top li {
+    #widgetCustomContainerDiv .ai-tool-right-top li {
         width: 140px;
     }
 
-    .ai-upload-latest-single {
+    #widgetCustomContainerDiv .ai-upload-latest-single {
         gap: 15px;
     }
 
-    .ai-upload-image h3 {
+    #widgetCustomContainerDiv .ai-upload-image h3 {
         padding: 0 0 40px;
     }
 
-    .ai-upload-image {
+    #widgetCustomContainerDiv .ai-upload-image {
         min-height: 400px;
     }
 
-    .gs-select-category-list {
+    #widgetCustomContainerDiv .gs-select-category-list {
         gap: 7px;
     }
 
-    .gs-what-to-edit-title li {
+    #widgetCustomContainerDiv .gs-what-to-edit-title li {
         margin-right: 10px;
     }
 
-    .gs-what-to-edit-title li a {
+    #widgetCustomContainerDiv .gs-what-to-edit-title li a {
         font-size: 13px;
     }
 
-    .gs-select-room-style-single {
+    #widgetCustomContainerDiv .gs-select-room-style-single {
         width: 47%;
         margin-right: 3%;
     }
 
-    .gs-image-editing-container {
+    #widgetCustomContainerDiv .gs-image-editing-container {
         max-width: 1000px;
     }
 
 
-    .gs-simlar-products-list-row {
+    #widgetCustomContainerDiv .gs-simlar-products-list-row {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .ai-tool-list li {
+    #widgetCustomContainerDiv .ai-tool-list li {
         margin-bottom: 4px;
     }
 
-    .gs-expertchat-mile {
+    #widgetCustomContainerDiv .gs-expertchat-mile {
         max-width: 90%;
     }
 
-    .gs-expertchat-mile {
+    #widgetCustomContainerDiv .gs-expertchat-mile {
         padding: 15px;
         margin-bottom: 20px;
     }
 
-    .gs-expertchat-user-response p {
+    #widgetCustomContainerDiv .gs-expertchat-user-response p {
         font-size: 14px;
         line-height: 22px;
         margin-bottom: 12px;
     }
 
-    .gs-expertchat-user-info {
+    #widgetCustomContainerDiv .gs-expertchat-user-info {
         padding: 0 0 4px 0;
     }
 
-    .gs-expertchat-field-wrap {
+    #widgetCustomContainerDiv .gs-expertchat-field-wrap {
         padding: 14px;
         bottom: -100px;
     }
 
-    .gs-expertchat-main {
+    #widgetCustomContainerDiv .gs-expertchat-main {
         height: calc(100vh - 100px);
     }
 
-    .ai-tool-left {
+    #widgetCustomContainerDiv .ai-tool-left {
         padding: 14px 0 0 8px;
     }
 
-    .ai-tool-top {
+    #widgetCustomContainerDiv .ai-tool-top {
         padding: 0 15px 7px 15px;
     }
 
-    .gs-select-category-list-inner {
+    #widgetCustomContainerDiv .gs-select-category-list-inner {
         padding: 2px 10px 2px 5px;
     }
 
-    .gs-enterprise-design-scope-top h2 {
+    #widgetCustomContainerDiv .gs-enterprise-design-scope-top h2 {
         font-size: 22px;
         line-height: 31px;
         margin: 0 0 10px;
     }
 
-    .gs-enterprise-design-scope-top p {
+    #widgetCustomContainerDiv .gs-enterprise-design-scope-top p {
         font-size: 14px;
         line-height: 25px;
         ;
     }
 
-    .gs-enterprise-design-content p {
+    #widgetCustomContainerDiv .gs-enterprise-design-content p {
         font-size: 18px;
         line-height: 26px;
     }
 
-    .gs-enterprise-design-table th,
-    .gs-enterprise-design-table td,
-    .accordion-post-content-bottom th,
-    .accordion-post-content-bottom td {
+    #widgetCustomContainerDiv .gs-enterprise-design-table th,
+    #widgetCustomContainerDiv .gs-enterprise-design-table td,
+    #widgetCustomContainerDiv .accordion-post-content-bottom th,
+    #widgetCustomContainerDiv .accordion-post-content-bottom td {
         padding: 10px 18px;
     }
 
-    .gs-enterprise-design-table table {
+    #widgetCustomContainerDiv .gs-enterprise-design-table table {
         font-size: 14px;
     }
 
-    .gs-enterprise-design-table {
+    #widgetCustomContainerDiv .gs-enterprise-design-table {
         margin-bottom: 20px;
     }
 
-    .gs-enterprise-design-table table {
+    #widgetCustomContainerDiv .gs-enterprise-design-table table {
         margin-bottom: 10px !important;
     }
 
-    .accordion-post-content-top p {
+    #widgetCustomContainerDiv .accordion-post-content-top p {
         font-size: 14px;
         line-height: 24px;
         margin: 0 0 14px;
     }
 
-    .accordion-post-content-top li a {
+    #widgetCustomContainerDiv .accordion-post-content-top li a {
         font-size: 14px;
         line-height: 24px;
         width: 111px;
         padding: 8px 7px 10px;
     }
 
-    .gs-operations-response-heading {
+    #widgetCustomContainerDiv .gs-operations-response-heading {
         padding: 13px 14px;
     }
 
-    .gs-operations-response-content code,
-    .gs-operations-response-content pre {
+    #widgetCustomContainerDiv .gs-operations-response-content code,
+    #widgetCustomContainerDiv .gs-operations-response-content pre {
         padding: 20px 22px;
         font-size: 14px;
     }
 
-    .accordion-post-content-top ul {
+    #widgetCustomContainerDiv .accordion-post-content-top ul {
         margin: 0 0 15px !important;
     }
 
@@ -300,88 +300,88 @@
 @media screen and (max-width:1200px) {
 
     /*old css start*/
-    .potential-outer {
+    #widgetCustomContainerDiv .potential-outer {
         background-size: 100% 55%;
     }
 
-    .estate-outer {
+    #widgetCustomContainerDiv .estate-outer {
         padding: 30px 0 70px;
     }
 
-    h2.title-outer {
+    #widgetCustomContainerDiv h2.title-outer {
         font-size: 37px;
     }
 
-    .competitive-inner-right h2.title-outer {
+    #widgetCustomContainerDiv .competitive-inner-right h2.title-outer {
         line-height: 50px;
     }
 
-    .breath-inner {
+    #widgetCustomContainerDiv .breath-inner {
         padding: 0 15px;
     }
 
     /*old css end*/
 
-    .gs-dashboard-rigtbar-inner {
+    #widgetCustomContainerDiv .gs-dashboard-rigtbar-inner {
         padding: 20px;
     }
 
-    .gs-dashboard-ai-creatvity-right h3 {
+    #widgetCustomContainerDiv .gs-dashboard-ai-creatvity-right h3 {
         font-size: 21px;
         line-height: 33px;
     }
 
-    .gs-dashboard-ai-creatvity {
+    #widgetCustomContainerDiv .gs-dashboard-ai-creatvity {
         padding: 40px 20px 30px;
     }
 
-    .gs-dashboard-list {
+    #widgetCustomContainerDiv .gs-dashboard-list {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
 
-    .ai-tool-right-top li {
+    #widgetCustomContainerDiv .ai-tool-right-top li {
         width: 93px;
         margin: 0 4px;
     }
 
-    .ai-tool-right-top ul {
+    #widgetCustomContainerDiv .ai-tool-right-top ul {
         font-size: 13px;
     }
 
-    .ai-upload-latest-single {
+    #widgetCustomContainerDiv .ai-upload-latest-single {
         flex-direction: column;
     }
 
-    .gs-what-to-edit-left {
+    #widgetCustomContainerDiv .gs-what-to-edit-left {
         padding: 0px 0 20px 0;
         width: 100%;
     }
 
-    .gs-what-to-edit-right {
+    #widgetCustomContainerDiv .gs-what-to-edit-right {
         width: 100%;
     }
 
-    .gs-select-category-list-inner img {
+    #widgetCustomContainerDiv .gs-select-category-list-inner img {
         display: block;
     }
 
 
 
-    .gs-image-editing-container {
+    #widgetCustomContainerDiv .gs-image-editing-container {
         max-width: 800px;
     }
 
-    .font22 {
+    #widgetCustomContainerDiv .font22 {
         font-size: 18px;
     }
 
-    .ai-tool-right-top a.gs-back-btn {
+    #widgetCustomContainerDiv .ai-tool-right-top a.gs-back-btn {
         width: 32px;
     }
 
-    .interior-list li,
-    .gs-modal-content .interior-list li {
+    #widgetCustomContainerDiv .interior-list li,
+    #widgetCustomContainerDiv .gs-modal-content .interior-list li {
         margin: 6px 6px 0 0;
         border-radius: 4px;
         padding: 6px 9px;
@@ -389,111 +389,111 @@
         line-height: 14px;
     }
 
-    .gs-simlar-products-left {
+    #widgetCustomContainerDiv .gs-simlar-products-left {
         width: 100%;
     }
 
-    .gs-simlar-products-right {
+    #widgetCustomContainerDiv .gs-simlar-products-right {
         width: 100%;
         padding-left: 0;
         padding-top: 20px;
     }
 
-    ul.gs-pro-design-inner li {
+    #widgetCustomContainerDiv ul.gs-pro-design-inner li {
         padding: 20px;
         width: 220px;
         min-height: 182px;
     }
 
-    .gs-redesign-content {
+    #widgetCustomContainerDiv .gs-redesign-content {
         margin: 11px 0 0;
     }
 
-    .gs-pro-number-left h2 {
+    #widgetCustomContainerDiv .gs-pro-number-left h2 {
         font-size: 19px;
         padding: 11px;
     }
 
-    .gs-pro-dot-right {
+    #widgetCustomContainerDiv .gs-pro-dot-right {
         /* margin: 21px 0 0; */
     }
 
-    .gs-tutorial-strip {
+    #widgetCustomContainerDiv .gs-tutorial-strip {
         margin: -20px -20px 30px -20px;
     }
 
-    .gs-tutorial-strip-heading {
+    #widgetCustomContainerDiv .gs-tutorial-strip-heading {
         font-size: 28px;
         margin: 0 0 7px 0;
     }
 
-    .gs-tutorial-strip-text {
+    #widgetCustomContainerDiv .gs-tutorial-strip-text {
         font-size: 15px;
     }
 
-    .gs-tutorial-strip {
+    #widgetCustomContainerDiv .gs-tutorial-strip {
         padding: 20px;
     }
 
-    .gs-tutorials-questions-wrapper ul {
+    #widgetCustomContainerDiv .gs-tutorials-questions-wrapper ul {
         flex-wrap: wrap;
     }
 
-    .gs-tutorials-questions-wrapper li {
+    #widgetCustomContainerDiv .gs-tutorials-questions-wrapper li {
         width: auto;
     }
 
-    .gs-setting-notice {
+    #widgetCustomContainerDiv .gs-setting-notice {
         padding: 14px 22px 20px;
     }
 
-    .gs-setting-wrapper {
+    #widgetCustomContainerDiv .gs-setting-wrapper {
         padding: 23px 17px;
     }
 
-    .gs-setting-notice h2 {
+    #widgetCustomContainerDiv .gs-setting-notice h2 {
         font-size: 28px;
         margin: 0 0 8px;
     }
 
-    .gs-edit-settings-column {
+    #widgetCustomContainerDiv .gs-edit-settings-column {
         padding-left: 15px;
         padding-top: 14px;
     }
 
-    .gs-edit-settings-row {
+    #widgetCustomContainerDiv .gs-edit-settings-row {
         margin-left: -15px;
     }
 
-    .gs-enterprise-banner-strip {
+    #widgetCustomContainerDiv .gs-enterprise-banner-strip {
         padding: 14px 20px;
         margin-top: 20px;
     }
 
-    .gs-enterprise-tracking-list {
+    #widgetCustomContainerDiv .gs-enterprise-tracking-list {
         padding: 15px 0 0 15px;
         min-width: 220px;
     }
 
-    .gs-enterprise-tracking-wraper {
+    #widgetCustomContainerDiv .gs-enterprise-tracking-wraper {
         margin: 0 0 0 -15px;
     }
 
-    .gs-enterprise-tracking-box {
+    #widgetCustomContainerDiv .gs-enterprise-tracking-box {
         padding: 15px;
     }
 
-    .gs-enterprise-tracking-box h5 {
+    #widgetCustomContainerDiv .gs-enterprise-tracking-box h5 {
         font-size: 15px;
         line-height: 26px;
         padding: 15px 0 0;
     }
 
-    .accordion-post-content-bottom table {
+    #widgetCustomContainerDiv .accordion-post-content-bottom table {
         font-size: 13px;
     }
 
-    .gs-enterprise-banner-wrapper {
+    #widgetCustomContainerDiv .gs-enterprise-banner-wrapper {
         padding: 20px;
         margin: -20px -20px 20px -20px;
     }
@@ -501,130 +501,130 @@
 }
 
 @media screen and (max-width:991px) {
-    .ai-tool-search {
+    #widgetCustomContainerDiv .ai-tool-search {
         display: none;
     }
 
     /*old css start*/
-    .banner-inner h1 {
+    #widgetCustomContainerDiv .banner-inner h1 {
         font-size: 32px;
         line-height: 46px;
     }
 
-    .banner-inner p {
+    #widgetCustomContainerDiv .banner-inner p {
         font-size: 20px;
     }
 
-    .competitive-inner-right {
+    #widgetCustomContainerDiv .competitive-inner-right {
         padding: 60px 16px 0 0;
     }
 
-    h2.title-con1 {
+    #widgetCustomContainerDiv h2.title-con1 {
         font-size: 23px;
         line-height: 37px;
     }
 
-    p br {
+    #widgetCustomContainerDiv p br {
         display: none;
     }
 
-    h2.title-outer {
+    #widgetCustomContainerDiv h2.title-outer {
         font-size: 30px;
         line-height: 61px;
     }
 
-    section.streamline-outer {
+    #widgetCustomContainerDiv section.streamline-outer {
         padding: 0 0 30px;
     }
 
-    p {
+    #widgetCustomContainerDiv p {
         font-size: 16px;
         line-height: 23px;
     }
 
-    .designs li {
+    #widgetCustomContainerDiv .designs li {
         display: initial;
     }
 
-    .designs li h2 {
+    #widgetCustomContainerDiv .designs li h2 {
         font-size: 20px;
         line-height: 30px;
         margin: 35px 0 15px;
     }
 
-    section.competitive-outer {
+    #widgetCustomContainerDiv section.competitive-outer {
         padding: 10px 0 50px;
     }
 
-    .bussiness-outer {
+    #widgetCustomContainerDiv .bussiness-outer {
         padding: 40px 30px 50px;
         margin: 0 0 -70px;
     }
 
-    a.get-started {
+    #widgetCustomContainerDiv a.get-started {
         font-size: 16px;
     }
 
-    .competitive-inner-right h2.title-outer {
+    #widgetCustomContainerDiv .competitive-inner-right h2.title-outer {
         line-height: 40px;
     }
 
-    .bussiness-outer .competitive-inner-right {
+    #widgetCustomContainerDiv .bussiness-outer .competitive-inner-right {
         padding: 0 0px 0 0;
     }
 
     /*old csss end*/
 
-    .gs-dashboard-ai-creatvity-right a {
+    #widgetCustomContainerDiv .gs-dashboard-ai-creatvity-right a {
         padding: 15px 10px 15px;
     }
 
-    .ai-tool-right-top ul {
+    #widgetCustomContainerDiv .ai-tool-right-top ul {
         display: none;
     }
 
-    .ai-upload-add-project-list a img {
+    #widgetCustomContainerDiv .ai-upload-add-project-list a img {
         max-width: 17px;
         max-height: 17px;
     }
 
-    .ai-upload-add-project-list a {
+    #widgetCustomContainerDiv  .ai-upload-add-project-list a {
         height: 35px;
         width: 35px;
     }
 
-    .ai-upload-loader img {
+    #widgetCustomContainerDiv .ai-upload-loader img {
         width: 50px;
     }
 
-    .ai-upload-effects li {
+    #widgetCustomContainerDiv .ai-upload-effects li {
         font-size: 9px;
         line-height: 22px;
         padding: 1px 6px;
         margin: 0 0 4px;
     }
 
-    .ai-upload-latest-pagination li a {
+    #widgetCustomContainerDiv .ai-upload-latest-pagination li a {
         height: 35px;
         width: 35px;
         font-size: 12px;
     }
 
-    .ai-tool-left {
+    #widgetCustomContainerDiv .ai-tool-left {
         width: 100%;
         padding: 14px 0 0 0;
         position: relative;
     }
 
-    .ai-tool-list li a {
+    #widgetCustomContainerDiv .ai-tool-list li a {
         border-radius: 13px;
     }
 
-    .ai-tool-list li {
+    #widgetCustomContainerDiv .ai-tool-list li {
         margin-bottom: 1px;
     }
 
-    .ai-tool-list {
+    #widgetCustomContainerDiv .ai-tool-list {
         position: absolute;
         width: 100%;
         z-index: 99;
@@ -634,29 +634,29 @@
         display: none;
     }
 
-    .ai-tool-list li a::before,
-    .ai-tool-list li a::after {
+    #widgetCustomContainerDiv .ai-tool-list li a::before,
+    #widgetCustomContainerDiv .ai-tool-list li a::after {
         display: none !important;
     }
 
-    .ai-tool-list li a {
+    #widgetCustomContainerDiv .ai-tool-list li a {
         color: #ffffff;
     }
 
-    .ai-tool-list li a img {
+    #widgetCustomContainerDiv .ai-tool-list li a img {
         filter: invert(1) brightness(100);
     }
 
-    .ai-tool-list li a img.premium_lock_icon {
+    #widgetCustomContainerDiv .ai-tool-list li a img.premium_lock_icon {
         margin-left: auto;
         filter: invert(0) brightness(100) !important;
     }
 
-    .ai-tool-right {
+    #widgetCustomContainerDiv .ai-tool-right {
         width: 100%;
     }
 
-    .ai-tool-top h3 {
+    #widgetCustomContainerDiv .ai-tool-top h3 {
         position: relative;
         background: linear-gradient(180deg, #8F73FF 0%, #5B3DD5 100%);
         font-size: 17px;
@@ -666,7 +666,7 @@
         margin-left: auto;
     }
 
-    .ai-tool-top h3::after {
+    #widgetCustomContainerDiv .ai-tool-top h3::after {
         border-top: 5px solid #fff;
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
@@ -678,15 +678,15 @@
         transition: 0.3s;
     }
 
-    .gs-ai-tool-desktop {
+    #widgetCustomContainerDiv .gs-ai-tool-desktop {
         display: none;
     }
 
-    .gs-ai-tool-mobile {
+    #widgetCustomContainerDiv .gs-ai-tool-mobile {
         display: block;
     }
 
-    .ai-tool-top {
+    #widgetCustomContainerDiv .ai-tool-top {
         padding: 0 20px 17px 20px;
     }
 
@@ -694,179 +694,179 @@
         padding: 0 0 20px;
     } */
 
-    .gs-modal-content {
+    #widgetCustomContainerDiv .gs-modal-content {
         padding: 40px 20px 20px;
     }
 
-    .gs-select-room-style-single {
+    #widgetCustomContainerDiv .gs-select-room-style-single {
         width: 23%;
         margin-right: 2%;
     }
 
 
-    .gs-image-editing-container {
+    #widgetCustomContainerDiv .gs-image-editing-container {
         max-width: 650px;
     }
 
-    .gs-image-editing-tool-shape {
+    #widgetCustomContainerDiv .gs-image-editing-tool-shape {
         left: -58px;
     }
 
-    .btn-wrap button {
+    #widgetCustomContainerDiv .btn-wrap button {
         font-size: 11px;
     }
 
-    .btn-wrap button.next-btn {
+    #widgetCustomContainerDiv .btn-wrap button.next-btn {
         right: -49px;
     }
 
-    .btn-wrap button.prev-btn {
+    #widgetCustomContainerDiv .btn-wrap button.prev-btn {
         left: -49px;
     }
 
-    .btn-wrap button span {
+    #widgetCustomContainerDiv .btn-wrap button span {
         height: 37px;
         width: 37px;
     }
 
-    .gs-select-automatically-inner li {
+    #widgetCustomContainerDiv .gs-select-automatically-inner li {
         margin: 6px 8px 0 0;
         padding: 6px 12px;
         font-size: 12px;
     }
 
-    .ai-tool-wrapper {
+    #widgetCustomContainerDiv .ai-tool-wrapper {
         flex-direction: column;
     }
 
-    .gs-expertchat-main {
+    #widgetCustomContainerDiv .gs-expertchat-main {
         height: calc(100vh - 282px);
     }
 
-    .gs-expertchat-field-wrap {
+    #widgetCustomContainerDiv .gs-expertchat-field-wrap {
         padding: 14px;
         margin-top: 20px;
         position: relative;
         bottom: 0;
     }
 
-    .gs-expertchat-mile {
+    #widgetCustomContainerDiv .gs-expertchat-mile {
         border-radius: 11px;
     }
 
-    .ai-tool-right {
+    #widgetCustomContainerDiv .ai-tool-right {
         /* padding: 25px 20px; */
         border-radius: 0 20px 0px 0;
     }
 
-    .gs-tutorial-strip-right {
+    #widgetCustomContainerDiv .gs-tutorial-strip-right {
         padding: 0 10px;
     }
 
-    .gs-tutorials-questions-wrapper ul {
+    #widgetCustomContainerDiv .gs-tutorials-questions-wrapper ul {
         gap: 10px;
     }
 
-    .gs-tutorial-strip-heading {
+    #widgetCustomContainerDiv .gs-tutorial-strip-heading {
         font-size: 20px;
     }
 
-    .gs-edit-settings-column {
+    #widgetCustomContainerDiv .gs-edit-settings-column {
         width: 100%;
     }
 
-    .gs-edit-settings-row {
+    #widgetCustomContainerDiv .gs-edit-settings-row {
         flex-wrap: wrap;
     }
 
-    .gs-modal-freedays .gs-modal-content {
+    #widgetCustomContainerDiv .gs-modal-freedays .gs-modal-content {
         padding-right: 0;
         background: transparent;
     }
 
-    .gs-enterprise-banner-strip-left {
+    #widgetCustomContainerDiv .gs-enterprise-banner-strip-left {
         width: 100%;
         max-width: 100%;
         padding: 0 0 10px;
     }
 
-    .gs-enterprise-banner-strip-right {
+    #widgetCustomContainerDiv .gs-enterprise-banner-strip-right {
         margin-left: 0;
         padding: 10px 0 0;
     }
 
-    .gs-related-wrapper>p {
+    #widgetCustomContainerDiv .gs-related-wrapper>p {
         font-size: 14px;
         line-height: 26px;
         margin: 0 0 16px;
     }
 
-    .gs-enterprise-design-table th,
-    .gs-enterprise-design-table td,
-    .accordion-post-content-bottom th,
-    .accordion-post-content-bottom td {
+    #widgetCustomContainerDiv .gs-enterprise-design-table th,
+    #widgetCustomContainerDiv .gs-enterprise-design-table td,
+    #widgetCustomContainerDiv .accordion-post-content-bottom th,
+    #widgetCustomContainerDiv .accordion-post-content-bottom td {
         padding: 10px 15px;
     }
 
-    .accordion-post {
+    #widgetCustomContainerDiv .accordion-post {
         margin: 0 10px 0 13px;
         /* font-size: 15px; */
     }
 
-    .accordion-heading {
+    #widgetCustomContainerDiv .accordion-heading {
         font-size: 15px;
     }
 
-    .ai-tool-right-top {
+    #widgetCustomContainerDiv .ai-tool-right-top {
         justify-content: left !important;
     }
 
 }
 
 @media screen and (max-width:767px) {
-    .light-theme .ai-tool-list li.active a img {
+    .light-theme #widgetCustomContainerDiv .ai-tool-list li.active a img {
         filter: brightness(8) invert(1) !important;
     }
 
-    .gs-expertchat-input-field #gs-expertchat-input-target::placeholder{
+    #widgetCustomContainerDiv .gs-expertchat-input-field #gs-expertchat-input-target::placeholder{
         font-size: 12px;
     }
 
-    .light-theme #confirm_modal .modal-content {
+    .light-theme #widgetCustomContainerDiv  #confirm_modal .modal-content {
         background-color: #e7ecf6 !important;
     }
 
-    #confirm_modal .confirm-modal-button button{
+    #widgetCustomContainerDiv #confirm_modal .confirm-modal-button button{
         font-size: 14px;
     }
     /*old css start*/
-    .banner-inner h1 {
+    #widgetCustomContainerDiv .banner-inner h1 {
         font-size: 28px;
         line-height: 40px;
     }
 
-    .banner-inner p {
+    #widgetCustomContainerDiv .banner-inner p {
         font-size: 18px;
     }
 
-    .container {
+    #widgetCustomContainerDiv .container {
         max-width: 100%;
     }
 
-    .competitive-inner-left {
+    #widgetCustomContainerDiv .competitive-inner-left {
         width: 100%;
     }
 
-    .competitive-inner.reverse-con .competitive-inner-left {
+    #widgetCustomContainerDiv .competitive-inner.reverse-con .competitive-inner-left {
         padding: 0 0px 0 0;
     }
 
-    .video-inner {
+    #widgetCustomContainerDiv .video-inner {
         position: relative;
         padding: 0;
     }
 
-    .video-inner::after {
+    #widgetCustomContainerDiv .video-inner::after {
         display: none;
     }
 
@@ -875,39 +875,39 @@
         width: 100%;
     }
 
-    section.breath-outer {
+    #widgetCustomContainerDiv section.breath-outer {
         padding: 20px 10px 50px;
     }
 
-    .breath-inner {
+    #widgetCustomContainerDiv .breath-inner {
         padding: 0;
     }
 
-    .competitive-inner-left video {
+    #widgetCustomContainerDiv .competitive-inner-left video {
         margin: 10px 0 0;
     }
 
-    .designs {
+    #widgetCustomContainerDiv .designs {
         column-count: 2;
         margin: 50px 0 0 !important;
     }
 
-    .designs li {
+    #widgetCustomContainerDiv .designs li {
         margin: 20px 0;
         display: inline-block;
         vertical-align: top;
     }
 
-    .estate-outer {
+    #widgetCustomContainerDiv .estate-outer {
         padding: 30px 0 20px;
     }
 
-    .agent-outer {
+    #widgetCustomContainerDiv .agent-outer {
         padding: 30px 0 50px;
         margin: 0 0 30px;
     }
 
-    .review-slider::before {
+    #widgetCustomContainerDiv .review-slider::before {
         top: -30px;
         left: -3px;
         width: 106px;
@@ -915,7 +915,7 @@
         background-size: 100% 100%;
     }
 
-    .review-slider::after {
+    #widgetCustomContainerDiv .review-slider::after {
         bottom: 10px;
         right: -4px;
         width: 112px;
@@ -923,22 +923,22 @@
         background-size: 100% 100%;
     }
 
-    .competitive-inner.reverse-con .competitive-inner-right {
+    #widgetCustomContainerDiv .competitive-inner.reverse-con .competitive-inner-right {
         padding: 20px 0px 0 0px;
     }
 
-    section.competitive-outer {
+    #widgetCustomContainerDiv section.competitive-outer {
         padding: 10px 0 20px;
     }
 
-    .banner-outer {
+    #widgetCustomContainerDiv .banner-outer {
         padding: 65px 0px 50px;
         margin: 0 0 30px;
     }
 
     /*old css end*/
 
-    .gs-dashboard-leftbar {
+    #widgetCustomContainerDiv .gs-dashboard-leftbar {
         width: 100%;
     }
 
@@ -947,15 +947,15 @@
        /* flex-direction: column; */
     }
 
-    .gs-dashboard-try-ai {
+    #widgetCustomContainerDiv .gs-dashboard-try-ai {
         width: 100%;
     }
 
-    .gs-dashboard-leftbar.active .color_mode{
+    #widgetCustomContainerDiv .gs-dashboard-leftbar.active .color_mode{
         display: none;
     }
 
-    .gs-dashboard-leftbar.active .gs-dashboard-user {
+    #widgetCustomContainerDiv .gs-dashboard-leftbar.active .gs-dashboard-user {
         align-items: center;
     }
     html, body, section {
@@ -963,17 +963,17 @@
     }
 
 
-    .gs-dashboard-rigtbar {
+    #widgetCustomContainerDiv .gs-dashboard-rigtbar {
         padding: 0 0 0 0;
         width: 100%;
         height: calc(100% - 68px);
     }
 
-    .gs-dashboard-rigtbar-inner {
+    #widgetCustomContainerDiv .gs-dashboard-rigtbar-inner {
         border-radius: 0px;
     }
 
-    .gs-dashboard-mobile-header {
+    #widgetCustomContainerDiv .gs-dashboard-mobile-header {
         display: block;
     }
 
@@ -985,7 +985,7 @@
         cursor: pointer;
     }
 
-    .menu-icon {
+    #widgetCustomContainerDiv .menu-icon {
         width: 24px;
     }
 
@@ -1002,17 +1002,17 @@
         cursor: pointer;
     }
 
-    .light-theme .gs-dashboard-leftbar {
+    .light-theme #widgetCustomContainerDiv  .gs-dashboard-leftbar {
         background: #fff;
     }
 
-    .gs-dashboard-left-logo {
+    #widgetCustomContainerDiv .gs-dashboard-left-logo {
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
 
-    .gs-dashboard-leftbar {
+    #widgetCustomContainerDiv .gs-dashboard-leftbar {
         width: 100%;
         position: fixed;
         left: -100%;
@@ -1023,28 +1023,28 @@
         -webkit-transition: .3s all ease;
         min-height: 100%;
     }
-    .gs-dashboard-left-sec {
+    #widgetCustomContainerDiv .gs-dashboard-left-sec {
         height: calc(100vh - 155px);
         width: 100%;
     }
 
-    .gs-dashboard-leftbar.active {
+    #widgetCustomContainerDiv .gs-dashboard-leftbar.active {
         left: 0;
     }
 
-    .gs-dashboard-mobile-header {
+    #widgetCustomContainerDiv .gs-dashboard-mobile-header {
         display: block;
         padding: 20px 20px 0;
         width: 100%;
     }
 
 
-    .gs-image-editing-container {
+    #widgetCustomContainerDiv .gs-image-editing-container {
         max-width: 100%;
         width: 100%;
     }
 
-    .gs-image-editing-tool-shape {
+    #widgetCustomContainerDiv .gs-image-editing-tool-shape {
         width: 150px;
         transform: translate(-50%);
         left: 50%;
@@ -1054,44 +1054,44 @@
         margin: auto;
     }
 
-    .gs-image-editing-background .gs-modal-close {
+    #widgetCustomContainerDiv .gs-image-editing-background .gs-modal-close {
         width: 37.44px !important;
         height: 37.44px;
         right: 11px;
         top: 11px;
     }
 
-    .gs-image-editing-tool-shape::after {
+    #widgetCustomContainerDiv .gs-image-editing-tool-shape::after {
         display: none;
     }
 
-    .gs-image-editing-tool:hover .gs-image-editing-tooltip {
+    #widgetCustomContainerDiv .gs-image-editing-tool:hover .gs-image-editing-tooltip {
         display: none;
     }
 
-    .btn-wrap button {
+    #widgetCustomContainerDiv .btn-wrap button {
         top: 100%;
         margin-top: 8px;
     }
 
-    .btn-wrap button.next-btn {
+    #widgetCustomContainerDiv .btn-wrap button.next-btn {
         right: 10px;
     }
 
-    .btn-wrap button.prev-btn {
+    #widgetCustomContainerDiv .btn-wrap button.prev-btn {
         left: 10px;
     }
 
-    .gs-image-editing-project-add {
+    #widgetCustomContainerDiv .gs-image-editing-project-add {
         padding: 10px 0 0;
     }
 
-    .gs-image-editing-tool {
+    #widgetCustomContainerDiv .gs-image-editing-tool {
         margin: 0 1%;
         min-width: 100px;
     }
 
-    .gs-image-editing-tools-row {
+    #widgetCustomContainerDiv .gs-image-editing-tools-row {
         background: transparent;
         padding: 75px 49px 15px 49px;
         border-radius: 0;
@@ -1099,47 +1099,47 @@
         margin-bottom: -17px;
     }
 
-    .light-theme .gs-image-editing-tools-row,
-    .light-theme .gs-image-editing-tools-row,
-    .light-theme .gs-modal-content {
+    .light-theme #widgetCustomContainerDiv .gs-image-editing-tools-row,
+    .light-theme #widgetCustomContainerDiv .gs-image-editing-tools-row,
+    .light-theme #widgetCustomContainerDiv .gs-modal-content {
         background: transparent;
     }
 
-    .light-theme .modal-content.gs-modal-content{
+    .light-theme #widgetCustomContainerDiv .modal-content.gs-modal-content{
         background-color: #e7ecf6 !important;
     }
 
-    .light-theme .gs-image-editing-tool span {
+    .light-theme #widgetCustomContainerDiv .gs-image-editing-tool span {
         color: #8991b1;
     }
 
-    .light-theme .gs-image-editing-background {
+    .light-theme #widgetCustomContainerDiv .gs-image-editing-background {
         background: #fff;
     }
 
-    .light-theme .gs-image-editing-tool-shape {
+    .light-theme #widgetCustomContainerDiv .gs-image-editing-tool-shape {
         color: #30334f;
     }
 
-    .edit-image-tools-wrapper-inner {
+    #widgetCustomContainerDiv .edit-image-tools-wrapper-inner {
         overflow: hidden;
         position: relative;
         margin: 40px 0 0;
     }
 
-    .gs-image-editing-content {
+    #widgetCustomContainerDiv .gs-image-editing-content {
         padding: 00px 0 0;
         margin-left: auto;
         margin-right: auto;
     }
 
-    .gs-image-editing-container {
+    #widgetCustomContainerDiv .gs-image-editing-container {
         max-width: 100%;
         width: 100%;
         margin: 0 0 30px;
     }
 
-    .gs-image-editing-tooltip {
+    #widgetCustomContainerDiv .gs-image-editing-tooltip {
         font-size: 11px;
         line-height: 16px;
         padding: 6px 9px 7px;
@@ -1147,237 +1147,238 @@
         display: none;
     }
 
-    .gs-image-editing-slide-outer {
+    #widgetCustomContainerDiv .gs-image-editing-slide-outer {
         padding: 0 20px;
     }
 
-    #modalImagePreview .gs-image-editing-slide-outer {
+    #widgetCustomContainerDiv #modalImagePreview .gs-image-editing-slide-outer {
         padding: 0;
         border-radius: 22px;
         overflow: hidden;
     }
 
-    .gs-expertchat-main {
+    #widgetCustomContainerDiv .gs-expertchat-main {
         height: calc(100vh - 336px);
     }
 
-    .gs-tutorial-strip {
+    #widgetCustomContainerDiv .gs-tutorial-strip {
         padding: 20px;
         margin: -20px -20px 30px -20px;
         border-radius: 0;
     }
 
-    .gs-tutorials-questions-wrapper li {
+    #widgetCustomContainerDiv .gs-tutorials-questions-wrapper li {
         width: 100%;
     }
 
-    .gs-login-left {
+    #widgetCustomContainerDiv .gs-login-left {
         display: none;
     }
 
-    .gs-login-right {
+    #widgetCustomContainerDiv .gs-login-right {
         width: 100%;
     }
 
-    .gs-what-to-edit-left {
+    #widgetCustomContainerDiv .gs-what-to-edit-left {
         display: flex;
         flex-direction: column;
     }
 
-    .gs-what-to-edit-tips {
+    #widgetCustomContainerDiv .gs-what-to-edit-tips {
         margin: 10px 0 10px 0;
         order: -1;
     }
-    .gs-our-preset-settings .toggle-button {
+    #widgetCustomContainerDiv .gs-our-preset-settings .toggle-button {
         height: 40px;
         font-size: 13px;
         padding: 2px 13px;
         max-width: 130px;
     }
 
-    .gs-our-preset-color li {
+    #widgetCustomContainerDiv .gs-our-preset-color li {
         height: 24px;
         width: 24px;
         margin-right: 6px;
         margin-top: 6px;
         border: 2px solid transparent;
     }
-    .gs-dashboard-left-logo {
+    #widgetCustomContainerDiv .gs-dashboard-left-logo {
         padding: 0px 0 19px;
     }
-    .gs-select-category-list {
+    #widgetCustomContainerDiv .gs-select-category-list {
         margin-top: 10px;
         margin-bottom: 5px;
     }
-    .gs-what-to-edit-title {
+    #widgetCustomContainerDiv .gs-what-to-edit-title {
         margin-bottom: 10px;
     }
-    .gs-enterprise-banner-wrapper {
+    #widgetCustomContainerDiv .gs-enterprise-banner-wrapper {
         border-radius: 0;
     }
 
-    .gs-enterprise-tracking-list {
+    #widgetCustomContainerDiv .gs-enterprise-tracking-list {
         min-width: 33.33%;
     }
 
-    .gs-related-demo-code pre {
+    #widgetCustomContainerDiv .gs-related-demo-code pre {
         padding: 20px;
         font-size: 13px;
         margin: 10px 0 0;
     }
 
-    .gs-related-wrapper {
+    #widgetCustomContainerDiv .gs-related-wrapper {
         padding: 10px 0 0;
     }
 
-    .accordion-heading {
+    #widgetCustomContainerDiv .accordion-heading {
         padding: 13px;
         font-size: 15px;
         line-height: 23px;
     }
 
-    .accordion-post-content-wrapper {
+    #widgetCustomContainerDiv .accordion-post-content-wrapper {
         padding: 0 13px 9px;
     }
 
-    .gs-tutorial-strip-left textarea {
+    #widgetCustomContainerDiv .gs-tutorial-strip-left textarea {
         max-width: 100%;
     }
 
-    .gs-dashboard-wrpper::before{
+    #widgetCustomContainerDiv .gs-dashboard-wrpper::before{
         content: none;
     }
-    .ai-tool-right {
+    #widgetCustomContainerDiv .ai-tool-right {
         padding: 0;
         min-height: calc(100% - 65px);
     }
-    .ai-tool-wrapper {
+    #widgetCustomContainerDiv .ai-tool-wrapper {
         height: 100%;
         flex-wrap: unset;
     }
-    .gs-dashboard-left-logo .color_mode {
+    #widgetCustomContainerDiv .gs-dashboard-left-logo .color_mode {
         margin: 0 20px 0 auto;
     }
 
-    .api_version_dropdown {
+    #widgetCustomContainerDiv .api_version_dropdown {
         right: unset;
         left: 0;
         transform: none;
     }
 
-    .gs-enterprise-design-scope-top .gs-option-flex, .image-show-container .gs-option-flex {
+    #widgetCustomContainerDiv .gs-enterprise-design-scope-top .gs-option-flex, 
+    #widgetCustomContainerDiv .image-show-container .gs-option-flex {
 
         flex-wrap: wrap;
     }
 
-    .ai-tool-search {
+    #widgetCustomContainerDiv .ai-tool-search {
         margin-left: 20px;
     }
 
-    .slide-close .ai-tool-right {
+    #widgetCustomContainerDiv .slide-close .ai-tool-right {
         width: calc(100% - 30px);
         margin: 20px 20px 0;
     }
 
-    .gs-dashboard-left-logo {
+    #widgetCustomContainerDiv .gs-dashboard-left-logo {
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
     }
 
-    .modal-content.gs-modal-content{
+    #widgetCustomContainerDiv .modal-content.gs-modal-content{
         max-width: calc(100% - 40px) !important;
         /* margin-top: 30px; */
     }
 
-    #designModal .modal-content {
+    #widgetCustomContainerDiv #designModal .modal-content {
         max-width: 100%;
     }
 
-    #widgetCustomContainerDiv .feature-buttons {
+    #widgetCustomContainerDiv #widgetCustomContainerDiv .feature-buttons {
         flex-wrap: wrap;
     }
 
-    .gs-dashboard-notice {
+    #widgetCustomContainerDiv .gs-dashboard-notice {
         margin-left: 0;
         margin-right: 0;
     }
 
-    .ai-upload-latest-designs {
+    #widgetCustomContainerDiv .ai-upload-latest-designs {
         padding: 10px;
     }
 
-    .gs-modal-best-right {
+    #widgetCustomContainerDiv .gs-modal-best-right {
         width: 100%;
         padding-left: 0;
         margin-top: 10px;
     }
 
-    #gallery0 {
+    #widgetCustomContainerDiv #gallery0 {
         width: 100%;
         padding: 0 0;
         margin-top: 20px;
     }
 
-    .gs-what-to-edit-tip-box {
+    #widgetCustomContainerDiv .gs-what-to-edit-tip-box {
         width: 100%;
         padding: 15px;
     }
 
-    .gs-what-to-edit-tips {
+    #widgetCustomContainerDiv .gs-what-to-edit-tips {
         flex-wrap: wrap;
         gap: 7px;
     }
-    .gs-what-to-edit-tip-box {
+    #widgetCustomContainerDiv .gs-what-to-edit-tip-box {
         padding: 11px;
     }
 
-    .gs-what-to-edit-tip-box p {
+    #widgetCustomContainerDiv .gs-what-to-edit-tip-box p {
         font-size: 12px;
     }
 
-    .gs-enterprise-design-scope-top li {
+    #widgetCustomContainerDiv .gs-enterprise-design-scope-top li {
         width: 80%;
         margin: 0 auto;
     }
 
-    .gs-dashboard-wrpper a {
+    #widgetCustomContainerDiv .gs-dashboard-wrpper a {
         font-size: 12px;
         /* flex-wrap: wrap; */
     }
 
-    .accordion-heading strong {
+    #widgetCustomContainerDiv .accordion-heading strong {
         max-width: 75%;
         display: flex;
         align-items: flex-start;
     }
 
-    .accordion-heading {
+    #widgetCustomContainerDiv .accordion-heading {
         display: flex;
     }
-    .image-show-container {
+    #widgetCustomContainerDiv .image-show-container {
         padding: 10px;
     }
-    .our-preset-settings-range-outer {
+    #widgetCustomContainerDiv .our-preset-settings-range-outer {
         padding: 8px 0 0;
     }
-    .gs-continue-btn {
+    #widgetCustomContainerDiv .gs-continue-btn {
         margin-top: 15px;
         padding: 12px 25px;
     }
-    .gs-what-to-edit-wrapper {
+    #widgetCustomContainerDiv .gs-what-to-edit-wrapper {
         padding: 10px 0 10px;
     }
-    .our-preset-settings-range-list li {
+    #widgetCustomContainerDiv .our-preset-settings-range-list li {
         font-size: 13px;
     }
 
-    .undo-redo-btn {
+    #widgetCustomContainerDiv .undo-redo-btn {
         gap: 10px;
         margin-top: 5px;
     }
-    .undo-redo-btn .ci-btn.ci-btn-danger {
+    #widgetCustomContainerDiv .undo-redo-btn .ci-btn.ci-btn-danger {
         padding: 7px;
         font-size: 14px;
     }
@@ -1387,95 +1388,95 @@
 @media screen and (max-width:639px) {
 
     /*old css start*/
-    h2.title-outer {
+    #widgetCustomContainerDiv h2.title-outer {
         font-size: 26px;
         line-height: 34px;
     }
 
-    h3.sub-title {
+    #widgetCustomContainerDiv h3.sub-title {
         font-size: 20px;
     }
 
-    .potential-outer {
+    #widgetCustomContainerDiv .potential-outer {
         background-size: 100% 75%;
     }
 
-    .banner-inner p {
+    #widgetCustomContainerDiv .banner-inner p {
         font-size: 16px;
         line-height: 26px;
     }
 
-    .banner-outer {
+    #widgetCustomContainerDiv .banner-outer {
         padding: 45px 0px 50px;
         margin: 0 0 30px;
     }
 
     /*old css end*/
-    .gs-modal-best-right li {
+    #widgetCustomContainerDiv .gs-modal-best-right li {
         width: 50%;
         margin: 0 0 20px;
     }
 
-    .gs-dashboard-list-content p {
+    #widgetCustomContainerDiv .gs-dashboard-list-content p {
         font-size: 13px;
         line-height: 19px;
     }
 
-    .gs-simlar-products-single h2 {
+    #widgetCustomContainerDiv .gs-simlar-products-single h2 {
         margin: 0 0 14px;
         font-size: 17px;
     }
 
-    .gs-modal-content li {
+    #widgetCustomContainerDiv .gs-modal-content li {
         flex-wrap: wrap;
     }
 
-    .gs-modal-content li span {
+    #widgetCustomContainerDiv .gs-modal-content li span {
         min-width: 100%;
         padding: 0 0 6px;
     }
 
-    .gs-modal-btns a {
+    #widgetCustomContainerDiv .gs-modal-btns a {
         padding: 14px 16px 14px 16px;
         font-size: 14px;
         min-width: 120px;
     }
 
-    .gs-modal-content h3 {
+    #widgetCustomContainerDiv .gs-modal-content h3 {
         font-size: 23px;
         margin: 0 0 12px;
     }
 
-    .gs-modal-btns {
+    #widgetCustomContainerDiv .gs-modal-btns {
         flex-wrap: wrap;
     }
 
-    .gs-modal-btnpause {
+    #widgetCustomContainerDiv .gs-modal-btnpause {
         padding: 13px 0 0;
     }
 
-    .gs-modal-content h4 {
+    #widgetCustomContainerDiv .gs-modal-content h4 {
         font-size: 16px;
         line-height: 28px;
     }
 
-    .gs-tutorials-wrapper .gs-dashboard-list-content p {
+    #widgetCustomContainerDiv .gs-tutorials-wrapper .gs-dashboard-list-content p {
         min-height: 40px;
     }
 
-    .gs-enterprise-tracking-list {
+    #widgetCustomContainerDiv .gs-enterprise-tracking-list {
         width: 50%;
     }
 
-    .accordion-post-content-bottom td {
+    #widgetCustomContainerDiv .accordion-post-content-bottom td {
         min-width: 250px;
     }
 
-    .light-theme .gs-what-to-edit-tip-right p {
+    .light-theme #widgetCustomContainerDiv .gs-what-to-edit-tip-right p {
         color: #000;
     }
 
-    .gs-our-preset-settings {
+    #widgetCustomContainerDiv .gs-our-preset-settings {
         padding: 13px 12px 16px;
     }
 
@@ -1485,125 +1486,125 @@
 @media screen and (max-width:479px) {
 
     /*old css start*/
-    .banner-inner h1 br {
+    #widgetCustomContainerDiv .banner-inner h1 br {
         display: none;
     }
 
-    .banner-inner h1 {
+    #widgetCustomContainerDiv .banner-inner h1 {
         font-size: 23px;
         line-height: 33px;
     }
 
-    .banner-outer {
+    #widgetCustomContainerDiv .banner-outer {
         padding: 45px 0px 30px;
         margin: 0 0 30px;
         background-size: 100% 24%;
     }
 
-    h2.title-con1 {
+    #widgetCustomContainerDiv h2.title-con1 {
         font-size: 22px;
         line-height: 32px;
     }
 
-    h2.title-outer {
+    #widgetCustomContainerDiv h2.title-outer {
         font-size: 22px;
         line-height: 30px;
     }
 
-    h3.sub-title {
+    #widgetCustomContainerDiv h3.sub-title {
         font-size: 18px;
         margin: 10px 0 10px;
     }
 
-    .elevation-slider {
+    #widgetCustomContainerDiv .elevation-slider {
         padding: 20px 0 0;
     }
 
-    .potential-outer {
+    #widgetCustomContainerDiv .potential-outer {
         background-size: 100% 79%;
     }
 
-    .video-con {
+    #widgetCustomContainerDiv .video-con {
         margin: 13px 0 0;
     }
 
-    .competitive-inner-right h2.title-outer {
+    #widgetCustomContainerDiv .competitive-inner-right h2.title-outer {
         line-height: 30px;
     }
 
-    section.streamline-outer {
+    #widgetCustomContainerDiv  section.streamline-outer {
         padding: 0px 0 20px;
     }
 
-    .estate-outer {
+    #widgetCustomContainerDiv .estate-outer {
         padding: 20px 0 20px;
     }
 
-    .designs {
+    #widgetCustomContainerDiv .designs {
         column-count: 1;
         margin: 20px 0 0 !important;
     }
 
-    .designs li {
+    #widgetCustomContainerDiv  .designs li {
         margin: 12px 0;
     }
 
-    .review-slider::after {
+    #widgetCustomContainerDiv .review-slider::after {
         bottom: 20px;
     }
 
-    .bussiness-outer {
+    #widgetCustomContainerDiv .bussiness-outer {
         padding: 10px 20px 30px;
         margin: 0 0 -120px;
     }
 
     /*old css end*/
 
-    .gs-dashboard-list {
+    #widgetCustomContainerDiv .gs-dashboard-list {
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .gs-dashboard-ai-creatvity-left {
+    #widgetCustomContainerDiv .gs-dashboard-ai-creatvity-left {
         width: 100%;
     }
 
-    .gs-dashboard-ai-creatvity-right {
+    #widgetCustomContainerDiv .gs-dashboard-ai-creatvity-right {
         padding: 20px 0px 0 0px;
         width: 100%;
     }
 
-    .gs-dashboard-ai-creatvity-right a {
+    #widgetCustomContainerDiv  .gs-dashboard-ai-creatvity-right a {
         padding: 15px 19px 15px;
     }
 
-    .gs-dashboard-notice-info-text {
+    #widgetCustomContainerDiv .gs-dashboard-notice-info-text {
         padding: 0 10px 0 0px;
         width: calc(100% - 10px);
     }
 
-    .gs-dashboard-notice-info {
+    #widgetCustomContainerDiv .gs-dashboard-notice-info {
         display: none;
     }
 
-    .gs-dashboard-notice {
+    #widgetCustomContainerDiv .gs-dashboard-notice {
         padding: 12px;
     }
 
-    .gs-dashboard-ai-creatvity {
+    #widgetCustomContainerDiv .gs-dashboard-ai-creatvity {
         padding: 20px 15px 20px;
     }
 
 
-    .gs-what-to-edit-tips {
+    #widgetCustomContainerDiv .gs-what-to-edit-tips {
         gap: 7px;
         /* flex-direction: column; */
     }
 
-    .gs-what-to-edit-tip-left {
+    #widgetCustomContainerDiv .gs-what-to-edit-tip-left {
         width: 32px;
     }
 
-    .gs-what-to-edit-tip-box {
+    #widgetCustomContainerDiv  .gs-what-to-edit-tip-box {
         /* padding: 8px 11px 13px 2px; */
     }
 
@@ -1611,194 +1612,194 @@
     padding: 2px 0 0 7px;
     margin: -15px 0 0;
 } */
-    .inpainting-stag-outer {
+#widgetCustomContainerDiv  .inpainting-stag-outer {
         margin-bottom: 30px;
     }
 
-    .gs-what-to-edit-tip-right p {
+    #widgetCustomContainerDiv .gs-what-to-edit-tip-right p {
         font-size: 10px;
         line-height: 15px;
     }
 
-    .gs-what-to-edit-tip-right h4 {
+    #widgetCustomContainerDiv .gs-what-to-edit-tip-right h4 {
         font-size: 13px;
         line-height: 18px;
         margin: 6px 0 4px;
     }
 
-    .gs-what-to-edit-leftimg>img {
+    #widgetCustomContainerDiv  .gs-what-to-edit-leftimg>img {
         height: 300px;
     }
 
     /* .gs-select-category-list-inner img {
     display: none;
 } */
-    .gs-select-category-list-inner {
+#widgetCustomContainerDiv  .gs-select-category-list-inner {
         justify-content: center;
     }
 
-    .gs-select-room-style-single {
+    #widgetCustomContainerDiv .gs-select-room-style-single {
         width: 47%;
         margin-right: 3%;
     }
 
-    .gs-what-to-edit-title li:last-child {
+    #widgetCustomContainerDiv .gs-what-to-edit-title li:last-child {
         margin-right: 0;
     }
 
-    .gs-continue-btn {
+    #widgetCustomContainerDiv .gs-continue-btn {
         padding: 14px 23px;
     }
 
-    .slider::after {
+    #widgetCustomContainerDiv .slider::after {
         width: 32px;
         background-size: contain;
         left: 0;
     }
 
-    .ai-upload-add-project-list a {
+    #widgetCustomContainerDiv .ai-upload-add-project-list a {
         height: 30px;
         width: 30px;
         border-radius: 5px;
     }
 
-    .ai-upload-add-project-list a img {
+    #widgetCustomContainerDiv .ai-upload-add-project-list a img {
         max-width: 12px;
         max-height: 12px;
     }
 
-    .gs-image-editing-slide-project ul {
+    #widgetCustomContainerDiv .gs-image-editing-slide-project ul {
         gap: 6px;
     }
 
-    .gs-image-editing-slide-project {
+    #widgetCustomContainerDiv .gs-image-editing-slide-project {
         padding: 7px;
         bottom: 7px;
         border-radius: 7px;
     }
 
-    .ba-Slider {
+    #widgetCustomContainerDiv .ba-Slider {
         border-radius: 9px;
     }
 
-    .gs-dashboard-list-content p {
+    #widgetCustomContainerDiv .gs-dashboard-list-content p {
         font-size: 13px;
         line-height: 19px;
     }
 
-    .gs-simlar-products-single h2 {
+    #widgetCustomContainerDiv .gs-simlar-products-single h2 {
         margin: 0 0 14px;
         font-size: 17px;
     }
 
-    .gs-simlar-products-list-row {
+    #widgetCustomContainerDiv .gs-simlar-products-list-row {
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .gs-roast-feebackvs-wrapper {
+    #widgetCustomContainerDiv .gs-roast-feebackvs-wrapper {
         padding: 16px 16px 32px;
     }
 
-    .gs-roast-feebackvs-titlebx {
+    #widgetCustomContainerDiv .gs-roast-feebackvs-titlebx {
         justify-content: space-between;
     }
 
-    .gs-project-detail-right a {
+    #widgetCustomContainerDiv .gs-project-detail-right a {
         font-size: 12px;
         line-height: 20px;
         padding: 9px 10px;
         gap: 10px;
     }
 
-    .gs-project-detail-right a img {
+    #widgetCustomContainerDiv .gs-project-detail-right a img {
         max-width: 19px;
     }
 
-    .gs-project-detail-left p {
+    #widgetCustomContainerDiv .gs-project-detail-left p {
         font-size: 14px;
     }
 
-    .gs-project-detail-left h1 {
+    #widgetCustomContainerDiv .gs-project-detail-left h1 {
         padding: 0px 0 6px;
     }
 
-    .gs-setting-notice h2 {
+    #widgetCustomContainerDiv .gs-setting-notice h2 {
         font-size: 24px;
         margin: 0 0 8px;
         line-height: 37px;
     }
 
-    .gs-login-continue-google {
+    #widgetCustomContainerDiv .gs-login-continue-google {
         gap: 6px;
     }
 
-    .gs-login-remeber-login {
+    #widgetCustomContainerDiv .gs-login-remeber-login {
         flex-direction: column;
         gap: 20px;
     }
 
-    .gs-tutorials-wrapper .gs-dashboard-list-content p {
+    #widgetCustomContainerDiv .gs-tutorials-wrapper .gs-dashboard-list-content p {
         min-height: auto;
     }
 
-    .gs-enterprise-tracking-list {
+    #widgetCustomContainerDiv .gs-enterprise-tracking-list {
         min-width: 100%;
     }
 
-    .gs-enterprise-tracking-box p {
+    #widgetCustomContainerDiv .gs-enterprise-tracking-box p {
         margin: 2px 0 0;
     }
 
-    .gs-enterprise-tracking-box h5 {
+    #widgetCustomContainerDiv .gs-enterprise-tracking-box h5 {
         font-size: 13px;
         line-height: 23px;
     }
 
-    .gs-tutorial-strip-left {
+    #widgetCustomContainerDiv .gs-tutorial-strip-left {
         width: 100%;
     }
 
-    .gs-tutorial-strip-right {
+    #widgetCustomContainerDiv .gs-tutorial-strip-right {
         padding: 20px 10px;
         width: 0100%;
     }
 
-    .accordion-post-content-top li a {
+    #widgetCustomContainerDiv .accordion-post-content-top li a {
         font-size: 12px;
         width: 81px;
         padding: 8px 7px 8px;
     }
 
-    .accordion-post-content-top li {
+    #widgetCustomContainerDiv .accordion-post-content-top li {
         margin-right: 10px;
     }
 
-    .project-container {
+    #widgetCustomContainerDiv .project-container {
         max-width: 160px;
         padding: 0 5px;
     }
-    ul.gs-pro-design-inner li {
+    #widgetCustomContainerDiv ul.gs-pro-design-inner li {
         padding: 8px;
         width: 220px;
         min-height: 132px;
     }
-    ul.gs-pro-design-inner {
+    #widgetCustomContainerDiv ul.gs-pro-design-inner {
         display: flex;
     }
-    ul.gs-pro-design-inner li {
+    #widgetCustomContainerDiv ul.gs-pro-design-inner li {
         width: 140px !important;
     }
-    .gs-choose-content {
+    #widgetCustomContainerDiv .gs-choose-content {
         padding: 21px 0 0;
     }
-    .gs-pro-dot-right {
+    #widgetCustomContainerDiv .gs-pro-dot-right {
         margin: 2px 0 0;
     }
-    .gs-pro-number-left h2 {
+    #widgetCustomContainerDiv .gs-pro-number-left h2 {
         font-size: 14px;
         padding: 5px 10px;
     }
-    .gs-redesign-content {
+    #widgetCustomContainerDiv .gs-redesign-content {
         margin: 8px 0 0;
     }
 }
