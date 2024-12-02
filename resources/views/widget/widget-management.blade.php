@@ -9,15 +9,15 @@
         :root body.light-theme{
             --light-primary: {{ $primaryColor ?? '#7558EA' }};
         }
-        #widgetCustomContainerDiv .konvajs-content {
+        .konvajs-content {
             margin: 0 auto;
         }
 
-        #widgetCustomContainerDiv .uploadInPaintingImage {
+        .uploadInPaintingImage {
             max-width: 100%;
         }
 
-        #widgetCustomContainerDiv .feature-buttons {
+        .feature-buttons {
             list-style: none;
             padding: 0;
             margin: 0;
@@ -25,12 +25,12 @@
             gap: 10px;
         }
 
-        #widgetCustomContainerDiv .feature-buttons li {
+        .feature-buttons li {
             margin-top: 20px;
             margin-left: 20px;
         }
 
-        #widgetCustomContainerDiv .feature-button {
+        .feature-button {
             padding: 10px 20px !important;
             border: none;
             background: #1C1E26;
@@ -40,16 +40,16 @@
             color: #fff !important;
         }
 
-        #widgetCustomContainerDiv .feature-button.active {
+        .feature-button.active {
             background: var(--dark-primary);
             color: var(--dark-text);
         }
 
-        #widgetCustomContainerDiv .feature-button:hover {
+        .feature-button:hover {
             background: var(--dark-primary);
         }
 
-        #widgetCustomContainerDiv .feature-content {
+        .feature-content {
             margin-top: 20px;
             padding: 20px;
             border: 1px solid #111929;
@@ -57,26 +57,26 @@
             background-color: #111929;
         }
 
-        #widgetCustomContainerDiv .custom-logo {
+        .custom-logo {
             display: flex;
             justify-content: center;
             padding-top: 20px;
         }
 
-        #widgetCustomContainerDiv .custom-logo img {
+        .custom-logo img {
             width: 100px;
         }
-        #widgetCustomContainerDiv .gs-our-preset-settings .toggle-button.active {
+        .gs-our-preset-settings .toggle-button.active {
             background: var(--dark-primary);
             color: var(--dark-text);
 
         }
-        .light-theme #widgetCustomContainerDiv .gs-our-preset-settings .toggle-button.active {
+        .light-theme .gs-our-preset-settings .toggle-button.active {
             background: var(--light-primary);
             color: var(--light-card);
         }
 
-        #widgetCustomContainerDiv .gs-our-preset-settings .toggle-button{
+        .gs-our-preset-settings .toggle-button{
             height: 54px;
             display: flex;
             align-items: center;
@@ -88,7 +88,7 @@
             line-height: 24px;
             letter-spacing: -0.01em;
             text-align: left;
-            color: #1c1e26;
+            color:var(--dark-text);
             padding: 2px 14px;
             cursor: pointer;
             transition: .3s all ease;
@@ -98,28 +98,28 @@
             justify-content: center;
             border: none;
         }
-        #widgetCustomContainerDiv .gs-our-preset-settings .button-container{
+        .gs-our-preset-settings .button-container{
             display: flex;
         }
 
-        #widgetCustomContainerDiv .gs-our-preset-settings .toggle-button:hover{
+        .gs-our-preset-settings .toggle-button:hover{
             background: var(--dark-primary);
             color: var(--dark-text);
         }
-        .light-theme #widgetCustomContainerDiv .gs-our-preset-settings .toggle-button:hover {
+        .light-theme .gs-our-preset-settings .toggle-button:hover {
             background: var(--light-primary);
             color: var(--light-card);
         }
-        #widgetCustomContainerDiv .button-container {
+        .button-container {
         margin-bottom: 10px;
         }
 
-        #widgetCustomContainerDiv .button-container button {
+        .button-container button {
             padding: 10px 20px;
             margin-right: 10px;
             cursor: pointer;
         }
-        #widgetCustomContainerDiv .ui-widget-content, #widgetCustomContainerDiv .ui-widget-content a{
+        .ui-widget-content, .ui-widget-content a{
             color: var(--dark-text) !important;
         }
     </style>
