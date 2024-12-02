@@ -1005,6 +1005,13 @@ async function callInPaintingAPI(sec,el) {
 
     var segmentType = segmentation ? segmentation : 'false';
     const promptInput = document.querySelector(`#custom_instruction${sec}-${dataPage}`);
+    
+    var isPrompt = promptInput ? promptInput.value : "";
+
+    var prompt = '';
+    if(isPrompt){
+        prompt = await translateText(isPrompt);
+    }
     const promptInputDesign = document.querySelector(`#selectedDesignStyle${sec}-${dataPage}`);
     const promptInputRoomType = document.querySelector(`#selectedRoomType${sec}-${dataPage}`);
     const promptSkyWeather = document.querySelector(`#weather${sec}`);

@@ -1034,4 +1034,61 @@ class WidgetController extends Controller
             return back()->with('status', 'Server Error.');
         }
     }
+
+    public function translateText(Request $request){
+        $googleKey = env('GOOGLE_API_KEY');
+        
+        $initialText = $request->input('text');
+        $gUrl = 'https://translation.googleapis.com/language/translate/v2/detect';
+        $data = array(
+            'q' => $initialText,
+            'key' => $googleKey,
+        );
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $gUrl);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        // Receive server response ...
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $server_output = curl_exec($ch);
+        curl_close($ch);
+        $responseArray = json_decode($server_output, true);
+        if (isset($responseArray['data'])) {
+            $languageDetect =  $responseArray['data']['detections'][0][0]['language'];
+            $targetLanguage = 'en';
+            if ($languageDetect === $targetLanguage) {
+                return $initialText; // No translation needed
+            } else {
+                return $this->translate($initialText,$languageDetect);
+            }
+        } else {
+            return false;
+        }
+    }
+    public function translate($text, $from, $to = 'en')
+    {
+        $googleKey = env('GOOGLE_API_KEY');
+
+        $gUrl = "https://translation.googleapis.com/language/translate/v2";
+        $data = array(
+            'q' => $text,
+            'target' => $to,
+            'key' => $googleKey,
+            'format' => 'html',
+            'source' => $from
+        );
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $gUrl);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $server_output = curl_exec($ch);
+        curl_close($ch);
+        $responseArray = json_decode($server_output, true);
+        if (isset($responseArray['data'])) {
+            return $responseArray['data']['translations'][0]['translatedText'];
+        } else {
+            return false;
+        }
+    }
 }

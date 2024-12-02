@@ -965,7 +965,6 @@ var generationCount = 0;
 
 async function _generateDesign(sec, el) {
     $('#closeModal').addClass('disable-btn');
-    console.log("Gneeratedesigns");
     const generateDesignBtn = el;
     const spinner = generateDesignBtn.querySelector('span#submit');
     const tabs = document.querySelectorAll('.gs-option-flex a');
@@ -1063,7 +1062,13 @@ async function _generateDesign(sec, el) {
     _updateAiCatePillsStatus('disable');
 
     var strengthType = document.getElementById(`strength${sec}`).value;
-    var customInstructionData = document.getElementById(`custom_instruction${sec}`).value;
+    var customInstructions = document.getElementById(`custom_instruction${sec}`).value;
+
+    let customInstructionData = '';
+    if (customInstructions) {
+        // Wait for the translated text to be returned
+        customInstructionData = await translateText(customInstructions);
+    }
 
     if (customInstructionData == '' && dataPage == 'convenient-redesign') {
         let error_message = "Oops! You didn't add a prompt.";
@@ -3800,5 +3805,21 @@ function enableGenerateButton(button, spinner,tabs,previousPageButton,editButton
 function reapplyCheckboxStates() {
     multipleDownloadImg.forEach(id => {
         $(`input.ml_dw_img[data-image-id="${id}"]`).prop('checked', true);
+    });
+}
+
+function translateText(text, callback) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            type: "POST",
+            url: SITE_BASE_URL + "translateText",
+            data: { text: text },
+            success: function(result) {
+                resolve(result);  // Resolves the Promise with the result
+            },
+            error: function(error) {
+                reject(error);  // Rejects the Promise on error
+            }
+        });
     });
 }
