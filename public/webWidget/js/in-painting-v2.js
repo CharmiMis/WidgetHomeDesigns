@@ -1005,7 +1005,7 @@ async function callInPaintingAPI(sec,el) {
 
     var segmentType = segmentation ? segmentation : 'false';
     const promptInput = document.querySelector(`#custom_instruction${sec}-${dataPage}`);
-    
+
     var isPrompt = promptInput ? promptInput.value : "";
 
     var prompt = '';
@@ -1020,7 +1020,6 @@ async function callInPaintingAPI(sec,el) {
     const prompMaterialTypeTexture = document.querySelector(`#material_type${sec}`);
     const prompMaterialTexture = document.querySelector(`#material${sec}`);
 
-    var prompt = promptInput ? promptInput.value : "";
     var designStyle = promptInputDesign ? promptInputDesign.value : "" ;
     var roomType = promptInputRoomType ? promptInputRoomType.value : "" ;
     var isTransparent = hasTransparentPixels;
