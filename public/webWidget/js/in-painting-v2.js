@@ -1007,11 +1007,15 @@ async function callInPaintingAPI(sec,el) {
     const promptInput = document.querySelector(`#custom_instruction${sec}-${dataPage}`);
 
     var isPrompt = promptInput ? promptInput.value : "";
+    console.log('isPrompt: ', isPrompt);
 
     var prompt = '';
     if(isPrompt){
         prompt = await translateText(isPrompt);
+        console.log('prompt:First ', prompt);
     }
+    console.log('prompt:Last ', prompt);
+
     const promptInputDesign = document.querySelector(`#selectedDesignStyle${sec}-${dataPage}`);
     const promptInputRoomType = document.querySelector(`#selectedRoomType${sec}-${dataPage}`);
     const promptSkyWeather = document.querySelector(`#weather${sec}`);
@@ -1114,6 +1118,7 @@ async function callInPaintingAPI(sec,el) {
     if(color != "" || material_type != ""){
         prompt = "";
     }
+    console.log('prompt:THirdno ', isPrompt);
     var formData = new FormData();
     // var precisionUserValue = document.getElementById('precisionUser').value;
     if (dataPage == 'aiObjectRemoval' || dataPage == 'segmentPage') {
