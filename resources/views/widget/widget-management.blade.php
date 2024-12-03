@@ -81,7 +81,7 @@
             display: flex;
             align-items: center;
             width: 100%;
-            /* background: #1C1E26; */
+            background: #1C1E26;
             border-radius: 10px;
             font-size: 14px;
             font-weight: 500;
