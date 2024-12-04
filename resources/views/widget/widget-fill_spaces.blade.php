@@ -382,37 +382,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="our-preset-settings-range-outer">
-                                                <input type="hidden" id="no_of_des0" name="no_of_des0"
-                                                    value="1" />
-                                                {{-- <p class="font14">Select the number of designs you want to generate at
-                                                    once.</p>
-                                                <div class="gs-select-design our-preset-range-design">
-                                                    <div class="our-preset-settings-range" data-sec="0">
-                                                    </div>
-                                                    <div class="our-preset-settings-range-list">
-                                                        <ul>
-                                                            <li>1</li>
-                                                            <li>2</li>
-                                                            <li>3</li>
-                                                            <li>4</li>
-                                                        </ul>
-                                                    </div>
-                                                </div> --}}
-                                            </div>
-                                            <div class="gs-continue-btn-outer painting_generating_bt">
-                                                <a href="javascript:void(0)"
-                                                    onclick="_generateInPaintingDesign(0, this)"
-                                                    id="generateDesignBtn0"
-                                                    class="gs-continue-btn generateDesignBtn0">
-                                                    <img
-                                                        src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
-                                                    Generate New Designs
-                                                    <span id="submit" style="display:none">
-                                                        <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
-                                                    </span>
-                                                </a>
-                                            </div>
                                         </div>
                                     </div>
                                     <div id="your-customs-settings-interior-fillSpace" class="tab-pane show fade">
@@ -421,34 +390,54 @@
                                             <textarea placeholder="e.g. Scandinavian dining room design, beautiful, white colors" name="cust-inst0"
                                                 id="custom_instruction0-fillSpace"></textarea>
                                         </div>
-                                        <div class="our-preset-settings-range-outer">
+                                    </div>
+                                    <div class="our-preset-settings-range-outer">
                                         <input type="hidden" id="no_of_des0" name="no_of_des0"
-                                                    value="1" />
-                                            {{-- <p class="font14">Select the number of designs you want to generate at
-                                                once.</p>
-                                            <div class="gs-select-design our-preset-range-design">
-                                                <div class="our-preset-settings-range" data-sec="0">
+                                            value="1" />
+                                        {{-- <p class="font14">Select the number of designs you want to generate at
+                                            once.</p>
+                                        <div class="gs-select-design our-preset-range-design">
+                                            <div class="our-preset-settings-range" data-sec="0">
+                                            </div>
+                                            <div class="our-preset-settings-range-list">
+                                                <ul>
+                                                    <li>1</li>
+                                                    <li>2</li>
+                                                    <li>3</li>
+                                                    <li>4</li>
+                                                </ul>
+                                            </div>
+                                        </div> --}}
+                                    </div>
+                                    
+                                    <div class="gs-select-manually-top mt-3">
+                                        <div class="gs-select-parent-ai-strength">
+                                            <p class="font14">AI Strength</p>
+                                            <div class="gs-tutorials-toolnip">
+                                                <img src="https://homedesigns-ai.b-cdn.net/web2/images/tutorail-wraning.svg" alt="">
+                                                <div class="ai-upload-option-tooltip">
+                                                    <span>Adjust how the AI transforms your image using AI Strength. We recommend starting with 5 as the default. If the image looks too distorted, lower the value to 1-4. If it’s not changed enough, increase the value to 6-10.</span>
                                                 </div>
-                                                <div class="our-preset-settings-range-list">
-                                                    <ul>
-                                                        <li>1</li>
-                                                        <li>2</li>
-                                                        <li>3</li>
-                                                        <li>4</li>
-                                                    </ul>
-                                                </div>
-                                            </div> --}}
+                                            </div>
                                         </div>
-                                        <div class="gs-continue-btn-outer painting_generating_bt">
-                                            <a href="javascript:void(0)" onclick="_generateInPaintingDesign(0, this)"
-                                                id="generateDesignBtn0" class="gs-continue-btn generateDesignBtn0">
-                                                <img src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
-                                                Generate New Designs
-                                                <span id="submit" style="display:none">
-                                                    <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
-                                                </span>
-                                            </a>
-                                        </div>
+                                        <input type="hidden" value="0.73" id="ip-strength-thickness0fillSpace" />
+                                        <input class="gs-select-manually-strength-value" type="text" id="aiStrengthAmount0fillSpace" value="5" readonly="">
+                                    </div>
+                                    <div class="gs-select-design">
+                                        <div class="gs-select-strength-range" data-sec="0"></div>
+                                    </div>
+                                    <div class="gs-continue-btn-outer painting_generating_bt">
+                                        <a href="javascript:void(0)"
+                                            onclick="_generateInPaintingDesign(0, this)"
+                                            id="generateDesignBtn0"
+                                            class="gs-continue-btn generateDesignBtn0">
+                                            <img
+                                                src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
+                                            Generate New Designs
+                                            <span id="submit" style="display:none">
+                                                <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -544,37 +533,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="our-preset-settings-range-outer">
-                                                <input type="hidden" id="no_of_des1" name="no_of_des1"
-                                                    value="1" />
-                                                {{-- <p class="font14">Select the number of designs you want to generate at
-                                                    once.</p>
-                                                <div class="gs-select-design our-preset-range-design">
-                                                    <div class="our-preset-settings-range" data-sec="1">
-                                                    </div>
-                                                    <div class="our-preset-settings-range-list">
-                                                        <ul>
-                                                            <li>1</li>
-                                                            <li>2</li>
-                                                            <li>3</li>
-                                                            <li>4</li>
-                                                        </ul>
-                                                    </div>
-                                                </div> --}}
-                                            </div>
-                                            <div class="gs-continue-btn-outer painting_generating_bt">
-                                                <a href="javascript:void(0)"
-                                                    onclick="_generateInPaintingDesign(1, this)"
-                                                    id="generateDesignBtn1"
-                                                    class="gs-continue-btn generateDesignBtn1">
-                                                    <img
-                                                        src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
-                                                    Generate New Designs
-                                                    <span id="submit" style="display:none">
-                                                        <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
-                                                    </span>
-                                                </a>
-                                            </div>
                                         </div>
                                     </div>
                                     <div id="your-customs-settings-exterior-fillSpace1" class="tab-pane show fade">
@@ -583,34 +541,53 @@
                                             <textarea placeholder="e.g. Scandinavian dining room design, beautiful, white colors" name="cust-inst1"
                                                 id="custom_instruction1-fillSpace"></textarea>
                                         </div>
-                                        <div class="our-preset-settings-range-outer">
-                                        <input type="hidden" id="no_of_des0" name="no_of_des0"
-                                                    value="1" />
-                                            {{-- <p class="font14">Select the number of designs you want to generate at
-                                                once.</p>
-                                            <div class="gs-select-design our-preset-range-design">
-                                                <div class="our-preset-settings-range" data-sec="1">
+                                    </div>
+                                    <div class="our-preset-settings-range-outer">
+                                        <input type="hidden" id="no_of_des1" name="no_of_des1"
+                                            value="1" />
+                                        {{-- <p class="font14">Select the number of designs you want to generate at
+                                            once.</p>
+                                        <div class="gs-select-design our-preset-range-design">
+                                            <div class="our-preset-settings-range" data-sec="1">
+                                            </div>
+                                            <div class="our-preset-settings-range-list">
+                                                <ul>
+                                                    <li>1</li>
+                                                    <li>2</li>
+                                                    <li>3</li>
+                                                    <li>4</li>
+                                                </ul>
+                                            </div>
+                                        </div> --}}
+                                    </div>
+                                    <div class="gs-select-manually-top mt-3">
+                                        <div class="gs-select-parent-ai-strength">
+                                            <p class="font14">AI Strength</p>
+                                            <div class="gs-tutorials-toolnip">
+                                                <img src="https://homedesigns-ai.b-cdn.net/web2/images/tutorail-wraning.svg" alt="">
+                                                <div class="ai-upload-option-tooltip">
+                                                    <span>Adjust how the AI transforms your image using AI Strength. We recommend starting with 5 as the default. If the image looks too distorted, lower the value to 1-4. If it’s not changed enough, increase the value to 6-10.</span>
                                                 </div>
-                                                <div class="our-preset-settings-range-list">
-                                                    <ul>
-                                                        <li>1</li>
-                                                        <li>2</li>
-                                                        <li>3</li>
-                                                        <li>4</li>
-                                                    </ul>
-                                                </div>
-                                            </div> --}}
+                                            </div>
                                         </div>
-                                        <div class="gs-continue-btn-outer painting_generating_bt">
-                                            <a href="javascript:void(0)" onclick="_generateInPaintingDesign(1, this)"
-                                                id="generateDesignBtn1" class="gs-continue-btn generateDesignBtn1">
-                                                <img src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
-                                                Generate New Designs
-                                                <span id="submit" style="display:none">
-                                                    <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
-                                                </span>
-                                            </a>
-                                        </div>
+                                        <input type="hidden" value="0.73" id="ip-strength-thickness1fillSpace" />
+                                        <input class="gs-select-manually-strength-value" type="text" id="aiStrengthAmount1fillSpace" value="5" readonly="">
+                                    </div>
+                                    <div class="gs-select-design">
+                                        <div class="gs-select-strength-range" data-sec="1"></div>
+                                    </div>
+                                    <div class="gs-continue-btn-outer painting_generating_bt">
+                                        <a href="javascript:void(0)"
+                                            onclick="_generateInPaintingDesign(1, this)"
+                                            id="generateDesignBtn1"
+                                            class="gs-continue-btn generateDesignBtn1">
+                                            <img
+                                                src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
+                                            Generate New Designs
+                                            <span id="submit" style="display:none">
+                                                <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -713,37 +690,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="our-preset-settings-range-outer">
-                                                <input type="hidden" id="no_of_des2" name="no_of_des2"
-                                                    value="1" />
-                                                {{-- <p class="font14">Select the number of designs you want to generate at
-                                                    once.</p>
-                                                <div class="gs-select-design our-preset-range-design">
-                                                    <div class="our-preset-settings-range" data-sec="2">
-                                                    </div>
-                                                    <div class="our-preset-settings-range-list">
-                                                        <ul>
-                                                            <li>1</li>
-                                                            <li>2</li>
-                                                            <li>3</li>
-                                                            <li>4</li>
-                                                        </ul>
-                                                    </div>
-                                                </div> --}}
-                                            </div>
-                                            <div class="gs-continue-btn-outer painting_generating_bt">
-                                                <a href="javascript:void(0)"
-                                                    onclick="_generateInPaintingDesign(2, this)"
-                                                    id="generateDesignBtn2"
-                                                    class="gs-continue-btn generateDesignBtn2">
-                                                    <img
-                                                        src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
-                                                    Generate New Designs
-                                                    <span id="submit" style="display:none">
-                                                        <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
-                                                    </span>
-                                                </a>
-                                            </div>
                                         </div>
                                     </div>
                                     <div id="your-customs-settings-garden-color_swap" class="tab-pane show fade">
@@ -752,34 +698,53 @@
                                             <textarea placeholder="e.g. Scandinavian dining room design, beautiful, white colors" name="cust-inst2"
                                                 id="custom_instruction2-fillSpace"></textarea>
                                         </div>
-                                        <div class="our-preset-settings-range-outer">
-                                        <input type="hidden" id="no_of_des0" name="no_of_des0"
-                                                    value="1" />
-                                            {{-- <p class="font14">Select the number of designs you want to generate at
-                                                once.</p>
-                                            <div class="gs-select-design our-preset-range-design">
-                                                <div class="our-preset-settings-range" data-sec="2">
+                                    </div>
+                                    <div class="our-preset-settings-range-outer">
+                                        <input type="hidden" id="no_of_des2" name="no_of_des2"
+                                            value="1" />
+                                        {{-- <p class="font14">Select the number of designs you want to generate at
+                                            once.</p>
+                                        <div class="gs-select-design our-preset-range-design">
+                                            <div class="our-preset-settings-range" data-sec="2">
+                                            </div>
+                                            <div class="our-preset-settings-range-list">
+                                                <ul>
+                                                    <li>1</li>
+                                                    <li>2</li>
+                                                    <li>3</li>
+                                                    <li>4</li>
+                                                </ul>
+                                            </div>
+                                        </div> --}}
+                                    </div>
+                                    <div class="gs-select-manually-top mt-3">
+                                        <div class="gs-select-parent-ai-strength">
+                                            <p class="font14">AI Strength</p>
+                                            <div class="gs-tutorials-toolnip">
+                                                <img src="https://homedesigns-ai.b-cdn.net/web2/images/tutorail-wraning.svg" alt="">
+                                                <div class="ai-upload-option-tooltip">
+                                                    <span>Adjust how the AI transforms your image using AI Strength. We recommend starting with 5 as the default. If the image looks too distorted, lower the value to 1-4. If it’s not changed enough, increase the value to 6-10.</span>
                                                 </div>
-                                                <div class="our-preset-settings-range-list">
-                                                    <ul>
-                                                        <li>1</li>
-                                                        <li>2</li>
-                                                        <li>3</li>
-                                                        <li>4</li>
-                                                    </ul>
-                                                </div>
-                                            </div> --}}
+                                            </div>
                                         </div>
-                                        <div class="gs-continue-btn-outer painting_generating_bt">
-                                            <a href="javascript:void(0)" onclick="_generateInPaintingDesign(2, this)"
-                                                id="generateDesignBtn2" class="gs-continue-btn generateDesignBtn2">
-                                                <img src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
-                                                Generate New Designs
-                                                <span id="submit" style="display:none">
-                                                    <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
-                                                </span>
-                                            </a>
-                                        </div>
+                                        <input type="hidden" value="0.73" id="ip-strength-thickness2fillSpace" />
+                                        <input class="gs-select-manually-strength-value" type="text" id="aiStrengthAmount2fillSpace" value="5" readonly="">
+                                    </div>
+                                    <div class="gs-select-design">
+                                        <div class="gs-select-strength-range" data-sec="2"></div>
+                                    </div>
+                                    <div class="gs-continue-btn-outer painting_generating_bt">
+                                        <a href="javascript:void(0)"
+                                            onclick="_generateInPaintingDesign(2, this)"
+                                            id="generateDesignBtn2"
+                                            class="gs-continue-btn generateDesignBtn2">
+                                            <img
+                                                src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
+                                            Generate New Designs
+                                            <span id="submit" style="display:none">
+                                                <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
+                                            </span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

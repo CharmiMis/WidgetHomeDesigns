@@ -268,6 +268,7 @@ class WidgetController extends Controller
                     'prompt' => !empty($payloadImage['prompt']) ? $payloadImage['prompt'] : '',
                     'no_design' => intval($payloadData['no_of_Design']),
                     'segment_type' => $segmentType,
+                    'strength' => (float)$payloadData['ai_strength'],
                     'unique_id' => $uniqueFileName,
                 ],
             ];
@@ -341,6 +342,7 @@ class WidgetController extends Controller
                     'prompt' => !empty($payloadImage['prompt']) ? $payloadImage['prompt'] : '',
                     'no_design' => intval($payloadData['no_of_Design']),
                     'segment_type' => $segmentType,
+                    'strength' => (float)$payloadData['ai_strength'],
                     'unique_id' => $uniqueFileName,
                 ],
             ];

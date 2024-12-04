@@ -117,7 +117,25 @@ $(document).ready(function () {
         //     }
         // });
         // $("#amount").val($(".gs-select-range").slider("value"));
+        $(".gs-select-strength-range").slider({
+            range: "min",
+            min: 1,
+            max: 10,
+            value: 5,  // Default at 5
+            step: 1,   // Increment by whole numbers from 1 to 10
+            slide: function (event, ui) {
+                var sec = $(this).data('sec');
 
+                // Map the slider value (1–10) to the corresponding thickness value (0.65–0.85)
+                var thicknessValue = 0.65 + (ui.value - 1) * 0.02;
+
+                // Update the displayed value with the slider value (1–10)
+                $("#aiStrengthAmount" + sec + dataPage).val(ui.value);
+
+                // Update the hidden input with the actual thickness value (0.65–0.85)
+                $("#ip-strength-thickness" + sec + dataPage).val(thicknessValue.toFixed(2));
+            }
+        });
 
         $(".our-preset-settings-range").slider({
             range: "max",

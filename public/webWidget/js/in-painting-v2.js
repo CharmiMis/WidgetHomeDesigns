@@ -99,6 +99,11 @@ $(document).ready(function() {
 tabs.on( "click", ".ui-tabs-tab", function() {
     $('.gs-select-room-style-single').removeClass('active');
 
+    // Set the initial value for #aiStrengthAmount on load
+    // $("#aiStrengthAmount0" + dataPage).val($(".gs-select-strength-range").slider("value"));
+    // $("#aiStrengthAmount1" + dataPage).val($(".gs-select-strength-range").slider("value"));
+    // $("#aiStrengthAmount2" + dataPage).val($(".gs-select-strength-range").slider("value"));
+
     $('.chkbox-segment ul').empty();
     var panelId = $( this ).closest( "li" ).attr( "aria-controls" );
 
@@ -1016,6 +1021,7 @@ async function callInPaintingAPI(sec,el) {
     const promptInputDesign = document.querySelector(`#selectedDesignStyle${sec}-${dataPage}`);
     const promptInputRoomType = document.querySelector(`#selectedRoomType${sec}-${dataPage}`);
     const promptSkyWeather = document.querySelector(`#weather${sec}`);
+    const aiStrength = document.querySelector(`#ip-strength-thickness${sec}${dataPage}`);
 
     const prompColorTexture = document.querySelector(`#color_texture_${dataPage}`);
     const prompMaterialTypeTexture = document.querySelector(`#material_type${sec}`);
@@ -1060,6 +1066,7 @@ async function callInPaintingAPI(sec,el) {
     var material = prompMaterialTexture ? prompMaterialTexture.value : "" ;
     var material_type = prompMaterialTypeTexture ? prompMaterialTypeTexture.value : "" ;
     var skyWeather = promptSkyWeather ? promptSkyWeather.value : "" ;
+    var ai_strength = aiStrength ? aiStrength.value : "" ;
 
     if (dataPage == 'sky-color' && skyWeather == '') {
         let error_message = 'Oops! You didn’t select the Sky Color.';
@@ -1176,6 +1183,7 @@ async function callInPaintingAPI(sec,el) {
             var inPaintUrl = "runpodWidget/fill_space";
         }
         // formData.append("isSubbed", isSubbed);
+        formData.append("ai_strength", ai_strength);
         formData.append("roomtype", roomType);
         formData.append("design_style", designStyle);
         // formData.append("superenhance", superenhance);
