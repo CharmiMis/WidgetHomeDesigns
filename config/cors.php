@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'paths' => ['api/*','embed.js', 'sanctum/csrf-cookie','/widgetData/*','/widget/*','webWidget/**','runpodWidget/*','/runpodWidget/beautiful_redesign/*','/runpod/*','/runpod/getMasking/*','runpodWidget/getMasking/*','/get-base64','/runpodWidget/fullHD'],
+    'paths' => ['api/*','embed.js', 'sanctum/csrf-cookie','/widgetData/*','/widget/*','webWidget/**','runpodWidget/*','/runpodWidget/beautiful_redesign/*','/runpod/*','/runpod/getMasking/*','runpodWidget/getMasking/*','/get-base64','/runpodWidget/fullHD','/translateText'],
 
     'allowed_methods' => ['*'],
 
