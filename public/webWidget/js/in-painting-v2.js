@@ -965,7 +965,14 @@ async function callInPaintingAPI(sec,el) {
     const editButton = document.querySelectorAll('.edit-button-div');
     const progressBarTabs = document.querySelectorAll('.progress-bar-tab');
     var widgetuserid = document.getElementById('widgetUserID').value;
-    var noOfDesign = document.getElementById('widgetUserNumberOfGeneration').value;
+
+    var noOfDesign = 1;
+    
+    if(dataPage == 'aiObjectRemoval'){
+        noOfDesign = 3;
+    }else{
+        noOfDesign = document.getElementById('widgetUserNumberOfGeneration').value;
+    }
 
     disableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
     $('.on-gen-disable').addClass('disable-btn');

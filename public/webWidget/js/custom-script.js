@@ -992,14 +992,8 @@ async function _generateDesign(sec, el) {
     var roomType = promptRoomType ? promptRoomType.value : "" ;
     var styleType = promptStyleType ? promptStyleType.value : "" ;
     var modeType = promptModeType ? promptModeType.value : "" ;
-    var noOfDesign = 1;
     // var noOfDesign = document.getElementById(`no_of_des${sec}`).value;
-    if(dataPage == 'aiObjectRemoval'){
-        noOfDesign = 3;
-    }else{
-        noOfDesign = document.getElementById('widgetUserNumberOfGeneration').value;
-    }
-    
+    var noOfDesign = document.getElementById('widgetUserNumberOfGeneration').value;
     var widgetuserid = document.getElementById('widgetUserID').value;
 
     if (image == '') {
@@ -1068,13 +1062,7 @@ async function _generateDesign(sec, el) {
     _updateAiCatePillsStatus('disable');
 
     var strengthType = document.getElementById(`strength${sec}`).value;
-    var customInstructions = document.getElementById(`custom_instruction${sec}`).value;
-
-    let customInstructionData = '';
-    if (customInstructions) {
-        // Wait for the translated text to be returned
-        customInstructionData = await translateText(customInstructions);
-    }
+    var customInstructionData = document.getElementById(`custom_instruction${sec}`).value;
 
     if (customInstructionData == '' && dataPage == 'convenient-redesign') {
         let error_message = "Oops! You didn't add a prompt.";
@@ -3811,21 +3799,5 @@ function enableGenerateButton(button, spinner,tabs,previousPageButton,editButton
 function reapplyCheckboxStates() {
     multipleDownloadImg.forEach(id => {
         $(`input.ml_dw_img[data-image-id="${id}"]`).prop('checked', true);
-    });
-}
-
-function translateText(text, callback) {
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            type: "POST",
-            url: SITE_BASE_URL + "translateText",
-            data: { text: text },
-            success: function(result) {
-                resolve(result);  // Resolves the Promise with the result
-            },
-            error: function(error) {
-                reject(error);  // Rejects the Promise on error
-            }
-        });
     });
 }
