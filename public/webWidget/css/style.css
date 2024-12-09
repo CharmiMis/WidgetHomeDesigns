@@ -93,9 +93,9 @@ body {
     display: none;
 }
 
-.disabled {
-    pointer-events: none;
-    opacity: 0.6;
+#widgetCustomContainerDiv .disabled {
+    pointer-events: none !important;
+    opacity: 0.6 !important;
 }
 
 /* api-page */
@@ -8353,9 +8353,9 @@ ul.pagination li.page-item.next a:before {
     margin-right: 12px;
 }
 
-.disable-btn {
-    pointer-events: none;
-    opacity: 0.4;
+#widgetCustomContainerDiv .disable-btn {
+    pointer-events: none !important;
+    opacity: 0.4 !important;
 }
 
 .inpaint_message {
@@ -10354,7 +10354,7 @@ div#painting-stag {
     /* text-align: center; */
     background: #0D142DB5;
     padding: 2px 10px;
-    margin: 0 0 4px;
+    margin: 0 0 4px !important;
     border-radius: 7px;
 }
 #widgetCustomContainerDiv .ai-upload-latest-after .ai-upload-title {
@@ -11167,6 +11167,9 @@ div#widgetCustomContainerDiv {
     text-align: left;
     color: #FFFFFF7D;
     display: block;
+}
+#widgetCustomContainerDiv .chkbox-segment label {
+    display: inline-block !important;
 }
 #widgetCustomContainerDiv .gs-edit-settings-row {
     display: flex;

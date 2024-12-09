@@ -1,7 +1,7 @@
 {{-- section first start --}}
 <div>
     <div class="ai-tool-right-top top-menu-bar-first">
-        <ul>
+        <ul class="progress-bar-tab">
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
                 <span>Upload image</span>
@@ -59,7 +59,7 @@
             </a>
             {{-- <h3 class="font22">Fill Spaces</h3> --}}
         </div>
-        <ul>
+        <ul class="progress-bar-tab">
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
                 <span>Upload image</span>
@@ -83,7 +83,7 @@
             </a>
             {{-- <h3 class="font22">Fill Spaces</h3> --}}
         </div>
-        <ul>
+        <ul class="progress-bar-tab">
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
                 <span>Upload image</span>

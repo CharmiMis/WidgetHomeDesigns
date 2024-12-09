@@ -2,7 +2,7 @@
 <div>
     <div class="ai-tool-right-top top-menu-bar-first">
         {{-- <h3 class="font22">Redesign</h3> --}}
-        <ul>
+        <ul class="progress-bar-tab">
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
                 <span>Upload image</span>
@@ -69,7 +69,7 @@
             </a> --}}
             {{-- <h3 class="font22">Redesign</h3> --}}
         </div>
-        <ul>
+        <ul class="progress-bar-tab">
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
                 <span>Upload image</span>
