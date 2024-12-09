@@ -11625,7 +11625,7 @@ div#widgetCustomContainerDiv {
 #widgetCustomContainerDiv .gs-modal-btns a:hover{
     background: linear-gradient(180deg, #5B3DD5 0%, #8F73FF 100%);
 }
-#widgetCustomContainerDiv .gs-modal-continue-disable
+.gs-modal-continue-disable
 {
     pointer-events: none;
 }
@@ -18426,7 +18426,10 @@ filter: blur(237px);
     background-color: #8366f2;
 }
 
-#progressindicatordiv0 .in-painting-card.loader-card.ai-upload-latest-single {
+#progressindicatordiv0 .in-painting-card.loader-card.ai-upload-latest-single,
+#progressindicatordiv1 .in-painting-card.loader-card.ai-upload-latest-single,
+#progressindicatordiv2 .in-painting-card.loader-card.ai-upload-latest-single,
+#progressindicatordiv3 .in-painting-card.loader-card.ai-upload-latest-single {
     height: 400px;
     overflow: hidden;
 }
