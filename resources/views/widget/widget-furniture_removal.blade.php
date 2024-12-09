@@ -138,7 +138,7 @@
                                 width="25px"></button>
                     </div>
                     <div class="our-preset-settings-range-outer">
-                        <input type="hidden" id="no_of_des0" name="no_of_des0" value="1" />
+                        <input type="hidden" id="no_of_des0" name="no_of_des0" value="3" />
                         {{-- <p class="font14">Select the number of designs you want to generate at once.</p>
                         <div class="gs-select-design our-preset-range-design">
                             <div class="our-preset-settings-range" data-sec="0">

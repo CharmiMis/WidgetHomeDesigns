@@ -992,8 +992,14 @@ async function _generateDesign(sec, el) {
     var roomType = promptRoomType ? promptRoomType.value : "" ;
     var styleType = promptStyleType ? promptStyleType.value : "" ;
     var modeType = promptModeType ? promptModeType.value : "" ;
+    var noOfDesign = 1;
     // var noOfDesign = document.getElementById(`no_of_des${sec}`).value;
-    var noOfDesign = document.getElementById('widgetUserNumberOfGeneration').value;
+    if(dataPage == 'aiObjectRemoval'){
+        noOfDesign = 3;
+    }else{
+        noOfDesign = document.getElementById('widgetUserNumberOfGeneration').value;
+    }
+    
     var widgetuserid = document.getElementById('widgetUserID').value;
 
     if (image == '') {
