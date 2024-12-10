@@ -13,11 +13,11 @@
             margin: 0 auto;
         }
 
-        .uploadInPaintingImage {
+        #widgetCustomContainerDiv .uploadInPaintingImage {
             max-width: 100%;
         }
 
-        .feature-buttons {
+        #widgetCustomContainerDiv .feature-buttons {
             list-style: none;
             padding: 0;
             margin: 0;
@@ -25,12 +25,12 @@
             gap: 10px;
         }
 
-        .feature-buttons li {
+        #widgetCustomContainerDiv .feature-buttons li {
             margin-top: 20px;
             margin-left: 20px;
         }
 
-        .feature-button {
+        #widgetCustomContainerDiv .feature-button {
             padding: 10px 20px !important;
             border: none;
             background: #1C1E26;
@@ -40,16 +40,16 @@
             color: #fff !important;
         }
 
-        .feature-button.active {
+        #widgetCustomContainerDiv .feature-button.active {
             background: var(--dark-primary);
             color: var(--dark-text);
         }
 
-        .feature-button:hover {
+        #widgetCustomContainerDiv .feature-button:hover {
             background: var(--dark-primary);
         }
 
-        .feature-content {
+        #widgetCustomContainerDiv .feature-content {
             margin-top: 20px;
             padding: 20px;
             border: 1px solid #111929;
@@ -57,26 +57,26 @@
             background-color: #111929;
         }
 
-        .custom-logo {
+        #widgetCustomContainerDiv .custom-logo {
             display: flex;
             justify-content: center;
             padding-top: 20px;
         }
 
-        .custom-logo img {
+        #widgetCustomContainerDiv  .custom-logo img {
             width: 100px;
         }
-        .gs-our-preset-settings .toggle-button.active {
+        #widgetCustomContainerDiv .gs-our-preset-settings .toggle-button.active {
             background: var(--dark-primary);
             color: var(--dark-text);
 
         }
-        .light-theme .gs-our-preset-settings .toggle-button.active {
+        .light-theme #widgetCustomContainerDiv  .gs-our-preset-settings .toggle-button.active {
             background: var(--light-primary);
             color: var(--light-card);
         }
 
-        .gs-our-preset-settings .toggle-button{
+        #widgetCustomContainerDiv .gs-our-preset-settings .toggle-button{
             height: 54px;
             display: flex;
             align-items: center;
@@ -98,30 +98,35 @@
             justify-content: center;
             border: none;
         }
-        .gs-our-preset-settings .button-container{
+        #widgetCustomContainerDiv .gs-our-preset-settings .button-container{
             display: flex;
         }
 
-        .gs-our-preset-settings .toggle-button:hover{
+        #widgetCustomContainerDiv .gs-our-preset-settings .toggle-button:hover{
             background: var(--dark-primary);
             color: var(--dark-text);
         }
-        .light-theme .gs-our-preset-settings .toggle-button:hover {
+        .light-theme #widgetCustomContainerDiv .gs-our-preset-settings .toggle-button:hover {
             background: var(--light-primary);
             color: var(--light-card);
         }
-        .button-container {
+        #widgetCustomContainerDiv .button-container {
         margin-bottom: 10px;
         }
 
-        .button-container button {
+        #widgetCustomContainerDiv .button-container button {
             padding: 10px 20px;
             margin-right: 10px;
             cursor: pointer;
         }
-        .ui-widget-content, .ui-widget-content a{
+        #widgetCustomContainerDiv .ui-widget-content, 
+        #widgetCustomContainerDiv .ui-widget-content a{
             color: var(--dark-text) !important;
         }
+        #widgetCustomContainerDiv .ai-upload-image svg path {
+            all: revert-layer;
+            fill: var(--dark-primary);
+        }                      
     </style>
     <link rel="stylesheet" type="text/css" href="{{ asset('web/css/cropper.min.css') }}">
 

@@ -9449,6 +9449,9 @@ div#painting-stag {
 {
     all:unset
 }
+#widgetCustomContainerDiv .inpainting-stag-outer {
+    overflow: hidden;
+}
 #widgetCustomContainerDiv .gs-dashboard-wrpper {
     position: relative;
     background: url(../images/dash-bg.png) no-repeat center;
@@ -17540,6 +17543,7 @@ filter: blur(237px);
     position: absolute;
     left: 0;
     opacity: 0;
+    top: 0;
 }
 
 #widgetCustomContainerDiv .color-picker-sectopn #colorName{
