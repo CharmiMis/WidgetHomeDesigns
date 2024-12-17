@@ -1062,7 +1062,13 @@ async function _generateDesign(sec, el) {
     _updateAiCatePillsStatus('disable');
 
     var strengthType = document.getElementById(`strength${sec}`).value;
-    var customInstructionData = document.getElementById(`custom_instruction${sec}_${dataPage}`).value;
+    var customInstructions = document.getElementById(`custom_instruction${sec}_${dataPage}`).value;
+
+    let customInstructionData = '';
+    if (customInstructions) {
+        // Wait for the translated text to be returned
+        customInstructionData = await translateText(customInstructions);
+    }
 
     if (customInstructionData == '' && dataPage == 'convenient-redesign') {
         let error_message = "Oops! You didn't add a prompt.";
