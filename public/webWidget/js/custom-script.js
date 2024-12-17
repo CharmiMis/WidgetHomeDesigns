@@ -1062,6 +1062,7 @@ async function _generateDesign(sec, el) {
     _updateAiCatePillsStatus('disable');
 
     var strengthType = document.getElementById(`strength${sec}`).value;
+    console.log('strengthType: ', strengthType);
     var customInstructions = document.getElementById(`custom_instruction${sec}_${dataPage}`).value;
     console.log('customInstructions: ', customInstructions);
 
