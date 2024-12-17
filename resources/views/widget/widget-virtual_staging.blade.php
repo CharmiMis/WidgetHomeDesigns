@@ -226,7 +226,7 @@
                                             </label>
                                             <textarea
                                                 placeholder="e.g. A clean-looking living room with black and yellow textures and a coffee table made from hardwood."
-                                                name="cust-inst0" id="custom_instruction0_furnish_empty_room" class="hidden"></textarea>
+                                                name="cust-inst0" id="custom_instruction0-furnish_empty_room" class="hidden"></textarea>
                                         @else
                                             <label class="our-preset-prompt-text">Type your custom instructions below
                                                 and our AI will take them into account when generating your designs:
@@ -234,7 +234,7 @@
                                                     onchange="customInstruction(0)"></label>
                                             <textarea
                                                 placeholder="e.g. A clean-looking living room with black and yellow textures and a coffee table made from hardwood."
-                                                name="cust-inst0" id="custom_instruction0_furnish_empty_room" class=""></textarea>
+                                                name="cust-inst0" id="custom_instruction0-furnish_empty_room" class=""></textarea>
                                         @endif
                                     </div>
                                 </div>

@@ -1041,10 +1041,9 @@ async function callInPaintingAPI(sec,el) {
     var masked_base64 = await getMaskedImages();
 
     var segmentType = segmentation ? segmentation : 'false';
-    const promptInput = document.querySelector(`#custom_instruction${sec}_${dataPage}`);
+    const promptInput = document.querySelector(`#custom_instruction${sec}-${dataPage}`);
 
     var isPrompt = promptInput ? promptInput.value : "";
-
     var prompt = '';
     if(isPrompt){
         prompt = await translateText(isPrompt);
