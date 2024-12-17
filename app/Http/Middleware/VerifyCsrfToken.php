@@ -22,6 +22,7 @@ class VerifyCsrfToken extends Middleware
         'runpodWidget/getMasking/*',
         '/get-base64',
         '/runpodWidget/fullHD',
-        '/translateText'
+        '/translateText',
+        '/check-runpod-status'
     ];
 }
