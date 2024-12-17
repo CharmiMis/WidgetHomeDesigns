@@ -1042,19 +1042,13 @@ async function callInPaintingAPI(sec,el) {
 
     var segmentType = segmentation ? segmentation : 'false';
     const promptInput = document.querySelector(`#custom_instruction${sec}-${dataPage}`);
-    console.log('promptInput: ', promptInput);
 
     var isPrompt = promptInput ? promptInput.value : "";
-    console.log('isPrompt: ', isPrompt);
 
     var prompt = '';
-    console.log('promptFirst: ', prompt);
     if(isPrompt){
         prompt = await translateText(isPrompt);
-        console.log('prompt: ', prompt);
     }
-    console.log('prompt: ', prompt);
-
 
     const promptInputDesign = document.querySelector(`#selectedDesignStyle${sec}-${dataPage}`);
     const promptInputRoomType = document.querySelector(`#selectedRoomType${sec}-${dataPage}`);
