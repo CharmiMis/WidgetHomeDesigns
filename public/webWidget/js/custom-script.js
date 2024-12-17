@@ -3801,3 +3801,19 @@ function reapplyCheckboxStates() {
         $(`input.ml_dw_img[data-image-id="${id}"]`).prop('checked', true);
     });
 }
+
+function translateText(text, callback) {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            type: "POST",
+            url: SITE_BASE_URL + "translateText",
+            data: { text: text },
+            success: function(result) {
+                resolve(result);  // Resolves the Promise with the result
+            },
+            error: function(error) {
+                reject(error);  // Rejects the Promise on error
+            }
+        });
+    });
+}

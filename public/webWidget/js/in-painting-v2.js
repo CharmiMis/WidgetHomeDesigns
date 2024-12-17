@@ -4268,3 +4268,4 @@ function pollStatus(requestId,generateDesignBtn, spinner,tabs,previousPageButton
 
     checkStatus(); // Initial call
 }
+
