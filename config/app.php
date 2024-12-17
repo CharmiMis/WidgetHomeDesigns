@@ -94,7 +94,7 @@ return [
     'new_style_css_version' => 2.14, // Set your version number here
     'custom_js_web2' => 1.29, // Set your version number here
     'custom_scriptWidget_version' => 1.24, // Set your version number here
-    'in_paintWidget_v2_version' => 2.01, // Set your version number here
+    'in_paintWidget_v2_version' => 2.03, // Set your version number here
     'widgetstyle_css_version' =>  1.21,
     'api_version' => env("API_VERSION", 'v2'), // API versioning
     'test_api_token_usage' => 100,
