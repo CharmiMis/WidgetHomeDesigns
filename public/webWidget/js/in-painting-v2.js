@@ -4211,7 +4211,7 @@ function pollStatus(requestId,generateDesignBtn, spinner,tabs,previousPageButton
 
     function checkStatus() {
         $.ajax({
-            url: '/check-runpod-status', // Replace with your status-checking endpoint
+            url: SITE_BASE_URL + '/check-runpod-status', // Replace with your status-checking endpoint
             type: 'POST',
             data: {
                 _token: $('meta[name="csrf-token"]').attr('content'),
