@@ -86,7 +86,7 @@ return [
     'googleBucketName' => 'generativeartbucket',
 
     'custom_script_version' => 4.45, // Set your version number here
-    'in_paint_v2_version' => 4.32, // Set your version number here
+    'in_paint_v2_version' => 4.33, // Set your version number here
     'script_js_version' => 3.65, // Set your version number here
     'style_css_version' => 4.15, // Set your version number here
     'user_dash_css_version' => 3.50, // Set your version number here
@@ -94,7 +94,7 @@ return [
     'new_style_css_version' => 2.14, // Set your version number here
     'custom_js_web2' => 1.29, // Set your version number here
     'custom_scriptWidget_version' => 1.24, // Set your version number here
-    'in_paintWidget_v2_version' => 1.24, // Set your version number here
+    'in_paintWidget_v2_version' => 2.01, // Set your version number here
     'widgetstyle_css_version' =>  1.21,
     'api_version' => env("API_VERSION", 'v2'), // API versioning
     'test_api_token_usage' => 100,
