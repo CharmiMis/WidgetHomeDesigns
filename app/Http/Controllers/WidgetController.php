@@ -1119,7 +1119,7 @@ class WidgetController extends Controller
                 'unique_id' => $uniqueFileName,
             ],
         ];
-        $url = \Config::get('app.GPU_SERVERLESS_VIRTUAL_STAGING') . "/run";
+        $url = \Config::get('app.GPU_SERVERLESS_VIRTUAL_STAGING_API') . "/run";
         $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
         if ($response && isset($response['id']) && $response['status'] === 'IN_QUEUE') {
             // Cache::put("runpod_request_{$response['id']}", $payloadData, 300);
@@ -1135,7 +1135,7 @@ class WidgetController extends Controller
     public function checkRunpodStatus(Request $request){
         try {
             $requestId = $request->input('requestId');
-            $url = \Config::get('app.GPU_SERVERLESS_VIRTUAL_STAGING') . "/status/{$requestId}"; // Example status endpoint
+            $url = \Config::get('app.GPU_SERVERLESS_VIRTUAL_STAGING_API') . "/status/{$requestId}"; // Example status endpoint
             $response = $this->curlRequest->checkApiStatusCurl($url);
 
             if (isset($response['error']) && $response['error']) {
