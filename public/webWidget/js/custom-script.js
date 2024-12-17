@@ -1062,17 +1062,13 @@ async function _generateDesign(sec, el) {
     _updateAiCatePillsStatus('disable');
 
     var strengthType = document.getElementById(`strength${sec}`).value;
-    console.log('strengthType: ', strengthType);
     var customInstructions = document.getElementById(`custom_instruction${sec}_${dataPage}`).value;
-    console.log('customInstructions: ', customInstructions);
 
     let customInstructionData = '';
     if (customInstructions) {
-        console.log('inside: ', customInstructions);
         // Wait for the translated text to be returned
         customInstructionData = await translateText(customInstructions);
     }
-    console.log('customInstructionData: ', customInstructionData);
 
     if (customInstructionData == '' && dataPage == 'convenient-redesign') {
         let error_message = "Oops! You didn't add a prompt.";
@@ -3813,7 +3809,6 @@ function reapplyCheckboxStates() {
 }
 
 function translateText(text, callback) {
-    console.log('text: ', text);
     return new Promise((resolve, reject) => {
         $.ajax({
             type: "POST",
