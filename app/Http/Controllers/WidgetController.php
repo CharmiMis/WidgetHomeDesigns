@@ -1093,4 +1093,110 @@ class WidgetController extends Controller
             return false;
         }
     }
+
+    public function runpodWidgetVirtualStaging(Request $request){
+        $payloadData = $request->all();
+        $request->merge(['id' => Auth::id()]);
+        $payloadImage = json_decode($request->payload, true);
+        $prompt = $payloadImage['prompt'];
+        $uniqueFileName = $this->generateUniqueFileName();
+        $googleStorageFileImageUrl = $this->storeImageToGoogleBucket($payloadImage['init_images'], $uniqueFileName);
+
+        if ($googleStorageFileImageUrl === false) {
+            return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
+        }
+
+        $payload = [
+            'input' => [
+                'image' => $googleStorageFileImageUrl['url'],
+                'design_type' => intval($payloadData['designtype']),
+                'room_type' => strtolower($payloadData['roomtype']),
+                'design_style' => strtolower($payloadData['design_style']),
+                'prompt' => !empty($payloadData['custom_instruction']) ? $payloadData['custom_instruction'] : '',
+                'negative_prompt' => !empty($payloadData['is_custom_negative_instruction']) ? $payloadData['is_custom_negative_instruction'] : '',
+                'ai_intervention' => $payloadData['strengthType'],
+                'no_design' => intval($payloadData['no_of_Design']),
+                'unique_id' => $uniqueFileName,
+            ],
+        ];
+        $url = \Config::get('app.GPU_SERVERLESS_VIRTUAL_STAGING') . "/run";
+        $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
+        if ($response && isset($response['id']) && $response['status'] === 'IN_QUEUE') {
+            // Cache::put("runpod_request_{$response['id']}", $payloadData, 300);
+            return response()->json([
+                'status' => $response['status'],
+                'requestId' => $response['id'],
+            ]);
+        }
+
+        return response()->json(['error' => 'Something went wrong. Please try again.']);
+    }
+
+    public function checkRunpodStatus(Request $request){
+        try {
+            $requestId = $request->input('requestId');
+            $url = \Config::get('app.GPU_SERVERLESS_VIRTUAL_STAGING') . "/status/{$requestId}"; // Example status endpoint
+            $response = $this->curlRequest->checkApiStatusCurl($url);
+
+            if (isset($response['error']) && $response['error']) {
+                return response()->json(['error' => $response['message']], 500);
+            }
+
+            // Handle the status responses
+            if ($response && $response['status'] === 'COMPLETED') {
+                if (!isset($response['output']) || isset($response['output']['errors'])) {
+                    return response()->json(['error' => 'Something went wrong. Please try again in some time.'], 500);
+                } else {
+                    $result = [
+                        'status' => 'COMPLETED',
+                        'Sucess' => [
+                            'original_image' => $response['output']['input_image'],
+                            'generated_image' => $response['output']['output_images'],
+                        ],
+                    ];
+
+                    return response()->json($result);
+
+
+                    // // Retrieve the cached payload
+                    // $payloadData = Cache::get("runpod_request_{$requestId}");
+                    // if (!$payloadData) {
+                    //     return response()->json(['error' => 'Payload data not found.'], 500);
+                    // }
+
+                    // $prompt = '';
+                    // $storeData = $this->getDataToSaveForPrecision($response, $payloadData, $prompt);
+                    // $dataSaved = $this->saveData($storeData);
+
+                    // // Clear the cache for this request ID
+                    // Cache::forget("runpod_request_{$requestId}");
+
+                    // if ($dataSaved) {
+                    //     $result['storedIds'] = $dataSaved['storedIds'];
+                    //     return response()->json($result);
+                    // } else {
+                    //     return response()->json(['error' => 'Something went wrong. Please try again in some time.'], 500);
+                    // }
+                }
+            } elseif ($response['status'] === 'IN_QUEUE' || $response['status'] === 'IN_PROGRESS') {
+                return response()->json([
+                    'status' => $response['status'],
+                    'id' => $response['id'],
+                ]);
+            }
+
+            // Handle unexpected statuses
+            return response()->json(['error' => 'Unexpected status'], 500);
+
+        } catch (\Exception $e) {
+            // Log the exception for debugging purposes
+            \Log::error('Error in checkRunpodStatus: ' . $e->getMessage(), [
+                'requestId' => $request->input('requestId'),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            // Return a generic error response
+            return response()->json(['error' => 'An unexpected error occurred. Please try again later.'], 500);
+        }
+    }
 }

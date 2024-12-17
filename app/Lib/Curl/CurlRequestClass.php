@@ -137,4 +137,56 @@ class CurlRequestClass
 
         return $responses;
     }
+
+    public function checkApiStatusCurl($url){
+        // Initialize cURL session
+        $ch = curl_init($url);
+        // Convert payload to JSON if it's not empty
+        if (!empty($payload)) {
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+        }
+
+        // Set headers if provided
+        $bearer_token = config('app.RUNPOD_SERVERLESS_TOKEN');
+
+        $headers = [
+            'Authorization: Bearer '.$bearer_token,
+            'Content-Type: application/json',
+        ];
+
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 320);
+
+        // Execute the request
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        // Check for cURL errors
+        if (curl_errno($ch)) {
+            $error = curl_error($ch);
+            curl_close($ch);
+            return [
+                'error' => true,
+                'message' => "cURL error: {$error}",
+            ];
+        }
+
+        curl_close($ch);
+
+        // Decode the response
+        $decodedResponse = json_decode($response, true);
+
+        // Handle HTTP errors
+        if ($httpCode !== 200 || $decodedResponse === null) {
+            return [
+                'error' => true,
+                'message' => 'Invalid response from API',
+                'http_code' => $httpCode,
+                'response' => $response,
+            ];
+        }
+
+        return $decodedResponse;
+    }
 }

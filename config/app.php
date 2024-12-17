@@ -74,6 +74,7 @@ return [
     'GPU_SERVERLESS_FLOOR_EDITOR_API_QUEUE_STATUS' => env('GPU_SERVERLESS_FLOOR_EDITOR_API_QUEUE_STATUS'),
     'GPU_SERVERLESS_DYNAMIC_ROOM_API_QUEUE_STATUS' => env('GPU_SERVERLESS_DYNAMIC_ROOM_API_QUEUE_STATUS'),
     'GPU_SERVERLESS_STATIC_FURNITURE_API_QUEUE_STATUS' => env('GPU_SERVERLESS_STATIC_FURNITURE_API_QUEUE_STATUS'),
+    'GPU_SERVERLESS_VIRTUAL_STAGING' => env('GPU_SERVERLESS_VIRTUAL_STAGING'),
 
     'GPU_SERVERLESS_FAIL_SKY_COLOR' => env('GPU_SERVERLESS_FAIL_SKY_COLOR'),
     'GPU_SERVERLESS_BACKGROUND_REMOVAL' => env('GPU_SERVERLESS_BACKGROUND_REMOVAL'),
@@ -84,17 +85,17 @@ return [
     'CREDIT_0_PER_REMAIN' => env('CREDIT_0_PER_REMAIN'),
     'googleBucketName' => 'generativeartbucket',
 
-    'custom_script_version' => 4.41, // Set your version number here
-    'in_paint_v2_version' => 4.28, // Set your version number here
-    'script_js_version' => 3.61, // Set your version number here
-    'style_css_version' => 4.11, // Set your version number here
-    'user_dash_css_version' => 3.45, // Set your version number here
-    'main_style_css_version' => 3.46, // Set your version number here
-    'new_style_css_version' => 2.10, // Set your version number here
-    'custom_js_web2' => 1.25, // Set your version number here
-    'custom_scriptWidget_version' => 1.20, // Set your version number here
-    'in_paintWidget_v2_version' => 1.20, // Set your version number here
-    'widgetstyle_css_version' =>  1.17,
+    'custom_script_version' => 4.42, // Set your version number here
+    'in_paint_v2_version' => 4.29, // Set your version number here
+    'script_js_version' => 3.62, // Set your version number here
+    'style_css_version' => 4.12, // Set your version number here
+    'user_dash_css_version' => 3.46, // Set your version number here
+    'main_style_css_version' => 3.47, // Set your version number here
+    'new_style_css_version' => 2.11, // Set your version number here
+    'custom_js_web2' => 1.26, // Set your version number here
+    'custom_scriptWidget_version' => 1.21, // Set your version number here
+    'in_paintWidget_v2_version' => 1.21, // Set your version number here
+    'widgetstyle_css_version' =>  1.18,
     'api_version' => env("API_VERSION", 'v2'), // API versioning
     'test_api_token_usage' => 100,
     'JWT_SECRET_KEY' => env('JWT_SECRET_KEY'),

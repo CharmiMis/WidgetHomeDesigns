@@ -237,6 +237,25 @@ tabs.on( "click", ".ui-tabs-tab", function() {
             addImageLayer();
             addBlackLayer(paintingStag);
             addBrushLayer();
+    }else if(panelId == 'virtual_staging'){
+        dataPage = 'furnish_empty_room';
+        fileInput = document.querySelector("#ipFilePickerFurnishEmptyRoom");
+
+            inPaintStageContainer = document.querySelector('#inpainting-stag-outer-'+dataPage);
+            paintingStagOriginalWidth = inPaintStageContainer ? inPaintStageContainer.clientWidth : 0 ;
+            paintingStagOriginalHeight = inPaintStageContainer ? inPaintStageContainer.clientHeight : 0 ;
+
+            paintingStag = new Konva.Stage({
+                container: 'painting-stag-'+dataPage,
+                width: paintingStagOriginalWidth,
+                height: paintingStagOriginalHeight,
+            });
+
+            imageLayer = new Konva.Layer();
+            paintingStag.add(imageLayer);
+        addImageLayer();
+        addBlackLayer(paintingStag);
+        addBrushLayer();
     } else{
         dataPage = '';
         fileInput = document.querySelector("#ipFilePickerPrecision");
@@ -249,7 +268,11 @@ tabs.on( "click", ".ui-tabs-tab", function() {
     $('#gallery0 img').attr('src', '');
     sizeElement = document.querySelector(`#ip-brush-thickness-${dataPage}`);
     var size = sizeElement ? sizeElement.value : 70;
-    clearPaintingStag();
+    if(dataPage == 'furnish_empty_room'){
+        clearNonMaskPaintingStag();
+    }else{
+        clearPaintingStag();
+    }
     tabs.tabs( "refresh" );
 });
 
@@ -381,7 +404,7 @@ async function loadImageCropper() {
             fileInput.value = '';
         }, 512);
     }
-    else if( dataPage == 'sky-color' || dataPage == 'design_transfer' || dataPage == 'floor_editor'){
+    else if( dataPage == 'sky-color' || dataPage == 'design_transfer' || dataPage == 'floor_editor' || dataPage == 'furnish_empty_room'){
         ipsValidateImage(file, () => {
             clearNonMaskPaintingStag();
             loadImageToStage(image.result);
@@ -494,7 +517,7 @@ $("body").on('click', '.use-as-input-image', async function () {
         // document.getElementById('inpaint-stag').scrollIntoView();
         return;
     }
-    if(dataPage == 'sky-color' || dataPage == 'design_transfer' || dataPage == 'floor_editor'){
+    if(dataPage == 'sky-color' || dataPage == 'design_transfer' || dataPage == 'floor_editor' || dataPage == 'furnish_empty_room'){
         await clearNonMaskPaintingStag();
     }
     else{
@@ -615,7 +638,7 @@ function addSecImageLayer() {
 
 var lastLine;
 function addBrushLayer() {
-    if (hasTransparentPixels || dataPage == 'sky-color' || dataPage == 'design_transfer' || dataPage == 'floor_editor') {
+    if (hasTransparentPixels || dataPage == 'sky-color' || dataPage == 'design_transfer' || dataPage == 'floor_editor' || dataPage == 'furnish_empty_room') {
         // paintingStag.container().style.cursor = 'auto';
         return;
     }
@@ -836,7 +859,9 @@ function loadImageToStage(image) {
         $('.removeMasking').css('cursor', 'not-allowed');
     }
 
-    $(".ip-clearImage").click();
+    if(dataPage != 'furnish_empty_room'){
+        $(".ip-clearImage").click();
+    }
 
     const imageObj = new Image();
     imageObj.onload = async function () {
@@ -867,7 +892,7 @@ function loadImageToStage(image) {
             strokeWidth: 0,
         });
         blackLayer.add(rect);
-        if (!hasTransparentPixels && dataPage!= 'decorstaging' && dataPage != 'aiObjectRemoval' && dataPage != 'sky-color' && dataPage != 'collage_to_render' && dataPage != 'design_transfer' && dataPage != 'floor_editor') {
+        if (!hasTransparentPixels && dataPage!= 'decorstaging' && dataPage != 'aiObjectRemoval' && dataPage != 'sky-color' && dataPage != 'collage_to_render' && dataPage != 'design_transfer' && dataPage != 'floor_editor' && dataPage != 'furnish_empty_room') {
             $('#loading_brilliance').modal('show');
             getNpyImgFile(image);
         }
@@ -886,7 +911,7 @@ function loadImageToStage(image) {
         $('.top-menu-bar-second').css('display', 'flex');
         $('.image-mask-container').css('display', 'block');
         $('.segment-masking-container').css('display', 'block');
-        if (dataPage == 'redesign' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'aiObjectRemoval' || dataPage == 'design_transfer' || dataPage == 'floor_editor') {
+        if (dataPage == 'redesign' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'aiObjectRemoval' || dataPage == 'design_transfer' || dataPage == 'floor_editor' || dataPage == 'furnish_empty_room') {
             $('.redesign-designs-tabs').css('display', 'none');
             $("#loading_brilliance").modal('hide');
         }
@@ -998,7 +1023,7 @@ async function callInPaintingAPI(sec,el) {
         removeLoaderDivs(noOfDesign);
         return;
     }
-    if (!hasTransparentPixels && dataPage != 'sky-color' && dataPage != 'design_transfer') {
+    if (!hasTransparentPixels && dataPage != 'sky-color' && dataPage != 'design_transfer' && dataPage != 'furnish_empty_room') {
         if (!brushLayer.hasChildren()) {
             let error_message = 'Oops! You didn’t masked image before submitting!';
             $('#errorModal h4').text(error_message);
@@ -1016,7 +1041,7 @@ async function callInPaintingAPI(sec,el) {
     var masked_base64 = await getMaskedImages();
 
     var segmentType = segmentation ? segmentation : 'false';
-    const promptInput = document.querySelector(`#custom_instruction${sec}-${dataPage}`);
+    const promptInput = document.querySelector(`#custom_instruction${sec}_${dataPage}`);
 
     var isPrompt = promptInput ? promptInput.value : "";
 
@@ -1028,6 +1053,7 @@ async function callInPaintingAPI(sec,el) {
     const promptInputDesign = document.querySelector(`#selectedDesignStyle${sec}-${dataPage}`);
     const promptInputRoomType = document.querySelector(`#selectedRoomType${sec}-${dataPage}`);
     const promptSkyWeather = document.querySelector(`#weather${sec}`);
+    const strengthTypes = document.getElementById(`strength${sec}`);
     const aiStrength = document.querySelector(`#ip-strength-thickness${sec}${dataPage}`);
 
     const prompColorTexture = document.querySelector(`#color_texture_${dataPage}`);
@@ -1073,6 +1099,7 @@ async function callInPaintingAPI(sec,el) {
     var material = prompMaterialTexture ? prompMaterialTexture.value : "" ;
     var material_type = prompMaterialTypeTexture ? prompMaterialTypeTexture.value : "" ;
     var skyWeather = promptSkyWeather ? promptSkyWeather.value : "" ;
+    var strengthType = strengthTypes ? strengthTypes.value : "" ;
     var ai_strength = aiStrength ? aiStrength.value : "" ;
 
     if (dataPage == 'sky-color' && skyWeather == '') {
@@ -1087,7 +1114,7 @@ async function callInPaintingAPI(sec,el) {
         return;
     }
 
-    if (dataPage == 'change-colors-texture' && color == "" && (prompt == '' ||  $(`#custom_instruction${sec}`).prop('disabled'))){
+    if (dataPage == 'change-colors-texture' && color == "" && (prompt == '' ||  $(`#custom_instruction${sec}_${dataPage}`).prop('disabled'))){
         if (dataPage == 'change-colors-texture' && prompt == ''  && color == '' && material_type == '' && material == "") {
             let error_message = 'Oops! Please select a color, material type, or write a prompt!';
             $('#errorModal h4').text(error_message);
@@ -1182,12 +1209,15 @@ async function callInPaintingAPI(sec,el) {
         formData.append("is_transparent", isTransparent);
         // formData.append("is_staging", is_staging);
         formData.append("segmentType", segmentType);
-    } else if (dataPage == 'fillSpace' || dataPage == 'inPaint') {
+    } else if (dataPage == 'fillSpace' || dataPage == 'inPaint' || dataPage == 'furnish_empty_room') {
         // var inPaintUrl = `${GPU_SERVER_HOST_SEG}/sky_color_change?isSubbed=${isSubbed}&superenhance=${superenhance}&no_of_Design=${noOfDesign}&designtype=${sec}&is_staging=${is_staging}&weather=${skyWeather}&modeType=${mode}`;
         if(dataPage == 'inPaint'){
             var inPaintUrl = "runpodWidget/precision";
         }else if(dataPage == 'fillSpace'){
             var inPaintUrl = "runpodWidget/fill_space";
+        }else if(dataPage == 'furnish_empty_room'){
+            formData.append("strengthType", strengthType);
+            var inPaintUrl = "runpodWidget/virtual_staging";
         }
         // formData.append("isSubbed", isSubbed);
         formData.append("ai_strength", ai_strength);
@@ -1245,6 +1275,10 @@ async function callInPaintingAPI(sec,el) {
         $('.ai-upload-latest-top').removeAttr('style');
         var generatedImageList = ''
         var resultJsonFormat = JSON.parse(result);
+        if (resultJsonFormat.requestId && resultJsonFormat.status === 'IN_QUEUE') {
+            pollStatus(resultJsonFormat.requestId,generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs,sec,roomType,designStyle,noOfDesign); // Pass the request ID to poll
+            return;
+        }
 
         if (resultJsonFormat.error) {
             $('#errorModal h4').text(resultJsonFormat.error);
@@ -1645,7 +1679,7 @@ function loadImageBase64FromRedesign(b64image) {
         $('#loading_brilliance').modal('show');
         loadCollageImageToStage(b64image);
     } else {
-        if (dataPage === 'sky-color' || dataPage == 'design_transfer' || dataPage == 'floor_editor') {
+        if (dataPage === 'sky-color' || dataPage == 'design_transfer' || dataPage == 'floor_editor' || dataPage == 'furnish_empty_room') {
             clearNonMaskPaintingStag();
         } else {
             clearPaintingStag();
@@ -4171,3 +4205,66 @@ function generateUniqueId(prefix = 'image_id') {
 
         return updatedDataPage;
     }
+
+function pollStatus(requestId,generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs,sec,roomType,designStyle,noOfDesign) {
+    const pollInterval = 5000; // 5 seconds
+
+    function checkStatus() {
+        $.ajax({
+            url: '/check-runpod-status', // Replace with your status-checking endpoint
+            type: 'POST',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                requestId: requestId,
+            },
+            success: function(response) {
+                if (response.status === 'COMPLETED') {
+                    generatedImageList = response.Sucess.generated_image;
+                    originalImage = response.Sucess.original_image;
+                    let storedIds = response.storedIds;
+                    enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+                    removeLoaderDivs(noOfDesign);
+                    $('.on-gen-disable').removeClass('disable-btn');
+                    $('.modules_tabs').removeClass('disable-btn');
+                    generatedImageList.forEach((image, index) => {
+                        let design = {
+                            // id: storedIds[index],
+                            original_url: originalImage,
+                            generated_url: image,
+                            style: designStyle,
+                            room_type: roomType,
+                            show_data: true,
+                            section: sec,
+                            hd_image: 0,
+                        };
+                        var itemHtml = generatedInPaintingItem(design);
+                        addNewDesignImage(design);
+                        var data = document.getElementById(`all_data0_${dataPage}`);
+                        data.insertBefore(itemHtml, data.firstChild);
+                    });
+                    // getInPaintingGeneratedDesigns();
+                    // reapplyCheckboxStates();
+                    // setTimeout(function () {
+                    //     $('html, body').animate({
+                    //         scrollTop: virtualStagDesignContainer.offsetTop
+                    //     }, 100);
+                    // }, 500);
+                } else if (response.status === 'IN_PROGRESS' || response.status === 'IN_QUEUE') {
+                    console.log('Still in queue or processing. Retrying in 5 seconds...');
+                    setTimeout(checkStatus, pollInterval);
+                } else {
+                    console.error('Unexpected status:', response.status);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Failed to check status:', error);
+
+                // Retry after 5 seconds
+                console.log('Retrying due to an error. Retrying in 5 seconds...');
+                setTimeout(checkStatus, pollInterval);
+            }
+        });
+    }
+
+    checkStatus(); // Initial call
+}

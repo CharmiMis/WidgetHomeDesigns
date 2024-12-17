@@ -1062,7 +1062,7 @@ async function _generateDesign(sec, el) {
     _updateAiCatePillsStatus('disable');
 
     var strengthType = document.getElementById(`strength${sec}`).value;
-    var customInstructionData = document.getElementById(`custom_instruction${sec}`).value;
+    var customInstructionData = document.getElementById(`custom_instruction${sec}_${dataPage}`).value;
 
     if (customInstructionData == '' && dataPage == 'convenient-redesign') {
         let error_message = "Oops! You didn't add a prompt.";
@@ -1217,12 +1217,12 @@ async function _generateDesign(sec, el) {
 }
 
 function customInstruction(sec) {
-    var isCustomInstruction = document.getElementById(`nwcust${sec}`).checked;
+    var isCustomInstruction = document.getElementById(`nwcust${sec}_${dataPage}`).checked;
     if (isCustomInstruction == true) {
-        $(`#custom_instruction${sec}`).show();
+        $(`#custom_instruction${sec}_${dataPage}`).show();
         // $("#customAiModal").modal('show');
     } else {
-        $(`#custom_instruction${sec}`).val('').hide();
+        $(`#custom_instruction${sec}_${dataPage}`).val('').hide();
         // $("#customAiModal").modal('hide');
     }
 }

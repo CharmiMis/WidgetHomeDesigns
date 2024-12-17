@@ -376,11 +376,11 @@
 
                                             <label class="our-preset-prompt-text">Type your custom instructions below
                                                 and our AI will take them into account when generating your designs:
-                                                <input type="checkbox" id="nwcust0" class="ms-1 ck_inst" checked
+                                                <input type="checkbox" id="nwcust0_redesign" class="ms-1 ck_inst" checked
                                                     onchange="customInstruction(0)"></label>
                                             <textarea
                                                 placeholder="e.g. A clean-looking living room with black and yellow textures and a coffee table made from hardwood."
-                                                name="cust-inst0" id="custom_instruction0" class=""></textarea>
+                                                name="cust-inst0" id="custom_instruction0_redesign" class=""></textarea>
                                         </div>
 
                                         <div class="our-preset-settings-range-outer">
@@ -632,11 +632,11 @@
 
                                             <label class="our-preset-prompt-text">Type your custom instructions below
                                                 and our AI will take them into account when generating your designs:
-                                                <input type="checkbox" id="nwcust1" class="ms-1 ck_inst" checked
+                                                <input type="checkbox" id="nwcust1_redesign" class="ms-1 ck_inst" checked
                                                     onchange="customInstruction(1)"></label>
                                             <textarea
                                                 placeholder="e.g. A clean-looking living room with black and yellow textures and a coffee table made from hardwood."
-                                                name="cust-inst1" id="custom_instruction1" class=""></textarea>
+                                                name="cust-inst1" id="custom_instruction1_redesign" class=""></textarea>
                                         </div>
 
                                         <div class="our-preset-settings-range-outer">
@@ -898,11 +898,11 @@
 
                                             <label class="our-preset-prompt-text">Type your custom instructions below
                                                 and our AI will take them into account when generating your designs:
-                                                <input type="checkbox" id="nwcust2" class="ms-1 ck_inst" checked
+                                                <input type="checkbox" id="nwcust2_redesign" class="ms-1 ck_inst" checked
                                                     onchange="customInstruction(2)"></label>
                                             <textarea
                                                 placeholder="e.g. A clean-looking living room with black and yellow textures and a coffee table made from hardwood."
-                                                name="cust-inst2" id="custom_instruction2" class=""></textarea>
+                                                name="cust-inst2" id="custom_instruction2_redesign" class=""></textarea>
                                         </div>
 
                                         <div class="our-preset-settings-range-outer">
