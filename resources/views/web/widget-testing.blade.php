@@ -65,7 +65,7 @@
 
 <body>
     <!-- Design Now Button -->
-    <button id="designNowBtn">Design Now</button>
+    <button id="designNowBtn">Designs Nows</button>
 
     <!-- Modal structure -->
     <div id="designModal" class="modal designmodal_popup">
