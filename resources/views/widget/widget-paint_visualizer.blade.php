@@ -1,6 +1,5 @@
 {{-- section first start --}}
 <div class="ai-tool-right-top top-menu-bar-first">
-    {{-- <h3 class="font22">Paint Visualizer</h3> --}}
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
@@ -59,7 +58,6 @@
             <img src="https://homedesigns-ai.b-cdn.net/web2/images/back-btn-icon.svg">
             <img class="light-mode" src="https://homedesigns-ai.b-cdn.net/web2/images/light-mode/back-btn-icon.svg">
         </a>
-        {{-- <h3 class="font22">Paint Visualizer</h3> --}}
     </div>
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
@@ -85,7 +83,6 @@
             <img src="https://homedesigns-ai.b-cdn.net/web2/images/back-btn-icon.svg">
             <img class="light-mode" src="https://homedesigns-ai.b-cdn.net/web2/images/light-mode/back-btn-icon.svg">
         </a>
-        {{-- <h3 class="font22">Paint Visualizer</h3> --}}
     </div>
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
@@ -243,7 +240,6 @@
                                     <input type="hidden" id="colorPickerValue" value="">
                                 </div>
                                 <input type="text" id="colorName" placeholder="No Color Selected" readonly>
-                                {{-- <p class="custom-line"><span>OR</span></p> --}}
                             </div>
                         </div>
                         <div id="your-customs-color-image" class="tab-pane show fade">
@@ -271,20 +267,6 @@
             <div class="gs-select-automatically">
                 <div class="our-preset-settings-range-outer">
                     <input type="hidden" id="no_of_des0" name="no_of_des0" value="1" />
-                    {{-- <p class="font14">Select the number of designs you want to generate at
-                        once.</p>
-                    <div class="gs-select-design our-preset-range-design">
-                        <div class="our-preset-settings-range" data-sec="0">
-                        </div>
-                        <div class="our-preset-settings-range-list">
-                            <ul>
-                                <li>1</li>
-                                <li>2</li>
-                                <li>3</li>
-                                <li>4</li>
-                            </ul>
-                        </div>
-                    </div> --}}
                 </div>
                 <div class="gs-continue-btn-outer">
                     <a href="javascript:void(0)" onclick="_generateStyleTransferDesign(0, this)"

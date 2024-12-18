@@ -1,6 +1,5 @@
 {{-- section first start --}}
 <div class="ai-tool-right-top top-menu-bar-first">
-    {{-- <h3 class="font22">Colors & Textures</h3> --}}
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
@@ -61,7 +60,6 @@
             <img src="https://homedesigns-ai.b-cdn.net/web2/images/back-btn-icon.svg">
             <img class="light-mode" src="https://homedesigns-ai.b-cdn.net/web2/images/light-mode/back-btn-icon.svg">
         </a>
-        {{-- <h3 class="font22">Colors & Textures</h3> --}}
     </div>
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
@@ -87,7 +85,6 @@
             <img src="https://homedesigns-ai.b-cdn.net/web2/images/back-btn-icon.svg">
             <img class="light-mode" src="https://homedesigns-ai.b-cdn.net/web2/images/light-mode/back-btn-icon.svg">
         </a>
-        {{-- <h3 class="font22"> Colors & Textures</h3> --}}
     </div>
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
@@ -310,8 +307,6 @@
                                                 style="display: none;">
                                                 <input type="hidden" id="material0" name="material0">
                                                 <p>Pick a texture from the list:
-                                                    {{-- <a href="javascript:void(0)" data-toggle="modal"
-                                                                    data-target="#view_all_material_interior">View All</a> --}}
                                                 </p>
                                                 <ul class="interior-list int_list_item">
                                                     <li data-item="fabrics">Fabrics</li>
@@ -330,8 +325,6 @@
                                                 style="display: none;">
                                                 <input type="hidden" id="material_type0" name="material_type0">
                                                 <p>Select Material Types
-                                                    {{-- <a href="javascript:void(0)" data-toggle="modal"
-                                                                data-target="#view_all_interior">View All</a> --}}
                                                 </p>
                                                 <ul class="interior-list int_mate_list_item">
                                                 </ul>
@@ -340,21 +333,6 @@
                                         <div class="our-preset-settings-range-outer">
                                             <input type="hidden" id="no_of_des0" name="no_of_des0"
                                                 value="1" />
-                                            {{-- <p class="font14">Select the number of designs you want to generate at
-                                                once.
-                                            </p>
-                                            <div class="gs-select-design our-preset-range-design">
-                                                <div class="our-preset-settings-range" data-sec="0">
-                                                </div>
-                                                <div class="our-preset-settings-range-list">
-                                                    <ul>
-                                                        <li>1</li>
-                                                        <li>2</li>
-                                                        <li>3</li>
-                                                        <li>4</li>
-                                                    </ul>
-                                                </div>
-                                            </div> --}}
                                         </div>
                                         <div class="gs-continue-btn-outer painting_generating_bt">
                                             <a href="javascript:void(0)" onclick="_generateInPaintingDesign(0, this)"
@@ -379,20 +357,6 @@
                                     <div class="our-preset-settings-range-outer">
                                     <input type="hidden" id="no_of_des0" name="no_of_des0"
                                                 value="1" />
-                                        {{-- <p class="font14">Select the number of designs you want to generate at
-                                            once.</p>
-                                        <div class="gs-select-design our-preset-range-design">
-                                            <div class="our-preset-settings-range" data-sec="0">
-                                            </div>
-                                            <div class="our-preset-settings-range-list">
-                                                <ul>
-                                                    <li>1</li>
-                                                    <li>2</li>
-                                                    <li>3</li>
-                                                    <li>4</li>
-                                                </ul>
-                                            </div>
-                                        </div> --}}
                                     </div>
                                     <div class="gs-continue-btn-outer painting_generating_bt">
                                         <a href="javascript:void(0)" onclick="_generateInPaintingDesign(0, this)"
@@ -441,8 +405,6 @@
                                                 style="display: none;">
                                                 <input type="hidden" id="material1" name="material1">
                                                 <p>Select Exterior Materials
-                                                    {{-- <a href="javascript:void(0)" data-toggle="modal"
-                                                                    data-target="#view_all_material_exterior">View All</a> --}}
                                                 </p>
 
                                                 <ul class="interior-list ext_list_item">
@@ -457,8 +419,6 @@
                                                 style="display: none;">
                                                 <input type="hidden" id="material_type1" name="material_type1">
                                                 <p>Select Material Types
-                                                    {{-- <a href="javascript:void(0)" data-toggle="modal"
-                                                                    data-target="#view_all_interior">View All</a> --}}
                                                 </p>
                                                 <ul class="interior-list ext_mate_list_item">
                                                 </ul>
@@ -467,21 +427,6 @@
                                         <div class="our-preset-settings-range-outer">
                                             <input type="hidden" id="no_of_des1" name="no_of_des1"
                                                 value="1" />
-                                            {{-- <p class="font14">Select the number of designs you want to generate at
-                                                once.
-                                            </p>
-                                            <div class="gs-select-design our-preset-range-design">
-                                                <div class="our-preset-settings-range" data-sec="1">
-                                                </div>
-                                                <div class="our-preset-settings-range-list">
-                                                    <ul>
-                                                        <li>1</li>
-                                                        <li>2</li>
-                                                        <li>3</li>
-                                                        <li>4</li>
-                                                    </ul>
-                                                </div>
-                                            </div> --}}
                                         </div>
                                         <div class="gs-continue-btn-outer painting_generating_bt">
                                             <a href="javascript:void(0)" onclick="_generateInPaintingDesign(1, this)"
@@ -505,20 +450,6 @@
                                     <div class="our-preset-settings-range-outer">
                                     <input type="hidden" id="no_of_des0" name="no_of_des0"
                                                 value="1" />
-                                        {{-- <p class="font14">Select the number of designs you want to generate at
-                                            once.</p>
-                                        <div class="gs-select-design our-preset-range-design">
-                                            <div class="our-preset-settings-range" data-sec="1">
-                                            </div>
-                                            <div class="our-preset-settings-range-list">
-                                                <ul>
-                                                    <li>1</li>
-                                                    <li>2</li>
-                                                    <li>3</li>
-                                                    <li>4</li>
-                                                </ul>
-                                            </div>
-                                        </div> --}}
                                     </div>
                                     <div class="gs-continue-btn-outer painting_generating_bt">
                                         <a href="javascript:void(0)" onclick="_generateInPaintingDesign(1, this)"
@@ -565,8 +496,6 @@
                                                 style="display: none;">
                                                 <input type="hidden" id="material2" name="material2">
                                                 <p>Select Garden Materials
-                                                    {{-- <a href="javascript:void(0)" data-toggle="modal"
-                                                                    data-target="#view_all_material_garden">View All</a> --}}
                                                 </p>
                                                 <ul class="interior-list gar_list_item">
                                                     <li data-item="ground cover materials">Ground Cover Materials</li>
@@ -582,8 +511,6 @@
                                                 style="display: none;">
                                                 <input type="hidden" id="material_type2" name="material_type2">
                                                 <p>Select Material Types
-                                                    {{-- <a href="javascript:void(0)" data-toggle="modal"
-                                                                data-target="#view_all_interior">View All</a> --}}
                                                 </p>
                                                 <ul class="interior-list gar_mate_list_item">
                                                 </ul>
@@ -592,21 +519,6 @@
                                         <div class="our-preset-settings-range-outer">
                                             <input type="hidden" id="no_of_des2" name="no_of_des2"
                                                 value="1" />
-                                            {{-- <p class="font14">Select the number of designs you want to generate at
-                                                once.
-                                            </p>
-                                            <div class="gs-select-design our-preset-range-design">
-                                                <div class="our-preset-settings-range" data-sec="2">
-                                                </div>
-                                                <div class="our-preset-settings-range-list">
-                                                    <ul>
-                                                        <li>1</li>
-                                                        <li>2</li>
-                                                        <li>3</li>
-                                                        <li>4</li>
-                                                    </ul>
-                                                </div>
-                                            </div> --}}
                                         </div>
                                         <div class="gs-continue-btn-outer painting_generating_bt">
                                             <a href="javascript:void(0)" onclick="_generateInPaintingDesign(2, this)"
@@ -630,20 +542,6 @@
                                     <div class="our-preset-settings-range-outer">
                                     <input type="hidden" id="no_of_des0" name="no_of_des0"
                                                 value="1" />
-                                        {{-- <p class="font14">Select the number of designs you want to generate at
-                                            once.</p>
-                                        <div class="gs-select-design our-preset-range-design">
-                                            <div class="our-preset-settings-range" data-sec="2">
-                                            </div>
-                                            <div class="our-preset-settings-range-list">
-                                                <ul>
-                                                    <li>1</li>
-                                                    <li>2</li>
-                                                    <li>3</li>
-                                                    <li>4</li>
-                                                </ul>
-                                            </div>
-                                        </div> --}}
                                     </div>
                                     <div class="gs-continue-btn-outer painting_generating_bt">
                                         <a href="javascript:void(0)" onclick="_generateInPaintingDesign(2, this)"

@@ -460,13 +460,11 @@
                                     <div id="our-preset-settings-exterior-fillSpace1"
                                         class="tab-pane show fade in active">
                                         <div class="gs-select-automatically">
-                                            {{-- <p>You can change the colors only, or also change textures, materials.</p> --}}
                                             <div class="gs-our-preset-settings ">
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedRoomType1-fillSpace"
                                                         name="selectedRoomType1">
                                                     <p>1. Select House Angle
-                                                        <!-- <a href="javascript:void(0)"  data-toggle="modal" data-target="#view_all_exterior_room_type">View All</a> -->
                                                     </p>
                                                     <div class="gs-select-room-style-row"
                                                         id="roomTypeDisplay1-fillSpace">

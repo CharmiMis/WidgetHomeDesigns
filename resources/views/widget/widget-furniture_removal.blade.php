@@ -96,7 +96,6 @@
                     <div class="gs-select-manually-inner">
                         <div class="gs-select-manually-top">
                             <p>Edit manually using the brush</p>
-                            {{-- <input class="gs-select-manually-value" type="text" id="amount-aiObjectRemoval" readonly=""> --}}
                             <input type="hidden" value="70" id="ip-brush-thickness-aiObjectRemoval" />
                             <input class="gs-select-manually-value" type="text" id="amount-aiObjectRemoval" value="70"
                                 readonly="">

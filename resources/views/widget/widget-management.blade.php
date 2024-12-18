@@ -3,12 +3,14 @@
 @section('styles')
     <style>
         :root {
-            --dark-primary: {{ $primaryColor ?? '#7558EA' }}; /* Override --primary-color with dynamic value */
+            --dark-primary: {{ $primaryColor ?? '#7558EA' }};
+            /* Override --primary-color with dynamic value */
         }
 
-        :root body.light-theme{
+        :root body.light-theme {
             --light-primary: {{ $primaryColor ?? '#7558EA' }};
         }
+
         .konvajs-content {
             margin: 0 auto;
         }
@@ -66,17 +68,19 @@
         .custom-logo img {
             width: 100px;
         }
+
         .gs-our-preset-settings .toggle-button.active {
             background: var(--dark-primary);
             color: var(--dark-text);
 
         }
+
         .light-theme .gs-our-preset-settings .toggle-button.active {
             background: var(--light-primary);
             color: var(--light-card);
         }
 
-        .gs-our-preset-settings .toggle-button{
+        .gs-our-preset-settings .toggle-button {
             height: 54px;
             display: flex;
             align-items: center;
@@ -98,20 +102,23 @@
             justify-content: center;
             border: none;
         }
-        .gs-our-preset-settings .button-container{
+
+        .gs-our-preset-settings .button-container {
             display: flex;
         }
 
-        .gs-our-preset-settings .toggle-button:hover{
+        .gs-our-preset-settings .toggle-button:hover {
             background: var(--dark-primary);
             color: var(--dark-text);
         }
+
         .light-theme .gs-our-preset-settings .toggle-button:hover {
             background: var(--light-primary);
             color: var(--light-card);
         }
+
         .button-container {
-        margin-bottom: 10px;
+            margin-bottom: 10px;
         }
 
         .button-container button {
@@ -119,7 +126,9 @@
             margin-right: 10px;
             cursor: pointer;
         }
-        .ui-widget-content, .ui-widget-content a{
+
+        .ui-widget-content,
+        .ui-widget-content a {
             color: var(--dark-text) !important;
         }
     </style>
@@ -131,7 +140,6 @@
 @endsection
 
 @section('content')
-
     <?php
     $userActivePlan = '';
     $crossShellPlan = [];
@@ -156,15 +164,15 @@
                                 class="feature-button @if ($loop->first) active @endif"
                                 data-feature="{{ $feature }}"
                                 data-feature-url="{{ route('widget.showFeature', ['feature' => $feature]) }}">
-                                 {{ ucwords(str_replace('_', ' ', $feature)) }}@if ($feature === 'precision')+ @endif
+                                {{ ucwords(str_replace('_', ' ', $feature)) }}@if ($feature === 'precision')
+                                    +
+                                @endif
                             </a>
                         </li>
                     @endforeach
                 </ul>
                 <div class="custom-logo">
                     <img src="https://homedesigns.ai/storage/{{ $widgetData->logo }}" alt="Custom Logo" />
-
-                    {{-- <img src="{{ asset('storage/' . $widgetData->logo) }}" alt="Custom Logo" /> --}}
                 </div>
                 @foreach (json_decode($widgetData->accessible_features) as $feature)
                     <div id="{{ $feature }}">
@@ -180,7 +188,8 @@
                             <div class="ai-upload-latest-inset">
                                 <div class="ai-upload-selection">
                                     <div class="ai-upload-favourite hd_image_div">
-                                        <img class="hd_image" src="https://homedesigns-ai.b-cdn.net/web/images/hd_icon.png" alt="">
+                                        <img class="hd_image" src="https://homedesigns-ai.b-cdn.net/web/images/hd_icon.png"
+                                            alt="">
                                     </div>
                                 </div>
                                 <img class="complte-img img" src="" data-item="output-image">
@@ -212,9 +221,11 @@
                                         </li>
                                         <li class="ai-upload-add-project-list on-gen-disable">
                                             <span class="ai-upload-option-tooltip"> HD </span>
-                                            <a class="generate_hd_img" href="javascript:void(0)" data-inputimg="" data-img=""
-                                                    title="Full Hd Quality" data-sec="" data-item="hd_quality">
-                                                <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-image-editing-slide-icon8.svg">
+                                            <a class="generate_hd_img" href="javascript:void(0)" data-inputimg=""
+                                                data-img="" title="Full Hd Quality" data-sec=""
+                                                data-item="hd_quality">
+                                                <img
+                                                    src="https://homedesigns-ai.b-cdn.net/web2/images/gs-image-editing-slide-icon8.svg">
                                             </a>
                                         </li>
                                     </ul>
@@ -232,16 +243,15 @@
                             <div class="ai-upload-latest-inset">
                                 <div class="ai-upload-selection">
                                     <div class="ai-upload-favourite hd_image_div">
-                                        <img class="hd_image" src="https://homedesigns-ai.b-cdn.net/web/images/hd_icon.png" alt="">
+                                        <img class="hd_image" src="https://homedesigns-ai.b-cdn.net/web/images/hd_icon.png"
+                                            alt="">
                                     </div>
                                 </div>
-                                {{-- <span class="ai-upload-title">After</span> --}}
                                 <img class="complte-img img" src="" data-item="output-image">
                                 <div class="ai-upload-effects">
                                     <ul class="render-overlay-data-box">
                                         <li class="render-overlay-data"></li>
                                         <li class="render-overlay-data"></li>
-                                        {{-- <li class="render-overlay-data"></li> --}}
                                     </ul>
                                 </div>
                                 <div class="ai-upload-optons">
@@ -263,9 +273,10 @@
                                         </li>
                                         <li class="ai-upload-add-project-list on-gen-disable">
                                             <span class="ai-upload-option-tooltip"> HD </span>
-                                            <a class="full_hd_quality" href="javascript:void(0)" data-img="" data-sec=""
-                                                data-item="hd_quality" title="Full HD Quality">
-                                                <img src="{{ asset('webWidget/images/gs-image-editing-slide-icon8.svg') }}">
+                                            <a class="full_hd_quality" href="javascript:void(0)" data-img=""
+                                                data-sec="" data-item="hd_quality" title="Full HD Quality">
+                                                <img
+                                                    src="{{ asset('webWidget/images/gs-image-editing-slide-icon8.svg') }}">
                                             </a>
                                         </li>
                                     </ul>
@@ -301,13 +312,14 @@
                     localStorage.removeItem('dropdownValue');
                 }
                 let spaceTypes = $('#widgetAccessedSpaceTypes').val();
-    
+
                 // If spaceTypes is null or empty, set default values to include all types
                 if (!spaceTypes || spaceTypes.trim() === "") {
                     spaceTypes = ["Interior", "Exterior", "Garden"];
                 } else {
                     // Clean up and split the spaceTypes value if it's not empty
-                    spaceTypes = spaceTypes.replace(/[\[\]']+/g, '').split(',').map(type => type.replace(/"/g, '').trim());
+                    spaceTypes = spaceTypes.replace(/[\[\]']+/g, '').split(',').map(type => type.replace(/"/g, '')
+                    .trim());
                 }
                 let isFirstVisibleItem = true;
 
