@@ -58,7 +58,6 @@ class TranslateOutput
 
                 // Translate the text
                 $translatedText = $this->translator->translate($text, $language);
-                dd($translatedText);
                 return str_replace($text, $translatedText, $fullMatch);
             },
             $html
