@@ -211,6 +211,7 @@ class WidgetController extends Controller
 
     public function showWidgetData($id,Request $request)
     {
+        dd("id",$id);
         $widgetData = WidgetUserData::where('user_id', $id)->firstOrFail();
         $userTheme = User::where('id',$id)->select('light_mode')->first();
         $currentDomain = $request->query('currentDomain'); // Get the currentDomain from the query parameters
