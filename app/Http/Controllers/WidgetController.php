@@ -756,25 +756,13 @@ class WidgetController extends Controller
 
     public function runpodWidgetCreativeRedesign(Request $request)
     {
-        // $runpodName = $request->runpod_name;
-        // $dynamicServerPod = $this->DynamicServerRunPod($runpodName);
-        // $payload = $request->all();
-        // $request->merge(['id' => Auth::id()]);
-        // $queryparams = $request->except(['data']);
-        // $url = $dynamicServerPod.'/creative_redesign?init=https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1&'.http_build_query($queryparams);
-        // $headers = [
-        //     'accept'=> 'multipart/form-data',
-        //     'Access-Control-Allow-Origin'=> '*',
-        // ];
-        // $curlRequest = new CurlRequestClass();
-        // return $curlRequest->curlRequests($url, $headers, ['data' => $request->data], 'POST');
-
         $payloadData = $request->all();
         $request->merge(['id' => Auth::id()]);
 
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
         $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        dd($userAccess);
         if ($userAccess === true) {
             $uniqueFileName = $this->generateUniqueFileName();
             if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
