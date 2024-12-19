@@ -14,25 +14,8 @@
         </li>
     </ul>
     <div>
-        {{-- <a href="javascript:void(0)" onclick="loadVideoModal()">
-                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/video-tutorial.svg">
-                        <span>Video Tutorial</span>
-                    </a> --}}
     </div>
 </div>
-{{-- <div class="gs-dashboard-notice upload-image-container">
-    <div class="gs-dashboard-notice-info">
-        <img src="https://homedesigns-ai.b-cdn.net/web2/images/info-icon.svg">
-    </div>
-    <div class="gs-dashboard-notice-info-text">
-        <h2></h2>
-        <p></p>
-    </div>
-    <div class="gs-dashboard-cross">
-        <img src="https://homedesigns-ai.b-cdn.net/web2/images/cross-icon.svg">
-        <img class="light-mode" src="https://homedesigns-ai.b-cdn.net/web2/images/light-mode/cross-icon.svg">
-    </div>
-</div> --}}
 <div class="image-background-container upload-image-container">
     <div class="ai-upload-image">
         <input type="file" class="ai-upload-input" id="ipFilePickerFurnishEmptyRoom">
@@ -68,52 +51,34 @@
         </li>
     </ul>
     <div>
-        {{-- <a href="javascript:void(0)" onclick="loadVideoModal()">
-                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/video-tutorial.svg">
-                        <span>Video Tutorial</span>
-                    </a> --}}
     </div>
 </div>
 
 <div class="image-show-container image-mask-container" style="display: none">
     <div class="gs-what-to-edit-wrapper">
         <div class="gs-what-to-edit-left image-mask-container image-mask-furnish_empty_room" style="display: none">
-            {{-- <input type="hidden" name="image_type" id="input_img_typ">
-                        <input type="hidden" name="image" id="input_image">
-                        <div class="gs-what-to-edit-leftimg" id="gallery0">
-                            <img id="im">
-                        </div> --}}
+           
             <div id="inpainting-stag-outer-furnish_empty_room"
                 class="inpainting-stag-outer d-flex align-items-center justify-content-center">
                 <div id="painting-stag-furnish_empty_room"></div>
             </div>
             <div class="gs-what-to-edit-tips">
                 <div class="gs-what-to-edit-tip-box">
-                    {{-- <div class="gs-what-to-edit-tip-left">
-                                    <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-what-to-edit-tip-icon1.png">
-                                </div> --}}
+             
                     <div class="gs-what-to-edit-tip-right">
-                        {{-- <h4>Tip 1</h4> --}}
                         <p>Use the AI Intervention Slider to control the level of creativity. For subtle changes, set it
                             lower; for bold, innovative designs, move the slider higher.</p>
                     </div>
                 </div>
                 <div class="gs-what-to-edit-tip-box">
-                    {{-- <div class="gs-what-to-edit-tip-left">
-                                    <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-what-to-edit-tip-icon2.png">
-                                </div> --}}
+               
                     <div class="gs-what-to-edit-tip-right">
-                        {{-- <h4>Tip 2</h4> --}}
                         <p>Add specific instructions in the ‘Additional Instructions’ menu to tailor the AI’s redesign,
                             such as “Add modern art to the walls” or “Replace the rug with a minimalist design.”</p>
                     </div>
                 </div>
                 <div class="gs-what-to-edit-tip-box">
-                    {{-- <div class="gs-what-to-edit-tip-left">
-                                    <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-what-to-edit-tip-icon3.png">
-                                </div> --}}
                     <div class="gs-what-to-edit-tip-right">
-                        {{-- <h4>Tip 3</h4> --}}
                         <p>Start with the Redesign tool to make overall changes, then use Precision+ to fine-tune the
                             details. Seamlessly switch between tools using the gallery’s ‘Edit’ button.</p>
                     </div>
@@ -136,7 +101,6 @@
                             <div class="tab-content">
                                 <div id="our-preset-settings-interior" class="tab-pane show fade in active">
                                     <div class="gs-select-automatically">
-                                        {{-- <p>You can change the colors only, or also change textures, materials.</p> --}}
                                         <div class="gs-our-preset-settings ">
                                             <div class="gs-select-room-style">
                                                 <input type="hidden" id="selectedRoomType0-furnish_empty_room" name="selectedRoomType0">
@@ -266,31 +230,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <div class="our-preset-settings-range-outer">
-                                    <input type="hidden" id="no_of_des0" name="no_of_des0" value="1" />
-                                    <p class="font14">Select the number of designs you want to generate at
-                                        once.</p>
-                                    <div class="gs-select-design our-preset-range-design">
-                                        <div class="our-preset-settings-range" data-sec="0">
-                                        </div>
-                                        <div class="our-preset-settings-range-list">
-                                            <ul>
-                                                <li>1</li>
-                                                <li>2</li>
-                                                <li>3</li>
-                                                <li>4</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div> --}}
+                            
                                 <div class="gs-continue-btn-outer redesign-generate-btn">
-                                    {{-- <div class="nwchoice-toggle" style="margin-top: 35px !important">
-                                                    <span class="nw-tgtype">Private Gallery </span>
-                                                    <input type="checkbox" id="nwtoggle0" onchange="loadRenders(0)"
-                                                        @checked($default_gallery == 'public')>
-                                                    <label class="nwtoggle-label0" for="nwtoggle0"></label>
-                                                    <span class="nw-tgtype">Public Gallery</span>
-                                                </div> --}}
+                                   
                                     <a href="javascript:void(0)" onclick="_generateInPaintingDesign(0, this)"
                                         class="gs-continue-btn"><img
                                             src="https://homedesigns-ai.b-cdn.net/web2/images/gs-generate-new-design.svg">
@@ -315,29 +257,7 @@
     <div class="latest-designs-info">Check your latest designs below and save them to projects or to favorites.</div>
     <div class="gs-select-category redesign-designs-tabs">
         <div class="gs-select-category-list">
-            {{-- <ul class="gs-option-flex">
-                <li class="active on-gen-disable nwai-tabs">
-                    <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#interior"
-                        onclick="loadRenders(0)" data-sec="0">
-                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-interior-icon.svg">
-                        <span class="nwtb-titles">Interior</span>
-                    </a>
-                </li>
-                <li class="on-gen-disable nwai-tabs">
-                    <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#exterior"
-                        onclick="loadRenders(1)" data-sec="1">
-                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-exterior-icon.svg">
-                        <span class="nwtb-titles">Exterior</span>
-                    </a>
-                </li>
-                <li class="on-gen-disable nwai-tabs">
-                    <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#garden"
-                        onclick="loadRenders(2)" data-sec="2">
-                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-garden-icon.svg">
-                        <span class="nwtb-titles">Garden</span>
-                    </a>
-                </li>
-            </ul> --}}
+            
         </div>
     </div>
     <div class="tab-content">
