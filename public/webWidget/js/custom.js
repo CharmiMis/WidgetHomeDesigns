@@ -513,3 +513,24 @@ $(document).ready(function () {
         }
     }
 });
+jQuery(document).ready(function(){
+    jQuery('a.ip_img_preview.inpainting-preview, .btn-wrap button').on('click', function() {
+        new BeforeAfter({
+            id: '#one'
+        });
+        new BeforeAfter({
+            id: '#two'
+        });
+        alert('slider');
+});
+jQuery('#modalImagePreview').on('shown.bs.modal', function() {
+    // Initialize BeforeAfter slider for each instance after modal is shown
+    new BeforeAfter({
+        id: '#one'
+    });
+    new BeforeAfter({
+        id: '#two'
+    });
+    alert('slider initialized');
+});
+});

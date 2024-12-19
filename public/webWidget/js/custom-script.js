@@ -674,11 +674,31 @@ function updateFastSpring(userDetail = null) {
     }
 }
 
-function previewImage(beforeSrc,afterSrc) {
+function previewImage(beforeSrc,afterSrc,element) {
+    var imageIndex = $(element).data('index');
+    if (imageIndex !== undefined && imageIndex >= 0 && imageIndex <= editImagesData.length) {
+        currentIndex = imageIndex;
+        updateImages(currentIndex);
+    } else {
+        console.error("Invalid imageIndex: ", imageIndex);
+    }
     $("#modalImagePreview").modal('show')
     $("#mip_before").attr('src', afterSrc);
     // $("#mip_after").attr('src', afterSrc);
-    $("#mip_after").css('background-image', `url(${beforeSrc})`);
+    // $("#mip_after").css('background-image', `url(${beforeSrc})`);
+
+    if (beforeSrc === 'N/A') {
+        $("#mip_after").hide();
+        $('.left-right-arrow-slider').addClass('slider_hide');
+        $(".colored").css('border-right', '0px'); // Remove the border
+        $(".colored").addClass('no-before'); // Add the class to remove ::before background
+    } else {
+        $("#mip_after").attr('src', beforeSrc);
+        $('.left-right-arrow-slider').removeClass('slider_hide');
+        // Optionally restore the original CSS if beforeSrc is valid
+        $(".colored").css('border-right', '5px solid white');
+        $(".colored").removeClass('no-before'); // Remove the class to restore ::before background
+    }
 }
 //get multiple images in array
 var multipleDownloadImg = [];
