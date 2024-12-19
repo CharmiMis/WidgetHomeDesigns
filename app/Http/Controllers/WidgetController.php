@@ -762,7 +762,6 @@ class WidgetController extends Controller
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
         $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
-        dd($userAccess);
         if ($userAccess === true) {
             $uniqueFileName = $this->generateUniqueFileName();
             if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
