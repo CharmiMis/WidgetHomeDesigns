@@ -997,7 +997,8 @@ async function _generateDesign(sec, el) {
     var widgetuserid = document.getElementById('widgetUserID').value;
 
     if (image == '') {
-        alert("Oops! You didn't upload your image.");
+        let error_message_upload = 'Oops! You didn’t upload your image.';
+        alert(error_message_upload);
         $(el).attr('disabled', false);
         $('.gs-continue-btn').removeClass('disable-btn');
         $('.on-gen-disable').removeClass('disable-btn');
@@ -2648,7 +2649,8 @@ async function _generateProducts(sec, el) {
     let image_type = $container.find("[name='image_type'").val();
     let image = $container.find("[name='image'").val();
     if (image == '') {
-        alert("Oops! You didn't upload your image.");
+        let error_message_upload = 'Oops! You didn’t upload your image.';
+        alert(error_message_upload);
         $(el).attr('disabled', false);
         return;
     }
@@ -3256,7 +3258,8 @@ function _generateFeedback(sec ,el){
     var image = document.getElementById('input_image').value;
 
     if (image == '') {
-        alert("Oops! You didn't upload your image.");
+        let error_message_upload = 'Oops! You didn’t upload your image.';
+        alert(error_message_upload);
         $(el).attr('disabled', false);
         return;
     }
@@ -3337,7 +3340,8 @@ function _generateFeedback(sec ,el){
 function _generateSmartHome(sec ,el){
     var image = document.getElementById('input_image').value;
     if (image == '') {
-        alert("Oops! You didn't upload your image.");
+        let error_message_upload = 'Oops! You didn’t upload your image.';
+        alert(error_message_upload);
         $(el).attr('disabled', false);
         return;
     }
@@ -3636,8 +3640,8 @@ $('.second_tab_active').click(function () {
     if(dataPage != 'redesign' && dataPage != 'rostMyHome' && dataPage != 'convenient-redesign' && dataPage != 'collage_to_render' && dataPage != 'productSearch'){
 
         if (!imageLayer.hasChildren()) {
-            let error_message = "Oops! You didn't upload your image.";
-            $('#errorModal h4').text(error_message);
+            let error_message_upload = $('#error_message_upload').text();
+            $('#errorModal h4').text(error_message_upload);
             $('#errorModal').modal('show');
             return;
         }
@@ -3645,8 +3649,8 @@ $('.second_tab_active').click(function () {
     if(dataPage == 'collage_to_render'){
         if(mainImage == undefined)
             {
-                let error_message = "Oops! You didn't upload your image.";
-                $('#errorModal h4').text(error_message);
+                let error_message_upload = $('#error_message_upload').text();
+                $('#errorModal h4').text(error_message_upload);
                 $('#errorModal').modal('show');
                 return;
             }
@@ -3654,8 +3658,8 @@ $('.second_tab_active').click(function () {
     if(dataPage == 'redesign' || dataPage == 'rostMyHome' || dataPage == 'convenient-redesign' || dataPage == 'productSearch'){
         var image = document.getElementById('input_image').value;
         if (image == '') {
-            let error_message = "Oops! You didn't upload your image.";
-            $('#errorModal h4').text(error_message);
+            let error_message_upload = $('#error_message_upload').text();
+            $('#errorModal h4').text(error_message_upload);
             $('#errorModal').modal('show');
             return;
         }
@@ -3682,8 +3686,8 @@ $('.third_tab_active').click(function () {
     if (dataPage == 'collage_to_render'){
         if(mainImage == undefined)
             {
-                let error_message = "Oops! You didn't upload your image.";
-                $('#errorModal h4').text(error_message);
+                let error_message_upload = $('#error_message_upload').text();
+                $('#errorModal h4').text(error_message_upload);
                 $('#errorModal').modal('show');
                 return;
             }
@@ -3711,8 +3715,8 @@ $('.third_tab_active').click(function () {
         }
     }else{
         if (!imageLayer.hasChildren()) {
-            let error_message = "Oops! You didn't upload your image.";
-            $('#errorModal h4').text(error_message);
+            let error_message_upload = $('#error_message_upload').text();
+            $('#errorModal h4').text(error_message_upload);
             $('#errorModal').modal('show');
             return;
         }

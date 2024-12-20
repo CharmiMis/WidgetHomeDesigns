@@ -24,8 +24,9 @@ class TranslateOutput
 
         // Only process HTML responses
         if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
-            $languages = ['hi', 'zh', 'ro']; // Languages for testing
-            $targetLanguage = $languages[array_rand($languages)];
+            $targetLanguage = $request->session()->get('preffrelang', 'en');
+            // $languages = ['hi', 'zh', 'ro']; // Languages for testing
+            // $targetLanguage = $languages[array_rand($languages)];
 
             // Get the rendered HTML content
             $content = $response->getContent();
