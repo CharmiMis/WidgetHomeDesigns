@@ -154,6 +154,9 @@
     <input type="hidden" id="widgetThemeMode" value="{{ $widgetThemeMode }}" />
     <input type="hidden" id="widgetFirstModuleDataPage" value="{{ $features[0] ?? '' }}" />
     <input type="hidden" id="widgetAccessedSpaceTypes" value="{{ $widgetData->space_types }}" />
+    <div class="error_messages" style="display: none;">
+        <div id="error_message_upload" >Oops! You didn't upload your image.</div>
+    </div>
     <div class="ai-tool-wrapper">
         <div class="ai-tool-wrapper  demo-class">
             <div class="ai-tool-right" id="tabs">

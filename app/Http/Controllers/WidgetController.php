@@ -214,7 +214,7 @@ class WidgetController extends Controller
         $widgetData = WidgetUserData::where('user_id', $id)->firstOrFail();
         $userTheme = User::where('id',$id)->select('light_mode')->first();
         $currentDomain = $request->query('currentDomain'); // Get the currentDomain from the query parameters
-        
+
         if (!$widgetData) {
             abort(404, 'Widgetd not found');
         }
@@ -222,6 +222,9 @@ class WidgetController extends Controller
             //     $widgetHtml = 'Please verify your domain';
             //     return response($widgetHtml, 200)->header('Content-Type', 'text/html');
             // }
+        $languages = $widgetData ? $widgetData->preferred_lang : 'en'; // Languages for testing
+        $request->session()->put('preffrelang', $languages);
+        
         $widgetHtml = view('widget.widget-management', ['widgetData' => $widgetData, 'widgetThemeMode' => $userTheme->light_mode, 'primaryColor' => $widgetData->primary_color])->render();
         return response($widgetHtml, 200)->header('Content-Type', 'text/html')
                 ->header('X-User-Theme', $userTheme->light_mode);;
