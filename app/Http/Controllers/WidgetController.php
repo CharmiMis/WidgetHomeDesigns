@@ -509,7 +509,7 @@ class WidgetController extends Controller
                     'segment_type' => $segmentType,
                     'no_design' => $no_of_design,
                     'object' => $payloadData['objects'] ?? '',
-                    'rgb_color' => $payloadData['rgb_color'],
+                    'rgb_color' => $payloadData['rgb_color'] ?? '',
                     'unique_id' => $uniqueFileName,
                 ],
             ];
