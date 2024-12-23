@@ -98,6 +98,7 @@
         });
     </script>
     <script src="{{ asset('webWidget/js/cropper.min.js') }}"></script>
+    <script  src="{{ asset('webWidget/js/newScript.js') }}"></script>
     <script src="{{ asset('web/js/script.js') }}?v={{ config('app.script_js_version') }}"></script>
     <script src="{{ asset('webWidget/js/custom-script.js') }}?v={{ config('app.custom_scriptWidget_version') }}"
         id="custom-script-js"></script>
