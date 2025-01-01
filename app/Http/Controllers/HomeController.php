@@ -3387,7 +3387,7 @@ class HomeController extends Controller
     {
 
         // Validate that the feature exists
-        $validFeatures = ['redesign', 'precision', 'fill_spaces','colors_and_textures','paint_visualizer']; // List all valid features
+        $validFeatures = ['redesign', 'precision', 'fill_spaces','colors_and_textures','paint_visualizer','sketch_to_render']; // List all valid features
 
         if (!in_array($feature, $validFeatures)) {
             abort(404); // Feature not found

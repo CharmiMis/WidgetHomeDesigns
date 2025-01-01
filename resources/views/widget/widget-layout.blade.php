@@ -1874,7 +1874,7 @@
         function selectModeType(modeType, sec) {
             $(`#modeTypeDisplay${sec} .gs-select-room-style-single`).removeClass('active');
             $(`#modeTypeDisplay${sec} .gs-select-room-style-single[data-room-type="${modeType}"]`).addClass('active');
-            document.getElementById('selectedModeType' + sec).value = modeType;
+            document.getElementById('selectedModeType' + sec + "-" +dataPage).value = modeType;
         }
     </script>
     <script>

@@ -42,7 +42,7 @@
 
     <div class="image-background-container upload-image-container">
         <div class="ai-upload-image">
-            <input type="file" class="ai-upload-input select-file dimg-picker" id="fileselect0" data-section="0">
+            <input type="file" class="ai-upload-input select-file dimg-picker" id="fileselect0-redesign" data-section="0">
             <h3 class="font22">Upload your image </h3>
             <!-- <img src="{{ asset('webWidget/images/gs-upload-img.png') }}"> -->
             <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +61,7 @@
     {{-- section first end --}}
 
     {{-- section second start --}}
-    <div class="ai-tool-right-top top-menu-bar-second" id="viewImage" style="display: none">
+    <div class="ai-tool-right-top top-menu-bar-second" id="viewImage-redesign" style="display: none">
         <div class="ai-tool-right-back-btn">
             {{-- <a href="javascript:void(0)" class="gs-back-btn previous_page">
                 <img src="{{ asset('webWidget/images/back-btn-icon.svg') }}">
@@ -88,9 +88,9 @@
     <div class="image-show-container image-mask-container">
         <div class="gs-what-to-edit-wrapper">
             <div class="gs-what-to-edit-left image-mask-container" style="display: none">
-                <input type="hidden" name="image_type" id="input_img_typ">
-                <input type="hidden" name="image" id="input_image">
-                <div class="gs-what-to-edit-leftimg" id="gallery0">
+                <input type="hidden" name="image_type" id="input_img_typ-redesign">
+                <input type="hidden" name="image" id="input_image-redesign">
+                <div class="gs-what-to-edit-leftimg" id="gallery0-redesign">
                     <img id="im">
                 </div>
                 <div class="gs-what-to-edit-tips">
@@ -118,7 +118,7 @@
                     <div class="gs-select-category-list">
                         <ul class="gs-option-flex">
                             <li class="on-gen-disable hide_int">
-                                <a class="gs-select-category-list-inner" data-toggle="tab" href="#interior"
+                                <a class="gs-select-category-list-inner" data-toggle="tab" href="#interior-redesign"
                                     onclick="loadWidgetRenders(0)">
                                     <!-- <img src="{{ asset('webWidget/images/gs-interior-icon.svg') }}"> -->
                                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="39" viewBox="0 0 48 39" fill="none">
@@ -130,7 +130,7 @@
                                 </a>
                             </li>
                             <li class="on-gen-disable hide_ext">
-                                <a class="gs-select-category-list-inner" data-toggle="tab" href="#exterior"
+                                <a class="gs-select-category-list-inner" data-toggle="tab" href="#exterior-redesign"
                                     onclick="loadWidgetRenders(1)">
                                     <!-- <img src="{{ asset('webWidget/images/gs-exterior-icon.svg') }}"> -->
                                     <svg xmlns="http://www.w3.org/2000/svg" width="61" height="54" viewBox="0 0 61 54" fill="none">
@@ -144,7 +144,7 @@
                                 </a>
                             </li>
                             <li class="on-gen-disable hide_gar">
-                                <a class="gs-select-category-list-inner" data-toggle="tab" href="#garden"
+                                <a class="gs-select-category-list-inner" data-toggle="tab" href="#garden-redesign"
                                     onclick="loadWidgetRenders(2)">
                                     <!-- <img src="{{ asset('webWidget/images/gs-garden-icon.svg') }}"> -->
                                   <svg xmlns="http://www.w3.org/2000/svg" width="54" height="41" viewBox="0 0 54 41" fill="none">
@@ -181,7 +181,7 @@
                 </div>
 
                 <div class="tab-content">
-                    <div id="interior" class="tab-pane fade in hide_int">
+                    <div id="interior-redesign" class="tab-pane fade in hide_int">
                         <div class="gs-what-to-edit-tabs">
                             <div class="gs-what-to-edit-title">
                                 <ul>
@@ -277,8 +277,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="gs-select-room-style">
-                                                    <input type="hidden" id="selectedModeType0"
-                                                        name="selectedModeType0">
+                                                    <input type="hidden" id="selectedModeType0-redesign"
+                                                        name="selectedModeType0-redesign">
                                                     <p>3. Select Mode Type</p>
                                                     <div class="gs-select-room-style-row" id="modeTypeDisplay0">
                                                         <div class="gs-select-room-style-single"
@@ -295,13 +295,6 @@
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/select-room-type11.png">
                                                             <span>Creative Redesign</span>
                                                         </div>
-                                                        <div class="gs-select-room-style-single"
-                                                            data-room-type="Sketch to Render"
-                                                            onclick="selectModeType('Sketch to Render',0)">
-                                                            <img
-                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/Sketch to Render.png">
-                                                            <span>Sketch to Render</span>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -313,7 +306,7 @@
                                                 <span class="nw-tgtype">Public Gallery</span>
                                             </div> --}}
                                             <div class="our-preset-settings-range-outer">
-                                                <input type="hidden" id="strength0" name="strength0"
+                                                <input type="hidden" id="strength0-redesign" name="strength0-redesign"
                                                     value="mid" />
                                                 <div class="d-flex align-items-center">
                                                     <p class="font14">AI Intervention</p>
@@ -445,7 +438,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="exterior" class="tab-pane fade hide_ext">
+                    <div id="exterior-redesign" class="tab-pane fade hide_ext">
                         <div class="gs-what-to-edit-tabs">
                             <div class="gs-what-to-edit-title">
                                 <ul>
@@ -533,8 +526,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="gs-select-room-style">
-                                                    <input type="hidden" id="selectedModeType1"
-                                                        name="selectedModeType1">
+                                                    <input type="hidden" id="selectedModeType1-redesign"
+                                                        name="selectedModeType1-redesign">
                                                     <p>3. Select Mode Type </p>
                                                     <div class="gs-select-room-style-row" id="modeTypeDisplay1">
                                                         <div class="gs-select-room-style-single"
@@ -551,13 +544,6 @@
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/select-room-type11.png">
                                                             <span>Creative Redesign</span>
                                                         </div>
-                                                        <div class="gs-select-room-style-single"
-                                                            data-room-type="Sketch to Render"
-                                                            onclick="selectModeType('Sketch to Render',1)">
-                                                            <img
-                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/Sketch to Render.png">
-                                                            <span>Sketch to Render</span>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -569,7 +555,7 @@
                                                 <span class="nw-tgtype">Public Gallery</span>
                                             </div> --}}
                                             <div class="our-preset-settings-range-outer">
-                                                <input type="hidden" id="strength1" name="strength1"
+                                                <input type="hidden" id="strength1-redesign" name="strength1-redesign"
                                                     value="mid" />
                                                 <div class="d-flex align-items-center">
                                                     <p class="font14">AI Intervention</p>
@@ -701,7 +687,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="garden" class="tab-pane fade hide_gar">
+                    <div id="garden-redesign" class="tab-pane fade hide_gar">
                         <div class="gs-what-to-edit-tabs">
                             <div class="gs-what-to-edit-title">
                                 <ul>
@@ -798,8 +784,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="gs-select-room-style">
-                                                    <input type="hidden" id="selectedModeType2"
-                                                        name="selectedModeType2">
+                                                    <input type="hidden" id="selectedModeType2-redesign"
+                                                        name="selectedModeType2-redesign">
                                                     <p>3. Select Mode Type </p>
                                                     <div class="gs-select-room-style-row" id="modeTypeDisplay2">
                                                         <div class="gs-select-room-style-single"
@@ -816,13 +802,6 @@
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/select-room-type11.png">
                                                             <span>Creative Redesign</span>
                                                         </div>
-                                                        <div class="gs-select-room-style-single"
-                                                            data-room-type="Sketch to Render"
-                                                            onclick="selectModeType('Sketch to Render',2)">
-                                                            <img
-                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/Sketch to Render.png">
-                                                            <span>Sketch to Render</span>
-                                                        </div>
                                                     </div>
 
                                                 </div>
@@ -835,7 +814,7 @@
                                                 <span class="nw-tgtype">Public Gallery</span>
                                             </div> --}}
                                             <div class="our-preset-settings-range-outer">
-                                                <input type="hidden" id="strength2" name="strength2"
+                                                <input type="hidden" id="strength2-redesign" name="strength2-redesign"
                                                     value="mid" />
                                                 <div class="d-flex align-items-center">
                                                     <p class="font14">AI Intervention</p>

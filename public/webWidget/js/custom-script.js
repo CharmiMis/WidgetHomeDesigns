@@ -372,19 +372,19 @@ $("body").on('click', '.use-as-input', async function () {
     $(".gs-option-flex li").removeClass("active");
     $(".gs-option-flex li").eq(sec).addClass("active");
 
-    $('#input_img_typ').val('blob');
-    $('#input_image').val(image_url);
+    $(`#input_img_typ-${dataPage}`).val('blob');
+    $(`#input_image-${dataPage}`).val(image_url);
 
     $('#loading_brilliance').modal('show');
 
-    let gallery = document.getElementById(`gallery0`);
+    let gallery = document.getElementById(`gallery0-${dataPage}`);
     gallery.style.display = 'block';
 
     let img = document.createElement('img');
     img.src = image_url;
-    document.getElementById(`gallery0`).removeChild(document.getElementById(`gallery0`).firstElementChild);
-    document.getElementById(`gallery0`).appendChild(img);
-    document.getElementById(`viewImage`).scrollIntoView();
+    document.getElementById(`gallery0-${dataPage}`).removeChild(document.getElementById(`gallery0-${dataPage}`).firstElementChild);
+    document.getElementById(`gallery0-${dataPage}`).appendChild(img);
+    document.getElementById(`viewImage-${dataPage}`).scrollIntoView();
 
     // setTimeout(function () {
     //     $('.gs-modal-uploading_instruction_slider')[0].slick.refresh();
@@ -396,7 +396,7 @@ $("body").on('click', '.use-as-input', async function () {
         $('.top-menu-bar-second').css('display', 'flex');
         $('.image-mask-container').css('display', 'block');
         $('.segment-masking-container').css('display', 'block');
-        if (dataPage == 'redesign' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome') {
+        if (dataPage == 'redesign' || dataPage =='sketchToRender' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome') {
             $('.redesign-designs-tabs').css('display', 'none');
             $("#loading_brilliance").modal('hide');
         }
@@ -513,10 +513,10 @@ $(document).on('change', '.dimg-picker', function (e) {
     }, (error) => {
         ipsFailOnValidImage(error);
         filePicker.val('');
-        $("#gallery" + section).hide();
+        $("#gallery" + section + dataPage ).hide();
         $(".drop-cont" + section).removeAttr("style");
-        $('#input_img_typ').val('');
-        $('#input_image').val('');
+        $(`#input_img_typ-${dataPage}`).val('');
+        $(`#input_image-${dataPage}`).val('');
     });
 });
 
@@ -564,12 +564,16 @@ function goToBuySection() {
 
 
 function ipsPreviewImg(section) {
+    console.log('section: ', section);
+    console.log('dataPage: ', dataPage);
     // $('#uploading_instruction').modal('show');
     $('#uploading_instruction').modal('hide');
     $('#loading_brilliance').modal('show');
-    var file = $("#fileselect" + section)[0].files[0];
+    var file = $("#fileselect" + section + "-" +dataPage)[0].files[0];
+    console.log('file: ', file);
 
-    let gallery = document.getElementById(`gallery${section}`);
+    let gallery = document.getElementById(`gallery${section}-${dataPage}`);
+    console.log('gallery: ', gallery);
     gallery.style.display = 'block';
 
     // let uploadText = document.getElementById(`uploadText${section}`);
@@ -582,10 +586,10 @@ function ipsPreviewImg(section) {
     reader.onloadend = function () {
         let img = document.createElement('img')
         img.src = reader.result
-        document.getElementById(`gallery${section}`).removeChild(document.getElementById(`gallery${section}`).firstElementChild);
-        document.getElementById(`gallery${section}`).appendChild(img);
-        $('#input_img_typ').val('blob');
-        $('#input_image').val(reader.result);
+        document.getElementById(`gallery${section}-${dataPage}`).removeChild(document.getElementById(`gallery${section}-${dataPage}`).firstElementChild);
+        document.getElementById(`gallery${section}-${dataPage}`).appendChild(img);
+        $(`#input_img_typ-${dataPage}`).val('blob');
+        $(`#input_image-${dataPage}`).val(reader.result);
 
         let furnitureFinderImg = document.querySelector('.gs-similar-product-img');
         if (furnitureFinderImg) {
@@ -602,7 +606,7 @@ function ipsPreviewImg(section) {
         $('.top-menu-bar-second').css('display', 'flex');
         $('.image-mask-container').css('display', 'block');
         $('.segment-masking-container').css('display', 'block');
-        if (dataPage == 'redesign' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'convenient-redesign') {
+        if (dataPage == 'redesign' || dataPage =='sketchToRender' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'convenient-redesign') {
             $('.redesign-designs-tabs').css('display', 'none');
             $("#loading_brilliance").modal('hide');
         }
@@ -734,7 +738,7 @@ $(".yes-confirm-modal").on('click', function() {
         success: function (response) {
             $("#confirm_delete_modal").modal('show');
             if(dataPage != 'favourite'){
-                if(dataPage == 'redesign' || dataPage == 'convenient-redesign'){
+                if(dataPage == 'redesign' || dataPage =='sketchToRender' || dataPage == 'convenient-redesign'){
                     getRedesignGeneratedDesigns();
                 }else{
                     getInPaintingGeneratedDesigns();
@@ -1005,10 +1009,10 @@ async function _generateDesign(sec, el) {
     $('.modules_tabs').addClass('disable-btn');
     $('input[id^="nwtoggle"]').addClass('disable-btn').prop('disabled', true);
 
-    var image = document.getElementById('input_image').value;
+    var image = document.getElementById(`input_image-${dataPage}`).value;
     const promptRoomType = document.querySelector(`#selectedRoomType${sec}-${dataPage}`);
     const promptStyleType = document.querySelector(`#selectedDesignStyle${sec}-${dataPage}`);
-    const promptModeType = document.querySelector(`#selectedModeType${sec}`);
+    const promptModeType = document.querySelector(`#selectedModeType${sec}-${dataPage}`);
     var roomType = promptRoomType ? promptRoomType.value : "" ;
     var styleType = promptStyleType ? promptStyleType.value : "" ;
     var modeType = promptModeType ? promptModeType.value : "" ;
@@ -1081,7 +1085,7 @@ async function _generateDesign(sec, el) {
 
     _updateAiCatePillsStatus('disable');
 
-    var strengthType = document.getElementById(`strength${sec}`).value;
+    var strengthType = document.getElementById(`strength${sec}-${dataPage}`).value;
     var customInstructions = document.getElementById(`custom_instruction${sec}_${dataPage}`).value;
 
     let customInstructionData = '';
@@ -2945,7 +2949,7 @@ $(document).on('click', '.search_with_google', function () {
 function loadSearchImg(search_img) {
     var section = 0;
     var sectionId = section;
-    let gallery = document.getElementById(`gallery${sectionId}`);
+    let gallery = document.getElementById(`gallery${sectionId}-${dataPage}`);
     gallery.style.display = 'block';
 
     let uploadText = document.getElementById(`uploadText${sectionId}`);
@@ -2957,9 +2961,9 @@ function loadSearchImg(search_img) {
     if (search_img) {
         img.src = search_img
     }
-    document.getElementById(`gallery${section}`).removeChild(document.getElementById(`gallery${section}`)
+    document.getElementById(`gallery${section}-${dataPage}`).removeChild(document.getElementById(`gallery${section}-${dataPage}`)
         .firstElementChild);
-    document.getElementById(`gallery${section}`).appendChild(img);
+    document.getElementById(`gallery${section}-${dataPage}`).appendChild(img);
     $("#forminterior" + section).find("[name='image_type']").val('blob');
     $("#forminterior" + section).find("[name='image']").val(search_img);
     _generateProducts(0, this);
@@ -3250,7 +3254,7 @@ $(document).on('click', '.continue-parameter', function () {
 });
 
 $(".previous_page").click(function () {
-    if (dataPage == 'redesign' || $('.top-menu-bar-second').is(':visible')) {
+    if (dataPage == 'redesign' || dataPage =='sketchToRender' || $('.top-menu-bar-second').is(':visible')) {
         $('.redesign-designs-tabs').css('display', 'block');
         $('.top-menu-bar-second').css('display', 'none');
         $('.image-mask-container').css('display', 'none');
@@ -3273,7 +3277,7 @@ $(".previous_page").click(function () {
 
 function _generateFeedback(sec ,el){
     var imageType = document.getElementById('imageType').value;
-    var image = document.getElementById('input_image').value;
+    var image = document.getElementById(`input_image-${dataPage}`).value;
 
     if (image == '') {
         alert("Oops! You didn't upload your image.");
@@ -3355,7 +3359,7 @@ function _generateFeedback(sec ,el){
 }
 
 function _generateSmartHome(sec ,el){
-    var image = document.getElementById('input_image').value;
+    var image = document.getElementById(`input_image-${dataPage}`).value;
     if (image == '') {
         alert("Oops! You didn't upload your image.");
         $(el).attr('disabled', false);
@@ -3551,15 +3555,15 @@ function loadImageBase64FromInpainting(base64Data) {
     let section = 0; // Assuming you have a way to determine section from URL
     $('#loading_brilliance').modal('show');
 
-    let gallery = document.getElementById(`gallery${section}`);
+    let gallery = document.getElementById(`gallery${section}-${dataPage}`);
     gallery.style.display = 'block';
 
     let img = document.createElement('img');
     img.src = base64Data;
-    document.getElementById(`gallery${section}`).innerHTML = '';
-    document.getElementById(`gallery${section}`).appendChild(img);
-    $('#input_img_typ').val('base64');
-    $('#input_image').val(base64Data);
+    document.getElementById(`gallery${section}-${dataPage}`).innerHTML = '';
+    document.getElementById(`gallery${section}-${dataPage}`).appendChild(img);
+    $(`#input_img_typ-${dataPage}`).val('base64');
+    $(`#input_image-${dataPage}`).val(base64Data);
 
     let furnitureFinderImg = document.querySelector('.gs-similar-product-img');
     if (furnitureFinderImg) {
@@ -3576,7 +3580,7 @@ function loadImageBase64FromInpainting(base64Data) {
         $('.top-menu-bar-second').css('display', 'flex');
         $('.image-mask-container').css('display', 'block');
         $('.segment-masking-container').css('display', 'block');
-        if (dataPage == 'redesign' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'convenient-redesign') {
+        if (dataPage == 'redesign' || dataPage =='sketchToRender' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'convenient-redesign') {
             $('.redesign-designs-tabs').css('display', 'none');
             $("#loading_brilliance").modal('hide');
         }
@@ -3653,7 +3657,7 @@ $('.first_tab_active').click(function () {
     $('.category-container').css('display', 'none');
 });
 $('.second_tab_active').click(function () {
-    if(dataPage != 'redesign' && dataPage != 'rostMyHome' && dataPage != 'convenient-redesign' && dataPage != 'collage_to_render' && dataPage != 'productSearch'){
+    if(dataPage != 'redesign' && dataPage !='sketchToRender' && dataPage != 'rostMyHome' && dataPage != 'convenient-redesign' && dataPage != 'collage_to_render' && dataPage != 'productSearch'){
 
         if (!imageLayer.hasChildren()) {
             let error_message = "Oops! You didn't upload your image.";
@@ -3671,8 +3675,8 @@ $('.second_tab_active').click(function () {
                 return;
             }
     }
-    if(dataPage == 'redesign' || dataPage == 'rostMyHome' || dataPage == 'convenient-redesign' || dataPage == 'productSearch'){
-        var image = document.getElementById('input_image').value;
+    if(dataPage == 'redesign' || dataPage =='sketchToRender' || dataPage == 'rostMyHome' || dataPage == 'convenient-redesign' || dataPage == 'productSearch'){
+        var image = document.getElementById(`input_image-${dataPage}`).value;
         if (image == '') {
             let error_message = "Oops! You didn't upload your image.";
             $('#errorModal h4').text(error_message);
@@ -3689,7 +3693,7 @@ $('.second_tab_active').click(function () {
     $('.image-mask-container').css('display', 'block');
     $('.segment-masking-container').css('display', 'block');
     $('.redesign-designs-tabs').css('display', 'block');
-    if (dataPage == 'redesign' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'collage_to_render') {
+    if (dataPage == 'redesign' || dataPage =='sketchToRender' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'collage_to_render') {
         $('.redesign-designs-tabs').css('display', 'none');
         $("#loading_brilliance").modal('hide');
     }

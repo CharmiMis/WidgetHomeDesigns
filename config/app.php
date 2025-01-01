@@ -1333,6 +1333,7 @@ return [
         'colors_and_textures',
         'furniture_removal',
         'sky_colors',
+        'sketch_to_render',
     ],
 
     /*
