@@ -1097,39 +1097,47 @@ class WidgetController extends Controller
     public function runpodWidgetVirtualStaging(Request $request){
         $payloadData = $request->all();
         $request->merge(['id' => Auth::id()]);
+        
         $payloadImage = json_decode($request->payload, true);
         $prompt = $payloadImage['prompt'];
-        $uniqueFileName = $this->generateUniqueFileName();
-        $googleStorageFileImageUrl = $this->storeImageToGoogleBucket($payloadImage['init_images'], $uniqueFileName);
+        $mode = $request->modeType;
+        $Widgetid = $request->widgetuserid;
+        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        if ($userAccess === true) {
+            $uniqueFileName = $this->generateUniqueFileName();
+            $googleStorageFileImageUrl = $this->storeImageToGoogleBucket($payloadImage['init_images'], $uniqueFileName);
 
-        if ($googleStorageFileImageUrl === false) {
-            return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
+            if ($googleStorageFileImageUrl === false) {
+                return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
+            }
+
+            $payload = [
+                'input' => [
+                    'image' => $googleStorageFileImageUrl['url'],
+                    'design_type' => intval($payloadData['designtype']),
+                    'room_type' => strtolower($payloadData['roomtype']),
+                    'design_style' => strtolower($payloadData['design_style']),
+                    'prompt' => !empty($payloadData['custom_instruction']) ? $payloadData['custom_instruction'] : '',
+                    'negative_prompt' => !empty($payloadData['is_custom_negative_instruction']) ? $payloadData['is_custom_negative_instruction'] : '',
+                    'ai_intervention' => $payloadData['strengthType'],
+                    'no_design' => intval($payloadData['no_of_Design']),
+                    'unique_id' => $uniqueFileName,
+                ],
+            ];
+            $url = \Config::get('app.GPU_SERVERLESS_VIRTUAL_STAGING_API') . "/run";
+            $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
+            if ($response && isset($response['id']) && $response['status'] === 'IN_QUEUE') {
+                // Cache::put("runpod_request_{$response['id']}", $payloadData, 300);
+                return response()->json([
+                    'status' => $response['status'],
+                    'requestId' => $response['id'],
+                ]);
+            }
+
+            return response()->json(['error' => 'Something went wrong. Please try again.']);
+        }else{
+            return response()->json($userAccess, 401);
         }
-
-        $payload = [
-            'input' => [
-                'image' => $googleStorageFileImageUrl['url'],
-                'design_type' => intval($payloadData['designtype']),
-                'room_type' => strtolower($payloadData['roomtype']),
-                'design_style' => strtolower($payloadData['design_style']),
-                'prompt' => !empty($payloadData['custom_instruction']) ? $payloadData['custom_instruction'] : '',
-                'negative_prompt' => !empty($payloadData['is_custom_negative_instruction']) ? $payloadData['is_custom_negative_instruction'] : '',
-                'ai_intervention' => $payloadData['strengthType'],
-                'no_design' => intval($payloadData['no_of_Design']),
-                'unique_id' => $uniqueFileName,
-            ],
-        ];
-        $url = \Config::get('app.GPU_SERVERLESS_VIRTUAL_STAGING_API') . "/run";
-        $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
-        if ($response && isset($response['id']) && $response['status'] === 'IN_QUEUE') {
-            // Cache::put("runpod_request_{$response['id']}", $payloadData, 300);
-            return response()->json([
-                'status' => $response['status'],
-                'requestId' => $response['id'],
-            ]);
-        }
-
-        return response()->json(['error' => 'Something went wrong. Please try again.']);
     }
 
     public function checkRunpodStatus(Request $request){
