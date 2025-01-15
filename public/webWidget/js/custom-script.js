@@ -564,16 +564,12 @@ function goToBuySection() {
 
 
 function ipsPreviewImg(section) {
-    console.log('section: ', section);
-    console.log('dataPage: ', dataPage);
     // $('#uploading_instruction').modal('show');
     $('#uploading_instruction').modal('hide');
     $('#loading_brilliance').modal('show');
     var file = $("#fileselect" + section + "-" +dataPage)[0].files[0];
-    console.log('file: ', file);
 
     let gallery = document.getElementById(`gallery${section}-${dataPage}`);
-    console.log('gallery: ', gallery);
     gallery.style.display = 'block';
 
     // let uploadText = document.getElementById(`uploadText${section}`);
@@ -1012,6 +1008,8 @@ async function _generateDesign(sec, el) {
     var image = document.getElementById(`input_image-${dataPage}`).value;
     const promptRoomType = document.querySelector(`#selectedRoomType${sec}-${dataPage}`);
     const promptStyleType = document.querySelector(`#selectedDesignStyle${sec}-${dataPage}`);
+    const keepStructureElements = document.getElementById(`structural_elements_ck${sec}`) ? document.getElementById(`structural_elements_ck${sec}`).checked : false;
+
     const promptModeType = document.querySelector(`#selectedModeType${sec}-${dataPage}`);
     var roomType = promptRoomType ? promptRoomType.value : "" ;
     var styleType = promptStyleType ? promptStyleType.value : "" ;
@@ -1122,7 +1120,9 @@ async function _generateDesign(sec, el) {
         aiAPI = "runpodWidget/render_realistic";
     }else if(modeType == 'Convenient Redesign'){
         aiAPI = "runpodWidget/intuitive_redesign";
-    } else {
+    } else if(modeType == 'Perfect Redesign'){
+        aiAPI = "runpodWidget/perfect_redesign";
+    }else {
         aiAPI = "runpodWidget/beautiful_redesign";
     }
     formData.append("data", image);
@@ -1141,6 +1141,7 @@ async function _generateDesign(sec, el) {
 
     formData.append("no_of_Design", noOfDesign);
     formData.append("widgetuserid",widgetuserid);
+    formData.append("keepStructureElements",keepStructureElements);
 
     await fetch(SITE_BASE_URL + aiAPI, {
         method: 'POST',
@@ -1179,6 +1180,11 @@ async function _generateDesign(sec, el) {
             return response.json();
         })
         .then(result => {
+            if (result.requestId && result.status === 'IN_QUEUE') {
+                checkRequestStatus(result.requestId,generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs,sec,roomType,styleType,noOfDesign,modeType,precisionUserValue,keepStructureElements); // Pass the request ID to poll
+                return;
+            }
+
             $('#closeModal').removeClass('disable-btn');
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
             $('.gs-continue-btn').removeClass('disable-btn');
@@ -1239,7 +1245,7 @@ async function _generateDesign(sec, el) {
             console.error('Error:', error);
         });
 
-        removeLoaderDivs(noOfDesign);
+        // removeLoaderDivs(noOfDesign);
 
     $(el).attr('disabled', false);
 
@@ -3504,8 +3510,6 @@ $("body").on('click', '.edit_generated_image', async function () {
     if (imageIndex !== undefined && imageIndex >= 0 && imageIndex <= editImagesData.length) {
         currentIndex = imageIndex; // Set the current index to the clicked image index
         updateImages(currentIndex); // Update the images
-    } else {
-        console.error("Invalid imageIndex: ", imageIndex);
     }
 
     $('.edit_with_precision').attr('data-img', outputImg);
@@ -3846,4 +3850,109 @@ function translateText(text, callback) {
             }
         });
     });
+}
+
+function checkRequestStatus(requestId,generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs,sec,roomType,styleType,noOfDesign,modeType,precisionUserValue,keepStructureElements) {
+    const pollInterval = 5000; // 5 seconds
+    function checkStatus() {
+        $.ajax({
+            url: SITE_BASE_URL + 'check-request-status', // Replace with your status-checking endpoint
+            type: 'POST',
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                requestId: requestId,
+                keepStructureElements: keepStructureElements,
+            },
+            success: function(response) {
+                const parsedJSON = JSON.parse(response);
+                if (parsedJSON.status === 'COMPLETED') {
+                    enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+                    $('.gs-continue-btn').removeClass('disable-btn');
+                    $('.on-gen-disable').removeClass('disable-btn');
+                    $('input[id^="nwtoggle"]').removeClass('disable-btn').prop('disabled', false);
+
+                    if (parsedJSON.error) {
+                        $('#errorModal h4').text(parsedJSON.error);
+                        $('#errorModal').modal('show');
+                        $(el).attr('disabled', false);
+                        enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+                        removeLoaderDivs(noOfDesign);
+                        $('.on-gen-disable').removeClass('disable-btn');
+                        return;
+                    }
+                    $('.ai-upload-latest-top').removeAttr('style');
+                    generatedImage = parsedJSON['Sucess']['generated_image'];
+                    originalImage = parsedJSON['Sucess']['original_image'];
+                    let storedIds = parsedJSON['storedIds'];
+                    generatedImage.forEach((item, index) => {
+                        let design = {
+                            // id: storedIds[index],
+                            original_url: originalImage,
+                            generated_url: item,
+                            style: styleType,
+                            room_type: roomType,
+                            mode: modeType,
+                            show_data: true,
+                            section: sec,
+                            precisionUserValue: precisionUserValue,
+                            hd_image: 0,
+                        };
+                        let code = generatedRedesignItem(design);
+                        // Add the generated design image to the array
+                        addNewDesignImage(design);
+                        removeLoaderDivs(noOfDesign);
+
+                        let data = document.getElementById(`all_data0_${dataPage}`);
+
+                        data.insertBefore(code, data.firstChild);
+                    });
+                    // if(privatize == 0){
+                    //     getRedesignGeneratedDesigns();
+                    //     reapplyCheckboxStates();
+                    // }
+
+                    $.ajax({
+                        url: 'admin/dashboard/updateButtonClickCount',
+                        type: 'post',
+                        data: {
+                            sec: sec
+                        },
+                        dataType: 'json',
+                        success: function (resp) {
+                        },
+                        error: function (resp) {
+                            swal("Something Went Wrong!", {
+                                icon: "error",
+                            });
+                        }
+                    });
+
+                    //ajax code to store the count of styles
+                    var countStyles = {
+                        styleType: styleType,
+                        roomType: roomType,
+                        sec: sec
+                    };
+                    $.ajax({
+                        type: "POST",
+                        url: "admin/dashboard/updateButtonStyleClickCount",
+                        data: countStyles,
+                        success: function (response) {
+                        },
+                        error: function (xhr, status, error) {
+                        }
+                    });
+                } else if (parsedJSON.status === 'IN_PROGRESS' || parsedJSON.status === 'IN_QUEUE') {
+                    setTimeout(checkStatus, pollInterval);
+                } else {
+                }
+            },
+            error: function(xhr, status, error) {
+                // Retry after 5 seconds
+                setTimeout(checkStatus, pollInterval);
+            }
+        });
+    }
+
+    checkStatus(); // Initial call
 }

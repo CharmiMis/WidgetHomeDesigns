@@ -1759,7 +1759,6 @@ function redoBrushing() {
         if (actionToRedo) {
             cursorBrushActions.push(actionToRedo);  // If needed, push back to cursorBrushActions
             brushLayer.add(actionToRedo);  // Assuming this is how you reapply the action
-            console.log('currentActionIndex redo', currentActionIndex);
 
             $(".ip-undoImage").prop('disabled', false).css('cursor', 'pointer');
             if (ids.length === 0) {
@@ -4284,10 +4283,8 @@ function pollStatus(requestId,generateDesignBtn, spinner,tabs,previousPageButton
                     //     }, 100);
                     // }, 500);
                 } else if (response.status === 'IN_PROGRESS' || response.status === 'IN_QUEUE') {
-                    console.log('Still in queue or processing. Retrying in 5 seconds...');
                     setTimeout(checkStatus, pollInterval);
                 } else {
-                    console.error('Unexpected status:', response.status);
                 }
             },
             error: function(xhr, status, error) {

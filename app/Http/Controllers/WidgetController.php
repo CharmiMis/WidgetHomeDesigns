@@ -19,6 +19,7 @@ use Illuminate\Support\Str;
 use App\Models\WidgetUserData;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Cache;
 
 class WidgetController extends Controller
 {
@@ -61,6 +62,7 @@ class WidgetController extends Controller
                     'ai_intervention' => $payloadData['strengthType'],
                     'no_design' => intval($payloadData['no_of_Design']),
                     'unique_id' => $uniqueFileName,
+                    'is_preserve'=>!empty($payloadData['keepStructureElements'])?filter_var($payloadData['keepStructureElements'], FILTER_VALIDATE_BOOLEAN):filter_var(false, FILTER_VALIDATE_BOOLEAN),
                 ],
             ];
 
@@ -805,6 +807,7 @@ class WidgetController extends Controller
                     'ai_intervention' => $payloadData['strengthType'],
                     'no_design' => intval($payloadData['no_of_Design']),
                     'unique_id' => $uniqueFileName,
+                    'is_preserve'=>!empty($payloadData['keepStructureElements'])?filter_var($payloadData['keepStructureElements'], FILTER_VALIDATE_BOOLEAN):filter_var(false, FILTER_VALIDATE_BOOLEAN),
                 ],
             ];
 
@@ -1188,6 +1191,124 @@ class WidgetController extends Controller
                 }
             } elseif ($response['status'] === 'IN_QUEUE' || $response['status'] === 'IN_PROGRESS') {
                 return response()->json([
+                    'status' => $response['status'],
+                    'id' => $response['id'],
+                ]);
+            }
+
+            // Handle unexpected statuses
+            return response()->json(['error' => 'Unexpected status'], 500);
+
+        } catch (\Exception $e) {
+            // Log the exception for debugging purposes
+            \Log::error('Error in checkRunpodStatus: ' . $e->getMessage(), [
+                'requestId' => $request->input('requestId'),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            // Return a generic error response
+            return response()->json(['error' => 'An unexpected error occurred. Please try again later.'], 500);
+        }
+    }
+
+    public function runpodWidgetPerfectRedesign(Request $request){
+
+        $payloadData = $request->all();
+        $mode = $request->modeType;
+        $Widgetid = $request->widgetuserid;
+        
+        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+
+        if ($userAccess == true) {
+            $uniqueFileName = $this->generateUniqueFileName();
+            if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
+                $b64image = base64_encode(file_get_contents($payloadData['data']));
+                $googleStorageFileUrl = $this->storeImageToGoogleBucket($b64image, $uniqueFileName);
+            } else {
+                $googleStorageFileUrl = $this->storeImageToGoogleBucket($payloadData['data'], $uniqueFileName);
+            }
+
+            if ($googleStorageFileUrl === false) {
+                return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
+            }
+
+            $payload = [
+                'input' => [
+                    'image' => $googleStorageFileUrl['url'],
+                    'design_type' => intval($payloadData['designtype']),
+                    'room_type' => strtolower($payloadData['roomtype']),
+                    'design_style' => strtolower($payloadData['prompt']),
+                    'prompt' => !empty($payloadData['custom_instruction']) ? $payloadData['custom_instruction'] : '',
+                    'negative_prompt' => !empty($payloadData['is_custom_negative_instruction']) ? $payloadData['is_custom_negative_instruction'] : '',
+                    'ai_intervention' => $payloadData['strengthType'],
+                    'no_design' => intval($payloadData['no_of_Design']),
+                    'unique_id' => $uniqueFileName,
+                ],
+            ];
+
+            if($payloadData['keepStructureElements'] == 'true'){
+                $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_TRUE') . "/run";
+            }else{
+                $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_FALSE') . "/run";
+            }
+            $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
+            if ($response && isset($response['id']) && $response['status'] === 'IN_QUEUE') {
+                Cache::put("runpod_request_{$response['id']}", $payloadData, 300);
+                return response()->json([
+                    'status' => $response['status'],
+                    'requestId' => $response['id'],
+                ]);
+            }
+        }else{
+            return response()->json($userAccess, 401);
+        }
+    }
+
+    public function checkRequestStatus(Request $request){
+        try {
+            $requestId = $request->input('requestId');
+            $keepStructureElements = $request->input('keepStructureElements');
+            if($keepStructureElements == 'true'){
+                $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_TRUE') . "/status/{$requestId}";
+            }else{
+                $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_FALSE') . "/status/{$requestId}";
+            }
+            $response = $this->curlRequest->checkApiStatusCurl($url);
+
+            if (isset($response['error']) && $response['error']) {
+                return response()->json(['error' => $response['message']], 500);
+            }
+
+            // Handle the status responses
+            if ($response && $response['status'] === 'COMPLETED') {
+                if (!isset($response['output']) || isset($response['output']['errors'])) {
+                    return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+                } else {
+                    $result = [
+                        'status' => 'COMPLETED',
+                        'Sucess' => [
+                            'original_image' => $response['output']['input_image'],
+                            'generated_image' => $response['output']['output_images'],
+                        ],
+                    ];
+
+                    $payloadData = Cache::get("runpod_request_{$requestId}");
+                    // $storeData = $this->getDataToSaveForRedesign($response, $payloadData);
+                    // $dataSaved = $this->saveData($storeData);
+
+                    Cache::forget("runpod_request_{$requestId}");
+                    return json_encode($result);
+                    // if ($dataSaved) {
+                    //     $result['storedIds'] = $dataSaved['storedIds'];
+
+                    //     return json_encode($result);
+                    // } else {
+
+                    //     return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+                    // }
+                }
+            } elseif ($response['status'] === 'IN_QUEUE' || $response['status'] === 'IN_PROGRESS') {
+                return json_encode([
                     'status' => $response['status'],
                     'id' => $response['id'],
                 ]);

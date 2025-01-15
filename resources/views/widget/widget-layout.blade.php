@@ -1745,7 +1745,6 @@
             $('#cancel_subscription_002').on('shown.bs.modal', function () {
             // Reset the dropdown value to userActivePlan
                 var userActivePlan = '{{ $userActivePlan }}';
-                console.log('userActivePlan',userActivePlan);
                 $('#next_subscription_plan').val(userActivePlan);
             });
 
@@ -1978,7 +1977,6 @@
                 success: function(response) {
                     if (response.success) {
                         if (response.data.products[0].result != "success") {
-                            console.log("notsucces");
                             swal({
                                 title: "Product Not found.",
                                 text: "Something went wrong please try again",
