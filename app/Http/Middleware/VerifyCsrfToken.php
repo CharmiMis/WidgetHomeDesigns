@@ -23,6 +23,7 @@ class VerifyCsrfToken extends Middleware
         '/get-base64',
         '/runpodWidget/fullHD',
         '/translateText',
-        '/check-runpod-status'
+        '/check-runpod-status',
+        '/check-request-status'
     ];
 }
