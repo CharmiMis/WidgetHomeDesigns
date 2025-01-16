@@ -1029,69 +1029,6 @@ class HomeController extends Controller
         }
     }
 
-    public function runpodSkyColorChange(Request $request)
-    {
-        // $payload = json_decode($request->payload, true);
-        // $payload['fireid'] = Auth::id();
-        // $queryparams = $request->except(['payload']);
-        // $url = \Config::get('app.GPU_SERVER_HOST_SEG').'/sky_color_change?'.http_build_query($queryparams);
-        // $headers = [
-        //     'accept'=> 'multipart/form-data',
-        //     'Access-Control-Allow-Origin'=> '*',
-        // ];
-        // $curlRequest = new CurlRequestClass();
-        // return $curlRequest->curlRequests($url, $headers, $payload, 'POST');
-        $responseFailId = '';
-        $payloadData = $request->all();
-        $payloadImage = json_decode($request->payload, true);
-        $prompt = $payloadImage['prompt'];
-        $uniqueFileName = $this->generateUniqueFileName();
-        $googleStorageFileImageUrl = $this->storeImageToGoogleBucket($payloadImage['init_images'], $uniqueFileName);
-
-        if ($googleStorageFileImageUrl === false) {
-            return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
-        }
-
-        $payload = [
-            'input' => [
-                'image' => $googleStorageFileImageUrl['url'],
-                'no_design' => intval($payloadData['no_of_Design']),
-                'weather' => strtolower($payloadData['weather']),
-                'unique_id' => $uniqueFileName,
-            ],
-        ];
-
-        $url = \Config::get('app.GPU_SERVERLESS_SKY_COLOR');
-        $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
-        if ($response && $response['status'] === 'COMPLETED') {
-
-            // return json_encode(['error' => 'Something went wrong. Please try again.']);
-            if (!isset($response['output']) || isset($response['output']['errors'])) {
-
-                return json_encode(['error' => 'Something went wrong. Please try again.']);
-            } else {
-                $result = [
-                    'Sucess' => [
-                        'original_image' => $response['output']['input_image'],
-                        'generated_image' => $response['output']['output_images'],
-                    ],
-                ];
-
-                $storeData = $this->getDataToSaveForPrecision($response, $payloadData, $prompt);
-                $dataSaved = $this->saveData($storeData);
-                if ($dataSaved) {
-                    $result['storedIds'] = $dataSaved['storedIds'];
-
-                    return json_encode($result);
-                } else {
-                    return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
-                }
-            }
-        } else {
-            return json_encode(['error' => 'Something went wrong. Please try again.']);
-        }
-    }
-
     public function runpodimgToimg(Request $request)
     {
         $runpodName = $request->runpod_name;

@@ -52,6 +52,8 @@ Route::post('check-runpod-status', [WidgetController::class, 'checkRunpodStatus'
 Route::get('custom-credit-request', [WidgetController::class, 'customCredit'])->name('api.custom-credit');
 Route::post('custom-credit-email', [WidgetController::class, 'customCreditEmail'])->name('api.custom-credit-email');
 Route::post('translateText', [WidgetController::class, 'translateText'])->name('user.translateText');
+Route::post('runpodWidget/sky-color-change', [WidgetController::class, 'runpodWidgetSkyColorChange'])->name('runpodWidget.sky-color-change');
+
 //Widget response
 
 Route::get('/widgetData/{id}', [WidgetController::class, 'showWidgetData']);

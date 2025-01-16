@@ -284,6 +284,25 @@ tabs.on( "click", ".ui-tabs-tab", function() {
         $('.top-menu-bar-third').css('display', 'none');
         $('.image-container').css('display', 'none');
         $('.category-container').css('display', 'none');
+    }else if(panelId == 'sky_colors'){
+        dataPage = 'sky-color';
+        fileInput = document.querySelector("#ipFilePickerSkyColor");
+
+            inPaintStageContainer = document.querySelector('#inpainting-stag-outer-'+dataPage);
+            paintingStagOriginalWidth = inPaintStageContainer ? inPaintStageContainer.clientWidth : 0 ;
+            paintingStagOriginalHeight = inPaintStageContainer ? inPaintStageContainer.clientHeight : 0 ;
+
+            paintingStag = new Konva.Stage({
+                container: 'painting-stag-'+dataPage,
+                width: paintingStagOriginalWidth,
+                height: paintingStagOriginalHeight,
+            });
+
+            imageLayer = new Konva.Layer();
+            paintingStag.add(imageLayer);
+        addImageLayer();
+        addBlackLayer(paintingStag);
+        addBrushLayer();
     }else{
         dataPage = '';
         fileInput = document.querySelector("#ipFilePickerPrecision");
@@ -296,7 +315,7 @@ tabs.on( "click", ".ui-tabs-tab", function() {
     $(`#gallery0-${dataPage} img`).attr('src', '');
     sizeElement = document.querySelector(`#ip-brush-thickness-${dataPage}`);
     var size = sizeElement ? sizeElement.value : 70;
-    if(dataPage == 'furnish_empty_room'){
+    if(dataPage == 'furnish_empty_room' || dataPage == 'sky-color'){
         clearNonMaskPaintingStag();
     }else{
         clearPaintingStag();
@@ -597,6 +616,7 @@ function calculateDynamicImageSize(width, height){
 //
 // });
 async function _generateInPaintingDesign(sec, el) {
+    console.log("_generateInPaintingDesign");
     await callInPaintingAPI(sec,el);
 }
 
@@ -886,8 +906,7 @@ function loadImageToStage(image) {
         $('.removeMasking').addClass('disabled');
         $('.removeMasking').css('cursor', 'not-allowed');
     }
-
-    if(dataPage != 'furnish_empty_room'){
+    if(dataPage !== 'furnish_empty_room' && dataPage !== 'sky-color'){
         $(".ip-clearImage").click();
     }
 
@@ -1006,6 +1025,7 @@ async function getMaskedImages() {
 }
 
 async function callInPaintingAPI(sec,el) {
+    console.log("callInPaintingAPI");
     $('#closeModal').addClass('disable-btn');
     // dataPage = 'fillSpace';
     page = 1;
@@ -1039,7 +1059,6 @@ async function callInPaintingAPI(sec,el) {
 
     var mode = modeValue.value;
     // var noOfDesign = document.getElementById(`no_of_des${sec}`).value;
-    
     generationDivLoader(noOfDesign,croppedImage);
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
     // document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
@@ -1127,10 +1146,12 @@ async function callInPaintingAPI(sec,el) {
     var material = prompMaterialTexture ? prompMaterialTexture.value : "" ;
     var material_type = prompMaterialTypeTexture ? prompMaterialTypeTexture.value : "" ;
     var skyWeather = promptSkyWeather ? promptSkyWeather.value : "" ;
+    console.log('skyWeather: ', skyWeather);
     var strengthType = strengthTypes ? strengthTypes.value : "" ;
     var ai_strength = aiStrength ? aiStrength.value : "" ;
 
     if (dataPage == 'sky-color' && skyWeather == '') {
+        console.log("Ayushhhhhhhhhhh");
         let error_message = 'Oops! You didn’t select the Sky Color.';
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
@@ -1215,14 +1236,10 @@ async function callInPaintingAPI(sec,el) {
         formData.append("material_type", material_type);
         // Need to add material_type and material
     } else if (dataPage == 'sky-color') {
-        // var inPaintUrl = `${GPU_SERVER_HOST_SEG}/sky_color_change?isSubbed=${isSubbed}&superenhance=${superenhance}&no_of_Design=${noOfDesign}&designtype=${sec}&is_staging=${is_staging}&weather=${skyWeather}&modeType=${mode}`;
         var inPaintUrl = "runpodWidget/sky-color-change";
-        // formData.append("isSubbed", isSubbed);
-        // formData.append("superenhance", superenhance);
         formData.append("no_of_Design", noOfDesign);
         formData.append("designtype", sec);
         formData.append("modeType", mode);
-        // formData.append("is_staging", is_staging);
         formData.append("weather", skyWeather);
     } else if (dataPage == 'decorstaging') {
         // var inPaintUrl = `${GPU_SERVER_HOST_SEG}/sky_color_change?isSubbed=${isSubbed}&superenhance=${superenhance}&no_of_Design=${noOfDesign}&designtype=${sec}&is_staging=${is_staging}&weather=${skyWeather}&modeType=${mode}`;
@@ -4232,6 +4249,8 @@ function generateUniqueId(prefix = 'image_id') {
             updatedDataPage = 'furnish_empty_room';
         } else if(firstFeatureInput == 'sketch_to_render'){
             updatedDataPage = 'sketchToRender';
+        }else if(firstFeatureInput == 'sky_colors'){
+            updatedDataPage = 'sky-color';
         } else{
             updatedDataPage = '';
         }
