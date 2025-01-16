@@ -1874,6 +1874,13 @@
             $(`#modeTypeDisplay${sec} .gs-select-room-style-single`).removeClass('active');
             $(`#modeTypeDisplay${sec} .gs-select-room-style-single[data-room-type="${modeType}"]`).addClass('active');
             document.getElementById('selectedModeType' + sec + "-" +dataPage).value = modeType;
+
+            const checkbox = document.getElementById('structural_elements_ck' + sec);
+            if (modeType === 'Perfect Redesign') {
+                checkbox.checked = true; // Check the checkbox
+            } else {
+                checkbox.checked = false; // Uncheck the checkbox
+            }
         }
     </script>
     <script>

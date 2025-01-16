@@ -616,7 +616,6 @@ function calculateDynamicImageSize(width, height){
 //
 // });
 async function _generateInPaintingDesign(sec, el) {
-    console.log("_generateInPaintingDesign");
     await callInPaintingAPI(sec,el);
 }
 
@@ -1025,7 +1024,6 @@ async function getMaskedImages() {
 }
 
 async function callInPaintingAPI(sec,el) {
-    console.log("callInPaintingAPI");
     $('#closeModal').addClass('disable-btn');
     // dataPage = 'fillSpace';
     page = 1;
@@ -1146,12 +1144,10 @@ async function callInPaintingAPI(sec,el) {
     var material = prompMaterialTexture ? prompMaterialTexture.value : "" ;
     var material_type = prompMaterialTypeTexture ? prompMaterialTypeTexture.value : "" ;
     var skyWeather = promptSkyWeather ? promptSkyWeather.value : "" ;
-    console.log('skyWeather: ', skyWeather);
     var strengthType = strengthTypes ? strengthTypes.value : "" ;
     var ai_strength = aiStrength ? aiStrength.value : "" ;
 
     if (dataPage == 'sky-color' && skyWeather == '') {
-        console.log("Ayushhhhhhhhhhh");
         let error_message = 'Oops! You didn’t select the Sky Color.';
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');

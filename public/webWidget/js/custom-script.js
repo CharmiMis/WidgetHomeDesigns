@@ -679,8 +679,6 @@ function previewImage(beforeSrc,afterSrc,element) {
     if (imageIndex !== undefined && imageIndex >= 0 && imageIndex <= editImagesData.length) {
         currentIndex = imageIndex;
         updateImages(currentIndex);
-    } else {
-        console.error("Invalid imageIndex: ", imageIndex);
     }
     $("#modalImagePreview").modal('show')
     $("#mip_before").attr('src', afterSrc);
@@ -3910,38 +3908,6 @@ function checkRequestStatus(requestId,generateDesignBtn, spinner,tabs,previousPa
                     //     getRedesignGeneratedDesigns();
                     //     reapplyCheckboxStates();
                     // }
-
-                    $.ajax({
-                        url: 'admin/dashboard/updateButtonClickCount',
-                        type: 'post',
-                        data: {
-                            sec: sec
-                        },
-                        dataType: 'json',
-                        success: function (resp) {
-                        },
-                        error: function (resp) {
-                            swal("Something Went Wrong!", {
-                                icon: "error",
-                            });
-                        }
-                    });
-
-                    //ajax code to store the count of styles
-                    var countStyles = {
-                        styleType: styleType,
-                        roomType: roomType,
-                        sec: sec
-                    };
-                    $.ajax({
-                        type: "POST",
-                        url: "admin/dashboard/updateButtonStyleClickCount",
-                        data: countStyles,
-                        success: function (response) {
-                        },
-                        error: function (xhr, status, error) {
-                        }
-                    });
                 } else if (parsedJSON.status === 'IN_PROGRESS' || parsedJSON.status === 'IN_QUEUE') {
                     setTimeout(checkStatus, pollInterval);
                 } else {
