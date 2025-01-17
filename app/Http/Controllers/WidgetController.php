@@ -19,6 +19,7 @@ use Illuminate\Support\Str;
 use App\Models\WidgetUserData;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Cache;
 
 class WidgetController extends Controller
 {
@@ -34,8 +35,8 @@ class WidgetController extends Controller
         // $request->merge(['id' => Auth::id()]);
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
-        
-        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+
+        $userAccess = $this->checkAccess($payloadData, $Widgetid, $mode);
 
         if ($userAccess == true) {
             $uniqueFileName = $this->generateUniqueFileName();
@@ -61,6 +62,7 @@ class WidgetController extends Controller
                     'ai_intervention' => $payloadData['strengthType'],
                     'no_design' => intval($payloadData['no_of_Design']),
                     'unique_id' => $uniqueFileName,
+                    'is_preserve' => !empty($payloadData['keepStructureElements']) ? filter_var($payloadData['keepStructureElements'], FILTER_VALIDATE_BOOLEAN) : filter_var(false, FILTER_VALIDATE_BOOLEAN),
                 ],
             ];
 
@@ -90,7 +92,7 @@ class WidgetController extends Controller
                     // }
                 }
             }
-        }else{
+        } else {
             return response()->json($userAccess, 401);
         }
     }
@@ -209,12 +211,12 @@ class WidgetController extends Controller
         }
     }
 
-    public function showWidgetData($id,Request $request)
+    public function showWidgetData($id, Request $request)
     {
         $widgetData = WidgetUserData::where('user_id', $id)->firstOrFail();
-        $userTheme = User::where('id',$id)->select('light_mode')->first();
+        $userTheme = User::where('id', $id)->select('light_mode')->first();
         $currentDomain = $request->query('currentDomain'); // Get the currentDomain from the query parameters
-        
+
         if (!$widgetData) {
             abort(404, 'Widgetd not found');
         }
@@ -227,21 +229,22 @@ class WidgetController extends Controller
             
             $widgetHtml = view('widget.widget-management', ['widgetData' => $widgetData, 'widgetThemeMode' => $userTheme->light_mode, 'primaryColor' => $widgetData->primary_color])->render();
         return response($widgetHtml, 200)->header('Content-Type', 'text/html')
-                ->header('X-User-Theme', $userTheme->light_mode);;
+            ->header('X-User-Theme', $userTheme->light_mode);;
         // Render the Blade view to a string
         // $widgetHtml = view('widget.widget-feature-data', ['widgetData' => $widgetData])->render();
 
         // return response()->json(['html' => $widgetHtml]);
     }
 
-    public function runpodWidgetFillSpace(Request $request){
+    public function runpodWidgetFillSpace(Request $request)
+    {
         $payloadData = $request->all();
         $payloadImage = json_decode($request->payload, true);
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
-        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        $userAccess = $this->checkAccess($payloadData, $Widgetid, $mode);
         if ($userAccess === true) {
-        $prompt = $payloadImage['prompt'];
+            $prompt = $payloadImage['prompt'];
             if ($request->session()->has('inputImageSession')) {
                 $googleStorageFileImageUrl['url'] = $request->session()->get('inputImageSession');
                 $uniqueFileName = str_replace(
@@ -302,17 +305,18 @@ class WidgetController extends Controller
                     // }
                 }
             }
-        }else{
+        } else {
             return response()->json($userAccess, 401);
         }
     }
 
-    public function runpodWidgetPrecision(Request $request){
+    public function runpodWidgetPrecision(Request $request)
+    {
         $payloadData = $request->all();
         $payloadImage = json_decode($request->payload, true);
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
-        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        $userAccess = $this->checkAccess($payloadData, $Widgetid, $mode);
 
         if ($userAccess === true) {
             $prompt = $payloadImage['prompt'];
@@ -382,17 +386,18 @@ class WidgetController extends Controller
             } else {
                 return json_encode(['error' => 'Something went wrong. Please try again.']);
             }
-        }else{
+        } else {
             return response()->json($userAccess, 401);
         }
     }
 
-    public function runpodWidgetColorAndTexture(Request $request){
+    public function runpodWidgetColorAndTexture(Request $request)
+    {
         $payloadData = $request->all();
         $payloadImage = json_decode($request->payload, true);
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
-        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        $userAccess = $this->checkAccess($payloadData, $Widgetid, $mode);
 
         if ($userAccess === true) {
             $prompt = $payloadImage['prompt'];
@@ -464,17 +469,18 @@ class WidgetController extends Controller
             } else {
                 return json_encode(['error' => 'Something went wrong. Please try again.']);
             }
-        }else{
+        } else {
             return response()->json($userAccess, 401);
         }
     }
 
-    public function runpodWidgetPaintVisualizer(Request $request){
+    public function runpodWidgetPaintVisualizer(Request $request)
+    {
         $payloadData = $request->all();
         $prompt = '';
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
-        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        $userAccess = $this->checkAccess($payloadData, $Widgetid, $mode);
         if ($userAccess === true) {
             if ($request->session()->has('inputImageSession')) {
                 $googleStorageFileImageUrl['url'] = $request->session()->get('inputImageSession');
@@ -548,7 +554,7 @@ class WidgetController extends Controller
             } else {
                 return json_encode(['error' => 'Something went wrong. Please try again.']);
             }
-        }else{
+        } else {
             return response()->json($userAccess, 401);
         }
     }
@@ -597,19 +603,19 @@ class WidgetController extends Controller
         // return $curlRequest->curlRequests($url, $headers, $payload, 'POST');
     }
 
-    public function checkAccess($payloadData,$Widgetid, $apiName): array|bool
+    public function checkAccess($payloadData, $Widgetid, $apiName): array|bool
     {
         $WidgetUser = User::find($Widgetid);
         $user = User::where('email', $WidgetUser->email)
-                ->select('id')
-                ->with([
-                    'activeSubscription' => function ($query) {
-                        $query->where('is_api_plan', 1)
-                            ->select('id', 'user_id', 'plan_name', 'created_at', 'total_plan_credit', 'used_credit', 'extra_apis')
-                            ->latest();
-                    }
-                ])
-                ->first();
+            ->select('id')
+            ->with([
+                'activeSubscription' => function ($query) {
+                    $query->where('is_api_plan', 1)
+                        ->select('id', 'user_id', 'plan_name', 'created_at', 'total_plan_credit', 'used_credit', 'extra_apis')
+                        ->latest();
+                }
+            ])
+            ->first();
 
         if ($user) {
             if (! empty($user->activeSubscription)) {
@@ -634,7 +640,7 @@ class WidgetController extends Controller
                     Mail::to($WidgetUser->email)->send(new CreditRemainStatusMail($emailData));
                     $remainingCredit = $user->activeSubscription->total_plan_credit - $user->activeSubscription->used_credit;
 
-                    return ['success' => false, 'error' => 'Credit not found: You currently have only '.$remainingCredit.' credits remaining.'];
+                    return ['success' => false, 'error' => 'Credit not found: You currently have only ' . $remainingCredit . ' credits remaining.'];
                 } elseif (! empty($user->activeSubscription->extra_apis) && json_decode($user->activeSubscription->extra_apis) != null && in_array($apiName, json_decode($user->activeSubscription->extra_apis))) {
                     $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + (int) $payloadData['no_of_Design'];
                     $user->activeSubscription->save();
@@ -643,7 +649,7 @@ class WidgetController extends Controller
                 } elseif (($user->activeSubscription->plan_name == 'api-silver' || $user->activeSubscription->plan_name == 'standard-sme-500-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-1000-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-3000-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-10000-api-calls-mo')) {
                     if ($apiName == 'furniture_finder') {
                         $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + 5;
-                    } else if($apiName=='segmentation'){
+                    } else if ($apiName == 'segmentation') {
                         $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + 1;
                     } else {
                         $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + (int) $payloadData['no_of_Design'];
@@ -654,7 +660,7 @@ class WidgetController extends Controller
                 } elseif (($user->activeSubscription->plan_name == 'standard-sme' || $user->activeSubscription->plan_name == 'standard-sme-new' || $user->activeSubscription->plan_name == 'standard-sme-500-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-1000-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-3000-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-10000-api-calls-mo')) {
                     if ($apiName == 'furniture_finder') {
                         $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + 2;
-                    } else if($apiName=='segmentation'){
+                    } else if ($apiName == 'segmentation') {
                         $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + 1;
                     } else {
                         $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + $payloadData['no_of_Design'];
@@ -665,7 +671,7 @@ class WidgetController extends Controller
                 } elseif ($user->activeSubscription->plan_name == 'api-gold' || $user->activeSubscription->plan_name == 'standard-sme-500-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-1000-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-3000-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-10000-api-calls-mo') {
                     if ($apiName == 'furniture_finder') {
                         $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + 2;
-                    } else if($apiName=='segmentation'){
+                    } else if ($apiName == 'segmentation') {
                         $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + 1;
                     } else {
                         // dd("ofc",$user->activeSubscription->used_credit, $user->activeSubscription->used_credit,$payloadData['no_of_Design']);
@@ -677,25 +683,25 @@ class WidgetController extends Controller
                 } elseif ($user->activeSubscription->plan_name == 'api-bronze') {
                     if ($apiName == 'furniture_finder') {
                         $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + 1;
-                    } else if($apiName=='segmentation'){
+                    } else if ($apiName == 'segmentation') {
                         $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + 1;
                     } else {
                         $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + $payloadData['no_of_Design'];
                     }
-                    $user->activeSubscription->save();                    
+                    $user->activeSubscription->save();
                     return true;
-                }else {
+                } else {
                     return ['success' => false, 'error' => 'Please Upgrade Your Current Plan'];
                 }
             } else {
                 return ['success' => false, 'error' => 'Subscription Detail not found.'];
-
             }
         }
         return ['success' => false, 'error' => 'User not found.'];
     }
 
-    public function runpodWidgetFullHD(Request $request){
+    public function runpodWidgetFullHD(Request $request)
+    {
         $payloadData = $request->all();
         // $staticPath = 'https://storage.googleapis.com/generativeartbucket/UserGenerations/cristian/';
         // $path = $staticPath . $payloadData['data'];
@@ -704,54 +710,54 @@ class WidgetController extends Controller
         $Widgetid = $request->widgetuserid;
         // $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
         // if ($userAccess === true) {
-            $type = pathinfo($payloadData['data'], PATHINFO_EXTENSION);
-            $fileName = pathinfo($payloadData['data'], PATHINFO_BASENAME);
-            $data = file_get_contents($payloadData['data']);
-            // $base64 = base64_encode($data);
-            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-            $uniqueFileName = $this->generateUniqueFileName();
-            $googleStorageFileImageUrl = $this->storeImageToGoogleBucket($base64, $uniqueFileName);
+        $type = pathinfo($payloadData['data'], PATHINFO_EXTENSION);
+        $fileName = pathinfo($payloadData['data'], PATHINFO_BASENAME);
+        $data = file_get_contents($payloadData['data']);
+        // $base64 = base64_encode($data);
+        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+        $uniqueFileName = $this->generateUniqueFileName();
+        $googleStorageFileImageUrl = $this->storeImageToGoogleBucket($base64, $uniqueFileName);
 
-            if ($googleStorageFileImageUrl === false) {
-                return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
-            }
+        if ($googleStorageFileImageUrl === false) {
+            return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
+        }
 
-            $payload = [
-                'input' => [
-                    'image' => $googleStorageFileImageUrl['url'],
-                    'unique_id' => $uniqueFileName,
-                ],
-            ];
+        $payload = [
+            'input' => [
+                'image' => $googleStorageFileImageUrl['url'],
+                'unique_id' => $uniqueFileName,
+            ],
+        ];
 
-            $url = \Config::get('app.GPU_SERVERLESS_HD_GENERATE');
-            $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
-            //$this->($response, $url, $payload, 'bm4');
-            if ($response && $response['status'] === 'COMPLETED') {
-                if (!isset($response['output']) || isset($response['output']['errors'])) {
-                    return json_encode(['error' => 'Something went wrong. Please try again.']);
-                } else {
-                    $result = [
-                        'Sucess' => [
-                            'original_image' => $response['output']['input_image'],
-                            'generated_image' => $response['output']['output_images'],
-                        ],
-                    ];
-                    return json_encode($result);
-
-                    // $storeData = $this->getDataToSaveForFullHDImage($response, $payloadData);
-                    // $dataSaved = $this->saveData($storeData);
-                    // if ($dataSaved) {
-                    //     $result['storedIds'] = $dataSaved['storedIds'];
-
-                    //     return json_encode($result);
-                    // } else {
-
-                    //     return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
-                    // }
-                }
-            } else {
+        $url = \Config::get('app.GPU_SERVERLESS_HD_GENERATE');
+        $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
+        //$this->($response, $url, $payload, 'bm4');
+        if ($response && $response['status'] === 'COMPLETED') {
+            if (!isset($response['output']) || isset($response['output']['errors'])) {
                 return json_encode(['error' => 'Something went wrong. Please try again.']);
+            } else {
+                $result = [
+                    'Sucess' => [
+                        'original_image' => $response['output']['input_image'],
+                        'generated_image' => $response['output']['output_images'],
+                    ],
+                ];
+                return json_encode($result);
+
+                // $storeData = $this->getDataToSaveForFullHDImage($response, $payloadData);
+                // $dataSaved = $this->saveData($storeData);
+                // if ($dataSaved) {
+                //     $result['storedIds'] = $dataSaved['storedIds'];
+
+                //     return json_encode($result);
+                // } else {
+
+                //     return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+                // }
             }
+        } else {
+            return json_encode(['error' => 'Something went wrong. Please try again.']);
+        }
         // }else{
         //     return response()->json($userAccess, 401);
         // }
@@ -764,7 +770,7 @@ class WidgetController extends Controller
 
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
-        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        $userAccess = $this->checkAccess($payloadData, $Widgetid, $mode);
         if ($userAccess === true) {
             $uniqueFileName = $this->generateUniqueFileName();
             if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
@@ -795,6 +801,7 @@ class WidgetController extends Controller
                     'ai_intervention' => $payloadData['strengthType'],
                     'no_design' => intval($payloadData['no_of_Design']),
                     'unique_id' => $uniqueFileName,
+                    'is_preserve' => !empty($payloadData['keepStructureElements']) ? filter_var($payloadData['keepStructureElements'], FILTER_VALIDATE_BOOLEAN) : filter_var(false, FILTER_VALIDATE_BOOLEAN),
                 ],
             ];
 
@@ -828,7 +835,7 @@ class WidgetController extends Controller
             } else {
                 return json_encode(['error' => 'Something went wrong. Please try again.']);
             }
-        }else{
+        } else {
             return response()->json($userAccess, 401);
         }
     }
@@ -853,7 +860,7 @@ class WidgetController extends Controller
 
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
-        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        $userAccess = $this->checkAccess($payloadData, $Widgetid, $mode);
         if ($userAccess === true) {
             $uniqueFileName = $this->generateUniqueFileName();
             if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
@@ -913,7 +920,7 @@ class WidgetController extends Controller
             } else {
                 return json_encode(['error' => 'Something went wrong. Please try again.']);
             }
-        }else{
+        } else {
             return response()->json($userAccess, 401);
         }
     }
@@ -925,7 +932,7 @@ class WidgetController extends Controller
 
         $mode = $request->modeType;
         $Widgetid = $request->widgetuserid;
-        $userAccess = $this->checkAccess($payloadData,$Widgetid, $mode);
+        $userAccess = $this->checkAccess($payloadData, $Widgetid, $mode);
         if ($userAccess === true) {
             $prompt = $payloadImage['prompt'];
             if ($request->session()->has('inputImageSession')) {
@@ -986,7 +993,7 @@ class WidgetController extends Controller
             } else {
                 return json_encode(['error' => 'Something went wrong. Please try again.']);
             }
-        }else{
+        } else {
             return response()->json($userAccess, 401);
         }
     }
@@ -1003,7 +1010,7 @@ class WidgetController extends Controller
             $emailData['custom_credit'] = $request->customCredit;
             $emailData['description'] = $request->description;
 
-            $result = Mail::to('vlad@homedesigns.ai')->send(new CreditRequestEmail($emailData)); 
+            $result = Mail::to('vlad@homedesigns.ai')->send(new CreditRequestEmail($emailData));
             if ($result) {
                 CustomRequest::create([
                     'fullname' => $emailData['fullname'],
@@ -1027,9 +1034,10 @@ class WidgetController extends Controller
         }
     }
 
-    public function translateText(Request $request){
+    public function translateText(Request $request)
+    {
         $googleKey = env('GOOGLE_API_KEY');
-        
+
         $initialText = $request->input('text');
         $gUrl = 'https://translation.googleapis.com/language/translate/v2/detect';
         $data = array(
@@ -1051,7 +1059,7 @@ class WidgetController extends Controller
             if ($languageDetect === $targetLanguage) {
                 return $initialText; // No translation needed
             } else {
-                return $this->translate($initialText,$languageDetect);
+                return $this->translate($initialText, $languageDetect);
             }
         } else {
             return false;
@@ -1084,45 +1092,55 @@ class WidgetController extends Controller
         }
     }
 
-    public function runpodWidgetVirtualStaging(Request $request){
+    public function runpodWidgetVirtualStaging(Request $request)
+    {
         $payloadData = $request->all();
         $request->merge(['id' => Auth::id()]);
+
         $payloadImage = json_decode($request->payload, true);
         $prompt = $payloadImage['prompt'];
-        $uniqueFileName = $this->generateUniqueFileName();
-        $googleStorageFileImageUrl = $this->storeImageToGoogleBucket($payloadImage['init_images'], $uniqueFileName);
+        $mode = $request->modeType;
+        $Widgetid = $request->widgetuserid;
+        $userAccess = $this->checkAccess($payloadData, $Widgetid, $mode);
+        if ($userAccess === true) {
+            $uniqueFileName = $this->generateUniqueFileName();
+            $googleStorageFileImageUrl = $this->storeImageToGoogleBucket($payloadImage['init_images'], $uniqueFileName);
 
-        if ($googleStorageFileImageUrl === false) {
-            return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
+            if ($googleStorageFileImageUrl === false) {
+                return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
+            }
+
+            $payload = [
+                'input' => [
+                    'image' => $googleStorageFileImageUrl['url'],
+                    'design_type' => intval($payloadData['designtype']),
+                    'room_type' => strtolower($payloadData['roomtype']),
+                    'design_style' => strtolower($payloadData['design_style']),
+                    'prompt' => !empty($payloadData['custom_instruction']) ? $payloadData['custom_instruction'] : '',
+                    'negative_prompt' => !empty($payloadData['is_custom_negative_instruction']) ? $payloadData['is_custom_negative_instruction'] : '',
+                    'ai_intervention' => $payloadData['strengthType'],
+                    'no_design' => intval($payloadData['no_of_Design']),
+                    'unique_id' => $uniqueFileName,
+                ],
+            ];
+            $url = \Config::get('app.GPU_SERVERLESS_VIRTUAL_STAGING_API') . "/run";
+            $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
+            if ($response && isset($response['id']) && $response['status'] === 'IN_QUEUE') {
+                // Cache::put("runpod_request_{$response['id']}", $payloadData, 300);
+                return response()->json([
+                    'status' => $response['status'],
+                    'requestId' => $response['id'],
+                ]);
+            }
+
+            return response()->json(['error' => 'Something went wrong. Please try again.']);
+        } else {
+            return response()->json($userAccess, 401);
         }
-
-        $payload = [
-            'input' => [
-                'image' => $googleStorageFileImageUrl['url'],
-                'design_type' => intval($payloadData['designtype']),
-                'room_type' => strtolower($payloadData['roomtype']),
-                'design_style' => strtolower($payloadData['design_style']),
-                'prompt' => !empty($payloadData['custom_instruction']) ? $payloadData['custom_instruction'] : '',
-                'negative_prompt' => !empty($payloadData['is_custom_negative_instruction']) ? $payloadData['is_custom_negative_instruction'] : '',
-                'ai_intervention' => $payloadData['strengthType'],
-                'no_design' => intval($payloadData['no_of_Design']),
-                'unique_id' => $uniqueFileName,
-            ],
-        ];
-        $url = \Config::get('app.GPU_SERVERLESS_VIRTUAL_STAGING_API') . "/run";
-        $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
-        if ($response && isset($response['id']) && $response['status'] === 'IN_QUEUE') {
-            // Cache::put("runpod_request_{$response['id']}", $payloadData, 300);
-            return response()->json([
-                'status' => $response['status'],
-                'requestId' => $response['id'],
-            ]);
-        }
-
-        return response()->json(['error' => 'Something went wrong. Please try again.']);
     }
 
-    public function checkRunpodStatus(Request $request){
+    public function checkRunpodStatus(Request $request)
+    {
         try {
             $requestId = $request->input('requestId');
             $url = \Config::get('app.GPU_SERVERLESS_VIRTUAL_STAGING_API') . "/status/{$requestId}"; // Example status endpoint
@@ -1177,7 +1195,6 @@ class WidgetController extends Controller
 
             // Handle unexpected statuses
             return response()->json(['error' => 'Unexpected status'], 500);
-
         } catch (\Exception $e) {
             // Log the exception for debugging purposes
             \Log::error('Error in checkRunpodStatus: ' . $e->getMessage(), [
@@ -1187,6 +1204,175 @@ class WidgetController extends Controller
 
             // Return a generic error response
             return response()->json(['error' => 'An unexpected error occurred. Please try again later.'], 500);
+        }
+    }
+
+    public function runpodWidgetPerfectRedesign(Request $request)
+    {
+
+        $payloadData = $request->all();
+        $mode = $request->modeType;
+        $Widgetid = $request->widgetuserid;
+
+        $userAccess = $this->checkAccess($payloadData, $Widgetid, $mode);
+
+        if ($userAccess == true) {
+            $uniqueFileName = $this->generateUniqueFileName();
+            if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
+                $b64image = base64_encode(file_get_contents($payloadData['data']));
+                $googleStorageFileUrl = $this->storeImageToGoogleBucket($b64image, $uniqueFileName);
+            } else {
+                $googleStorageFileUrl = $this->storeImageToGoogleBucket($payloadData['data'], $uniqueFileName);
+            }
+
+            if ($googleStorageFileUrl === false) {
+                return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
+            }
+
+            $payload = [
+                'input' => [
+                    'image' => $googleStorageFileUrl['url'],
+                    'design_type' => intval($payloadData['designtype']),
+                    'room_type' => strtolower($payloadData['roomtype']),
+                    'design_style' => strtolower($payloadData['prompt']),
+                    'prompt' => !empty($payloadData['custom_instruction']) ? $payloadData['custom_instruction'] : '',
+                    'negative_prompt' => !empty($payloadData['is_custom_negative_instruction']) ? $payloadData['is_custom_negative_instruction'] : '',
+                    'ai_intervention' => $payloadData['strengthType'],
+                    'no_design' => intval($payloadData['no_of_Design']),
+                    'unique_id' => $uniqueFileName,
+                ],
+            ];
+
+            if ($payloadData['keepStructureElements'] == 'true') {
+                $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_TRUE') . "/run";
+            } else {
+                $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_FALSE') . "/run";
+            }
+            $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
+            if ($response && isset($response['id']) && $response['status'] === 'IN_QUEUE') {
+                Cache::put("runpod_request_{$response['id']}", $payloadData, 300);
+                return response()->json([
+                    'status' => $response['status'],
+                    'requestId' => $response['id'],
+                ]);
+            }
+        } else {
+            return response()->json($userAccess, 401);
+        }
+    }
+
+    public function checkRequestStatus(Request $request)
+    {
+        try {
+            $requestId = $request->input('requestId');
+            $keepStructureElements = $request->input('keepStructureElements');
+            if ($keepStructureElements == 'true') {
+                $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_TRUE') . "/status/{$requestId}";
+            } else {
+                $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_FALSE') . "/status/{$requestId}";
+            }
+            $response = $this->curlRequest->checkApiStatusCurl($url);
+
+            if (isset($response['error']) && $response['error']) {
+                return response()->json(['error' => $response['message']], 500);
+            }
+
+            // Handle the status responses
+            if ($response && $response['status'] === 'COMPLETED') {
+                if (!isset($response['output']) || isset($response['output']['errors'])) {
+                    return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+                } else {
+                    $result = [
+                        'status' => 'COMPLETED',
+                        'Sucess' => [
+                            'original_image' => $response['output']['input_image'],
+                            'generated_image' => $response['output']['output_images'],
+                        ],
+                    ];
+
+                    $payloadData = Cache::get("runpod_request_{$requestId}");
+                    // $storeData = $this->getDataToSaveForRedesign($response, $payloadData);
+                    // $dataSaved = $this->saveData($storeData);
+
+                    Cache::forget("runpod_request_{$requestId}");
+                    return json_encode($result);
+                    // if ($dataSaved) {
+                    //     $result['storedIds'] = $dataSaved['storedIds'];
+
+                    //     return json_encode($result);
+                    // } else {
+
+                    //     return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+                    // }
+                }
+            } elseif ($response['status'] === 'IN_QUEUE' || $response['status'] === 'IN_PROGRESS') {
+                return json_encode([
+                    'status' => $response['status'],
+                    'id' => $response['id'],
+                ]);
+            }
+
+            // Handle unexpected statuses
+            return response()->json(['error' => 'Unexpected status'], 500);
+        } catch (\Exception $e) {
+            // Log the exception for debugging purposes
+            \Log::error('Error in checkRunpodStatus: ' . $e->getMessage(), [
+                'requestId' => $request->input('requestId'),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            // Return a generic error response
+            return response()->json(['error' => 'An unexpected error occurred. Please try again later.'], 500);
+        }
+    }
+
+    public function runpodWidgetSkyColorChange(Request $request)
+    {
+        $responseFailId = '';
+        $payloadData = $request->all();
+        $payloadImage = json_decode($request->payload, true);
+        $prompt = $payloadImage['prompt'];
+
+        $mode = $request->modeType;
+        $Widgetid = $request->widgetuserid;
+
+        $userAccess = $this->checkAccess($payloadData, $Widgetid, $mode);
+        if ($userAccess == true) {
+            $uniqueFileName = $this->generateUniqueFileName();
+            $googleStorageFileImageUrl = $this->storeImageToGoogleBucket($payloadImage['init_images'], $uniqueFileName);
+
+            if ($googleStorageFileImageUrl === false) {
+                return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
+            }
+
+            $payload = [
+                'input' => [
+                    'image' => $googleStorageFileImageUrl['url'],
+                    'no_design' => intval($payloadData['no_of_Design']),
+                    'weather' => strtolower($payloadData['weather']),
+                    'unique_id' => $uniqueFileName,
+                ],
+            ];
+
+            $url = \Config::get('app.GPU_API_SERVERLESS_SKY_COLOR');
+            $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
+            if ($response && $response['status'] === 'COMPLETED') {
+
+                if (!isset($response['output']) || isset($response['output']['errors'])) {
+
+                    return json_encode(['error' => 'Something went wrong. Please try again.']);
+                } else {
+                    $result = [
+                        'Sucess' => [
+                            'original_image' => $response['output']['input_image'],
+                            'generated_image' => $response['output']['output_images'],
+                        ],
+                    ];
+                    return json_encode($result);
+                }
+            } else {
+                return json_encode(['error' => 'Something went wrong. Please try again.']);
+            }
         }
     }
 }

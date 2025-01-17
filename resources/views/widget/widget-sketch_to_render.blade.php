@@ -21,11 +21,8 @@
             <img src="{{ asset('webWidget/images/info-icon.svg') }}">
         </div>
         <div class="gs-dashboard-notice-info-text">
-            <h2>Redesign Your Space Instantly!</h2>
-            <p>Ideal for quick makeovers, our Redesign Mode provides a streamlined, easy-to-use solution for achieving a
-                fresh new look without the hassle. Choose from three dynamic sub-types—Creative Redesign, Beautiful
-                Redesign, and Sketch-to-Render—to breathe new life into your house interiors, exteriors, gardens, or
-                patios.</p>
+            <h2>Turn Your Sketches into Photorealistic Designs Instantly with AI</h2>
+            <p>Transform hand-drawn sketches into stunning, photorealistic designs with AI-powered precision.</p>
         </div>
         <div class="gs-dashboard-cross">
             <img src="{{ asset('webWidget/images/cross-icon.svg') }}">
@@ -35,7 +32,7 @@
 
     <div class="image-background-container upload-image-container">
         <div class="ai-upload-image">
-            <input type="file" class="ai-upload-input select-file dimg-picker" id="fileselect0-redesign" data-section="0">
+            <input type="file" class="ai-upload-input select-file dimg-picker" id="fileselect0-sketchToRender" data-section="0">
             <h3 class="font22">Upload your image </h3>
             <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -63,7 +60,7 @@
     {{-- section first end --}}
 
     {{-- section second start --}}
-    <div class="ai-tool-right-top top-menu-bar-second" id="viewImage-redesign" style="display: none">
+    <div class="ai-tool-right-top top-menu-bar-second" id="viewImage-sketchToRender" style="display: none">
         <div class="ai-tool-right-back-btn">
         </div>
         <ul>
@@ -85,26 +82,25 @@
     <div class="image-show-container image-mask-container">
         <div class="gs-what-to-edit-wrapper">
             <div class="gs-what-to-edit-left image-mask-container" style="display: none">
-                <input type="hidden" name="image_type" id="input_img_typ-redesign">
-                <input type="hidden" name="image" id="input_image-redesign">
-                <div class="gs-what-to-edit-leftimg" id="gallery0-redesign">
+                <input type="hidden" name="image_type" id="input_img_typ-sketchToRender">
+                <input type="hidden" name="image" id="input_image-sketchToRender" value="">
+                <div class="gs-what-to-edit-leftimg" id="gallery0-sketchToRender">
                     <img id="im">
                 </div>
                 <div class="gs-what-to-edit-tips">
                     <div class="gs-what-to-edit-tip-box">
                         <div class="gs-what-to-edit-tip-right">
-                            <p>Click on ‘Your Custom settings’ to give specific instructions to our AI.</p>
+                            <p>Start by uploading a clear sketch or drawing.</p>
                         </div>
                     </div>
                     <div class="gs-what-to-edit-tip-box">
                         <div class="gs-what-to-edit-tip-right">
-                            <p>In Beautiful Redesign, our AI generates fast and beautiful results, but has less freedom
-                                to add or remove objects.</p>
+                            <p>Choose your preferred style and settings.</p>
                         </div>
                     </div>
                     <div class="gs-what-to-edit-tip-box">
                         <div class="gs-what-to-edit-tip-right">
-                            <p>Use Sketch-to-Render mode type to turn raw drawings into photorealistic renders.</p>
+                            <p>Click Generate to see your design come to life!</p>
                         </div>
                     </div>
                 </div>
@@ -115,7 +111,7 @@
                     <div class="gs-select-category-list">
                         <ul class="gs-option-flex">
                             <li class="on-gen-disable hide_int">
-                                <a class="gs-select-category-list-inner" data-toggle="tab" href="#interior-redesign"
+                                <a class="gs-select-category-list-inner" data-toggle="tab" href="#interior-sketchToRender"
                                     onclick="loadWidgetRenders(0)">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="39"
                                         viewBox="0 0 48 39" fill="none">
@@ -131,7 +127,7 @@
                                 </a>
                             </li>
                             <li class="on-gen-disable hide_ext">
-                                <a class="gs-select-category-list-inner" data-toggle="tab" href="#exterior-redesign"
+                                <a class="gs-select-category-list-inner" data-toggle="tab" href="#exterior-sketchToRender"
                                     onclick="loadWidgetRenders(1)">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="61" height="54"
                                         viewBox="0 0 61 54" fill="none">
@@ -153,7 +149,7 @@
                                 </a>
                             </li>
                             <li class="on-gen-disable hide_gar">
-                                <a class="gs-select-category-list-inner" data-toggle="tab" href="#garden-redesign"
+                                <a class="gs-select-category-list-inner" data-toggle="tab" href="#garden-sketchToRender"
                                     onclick="loadWidgetRenders(2)">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="54" height="41"
                                         viewBox="0 0 54 41" fill="none">
@@ -234,32 +230,31 @@
                 </div>
 
                 <div class="tab-content">
-                    <div id="interior-redesign" class="tab-pane fade in hide_int">
+                    <div id="interior-sketchToRender" class="tab-pane fade in hide_int">
                         <div class="gs-what-to-edit-tabs">
                             <div class="gs-what-to-edit-title">
                                 <ul>
                                     <li class="active"><a data-toggle="tab"
-                                            href="#our-preset-settings-interior-redesign">Our
+                                            href="#our-preset-settings-interior-sketchToRender">Our
                                             preset settings</a></li>
-                                    <li><a data-toggle="tab" href="#your-customs-settings-interior-redesign">Your
+                                    <li><a data-toggle="tab" href="#your-customs-settings-interior-sketchToRender">Your
                                             customs
                                             settings </a></li>
                                 </ul>
                             </div>
                             <div class="gs-what-to-edit-content">
                                 <div class="tab-content">
-                                    <div id="our-preset-settings-interior-redesign"
-                                        class="tab-pane fade in active">
+                                    <div id="our-preset-settings-interior-sketchToRender" class="tab-pane fade in active">
                                         <div class="gs-select-automatically">
                                             <div class="gs-our-preset-settings ">
                                                 <div class="gs-select-room-style">
-                                                    <input type="hidden" id="selectedRoomType0-redesign"
+                                                    <input type="hidden" id="selectedRoomType0-sketchToRender"
                                                         name="selectedRoomType0">
                                                     <p>1. Select Room Type <a href="javascript:void(0)"
                                                             id="viewAllRoomTypes" data-toggle="modal"
                                                             data-target="#view_all_interior_room_type">View All</a></p>
                                                     <div class="gs-select-room-style-row"
-                                                        id="roomTypeDisplay0-redesign">
+                                                        id="roomTypeDisplay0-sketchToRender">
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Living Room"
                                                             onclick="selectRoomType('Living Room',0)">
@@ -291,14 +286,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="gs-select-room-style">
-                                                    <input type="hidden" id="selectedDesignStyle0-redesign"
+                                                    <input type="hidden" id="selectedDesignStyle0-sketchToRender"
                                                         name="selectedDesignStyle0">
                                                     <p>2. Select Design Style <a href="javascript:void(0)"
                                                             data-toggle="modal"
                                                             data-target="#view_all_interior_choose_design">View All</a>
                                                     </p>
                                                     <div class="gs-select-room-style-row"
-                                                        id="designStyleDisplay0-redesign">
+                                                        id="designStyleDisplay0-sketchToRender">
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Eclectic"
                                                             onclick="selectDesignStyle('Eclectic',0)">
@@ -330,46 +325,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="gs-select-room-style">
-                                                    <input type="hidden" id="selectedModeType0-redesign"
-                                                        name="selectedModeType0-redesign">
-                                                    <p>3. Select Mode Type</p>
-                                                    <div class="gs-select-room-style-row" id="modeTypeDisplay0">
-                                                        <div class="gs-select-room-style-single"
-                                                            data-room-type="Perfect Redesign"
-                                                            onclick="selectModeType('Perfect Redesign',0)">
-                                                            <img
-                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/Perfect Full Redesign.png">
-                                                            <span>Perfect Redesign</span>
-                                                        </div>
-                                                        <div class="gs-select-room-style-single"
-                                                            data-room-type="Beautiful Redesign"
-                                                            onclick="selectModeType('Beautiful Redesign',0)">
-                                                            <img
-                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/select-room-type10.png">
-                                                            <span>Beautiful Redesign</span>
-                                                        </div>
-                                                        <div class="gs-select-room-style-single"
-                                                            data-room-type="Creative Redesign"
-                                                            onclick="selectModeType('Creative Redesign',0)">
-                                                            <img
-                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/select-room-type11.png">
-                                                            <span>Creative Redesign</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="gs-select-room-style mt-2">
-                                                        <label id="lbl_structre_elements0" style="font-size:14px" for="structural_elements_ck0"><p>Keep structural elements</p></label>
-                                                        <input id="structural_elements_ck0" class="ml_dw_img ms-1 ck_inst" name="structural-elements" type="checkbox" >
-                                                        <div class="gs-tutorials-toolnip">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/tutorail-wraning.svg" alt="">
-                                                            <div class="ai-upload-option-tooltip">
-                                                                <span>If you check this box our AI will maintain the walls, doors and windows without breaking the structure of the space.</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <input type="hidden" id="selectedModeType0-sketchToRender"
+                                                        name="selectedModeType0-sketchToRender" value="Sketch to Render">
                                                 </div>
                                             </div>
                                             <div class="our-preset-settings-range-outer">
-                                                <input type="hidden" id="strength0-redesign" name="strength0-redesign"
+                                                <input type="hidden" id="strength0-sketchToRender" name="strength0-sketchToRender"
                                                     value="mid" />
                                                 <div class="d-flex align-items-center">
                                                     <p class="font14">AI Intervention</p>
@@ -413,16 +374,17 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="your-customs-settings-interior-redesign" class="tab-pane fade">
+                                    <div id="your-customs-settings-interior-sketchToRender" class="tab-pane fade">
                                         <div class="our-preset-settings-box">
 
                                             <label class="our-preset-prompt-text">Type your custom instructions below
                                                 and our AI will take them into account when generating your designs:
-                                                <input type="checkbox" id="nwcust0_redesign" class="ms-1 ck_inst" checked
-                                                    onchange="customInstruction(0)"></label>
+                                                <input type="checkbox" id="nwcust0
+                                                Render" class="ms-1 ck_inst"
+                                                    checked onchange="customInstruction(0)"></label>
                                             <textarea
                                                 placeholder="e.g. A clean-looking living room with black and yellow textures and a coffee table made from hardwood."
-                                                name="cust-inst0" id="custom_instruction0_redesign" class=""></textarea>
+                                                name="cust-inst0" id="custom_instruction0_sketchToRender" class=""></textarea>
                                         </div>
 
                                         <div class="our-preset-settings-range-outer">
@@ -473,31 +435,30 @@
                             </div>
                         </div>
                     </div>
-                    <div id="exterior-redesign" class="tab-pane fade hide_ext">
+                    <div id="exterior-sketchToRender" class="tab-pane fade hide_ext">
                         <div class="gs-what-to-edit-tabs">
                             <div class="gs-what-to-edit-title">
                                 <ul>
                                     <li class="active"><a data-toggle="tab"
-                                            href="#our-preset-settings-exterior-redesign">Our
+                                            href="#our-preset-settings-exterior-sketchToRender">Our
                                             preset settings</a></li>
-                                    <li><a data-toggle="tab" href="#your-customs-settings-exterior-redesign">Your
+                                    <li><a data-toggle="tab" href="#your-customs-settings-exterior-sketchToRender">Your
                                             customs
                                             settings </a></li>
                                 </ul>
                             </div>
                             <div class="gs-what-to-edit-content">
                                 <div class="tab-content">
-                                    <div id="our-preset-settings-exterior-redesign"
-                                        class="tab-pane fade in active">
+                                    <div id="our-preset-settings-exterior-sketchToRender" class="tab-pane fade in active">
                                         <div class="gs-select-automatically">
                                             <div class="gs-our-preset-settings ">
                                                 <div class="gs-select-room-style">
-                                                    <input type="hidden" id="selectedRoomType1-redesign"
+                                                    <input type="hidden" id="selectedRoomType1-sketchToRender"
                                                         name="selectedRoomType1">
                                                     <p>1. Select House Angle
                                                     </p>
                                                     <div class="gs-select-room-style-row"
-                                                        id="roomTypeDisplay1-redesign">
+                                                        id="roomTypeDisplay1-sketchToRender">
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Side of House"
                                                             onclick="selectRoomType('Side of House',1)">
@@ -522,14 +483,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="gs-select-room-style">
-                                                    <input type="hidden" id="selectedDesignStyle1-redesign"
+                                                    <input type="hidden" id="selectedDesignStyle1-sketchToRender"
                                                         name="selectedDesignStyle1">
                                                     <p>2. Select Design Style <a href="javascript:void(0)"
                                                             data-toggle="modal"
                                                             data-target="#view_all_exterior_choose_design">View All</a>
                                                     </p>
                                                     <div class="gs-select-room-style-row"
-                                                        id="designStyleDisplay1-redesign">
+                                                        id="designStyleDisplay1-sketchToRender">
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Modern"
                                                             onclick="selectDesignStyle('Modern',1)">
@@ -561,46 +522,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="gs-select-room-style">
-                                                    <input type="hidden" id="selectedModeType1-redesign"
-                                                        name="selectedModeType1-redesign">
-                                                    <p>3. Select Mode Type </p>
-                                                    <div class="gs-select-room-style-row" id="modeTypeDisplay1">
-                                                        <div class="gs-select-room-style-single"
-                                                            data-room-type="Perfect Redesign"
-                                                            onclick="selectModeType('Perfect Redesign',1)">
-                                                            <img
-                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/Perfect Full Redesign.png">
-                                                            <span>Perfect Redesign</span>
-                                                        </div>
-                                                        <div class="gs-select-room-style-single"
-                                                            data-room-type="Beautiful Redesign"
-                                                            onclick="selectModeType('Beautiful Redesign',1)">
-                                                            <img
-                                                                src="{{ asset('webWidget/images/select-room-type10.png') }}">
-                                                            <span>Beautiful Redesign</span>
-                                                        </div>
-                                                        <div class="gs-select-room-style-single"
-                                                            data-room-type="Creative Redesign"
-                                                            onclick="selectModeType('Creative Redesign',1)">
-                                                            <img
-                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/select-room-type11.png">
-                                                            <span>Creative Redesign</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="gs-select-room-style mt-2">
-                                                        <label id="lbl_structre_elements0" style="font-size:14px" for="structural_elements_ck1"><p>Keep structural elements</p></label>
-                                                        <input id="structural_elements_ck1" class="ml_dw_img ms-1 ck_inst" name="structural-elements" type="checkbox" >
-                                                        <div class="gs-tutorials-toolnip">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/tutorail-wraning.svg" alt="">
-                                                            <div class="ai-upload-option-tooltip">
-                                                                <span>If you check this box our AI will maintain the walls, doors and windows without breaking the structure of the space.</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <input type="hidden" id="selectedModeType1-sketchToRender"
+                                                        name="selectedModeType1-sketchToRender" value="Sketch to Render">
                                                 </div>
                                             </div>
                                             <div class="our-preset-settings-range-outer">
-                                                <input type="hidden" id="strength1-redesign" name="strength1-redesign"
+                                                <input type="hidden" id="strength1-sketchToRender" name="strength1-sketchToRender"
                                                     value="mid" />
                                                 <div class="d-flex align-items-center">
                                                     <p class="font14">AI Intervention</p>
@@ -644,16 +571,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="your-customs-settings-exterior-redesign" class="tab-pane fade">
+                                    <div id="your-customs-settings-exterior-sketchToRender" class="tab-pane fade">
                                         <div class="our-preset-settings-box">
 
                                             <label class="our-preset-prompt-text">Type your custom instructions below
                                                 and our AI will take them into account when generating your designs:
-                                                <input type="checkbox" id="nwcust1_redesign" class="ms-1 ck_inst" checked
-                                                    onchange="customInstruction(1)"></label>
+                                                <input type="checkbox" id="nwcust1_sketchToRender" class="ms-1 ck_inst"
+                                                    checked onchange="customInstruction(1)"></label>
                                             <textarea
                                                 placeholder="e.g. A clean-looking living room with black and yellow textures and a coffee table made from hardwood."
-                                                name="cust-inst1" id="custom_instruction1_redesign" class=""></textarea>
+                                                name="cust-inst1" id="custom_instruction1_sketchToRender" class=""></textarea>
                                         </div>
 
                                         <div class="our-preset-settings-range-outer">
@@ -704,33 +631,32 @@
                             </div>
                         </div>
                     </div>
-                    <div id="garden-redesign" class="tab-pane fade hide_gar">
+                    <div id="garden-sketchToRender" class="tab-pane fade hide_gar">
                         <div class="gs-what-to-edit-tabs">
                             <div class="gs-what-to-edit-title">
                                 <ul>
                                     <li class="active"><a data-toggle="tab"
-                                            href="#our-preset-settings-garden-redesign">Our
+                                            href="#our-preset-settings-garden-sketchToRender">Our
                                             preset settings</a></li>
-                                    <li><a data-toggle="tab" href="#your-customs-settings-garden-redesign">Your
+                                    <li><a data-toggle="tab" href="#your-customs-settings-garden-sketchToRender">Your
                                             customs
                                             settings </a></li>
                                 </ul>
                             </div>
                             <div class="gs-what-to-edit-content">
                                 <div class="tab-content">
-                                    <div id="our-preset-settings-garden-redesign"
-                                        class="tab-pane fade in active">
+                                    <div id="our-preset-settings-garden-sketchToRender" class="tab-pane fade in active">
                                         <div class="gs-select-automatically">
                                             <div class="gs-our-preset-settings ">
                                                 <div class="gs-select-room-style">
-                                                    <input type="hidden" id="selectedRoomType2-redesign"
+                                                    <input type="hidden" id="selectedRoomType2-sketchToRender"
                                                         name="selectedRoomType2">
                                                     <p>1. Select Garden Type
                                                         <a href="javascript:void(0)" data-toggle="modal"
                                                             data-target="#view_all_garden_type">View All</a>
                                                     </p>
                                                     <div class="gs-select-room-style-row"
-                                                        id="roomTypeDisplay2-redesign">
+                                                        id="roomTypeDisplay2-sketchToRender">
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Backyard"
                                                             onclick="selectRoomType('Backyard',2)">
@@ -763,13 +689,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="gs-select-room-style">
-                                                    <input type="hidden" id="selectedDesignStyle2-redesign"
+                                                    <input type="hidden" id="selectedDesignStyle2-sketchToRender"
                                                         name="selectedDesignStyle2">
                                                     <p>2. Select Design Style <a href="javascript:void(0)"
                                                             data-toggle="modal"
                                                             data-target="#view_all_garden_style">View All</a></p>
                                                     <div class="gs-select-room-style-row"
-                                                        id="designStyleDisplay2-redesign">
+                                                        id="designStyleDisplay2-sketchToRender">
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Modern"
                                                             onclick="selectDesignStyle('Modern',2)">
@@ -801,47 +727,12 @@
                                                     </div>
                                                 </div>
                                                 <div class="gs-select-room-style">
-                                                    <input type="hidden" id="selectedModeType2-redesign"
-                                                        name="selectedModeType2-redesign">
-                                                    <p>3. Select Mode Type </p>
-                                                    <div class="gs-select-room-style-row" id="modeTypeDisplay2">
-                                                        <div class="gs-select-room-style-single"
-                                                            data-room-type="Perfect Redesign"
-                                                            onclick="selectModeType('Perfect Redesign',2)">
-                                                            <img
-                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/Perfect Full Redesign.png">
-                                                            <span>Perfect Redesign</span>
-                                                        </div>
-                                                        <div class="gs-select-room-style-single"
-                                                            data-room-type="Beautiful Redesign"
-                                                            onclick="selectModeType('Beautiful Redesign',2)">
-                                                            <img
-                                                                src="{{ asset('webWidget/images/select-room-type10.png') }}">
-                                                            <span>Beautiful Redesign</span>
-                                                        </div>
-                                                        <div class="gs-select-room-style-single"
-                                                            data-room-type="Creative Redesign"
-                                                            onclick="selectModeType('Creative Redesign',2)">
-                                                            <img
-                                                                src="https://homedesigns-ai.b-cdn.net/web2/images/select-room-type11.png">
-                                                            <span>Creative Redesign</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="gs-select-room-style mt-2">
-                                                        <label id="lbl_structre_elements0" style="font-size:14px" for="structural_elements_ck2"><p>Keep structural elements</p></label>
-                                                        <input id="structural_elements_ck2" class="ml_dw_img ms-1 ck_inst" name="structural-elements" type="checkbox" >
-                                                        <div class="gs-tutorials-toolnip">
-                                                            <img src="https://homedesigns-ai.b-cdn.net/web2/images/tutorail-wraning.svg" alt="">
-                                                            <div class="ai-upload-option-tooltip">
-                                                                <span>If you check this box our AI will maintain the walls, doors and windows without breaking the structure of the space.</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <input type="hidden" id="selectedModeType2-sketchToRender"
+                                                        name="selectedModeType2-sketchToRender" value="Sketch to Render">
                                                 </div>
                                             </div>
                                             <div class="our-preset-settings-range-outer">
-                                                <input type="hidden" id="strength2-redesign" name="strength2-redesign"
+                                                <input type="hidden" id="strength2-sketchToRender" name="strength2-sketchToRender"
                                                     value="mid" />
                                                 <div class="d-flex align-items-center">
                                                     <p class="font14">AI Intervention</p>
@@ -885,16 +776,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="your-customs-settings-garden-redesign" class="tab-pane fade">
+                                    <div id="your-customs-settings-garden-sketchToRender" class="tab-pane fade">
                                         <div class="our-preset-settings-box">
 
                                             <label class="our-preset-prompt-text">Type your custom instructions below
                                                 and our AI will take them into account when generating your designs:
-                                                <input type="checkbox" id="nwcust2_redesign" class="ms-1 ck_inst" checked
-                                                    onchange="customInstruction(2)"></label>
+                                                <input type="checkbox" id="nwcust2_sketchToRender" class="ms-1 ck_inst"
+                                                    checked onchange="customInstruction(2)"></label>
                                             <textarea
                                                 placeholder="e.g. A clean-looking living room with black and yellow textures and a coffee table made from hardwood."
-                                                name="cust-inst2" id="custom_instruction2_redesign" class=""></textarea>
+                                                name="cust-inst2" id="custom_instruction2_sketchToRender" class=""></textarea>
                                         </div>
 
                                         <div class="our-preset-settings-range-outer">
@@ -953,7 +844,7 @@
 
     <div class="ai-upload-latest-designs">
         <h3 class="font22">Latest Designs</h3>
-        <div class="ai-upload-latest-wrapper row" id="all_data0_redesign">
+        <div class="ai-upload-latest-wrapper row" id="all_data0_sketchToRender">
 
         </div>
     </div>
@@ -970,7 +861,7 @@
         // Check if there are any stored designs
         if (storedDesigns.length > 0) {
             // Get the container where images will be displayed
-            let dataContainer = document.getElementById('all_data0_redesign');
+            let dataContainer = document.getElementById('all_data0_sketchToRender');
 
             // Clear any existing content (optional, depending on how you want to handle reloading)
             dataContainer.innerHTML = '';

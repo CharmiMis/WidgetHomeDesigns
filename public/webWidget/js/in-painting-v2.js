@@ -118,6 +118,19 @@ tabs.on( "click", ".ui-tabs-tab", function() {
 
     if(panelId == 'redesign'){
         dataPage = 'redesign';
+        $(`#input_img_typ-${dataPage}`).val('');
+        $('.top-menu-bar-first').css('display', 'flex');
+        $('.upload-image-container').css('display', 'flex');
+        $('.searched_product_result').css('display', 'flex');
+        $('.redesign-designs-tabs').css('display', 'block');
+
+        $('.top-menu-bar-second').css('display', 'none');
+        $('.image-mask-container').css('display', 'none');
+        $('.segment-masking-container').css('display', 'none');
+
+        $('.top-menu-bar-third').css('display', 'none');
+        $('.image-container').css('display', 'none');
+        $('.category-container').css('display', 'none');
     }else if(panelId == 'precision'){
         dataPage = 'inPaint';
         fileInput = document.querySelector("#ipFilePickerPrecision");
@@ -256,7 +269,41 @@ tabs.on( "click", ".ui-tabs-tab", function() {
         addImageLayer();
         addBlackLayer(paintingStag);
         addBrushLayer();
-    } else{
+    } else if(panelId == 'sketch_to_render'){
+        dataPage = 'sketchToRender';
+        $(`#input_img_typ-${dataPage}`).val('');
+        $('.top-menu-bar-first').css('display', 'flex');
+        $('.upload-image-container').css('display', 'flex');
+        $('.searched_product_result').css('display', 'flex');
+        $('.redesign-designs-tabs').css('display', 'block');
+
+        $('.top-menu-bar-second').css('display', 'none');
+        $('.image-mask-container').css('display', 'none');
+        $('.segment-masking-container').css('display', 'none');
+
+        $('.top-menu-bar-third').css('display', 'none');
+        $('.image-container').css('display', 'none');
+        $('.category-container').css('display', 'none');
+    }else if(panelId == 'sky_colors'){
+        dataPage = 'sky-color';
+        fileInput = document.querySelector("#ipFilePickerSkyColor");
+
+            inPaintStageContainer = document.querySelector('#inpainting-stag-outer-'+dataPage);
+            paintingStagOriginalWidth = inPaintStageContainer ? inPaintStageContainer.clientWidth : 0 ;
+            paintingStagOriginalHeight = inPaintStageContainer ? inPaintStageContainer.clientHeight : 0 ;
+
+            paintingStag = new Konva.Stage({
+                container: 'painting-stag-'+dataPage,
+                width: paintingStagOriginalWidth,
+                height: paintingStagOriginalHeight,
+            });
+
+            imageLayer = new Konva.Layer();
+            paintingStag.add(imageLayer);
+        addImageLayer();
+        addBlackLayer(paintingStag);
+        addBrushLayer();
+    }else{
         dataPage = '';
         fileInput = document.querySelector("#ipFilePickerPrecision");
     }
@@ -264,11 +311,11 @@ tabs.on( "click", ".ui-tabs-tab", function() {
     callAgain();
     callAgainUploadPaint();
     $(document).find('#'+panelId+' .first_tab_active .ai-tool-right-steps').click();
-    $('#input_image').val('');
-    $('#gallery0 img').attr('src', '');
+    $(`#input_image-${dataPage}`).val('');
+    $(`#gallery0-${dataPage} img`).attr('src', '');
     sizeElement = document.querySelector(`#ip-brush-thickness-${dataPage}`);
     var size = sizeElement ? sizeElement.value : 70;
-    if(dataPage == 'furnish_empty_room'){
+    if(dataPage == 'furnish_empty_room' || dataPage == 'sky-color'){
         clearNonMaskPaintingStag();
     }else{
         clearPaintingStag();
@@ -858,8 +905,7 @@ function loadImageToStage(image) {
         $('.removeMasking').addClass('disabled');
         $('.removeMasking').css('cursor', 'not-allowed');
     }
-
-    if(dataPage != 'furnish_empty_room'){
+    if(dataPage !== 'furnish_empty_room' && dataPage !== 'sky-color'){
         $(".ip-clearImage").click();
     }
 
@@ -911,7 +957,7 @@ function loadImageToStage(image) {
         $('.top-menu-bar-second').css('display', 'flex');
         $('.image-mask-container').css('display', 'block');
         $('.segment-masking-container').css('display', 'block');
-        if (dataPage == 'redesign' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'aiObjectRemoval' || dataPage == 'design_transfer' || dataPage == 'floor_editor' || dataPage == 'furnish_empty_room') {
+        if (dataPage == 'redesign' || dataPage =='sketchToRender' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'aiObjectRemoval' || dataPage == 'design_transfer' || dataPage == 'floor_editor' || dataPage == 'furnish_empty_room') {
             $('.redesign-designs-tabs').css('display', 'none');
             $("#loading_brilliance").modal('hide');
         }
@@ -1011,7 +1057,6 @@ async function callInPaintingAPI(sec,el) {
 
     var mode = modeValue.value;
     // var noOfDesign = document.getElementById(`no_of_des${sec}`).value;
-    
     generationDivLoader(noOfDesign,croppedImage);
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
     // document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
@@ -1187,14 +1232,10 @@ async function callInPaintingAPI(sec,el) {
         formData.append("material_type", material_type);
         // Need to add material_type and material
     } else if (dataPage == 'sky-color') {
-        // var inPaintUrl = `${GPU_SERVER_HOST_SEG}/sky_color_change?isSubbed=${isSubbed}&superenhance=${superenhance}&no_of_Design=${noOfDesign}&designtype=${sec}&is_staging=${is_staging}&weather=${skyWeather}&modeType=${mode}`;
         var inPaintUrl = "runpodWidget/sky-color-change";
-        // formData.append("isSubbed", isSubbed);
-        // formData.append("superenhance", superenhance);
         formData.append("no_of_Design", noOfDesign);
         formData.append("designtype", sec);
         formData.append("modeType", mode);
-        // formData.append("is_staging", is_staging);
         formData.append("weather", skyWeather);
     } else if (dataPage == 'decorstaging') {
         // var inPaintUrl = `${GPU_SERVER_HOST_SEG}/sky_color_change?isSubbed=${isSubbed}&superenhance=${superenhance}&no_of_Design=${noOfDesign}&designtype=${sec}&is_staging=${is_staging}&weather=${skyWeather}&modeType=${mode}`;
@@ -1731,7 +1772,6 @@ function redoBrushing() {
         if (actionToRedo) {
             cursorBrushActions.push(actionToRedo);  // If needed, push back to cursorBrushActions
             brushLayer.add(actionToRedo);  // Assuming this is how you reapply the action
-            console.log('currentActionIndex redo', currentActionIndex);
 
             $(".ip-undoImage").prop('disabled', false).css('cursor', 'pointer');
             if (ids.length === 0) {
@@ -2722,7 +2762,7 @@ function loadCollageImageToStage(image) {
         $('.top-menu-bar-second').css('display', 'flex');
         $('.image-mask-container').css('display', 'block');
         $('.segment-masking-container').css('display', 'block');
-        if (dataPage == 'redesign' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'collage_to_render') {
+        if (dataPage == 'redesign' || dataPage =='sketchToRender' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'collage_to_render') {
             $('.redesign-designs-tabs').css('display', 'none');
             $("#loading_brilliance").modal('hide');
         }
@@ -3739,7 +3779,7 @@ async function generateRoomComposer(sec,el){
 
     disableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
 
-    var image_type = document.getElementById('input_img_typ').value;
+    var image_type = document.getElementById(`input_img_typ-${dataPage}`).value;
     // var image = document.getElementById('input_image').value;
     var roomType = document.getElementById(`selectedRoomType${sec}`).value;
     var styleType = document.getElementById(`selectedDesignStyle${sec}`).value;
@@ -4199,6 +4239,14 @@ function generateUniqueId(prefix = 'image_id') {
             updatedDataPage = 'change-colors-texture';
         } else if(firstFeatureInput == 'paint_visualizer'){
             updatedDataPage = 'color_swap';
+        } else if(firstFeatureInput == 'furniture_removal'){
+            updatedDataPage = 'aiObjectRemoval';
+        } else if(firstFeatureInput == 'virtual_staging'){
+            updatedDataPage = 'furnish_empty_room';
+        } else if(firstFeatureInput == 'sketch_to_render'){
+            updatedDataPage = 'sketchToRender';
+        }else if(firstFeatureInput == 'sky_colors'){
+            updatedDataPage = 'sky-color';
         } else{
             updatedDataPage = '';
         }
@@ -4250,10 +4298,8 @@ function pollStatus(requestId,generateDesignBtn, spinner,tabs,previousPageButton
                     //     }, 100);
                     // }, 500);
                 } else if (response.status === 'IN_PROGRESS' || response.status === 'IN_QUEUE') {
-                    console.log('Still in queue or processing. Retrying in 5 seconds...');
                     setTimeout(checkStatus, pollInterval);
                 } else {
-                    console.error('Unexpected status:', response.status);
                 }
             },
             error: function(xhr, status, error) {
