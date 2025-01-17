@@ -224,9 +224,9 @@ class WidgetController extends Controller
             // }
             $languages = $widgetData ? $widgetData->preferred_lang : 'en'; // Languages for testing
             $request->session()->put('preffrelang', $languages);
-            dd($languages);
             
-        $widgetHtml = view('widget.widget-management', ['widgetData' => $widgetData, 'widgetThemeMode' => $userTheme->light_mode, 'primaryColor' => $widgetData->primary_color])->render();
+            $widgetHtml = view('widget.widget-management', ['widgetData' => $widgetData, 'widgetThemeMode' => $userTheme->light_mode, 'primaryColor' => $widgetData->primary_color])->render();
+            dd($widgetHtml);
         return response($widgetHtml, 200)->header('Content-Type', 'text/html')
                 ->header('X-User-Theme', $userTheme->light_mode);;
         // Render the Blade view to a string
