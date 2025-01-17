@@ -19107,8 +19107,10 @@ const apiUrl = "https://stagwidget.homedesigns.ai/";
 
   async function init(currentScript) {
 	const widgetUrl = `${apiUrl}widgetData/${uuid}?currentDomain=${currentDomain}`;
+	console.log('widgetUrl: ', widgetUrl);
 
     const response = await fetch(widgetUrl);
+	console.log('response: ', response);
 
     if (response.ok) {
       const widgetData = await response.text(); // Get the HTML content
