@@ -226,7 +226,6 @@ class WidgetController extends Controller
             $request->session()->put('preffrelang', $languages);
             
             $widgetHtml = view('widget.widget-management', ['widgetData' => $widgetData, 'widgetThemeMode' => $userTheme->light_mode, 'primaryColor' => $widgetData->primary_color])->render();
-            dd($widgetHtml);
         return response($widgetHtml, 200)->header('Content-Type', 'text/html')
                 ->header('X-User-Theme', $userTheme->light_mode);;
         // Render the Blade view to a string
