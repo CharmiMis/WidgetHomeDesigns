@@ -212,6 +212,7 @@ class WidgetController extends Controller
     public function showWidgetData($id,Request $request)
     {
         $widgetData = WidgetUserData::where('user_id', $id)->firstOrFail();
+        dd($widgetData);
         $userTheme = User::where('id',$id)->select('light_mode')->first();
         $currentDomain = $request->query('currentDomain'); // Get the currentDomain from the query parameters
 
@@ -226,7 +227,6 @@ class WidgetController extends Controller
         $request->session()->put('preffrelang', $languages);
         
         $widgetHtml = view('widget.widget-management', ['widgetData' => $widgetData, 'widgetThemeMode' => $userTheme->light_mode, 'primaryColor' => $widgetData->primary_color])->render();
-        dd($widgetHtml);
         return response($widgetHtml, 200)->header('Content-Type', 'text/html')
                 ->header('X-User-Theme', $userTheme->light_mode);;
         // Render the Blade view to a string
