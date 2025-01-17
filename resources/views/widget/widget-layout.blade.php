@@ -1666,7 +1666,6 @@
             $('#cancel_subscription_002').on('shown.bs.modal', function() {
                 // Reset the dropdown value to userActivePlan
                 var userActivePlan = '{{ $userActivePlan }}';
-                console.log('userActivePlan', userActivePlan);
                 $('#next_subscription_plan').val(userActivePlan);
             });
 
@@ -1795,7 +1794,14 @@
         function selectModeType(modeType, sec) {
             $(`#modeTypeDisplay${sec} .gs-select-room-style-single`).removeClass('active');
             $(`#modeTypeDisplay${sec} .gs-select-room-style-single[data-room-type="${modeType}"]`).addClass('active');
-            document.getElementById('selectedModeType' + sec).value = modeType;
+            document.getElementById('selectedModeType' + sec + "-" +dataPage).value = modeType;
+
+            const checkbox = document.getElementById('structural_elements_ck' + sec);
+            if (modeType === 'Perfect Redesign') {
+                checkbox.checked = true; // Check the checkbox
+            } else {
+                checkbox.checked = false; // Uncheck the checkbox
+            }
         }
     </script>
     <script>
@@ -1899,7 +1905,6 @@
                 success: function(response) {
                     if (response.success) {
                         if (response.data.products[0].result != "success") {
-                            console.log("notsucces");
                             swal({
                                 title: "Product Not found.",
                                 text: "Something went wrong please try again",

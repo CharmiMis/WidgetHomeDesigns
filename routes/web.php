@@ -41,8 +41,10 @@ Route::post('runpodWidget/paint-visualizer', [WidgetController::class, 'runpodWi
 Route::post('runpodWidget/getMasking', [WidgetController::class, 'runpodWidgetGetMasking'])->name('runpodWidget.getmasking');
 Route::post('runpodWidget/fullHD', [WidgetController::class, 'runpodWidgetFullHD'])->name('runpodWidget.fullHD');
 
+Route::post('check-request-status', [WidgetController::class, 'checkRequestStatus'])->name('runpod.check-request-status');
 Route::get('get-base64', [HomeController::class, 'downloadFile'])->name('file.download');
 Route::post('runpodWidget/creative_redesign', [WidgetController::class, 'runpodWidgetCreativeRedesign'])->name('runpodWidget.creative_redesign');
+Route::post('runpodWidget/perfect_redesign', [WidgetController::class, 'runpodWidgetPerfectRedesign'])->name('runpodWidget.perfect_redesign');
 Route::post('runpodWidget/render_realistic', [WidgetController::class, 'runpodWidgetRenderRealistic'])->name('runpodWidget.render_realistic');
 Route::post('runpodWidget/furniture_removal', [WidgetController::class, 'runpodWidgetFurnitureRemoval'])->name('runpodWidget.furniture_removal');
 Route::post('runpodWidget/virtual_staging', [WidgetController::class, 'runpodWidgetVirtualStaging'])->name('runpodWidget.virtual_staging');
@@ -50,6 +52,8 @@ Route::post('check-runpod-status', [WidgetController::class, 'checkRunpodStatus'
 Route::get('custom-credit-request', [WidgetController::class, 'customCredit'])->name('api.custom-credit');
 Route::post('custom-credit-email', [WidgetController::class, 'customCreditEmail'])->name('api.custom-credit-email');
 Route::post('translateText', [WidgetController::class, 'translateText'])->name('user.translateText');
+Route::post('runpodWidget/sky-color-change', [WidgetController::class, 'runpodWidgetSkyColorChange'])->name('runpodWidget.sky-color-change');
+
 //Widget response
 
 Route::get('/widgetData/{id}', [WidgetController::class, 'showWidgetData']);

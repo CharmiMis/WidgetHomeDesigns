@@ -333,12 +333,9 @@
                 };
                 spaceTypes.forEach((type) => {
                     const targetClass = typeClassMap[type];
-                    console.log('targetClass: ', targetClass);
                     if (targetClass) {
                         if (isFirstVisibleItem) {
-                            console.log('isFirstVisibleItem: ', isFirstVisibleItem);
                             $(targetClass).addClass("active in");
-                            console.log('targetClass3333333333: ', targetClass);
                             isFirstVisibleItem = false;
                         }
                         $(targetClass).removeClass(targetClass.substring(1));
@@ -347,7 +344,6 @@
 
                 if (!isFirstVisibleItem) {
                     $('.segment-masking-container').show();
-                    console.log('Container is shown');
                 }
             });
 

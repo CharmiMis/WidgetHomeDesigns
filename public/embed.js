@@ -19201,19 +19201,15 @@ const apiUrl = "https://stagwidget.homedesigns.ai/";
 
     //   const userTheme = response.headers.get('X-User-Theme');
       const userTheme = document.getElementById('widgetThemeMode').value;
-      console.log("userTheme",typeof(userTheme));
-      console.log(userTheme);
 
        // Get all body elements (should ideally be only one)
        const bodyElements = document.getElementsByTagName('body');
-       console.log("bodyElements",bodyElements.length);
 
        if (bodyElements.length > 0 && userTheme === '1') {
            // Assuming you want to target the first body element
            bodyElements[0].classList.add('light-theme');
            containerDiv.classList.add('light-theme');
        }else if( userTheme === '1') {
-       console.log("userTheme",typeof(userTheme));
        document.body.classList.add('light-theme');
        containerDiv.classList.add('light-theme');
      }

@@ -881,8 +881,6 @@
                 // If no designs match the 'sec' value, display a message or handle the case
                 //dataContainer.innerHTML = '<p style="color: #2e2424;">No designs found for this section.</p>';
             }
-        } else {
-            console.log("No designs found in localStorage.");
         }
     }
 
