@@ -98,6 +98,7 @@
         });
     </script>
     <script src="{{ asset('webWidget/js/cropper.min.js') }}"></script>
+    <script  src="{{ asset('webWidget/js/newScript.js') }}"></script>
     <script src="{{ asset('web/js/script.js') }}?v={{ config('app.script_js_version') }}"></script>
     <script src="{{ asset('webWidget/js/custom-script.js') }}?v={{ config('app.custom_scriptWidget_version') }}"
         id="custom-script-js"></script>
@@ -277,10 +278,6 @@
                 transform: translateX(-100%);
             }
         }
-
-        /* .ai-tool-right-top {
-            justify-content: center !important;
-        } */
 
         .square-loader {
             position: absolute;
@@ -479,13 +476,9 @@
 
     $currentRoute = request()->route()->getName();
     $subscription_plans = [
-        //'api-bronze' => 'API Bronze Tier',
         'homedesignsai-individual' => 'HomeDesigns.ai INDIVIDUAL ($27, billed monthly)',
         'homedesignsai-pro' => 'HomeDesigns.ai PRO ($29, billed monthly)',
         'pro-yearly' => 'HomeDesigns.ai PRO ($197, billed yearly)',
-        //'homedesignsai-pro-7-days-trial' => 'HomedesignsAI PRO - 7 Days Free Trial',
-        //'homedesignsai-teams' => 'HomeDesignsAI Teams',
-        //'homedesignsai-teams-seven-days-trial' => 'HomeDesignsAI Teams - 7 Days Free Trial',
     ];
 
     $fullName = $customer ? ucwords(strtolower($customer->name)) : ''; // Ensure first letter of each word is capitalized
@@ -1669,16 +1662,6 @@
                 $('.dash-list .custom-select-wrapper ul').css('display', 'none');
                 $('.dash-list .custom-select-wrapper').removeClass('open-dropdown');
             }
-
-            //$('#confirmCancelBtn').on('click', function(event) {
-            //event.preventDefault();
-
-            // Open the link in a new tab
-            //window.open('https://homedesigns.ai/go/support', '_blank');
-
-            // Close the modal
-            // $('#cancel_subscription_06').modal('hide');
-            // });
 
             $('#cancel_subscription_002').on('shown.bs.modal', function() {
                 // Reset the dropdown value to userActivePlan
