@@ -19106,6 +19106,7 @@ const apiUrl = "https://stagwidget.homedesigns.ai/";
   const uuid = url.searchParams.get("id");
 
   async function init(currentScript) {
+	showLoader();
 	const widgetUrl = `${apiUrl}widgetData/${uuid}?currentDomain=${currentDomain}`;
 	console.log('widgetUrl: ', widgetUrl);
 
@@ -19121,7 +19122,6 @@ const apiUrl = "https://stagwidget.homedesigns.ai/";
 	  containerDivP.id = 'widgetCustomContainerDivParent';
 
 	  currentScript.parentNode.insertBefore(containerDivP, currentScript.nextSibling);
-      showLoader();
 
       const parser = new DOMParser();
       const doc = parser.parseFromString(widgetData, 'text/html');
