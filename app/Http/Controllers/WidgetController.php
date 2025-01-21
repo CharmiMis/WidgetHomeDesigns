@@ -62,7 +62,7 @@ class WidgetController extends Controller
                     'ai_intervention' => $payloadData['strengthType'],
                     'no_design' => intval($payloadData['no_of_Design']),
                     'unique_id' => $uniqueFileName,
-                    // 'is_preserve' => !empty($payloadData['keepStructureElements']) ? filter_var($payloadData['keepStructureElements'], FILTER_VALIDATE_BOOLEAN) : filter_var(false, FILTER_VALIDATE_BOOLEAN),
+                    'is_preserve' => !empty($payloadData['keepStructureElements']) ? filter_var($payloadData['keepStructureElements'], FILTER_VALIDATE_BOOLEAN) : filter_var(false, FILTER_VALIDATE_BOOLEAN),
                 ],
             ];
 
@@ -811,7 +811,7 @@ class WidgetController extends Controller
                     'ai_intervention' => $payloadData['strengthType'],
                     'no_design' => intval($payloadData['no_of_Design']),
                     'unique_id' => $uniqueFileName,
-                    // 'is_preserve' => !empty($payloadData['keepStructureElements']) ? filter_var($payloadData['keepStructureElements'], FILTER_VALIDATE_BOOLEAN) : filter_var(false, FILTER_VALIDATE_BOOLEAN),
+                    'is_preserve' => !empty($payloadData['keepStructureElements']) ? filter_var($payloadData['keepStructureElements'], FILTER_VALIDATE_BOOLEAN) : filter_var(false, FILTER_VALIDATE_BOOLEAN),
                 ],
             ];
 
@@ -1217,59 +1217,59 @@ class WidgetController extends Controller
         }
     }
 
-    // public function runpodWidgetPerfectRedesign(Request $request)
-    // {
+    public function runpodWidgetPerfectRedesign(Request $request)
+    {
 
-    //     $payloadData = $request->all();
-    //     $mode = $request->modeType;
-    //     $Widgetid = $request->widgetuserid;
+        $payloadData = $request->all();
+        $mode = $request->modeType;
+        $Widgetid = $request->widgetuserid;
 
-    //     $userAccess = $this->checkAccess($payloadData, $Widgetid, $mode);
+        $userAccess = $this->checkAccess($payloadData, $Widgetid, $mode);
 
-    //     if ($userAccess == true) {
-    //         $uniqueFileName = $this->generateUniqueFileName();
-    //         if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
-    //             $b64image = base64_encode(file_get_contents($payloadData['data']));
-    //             $googleStorageFileUrl = $this->storeImageToGoogleBucket($b64image, $uniqueFileName);
-    //         } else {
-    //             $googleStorageFileUrl = $this->storeImageToGoogleBucket($payloadData['data'], $uniqueFileName);
-    //         }
+        if ($userAccess == true) {
+            $uniqueFileName = $this->generateUniqueFileName();
+            if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
+                $b64image = base64_encode(file_get_contents($payloadData['data']));
+                $googleStorageFileUrl = $this->storeImageToGoogleBucket($b64image, $uniqueFileName);
+            } else {
+                $googleStorageFileUrl = $this->storeImageToGoogleBucket($payloadData['data'], $uniqueFileName);
+            }
 
-    //         if ($googleStorageFileUrl === false) {
-    //             return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
-    //         }
+            if ($googleStorageFileUrl === false) {
+                return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
+            }
 
-    //         $payload = [
-    //             'input' => [
-    //                 'image' => $googleStorageFileUrl['url'],
-    //                 'design_type' => intval($payloadData['designtype']),
-    //                 'room_type' => strtolower($payloadData['roomtype']),
-    //                 'design_style' => strtolower($payloadData['prompt']),
-    //                 'prompt' => !empty($payloadData['custom_instruction']) ? $payloadData['custom_instruction'] : '',
-    //                 'negative_prompt' => !empty($payloadData['is_custom_negative_instruction']) ? $payloadData['is_custom_negative_instruction'] : '',
-    //                 'ai_intervention' => $payloadData['strengthType'],
-    //                 'no_design' => intval($payloadData['no_of_Design']),
-    //                 'unique_id' => $uniqueFileName,
-    //             ],
-    //         ];
+            $payload = [
+                'input' => [
+                    'image' => $googleStorageFileUrl['url'],
+                    'design_type' => intval($payloadData['designtype']),
+                    'room_type' => strtolower($payloadData['roomtype']),
+                    'design_style' => strtolower($payloadData['prompt']),
+                    'prompt' => !empty($payloadData['custom_instruction']) ? $payloadData['custom_instruction'] : '',
+                    'negative_prompt' => !empty($payloadData['is_custom_negative_instruction']) ? $payloadData['is_custom_negative_instruction'] : '',
+                    'ai_intervention' => $payloadData['strengthType'],
+                    'no_design' => intval($payloadData['no_of_Design']),
+                    'unique_id' => $uniqueFileName,
+                ],
+            ];
 
-    //         if ($payloadData['keepStructureElements'] == 'true') {
-    //             $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_TRUE') . "/run";
-    //         } else {
-    //             $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_FALSE') . "/run";
-    //         }
-    //         $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
-    //         if ($response && isset($response['id']) && $response['status'] === 'IN_QUEUE') {
-    //             Cache::put("runpod_request_{$response['id']}", $payloadData, 300);
-    //             return response()->json([
-    //                 'status' => $response['status'],
-    //                 'requestId' => $response['id'],
-    //             ]);
-    //         }
-    //     } else {
-    //         return response()->json($userAccess, 401);
-    //     }
-    // }
+            if ($payloadData['keepStructureElements'] == 'true') {
+                $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_TRUE') . "/run";
+            } else {
+                $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_FALSE') . "/run";
+            }
+            $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
+            if ($response && isset($response['id']) && $response['status'] === 'IN_QUEUE') {
+                Cache::put("runpod_request_{$response['id']}", $payloadData, 300);
+                return response()->json([
+                    'status' => $response['status'],
+                    'requestId' => $response['id'],
+                ]);
+            }
+        } else {
+            return response()->json($userAccess, 401);
+        }
+    }
 
     public function checkRequestStatus(Request $request)
     {

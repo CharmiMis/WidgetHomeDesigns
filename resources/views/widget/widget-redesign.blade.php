@@ -281,13 +281,13 @@
                                                         name="selectedModeType0-redesign">
                                                     <p>3. Select Mode Type</p>
                                                     <div class="gs-select-room-style-row" id="modeTypeDisplay0">
-                                                        {{-- <div class="gs-select-room-style-single"
+                                                        <div class="gs-select-room-style-single"
                                                             data-room-type="Perfect Redesign"
                                                             onclick="selectModeType('Perfect Redesign',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/Perfect Full Redesign.png">
                                                             <span>Perfect Redesign</span>
-                                                        </div> --}}
+                                                        </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Beautiful Redesign"
                                                             onclick="selectModeType('Beautiful Redesign',0)">
@@ -303,7 +303,7 @@
                                                             <span>Creative Redesign</span>
                                                         </div>
                                                     </div>
-                                                    {{-- <div class="gs-select-room-style mt-2">
+                                                    <div class="gs-select-room-style mt-2">
                                                         <label id="lbl_structre_elements0" style="font-size:14px" for="structural_elements_ck0"><p>Keep structural elements</p></label>
                                                         <input id="structural_elements_ck0" class="ml_dw_img ms-1 ck_inst" name="structural-elements" type="checkbox" >
                                                         <div class="gs-tutorials-toolnip">
@@ -312,7 +312,7 @@
                                                                 <span>If you check this box our AI will maintain the walls, doors and windows without breaking the structure of the space.</span>
                                                             </div>
                                                         </div>
-                                                    </div> --}}
+                                                    </div>
                                                 </div>
                                             </div>
                                             {{-- <div class="nwchoice-toggle" style="margin-top: 15px !important">
@@ -547,13 +547,13 @@
                                                         name="selectedModeType1-redesign">
                                                     <p>3. Select Mode Type </p>
                                                     <div class="gs-select-room-style-row" id="modeTypeDisplay1">
-                                                        {{-- <div class="gs-select-room-style-single"
+                                                        <div class="gs-select-room-style-single"
                                                             data-room-type="Perfect Redesign"
                                                             onclick="selectModeType('Perfect Redesign',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/Perfect Full Redesign.png">
                                                             <span>Perfect Redesign</span>
-                                                        </div> --}}
+                                                        </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Beautiful Redesign"
                                                             onclick="selectModeType('Beautiful Redesign',1)">
@@ -569,7 +569,7 @@
                                                             <span>Creative Redesign</span>
                                                         </div>
                                                     </div>
-                                                    {{-- <div class="gs-select-room-style mt-2">
+                                                    <div class="gs-select-room-style mt-2">
                                                         <label id="lbl_structre_elements0" style="font-size:14px" for="structural_elements_ck1"><p>Keep structural elements</p></label>
                                                         <input id="structural_elements_ck1" class="ml_dw_img ms-1 ck_inst" name="structural-elements" type="checkbox" >
                                                         <div class="gs-tutorials-toolnip">
@@ -578,7 +578,7 @@
                                                                 <span>If you check this box our AI will maintain the walls, doors and windows without breaking the structure of the space.</span>
                                                             </div>
                                                         </div>
-                                                    </div> --}}
+                                                    </div>
                                                 </div>
                                             </div>
                                             {{-- <div class="nwchoice-toggle" style="margin-top: 15px !important">
@@ -822,13 +822,13 @@
                                                         name="selectedModeType2-redesign">
                                                     <p>3. Select Mode Type </p>
                                                     <div class="gs-select-room-style-row" id="modeTypeDisplay2">
-                                                        {{-- <div class="gs-select-room-style-single"
+                                                        <div class="gs-select-room-style-single"
                                                             data-room-type="Perfect Redesign"
                                                             onclick="selectModeType('Perfect Redesign',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/Perfect Full Redesign.png">
                                                             <span>Perfect Redesign</span>
-                                                        </div> --}}
+                                                        </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Beautiful Redesign"
                                                             onclick="selectModeType('Beautiful Redesign',2)">
@@ -845,7 +845,7 @@
                                                         </div>
                                                     </div>
 
-                                                    {{-- <div class="gs-select-room-style mt-2">
+                                                    <div class="gs-select-room-style mt-2">
                                                         <label id="lbl_structre_elements0" style="font-size:14px" for="structural_elements_ck2"><p>Keep structural elements</p></label>
                                                         <input id="structural_elements_ck2" class="ml_dw_img ms-1 ck_inst" name="structural-elements" type="checkbox" >
                                                         <div class="gs-tutorials-toolnip">
@@ -854,7 +854,7 @@
                                                                 <span>If you check this box our AI will maintain the walls, doors and windows without breaking the structure of the space.</span>
                                                             </div>
                                                         </div>
-                                                    </div> --}}
+                                                    </div>
                                                 </div>
                                             </div>
                                             {{-- <div class="nwchoice-toggle" style="margin-top: 15px !important">

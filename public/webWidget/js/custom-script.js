@@ -1006,7 +1006,7 @@ async function _generateDesign(sec, el) {
     var image = document.getElementById(`input_image-${dataPage}`).value;
     const promptRoomType = document.querySelector(`#selectedRoomType${sec}-${dataPage}`);
     const promptStyleType = document.querySelector(`#selectedDesignStyle${sec}-${dataPage}`);
-    // const keepStructureElements = document.getElementById(`structural_elements_ck${sec}`) ? document.getElementById(`structural_elements_ck${sec}`).checked : false;
+    const keepStructureElements = document.getElementById(`structural_elements_ck${sec}`) ? document.getElementById(`structural_elements_ck${sec}`).checked : false;
 
     const promptModeType = document.querySelector(`#selectedModeType${sec}-${dataPage}`);
     var roomType = promptRoomType ? promptRoomType.value : "" ;
@@ -1139,7 +1139,7 @@ async function _generateDesign(sec, el) {
 
     formData.append("no_of_Design", noOfDesign);
     formData.append("widgetuserid",widgetuserid);
-    // formData.append("keepStructureElements",keepStructureElements);
+    formData.append("keepStructureElements",keepStructureElements);
 
     await fetch(SITE_BASE_URL + aiAPI, {
         method: 'POST',
