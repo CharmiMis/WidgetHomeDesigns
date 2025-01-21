@@ -29,10 +29,10 @@
 <div class="image-background-container upload-image-container">
     <div class="ai-upload-image">
         <input type="file" class="ai-upload-input" id="ipFilePickerSkyColor">
-        <h3 class="font22">Upload your image </h3>
+        <h3 class="font22">{{ trans('content.upload_your_image') }} </h3>
         <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-upload-img.png">
-        <span>Drag and drop your image </span>
-        <a href="#">Or click here to upload</a>
+        <span>{{ trans('content.drag_and_drop_your_image_here') }} </span>
+        <a href="#">{{ trans('content.or_click_here_to_upload') }}</a>
     </div>
 </div>
 {{-- section first end --}}
@@ -68,19 +68,17 @@
             <div class="gs-what-to-edit-tips">
                 <div class="gs-what-to-edit-tip-box">
                     <div class="gs-what-to-edit-tip-right">
-                        <p>The AI will automatically identify and select the sky area in your image, making the editing
-                            process smooth and efficient. No manual selection required!</p>
+                        <p>{{ trans('content.right_tip_sky_color_first') }}</p>
                     </div>
                 </div>
                 <div class="gs-what-to-edit-tip-box">
                     <div class="gs-what-to-edit-tip-right">
-                        <p>Choose from various weather conditions such as sunny, cloudy, stormy, sunset, or sunrise to
-                            transform the atmosphere in your image.</p>
+                        <p>{{ trans('content.right_tip_sky_color_second') }}</p>
                     </div>
                 </div>
                 <div class="gs-what-to-edit-tip-box">
                     <div class="gs-what-to-edit-tip-right">
-                        <p>Our AI does not alter the sky in photos taken from inside when it’s visible through windows.
+                        <p>{{ trans('content.right_tip_sky_color_third') }}
                         </p>
                     </div>
                 </div>

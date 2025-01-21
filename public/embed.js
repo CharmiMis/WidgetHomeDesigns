@@ -19106,6 +19106,7 @@ const apiUrl = "https://widget.homedesigns.ai/";
   const uuid = url.searchParams.get("id");
 
   async function init(currentScript) {
+	showLoader();
 	const widgetUrl = `${apiUrl}widgetData/${uuid}?currentDomain=${currentDomain}`;
 
     const response = await fetch(widgetUrl);
@@ -19119,7 +19120,6 @@ const apiUrl = "https://widget.homedesigns.ai/";
 	  containerDivP.id = 'widgetCustomContainerDivParent';
 
 	  currentScript.parentNode.insertBefore(containerDivP, currentScript.nextSibling);
-      showLoader();
 
       const parser = new DOMParser();
       const doc = parser.parseFromString(widgetData, 'text/html');

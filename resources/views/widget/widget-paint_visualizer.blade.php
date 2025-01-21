@@ -35,7 +35,7 @@
 <div class="image-background-container upload-image-container">
     <div class="ai-upload-image">
         <input type="file" class="ai-upload-input" id="ipFilePickerColorSwap">
-        <h3 class="font22">Upload your image </h3>
+        <h3 class="font22">{{ trans('content.upload_your_image') }} </h3>
         <!-- <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-upload-img.png"> -->
         <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M18.0057 21.4075C14.5988 21.4075 11.8418 18.6506 11.8418 15.2436C11.8418 11.8367 14.5988 9.07973 18.0057 9.07973C21.4127 9.07973 24.1696 11.8367 24.1696 15.2436C24.1696 18.6506 21.4127 21.4075 18.0057 21.4075ZM18.0057 12.4419C16.4592 12.4419 15.204 13.697 15.204 15.2436C15.204 16.7902 16.4592 18.0454 18.0057 18.0454C19.5523 18.0454 20.8075 16.7902 20.8075 15.2436C20.8075 13.697 19.5523 12.4419 18.0057 12.4419Z" fill="var(--dark-primary)"/>
@@ -44,8 +44,8 @@
 <path d="M33.6954 7.95889C33.2695 7.95889 32.8437 7.80199 32.5075 7.46578C31.8575 6.81577 31.8575 5.73989 32.5075 5.08988L36.9903 0.607051C37.6403 -0.0429589 38.7164 -0.042959 39.3664 0.607051C40.0164 1.25706 40.0162 2.33294 39.3662 2.98295L34.8834 7.46578C34.5471 7.80199 34.1213 7.95889 33.6954 7.95889Z" fill="var(--dark-primary)"/>
 <path d="M3.81713 41.4684C3.27919 41.4684 2.74125 41.1994 2.42745 40.7287C1.91192 39.9667 2.11365 38.9132 2.87573 38.3977L13.9259 30.9786C16.3466 29.3648 19.6863 29.5441 21.8829 31.4045L22.6226 32.0545C23.7433 33.0183 25.6485 33.0183 26.7468 32.0545L36.0711 24.0526C38.447 22.0129 42.1902 22.0129 44.5885 24.0526L48.242 27.1906C48.9368 27.7958 49.0265 28.8492 48.4213 29.5665C47.8161 30.2613 46.7402 30.351 46.0454 29.7458L42.3919 26.6078C41.2712 25.644 39.3884 25.644 38.2677 26.6078L28.9434 34.6097C26.5675 36.6494 22.8243 36.6494 20.426 34.6097L19.6863 33.9597C18.6553 33.0855 16.9518 32.9959 15.8087 33.7803L4.78094 41.1994C4.46714 41.3787 4.13092 41.4684 3.81713 41.4684Z" fill="var(--dark-primary)"/>
 </svg>
-        <span>Drag and drop your image </span>
-        <a href="#">Or click here to upload</a>
+        <span>{{ trans('content.drag_and_drop_your_image_here') }} </span>
+        <a href="#">{{ trans('content.or_click_here_to_upload') }}</a>
     </div>
 </div>
 {{-- section first end --}}
@@ -113,19 +113,18 @@
             <div class="gs-what-to-edit-tips">
                 <div class="gs-what-to-edit-tip-box">
                     <div class="gs-what-to-edit-tip-right">
-                        <p>Use Automated Selection or Manual Selection to select the areas that you want to paint over.
+                        <p>{{ trans('content.right_tip_paint_visualizer_first') }}
                         </p>
                     </div>
                 </div>
                 <div class="gs-what-to-edit-tip-box">
                     <div class="gs-what-to-edit-tip-right">
-                        <p>Pick the color from our Presets, use the color picker or upload an image with your sample
-                            color.</p>
+                        <p>{{ trans('content.right_tip_paint_visualizer_second') }}</p>
                     </div>
                 </div>
                 <div class="gs-what-to-edit-tip-box">
                     <div class="gs-what-to-edit-tip-right">
-                        <p>Make sure the selection is as accurate as possible for the best results</p>
+                        <p>{{ trans('content.right_tip_paint_visualizer_third') }}</p>
                     </div>
                 </div>
             </div>
@@ -255,8 +254,8 @@
 <path d="M33.6954 7.95889C33.2695 7.95889 32.8437 7.80199 32.5075 7.46578C31.8575 6.81577 31.8575 5.73989 32.5075 5.08988L36.9903 0.607051C37.6403 -0.0429589 38.7164 -0.042959 39.3664 0.607051C40.0164 1.25706 40.0162 2.33294 39.3662 2.98295L34.8834 7.46578C34.5471 7.80199 34.1213 7.95889 33.6954 7.95889Z" fill="var(--dark-primary)"/>
 <path d="M3.81713 41.4684C3.27919 41.4684 2.74125 41.1994 2.42745 40.7287C1.91192 39.9667 2.11365 38.9132 2.87573 38.3977L13.9259 30.9786C16.3466 29.3648 19.6863 29.5441 21.8829 31.4045L22.6226 32.0545C23.7433 33.0183 25.6485 33.0183 26.7468 32.0545L36.0711 24.0526C38.447 22.0129 42.1902 22.0129 44.5885 24.0526L48.242 27.1906C48.9368 27.7958 49.0265 28.8492 48.4213 29.5665C47.8161 30.2613 46.7402 30.351 46.0454 29.7458L42.3919 26.6078C41.2712 25.644 39.3884 25.644 38.2677 26.6078L28.9434 34.6097C26.5675 36.6494 22.8243 36.6494 20.426 34.6097L19.6863 33.9597C18.6553 33.0855 16.9518 32.9959 15.8087 33.7803L4.78094 41.1994C4.46714 41.3787 4.13092 41.4684 3.81713 41.4684Z" fill="var(--dark-primary)"/>
 </svg>
-                                <span class="upload-content">Drag and drop your image </span>
-                                <a href="#" class="upload-content">Or click here to upload</a>
+                                <span class="upload-content">{{ trans('content.drag_and_drop_your_image_here') }} </span>
+                                <a href="#" class="upload-content">{{ trans('content.or_click_here_to_upload') }}</a>
                                 <div id="painting-stag-sec" class="image-gallery">
                                     <img src="" alt="">
                                 </div>

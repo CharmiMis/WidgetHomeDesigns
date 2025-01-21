@@ -33,7 +33,7 @@
     <div class="image-background-container upload-image-container">
         <div class="ai-upload-image">
             <input type="file" class="ai-upload-input select-file dimg-picker" id="fileselect0-sketchToRender" data-section="0">
-            <h3 class="font22">Upload your image </h3>
+            <h3 class="font22">{{ trans('content.upload_your_image') }} </h3>
             <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     d="M18.0057 21.4075C14.5988 21.4075 11.8418 18.6506 11.8418 15.2436C11.8418 11.8367 14.5988 9.07973 18.0057 9.07973C21.4127 9.07973 24.1696 11.8367 24.1696 15.2436C24.1696 18.6506 21.4127 21.4075 18.0057 21.4075ZM18.0057 12.4419C16.4592 12.4419 15.204 13.697 15.204 15.2436C15.204 16.7902 16.4592 18.0454 18.0057 18.0454C19.5523 18.0454 20.8075 16.7902 20.8075 15.2436C20.8075 13.697 19.5523 12.4419 18.0057 12.4419Z"
@@ -52,8 +52,8 @@
                     fill="var(--dark-primary)" />
             </svg>
 
-            <span>Drag and drop your image </span>
-            <a href="#">Or click here to upload</a>
+            <span>{{ trans('content.drag_and_drop_your_image_here') }} </span>
+            <a href="#">{{ trans('content.or_click_here_to_upload') }}</a>
         </div>
     </div>
 
@@ -90,24 +90,24 @@
                 <div class="gs-what-to-edit-tips">
                     <div class="gs-what-to-edit-tip-box">
                         <div class="gs-what-to-edit-tip-right">
-                            <p>Start by uploading a clear sketch or drawing.</p>
+                            <p>{{ trans('content.right_tip_sketch_render_first') }}</p>
                         </div>
                     </div>
                     <div class="gs-what-to-edit-tip-box">
                         <div class="gs-what-to-edit-tip-right">
-                            <p>Choose your preferred style and settings.</p>
+                            <p>{{ trans('content.right_tip_sketch_render_second') }}</p>
                         </div>
                     </div>
                     <div class="gs-what-to-edit-tip-box">
                         <div class="gs-what-to-edit-tip-right">
-                            <p>Click Generate to see your design come to life!</p>
+                            <p>{{ trans('content.right_tip_sketch_render_third') }}</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="gs-what-to-edit-right segment-masking-container" style="display: none">
                 <div class="gs-select-category">
-                    <p class="font14">Select what you want to generate</p>
+                    <p class="font14">{{ trans('content.select_what_you_want_to_generate') }}</p>
                     <div class="gs-select-category-list">
                         <ul class="gs-option-flex">
                             <li class="on-gen-disable hide_int">
@@ -123,7 +123,7 @@
                                         <ellipse cx="35.6431" cy="25.5522" rx="12.3521" ry="13.0927"
                                             fill="white" fill-opacity="0.04" />
                                     </svg>
-                                    <span>Interior</span>
+                                    <span>{{ trans('content.interior') }}</span>
                                 </a>
                             </li>
                             <li class="on-gen-disable hide_ext">
@@ -250,9 +250,9 @@
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedRoomType0-sketchToRender"
                                                         name="selectedRoomType0">
-                                                    <p>1. Select Room Type <a href="javascript:void(0)"
+                                                    <p>1. {{ trans('content.select_room_type') }} <a href="javascript:void(0)"
                                                             id="viewAllRoomTypes" data-toggle="modal"
-                                                            data-target="#view_all_interior_room_type">View All</a></p>
+                                                            data-target="#view_all_interior_room_type">{{ trans('content.view_all') }}</a></p>
                                                     <div class="gs-select-room-style-row"
                                                         id="roomTypeDisplay0-sketchToRender">
                                                         <div class="gs-select-room-style-single"
@@ -288,9 +288,9 @@
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedDesignStyle0-sketchToRender"
                                                         name="selectedDesignStyle0">
-                                                    <p>2. Select Design Style <a href="javascript:void(0)"
+                                                    <p>2. {{ trans('content.select_design_style') }} <a href="javascript:void(0)"
                                                             data-toggle="modal"
-                                                            data-target="#view_all_interior_choose_design">View All</a>
+                                                            data-target="#view_all_interior_choose_design">{{ trans('content.view_all') }}</a>
                                                     </p>
                                                     <div class="gs-select-room-style-row"
                                                         id="designStyleDisplay0-sketchToRender">
@@ -485,9 +485,9 @@
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedDesignStyle1-sketchToRender"
                                                         name="selectedDesignStyle1">
-                                                    <p>2. Select Design Style <a href="javascript:void(0)"
+                                                    <p>2. {{ trans('content.select_design_style') }} <a href="javascript:void(0)"
                                                             data-toggle="modal"
-                                                            data-target="#view_all_exterior_choose_design">View All</a>
+                                                            data-target="#view_all_exterior_choose_design">{{ trans('content.view_all') }}</a>
                                                     </p>
                                                     <div class="gs-select-room-style-row"
                                                         id="designStyleDisplay1-sketchToRender">
@@ -653,7 +653,7 @@
                                                         name="selectedRoomType2">
                                                     <p>1. Select Garden Type
                                                         <a href="javascript:void(0)" data-toggle="modal"
-                                                            data-target="#view_all_garden_type">View All</a>
+                                                            data-target="#view_all_garden_type">{{ trans('content.view_all') }}</a>
                                                     </p>
                                                     <div class="gs-select-room-style-row"
                                                         id="roomTypeDisplay2-sketchToRender">
@@ -691,9 +691,9 @@
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedDesignStyle2-sketchToRender"
                                                         name="selectedDesignStyle2">
-                                                    <p>2. Select Design Style <a href="javascript:void(0)"
+                                                    <p>2. {{ trans('content.select_design_style') }} <a href="javascript:void(0)"
                                                             data-toggle="modal"
-                                                            data-target="#view_all_garden_style">View All</a></p>
+                                                            data-target="#view_all_garden_style">{{ trans('content.view_all') }}</a></p>
                                                     <div class="gs-select-room-style-row"
                                                         id="designStyleDisplay2-sketchToRender">
                                                         <div class="gs-select-room-style-single"

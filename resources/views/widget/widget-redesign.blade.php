@@ -1,7 +1,6 @@
 {{-- section first start --}}
 <div>
     <div class="ai-tool-right-top top-menu-bar-first">
-        {{-- <h3 class="font22">Redesign</h3> --}}
         <ul>
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
@@ -16,12 +15,6 @@
                 <span>{{ trans('content.customise_and_generate') }}</span>
             </li>
         </ul>
-        {{-- <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
-                <span>Log Out</span>
-            </a>
-        </form> --}}
     </div>
     <div class="gs-dashboard-notice upload-image-container">
         <div class="gs-dashboard-notice-info">
@@ -40,8 +33,7 @@
     <div class="image-background-container upload-image-container">
         <div class="ai-upload-image">
             <input type="file" class="ai-upload-input select-file dimg-picker" id="fileselect0-redesign" data-section="0">
-            <h3 class="font22">Upload your image </h3>
-            <!-- <img src="{{ asset('webWidget/images/gs-upload-img.png') }}"> -->
+            <h3 class="font22">{{ trans('content.upload_your_image') }}</h3>
             <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M18.0057 21.4075C14.5988 21.4075 11.8418 18.6506 11.8418 15.2436C11.8418 11.8367 14.5988 9.07973 18.0057 9.07973C21.4127 9.07973 24.1696 11.8367 24.1696 15.2436C24.1696 18.6506 21.4127 21.4075 18.0057 21.4075ZM18.0057 12.4419C16.4592 12.4419 15.204 13.697 15.204 15.2436C15.204 16.7902 16.4592 18.0454 18.0057 18.0454C19.5523 18.0454 20.8075 16.7902 20.8075 15.2436C20.8075 13.697 19.5523 12.4419 18.0057 12.4419Z" fill="var(--dark-primary)"/>
 <path d="M31.4542 48.3045H18.0057C5.83485 48.3045 0.634766 43.1044 0.634766 30.9335V17.485C0.634766 5.31416 5.83485 0.114075 18.0057 0.114075H26.9714C27.8904 0.114075 28.6525 0.876156 28.6525 1.79514C28.6525 2.71412 27.8904 3.4762 26.9714 3.4762H18.0057C7.67281 3.4762 3.99689 7.15212 3.99689 17.485V30.9335C3.99689 41.2665 7.67281 44.9424 18.0057 44.9424H31.4542C41.7871 44.9424 45.4631 41.2665 45.4631 30.9335V19.7265C45.4631 18.8075 46.2251 18.0454 47.1441 18.0454C48.0631 18.0454 48.8252 18.8075 48.8252 19.7265V30.9335C48.8252 43.1044 43.6251 48.3045 31.4542 48.3045Z" fill="var(--dark-primary)"/>
@@ -50,8 +42,8 @@
 <path d="M3.81713 41.4684C3.27919 41.4684 2.74125 41.1994 2.42745 40.7287C1.91192 39.9667 2.11365 38.9132 2.87573 38.3977L13.9259 30.9786C16.3466 29.3648 19.6863 29.5441 21.8829 31.4045L22.6226 32.0545C23.7433 33.0183 25.6485 33.0183 26.7468 32.0545L36.0711 24.0526C38.447 22.0129 42.1902 22.0129 44.5885 24.0526L48.242 27.1906C48.9368 27.7958 49.0265 28.8492 48.4213 29.5665C47.8161 30.2613 46.7402 30.351 46.0454 29.7458L42.3919 26.6078C41.2712 25.644 39.3884 25.644 38.2677 26.6078L28.9434 34.6097C26.5675 36.6494 22.8243 36.6494 20.426 34.6097L19.6863 33.9597C18.6553 33.0855 16.9518 32.9959 15.8087 33.7803L4.78094 41.1994C4.46714 41.3787 4.13092 41.4684 3.81713 41.4684Z" fill="var(--dark-primary)"/>
 </svg>
 
-            <span>Drag and drop your image </span>
-            <a href="#">Or click here to upload</a>
+            <span>{{ trans('content.drag_and_drop_your_image_here') }}</span>
+            <a href="#">{{ trans('content.or_click_here_to_upload') }}</a>
         </div>
     </div>
 
@@ -59,13 +51,6 @@
 
     {{-- section second start --}}
     <div class="ai-tool-right-top top-menu-bar-second" id="viewImage-redesign" style="display: none">
-        <div class="ai-tool-right-back-btn">
-            {{-- <a href="javascript:void(0)" class="gs-back-btn previous_page">
-                <img src="{{ asset('webWidget/images/back-btn-icon.svg') }}">
-                <img class="light-mode" src="{{ asset('webWidget/images/light-mode/back-btn-icon.svg') }}">
-            </a> --}}
-            {{-- <h3 class="font22">Redesign</h3> --}}
-        </div>
         <ul>
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
@@ -93,43 +78,40 @@
                 <div class="gs-what-to-edit-tips">
                     <div class="gs-what-to-edit-tip-box">
                         <div class="gs-what-to-edit-tip-right">
-                            <p>Click on ‘Your Custom settings’ to give specific instructions to our AI.</p>
+                            <p>{{ trans('content.right_tip_redesign_first') }}</p>
                         </div>
                     </div>
                     <div class="gs-what-to-edit-tip-box">
                         <div class="gs-what-to-edit-tip-right">
-                            <p>In Beautiful Redesign, our AI generates fast and beautiful results, but has less freedom
-                                to add or remove objects.</p>
+                            <p>{{ trans('content.right_tip_redesign_second') }}</p>
                         </div>
                     </div>
                     <div class="gs-what-to-edit-tip-box">
                         <div class="gs-what-to-edit-tip-right">
-                            <p>Use Sketch-to-Render mode type to turn raw drawings into photorealistic renders.</p>
+                            <p>{{ trans('content.right_tip_redesign_third') }}</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="gs-what-to-edit-right segment-masking-container" style="display: none">
                 <div class="gs-select-category">
-                    <p class="font14">Select what you want to generate</p>
+                    <p class="font14">{{ trans('content.select_what_you_want_to_generate') }}</p>
                     <div class="gs-select-category-list">
                         <ul class="gs-option-flex">
                             <li class="on-gen-disable hide_int">
                                 <a class="gs-select-category-list-inner" data-toggle="tab" href="#interior-redesign"
                                     onclick="loadWidgetRenders(0)">
-                                    <!-- <img src="{{ asset('webWidget/images/gs-interior-icon.svg') }}"> -->
                                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="39" viewBox="0 0 48 39" fill="none">
                                         <path class="gs-interior-path" d="M22.8749 0.40625L5.68945 6.28506V10.4894L6.37687 10.2509L22.8749 4.6054L40.0604 10.4842V6.28506L22.8749 0.40625ZM22.8749 1.5001L39.0189 7.02639V9.04301L22.8749 3.51673L6.731 9.04301V7.02639L22.8749 1.5001ZM7.25177 10.8056C6.96534 10.8056 6.731 11.0389 6.731 11.324C6.731 11.6092 6.96534 11.8424 7.25177 11.8424C7.53819 11.8424 7.77254 11.6092 7.77254 11.324C7.77254 11.0389 7.53819 10.8056 7.25177 10.8056ZM38.4981 10.8056C38.2117 10.8056 37.9773 11.0389 37.9773 11.324C37.9773 11.6092 38.2117 11.8424 38.4981 11.8424C38.7845 11.8424 39.0189 11.6092 39.0189 11.324C39.0189 11.0389 38.7845 10.8056 38.4981 10.8056ZM17.1464 12.3609C15.4279 12.3609 14.0218 13.7606 14.0218 15.4713V19.1002C12.3033 19.1002 10.8972 20.4999 10.8972 22.2107C10.8972 23.5534 11.7773 24.6628 12.9803 25.0983V29.9869C12.9803 30.272 13.2146 30.5053 13.501 30.5053H14.0218V32.579H17.6672V30.5053H28.0827V32.579H31.7281V30.5053H32.2488C32.5353 30.5053 32.7696 30.272 32.7696 29.9869V25.0983C33.9726 24.6628 34.8527 23.5534 34.8527 22.2107C34.8527 20.4999 33.4466 19.1002 31.7281 19.1002V15.4713C31.7281 13.7606 30.322 12.3609 28.6034 12.3609H17.1464V12.3609ZM7.25177 12.8793C6.96534 12.8793 6.731 13.1126 6.731 13.3977C6.731 13.6828 6.96534 13.9161 7.25177 13.9161C7.53819 13.9161 7.77254 13.6828 7.77254 13.3977C7.77254 13.1126 7.53819 12.8793 7.25177 12.8793ZM38.4981 12.8793C38.2117 12.8793 37.9773 13.1126 37.9773 13.3977C37.9773 13.6828 38.2117 13.9161 38.4981 13.9161C38.7845 13.9161 39.0189 13.6828 39.0189 13.3977C39.0189 13.1126 38.7845 12.8793 38.4981 12.8793ZM17.1464 13.3977H28.6034C29.7595 13.3977 30.6865 14.3205 30.6865 15.4713V19.2817C29.4783 19.712 28.6034 20.8628 28.6034 22.2107V23.0454C27.5723 22.7291 25.4892 22.2107 22.8749 22.2107C20.2607 22.2107 18.1776 22.7291 17.1464 23.0454V22.2107C17.1464 20.8628 16.2715 19.712 15.0634 19.2817V15.4713C15.0634 14.3205 15.9903 13.3977 17.1464 13.3977V13.3977ZM7.25177 14.9529C6.96534 14.9529 6.731 15.1862 6.731 15.4713C6.731 15.7565 6.96534 15.9898 7.25177 15.9898C7.53819 15.9898 7.77254 15.7565 7.77254 15.4713C7.77254 15.1862 7.53819 14.9529 7.25177 14.9529ZM38.4981 14.9529C38.2117 14.9529 37.9773 15.1862 37.9773 15.4713C37.9773 15.7565 38.2117 15.9898 38.4981 15.9898C38.7845 15.9898 39.0189 15.7565 39.0189 15.4713C39.0189 15.1862 38.7845 14.9529 38.4981 14.9529ZM20.7918 15.4713C20.5054 15.4713 20.2711 15.7046 20.2711 15.9898C20.2711 16.2749 20.5054 16.5082 20.7918 16.5082C21.0783 16.5082 21.3126 16.2749 21.3126 15.9898C21.3126 15.7046 21.0783 15.4713 20.7918 15.4713ZM24.958 15.4713C24.6716 15.4713 24.4372 15.7046 24.4372 15.9898C24.4372 16.2749 24.6716 16.5082 24.958 16.5082C25.2444 16.5082 25.4788 16.2749 25.4788 15.9898C25.4788 15.7046 25.2444 15.4713 24.958 15.4713ZM7.25177 17.0266C6.96534 17.0266 6.731 17.2599 6.731 17.545C6.731 17.8301 6.96534 18.0634 7.25177 18.0634C7.53819 18.0634 7.77254 17.8301 7.77254 17.545C7.77254 17.2599 7.53819 17.0266 7.25177 17.0266ZM38.4981 17.0266C38.2117 17.0266 37.9773 17.2599 37.9773 17.545C37.9773 17.8301 38.2117 18.0634 38.4981 18.0634C38.7845 18.0634 39.0189 17.8301 39.0189 17.545C39.0189 17.2599 38.7845 17.0266 38.4981 17.0266ZM18.7088 18.5818C18.4223 18.5818 18.188 18.8151 18.188 19.1002C18.188 19.3854 18.4223 19.6186 18.7088 19.6186C18.9952 19.6186 19.2295 19.3854 19.2295 19.1002C19.2295 18.8151 18.9952 18.5818 18.7088 18.5818ZM22.8749 18.5818C22.5885 18.5818 22.3542 18.8151 22.3542 19.1002C22.3542 19.3854 22.5885 19.6186 22.8749 19.6186C23.1614 19.6186 23.3957 19.3854 23.3957 19.1002C23.3957 18.8151 23.1614 18.5818 22.8749 18.5818ZM27.0411 18.5818C26.7547 18.5818 26.5203 18.8151 26.5203 19.1002C26.5203 19.3854 26.7547 19.6186 27.0411 19.6186C27.3275 19.6186 27.5619 19.3854 27.5619 19.1002C27.5619 18.8151 27.3275 18.5818 27.0411 18.5818ZM7.25177 19.1002C6.96534 19.1002 6.731 19.3335 6.731 19.6186C6.731 19.9038 6.96534 20.1371 7.25177 20.1371C7.53819 20.1371 7.77254 19.9038 7.77254 19.6186C7.77254 19.3335 7.53819 19.1002 7.25177 19.1002ZM38.4981 19.1002C38.2117 19.1002 37.9773 19.3335 37.9773 19.6186C37.9773 19.9038 38.2117 20.1371 38.4981 20.1371C38.7845 20.1371 39.0189 19.9038 39.0189 19.6186C39.0189 19.3335 38.7845 19.1002 38.4981 19.1002ZM14.0218 20.1371C15.1779 20.1371 16.1049 21.0598 16.1049 22.2107V26.358C16.1049 26.6431 16.3392 26.8764 16.6257 26.8764H29.1242C29.4106 26.8764 29.645 26.6431 29.645 26.358V22.2107C29.645 21.0598 30.5719 20.1371 31.7281 20.1371C32.8842 20.1371 33.8111 21.0598 33.8111 22.2107C33.8111 23.2216 33.0925 24.0511 32.1447 24.2429C31.8999 24.2895 31.7281 24.5021 31.7281 24.7509V29.4685H14.0218V24.7509C14.0218 24.5073 13.8447 24.2947 13.6052 24.2429C12.6574 24.0511 11.9387 23.2216 11.9387 22.2107C11.9387 21.0598 12.8657 20.1371 14.0218 20.1371ZM7.25177 21.1739C6.96534 21.1739 6.731 21.4072 6.731 21.6923C6.731 21.9774 6.96534 22.2107 7.25177 22.2107C7.53819 22.2107 7.77254 21.9774 7.77254 21.6923C7.77254 21.4072 7.53819 21.1739 7.25177 21.1739ZM38.4981 21.1739C38.2117 21.1739 37.9773 21.4072 37.9773 21.6923C37.9773 21.9774 38.2117 22.2107 38.4981 22.2107C38.7845 22.2107 39.0189 21.9774 39.0189 21.6923C39.0189 21.4072 38.7845 21.1739 38.4981 21.1739ZM14.0218 21.6923C13.7354 21.6923 13.501 21.9256 13.501 22.2107C13.501 22.4958 13.7354 22.7291 14.0218 22.7291C14.3082 22.7291 14.5426 22.4958 14.5426 22.2107C14.5426 21.9256 14.3082 21.6923 14.0218 21.6923ZM31.7281 21.6923C31.4416 21.6923 31.2073 21.9256 31.2073 22.2107C31.2073 22.4958 31.4416 22.7291 31.7281 22.7291C32.0145 22.7291 32.2488 22.4958 32.2488 22.2107C32.2488 21.9256 32.0145 21.6923 31.7281 21.6923ZM7.25177 23.2475C6.96534 23.2475 6.731 23.4808 6.731 23.7659C6.731 24.0511 6.96534 24.2844 7.25177 24.2844C7.53819 24.2844 7.77254 24.0511 7.77254 23.7659C7.77254 23.4808 7.53819 23.2475 7.25177 23.2475ZM22.8749 23.2475C26.0777 23.2475 28.1764 23.994 28.6034 24.1496V25.8396H17.1464V24.1496C17.5735 23.994 19.6722 23.2475 22.8749 23.2475ZM38.4981 23.2475C38.2117 23.2475 37.9773 23.4808 37.9773 23.7659C37.9773 24.0511 38.2117 24.2844 38.4981 24.2844C38.7845 24.2844 39.0189 24.0511 39.0189 23.7659C39.0189 23.4808 38.7845 23.2475 38.4981 23.2475ZM7.25177 25.3212C6.96534 25.3212 6.731 25.5545 6.731 25.8396C6.731 26.1247 6.96534 26.358 7.25177 26.358C7.53819 26.358 7.77254 26.1247 7.77254 25.8396C7.77254 25.5545 7.53819 25.3212 7.25177 25.3212ZM38.4981 25.3212C38.2117 25.3212 37.9773 25.5545 37.9773 25.8396C37.9773 26.1247 38.2117 26.358 38.4981 26.358C38.7845 26.358 39.0189 26.1247 39.0189 25.8396C39.0189 25.5545 38.7845 25.3212 38.4981 25.3212ZM7.25177 27.3948C6.96534 27.3948 6.731 27.6281 6.731 27.9133C6.731 28.1984 6.96534 28.4317 7.25177 28.4317C7.53819 28.4317 7.77254 28.1984 7.77254 27.9133C7.77254 27.6281 7.53819 27.3948 7.25177 27.3948ZM38.4981 27.3948C38.2117 27.3948 37.9773 27.6281 37.9773 27.9133C37.9773 28.1984 38.2117 28.4317 38.4981 28.4317C38.7845 28.4317 39.0189 28.1984 39.0189 27.9133C39.0189 27.6281 38.7845 27.3948 38.4981 27.3948ZM7.25177 29.4685C6.96534 29.4685 6.731 29.7018 6.731 29.9869C6.731 30.272 6.96534 30.5053 7.25177 30.5053C7.53819 30.5053 7.77254 30.272 7.77254 29.9869C7.77254 29.7018 7.53819 29.4685 7.25177 29.4685ZM38.4981 29.4685C38.2117 29.4685 37.9773 29.7018 37.9773 29.9869C37.9773 30.272 38.2117 30.5053 38.4981 30.5053C38.7845 30.5053 39.0189 30.272 39.0189 29.9869C39.0189 29.7018 38.7845 29.4685 38.4981 29.4685ZM15.0634 30.5053H16.6257V31.5421H15.0634V30.5053ZM29.1242 30.5053H30.6865V31.5421H29.1242V30.5053ZM7.25177 31.5421C6.96534 31.5421 6.731 31.7754 6.731 32.0606C6.731 32.3457 6.96534 32.579 7.25177 32.579C7.53819 32.579 7.77254 32.3457 7.77254 32.0606C7.77254 31.7754 7.53819 31.5421 7.25177 31.5421ZM38.4981 31.5421C38.2117 31.5421 37.9773 31.7754 37.9773 32.0606C37.9773 32.3457 38.2117 32.579 38.4981 32.579C38.7845 32.579 39.0189 32.3457 39.0189 32.0606C39.0189 31.7754 38.7845 31.5421 38.4981 31.5421Z" fill="#947BF2"/>
                                         <ellipse cx="13.1001" cy="15.2421" rx="12.3521" ry="13.0927" fill="white" fill-opacity="0.04"/>
                                         <ellipse cx="35.6431" cy="25.5522" rx="12.3521" ry="13.0927" fill="white" fill-opacity="0.04"/>
                                     </svg>
-                                    <span>Interior</span>
+                                    <span>{{ trans('content.interior') }}</span>
                                 </a>
                             </li>
                             <li class="on-gen-disable hide_ext">
                                 <a class="gs-select-category-list-inner" data-toggle="tab" href="#exterior-redesign"
                                     onclick="loadWidgetRenders(1)">
-                                    <!-- <img src="{{ asset('webWidget/images/gs-exterior-icon.svg') }}"> -->
                                     <svg xmlns="http://www.w3.org/2000/svg" width="61" height="54" viewBox="0 0 61 54" fill="none">
                                         <g opacity="0.13">
                                         <ellipse opacity="0.2" cx="13.7596" cy="13.5851" rx="13.7596" ry="13.5851" transform="matrix(0.602494 -0.798123 0.762642 0.646821 0.3125 35.4912)" fill="white"/>
@@ -137,7 +119,7 @@
                                         </g>
                                         <path class="gs-interior-path" d="M17.6091 7.7793L12.1445 19.9446V22.1982H13.7269V39.8214H47.4847V22.1982H49.0671V19.9446L43.6025 7.7793H17.6091ZM18.2895 8.84737H42.9274L48.0121 20.1796V21.1302H46.4297C46.1396 21.1302 45.9023 21.3705 45.9023 21.6642C45.9023 21.9579 46.1396 22.1982 46.4297 22.1982V38.7533H43.2649V25.9365H33.7706V38.7533H14.7819V22.1982C15.072 22.1982 15.3093 21.9579 15.3093 21.6642C15.3093 21.3705 15.072 21.1302 14.7819 21.1302H13.1995V20.1796L18.2842 8.84737H18.2895ZM16.897 21.1302C16.6069 21.1302 16.3695 21.3705 16.3695 21.6642C16.3695 21.9579 16.6069 22.1982 16.897 22.1982C17.1871 22.1982 17.4245 21.9579 17.4245 21.6642C17.4245 21.3705 17.1871 21.1302 16.897 21.1302ZM19.0068 21.1302C18.7167 21.1302 18.4794 21.3705 18.4794 21.6642C18.4794 21.9579 18.7167 22.1982 19.0068 22.1982C19.297 22.1982 19.5343 21.9579 19.5343 21.6642C19.5343 21.3705 19.297 21.1302 19.0068 21.1302ZM21.1167 21.1302C20.8266 21.1302 20.5892 21.3705 20.5892 21.6642C20.5892 21.9579 20.8266 22.1982 21.1167 22.1982C21.4068 22.1982 21.6442 21.9579 21.6442 21.6642C21.6442 21.3705 21.4068 21.1302 21.1167 21.1302ZM23.2266 21.1302C22.9365 21.1302 22.6991 21.3705 22.6991 21.6642C22.6991 21.9579 22.9365 22.1982 23.2266 22.1982C23.5167 22.1982 23.754 21.9579 23.754 21.6642C23.754 21.3705 23.5167 21.1302 23.2266 21.1302ZM25.3364 21.1302C25.0463 21.1302 24.809 21.3705 24.809 21.6642C24.809 21.9579 25.0463 22.1982 25.3364 22.1982C25.6265 22.1982 25.8639 21.9579 25.8639 21.6642C25.8639 21.3705 25.6265 21.1302 25.3364 21.1302ZM27.4463 21.1302C27.1562 21.1302 26.9188 21.3705 26.9188 21.6642C26.9188 21.9579 27.1562 22.1982 27.4463 22.1982C27.7364 22.1982 27.9737 21.9579 27.9737 21.6642C27.9737 21.3705 27.7364 21.1302 27.4463 21.1302ZM29.5561 21.1302C29.266 21.1302 29.0287 21.3705 29.0287 21.6642C29.0287 21.9579 29.266 22.1982 29.5561 22.1982C29.8462 22.1982 30.0836 21.9579 30.0836 21.6642C30.0836 21.3705 29.8462 21.1302 29.5561 21.1302ZM31.666 21.1302C31.3759 21.1302 31.1385 21.3705 31.1385 21.6642C31.1385 21.9579 31.3759 22.1982 31.666 22.1982C31.9561 22.1982 32.1935 21.9579 32.1935 21.6642C32.1935 21.3705 31.9561 21.1302 31.666 21.1302ZM33.7759 21.1302C33.4858 21.1302 33.2484 21.3705 33.2484 21.6642C33.2484 21.9579 33.4858 22.1982 33.7759 22.1982C34.066 22.1982 34.3033 21.9579 34.3033 21.6642C34.3033 21.3705 34.066 21.1302 33.7759 21.1302ZM35.8857 21.1302C35.5956 21.1302 35.3583 21.3705 35.3583 21.6642C35.3583 21.9579 35.5956 22.1982 35.8857 22.1982C36.1758 22.1982 36.4132 21.9579 36.4132 21.6642C36.4132 21.3705 36.1758 21.1302 35.8857 21.1302ZM37.9956 21.1302C37.7055 21.1302 37.4681 21.3705 37.4681 21.6642C37.4681 21.9579 37.7055 22.1982 37.9956 22.1982C38.2857 22.1982 38.523 21.9579 38.523 21.6642C38.523 21.3705 38.2857 21.1302 37.9956 21.1302ZM40.1054 21.1302C39.8153 21.1302 39.578 21.3705 39.578 21.6642C39.578 21.9579 39.8153 22.1982 40.1054 22.1982C40.3955 22.1982 40.6329 21.9579 40.6329 21.6642C40.6329 21.3705 40.3955 21.1302 40.1054 21.1302ZM42.2153 21.1302C41.9252 21.1302 41.6878 21.3705 41.6878 21.6642C41.6878 21.9579 41.9252 22.1982 42.2153 22.1982C42.5054 22.1982 42.7428 21.9579 42.7428 21.6642C42.7428 21.3705 42.5054 21.1302 42.2153 21.1302ZM44.3251 21.1302C44.035 21.1302 43.7977 21.3705 43.7977 21.6642C43.7977 21.9579 44.035 22.1982 44.3251 22.1982C44.6153 22.1982 44.8526 21.9579 44.8526 21.6642C44.8526 21.3705 44.6153 21.1302 44.3251 21.1302ZM19.0016 25.9365V34.481H29.5509V25.9365H19.0016ZM20.0565 27.0045H28.4959V29.6747C28.2058 29.6747 27.9685 29.915 27.9685 30.2087C27.9685 30.5025 28.2058 30.7428 28.4959 30.7428V33.413H20.0565V30.7428C20.3466 30.7428 20.584 30.5025 20.584 30.2087C20.584 29.915 20.3466 29.6747 20.0565 29.6747V27.0045ZM34.8255 27.0045H42.21V38.7533H34.8255V27.0045ZM24.2762 27.5386C23.9861 27.5386 23.7488 27.7789 23.7488 28.0726C23.7488 28.3663 23.9861 28.6066 24.2762 28.6066C24.5663 28.6066 24.8037 28.3663 24.8037 28.0726C24.8037 27.7789 24.5663 27.5386 24.2762 27.5386ZM22.1664 29.6747C21.8763 29.6747 21.6389 29.915 21.6389 30.2087C21.6389 30.5025 21.8763 30.7428 22.1664 30.7428C22.4565 30.7428 22.6938 30.5025 22.6938 30.2087C22.6938 29.915 22.4565 29.6747 22.1664 29.6747ZM24.2762 29.6747C23.9861 29.6747 23.7488 29.915 23.7488 30.2087C23.7488 30.5025 23.9861 30.7428 24.2762 30.7428C24.5663 30.7428 24.8037 30.5025 24.8037 30.2087C24.8037 29.915 24.5663 29.6747 24.2762 29.6747ZM26.3861 29.6747C26.096 29.6747 25.8586 29.915 25.8586 30.2087C25.8586 30.5025 26.096 30.7428 26.3861 30.7428C26.6762 30.7428 26.9135 30.5025 26.9135 30.2087C26.9135 29.915 26.6762 29.6747 26.3861 29.6747ZM24.2762 31.8108C23.9861 31.8108 23.7488 32.0512 23.7488 32.3449C23.7488 32.6386 23.9861 32.8789 24.2762 32.8789C24.5663 32.8789 24.8037 32.6386 24.8037 32.3449C24.8037 32.0512 24.5663 31.8108 24.2762 31.8108ZM40.6276 32.8789C40.3375 32.8789 40.1002 33.1192 40.1002 33.413C40.1002 33.7067 40.3375 33.947 40.6276 33.947C40.9177 33.947 41.1551 33.7067 41.1551 33.413C41.1551 33.1192 40.9177 32.8789 40.6276 32.8789Z" fill="#947BF2"/>
                                     </svg>
-                                    <span>Exterior</span>
+                                    <span>{{ trans('content.exterior') }}</span>
                                 </a>
                             </li>
                             <li class="on-gen-disable hide_gar">
@@ -170,7 +152,7 @@
                                     <path class="gs-interior-path" fill-rule="evenodd" clip-rule="evenodd" d="M33.4816 24.8586V25.4673C33.4816 25.7473 33.7047 25.9745 33.9795 25.9745C34.2543 25.9745 34.4774 25.7473 34.4774 25.4673V24.8586C34.4774 24.5786 34.2543 24.3513 33.9795 24.3513C33.7047 24.3513 33.4816 24.5786 33.4816 24.8586Z" fill="#947BF2"/>
                                     <path class="gs-interior-path" fill-rule="evenodd" clip-rule="evenodd" d="M39.3401 24.8586V25.4673C39.3401 25.7473 39.5631 25.9745 39.8379 25.9745C40.1128 25.9745 40.3358 25.7473 40.3358 25.4673V24.8586C40.3358 24.5786 40.1128 24.3513 39.8379 24.3513C39.5631 24.3513 39.3401 24.5786 39.3401 24.8586Z" fill="#947BF2"/>
                                   </svg>
-                                    <span>Garden</span>
+                                    <span>{{ trans('content.garden') }}</span>
                                 </a>
                             </li>
                         </ul>
@@ -183,11 +165,8 @@
                             <div class="gs-what-to-edit-title">
                                 <ul>
                                     <li class="active"><a data-toggle="tab"
-                                            href="#our-preset-settings-interior-redesign">Our
-                                            preset settings</a></li>
-                                    <li><a data-toggle="tab" href="#your-customs-settings-interior-redesign">Your
-                                            customs
-                                            settings </a></li>
+                                            href="#our-preset-settings-interior-redesign">{{ trans('content.our_preset_settings') }}</a></li>
+                                    <li><a data-toggle="tab" href="#your-customs-settings-interior-redesign">{{ trans('content.your_custom_settings') }}</a></li>
                                 </ul>
                             </div>
                             <div class="gs-what-to-edit-content">
@@ -199,9 +178,9 @@
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedRoomType0-redesign"
                                                         name="selectedRoomType0">
-                                                    <p>1. Select Room Type <a href="javascript:void(0)"
+                                                    <p>1. {{ trans('content.select_room_type') }} <a href="javascript:void(0)"
                                                             id="viewAllRoomTypes" data-toggle="modal"
-                                                            data-target="#view_all_interior_room_type">View All</a></p>
+                                                            data-target="#view_all_interior_room_type">{{ trans('content.view_all') }}</a></p>
                                                     <div class="gs-select-room-style-row"
                                                         id="roomTypeDisplay0-redesign">
                                                         <div class="gs-select-room-style-single"
@@ -209,37 +188,37 @@
                                                             onclick="selectRoomType('Living Room',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/living room.png">
-                                                            <span>Living Room</span>
+                                                            <span>{{ trans('content.living_room') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Bedroom"
                                                             onclick="selectRoomType('Bedroom',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/bedroom.png">
-                                                            <span>Bedroom</span>
+                                                            <span>{{ trans('content.bedroom') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Bathroom"
                                                             onclick="selectRoomType('Bathroom',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/bathroom.png">
-                                                            <span>Bathroom</span>
+                                                            <span>{{ trans('content.bathroom') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Kitchen"
                                                             onclick="selectRoomType('Kitchen',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/kitchen.png">
-                                                            <span>Kitchen</span>
+                                                            <span>{{ trans('content.kitchen') }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedDesignStyle0-redesign"
                                                         name="selectedDesignStyle0">
-                                                    <p>2. Select Design Style <a href="javascript:void(0)"
+                                                    <p>2. {{ trans('content.select_design_style') }} <a href="javascript:void(0)"
                                                             data-toggle="modal"
-                                                            data-target="#view_all_interior_choose_design">View All</a>
+                                                            data-target="#view_all_interior_choose_design">{{ trans('content.view_all') }}</a>
                                                     </p>
                                                     <div class="gs-select-room-style-row"
                                                         id="designStyleDisplay0-redesign">
@@ -248,56 +227,56 @@
                                                             onclick="selectDesignStyle('Eclectic',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/eclectic.png">
-                                                            <span>Eclectic</span>
+                                                            <span>{{ trans('content.eclectic') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Contemporary"
                                                             onclick="selectDesignStyle('Contemporary',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/contemporary.png">
-                                                            <span>Contemporary</span>
+                                                            <span>{{ trans('content.contemporary') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Transitional"
                                                             onclick="selectDesignStyle('Transitional',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/transitional.png">
-                                                            <span>Transitional</span>
+                                                            <span>{{ trans('content.transitional') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Scandinavian"
                                                             onclick="selectDesignStyle('Scandinavian',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/scandinavian.png">
-                                                            <span>Scandinavian</span>
+                                                            <span>{{ trans('content.eclectic') }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedModeType0-redesign"
                                                         name="selectedModeType0-redesign">
-                                                    <p>3. Select Mode Type</p>
+                                                    <p>3. {{ trans('content.select_mode_type') }}</p>
                                                     <div class="gs-select-room-style-row" id="modeTypeDisplay0">
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Perfect Redesign"
                                                             onclick="selectModeType('Perfect Redesign',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/Perfect Full Redesign.png">
-                                                            <span>Perfect Redesign</span>
+                                                            <span>{{ trans('content.perfect_redesign') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Beautiful Redesign"
                                                             onclick="selectModeType('Beautiful Redesign',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/select-room-type10.png">
-                                                            <span>Beautiful Redesign</span>
+                                                            <span>{{ trans('content.beautiful_redesign') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Creative Redesign"
                                                             onclick="selectModeType('Creative Redesign',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/select-room-type11.png">
-                                                            <span>Creative Redesign</span>
+                                                            <span>{{ trans('content.creative_redesign') }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="gs-select-room-style mt-2">
@@ -312,13 +291,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            {{-- <div class="nwchoice-toggle" style="margin-top: 15px !important">
-                                                <span class="nw-tgtype">Private Gallery </span>
-                                                <input type="checkbox" id="nwtoggle0" onchange="loadWidgetRenders(0)"
-                                                    @checked($default_gallery == 'public')>
-                                                <label class="nwtoggle-label0" for="nwtoggle0">Toggle</label>
-                                                <span class="nw-tgtype">Public Gallery</span>
-                                            </div> --}}
                                             <div class="our-preset-settings-range-outer">
                                                 <input type="hidden" id="strength0-redesign" name="strength0-redesign"
                                                     value="mid" />
@@ -351,20 +323,6 @@
                                             <div class="our-preset-settings-range-outer">
                                                 <input type="hidden" id="no_of_des0" name="no_of_des0"
                                                     value="1" />
-                                                {{-- <p class="font14">Select the number of designs you want to generate at
-                                                    once.</p>
-                                                <div class="gs-select-design our-preset-range-design">
-                                                    <div class="our-preset-settings-range" data-sec="0">
-                                                    </div>
-                                                    <div class="our-preset-settings-range-list">
-                                                        <ul>
-                                                            <li>1</li>
-                                                            <li>2</li>
-                                                            <li>3</li>
-                                                            <li>4</li>
-                                                        </ul>
-                                                    </div>
-                                                </div> --}}
                                             </div>
                                             <div class="gs-continue-btn-outer">
                                                 <a href="javascript:void(0)" onclick="_generateDesign(0, this)"
@@ -421,20 +379,6 @@
                                         <div class="our-preset-settings-range-outer">
                                             <input type="hidden" id="no_of_des0" name="no_of_des0"
                                                 value="1" />
-                                            {{-- <p class="font14">Select the number of designs you want to generate at
-                                                once.</p>
-                                            <div class="gs-select-design our-preset-range-design">
-                                                <div class="our-preset-settings-range" data-sec="0">
-                                                </div>
-                                                <div class="our-preset-settings-range-list">
-                                                    <ul>
-                                                        <li>1</li>
-                                                        <li>2</li>
-                                                        <li>3</li>
-                                                        <li>4</li>
-                                                    </ul>
-                                                </div>
-                                            </div> --}}
                                         </div>
                                         <div class="gs-continue-btn-outer">
                                             <a href="javascript:void(0)" onclick="_generateDesign(0, this)"
@@ -503,9 +447,9 @@
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedDesignStyle1-redesign"
                                                         name="selectedDesignStyle1">
-                                                    <p>2. Select Design Style <a href="javascript:void(0)"
+                                                    <p>2. {{ trans('content.select_design_style') }} <a href="javascript:void(0)"
                                                             data-toggle="modal"
-                                                            data-target="#view_all_exterior_choose_design">View All</a>
+                                                            data-target="#view_all_exterior_choose_design">{{ trans('content.view_all') }}</a>
                                                     </p>
                                                     <div class="gs-select-room-style-row"
                                                         id="designStyleDisplay1-redesign">
@@ -514,56 +458,56 @@
                                                             onclick="selectDesignStyle('Modern',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/exterior styles/modern.png">
-                                                            <span>Modern</span>
+                                                            <span>{{ trans('content.modern') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Mediterranean"
                                                             onclick="selectDesignStyle('Mediterranean',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/exterior styles/mediterranean.png">
-                                                            <span>Mediterranean</span>
+                                                            <span>{{ trans('content.mediterranean') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="International"
                                                             onclick="selectDesignStyle('International',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/exterior styles/international.png">
-                                                            <span>International</span>
+                                                            <span>{{ trans('content.international') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Moody Colors"
                                                             onclick="selectDesignStyle('Moody Colors',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/exterior styles/moody colors.png">
-                                                            <span>Moody Colors</span>
+                                                            <span>{{ trans('content.moody_colors') }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedModeType1-redesign"
                                                         name="selectedModeType1-redesign">
-                                                    <p>3. Select Mode Type </p>
+                                                    <p>3. {{ trans('content.select_mode_type') }} </p>
                                                     <div class="gs-select-room-style-row" id="modeTypeDisplay1">
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Perfect Redesign"
                                                             onclick="selectModeType('Perfect Redesign',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/Perfect Full Redesign.png">
-                                                            <span>Perfect Redesign</span>
+                                                            <span>{{ trans('content.perfect_redesign') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Beautiful Redesign"
                                                             onclick="selectModeType('Beautiful Redesign',1)">
                                                             <img
                                                                 src="{{ asset('webWidget/images/select-room-type10.png') }}">
-                                                            <span>Beautiful Redesign</span>
+                                                            <span>{{ trans('content.beautiful_redesign') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Creative Redesign"
                                                             onclick="selectModeType('Creative Redesign',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/select-room-type11.png">
-                                                            <span>Creative Redesign</span>
+                                                            <span>{{ trans('content.creative_redesign') }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="gs-select-room-style mt-2">
@@ -578,13 +522,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            {{-- <div class="nwchoice-toggle" style="margin-top: 15px !important">
-                                                <span class="nw-tgtype">Private Gallery </span>
-                                                <input type="checkbox" id="nwtoggle1" onchange="loadWidgetRenders(1)"
-                                                    @checked($default_gallery == 'public')>
-                                                <label class="nwtoggle-label1" for="nwtoggle1">Toggle</label>
-                                                <span class="nw-tgtype">Public Gallery</span>
-                                            </div> --}}
                                             <div class="our-preset-settings-range-outer">
                                                 <input type="hidden" id="strength1-redesign" name="strength1-redesign"
                                                     value="mid" />
@@ -617,20 +554,6 @@
                                             <div class="our-preset-settings-range-outer">
                                                 <input type="hidden" id="no_of_des1" name="no_of_des1"
                                                     value="1" />
-                                                {{-- <p class="font14">Select the number of designs you want to generate at
-                                                    once.</p>
-                                                <div class="gs-select-design our-preset-range-design">
-                                                    <div class="our-preset-settings-range" data-sec="1">
-                                                    </div>
-                                                    <div class="our-preset-settings-range-list">
-                                                        <ul>
-                                                            <li>1</li>
-                                                            <li>2</li>
-                                                            <li>3</li>
-                                                            <li>4</li>
-                                                        </ul>
-                                                    </div>
-                                                </div> --}}
                                             </div>
                                             <div class="gs-continue-btn-outer">
                                                 <a href="javascript:void(0)" onclick="_generateDesign(1, this)"
@@ -687,20 +610,6 @@
                                         <div class="our-preset-settings-range-outer">
                                             <input type="hidden" id="no_of_des0" name="no_of_des0"
                                                 value="1" />
-                                            {{-- <p class="font14">Select the number of designs you want to generate at
-                                                once.</p>
-                                            <div class="gs-select-design our-preset-range-design">
-                                                <div class="our-preset-settings-range" data-sec="1">
-                                                </div>
-                                                <div class="our-preset-settings-range-list">
-                                                    <ul>
-                                                        <li>1</li>
-                                                        <li>2</li>
-                                                        <li>3</li>
-                                                        <li>4</li>
-                                                    </ul>
-                                                </div>
-                                            </div> --}}
                                         </div>
                                         <div class="gs-continue-btn-outer">
                                             <a href="javascript:void(0)" onclick="_generateDesign(1, this)"
@@ -741,7 +650,7 @@
                                                         name="selectedRoomType2">
                                                     <p>1. Select Garden Type
                                                         <a href="javascript:void(0)" data-toggle="modal"
-                                                            data-target="#view_all_garden_type">View All</a>
+                                                            data-target="#view_all_garden_type">{{ trans('content.view_all') }}</a>
                                                     </p>
                                                     <div class="gs-select-room-style-row"
                                                         id="roomTypeDisplay2-redesign">
@@ -779,9 +688,9 @@
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedDesignStyle2-redesign"
                                                         name="selectedDesignStyle2">
-                                                    <p>2. Select Design Style <a href="javascript:void(0)"
+                                                    <p>2. {{ trans('content.select_design_style') }} <a href="javascript:void(0)"
                                                             data-toggle="modal"
-                                                            data-target="#view_all_garden_style">View All</a></p>
+                                                            data-target="#view_all_garden_style">{{ trans('content.view_all') }}</a></p>
                                                     <div class="gs-select-room-style-row"
                                                         id="designStyleDisplay2-redesign">
                                                         <div class="gs-select-room-style-single"
@@ -789,7 +698,7 @@
                                                             onclick="selectDesignStyle('Modern',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/garden/design styles/modern.png">
-                                                            <span>Modern</span>
+                                                            <span>{{ trans('content.modern') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="City"
@@ -817,28 +726,28 @@
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedModeType2-redesign"
                                                         name="selectedModeType2-redesign">
-                                                    <p>3. Select Mode Type </p>
+                                                    <p>3. {{ trans('content.select_mode_type') }} </p>
                                                     <div class="gs-select-room-style-row" id="modeTypeDisplay2">
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Perfect Redesign"
                                                             onclick="selectModeType('Perfect Redesign',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/Perfect Full Redesign.png">
-                                                            <span>Perfect Redesign</span>
+                                                            <span>{{ trans('content.perfect_redesign') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Beautiful Redesign"
                                                             onclick="selectModeType('Beautiful Redesign',2)">
                                                             <img
                                                                 src="{{ asset('webWidget/images/select-room-type10.png') }}">
-                                                            <span>Beautiful Redesign</span>
+                                                            <span>{{ trans('content.beautiful_redesign') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Creative Redesign"
                                                             onclick="selectModeType('Creative Redesign',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/select-room-type11.png">
-                                                            <span>Creative Redesign</span>
+                                                            <span>{{ trans('content.creative_redesign') }}</span>
                                                         </div>
                                                     </div>
 
@@ -854,13 +763,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            {{-- <div class="nwchoice-toggle" style="margin-top: 15px !important">
-                                                <span class="nw-tgtype">Private Gallery </span>
-                                                <input type="checkbox" id="nwtoggle2" onchange="loadWidgetRenders(2)"
-                                                    @checked($default_gallery == 'public')>
-                                                <label class="nwtoggle-label2" for="nwtoggle2">Toggle</label>
-                                                <span class="nw-tgtype">Public Gallery</span>
-                                            </div> --}}
                                             <div class="our-preset-settings-range-outer">
                                                 <input type="hidden" id="strength2-redesign" name="strength2-redesign"
                                                     value="mid" />
@@ -893,20 +795,6 @@
                                             <div class="our-preset-settings-range-outer">
                                                 <input type="hidden" id="no_of_des2" name="no_of_des2"
                                                     value="1" />
-                                                {{-- <p class="font14">Select the number of designs you want to generate at
-                                                    once.</p>
-                                                <div class="gs-select-design our-preset-range-design">
-                                                    <div class="our-preset-settings-range" data-sec="2">
-                                                    </div>
-                                                    <div class="our-preset-settings-range-list">
-                                                        <ul>
-                                                            <li>1</li>
-                                                            <li>2</li>
-                                                            <li>3</li>
-                                                            <li>4</li>
-                                                        </ul>
-                                                    </div>
-                                                </div> --}}
                                             </div>
                                             <div class="gs-continue-btn-outer">
                                                 <a href="javascript:void(0)" onclick="_generateDesign(2, this)"
@@ -963,20 +851,6 @@
                                         <div class="our-preset-settings-range-outer">
                                             <input type="hidden" id="no_of_des0" name="no_of_des0"
                                                 value="1" />
-                                            {{-- <p class="font14">Select the number of designs you want to generate at
-                                                once.</p>
-                                            <div class="gs-select-design our-preset-range-design">
-                                                <div class="our-preset-settings-range" data-sec="2">
-                                                </div>
-                                                <div class="our-preset-settings-range-list">
-                                                    <ul>
-                                                        <li>1</li>
-                                                        <li>2</li>
-                                                        <li>3</li>
-                                                        <li>4</li>
-                                                    </ul>
-                                                </div>
-                                            </div> --}}
                                         </div>
                                         <div class="gs-continue-btn-outer">
                                             <a href="javascript:void(0)" onclick="_generateDesign(2, this)"
