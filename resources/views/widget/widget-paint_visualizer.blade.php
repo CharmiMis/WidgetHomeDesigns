@@ -4,15 +4,15 @@
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Upload image</span>
+            <span>{{ trans('content.upload_image') }}</span>
         </li>
         <li class="second_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Select what to edit</span>
+            <span>{{ trans('content.select_what_to_edit') }}</span>
         </li>
         <li class="third_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Customise and Generate</span>
+            <span>{{ trans('content.customise_and_generate') }}</span>
         </li>
     </ul>
     <div>
@@ -23,10 +23,8 @@
         <img src="https://homedesigns-ai.b-cdn.net/web2/images/info-icon.svg">
     </div>
     <div class="gs-dashboard-notice-info-text">
-        <h2>Change Wall Colors Instantly!</h2>
-        <p>Transform the look and feel of your interiors and exteriors with our Paint Visualizer tool. This feature
-            allows you to effortlessly change the paint color of any wall (interior or exterior), using either our
-            preset options or colors uploaded by you.</p>
+        <h2>{{ trans('content.heading_title_paint_visualizer') }}</h2>
+        <p> {{ trans('content.heading_paint_visualizer') }}</p>
     </div>
     <div class="gs-dashboard-cross">
         <img src="https://homedesigns-ai.b-cdn.net/web2/images/cross-icon.svg">
@@ -64,15 +62,15 @@
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Upload image</span>
+            <span>{{ trans('content.upload_image') }}</span>
         </li>
         <li class="active second_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Select what to edit</span>
+            <span>{{ trans('content.select_what_to_edit') }}</span>
         </li>
         <li class="third_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Customise and Generate</span>
+            <span>{{ trans('content.customise_and_generate') }}</span>
         </li>
     </ul>
     <div>
@@ -90,15 +88,15 @@
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Upload image</span>
+            <span>{{ trans('content.upload_image') }}</span>
         </li>
         <li class="active second_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Select what to edit</span>
+            <span>{{ trans('content.select_what_to_edit') }}</span>
         </li>
         <li class="active third_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Customise and Generate</span>
+            <span>{{ trans('content.customise_and_generate') }}</span>
         </li>
     </ul>
     <div>

@@ -4,15 +4,15 @@
         <ul>
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Upload image</span>
+                <span>{{ trans('content.upload_image') }}</span>
             </li>
             <li class="second_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Select what to edit</span>
+                <span>{{ trans('content.select_what_to_edit') }}</span>
             </li>
             <li class="second_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Customise and Generate</span>
+                <span>{{ trans('content.customise_and_generate') }}</span>
             </li>
         </ul>
     </div>
@@ -21,8 +21,8 @@
             <img src="{{ asset('webWidget/images/info-icon.svg') }}">
         </div>
         <div class="gs-dashboard-notice-info-text">
-            <h2>Turn Your Sketches into Photorealistic Designs Instantly with AI</h2>
-            <p>Transform hand-drawn sketches into stunning, photorealistic designs with AI-powered precision.</p>
+            <h2>{{ trans('content.heading_title_sketch_to_render') }}</h2>
+            <p>{{ trans('content.heading_sketch_to_render') }}</p>
         </div>
         <div class="gs-dashboard-cross">
             <img src="{{ asset('webWidget/images/cross-icon.svg') }}">
@@ -66,15 +66,15 @@
         <ul>
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Upload image</span>
+                <span>{{ trans('content.upload_image') }}</span>
             </li>
             <li class="active second_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Select what to edit</span>
+                <span>{{ trans('content.select_what_to_edit') }}</span>
             </li>
             <li class="active second_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Customise and Generate</span>
+                <span>{{ trans('content.customise_and_generate') }}</span>
             </li>
         </ul>
     </div>

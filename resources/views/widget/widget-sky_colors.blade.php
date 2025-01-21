@@ -3,7 +3,7 @@
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Upload image</span>
+            <span>{{ trans('content.upload_image') }}</span>
         </li>
         <li class="second_tab_active">
             <div class="ai-tool-right-steps"></div>
@@ -17,8 +17,8 @@
             <img src="https://homedesigns-ai.b-cdn.net/web2/images/info-icon.svg">
         </div>
         <div class="gs-dashboard-notice-info-text">
-            <h2>Instant Weather Adjustments with AI!</h2>
-            <p>Elevate your exterior visuals with our Sky Color Changer tool. Perfect for photographers, real estate agents, and designers, this feature allows you to effortlessly adjust the sky and weather in your images, creating the perfect ambiance for any setting. Select one from the 10 available weather modes and let our AI do the rest.</p>
+            <h2>{{ trans('content.heading_title_sky_color') }}</h2>
+            <p>{{ trans('content.heading_sky_color') }}</p>
         </div>
         <div class="gs-dashboard-cross">
             <img src="https://homedesigns-ai.b-cdn.net/web2/images/cross-icon.svg">
@@ -48,7 +48,7 @@
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Upload image</span>
+            <span>{{ trans('content.upload_image') }}</span>
         </li>
         <li class="active second_tab_active">
             <div class="ai-tool-right-steps"></div>

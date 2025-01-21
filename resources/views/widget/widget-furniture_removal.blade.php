@@ -2,7 +2,7 @@
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Upload image</span>
+            <span>{{ trans('content.upload_image') }}</span>
         </li>
         <li class="second_tab_active">
             <div class="ai-tool-right-steps"></div>
@@ -15,8 +15,8 @@
             <img src="https://homedesigns-ai.b-cdn.net/web2/images/info-icon.svg">
         </div>
         <div class="gs-dashboard-notice-info-text">
-            <h2>Clear Your Space with a Click!</h2>
-            <p>This mode allows you to quickly declutter and empty rooms, providing a clean canvas for your design ideas. Beyond just clearing rooms, this tool offers the precision to remove specific objects. Whether it's an old couch, a misplaced table, or any other unwanted item, our AI ensures its seamless removal while keeping key elements like windows and structural components intact.</p>
+            <h2>{{ trans('content.heading_title_furniture_removal') }}</h2>
+            <p>{{ trans('content.heading_furniture_removal') }}</p>
         </div>
         <div class="gs-dashboard-cross">
             <img src="https://homedesigns-ai.b-cdn.net/web2/images/cross-icon.svg">
@@ -53,7 +53,7 @@
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Upload image</span>
+            <span>{{ trans('content.upload_image') }}</span>
         </li>
 
         <li class="active second_tab_active">

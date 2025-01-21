@@ -4,15 +4,15 @@
         <ul>
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Upload image</span>
+                <span>{{ trans('content.upload_image') }}</span>
             </li>
             <li class="second_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Select what to edit</span>
+                <span>{{ trans('content.select_what_to_edit') }}</span>
             </li>
             <li class="third_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Customise and Generate</span>
+                <span>{{ trans('content.customise_and_generate') }}</span>
             </li>
         </ul>
     </div>
@@ -22,10 +22,8 @@
             <img src="{{ asset('webWidget/images/info-icon.svg') }}">
         </div>
         <div class="gs-dashboard-notice-info-text">
-            <h2>Transform Spaces with Pinpoint Accuracy!</h2>
-            <p>Make focused changes to specific areas of your space while keeping everything else intact. Whether it's a
-                room interior, exterior facade, or a garden section, Precision+ allows you to precisely modify selected
-                portions quickly and easily.</p>
+            <h2>{{ trans('content.heading_title_precision') }}</h2>
+            <p>{{ trans('content.heading_precision') }}</p>
         </div>
         <div class="gs-dashboard-cross">
             <img src="{{ asset('webWidget/images/cross-icon.svg') }}">
@@ -62,15 +60,15 @@
         <ul>
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Upload image</span>
+                <span>{{ trans('content.upload_image') }}</span>
             </li>
             <li class="active second_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Select what to edit</span>
+                <span>{{ trans('content.select_what_to_edit') }}</span>
             </li>
             <li class="third_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Customise and Generate</span>
+                <span>{{ trans('content.customise_and_generate') }}</span>
             </li>
         </ul>
     </div>
@@ -86,21 +84,17 @@
         <ul>
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Upload image</span>
+                <span>{{ trans('content.upload_image') }}</span>
             </li>
             <li class="active second_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Select what to edit</span>
+                <span>{{ trans('content.select_what_to_edit') }}</span>
             </li>
             <li class="active third_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Customise and Generate</span>
+                <span>{{ trans('content.customise_and_generate') }}</span>
             </li>
         </ul>
-        {{-- <div class="color_mode">
-        <input type="checkbox" id="toggle-btn-3" class="toggle-btn" {{ auth()->user()->light_mode == 0 ? 'checked' : '' }}>
-        <label for="toggle-btn-3"></label>
-    </div> --}}
     </div>
 
     <div class="image-show-container image-mask-container">

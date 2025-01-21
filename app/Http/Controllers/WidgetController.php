@@ -20,6 +20,7 @@ use App\Models\WidgetUserData;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\App;
 
 class WidgetController extends Controller
 {
@@ -216,7 +217,6 @@ class WidgetController extends Controller
         $widgetData = WidgetUserData::where('user_id', $id)->firstOrFail();
         $userTheme = User::where('id', $id)->select('light_mode')->first();
         $currentDomain = $request->query('currentDomain'); // Get the currentDomain from the query parameters
-
         if (!$widgetData) {
             abort(404, 'Widgetd not found');
         }
@@ -224,6 +224,11 @@ class WidgetController extends Controller
         //     $widgetHtml = 'Please verify your domain';
         //     return response($widgetHtml, 200)->header('Content-Type', 'text/html');
         // }
+
+        $preffered_langauge = $widgetData->preferred_lang;
+        if($preffered_langauge){
+            App::setLocale($preffered_langauge);
+        }
         $widgetHtml = view('widget.widget-management', ['widgetData' => $widgetData, 'widgetThemeMode' => $userTheme->light_mode, 'primaryColor' => $widgetData->primary_color])->render();
         return response($widgetHtml, 200)->header('Content-Type', 'text/html')
             ->header('X-User-Theme', $userTheme->light_mode);;

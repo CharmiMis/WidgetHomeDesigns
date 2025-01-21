@@ -5,15 +5,15 @@
         <ul>
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Upload image</span>
+                <span>{{ trans('content.upload_image') }}</span>
             </li>
             <li class="second_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Select what to edit</span>
+                <span>{{ trans('content.select_what_to_edit') }}</span>
             </li>
             <li class="second_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Customise and Generate</span>
+                <span>{{ trans('content.customise_and_generate') }}</span>
             </li>
         </ul>
         {{-- <form method="POST" action="{{ route('logout') }}">
@@ -28,11 +28,8 @@
             <img src="{{ asset('webWidget/images/info-icon.svg') }}">
         </div>
         <div class="gs-dashboard-notice-info-text">
-            <h2>Redesign Your Space Instantly!</h2>
-            <p>Ideal for quick makeovers, our Redesign Mode provides a streamlined, easy-to-use solution for achieving a
-                fresh new look without the hassle. Choose from three dynamic sub-types—Creative Redesign, Beautiful
-                Redesign, and Sketch-to-Render—to breathe new life into your house interiors, exteriors, gardens, or
-                patios.</p>
+            <h2>{{ trans('content.heading_title_redesign') }}</h2>
+            <p>{{ trans('content.heading_redesign') }}</p>
         </div>
         <div class="gs-dashboard-cross">
             <img src="{{ asset('webWidget/images/cross-icon.svg') }}">
@@ -72,15 +69,15 @@
         <ul>
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Upload image</span>
+                <span>{{ trans('content.upload_image') }}</span>
             </li>
             <li class="active second_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Select what to edit</span>
+                <span>{{ trans('content.select_what_to_edit') }}</span>
             </li>
             <li class="active second_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Customise and Generate</span>
+                <span>{{ trans('content.customise_and_generate') }}</span>
             </li>
         </ul>
     </div>

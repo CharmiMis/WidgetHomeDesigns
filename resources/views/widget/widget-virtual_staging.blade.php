@@ -2,15 +2,15 @@
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Upload image</span>
+            <span>{{ trans('content.upload_image') }}</span>
         </li>
         <li class="second_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Select what to edit</span>
+            <span>{{ trans('content.select_what_to_edit') }}</span>
         </li>
         <li class="second_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Customise and Generate</span>
+            <span>{{ trans('content.customise_and_generate') }}</span>
         </li>
     </ul>
     <div>
@@ -62,64 +62,41 @@
     <ul class="progress-bar-tab">
         <li class="active first_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Upload image</span>
+            <span>{{ trans('content.upload_image') }}</span>
         </li>
         <li class="active second_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Select what to edit</span>
+            <span>{{ trans('content.select_what_to_edit') }}</span>
         </li>
         <li class="active second_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Customise and Generate</span>
+            <span>{{ trans('content.customise_and_generate') }}</span>
         </li>
     </ul>
-    <div>
-        {{-- <a href="javascript:void(0)" onclick="loadVideoModal()">
-                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/video-tutorial.svg">
-                        <span>Video Tutorial</span>
-                    </a> --}}
-    </div>
 </div>
 
 <div class="image-show-container image-mask-container" style="display: none">
     <div class="gs-what-to-edit-wrapper">
         <div class="gs-what-to-edit-left image-mask-container image-mask-furnish_empty_room" style="display: none">
-            {{-- <input type="hidden" name="image_type" id="input_img_typ">
-                        <input type="hidden" name="image" id="input_image">
-                        <div class="gs-what-to-edit-leftimg" id="gallery0">
-                            <img id="im">
-                        </div> --}}
             <div id="inpainting-stag-outer-furnish_empty_room"
                 class="inpainting-stag-outer d-flex align-items-center justify-content-center">
                 <div id="painting-stag-furnish_empty_room"></div>
             </div>
             <div class="gs-what-to-edit-tips">
                 <div class="gs-what-to-edit-tip-box">
-                    {{-- <div class="gs-what-to-edit-tip-left">
-                                    <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-what-to-edit-tip-icon1.png">
-                                </div> --}}
                     <div class="gs-what-to-edit-tip-right">
-                        {{-- <h4>Tip 1</h4> --}}
                         <p>Use the AI Intervention Slider to control the level of creativity. For subtle changes, set it
                             lower; for bold, innovative designs, move the slider higher.</p>
                     </div>
                 </div>
                 <div class="gs-what-to-edit-tip-box">
-                    {{-- <div class="gs-what-to-edit-tip-left">
-                                    <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-what-to-edit-tip-icon2.png">
-                                </div> --}}
                     <div class="gs-what-to-edit-tip-right">
-                        {{-- <h4>Tip 2</h4> --}}
                         <p>Add specific instructions in the ‘Additional Instructions’ menu to tailor the AI’s redesign,
                             such as “Add modern art to the walls” or “Replace the rug with a minimalist design.”</p>
                     </div>
                 </div>
                 <div class="gs-what-to-edit-tip-box">
-                    {{-- <div class="gs-what-to-edit-tip-left">
-                                    <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-what-to-edit-tip-icon3.png">
-                                </div> --}}
                     <div class="gs-what-to-edit-tip-right">
-                        {{-- <h4>Tip 3</h4> --}}
                         <p>Start with the Redesign tool to make overall changes, then use Precision+ to fine-tune the
                             details. Seamlessly switch between tools using the gallery’s ‘Edit’ button.</p>
                     </div>

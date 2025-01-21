@@ -5,15 +5,15 @@
         <ul>
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Upload image</span>
+                <span>{{ trans('content.upload_image') }}</span>
             </li>
             <li class="second_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Select what to edit</span>
+                <span>{{ trans('content.select_what_to_edit') }}</span>
             </li>
             <li class="third_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Customise and Generate</span>
+                <span>{{ trans('content.customise_and_generate') }}</span>
             </li>
         </ul>
         {{-- <form method="POST" action="{{ route('logout') }}">
@@ -29,11 +29,8 @@
             <img src="{{ asset('webWidget/images/info-icon.svg') }}">
         </div>
         <div class="gs-dashboard-notice-info-text">
-            <h2>Fill Empty Spaces with Furniture and Decor!</h2>
-            <p>Furnish and decorate your empty rooms with our Fill Spaces mode. Using state-of-the-art AI, this tool
-                helps you transform vacant areas into beautifully styled spaces tailored to your preferences. Whether
-                you’re designing an empty living room, bedroom, or patio, Fill Spaces adds the perfect furniture and
-                decor in seconds.</p>
+            <h2>{{ trans('content.heading_title_fill_spaces') }}</h2>
+            <p>{{ trans('content.heading_fill_spaces') }}</p>
         </div>
         <div class="gs-dashboard-cross">
             <img src="{{ asset('webWidget/images/cross-icon.svg') }}">
@@ -70,15 +67,15 @@
         <ul>
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Upload image</span>
+                <span>{{ trans('content.upload_image') }}</span>
             </li>
             <li class="active second_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Select what to edit</span>
+                <span>{{ trans('content.select_what_to_edit') }}</span>
             </li>
             <li class="third_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Customise and Generate</span>
+                <span>{{ trans('content.customise_and_generate') }}</span>
             </li>
         </ul>
         {{-- <div class="color_mode">
@@ -98,15 +95,15 @@
         <ul>
             <li class="active first_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Upload image</span>
+                <span>{{ trans('content.upload_image') }}</span>
             </li>
             <li class="active second_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Select what to edit</span>
+                <span>{{ trans('content.select_what_to_edit') }}</span>
             </li>
             <li class="active third_tab_active">
                 <div class="ai-tool-right-steps"></div>
-                <span>Customise and Generate</span>
+                <span>{{ trans('content.customise_and_generate') }}</span>
             </li>
         </ul>
         {{-- <div class="color_mode">
