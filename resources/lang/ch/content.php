@@ -1,144 +1,143 @@
 <?php
 
 return [
-    'upload_image' => 'Upload image',
+        'redesign' => '重新设计',
+        'precision' => '精准+',
+        'fill_spaces' => '填充空白',
+        'decor_staging' => '装饰布景',
+        'colors_and_textures' => '颜色和纹理',
+        'paint_visualizer' => '涂料可视化工具',
+        'furniture_removal' => '家具移除',
+        'virtual_staging' => '虚拟布景',
+        'sky_colors' => '天空颜色',
+        'sketch_to_render' => '从草图到渲染',
 
-    'select_what_to_edit' => 'Select what to edit',
+        'upload_image' => '上传图片',
 
-    'customise_and_generate' =>'Customise and Generate',
+        'select_what_to_edit' => '选择要编辑的内容',
 
-    'upload_your_image' => 'Upload your image',
+        'customise_and_generate' => '自定义并生成',
 
-    'drag_and_drop_your_image_here' => 'Drag and drop your image here',
+        'upload_your_image' => '上传您的图片',
 
-    'select_what_you_want_to_generate' => 'Select what you want to generate',
-    'select_design_style' => 'Select Design Style',
-    'select_mode_type' => 'Select Mode Type',
+        'drag_and_drop_your_image_here' => '将图片拖放到这里',
 
-    'interior' => 'Interior',
-    'exterior' => 'Exterior',
-    'garden' => 'Garden',
+        'select_what_you_want_to_generate' => '选择您想生成的内容',
+        'select_design_style' => '选择设计风格',
+        'select_mode_type' => '选择模式类型',
 
-    'interior' => 'Interior',
-    'exterior' => 'Exterior',
-    'garden' => 'Garden',
-    'living_room' => 'Living Room',
-    'bedroom' => 'Bedroom',
-    'bathroom' => 'Bathroom',
-    'kitchen' => 'Kitchen',
-    'modern' => 'Modern',
-    'mediterranean' => 'Mediterranean',
-    'international' => 'International',
-    'moody_colors' => 'Moody Colors',
-    'perfect_redesign' => 'Perfect Redesign',
-    'beautiful_redesign' => 'Beautiful Redesign',
-    'creative_redesign' => 'Creative Redesign',
-    'eclectic' => 'Eclectic',
-    'contemporary' => 'Contemporary',
-    'transitional' => 'Transitional',
-    'scandinavian' =>'Scandinavian',
+        'interior' => '室内',
+        'exterior' => '室外',
+        'garden' => '花园',
+        'living_room' => '客厅',
+        'bedroom' => '卧室',
+        'bathroom' => '浴室',
+        'kitchen' => '厨房',
+        'modern' => '现代',
+        'city' => '城市',
+        'luxury' => '豪华',
+        'mediterranean' => '地中海',
+        'international' => '国际',
+        'moody_colors' => '情绪化的颜色',
+        'perfect_redesign' => '完美重新设计',
+        'beautiful_redesign' => '美丽的重新设计',
+        'creative_redesign' => '创意重新设计',
+        'eclectic' => '折衷',
+        'contemporary' => '当代',
+        'transitional' => '过渡',
+        'scandinavian' => '斯堪的纳维亚',
+        'backyard' => '后院',
+        'patio' => '庭院',
+        'terrace' => '露台',
+        'front_yard' => '前院',
 
-    'our_preset_settings' => 'Our preset settings',
-    'your_custom_settings' => 'Your Custom settings',
+        'design_style_text' => '设计风格',
+        'room_type_text' => '房间类型',
+        'mode_type_text' => '模式类型',
+        'download_text' => '下载',
+        'no_designs_text' => '此部分未找到设计。',
+        'keep_structural_elements' => '保留结构元素',
+        'ai_intervention' => 'AI 干预',
+        'intervention_very_low' => '非常低',
+        'intervention_low' => '低',
+        'intervention_medium' => '中等',
+        'intervention_extreme' => '极端',
+        'generate_new_designs' => '生成新设计',
+        'preset_prompt_text' => '在下方输入您的自定义指令，我们的 AI 会在生成设计时考虑这些指令：',
+        'custom_inst_placeholder' => '例如：一个干净的客厅，有黑色和黄色纹理，配备硬木制作的咖啡桌。',
+        'custom_inst_placeholder_pricion' => '例如：北欧风格餐厅设计，美观，白色',
+        'our_preset_settings' => '我们的预设设置',
+        'your_custom_settings' => '您的自定义设置',
+        'select_house_angle' => '选择房屋角度',
+        'side_of_house' => '房屋侧面',
+        'front_of_house' => '房屋正面',
+        'back_of_house' => '房屋后面',
+        'select_room_type' => '选择房间类型',
+        'latest_designs' => '最新设计',
+        'latest_designs_info' => '查看以下最新设计并将其保存到项目或收藏夹。',
+        'select_garden_type' => '选择花园类型',
+        'view_all' => '查看全部',
+        'change_weather' => '更改天气',
+        'change_sky_colors' => '更改天空颜色为：',
+        'sunshine' => '阳光',
+        'rainy' => '雨天',
+        'cloudy' => '多云',
+        'clear_sky' => '晴空',
+        'windy' => '有风',
+        'dawn' => '黎明',
+        'dusk' => '黄昏',
+        'twilight' => '暮光',
+        'sunny' => '晴天',
+        'night' => '夜晚',
 
-    'select_room_type' => 'Select Room Type',
+        'select_automatically' => '自动选择',
+        'select_manually' => '手动选择',
+        'select_manually_text' => '自动选择对象',
+        'select_manually_content' => '自动或手动选择对象，并可结合两种方法。',
+        'continue_text' => '继续',
+        'brush_edit_manually_content' => '使用画笔手动编辑',
+        'remove_masking' => '移除遮罩',
+        'add_masking' => '添加遮罩',
+        'circle_brush' => '圆形画笔',
+        'square_brush' => '方形画笔',
+        'clear_all' => '清除所有',
+        'ai_strength' => 'AI 强度',
+        'standard_paints' => '标准涂料',
+        'custom_paints' => '自定义涂料',
+        'custom_color_image' => '自定义颜色图片',
+        'color_list_text' => '从列表中选择油漆颜色：',
+        'color_picker_text' => '点击打开颜色选择器：',
+        'color_picker_placeholder' => '未选择颜色',
+        'upload_paint_sample' => '上传油漆样本（.jpeg, .png）',
+        'select_elements_to_remove' => '选择要移除的元素',
+        'preset_colors' => '预设颜色',
+        'custom_colors' => '自定义颜色',
+        'what_change_text' => '您想更改什么？',
+        'color' => '颜色',
+        'material' => '材料',
+        'color_Selection_text' => '从列表中选择颜色：',
+        'texture_Selection_text' => '从列表中选择纹理：',
+        'fabrics' => '织物',
+        'glass' => '玻璃',
+        'wood' => '木材',
+        'stone' => '石材',
+        'metal' => '金属',
+        'ceramics_and_porcelain' => '陶瓷和瓷器',
+        'plastics_and_polymers' => '塑料和聚合物',
+        'paper_and_cardboard' => '纸张和纸板',
+        'natural_fibers' => '天然纤维',
+        'composite_materials' => '复合材料',
+        'select_material_types' => '选择材料类型',
+        'select_exterior_materials' => '选择外部材料',
+        'facade' => '外立面',
+        'roofing' => '屋顶',
+        'decking_and_walkways' => '甲板和步道',
+        'outdoor_fixtures_and_accents' => '户外装饰和点缀',
+        'select_garden_materials' => '选择花园材料',
+        'ground_cover_materials' => '地面覆盖材料',
+        'planters_and_edging' => '花盆和边框',
+        'outdoor_furniture_and_decor' => '户外家具和装饰',
+        'water_features_and_structures' => '水景和结构',
+        'lighting' => '照明',
 
-    'view_all' => 'View All',
-
-    'right_tip_redesign_first' => 'Click on ‘Your Custom settings’ to give specific instructions to our AI.',
-    'right_tip_redesign_second' => 'In Beautiful Redesign, our AI generates fast and beautiful results, but has less freedom
-                                to add or remove objects.',
-    'right_tip_redesign_third' => 'Use Sketch-to-Render mode type to turn raw drawings into photorealistic renders.',
-
-
-    'right_tip_virtual_staging_first' => 'Use the AI Intervention Slider to control the level of creativity. For subtle changes, set it
-                            lower; for bold, innovative designs, move the slider higher.',
-    'right_tip_virtual_staging_second' => 'Add specific instructions in the ‘Additional Instructions’ menu to tailor the AI’s redesign,
-                            such as “Add modern art to the walls” or “Replace the rug with a minimalist design.”',
-    'right_tip_virtual_staging_third' => 'Start with the Redesign tool to make overall changes, then use Precision+ to fine-tune the
-                            details. Seamlessly switch between tools using the gallery’s ‘Edit’ button.',
-
-
-    'right_tip_sky_color_first' => 'The AI will automatically identify and select the sky area in your image, making the editing
-                            process smooth and efficient. No manual selection required!',
-    'right_tip_sky_color_second' => 'Choose from various weather conditions such as sunny, cloudy, stormy, sunset, or sunrise to
-                            transform the atmosphere in your image.',
-    'right_tip_sky_color_third' => 'Our AI does not alter the sky in photos taken from inside when it’s visible through windows.',
-
-
-    'right_tip_sketch_render_first' => 'Start by uploading a clear sketch or drawing.',
-    'right_tip_sketch_render_second' => 'Choose your preferred style and settings.',
-    'right_tip_sketch_render_third' => 'Click Generate to see your design come to life!',
-
-    'right_tip_pricision_first' => 'Use the automated selection, then fine-tune your selection with the manual brush.',
-    'right_tip_pricision_second' => 'Click ‘Refine Manually’ to adjust the brush size, shape, and behavior.',
-    'right_tip_pricision_third' => 'Only select the area that you want to change. Our AI will disregard non-selected areas.',
-
-    'right_tip_paint_visualizer_first' => 'Use Automated Selection or Manual Selection to select the areas that you want to paint over.',
-    'right_tip_paint_visualizer_second' => 'Pick the color from our Presets, use the color picker or upload an image with your sample
-                            color.',
-    'right_tip_paint_visualizer_third' => 'Make sure the selection is as accurate as possible for the best results',
-
-    'right_tip_furniture_removal_first' => 'Select the pieces of furniture or decor that you want to remove.',
-    'right_tip_furniture_removal_second' => 'After a complete removal? Select everything aside from structural elements and
-                            windows. ',
-    'right_tip_furniture_removal_third' => 'If you’re looking to do specific decluttering, only select the the item that you
-                            want to erase.',
-
-        'right_tip_fill_spaces_first' => 'Use the automated selection, then fine-tune your selection with the manual brush.',
-        'right_tip_fill_spaces_second' => 'Click ‘Refine Manually’ to adjust the brush size, shape, and behavior.',
-        'right_tip_fill_spaces_third' => 'Only select the area that you want to change. Our AI will disregard non-selected areas.',
-
-        'right_tip_color_texture_first' => 'Use the manual or automatic selection to select the object that you want to change.',
-        'right_tip_color_texture_second ' => 'You can use this AI model to change the color or texture or any interior or exterior object.',
-        'right_tip_color_texture_third' => 'You can add custom colors or textures by clicking on "Custom Colors" or "Custom Textures".',
-
-    'or_click_here_to_upload' => 'Or click here to upload',
-
-    'heading_title_redesign' => 'Redesign Your Space Instantly!',
-    'heading_redesign' => 'Ideal for quick makeovers, our Redesign Mode provides a streamlined, easy-to-use solution for achieving a
-                fresh new look without the hassle. Choose from three dynamic sub-types—Creative Redesign, Beautiful
-                Redesign, and Sketch-to-Render—to breathe new life into your house interiors, exteriors, gardens, or
-                patios.',
-
-    'heading_title_virtual_Staging' => '',         
-    'heading_virtual_Staging' => '',
-
-    
-    'heading_title_sky_color' => 'Instant Weather Adjustments with AI!',         
-    'heading_sky_color' => 'Elevate your exterior visuals with our Sky Color Changer tool. Perfect for photographers, real estate agents, and designers, this feature allows you to effortlessly adjust the sky and weather in your images, creating the perfect ambiance for any setting. Select one from the 10 available weather modes and let our AI do the rest.', 
-
-
-    'heading_title_sketch_to_render' => 'Turn Your Sketches into Photorealistic Designs Instantly with AI',         
-    'heading_sketch_to_render' => 'Transform hand-drawn sketches into stunning, photorealistic designs with AI-powered precision.', 
-
-
-    'heading_title_precision' => 'Transform Spaces with Pinpoint Accuracy!',         
-    'heading_precision' => 'Make focused changes to specific areas of your space while keeping everything else intact. 
-     Whether it a room interior, exterior facade, or a garden section, Precision+ allows you to precisely modify selected
-                portions quickly and easily.', 
-
-
-    'heading_title_paint_visualizer' => 'Change Wall Colors Instantly!',         
-    'heading_paint_visualizer' => 'Transform the look and feel of your interiors and exteriors with our Paint Visualizer tool. This feature
-            allows you to effortlessly change the paint color of any wall (interior or exterior), using either our
-            preset options or colors uploaded by you.', 
-
-
-    'heading_title_furniture_removal' => 'Clear Your Space with a Click!',         
-    'heading_furniture_removal' => 'This mode allows you to quickly declutter and empty rooms, providing a clean canvas for your design ideas. Beyond just clearing rooms, this tool offers the precision to remove specific objects. Whether its an old couch, a misplaced table, or any other unwanted item, our AI ensures its seamless removal while keeping key elements like windows and structural components intact.', 
-
-    
-    'heading_title_fill_spaces' => 'Fill Empty Spaces with Furniture and Decor!',         
-    'heading_fill_spaces' => 'Furnish and decorate your empty rooms with our Fill Spaces mode. Using state-of-the-art AI, this tool
-                helps you transform vacant areas into beautifully styled spaces tailored to your preferences. Whether
-                you’re designing an empty living room, bedroom, or patio, Fill Spaces adds the perfect furniture and
-                decor in seconds.',
-
-    
-    'heading_title_color_texture' => 'AI-Powered Color & Texture Customization',         
-    'heading_color_texture' => 'Fine-tune color and texture changes on specific design elements, preserving the integrity of your overall
-            image. This AI model lets you experiment with colors, textures, and materials on furniture, walls, decor,
-            on both interior and exterior spaces. Combine our extensive presets with your custom instructions to achieve
-            truly personalized results.',
 ];

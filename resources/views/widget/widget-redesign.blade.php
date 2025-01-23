@@ -248,7 +248,7 @@
                                                             onclick="selectDesignStyle('Scandinavian',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/scandinavian.png">
-                                                            <span>{{ trans('content.eclectic') }}</span>
+                                                            <span>{{ trans('content.scandinavian') }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -280,12 +280,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="gs-select-room-style mt-2">
-                                                        <label id="lbl_structre_elements0" style="font-size:14px" for="structural_elements_ck0"><p>Keep structural elements</p></label>
+                                                        <label id="lbl_structre_elements0" style="font-size:14px" for="structural_elements_ck0"><p>{{ trans('content.keep_structural_elements') }}</p></label>
                                                         <input id="structural_elements_ck0" class="ml_dw_img ms-1 ck_inst" name="structural-elements" type="checkbox" >
                                                         <div class="gs-tutorials-toolnip">
                                                             <img src="https://homedesigns-ai.b-cdn.net/web2/images/tutorail-wraning.svg" alt="">
                                                             <div class="ai-upload-option-tooltip">
-                                                                <span>If you check this box our AI will maintain the walls, doors and windows without breaking the structure of the space.</span>
+                                                                <span>{{ trans('tooltip.keep_Struct_tool_tip')}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -295,15 +295,12 @@
                                                 <input type="hidden" id="strength0-redesign" name="strength0-redesign"
                                                     value="mid" />
                                                 <div class="d-flex align-items-center">
-                                                    <p class="font14">AI Intervention</p>
+                                                    <p class="font14">{{ trans('content.ai_intervention')}}</p>
                                                     <div class="gs-tutorials-toolnip">
                                                         <img src="{{ asset('webWidget/images/tutorail-wraning.svg') }}"
                                                             alt="">
                                                         <div class="ai-upload-option-tooltip">
-                                                            <span>Control the number of changes you want the AI to make
-                                                                to your upload. For the best results, leave this option
-                                                                to MEDIUM. You can try with LOW and EXTREME if you don't
-                                                                get good results with MEDIUM.</span>
+                                                            <span>{{ trans('content.ai_intervention_tool_tip')}}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -312,10 +309,10 @@
                                                     </div>
                                                     <div class="our-preset-settings-range-list">
                                                         <ul>
-                                                            <li>Very Low</li>
-                                                            <li>Low</li>
-                                                            <li>Medium</li>
-                                                            <li>Extreme</li>
+                                                            <li>{{ trans('content.intervention_very_low')}}</li>
+                                                            <li>{{ trans('content.intervention_low')}}</li>
+                                                            <li>{{ trans('content.intervention_medium')}}</li>
+                                                            <li>{{ trans('content.intervention_extreme')}}</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -328,7 +325,7 @@
                                                 <a href="javascript:void(0)" onclick="_generateDesign(0, this)"
                                                     class="gs-continue-btn"><img
                                                         src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
-                                                    Generate New Designs
+                                                    {{ trans('content.generate_new_designs')}}
                                                     <span id="submit" style="display:none">
                                                         <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
                                                     </span>
@@ -339,26 +336,22 @@
                                     <div id="your-customs-settings-interior-redesign" class="tab-pane fade">
                                         <div class="our-preset-settings-box">
 
-                                            <label class="our-preset-prompt-text">Type your custom instructions below
-                                                and our AI will take them into account when generating your designs:
+                                            <label class="our-preset-prompt-text">{{ trans('content.preset_prompt_text')}}
                                                 <input type="checkbox" id="nwcust0_redesign" class="ms-1 ck_inst" checked
                                                     onchange="customInstruction(0)"></label>
                                             <textarea
-                                                placeholder="e.g. A clean-looking living room with black and yellow textures and a coffee table made from hardwood."
+                                                placeholder="{{ trans('content.custom_inst_placeholder') }}"
                                                 name="cust-inst0" id="custom_instruction0_redesign" class=""></textarea>
                                         </div>
 
                                         <div class="our-preset-settings-range-outer">
                                             <div class="d-flex align-items-center">
-                                                <p class="font14">AI Intervention</p>
+                                                <p class="font14">{{ trans('content.ai_intervention')}}</p>
                                                 <div class="gs-tutorials-toolnip">
                                                     <img src="{{ asset('webWidget/images/tutorail-wraning.svg') }}"
                                                         alt="">
                                                     <div class="ai-upload-option-tooltip">
-                                                        <span>Control the number of changes you want the AI to make to
-                                                            your upload. For the best results, leave this option to
-                                                            MEDIUM. You can try with LOW and EXTREME if you don't get
-                                                            good results with MEDIUM.</span>
+                                                        <span>{{ trans('content.ai_intervention_tool_tip')}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -367,10 +360,10 @@
                                                 </div>
                                                 <div class="our-preset-settings-range-list">
                                                     <ul>
-                                                        <li>Very Low</li>
-                                                        <li>Low</li>
-                                                        <li>Medium</li>
-                                                        <li>Extreme</li>
+                                                        <li>{{ trans('content.intervention_very_low')}}</li>
+                                                            <li>{{ trans('content.intervention_low')}}</li>
+                                                            <li>{{ trans('content.intervention_medium')}}</li>
+                                                            <li>{{ trans('content.intervention_extreme')}}</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -384,7 +377,7 @@
                                             <a href="javascript:void(0)" onclick="_generateDesign(0, this)"
                                                 class="gs-continue-btn"><img
                                                     src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
-                                                Generate New Designs
+                                                {{ trans('content.generate_new_designs')}}
                                                 <span id="submit" style="display:none">
                                                     <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
                                                 </span>
@@ -400,12 +393,8 @@
                         <div class="gs-what-to-edit-tabs">
                             <div class="gs-what-to-edit-title">
                                 <ul>
-                                    <li class="active"><a data-toggle="tab"
-                                            href="#our-preset-settings-exterior-redesign">Our
-                                            preset settings</a></li>
-                                    <li><a data-toggle="tab" href="#your-customs-settings-exterior-redesign">Your
-                                            customs
-                                            settings </a></li>
+                                    <li class="active"><a data-toggle="tab" href="#our-preset-settings-exterior-redesign">{{ trans('content.our_preset_settings')}}</a></li>
+                                    <li><a data-toggle="tab" href="#your-customs-settings-exterior-redesign">{{ trans('content.your_custom_settings')}} </a></li>
                                 </ul>
                             </div>
                             <div class="gs-what-to-edit-content">
@@ -417,7 +406,7 @@
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedRoomType1-redesign"
                                                         name="selectedRoomType1">
-                                                    <p>1. Select House Angle
+                                                    <p>1. {{ trans('content.select_house_angle')}}
                                                     </p>
                                                     <div class="gs-select-room-style-row"
                                                         id="roomTypeDisplay1-redesign">
@@ -426,21 +415,21 @@
                                                             onclick="selectRoomType('Side of House',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/types/side of the house.png">
-                                                            <span>Side of House</span>
+                                                            <span>{{ trans('content.side_of_house')}}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Front of House"
                                                             onclick="selectRoomType('Front of House',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/types/front of the house.png">
-                                                            <span>Front of House</span>
+                                                            <span>{{ trans('content.front_of_house')}}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Back of House"
                                                             onclick="selectRoomType('Back of House',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/types/back of the house.png">
-                                                            <span>Back of House</span>
+                                                            <span>{{ trans('content.back_of_house')}}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -511,12 +500,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="gs-select-room-style mt-2">
-                                                        <label id="lbl_structre_elements0" style="font-size:14px" for="structural_elements_ck1"><p>Keep structural elements</p></label>
+                                                        <label id="lbl_structre_elements0" style="font-size:14px" for="structural_elements_ck1"><p>{{ trans('content.keep_structural_elements') }}</p></label>
                                                         <input id="structural_elements_ck1" class="ml_dw_img ms-1 ck_inst" name="structural-elements" type="checkbox" >
                                                         <div class="gs-tutorials-toolnip">
                                                             <img src="https://homedesigns-ai.b-cdn.net/web2/images/tutorail-wraning.svg" alt="">
                                                             <div class="ai-upload-option-tooltip">
-                                                                <span>If you check this box our AI will maintain the walls, doors and windows without breaking the structure of the space.</span>
+                                                                <span>{{ trans('tooltip.keep_Struct_tool_tip') }}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -526,15 +515,12 @@
                                                 <input type="hidden" id="strength1-redesign" name="strength1-redesign"
                                                     value="mid" />
                                                 <div class="d-flex align-items-center">
-                                                    <p class="font14">AI Intervention</p>
+                                                    <p class="font14">{{ trans('content.ai_intervention')}}</p>
                                                     <div class="gs-tutorials-toolnip">
                                                         <img src="{{ asset('webWidget/images/tutorail-wraning.svg') }}"
                                                             alt="">
                                                         <div class="ai-upload-option-tooltip">
-                                                            <span>Control the number of changes you want the AI to make
-                                                                to your upload. For the best results, leave this option
-                                                                to MEDIUM. You can try with LOW and EXTREME if you don't
-                                                                get good results with MEDIUM.</span>
+                                                            <span>{{ trans('content.ai_intervention_tool_tip')}}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -543,10 +529,10 @@
                                                     </div>
                                                     <div class="our-preset-settings-range-list">
                                                         <ul>
-                                                            <li>Very Low</li>
-                                                            <li>Low</li>
-                                                            <li>Medium</li>
-                                                            <li>Extreme</li>
+                                                            <li>{{ trans('content.intervention_very_low')}}</li>
+                                                            <li>{{ trans('content.intervention_low')}}</li>
+                                                            <li>{{ trans('content.intervention_medium')}}</li>
+                                                            <li>{{ trans('content.intervention_extreme')}}</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -559,7 +545,7 @@
                                                 <a href="javascript:void(0)" onclick="_generateDesign(1, this)"
                                                     class="gs-continue-btn"><img
                                                         src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
-                                                    Generate New Designs
+                                                    {{ trans('content.generate_new_designs')}}
                                                     <span id="submit" style="display:none">
                                                         <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
                                                     </span>
@@ -570,26 +556,22 @@
                                     <div id="your-customs-settings-exterior-redesign" class="tab-pane fade">
                                         <div class="our-preset-settings-box">
 
-                                            <label class="our-preset-prompt-text">Type your custom instructions below
-                                                and our AI will take them into account when generating your designs:
+                                            <label class="our-preset-prompt-text">{{ trans('content.preset_prompt_text')}}
                                                 <input type="checkbox" id="nwcust1_redesign" class="ms-1 ck_inst" checked
                                                     onchange="customInstruction(1)"></label>
                                             <textarea
-                                                placeholder="e.g. A clean-looking living room with black and yellow textures and a coffee table made from hardwood."
+                                                placeholder="{{ trans('content.custom_inst_placeholder') }}"
                                                 name="cust-inst1" id="custom_instruction1_redesign" class=""></textarea>
                                         </div>
 
                                         <div class="our-preset-settings-range-outer">
                                             <div class="d-flex align-items-center">
-                                                <p class="font14">AI Intervention</p>
+                                                <p class="font14">{{ trans('content.ai_intervention')}}</p>
                                                 <div class="gs-tutorials-toolnip">
                                                     <img src="{{ asset('webWidget/images/tutorail-wraning.svg') }}"
                                                         alt="">
                                                     <div class="ai-upload-option-tooltip">
-                                                        <span>Control the number of changes you want the AI to make to
-                                                            your upload. For the best results, leave this option to
-                                                            MEDIUM. You can try with LOW and EXTREME if you don't get
-                                                            good results with MEDIUM.</span>
+                                                        <span>{{ trans('content.ai_intervention_tool_tip')}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -598,10 +580,10 @@
                                                 </div>
                                                 <div class="our-preset-settings-range-list">
                                                     <ul>
-                                                        <li>Very Low</li>
-                                                        <li>Low</li>
-                                                        <li>Medium</li>
-                                                        <li>Extreme</li>
+                                                        <li>{{ trans('content.intervention_very_low')}}</li>
+                                                            <li>{{ trans('content.intervention_low')}}</li>
+                                                            <li>{{ trans('content.intervention_medium')}}</li>
+                                                            <li>{{ trans('content.intervention_extreme')}}</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -615,7 +597,7 @@
                                             <a href="javascript:void(0)" onclick="_generateDesign(1, this)"
                                                 class="gs-continue-btn"><img
                                                     src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
-                                                Generate New Designs
+                                                {{ trans('content.generate_new_designs')}}
                                                 <span id="submit" style="display:none">
                                                     <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
                                                 </span>
@@ -632,11 +614,8 @@
                             <div class="gs-what-to-edit-title">
                                 <ul>
                                     <li class="active"><a data-toggle="tab"
-                                            href="#our-preset-settings-garden-redesign">Our
-                                            preset settings</a></li>
-                                    <li><a data-toggle="tab" href="#your-customs-settings-garden-redesign">Your
-                                            customs
-                                            settings </a></li>
+                                            href="#our-preset-settings-garden-redesign">{{ trans('content.our_preset_settings')}}</a></li>
+                                    <li><a data-toggle="tab" href="#your-customs-settings-garden-redesign">{{ trans('content.your_custom_settings')}}</a></li>
                                 </ul>
                             </div>
                             <div class="gs-what-to-edit-content">
@@ -648,7 +627,7 @@
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedRoomType2-redesign"
                                                         name="selectedRoomType2">
-                                                    <p>1. Select Garden Type
+                                                    <p>1. {{ trans('content.select_garden_type')}}
                                                         <a href="javascript:void(0)" data-toggle="modal"
                                                             data-target="#view_all_garden_type">{{ trans('content.view_all') }}</a>
                                                     </p>
@@ -659,21 +638,21 @@
                                                             onclick="selectRoomType('Backyard',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/garden/types/backyard.png">
-                                                            <span>Backyard</span>
+                                                            <span>{{ trans('content.backyard') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Patio"
                                                             onclick="selectRoomType('Patio',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/garden/types/patio.png">
-                                                            <span>Patio</span>
+                                                            <span>{{ trans('content.patio') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Terrace"
                                                             onclick="selectRoomType('Terrace',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/garden/types/terrace.png">
-                                                            <span>Terrace</span>
+                                                            <span>{{ trans('content.terrace') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Front Yard"
@@ -681,7 +660,7 @@
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/garden/types/front-yard.png">
 
-                                                            <span>Front Yard</span>
+                                                            <span>{{ trans('content.front_yard') }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -705,21 +684,21 @@
                                                             onclick="selectDesignStyle('City',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/garden/design styles/city.png">
-                                                            <span>City</span>
+                                                            <span>{{ trans('content.city') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Contemporary"
                                                             onclick="selectDesignStyle('Contemporary',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/garden/design styles/contemporary.png">
-                                                            <span>Contemporary</span>
+                                                            <span>{{ trans('content.contemporary') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Luxury"
                                                             onclick="selectDesignStyle('Luxury',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/garden/design styles/luxury.png">
-                                                            <span>Luxury</span>
+                                                            <span>{{ trans('content.luxury') }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -752,12 +731,12 @@
                                                     </div>
 
                                                     <div class="gs-select-room-style mt-2">
-                                                        <label id="lbl_structre_elements0" style="font-size:14px" for="structural_elements_ck2"><p>Keep structural elements</p></label>
+                                                        <label id="lbl_structre_elements0" style="font-size:14px" for="structural_elements_ck2"><p>{{ trans('content.keep_structural_elements') }}</p></label>
                                                         <input id="structural_elements_ck2" class="ml_dw_img ms-1 ck_inst" name="structural-elements" type="checkbox" >
                                                         <div class="gs-tutorials-toolnip">
                                                             <img src="https://homedesigns-ai.b-cdn.net/web2/images/tutorail-wraning.svg" alt="">
                                                             <div class="ai-upload-option-tooltip">
-                                                                <span>If you check this box our AI will maintain the walls, doors and windows without breaking the structure of the space.</span>
+                                                                <span>{{ trans('tooltip.keep_Struct_tool_tip')}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -767,15 +746,12 @@
                                                 <input type="hidden" id="strength2-redesign" name="strength2-redesign"
                                                     value="mid" />
                                                 <div class="d-flex align-items-center">
-                                                    <p class="font14">AI Intervention</p>
+                                                    <p class="font14">{{ trans('content.ai_intervention')}}</p>
                                                     <div class="gs-tutorials-toolnip">
                                                         <img src="{{ asset('webWidget/images/tutorail-wraning.svg') }}"
                                                             alt="">
                                                         <div class="ai-upload-option-tooltip">
-                                                            <span>Control the number of changes you want the AI to make
-                                                                to your upload. For the best results, leave this option
-                                                                to MEDIUM. You can try with LOW and EXTREME if you don't
-                                                                get good results with MEDIUM.</span>
+                                                            <span>{{ trans('content.ai_intervention_tool_tip')}}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -784,10 +760,10 @@
                                                     </div>
                                                     <div class="our-preset-settings-range-list">
                                                         <ul>
-                                                            <li>Very Low</li>
-                                                            <li>Low</li>
-                                                            <li>Medium</li>
-                                                            <li>Extreme</li>
+                                                            <li>{{ trans('content.intervention_very_low')}}</li>
+                                                            <li>{{ trans('content.intervention_low')}}</li>
+                                                            <li>{{ trans('content.intervention_medium')}}</li>
+                                                            <li>{{ trans('content.intervention_extreme')}}</li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -800,7 +776,7 @@
                                                 <a href="javascript:void(0)" onclick="_generateDesign(2, this)"
                                                     class="gs-continue-btn"><img
                                                         src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
-                                                    Generate New Designs
+                                                    {{ trans('content.generate_new_designs')}}
                                                     <span id="submit" style="display:none">
                                                         <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
                                                     </span>
@@ -811,26 +787,22 @@
                                     <div id="your-customs-settings-garden-redesign" class="tab-pane fade">
                                         <div class="our-preset-settings-box">
 
-                                            <label class="our-preset-prompt-text">Type your custom instructions below
-                                                and our AI will take them into account when generating your designs:
+                                            <label class="our-preset-prompt-text">{{ trans('content.preset_prompt_text')}}
                                                 <input type="checkbox" id="nwcust2_redesign" class="ms-1 ck_inst" checked
                                                     onchange="customInstruction(2)"></label>
                                             <textarea
-                                                placeholder="e.g. A clean-looking living room with black and yellow textures and a coffee table made from hardwood."
+                                                placeholder="{{ trans('content.custom_inst_placeholder') }}"
                                                 name="cust-inst2" id="custom_instruction2_redesign" class=""></textarea>
                                         </div>
 
                                         <div class="our-preset-settings-range-outer">
                                             <div class="d-flex align-items-center">
-                                                <p class="font14">AI Intervention</p>
+                                                <p class="font14">{{ trans('content.ai_intervention')}}</p>
                                                 <div class="gs-tutorials-toolnip">
                                                     <img src="{{ asset('webWidget/images/tutorail-wraning.svg') }}"
                                                         alt="">
                                                     <div class="ai-upload-option-tooltip">
-                                                        <span>Control the number of changes you want the AI to make to
-                                                            your upload. For the best results, leave this option to
-                                                            MEDIUM. You can try with LOW and EXTREME if you don't get
-                                                            good results with MEDIUM.</span>
+                                                        <span>{{ trans('content.ai_intervention_tool_tip')}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -839,10 +811,10 @@
                                                 </div>
                                                 <div class="our-preset-settings-range-list">
                                                     <ul>
-                                                        <li>Very Low</li>
-                                                        <li>Low</li>
-                                                        <li>Medium</li>
-                                                        <li>Extreme</li>
+                                                        <li>{{ trans('content.intervention_very_low')}}</li>
+                                                            <li>{{ trans('content.intervention_low')}}</li>
+                                                            <li>{{ trans('content.intervention_medium')}}</li>
+                                                            <li>{{ trans('content.intervention_extreme')}}</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -856,7 +828,7 @@
                                             <a href="javascript:void(0)" onclick="_generateDesign(2, this)"
                                                 class="gs-continue-btn"><img
                                                     src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
-                                                Generate New Designs
+                                                {{ trans('content.generate_new_designs')}}
                                                 <span id="submit" style="display:none">
                                                     <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
                                                 </span>
@@ -875,14 +847,16 @@
     {{-- section second end --}}
 
     <div class="ai-upload-latest-designs">
-        <h3 class="font22">Latest Designs</h3>
+        <h3 class="font22">{{ trans('content.latest_designs') }}</h3>
         <div class="ai-upload-latest-wrapper row" id="all_data0_redesign">
 
         </div>
     </div>
 </div>
+
 <script>
     $(document).ready(function() {
+        // JavaScript to access translations
         loadWidgetRenders(0);
     });
 
@@ -917,16 +891,16 @@
                                     <img class="complte-img img" src="${design.generated_url}" data-item="output-image">
                                     <div class="ai-upload-effects">
                                         <ul class="render-overlay-data-box">
-                                            <li class="render-overlay-data">Design Style: ${design.style}</li>
-                                            <li class="render-overlay-data">Room Type: ${design.room_type}</li>
-                                            <li class="render-overlay-data">Mode Type: ${design.mode}</li>
+                                            <li class="render-overlay-data">${designStyleText}: ${design.style}</li>
+                                            <li class="render-overlay-data">${roomTypeText}: ${design.room_type}</li>
+                                            <li class="render-overlay-data">${modeTypeText}: ${design.mode}</li>
                                         </ul>
                                     </div>
                                     <div class="ai-upload-optons">
                                         <ul>
                                             <li class="ai-upload-add-project-list">
-                                                <span class="ai-upload-option-tooltip">Download</span>
-                                                <a class="download" href="javascript:void(0)" data-download-url="${design.generated_url}" title="Download" download>
+                                                <span class="ai-upload-option-tooltip">${modeDownloadText}</span>
+                                                <a class="download" href="javascript:void(0)" data-download-url="${design.generated_url}" title="${modeDownloadText}" download>
                                                     <img src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-optons-icon1.svg">
                                                 </a>
                                             </li>
@@ -949,7 +923,7 @@
                 });
             } else {
                 // If no designs match the 'sec' value, display a message or handle the case
-                dataContainer.innerHTML = '<p style="color: #2e2424;">No designs found for this section.</p>';
+                dataContainer.innerHTML = '<p style="color: #2e2424;">'${noDesignsText}'</p>';
             }
         }
     }

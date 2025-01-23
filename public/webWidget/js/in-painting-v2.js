@@ -56,6 +56,20 @@ var paintingStagSecElement;
 var resizeImageWidth;
 var resizeImageHeight;
 var mainImage,textureImage = '';
+const uploadColorValidate = translations.getAttribute('data-validation1-type');
+const updateMaskImage = translations.getAttribute('data-validation2-type');
+const updateTextureImage = translations.getAttribute('data-validation3-type');
+const updateMainImage = translations.getAttribute('data-validation4-type');
+const updateRoomType = translations.getAttribute('data-validation5-type');
+const updateHouseAngle = translations.getAttribute('data-validation6-type');
+const updateGardenType = translations.getAttribute('data-validation7-type');
+const updateDesignStyle = translations.getAttribute('data-validation8-type');
+const updateModeType = translations.getAttribute('data-validation9-type');
+const updateCustomElement = translations.getAttribute('data-validation10-type');
+const updateSkyColor = translations.getAttribute('data-validation11-type');
+const updateMaterialType = translations.getAttribute('data-validation12-type');
+const updateOneCustomElement = translations.getAttribute('data-validation13-type');
+const updateImageMerge = translations.getAttribute('data-validation14-type');
 
 // $imgCropPreview.cropper({
 //     aspectRatio: 1 / 1,
@@ -1070,7 +1084,7 @@ async function callInPaintingAPI(sec,el) {
     }
     if (!hasTransparentPixels && dataPage != 'sky-color' && dataPage != 'design_transfer' && dataPage != 'furnish_empty_room') {
         if (!brushLayer.hasChildren()) {
-            let error_message = 'Oops! You didn’t masked image before submitting!';
+            let error_message = `${updateMaskImage}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
@@ -1112,11 +1126,11 @@ async function callInPaintingAPI(sec,el) {
     if (roomType == '' && dataPage!= 'aiObjectRemoval' && dataPage!= 'sky-color' && dataPage != 'change-colors-texture') {
         let error_message
         if (sec == 0) {
-            error_message = 'Oops! You didn’t select the room type.';
+            error_message = `${updateRoomType}`;
         } else if (sec == 1) {
-            error_message = 'Oops! You didn’t select the house angle.';
+            error_message = `${updateHouseAngle}`;
         } else {
-            error_message = 'Oops! You didn’t select the garden type.';
+            error_message = `${updateGardenType}`;
         }
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
@@ -1128,7 +1142,7 @@ async function callInPaintingAPI(sec,el) {
     }
 
     if (designStyle == '' && dataPage != 'aiObjectRemoval' && dataPage!= 'sky-color' && dataPage != 'change-colors-texture') {
-        let error_message = 'Oops! You didn’t select the design style.';
+        let error_message = `${updateDesignStyle}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
         $(el).attr('disabled', false);
@@ -1148,7 +1162,7 @@ async function callInPaintingAPI(sec,el) {
     var ai_strength = aiStrength ? aiStrength.value : "" ;
 
     if (dataPage == 'sky-color' && skyWeather == '') {
-        let error_message = 'Oops! You didn’t select the Sky Color.';
+        let error_message = `${updateSkyColor}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
         $(el).attr('disabled', false);
@@ -1161,7 +1175,8 @@ async function callInPaintingAPI(sec,el) {
 
     if (dataPage == 'change-colors-texture' && color == "" && (prompt == '' ||  $(`#custom_instruction${sec}_${dataPage}`).prop('disabled'))){
         if (dataPage == 'change-colors-texture' && prompt == ''  && color == '' && material_type == '' && material == "") {
-            let error_message = 'Oops! Please select a color, material type, or write a prompt!';
+            let error_message = `${uploadColorValidate}`;
+            console.log('error_message: ', error_message);
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
             $(el).attr('disabled', false);
@@ -1172,7 +1187,7 @@ async function callInPaintingAPI(sec,el) {
             return;
         }
         if (dataPage == 'change-colors-texture' && material && material_type == '') {
-            let error_message = 'Oops! You didn’t select the material type.';
+            let error_message = `${updateMaterialType}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
             $(el).attr('disabled', false);
@@ -1803,7 +1818,7 @@ async function getMaskImage(el) {
     }
     if (!hasTransparentPixels) {
         if (!brushLayer.hasChildren()) {
-            let error_message = 'Oops! You didn’t masked image before submitting!';
+            let error_message = `${updateMaskImage}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
@@ -2467,7 +2482,7 @@ async function _generateStyleTransferDesign(sec,el){
 
     if (!hasTransparentPixels && dataPage != 'sky-color' && dataPage != 'design_transfer' && dataPage != 'floor_editor') {
         if (!brushLayer.hasChildren()) {
-            let error_message = 'Oops! You didn’t masked image before submitting!';
+            let error_message = `${updateMaskImage}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
             enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
@@ -2506,7 +2521,7 @@ async function _generateStyleTransferDesign(sec,el){
     var noOfDesign = noOfdesc ? noOfdesc : '1';
     
     if (texture_base64 == '' && rgb_color == '' && dataPage == 'color_swap') {
-        let error_message = " Oops! You didn't upload a texture image or select any color from the color picker";
+        let error_message = `${uploadColorValidate}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
@@ -2516,7 +2531,7 @@ async function _generateStyleTransferDesign(sec,el){
     }
 
     if (texture_base64 == '' && (dataPage == 'design_transfer' || dataPage == 'style_transfer' || dataPage == 'floor_editor')) {
-        let error_message = "Oops! You didn't upload your texture image.";
+        let error_message = `${updateTextureImage}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
@@ -3076,7 +3091,7 @@ function mergeImages() {
     const editButton = document.querySelectorAll('.edit-button-div');
     const progressBarTabs = document.querySelectorAll('.progress-bar-tab');
     if(mainImage === null){
-        let error_message = 'Main image is missing, Please upload the main image';
+        let error_message = `${updateMainImage}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
         return false;
@@ -3084,7 +3099,7 @@ function mergeImages() {
     const objects = paintingCollageStag.getObjects();
     currLoc = $(location).attr('href');
     if((currLoc.indexOf('room-composer') != -1) && (objects.length <= 1)){
-        let error_message = 'Oops! Please add at least 1 Custom element to proceed.';
+        let error_message = `${updateOneCustomElement}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
         progressBarTabs.forEach(progressButton => { // Iterate over all edit-button-div li elements
@@ -3102,7 +3117,7 @@ function mergeImages() {
         return null;
     }
     if (objects.length === 0) {
-        let error_message = 'No images to merge.';
+        let error_message = `${updateImageMerge}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
         return null;
@@ -3205,14 +3220,14 @@ function mergeMaskImages() {
     const editButton = document.querySelectorAll('.edit-button-div');
     const progressBarTabs = document.querySelectorAll('.progress-bar-tab');
     if (mainImage === null) {
-        alert("Main image is missing, Please upload the main image");
+        alert(`${updateMainImage}`);
         return false;
     }
 
     const objects = paintingCollageStag.getObjects();
     currLoc = $(location).attr('href');
     if ((currLoc.indexOf('collage-to-render') != -1) && (objects.length <= 1)) {
-        alert("Oops! Please add at least 1 Custom element to proceed.");
+        alert(`${updateOneCustomElement}`);
         progressBarTabs.forEach(progressButton => { // Iterate over all edit-button-div li elements
             progressButton.classList.remove('disabled');
             progressButton.style.pointerEvents = 'auto';
@@ -3358,7 +3373,7 @@ var imageData;
 function ClickElementOnCanvasCollageToRander(e){
     e.preventDefault();
     if(mainImage === null){
-        alert("Main image is missing, Please upload the main image");
+        alert(`${updateMainImage}`);
         return false;
     }
 	// create a rect object
@@ -3471,7 +3486,7 @@ function ClickElementOnCanvasCollageToRander(e){
 function DragElementOnCanvasCollageToRander(e){
     e.preventDefault();
     if(mainImage === null){
-        alert("Main image is missing, Please upload the main image");
+        alert(`${updateMainImage}`);
         return false;
     }
 	// create a rect object
@@ -3796,11 +3811,11 @@ async function generateRoomComposer(sec,el){
     if (roomType == '') {
         let error_message
         if (sec == 0) {
-            error_message = 'Oops! You didn’t select the room type.';
+            error_message = `${updateRoomType}`;
         } else if (sec == 1) {
-            error_message = 'Oops! You didn’t select the house angle.';
+            error_message = `${updateHouseAngle}`;
         } else {
-            error_message = 'Oops! You didn’t select the garden type.';
+            error_message = `${updateGardenType}`;
         }
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
@@ -3809,7 +3824,7 @@ async function generateRoomComposer(sec,el){
     }
 
     if (styleType == '') {
-        let error_message = 'Oops! You didn’t select the design style.';
+        let error_message = `${updateDesignStyle}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
@@ -3817,7 +3832,7 @@ async function generateRoomComposer(sec,el){
     }
 
     if (modeType == '') {
-        let error_message = 'Oops! You didn’t select the mode type.';
+        let error_message = `${updateModeType}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
@@ -3825,7 +3840,7 @@ async function generateRoomComposer(sec,el){
     }
 
     if($(".custom_added_elements").length <= 0 && $(".existing_elements").length <= 0){
-        let error_message = 'Please upload custom elements to proceed.';
+        let error_message = `${updateCustomElement}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);

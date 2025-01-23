@@ -7,7 +7,7 @@
         </li>
         <li class="second_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Change Weather</span>
+            <span>{{ trans('content.change_weather') }}</span>
         </li>
     </ul>
 </div>
@@ -52,7 +52,7 @@
         </li>
         <li class="active second_tab_active">
             <div class="ai-tool-right-steps"></div>
-            <span>Change Weather</span>
+            <span>{{ trans('content.change_weather') }}</span>
         </li>
 
     </ul>
@@ -89,57 +89,57 @@
                 <div class="gs-what-to-edit-content">
                     <div class="gs-select-automatically-inner">
                         <input type="hidden" id="weather0" name="weather0">
-                        <p class="font14">Change Sky Colors to:</p>
+                        <p class="font14">{{ trans('content.change_sky_colors') }}</p>
                         <div class="gs-select-room-style-row" id="skyColorDisplay">
                             <div class="gs-select-room-style-single" data-sky-color="Sunshine"
                                 onclick="selectSkyColor('Sunshine')">
                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/sky-color-icon1.png">
-                                <span>Sunshine</span>
+                                <span>{{ trans('content.sunshine') }}</span>
                             </div>
                             <div class="gs-select-room-style-single" data-sky-color="Rainy"
                                 onclick="selectSkyColor('Rainy')">
                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/sky-color-icon2.png">
-                                <span>Rainy</span>
+                                <span>{{ trans('content.rainy') }}</span>
                             </div>
                             <div class="gs-select-room-style-single" data-sky-color="Cloudy"
                                 onclick="selectSkyColor('Cloudy')">
                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/sky-color-icon3.png">
-                                <span>Cloudy</span>
+                                <span>{{ trans('content.cloudy') }}</span>
                             </div>
                             <div class="gs-select-room-style-single" data-sky-color="Clear Sky"
                                 onclick="selectSkyColor('Clear Sky')">
                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/sky-color-icon4.png">
-                                <span>Clear Sky</span>
+                                <span>{{ trans('content.clear_sky') }}</span>
                             </div>
                             <div class="gs-select-room-style-single" data-sky-color="Windy"
                                 onclick="selectSkyColor('Windy')">
                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/sky-color-icon5.png">
-                                <span>Windy</span>
+                                <span>{{ trans('content.windy') }}</span>
                             </div>
                             <div class="gs-select-room-style-single" data-sky-color="Dawn"
                                 onclick="selectSkyColor('Dawn')">
                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/sky-color-icon6.png">
-                                <span>Dawn</span>
+                                <span>{{ trans('content.dawn') }}</span>
                             </div>
                             <div class="gs-select-room-style-single" data-sky-color="Dusk"
                                 onclick="selectSkyColor('Dusk')">
                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/sky-color-icon7.png">
-                                <span>Dusk</span>
+                                <span>{{ trans('content.dusk') }}</span>
                             </div>
                             <div class="gs-select-room-style-single" data-sky-color="Twilight"
                                 onclick="selectSkyColor('Twilight')">
                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/sky-color-icon8.png">
-                                <span>Twilight</span>
+                                <span>{{ trans('content.twilight') }}</span>
                             </div>
                             <div class="gs-select-room-style-single" data-sky-color="Sunny"
                                 onclick="selectSkyColor('Sunny')">
                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/sky-color-icon9.png">
-                                <span>Sunny</span>
+                                <span>{{ trans('content.sunny') }}</span>
                             </div>
                             <div class="gs-select-room-style-single" data-sky-color="Night"
                                 onclick="selectSkyColor('Night')">
                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/sky-color-icon10.png">
-                                <span>Night</span>
+                                <span>{{ trans('content.night') }}</span>
                             </div>
                         </div>
                     </div>
@@ -151,7 +151,7 @@
                         <a href="javascript:void(0)" onclick="_generateInPaintingDesign(0, this)"
                             id="generateDesignBtn0" class="gs-continue-btn generateDesignBtn0">
                             <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-generate-new-design.svg">
-                            Generate New Designs
+                            {{ trans('content.generate_new_designs')}}
                             <span id="submit" style="display:none">
                                 <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
                             </span>
@@ -165,8 +165,8 @@
 {{-- section third end --}}
 
 <div class="ai-upload-latest-designs">
-    <h3 class="font22">Latest Designs</h3>
-    <div class="latest-designs-info">Check your latest designs below and save them to projects or to favorites.</div>
+    <h3 class="font22">{{ trans('content.latest_designs') }}</h3>
+    <div class="latest-designs-info">{{ trans('content.latest_designs_info') }}</div>
     <div class="ai-upload-latest-wrapper row" id="all_data0_sky-color">
 
     </div>

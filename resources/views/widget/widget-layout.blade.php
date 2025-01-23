@@ -539,10 +539,8 @@
         <div id="suggestionPrecisionModal" class="modal suggestion-precion-modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content p-4 suggest-md-content">
-                    <span class="precision-md-mess mb-3">For better results and if you want to fill rooms, gardens or
-                        houses, we highly recommend using
-                        the <a >Fill Spaces</a> mode which can be found <a
-                            >here.</a></span>
+                    <span class="precision-md-mess mb-3">{{ trans('suggestionPrecisionModal.title')}}<a >{{ trans('suggestionPrecisionModal.title_bold')}}</a> {{ trans('suggestionPrecisionModal.suggestionPrecisionModal')}} <a
+                            >{{ trans('suggestionPrecisionModal.link')}}</a></span>
                     <a >
                         <video loop="" muted="" autoplay="" playsinline="" width="100%">
                             <source src="https://homedesigns.ai/web/images/fill-spaces-furniture.mp4"
@@ -836,9 +834,8 @@
                         <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/for-best-results1.svg">
                     </div>
                     <div class="gs-modal-best-right">
-                        <h4>For Best Results:</h4>
-                        <p>Upload high-resolution images in common formats (JPEG, PNG, GIF), ensuring a balanced
-                            contrast.</p>
+                        <h4>{{ trans('uploading_instruction.heading') }}</h4>
+                        <p>{{ trans('uploading_instruction.content') }}</p>
                     </div>
                 </div>
                 <div class="gs-modal-best-results">
@@ -846,25 +843,23 @@
                         <img src="https://homedesigns-ai.b-cdn.net/webWidget/images/for-best-results2.svg">
                     </div>
                     <div class="gs-modal-best-right">
-                        <h4>Avoid:</h4>
+                        <h4>{{ trans('uploading_instruction.heading2') }}</h4>
                         <ul>
-                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img1.png"><span>Avoid blurry
-                                    image</span></li>
-                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img2.png"><span>Avoid dark image</span>
+                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img1.png"><span>{{ trans('uploading_instruction.avoid_blurry_image') }}</span></li>
+                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img2.png"><span>{{ trans('uploading_instruction.avoid_dark_image') }}</span>
                             </li>
-                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img3.png"><span>Avoid Screenshots</span>
+                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img3.png"><span>{{ trans('uploading_instruction.avoid_screenshots') }}</span>
                             </li>
-                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img4.png"><span>Avoid Fisheye
-                                    effect</span></li>
-                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img5.png"><span>Avoid Ultra Wide</span>
+                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img4.png"><span>{{ trans('uploading_instruction.avoid_fisheye_effect') }}</span></li>
+                            <li><img src="https://homedesigns-ai.b-cdn.net/webWidget/images/gs-avoid-img5.png"><span>{{ trans('uploading_instruction.avoid_ultra_wide') }}</span>
                             </li>
                         </ul>
                     </div>
 
                 </div>
                 <div class="gs-modal-best-btns">
-                    <a href="javascript:void(0)" class="gs-modal-best-inderstand">I Understand</a>
-                    <a href="javascript:void(0)" class="gs-modal-dont-show-modal">Don’t show this again</a>
+                    <a href="javascript:void(0)" class="gs-modal-best-inderstand">{{ trans('uploading_instruction.button') }}</a>
+                    <a href="javascript:void(0)" class="gs-modal-dont-show-modal">{{ trans('uploading_instruction.button2') }}</a>
                     {{-- <a href="#" class="gs-modal-best-inderstand"  data-dismiss="modal" data-toggle="modal" data-target="#loading_brilliance">I Understand</a> --}}
                     {{-- <a href="#"  data-dismiss="modal" data-toggle="modal" data-target="#loading_brilliance">Don’t show this again</a> --}}
                     {{-- <div class="redirection-link" style="display: none;">redesign-customise-generate.html</div> --}}
@@ -888,8 +883,8 @@
                         <div class="upload-circle upload-large"></div>
                         <div class="upload-circle upload-x-large"></div>
                     </div>
-                    <h3>Loading brilliance....</h3>
-                    <p>Unleashing the AI magic!</p>
+                    <h3>{{ trans('loading_brilliance.heading') }}....</h3>
+                    <p>{{ trans('loading_brilliance.content') }}</p>
                     {{-- <div class="gs-modal-uploading_instruction_slider">
                         <div class="gs-modal-uploading_instruction_slide"></div>
                     </div> --}}
@@ -1606,7 +1601,29 @@
     </div>
     {{-- <div id="editAsPrecision" data-route="{{ route('editAs.precision') }}"></div> --}}
     @include('web2.common.design-preview')
-
+    <div 
+        id="translations"
+        data-design-style="{{ trans('content.design_style_text') }}"
+        data-room-type="{{ trans('content.room_type_text') }}"
+        data-mode-type="{{ trans('content.mode_type_text') }}"
+        data-no-text-type="{{ trans('content.no_designs_text') }}"
+        data-download-type="{{ trans('content.download_text') }}"
+        data-validation1-type="{{ trans('validation_messages.upload_texture_color') }}"
+        data-validation2-type="{{ trans('validation_messages.masked_image') }}"
+        data-validation3-type="{{ trans('validation_messages.upload_textture_image') }}"
+        data-validation4-type="{{ trans('validation_messages.main_image_missing') }}"
+        data-validation5-type="{{ trans('validation_messages.select_room_type') }}"
+        data-validation6-type="{{ trans('validation_messages.select_house_angle') }}"
+        data-validation7-type="{{ trans('validation_messages.select_garden_type') }}"
+        data-validation8-type="{{ trans('validation_messages.select_design_style') }}"
+        data-validation9-type="{{ trans('validation_messages.select_mode_type') }}"
+        data-validation10-type="{{ trans('validation_messages.upload_custom_element') }}"
+        data-validation11-type="{{ trans('validation_messages.select_sky_Color') }}"
+        data-validation12-type="{{ trans('validation_messages.select_material_type') }}"
+        data-validation13-type="{{ trans('validation_messages.select_material_type') }}"
+        data-validation14-type="{{ trans('validation_messages.no_image_merge') }}"
+        >
+    </div>
 
 
 
@@ -1714,6 +1731,13 @@
     </script>
     <script>
         $(document).ready(function() {
+            
+            const translations = document.getElementById('translations');
+            const designStyleText = translations.getAttribute('data-design-style');
+            const roomTypeText = translations.getAttribute('data-room-type');
+            const modeTypeText = translations.getAttribute('data-mode-type');
+            const modeDownloadText = translations.getAttribute('data-download-type');
+            const noDesignsText = translations.getAttribute('data-no-text-type');
             //Open Drop Down
             $(".custom-select-wrapper p").click(function() {
 

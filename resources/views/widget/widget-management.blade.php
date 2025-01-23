@@ -156,7 +156,8 @@
                                 class="feature-button @if ($loop->first) active @endif"
                                 data-feature="{{ $feature }}"
                                 data-feature-url="{{ route('widget.showFeature', ['feature' => $feature]) }}">
-                                 {{ ucwords(str_replace('_', ' ', $feature)) }}@if ($feature === 'precision')+ @endif
+                                {{ trans('content.' . $feature)}}
+                                 {{-- {{ ucwords(str_replace('_', ' ', $feature)) }}@if ($feature === 'precision')+ @endif --}}
                             </a>
                         </li>
                     @endforeach

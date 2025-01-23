@@ -133,30 +133,29 @@
             <div class="gs-what-to-edit-tabs">
                 <div class="gs-what-to-edit-title">
                     <ul>
-                        <li class="active"><a data-toggle="tab" href="#select-automatically-paintVisulizer">Automatic Selection</a>
+                        <li class="active"><a data-toggle="tab" href="#select-automatically-paintVisulizer">{{ trans('content.select_automatically') }}</a>
                         </li>
-                        <li><a data-toggle="tab" href="#refine-manually-paintVisulizer">Manual Selection </a></li>
+                        <li><a data-toggle="tab" href="#refine-manually-paintVisulizer">{{ trans('content.select_manually') }}</a></li>
                     </ul>
                 </div>
                 <div class="gs-what-to-edit-content">
                     <div class="tab-content">
                         <div id="select-automatically-paintVisulizer" class="tab-pane show fade in active">
                             <div class="gs-select-automatically">
-                                <p>Automatically or manually select objects, with the ability to combine both
-                                    methods.</p>
+                                <p>{{ trans('content.select_manually_content') }}</p>
                                 <div class="gs-select-automatically-inner">
-                                    <p>Select objects automatically</p>
+                                    <p>{{ trans('content.select_manually_text') }}</p>
                                     <div id="chkbox-segment-color_swap" class="chkbox-segment"></div>
                                 </div>
                                 <div class="gs-continue-btn-outer">
-                                    <a href="javascript:void(0)" class="gs-continue-btn continue-parameter">Continue</a>
+                                    <a href="javascript:void(0)" class="gs-continue-btn continue-parameter">{{ trans('content.continue_text') }}</a>
                                 </div>
                             </div>
                         </div>
                         <div id="refine-manually-paintVisulizer" class="tab-pane show fade">
                             <div class="gs-select-manually-inner">
                                 <div class="gs-select-manually-top">
-                                    <p>Edit manually using the brush</p>
+                                    <p>{{ trans('content.brush_edit_manually_content') }}</p>
                                     <input type="hidden" value="70" id="ip-brush-thickness-color_swap" />
                                     <input class="gs-select-manually-value" type="text" id="amount-color_swap" value="70"
                                         readonly="">
@@ -168,27 +167,25 @@
                                     <div class="gs-refine-manually-single">
                                         <input type="hidden" id="maskingCheckbox" value="true" />
                                         <a href="javascript:void(0)" id="removeMasking" class="removeMasking"
-                                            onclick="toggleMasking(false)">Remove Masking</a>
+                                            onclick="toggleMasking(false)">{{ trans('content.remove_masking') }}/a>
                                         <a href="javascript:void(0)" id="addMasking" onclick="toggleMasking(true)"
-                                            class="active addMasking">Add
-                                            Masking</a>
+                                            class="active addMasking">{{ trans('content.add_masking') }}</a>
                                     </div>
                                     <div class="gs-refine-manually-single">
                                         <input type="hidden" id="cursorCheckbox" value="false" />
                                         <a href="javascript:void(0)" onclick="toggleBrushingCursor(false)"
                                             class="active"><img
                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/circle-brush.svg">
-                                            Circle Brush</a>
+                                            {{ trans('content.circle_brush') }}</a>
                                         <a href="javascript:void(0)" onclick="toggleBrushingCursor(true)"><img
-                                                src="https://homedesigns-ai.b-cdn.net/web2/images/square-brush.svg">Square
-                                            Brush</a>
+                                                src="https://homedesigns-ai.b-cdn.net/web2/images/square-brush.svg">{{ trans('content.square_brush') }}</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="undo-redo-btn">
                                 <button class="ci-btn ci-btn-danger ip-clearImage" id="ip-clearImage" title="Clear All">
                                     <img src="https://homedesigns-ai.b-cdn.net/web/images/deleteIcon.png"
-                                        width="25px"> Clear all
+                                        width="25px"> {{ trans('content.clear_all') }}
                                 </button>
                                 <button class="ci-btn ci-btn-danger ip-undoImage" id="ip-undoImage" title="Undo"><img
                                         src="https://homedesigns-ai.b-cdn.net/web/images/undo.png"
@@ -198,7 +195,7 @@
                                         width="25px"></button>
                             </div>
                             <div class="gs-continue-btn-outer">
-                                <a href="javascript:void(0)" class="gs-continue-btn continue-parameter">Continue</a>
+                                <a href="javascript:void(0)" class="gs-continue-btn continue-parameter">{{ trans('content.continue_text') }}</a>
                             </div>
                         </div>
                     </div>
@@ -210,11 +207,9 @@
                 <div class="gs-what-to-edit-title select-color-tabs">
                     <ul>
                         <li class="active"><a data-toggle="tab" href="#our-preset-settings-interior-color_swap"
-                                class="presetLink">Standard Paints</a></li>
-                        <li><a data-toggle="tab" href="#your-customs-settings-interior-color_swap" class="customLink">Custom
-                                Paints</a></li>
-                        <li><a data-toggle="tab" href="#your-customs-color-image" class="customLink">Custom Color
-                                Image</a></li>
+                                class="presetLink">{{ trans('content.standard_paints') }}</a></li>
+                        <li><a data-toggle="tab" href="#your-customs-settings-interior-color_swap" class="customLink">{{ trans('content.custom_paints') }}</a></li>
+                        <li><a data-toggle="tab" href="#your-customs-color-image" class="customLink">{{ trans('content.custom_color_image') }}</a></li>
                     </ul>
                 </div>
                 <div class="gs-what-to-edit-content">
@@ -224,7 +219,7 @@
                                 <div class="gs-our-preset-settings">
                                     <div class="gs-our-preset-color" data-sec="0">
                                         <input type="hidden" id="color_texture_color_swap" name="color_texture0">
-                                        <p>Select a paint color from the list:</p>
+                                        <p>{{ trans('content.color_list_text') }}</p>
                                         @include('web2.designs_options.paint-visualizer')
                                     </div>
                                 </div>
@@ -232,21 +227,20 @@
                         </div>
                         <div id="your-customs-settings-interior-color_swap" class="tab-pane show fade">
                             <div class="color-picker-sectopn">
-                                <p>Click to open color picker :</p>
+                                <p>{{ trans('content.color_picker_text') }}</p>
                                 <div class="custom-color-picker">
                                     <img src="https://homedesigns-ai.b-cdn.net/web/images/color-wheel.png"
                                         alt="">
                                     <input type="color" id="colorPicker">
                                     <input type="hidden" id="colorPickerValue" value="">
                                 </div>
-                                <input type="text" id="colorName" placeholder="No Color Selected" readonly>
-                                {{-- <p class="custom-line"><span>OR</span></p> --}}
+                                <input type="text" id="colorName" placeholder="{{ trans('content.color_picker_placeholder') }}" readonly>
                             </div>
                         </div>
                         <div id="your-customs-color-image" class="tab-pane show fade">
                             <div class="ai-upload-image upload-texture-image-container">
                                 <input type="file" class="ai-upload-input" id="ipFilePicker2ColorSwap">
-                                <h3 class="font22 upload-content" style="font-size: 18px">Upload sample of paint(.jpeg, .png)</h3>
+                                <h3 class="font22 upload-content" style="font-size: 18px">{{ trans('content.upload_paint_sample') }}</h3>
                                 <svg class="upload-content" width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M18.0057 21.4075C14.5988 21.4075 11.8418 18.6506 11.8418 15.2436C11.8418 11.8367 14.5988 9.07973 18.0057 9.07973C21.4127 9.07973 24.1696 11.8367 24.1696 15.2436C24.1696 18.6506 21.4127 21.4075 18.0057 21.4075ZM18.0057 12.4419C16.4592 12.4419 15.204 13.697 15.204 15.2436C15.204 16.7902 16.4592 18.0454 18.0057 18.0454C19.5523 18.0454 20.8075 16.7902 20.8075 15.2436C20.8075 13.697 19.5523 12.4419 18.0057 12.4419Z" fill="var(--dark-primary)"/>
 <path d="M31.4542 48.3045H18.0057C5.83485 48.3045 0.634766 43.1044 0.634766 30.9335V17.485C0.634766 5.31416 5.83485 0.114075 18.0057 0.114075H26.9714C27.8904 0.114075 28.6525 0.876156 28.6525 1.79514C28.6525 2.71412 27.8904 3.4762 26.9714 3.4762H18.0057C7.67281 3.4762 3.99689 7.15212 3.99689 17.485V30.9335C3.99689 41.2665 7.67281 44.9424 18.0057 44.9424H31.4542C41.7871 44.9424 45.4631 41.2665 45.4631 30.9335V19.7265C45.4631 18.8075 46.2251 18.0454 47.1441 18.0454C48.0631 18.0454 48.8252 18.8075 48.8252 19.7265V30.9335C48.8252 43.1044 43.6251 48.3045 31.4542 48.3045Z" fill="var(--dark-primary)"/>
@@ -268,26 +262,12 @@
             <div class="gs-select-automatically">
                 <div class="our-preset-settings-range-outer">
                     <input type="hidden" id="no_of_des0" name="no_of_des0" value="1" />
-                    {{-- <p class="font14">Select the number of designs you want to generate at
-                        once.</p>
-                    <div class="gs-select-design our-preset-range-design">
-                        <div class="our-preset-settings-range" data-sec="0">
-                        </div>
-                        <div class="our-preset-settings-range-list">
-                            <ul>
-                                <li>1</li>
-                                <li>2</li>
-                                <li>3</li>
-                                <li>4</li>
-                            </ul>
-                        </div>
-                    </div> --}}
                 </div>
                 <div class="gs-continue-btn-outer">
                     <a href="javascript:void(0)" onclick="_generateStyleTransferDesign(0, this)"
                         id="generateDesignBtn0" class="gs-continue-btn generateDesignBtn0">
                         <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-generate-new-design.svg">
-                        Generate New Designs
+                        {{ trans('content.generate_new_designs')}}
                         <span id="submit" style="display:none">
                             <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
                         </span>
@@ -299,7 +279,7 @@
 </div>
 
 <div class="ai-upload-latest-designs">
-    <h3 class="font22">Latest Designs</h3>
+    <h3 class="font22">{{ trans('content.latest_designs') }}</h3>
     <div class="ai-upload-latest-wrapper row" id="all_data0_color_swap">
     </div>
 </div>

@@ -1,3 +1,3 @@
-<option selected="" value="side">Side of house </option>
-<option value="front">Front of house </option>
-<option value="back">Back of house </option>
+<option selected="" value="side">{{ trans('exterior_ai.side_of_house') }} </option>
+<option value="front">{{ trans('exterior_ai.front_of_house') }} </option>
+<option value="back">{{ trans('exterior_ai.back_of_house') }}</option>

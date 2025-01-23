@@ -34,7 +34,6 @@
         <div class="ai-upload-image">
             <input type="file" class="ai-upload-input" id="ipFilePickerPrecision">
             <h3 class="font22">{{ trans('content.upload_your_image') }} </h3>
-            <!-- <img src="{{ asset('webWidget/images/gs-upload-img.png') }}"> -->
             <svg width="49" height="49" viewBox="0 0 49 49" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M18.0057 21.4075C14.5988 21.4075 11.8418 18.6506 11.8418 15.2436C11.8418 11.8367 14.5988 9.07973 18.0057 9.07973C21.4127 9.07973 24.1696 11.8367 24.1696 15.2436C24.1696 18.6506 21.4127 21.4075 18.0057 21.4075ZM18.0057 12.4419C16.4592 12.4419 15.204 13.697 15.204 15.2436C15.204 16.7902 16.4592 18.0454 18.0057 18.0454C19.5523 18.0454 20.8075 16.7902 20.8075 15.2436C20.8075 13.697 19.5523 12.4419 18.0057 12.4419Z" fill="var(--dark-primary)"/>
 <path d="M31.4542 48.3045H18.0057C5.83485 48.3045 0.634766 43.1044 0.634766 30.9335V17.485C0.634766 5.31416 5.83485 0.114075 18.0057 0.114075H26.9714C27.8904 0.114075 28.6525 0.876156 28.6525 1.79514C28.6525 2.71412 27.8904 3.4762 26.9714 3.4762H18.0057C7.67281 3.4762 3.99689 7.15212 3.99689 17.485V30.9335C3.99689 41.2665 7.67281 44.9424 18.0057 44.9424H31.4542C41.7871 44.9424 45.4631 41.2665 45.4631 30.9335V19.7265C45.4631 18.8075 46.2251 18.0454 47.1441 18.0454C48.0631 18.0454 48.8252 18.8075 48.8252 19.7265V30.9335C48.8252 43.1044 43.6251 48.3045 31.4542 48.3045Z" fill="var(--dark-primary)"/>
@@ -127,31 +126,29 @@
                 <div class="gs-what-to-edit-tabs">
                     <div class="gs-what-to-edit-title">
                         <ul>
-                            <li class="active"><a data-toggle="tab" href="#select-automatically-precision">Select
-                                    Automatically</a></li>
-                            <li><a data-toggle="tab" href="#refine-manually-precision">Refine Manually </a></li>
+                            <li class="active"><a data-toggle="tab" href="#select-automatically-precision">{{ trans('content.select_automatically') }}</a></li>
+                            <li><a data-toggle="tab" href="#refine-manually-precision">{{ trans('content.select_manually') }}</a></li>
                         </ul>
                     </div>
                     <div class="gs-what-to-edit-content">
                         <div class="tab-content">
                             <div id="select-automatically-precision" class="tab-pane show fade in active">
                                 <div class="gs-select-automatically">
-                                    <p>Automatically or manually select objects, with the ability to combine both
-                                        methods.</p>
+                                    <p>{{ trans('content.select_manually_content') }}</p>
                                     <div class="gs-select-automatically-inner">
-                                        <p>Select objects automatically</p>
+                                        <p>{{ trans('content.select_manually_text') }}</p>
                                         <div id="chkbox-segment-inPaint" class="chkbox-segment"></div>
                                     </div>
                                     <div class="gs-continue-btn-outer">
                                         <a href="javascript:void(0)"
-                                            class="gs-continue-btn continue-parameter">Continue</a>
+                                            class="gs-continue-btn continue-parameter">{{ trans('content.continue_text') }}</a>
                                     </div>
                                 </div>
                             </div>
                             <div id="refine-manually-precision" class="tab-pane show fade">
                                 <div class="gs-select-manually-inner">
                                     <div class="gs-select-manually-top">
-                                        <p>Edit manually using the brush</p>
+                                        <p>{{ trans('content.brush_edit_manually_content') }}</p>
                                         <input type="hidden" value="70" id="ip-brush-thickness-inPaint" />
                                         <input class="gs-select-manually-value" type="text" id="amount-inPaint" value="70"
                                             readonly="">
@@ -163,27 +160,25 @@
                                         <div class="gs-refine-manually-single">
                                             <input type="hidden" id="maskingCheckbox" value="true" />
                                             <a href="javascript:void(0)" id="removeMasking" class="removeMasking"
-                                                onclick="toggleMasking(false)">Remove Masking</a>
+                                                onclick="toggleMasking(false)">{{ trans('content.remove_masking') }}</a>
                                             <a href="javascript:void(0)" id="addMasking"
-                                                onclick="toggleMasking(true)" class="active addMasking">Add
-                                                Masking</a>
+                                                onclick="toggleMasking(true)" class="active addMasking">{{ trans('content.add_masking') }}</a>
                                         </div>
                                         <div class="gs-refine-manually-single">
                                             <input type="hidden" id="cursorCheckbox" value="false" />
                                             <a href="javascript:void(0)" onclick="toggleBrushingCursor(false)"
                                                 class="active"><img
                                                     src="{{ asset('webWidget/images/circle-brush.svg') }}">
-                                                Circle Brush</a>
+                                                {{ trans('content.circle_brush') }}</a>
                                             <a href="javascript:void(0)" onclick="toggleBrushingCursor(true)"><img
-                                                    src="{{ asset('webWidget/images/square-brush.svg') }}">Square
-                                                Brush</a>
+                                                    src="{{ asset('webWidget/images/square-brush.svg') }}">{{ trans('content.square_brush') }}</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="undo-redo-btn">
                                     <button class="ci-btn ci-btn-danger ip-clearImage" id="ip-clearImage"
                                         title="Clear All">
-                                        <img src="{{ asset('web/images/deleteIcon.png') }}" width="25px"> Clear all
+                                        <img src="{{ asset('web/images/deleteIcon.png') }}" width="25px"> {{ trans('content.clear_all') }}
                                     </button>
                                     <button class="ci-btn ci-btn-danger ip-undoImage" id="ip-undoImage"
                                         title="Undo"><img src="{{ asset('web/images/undo.png') }}"
@@ -194,7 +189,7 @@
                                 </div>
                                 <div class="gs-continue-btn-outer">
                                     <a href="javascript:void(0)"
-                                        class="gs-continue-btn continue-parameter">Continue</a>
+                                        class="gs-continue-btn continue-parameter">{{ trans('content.continue_text') }}</a>
                                 </div>
                             </div>
                         </div>
@@ -272,11 +267,8 @@
                             <div class="gs-what-to-edit-title">
                                 <ul>
                                     <li class="active"><a data-toggle="tab"
-                                            href="#our-preset-settings-interior-inPaint">Our
-                                            preset settings</a></li>
-                                    <li><a data-toggle="tab" href="#your-customs-settings-interior-inPaint">Your
-                                            customs
-                                            settings </a></li>
+                                            href="#our-preset-settings-interior-inPaint">{{ trans('content.our_preset_settings') }}</a></li>
+                                    <li><a data-toggle="tab" href="#your-customs-settings-interior-inPaint">{{ trans('content.your_custom_settings') }}</a></li>
                                 </ul>
                             </div>
                             <div class="gs-what-to-edit-content">
@@ -284,7 +276,6 @@
                                     <div id="our-preset-settings-interior-inPaint"
                                         class="tab-pane show fade in active">
                                         <div class="gs-select-automatically">
-                                            {{-- <p>You can change the colors only, or also change textures, materials.</p> --}}
                                             <div class="gs-our-preset-settings ">
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedRoomType0-inPaint"
@@ -299,28 +290,28 @@
                                                             onclick="selectRoomType('Living Room',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/living room.png">
-                                                            <span>Living Room</span>
+                                                            <span>{{ trans('content.living_room') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Bedroom"
                                                             onclick="selectRoomType('Bedroom',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/bedroom.png">
-                                                            <span>Bedroom</span>
+                                                            <span>{{ trans('content.bedroom') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Bathroom"
                                                             onclick="selectRoomType('Bathroom',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/bathroom.png">
-                                                            <span>Bathroom</span>
+                                                            <span>{{ trans('content.bathroom') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Kitchen"
                                                             onclick="selectRoomType('Kitchen',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/kitchen.png">
-                                                            <span>Kitchen</span>
+                                                            <span>{{ trans('content.kitchen') }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -338,28 +329,28 @@
                                                             onclick="selectDesignStyle('Eclectic',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/eclectic.png">
-                                                            <span>Eclectic</span>
+                                                            <span>{{ trans('content.eclectic') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Contemporary"
                                                             onclick="selectDesignStyle('Contemporary',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/contemporary.png">
-                                                            <span>Contemporary</span>
+                                                            <span>{{ trans('content.contemporary') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Transitional"
                                                             onclick="selectDesignStyle('Transitional',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/transitional.png">
-                                                            <span>Transitional</span>
+                                                            <span>{{ trans('content.transitional') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Scandinavian"
                                                             onclick="selectDesignStyle('Scandinavian',0)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/scandinavian.png">
-                                                            <span>Scandinavian</span>
+                                                            <span>{{ trans('content.scandinavian') }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -368,36 +359,22 @@
                                     </div>
                                     <div id="your-customs-settings-interior-inPaint" class="tab-pane show fade">
                                         <div class="our-preset-settings-box">
-                                            <p class="our-preset-prompt-text">You can use a custom prompt below</p>
-                                            <textarea placeholder="e.g. Scandinavian dining room design, beautiful, white colors" name="cust-inst0"
+                                            <p class="our-preset-prompt-text">{{ trans('content.preset_prompt_text')}}</p>
+                                            <textarea placeholder="{{ trans('content.custom_inst_placeholder_pricion')}}" name="cust-inst0"
                                                 id="custom_instruction0-inPaint"></textarea>
                                         </div>
                                     </div>
                                     <div class="our-preset-settings-range-outer">
                                         <input type="hidden" id="no_of_des0" name="no_of_des0"
                                             value="1" />
-                                        {{-- <p class="font14">Select the number of designs you want to generate at
-                                            once.</p>
-                                        <div class="gs-select-design our-preset-range-design">
-                                            <div class="our-preset-settings-range" data-sec="0">
-                                            </div>
-                                            <div class="our-preset-settings-range-list">
-                                                <ul>
-                                                    <li>1</li>
-                                                    <li>2</li>
-                                                    <li>3</li>
-                                                    <li>4</li>
-                                                </ul>
-                                            </div>
-                                        </div> --}}
                                     </div>
                                     <div class="gs-select-manually-top mt-3">
                                         <div class="gs-select-parent-ai-strength">
-                                            <p class="font14">AI Strength</p>
+                                            <p class="font14">{{ trans('content.ai_strength')}}</p>
                                             <div class="gs-tutorials-toolnip">
                                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/tutorail-wraning.svg" alt="">
                                                 <div class="ai-upload-option-tooltip">
-                                                    <span>Adjust how the AI transforms your image using AI Strength. We recommend starting with 5 as the default. If the image looks too distorted, lower the value to 1-4. If it’s not changed enough, increase the value to 6-10.</span>
+                                                    <span>{{ trans('tooltip.ai_strength_tool_tip')}}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -414,7 +391,7 @@
                                             class="gs-continue-btn generateDesignBtn0">
                                             <img
                                                 src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
-                                            Generate New Designs
+                                            {{ trans('content.generate_new_designs')}}
                                             <span id="submit" style="display:none">
                                                 <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
                                             </span>
@@ -429,11 +406,8 @@
                             <div class="gs-what-to-edit-title">
                                 <ul>
                                     <li class="active"><a data-toggle="tab"
-                                            href="#our-preset-settings-exterior-inpaint1">Our
-                                            preset settings</a></li>
-                                    <li><a data-toggle="tab" href="#your-customs-settings-exterior-inpaint1">Your
-                                            customs
-                                            settings </a></li>
+                                            href="#our-preset-settings-exterior-inpaint1">{{ trans('content.our_preset_settings')}}</a></li>
+                                    <li><a data-toggle="tab" href="#your-customs-settings-exterior-inpaint1">{{ trans('content.your_custom_settings')}}</a></li>
                                 </ul>
                             </div>
                             <div class="gs-what-to-edit-content">
@@ -441,12 +415,11 @@
                                     <div id="our-preset-settings-exterior-inpaint1"
                                         class="tab-pane show fade in active">
                                         <div class="gs-select-automatically">
-                                            {{-- <p>You can change the colors only, or also change textures, materials.</p> --}}
                                             <div class="gs-our-preset-settings ">
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedRoomType1-inPaint"
                                                         name="selectedRoomType1">
-                                                    <p>1. Select House Angle
+                                                    <p>1. {{ trans('content.select_house_angle')}}
                                                         <!-- <a href="javascript:void(0)"  data-toggle="modal" data-target="#view_all_exterior_room_type">{{ trans('content.view_all') }}</a> -->
                                                     </p>
                                                     <div class="gs-select-room-style-row"
@@ -456,21 +429,21 @@
                                                             onclick="selectRoomType('Side of House',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/types/side of the house.png">
-                                                            <span>Side of House</span>
+                                                            <span>{{ trans('content.side_of_house')}}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Front of House"
                                                             onclick="selectRoomType('Front of House',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/types/front of the house.png">
-                                                            <span>Front of House</span>
+                                                            <span>{{ trans('content.front_of_house')}}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Back of House"
                                                             onclick="selectRoomType('Back of House',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/types/back of the house.png">
-                                                            <span>Back of House</span>
+                                                            <span>{{ trans('content.back_of_house')}}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -488,28 +461,28 @@
                                                             onclick="selectDesignStyle('Modern',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/exterior styles/modern.png">
-                                                            <span>Modern</span>
+                                                            <span>{{ trans('content.modern') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Mediterranean"
                                                             onclick="selectDesignStyle('Mediterranean',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/exterior styles/mediterranean.png">
-                                                            <span>Mediterranean</span>
+                                                            <span>{{ trans('content.mediterranean') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="International"
                                                             onclick="selectDesignStyle('International',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/exterior styles/mediterranean.png">
-                                                            <span>International</span>
+                                                            <span>{{ trans('content.international') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Moody Colors"
                                                             onclick="selectDesignStyle('Moody Colors',1)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/exterior/exterior styles/moody colors.png">
-                                                            <span>Moody Colors</span>
+                                                            <span>{{ trans('content.moody_colors') }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -518,36 +491,22 @@
                                     </div>
                                     <div id="your-customs-settings-exterior-inpaint1" class="tab-pane show fade">
                                         <div class="our-preset-settings-box">
-                                            <p class="our-preset-prompt-text">You can use a custom prompt below</p>
-                                            <textarea placeholder="e.g. Scandinavian dining room design, beautiful, white colors" name="cust-inst1"
+                                            <p class="our-preset-prompt-text">{{ trans('content.preset_prompt_text')}}</p>
+                                            <textarea placeholder="{{ trans('content.custom_inst_placeholder_pricion')}}" name="cust-inst1"
                                                 id="custom_instruction1-inPaint"></textarea>
                                         </div>
                                     </div>
                                     <div class="our-preset-settings-range-outer">
                                         <input type="hidden" id="no_of_des1" name="no_of_des1"
                                             value="1" />
-                                        {{-- <p class="font14">Select the number of designs you want to generate at
-                                            once.</p>
-                                        <div class="gs-select-design our-preset-range-design">
-                                            <div class="our-preset-settings-range" data-sec="1">
-                                            </div>
-                                            <div class="our-preset-settings-range-list">
-                                                <ul>
-                                                    <li>1</li>
-                                                    <li>2</li>
-                                                    <li>3</li>
-                                                    <li>4</li>
-                                                </ul>
-                                            </div>
-                                        </div> --}}
                                     </div>
                                     <div class="gs-select-manually-top mt-3">
                                         <div class="gs-select-parent-ai-strength">
-                                            <p class="font14">AI Strength</p>
+                                            <p class="font14">{{ trans('content.ai_strength')}}</p>
                                             <div class="gs-tutorials-toolnip">
                                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/tutorail-wraning.svg" alt="">
                                                 <div class="ai-upload-option-tooltip">
-                                                    <span>Adjust how the AI transforms your image using AI Strength. We recommend starting with 5 as the default. If the image looks too distorted, lower the value to 1-4. If it’s not changed enough, increase the value to 6-10.</span>
+                                                    <span>{{ trans('tooltip.ai_strength_tool_tip')}}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -564,7 +523,7 @@
                                             class="gs-continue-btn generateDesignBtn1">
                                             <img
                                                 src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
-                                            Generate New Designs
+                                            {{ trans('content.generate_new_designs')}}
                                             <span id="submit" style="display:none">
                                                 <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
                                             </span>
@@ -579,11 +538,8 @@
                             <div class="gs-what-to-edit-title">
                                 <ul>
                                     <li class="active"><a data-toggle="tab"
-                                            href="#our-preset-settings-garden-inpaint1">Our
-                                            preset settings</a></li>
-                                    <li><a data-toggle="tab" href="#your-customs-settings-garden-inpaint1">Your
-                                            customs
-                                            settings </a></li>
+                                            href="#our-preset-settings-garden-inpaint1">{{ trans('content.our_preset_settings')}}</a></li>
+                                    <li><a data-toggle="tab" href="#your-customs-settings-garden-inpaint1">{{ trans('content.your_custom_settings')}}</a></li>
                                 </ul>
                             </div>
                             <div class="gs-what-to-edit-content">
@@ -596,7 +552,7 @@
                                                 <div class="gs-select-room-style">
                                                     <input type="hidden" id="selectedRoomType2-inPaint"
                                                         name="selectedRoomType2">
-                                                    <p>1. Select Garden Type
+                                                    <p>1. {{ trans('content.select_garden_type')}}
                                                         <a href="javascript:void(0)" data-toggle="modal"
                                                             data-target="#view_all_garden_type">{{ trans('content.view_all') }}</a>
                                                     </p>
@@ -607,28 +563,28 @@
                                                             onclick="selectRoomType('Backyard',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/garden/types/backyard.png">
-                                                            <span>Backyard</span>
+                                                            <span>{{ trans('content.backyard') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Patio"
                                                             onclick="selectRoomType('Patio',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/garden/types/patio.png">
-                                                            <span>Patio</span>
+                                                            <span>{{ trans('content.patio') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Terrace"
                                                             onclick="selectRoomType('Terrace',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/garden/types/terrace.png">
-                                                            <span>Terrace</span>
+                                                            <span>{{ trans('content.terrace') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-room-type="Front Yard"
                                                             onclick="selectRoomType('Front Yard',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/garden/types/front-yard.png">
-                                                            <span>Front Yard</span>
+                                                            <span>{{ trans('content.front_yard') }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -645,28 +601,28 @@
                                                             onclick="selectDesignStyle('Modern',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/garden/design styles/modern.png">
-                                                            <span>Modern</span>
+                                                            <span>{{ trans('content.modern') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="City"
                                                             onclick="selectDesignStyle('City',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/garden/design styles/city.png">
-                                                            <span>City</span>
+                                                            <span>{{ trans('content.city') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Contemporary"
                                                             onclick="selectDesignStyle('Contemporary',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/garden/design styles/contemporary.png">
-                                                            <span>Contemporary</span>
+                                                            <span>{{ trans('content.contemporary') }}</span>
                                                         </div>
                                                         <div class="gs-select-room-style-single"
                                                             data-design-style="Luxury"
                                                             onclick="selectDesignStyle('Luxury',2)">
                                                             <img
                                                                 src="https://homedesigns-ai.b-cdn.net/web2/images/garden/design styles/luxury.png">
-                                                            <span>Luxury</span>
+                                                            <span>{{ trans('content.luxury') }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -675,36 +631,22 @@
                                     </div>
                                     <div id="your-customs-settings-garden-inpaint1" class="tab-pane show fade">
                                         <div class="our-preset-settings-box">
-                                            <p class="our-preset-prompt-text">You can use a custom prompt below</p>
-                                            <textarea placeholder="e.g. Scandinavian dining room design, beautiful, white colors" name="cust-inst2"
+                                            <p class="our-preset-prompt-text">{{ trans('content.preset_prompt_text')}}</p>
+                                            <textarea placeholder="{{ trans('content.custom_inst_placeholder_pricion')}}" name="cust-inst2"
                                                 id="custom_instruction2-inPaint"></textarea>
                                         </div>
                                     </div>
                                     <div class="our-preset-settings-range-outer">
                                         <input type="hidden" id="no_of_des2" name="no_of_des2"
                                             value="1" />
-                                        {{-- <p class="font14">Select the number of designs you want to generate at
-                                            once.</p>
-                                        <div class="gs-select-design our-preset-range-design">
-                                            <div class="our-preset-settings-range" data-sec="2">
-                                            </div>
-                                            <div class="our-preset-settings-range-list">
-                                                <ul>
-                                                    <li>1</li>
-                                                    <li>2</li>
-                                                    <li>3</li>
-                                                    <li>4</li>
-                                                </ul>
-                                            </div>
-                                        </div> --}}
                                     </div>
                                     <div class="gs-select-manually-top mt-3">
                                         <div class="gs-select-parent-ai-strength">
-                                            <p class="font14">AI Strength</p>
+                                            <p class="font14">{{ trans('content.ai_strength')}}</p>
                                             <div class="gs-tutorials-toolnip">
                                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/tutorail-wraning.svg" alt="">
                                                 <div class="ai-upload-option-tooltip">
-                                                    <span>Adjust how the AI transforms your image using AI Strength. We recommend starting with 5 as the default. If the image looks too distorted, lower the value to 1-4. If it’s not changed enough, increase the value to 6-10.</span>
+                                                    <span>{{ trans('tooltip.ai_strength_tool_tip')}}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -721,7 +663,7 @@
                                             class="gs-continue-btn generateDesignBtn2">
                                             <img
                                                 src="{{ asset('webWidget/images/gs-generate-new-design.svg') }}">
-                                            Generate New Designs
+                                            {{ trans('content.generate_new_designs')}}
                                             <span id="submit" style="display:none">
                                                 <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
                                             </span>
@@ -737,7 +679,7 @@
     </div>
 
     <div class="ai-upload-latest-designs">
-        <h3 class="font22">Latest Designs</h3>
+        <h3 class="font22">{{ trans('content.latest_designs') }}</h3>
         <div class="ai-upload-latest-wrapper row" id="all_data0_inPaint">
         </div>
     </div>
@@ -783,16 +725,16 @@
                                     <img class="complte-img img" src="${design.generated_url}" data-item="output-image">
                                     <div class="ai-upload-effects">
                                         <ul class="render-overlay-data-box">
-                                            <li class="render-overlay-data">Design Style: ${design.style}</li>
-                                            <li class="render-overlay-data">Room Type: ${design.room_type}</li>
-                                            <li class="render-overlay-data">Mode Type: ${design.mode}</li>
+                                            <li class="render-overlay-data">${designStyleText}: ${design.style}</li>
+                                            <li class="render-overlay-data">${roomTypeText}: ${design.room_type}</li>
+                                            <li class="render-overlay-data">${modeTypeText}: ${design.mode}</li>
                                         </ul>
                                     </div>
                                     <div class="ai-upload-optons">
                                         <ul>
                                             <li class="ai-upload-add-project-list">
-                                                <span class="ai-upload-option-tooltip">Download</span>
-                                                <a class="download" href="javascript:void(0)" data-download-url="${design.generated_url}" title="Download" download>
+                                                <span class="ai-upload-option-tooltip">${modeDownloadText}</span>
+                                                <a class="download" href="javascript:void(0)" data-download-url="${design.generated_url}" title="${modeDownloadText}" download>
                                                     <img src="https://homedesigns-ai.b-cdn.net/web2/images/ai-upload-optons-icon1.svg">
                                                 </a>
                                             </li>

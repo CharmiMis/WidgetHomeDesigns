@@ -87,17 +87,14 @@
                     <div class="gs-what-to-edit-tabs">
                         <div class="gs-what-to-edit-title">
                             <ul>
-                                <li class="active"><a data-toggle="tab" href="#our-preset-settings-interior">Preset
-                                        Settings</a></li>
-                                <li><a data-toggle="tab" href="#your-customs-settings-interior">Additional
-                                        Instructions</a></li>
+                                <li class="active"><a data-toggle="tab" href="#our-preset-settings-interior">{{ trans('content.our_preset_settings') }}</a></li>
+                                <li><a data-toggle="tab" href="#your-customs-settings-interior">{{ trans('content.your_custom_settings')}}</a></li>
                             </ul>
                         </div>
                         <div class="gs-what-to-edit-content">
                             <div class="tab-content">
                                 <div id="our-preset-settings-interior" class="tab-pane show fade in active">
                                     <div class="gs-select-automatically">
-                                        {{-- <p>You can change the colors only, or also change textures, materials.</p> --}}
                                         <div class="gs-our-preset-settings ">
                                             <div class="gs-select-room-style">
                                                 <input type="hidden" id="selectedRoomType0-furnish_empty_room" name="selectedRoomType0">
@@ -110,25 +107,25 @@
                                                         onclick="selectRoomType('Living Room',0)">
                                                         <img
                                                             src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/living room.png">
-                                                        <span>Living Room</span>
+                                                        <span>{{ trans('content.living_room') }}</span>
                                                     </div>
                                                     <div class="gs-select-room-style-single" data-room-type="Bedroom"
                                                         onclick="selectRoomType('Bedroom',0)">
                                                         <img
                                                             src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/bedroom.png">
-                                                        <span>Bedroom</span>
+                                                        <span>{{ trans('content.bedroom') }}</span>
                                                     </div>
                                                     <div class="gs-select-room-style-single" data-room-type="Bathroom"
                                                         onclick="selectRoomType('Bathroom',0)">
                                                         <img
                                                             src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/bathroom.png">
-                                                        <span>Bathroom</span>
+                                                    <span>{{ trans('content.bathroom') }}</span>
                                                     </div>
                                                     <div class="gs-select-room-style-single" data-room-type="Kitchen"
                                                         onclick="selectRoomType('Kitchen',0)">
                                                         <img
                                                             src="https://homedesigns-ai.b-cdn.net/web2/images/interior/room types/kitchen.png">
-                                                        <span>Kitchen</span>
+                                                        <span>{{ trans('content.kitchen') }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -145,28 +142,28 @@
                                                         onclick="selectDesignStyle('Eclectic',0)">
                                                         <img
                                                             src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/eclectic.png">
-                                                        <span>Eclectic</span>
+                                                        <span>{{ trans('content.eclectic') }}</span>
                                                     </div>
                                                     <div class="gs-select-room-style-single"
                                                         data-design-style="Contemporary"
                                                         onclick="selectDesignStyle('Contemporary',0)">
                                                         <img
                                                             src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/contemporary.png">
-                                                        <span>Contemporary</span>
+                                                        <span>{{ trans('content.contemporary') }}</span>
                                                     </div>
                                                     <div class="gs-select-room-style-single"
                                                         data-design-style="Transitional"
                                                         onclick="selectDesignStyle('Transitional',0)">
                                                         <img
                                                             src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/transitional.png">
-                                                        <span>Transitional</span>
+                                                        <span>{{ trans('content.transitional') }}</span>
                                                     </div>
                                                     <div class="gs-select-room-style-single"
                                                         data-design-style="Scandinavian"
                                                         onclick="selectDesignStyle('Scandinavian',0)">
                                                         <img
                                                             src="https://homedesigns-ai.b-cdn.net/web2/images/interior/interior styles/scandinavian.png">
-                                                        <span>Scandinavian</span>
+                                                        <span>{{ trans('content.scandinavian') }}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -176,9 +173,7 @@
                                 <div id="your-customs-settings-interior" class="tab-pane show fade">
                                     <div class="our-preset-settings-box">
                                         @if ($precisionUser == true)
-                                            <label class="our-preset-prompt-text ips-bf-parent">Type your custom
-                                                instructions below and our AI will take them into account when
-                                                generating your designs:
+                                            <label class="our-preset-prompt-text ips-bf-parent">{{ trans('content.preset_prompt_text')}}
                                                 <input type="checkbox" id="nwcust0_furnish_empty_room" class="ms-1 ck_inst"
                                                     onchange="customInstruction(0)" disabled>
                                                 &nbsp;&nbsp;&nbsp;<img
@@ -186,15 +181,14 @@
                                                 <div class="ips-bf-child paid_feature_modal"></div>
                                             </label>
                                             <textarea
-                                                placeholder="e.g. A clean-looking living room with black and yellow textures and a coffee table made from hardwood."
+                                                placeholder="{{ trans('content.custom_inst_placeholder') }}"
                                                 name="cust-inst0" id="custom_instruction0-furnish_empty_room" class="hidden"></textarea>
                                         @else
-                                            <label class="our-preset-prompt-text">Type your custom instructions below
-                                                and our AI will take them into account when generating your designs:
+                                            <label class="our-preset-prompt-text">{{ trans('content.preset_prompt_text')}}
                                                 <input type="checkbox" id="nwcust0_furnish_empty_room" class="ms-1 ck_inst" checked
                                                     onchange="customInstruction(0)"></label>
                                             <textarea
-                                                placeholder="e.g. A clean-looking living room with black and yellow textures and a coffee table made from hardwood."
+                                                placeholder="{{ trans('content.custom_inst_placeholder') }}"
                                                 name="cust-inst0" id="custom_instruction0-furnish_empty_room" class=""></textarea>
                                         @endif
                                     </div>
@@ -202,15 +196,12 @@
                                 <div class="our-preset-settings-range-outer">
                                     <input type="hidden" id="strength0" name="strength0" value="mid" />
                                     <div class="d-flex align-items-center">
-                                        <p class="font14">AI Intervention</p>
+                                        <p class="font14">{{ trans('content.ai_intervention') }}</p>
                                         <div class="gs-tutorials-toolnip">
                                             <img src="https://homedesigns-ai.b-cdn.net/web2/images/tutorail-wraning.svg"
                                                 alt="">
                                             <div class="ai-upload-option-tooltip">
-                                                <span>Control the number of changes you want the AI to make to your
-                                                    upload. For the best results, leave this option to MEDIUM. You can
-                                                    try with LOW and EXTREME if you don't get good results with
-                                                    MEDIUM.</span>
+                                                <span>{{ trans('content.ai_intervention_tool_tip')}}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -219,43 +210,19 @@
                                         </div>
                                         <div class="our-preset-settings-range-list">
                                             <ul>
-                                                <li>Very Low</li>
-                                                <li>Low</li>
-                                                <li>Medium</li>
-                                                <li>Extreme</li>
+                                                <li>{{ trans('content.intervention_very_low')}}</li>
+                                                            <li>{{ trans('content.intervention_low')}}</li>
+                                                            <li>{{ trans('content.intervention_medium')}}</li>
+                                                            <li>{{ trans('content.intervention_extreme')}}</li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <div class="our-preset-settings-range-outer">
-                                    <input type="hidden" id="no_of_des0" name="no_of_des0" value="1" />
-                                    <p class="font14">Select the number of designs you want to generate at
-                                        once.</p>
-                                    <div class="gs-select-design our-preset-range-design">
-                                        <div class="our-preset-settings-range" data-sec="0">
-                                        </div>
-                                        <div class="our-preset-settings-range-list">
-                                            <ul>
-                                                <li>1</li>
-                                                <li>2</li>
-                                                <li>3</li>
-                                                <li>4</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div> --}}
                                 <div class="gs-continue-btn-outer redesign-generate-btn">
-                                    {{-- <div class="nwchoice-toggle" style="margin-top: 35px !important">
-                                                    <span class="nw-tgtype">Private Gallery </span>
-                                                    <input type="checkbox" id="nwtoggle0" onchange="loadRenders(0)"
-                                                        @checked($default_gallery == 'public')>
-                                                    <label class="nwtoggle-label0" for="nwtoggle0"></label>
-                                                    <span class="nw-tgtype">Public Gallery</span>
-                                                </div> --}}
                                     <a href="javascript:void(0)" onclick="_generateInPaintingDesign(0, this)"
                                         class="gs-continue-btn"><img
                                             src="https://homedesigns-ai.b-cdn.net/web2/images/gs-generate-new-design.svg">
-                                        Generate New Designs
+                                        {{ trans('content.generate_new_designs')}}
                                         <span id="submit" style="display:none">
                                             <i class="fa fa-spinner fa-spin m-0" aria-hidden="true"></i>
                                         </span>
@@ -272,33 +239,10 @@
 {{-- section second end --}}
 
 <div class="ai-upload-latest-designs">
-    <h3 class="font22">Latest Designs</h3>
-    <div class="latest-designs-info">Check your latest designs below and save them to projects or to favorites.</div>
+    <h3 class="font22">{{ trans('content.latest_designs') }}</h3>
+    <div class="latest-designs-info">{{ trans('content.latest_designs_info') }}</div>
     <div class="gs-select-category redesign-designs-tabs">
         <div class="gs-select-category-list">
-            {{-- <ul class="gs-option-flex">
-                <li class="active on-gen-disable nwai-tabs">
-                    <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#interior"
-                        onclick="loadRenders(0)" data-sec="0">
-                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-interior-icon.svg">
-                        <span class="nwtb-titles">Interior</span>
-                    </a>
-                </li>
-                <li class="on-gen-disable nwai-tabs">
-                    <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#exterior"
-                        onclick="loadRenders(1)" data-sec="1">
-                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-exterior-icon.svg">
-                        <span class="nwtb-titles">Exterior</span>
-                    </a>
-                </li>
-                <li class="on-gen-disable nwai-tabs">
-                    <a class="gs-select-category-list-inner category-tabs" data-toggle="tab" href="#garden"
-                        onclick="loadRenders(2)" data-sec="2">
-                        <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-garden-icon.svg">
-                        <span class="nwtb-titles">Garden</span>
-                    </a>
-                </li>
-            </ul> --}}
         </div>
     </div>
     <div class="tab-content">
