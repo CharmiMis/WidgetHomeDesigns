@@ -522,7 +522,7 @@
                                                         <img src="{{ asset('webWidget/images/tutorail-wraning.svg') }}"
                                                             alt="">
                                                         <div class="ai-upload-option-tooltip">
-                                                            <span>{{ trans('content.ai_intervention_tool_tip')}}</span>
+                                                            <span>{{ trans('tooltip.ai_intervention_tool_tip')}}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -573,7 +573,7 @@
                                                     <img src="{{ asset('webWidget/images/tutorail-wraning.svg') }}"
                                                         alt="">
                                                     <div class="ai-upload-option-tooltip">
-                                                        <span>{{ trans('content.ai_intervention_tool_tip')}}</span>
+                                                        <span>{{ trans('tooltip.ai_intervention_tool_tip')}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -717,7 +717,7 @@
                                                         <img src="{{ asset('webWidget/images/tutorail-wraning.svg') }}"
                                                             alt="">
                                                         <div class="ai-upload-option-tooltip">
-                                                            <span>{{ trans('content.ai_intervention_tool_tip')}}</span>
+                                                            <span>{{ trans('tooltip.ai_intervention_tool_tip')}}</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -768,7 +768,7 @@
                                                     <img src="{{ asset('webWidget/images/tutorail-wraning.svg') }}"
                                                         alt="">
                                                     <div class="ai-upload-option-tooltip">
-                                                        <span>{{ trans('content.ai_intervention_tool_tip')}}</span>
+                                                        <span>{{ trans('tooltip.ai_intervention_tool_tip')}}</span>
                                                     </div>
                                                 </div>
                                             </div>

@@ -201,7 +201,7 @@
                                             <img src="https://homedesigns-ai.b-cdn.net/web2/images/tutorail-wraning.svg"
                                                 alt="">
                                             <div class="ai-upload-option-tooltip">
-                                                <span>{{ trans('content.ai_intervention_tool_tip')}}</span>
+                                                <span>{{ trans('tooltip.ai_intervention_tool_tip')}}</span>
                                             </div>
                                         </div>
                                     </div>

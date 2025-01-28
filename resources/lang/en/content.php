@@ -55,7 +55,11 @@ return [
         'room_type_text' => 'Room Type',
         'mode_type_text' => 'Mode Type',
         'download_text' => 'Download',
+        'house_angle_text' => 'House Angle',
+        'garden_type_text' => 'Garden Type',
         'no_designs_text' => 'No designs found for this section.',
+        'show_text' => 'Show',
+        'hd_text' => 'HD',
 
         'keep_structural_elements' => 'Keep structural elements',
         'ai_intervention' => 'AI Intervention',
@@ -141,7 +145,10 @@ return [
         'outdoor_furniture_and_decor' => 'Outdoor Furniture and Decor',
         'water_features_and_structures' => 'Water Features and Structures',
         'lighting' => 'Lighting',
-        
+        'white_chalk_paint' => 'White Chalk Paint',
+        'custom_textures' => 'Custom Textures',
+        'preset_textures' => 'Preset Textures',
+        'placholder_Orange_peel_text' => 'Orange peel textured wall',
 
 
         'right_tip_redesign_first' => 'Click on ‘Your Custom settings’ to give specific instructions to our AI.',

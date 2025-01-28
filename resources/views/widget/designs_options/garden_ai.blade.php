@@ -1,8 +1,8 @@
-<option value="very_low">Very Low AI Intervention</option>
-<option value="low">Low AI Intervention</option>
-<option selected="" value="mid">Medium AI Intervention</option>
+<option value="very_low">{{ trans('garden_ai.very_low') }}</option>
+<option value="low">{{ trans('garden_ai.low') }}</option>
+<option selected="" value="mid">{{ trans('garden_ai.mid') }}</option>
 @if ($userActivePlan == 'free' || $precisionUser == true)
-<option class="paid_feature_modal">Extreme AI Intervention &nbsp;&#xf023; </option>
+<option class="paid_feature_modal">{{ trans('garden_ai.extreme') }} &nbsp;&#xf023; </option>
 @else
-<option value="extreme">Extreme AI Intervention</option>
+<option value="extreme">{{ trans('garden_ai.extreme') }}</option>
 @endif

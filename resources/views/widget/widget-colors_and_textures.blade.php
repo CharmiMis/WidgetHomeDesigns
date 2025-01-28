@@ -424,8 +424,8 @@
                                 <div id="your-customs-settings-interior-change-colors-texture"
                                     class="tab-pane show fade">
                                     <div class="our-preset-settings-box">
-                                        <textarea id="custom_instruction0-change-colors-texture" placeholder="white chalk paint" name="prompt"
-                                            class="promtCustomInput"></textarea>
+                                        <textarea id="custom_instruction0-change-colors-texture" placeholder="{{ trans('content.white_chalk_paint') }}"
+                                            name="prompt" class="promtCustomInput"></textarea>
                                     </div>
 
                                     <div class="our-preset-settings-range-outer">
@@ -519,8 +519,8 @@
                                 </div>
                                 <div id="your-customs-settings-exterior-colorTexture1" class="tab-pane show fade">
                                     <div class="our-preset-settings-box">
-                                        <textarea id="custom_instruction1-change-colors-texture" placeholder="white chalk paint" name="prompt"
-                                            class="promtCustomInput"></textarea>
+                                        <textarea id="custom_instruction1-change-colors-texture" placeholder="{{ trans('content.white_chalk_paint') }}"
+                                            name="prompt" class="promtCustomInput"></textarea>
                                     </div>
 
                                     <div class="our-preset-settings-range-outer">
@@ -616,8 +616,8 @@
                                 </div>
                                 <div id="your-customs-settings-garden-colorTexture1" class="tab-pane show fade">
                                     <div class="our-preset-settings-box">
-                                        <textarea id="custom_instruction2-change-colors-texture" placeholder="white chalk paint" name="prompt"
-                                            class="promtCustomInput"></textarea>
+                                        <textarea id="custom_instruction2-change-colors-texture" placeholder="{{ trans('content.white_chalk_paint') }}"
+                                            name="prompt" class="promtCustomInput"></textarea>
                                     </div>
 
                                     <div class="our-preset-settings-range-outer">
@@ -652,340 +652,10 @@
     </div>
 </div>
 <script>
-    function handleColorTextureChange(selectElement, dropdownId) {
-        // Get the selected value
-        var selected = $(selectElement).val();
+    window.langTranslations = {
+            "material_types": @json(__('material_types'))
+        };
 
-        // Extract the number from the dropdown's ID
-        var dropdownNumber = $(selectElement).attr('id').replace(dropdownId, '');
-
-        // Form the ID of the associated textarea
-        var textareaId = 'custom_instruction' + dropdownNumber + '-' + dataPage;
-        // Get the associated textarea using the formed ID
-        var textarea = $('#' + textareaId);
-
-        // Check the selected value and enable or disable the textarea accordingly
-        var secondSelection = '';
-
-        if (dropdownId == 'color_texture') {
-            secondSelection = $('#material' + dropdownNumber).val();
-        } else {
-            secondSelection = $('#color_texture' + dropdownNumber).val();
-        }
-
-        if (selected === "" && secondSelection === "") {
-            textarea.prop('disabled', false);
-        } else {
-            textarea.prop('disabled', true);
-        }
-    }
-    $('.changeColorTexture').on('change', function() {
-        handleColorTextureChange(this, 'color_texture');
-    });
-
-    $('.changeMaterial').change(function() {
-
-        handleColorTextureChange(this, 'material');
-
-        // Clear previous options in 'Select Material Types' dropdown
-        $('.changeMaterialType').empty();
-
-        // Get the selected value from 'Select Materials' dropdown
-        var selectedMaterial = $(this).val();
-
-        // Enable/disable 'Select Material Types' dropdown based on selection
-        if (selectedMaterial !== '') {
-            // Enable 'Select Material Types' dropdown
-            $('.changeMaterialType').prop('disabled', false);
-
-            // Load options into 'Select Material Types' dropdown based on the selected material
-            if (selectedMaterial === 'Fabrics') {
-                // Load options for 'Material 1' selected in 'Select Materials'
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Cotton">Cotton</option>');
-                $('.changeMaterialType').append('<option value="Linen">Linen</option>');
-                $('.changeMaterialType').append('<option value="Silk">Silk</option>');
-                $('.changeMaterialType').append('<option value="Velvet">Velvet</option>');
-                $('.changeMaterialType').append('<option value="Wool">Wool</option>');
-                $('.changeMaterialType').append('<option value="Leather">Leather</option>');
-                $('.changeMaterialType').append('<option value="Suede">Suede</option>');
-                $('.changeMaterialType').append('<option value="Tweed">Tweed</option>');
-                $('.changeMaterialType').append('<option value="Chenille">Chenille</option>');
-                $('.changeMaterialType').append('<option value="Jacquard">Jacquard</option>');
-                $('.changeMaterialType').append('<option value="Satin">Satin</option>');
-                $('.changeMaterialType').append('<option value="Polyester">Polyester</option>');
-                $('.changeMaterialType').append('<option value="Nylon">Nylon</option>');
-                $('.changeMaterialType').append('<option value="Rayon">Rayon</option>');
-                $('.changeMaterialType').append('<option value="Cashmere">Cashmere</option>');
-            } else if (selectedMaterial === 'Glass') {
-                // Load options for 'Material 2' selected in 'Select Materials'
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Clear">Clear</option>');
-                $('.changeMaterialType').append('<option value="Frosted">Frosted</option>');
-                $('.changeMaterialType').append('<option value="Stained">Stained</option>');
-                $('.changeMaterialType').append('<option value="Tempered">Tempered</option>');
-                $('.changeMaterialType').append('<option value="Laminated">Laminated</option>');
-                $('.changeMaterialType').append('<option value="Shattered">Shattered</option>');
-                $('.changeMaterialType').append('<option value="Patterned">Patterned</option>');
-                $('.changeMaterialType').append('<option value="Textured">Textured</option>');
-                $('.changeMaterialType').append('<option value="Seeded">Seeded</option>');
-                $('.changeMaterialType').append('<option value="Colored">Colored</option>');
-                $('.changeMaterialType').append('<option value="Mirrored">Mirrored</option>');
-                $('.changeMaterialType').append('<option value="Etched">Etched</option>');
-                $('.changeMaterialType').append('<option value="Smoked">Smoked</option>');
-                $('.changeMaterialType').append('<option value="Beveled">Beveled</option>');
-                $('.changeMaterialType').append('<option value="Lead Crystal">Lead Crystal</option>');
-                $('.changeMaterialType').append('<option value="Obscured">Obscured</option>');
-            } else if (selectedMaterial === 'Wood') {
-                // Load options for 'Material 2' selected in 'Select Materials'
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Oak">Oak</option>');
-                $('.changeMaterialType').append('<option value="Maple">Maple</option>');
-                $('.changeMaterialType').append('<option value="Cherry">Cherry</option>');
-                $('.changeMaterialType').append('<option value="Walnut">Walnut</option>');
-                $('.changeMaterialType').append('<option value="Pine">Pine</option>');
-                $('.changeMaterialType').append('<option value="Teak">Teak</option>');
-                $('.changeMaterialType').append('<option value="Mahogany">Mahogany</option>');
-                $('.changeMaterialType').append('<option value="Bamboo">Bamboo</option>');
-                $('.changeMaterialType').append('<option value="Birch">Birch</option>');
-                $('.changeMaterialType').append('<option value="Rosewood">Rosewood</option>');
-                $('.changeMaterialType').append('<option value="Ash">Ash</option>');
-                $('.changeMaterialType').append('<option value="Cedar">Cedar</option>');
-                $('.changeMaterialType').append('<option value="Hickory">Hickory</option>');
-                $('.changeMaterialType').append('<option value="Alder">Alder</option>');
-                $('.changeMaterialType').append('<option value="Ebony">Ebony</option>');
-            } else if (selectedMaterial === 'Stone') {
-                // Load options for 'Material 2' selected in 'Select Materials'
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Marble">Marble</option>');
-                $('.changeMaterialType').append('<option value="Granite">Granite</option>');
-                $('.changeMaterialType').append('<option value="Bricks">Bricks</option>');
-                $('.changeMaterialType').append('<option value="Red Bricks">Red Bricks</option>');
-                $('.changeMaterialType').append('<option value="Limestone">Limestone</option>');
-                $('.changeMaterialType').append('<option value="Slate">Slate</option>');
-                $('.changeMaterialType').append('<option value="Travertine">Travertine</option>');
-                $('.changeMaterialType').append('<option value="Sandstone">Sandstone</option>');
-                $('.changeMaterialType').append('<option value="Quartz">Quartz</option>');
-                $('.changeMaterialType').append('<option value="Onyx">Onyx</option>');
-                $('.changeMaterialType').append('<option value="Basalt">Basalt</option>');
-                $('.changeMaterialType').append('<option value="Terrazzo">Terrazzo</option>');
-                $('.changeMaterialType').append('<option value="Soapstone">Soapstone</option>');
-                $('.changeMaterialType').append('<option value="Quartzite">Quartzite</option>');
-                $('.changeMaterialType').append('<option value="Dolomite">Dolomite</option>');
-                $('.changeMaterialType').append('<option value="Gneiss">Gneiss</option>');
-                $('.changeMaterialType').append('<option value="Bluestone">Bluestone</option>');
-            } else if (selectedMaterial === 'Metal') {
-                // Load options for 'Material 2' selected in 'Select Materials'
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Steel">Steel</option>');
-                $('.changeMaterialType').append('<option value="Aluminum">Aluminum</option>');
-                $('.changeMaterialType').append('<option value="Brass">Brass</option>');
-                $('.changeMaterialType').append('<option value="Wrought Iron">Wrought Iron</option>');
-                $('.changeMaterialType').append('<option value="Stainless Steel">Stainless Steel</option>');
-                $('.changeMaterialType').append('<option value="Chrome">Chrome</option>');
-                $('.changeMaterialType').append('<option value="Gold">Gold</option>');
-                $('.changeMaterialType').append('<option value="Silver">Silver</option>');
-                $('.changeMaterialType').append('<option value="Copper">Copper</option>');
-                $('.changeMaterialType').append('<option value="Bronze">Bronze</option>');
-                $('.changeMaterialType').append('<option value="Titanium">Titanium</option>');
-                $('.changeMaterialType').append('<option value="Zinc">Zinc</option>');
-                $('.changeMaterialType').append('<option value="Nickel">Nickel</option>');
-                $('.changeMaterialType').append('<option value="Lead">Lead</option>');
-                $('.changeMaterialType').append('<option value="Pewter">Pewter</option>');
-            } else if (selectedMaterial === 'Ceramics and Porcelain') {
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Earthenware">Earthenware</option>');
-                $('.changeMaterialType').append('<option value="Stoneware">Stoneware</option>');
-                $('.changeMaterialType').append('<option value="Porcelain">Porcelain</option>');
-                $('.changeMaterialType').append('<option value="Terracotta">Terracotta</option>');
-                $('.changeMaterialType').append('<option value="Vitreous China">Vitreous China</option>');
-                $('.changeMaterialType').append('<option value="Bone China">Bone China</option>');
-                $('.changeMaterialType').append('<option value="Glazed">Glazed</option>');
-                $('.changeMaterialType').append('<option value="Matte">Matte</option>');
-                $('.changeMaterialType').append('<option value="Polished">Polished</option>');
-                $('.changeMaterialType').append('<option value="Textured">Textured</option>');
-                $('.changeMaterialType').append('<option value="Mosaic">Mosaic</option>');
-                $('.changeMaterialType').append('<option value="Hand-painted">Hand-painted</option>');
-                $('.changeMaterialType').append('<option value="Crackle">Crackle</option>');
-                $('.changeMaterialType').append('<option value="Metallic">Metallic</option>');
-                $('.changeMaterialType').append('<option value="Luster">Luster</option>');
-            } else if (selectedMaterial === 'Plastics and Polymers') {
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Acrylic">Acrylic</option>');
-                $('.changeMaterialType').append('<option value="Polyethylene">Polyethylene</option>');
-                $('.changeMaterialType').append('<option value="PVC">PVC</option>');
-                $('.changeMaterialType').append('<option value="Polycarbonate">Polycarbonate</option>');
-                $('.changeMaterialType').append('<option value="Polypropylene">Polypropylene</option>');
-                $('.changeMaterialType').append('<option value="ABS">ABS</option>');
-                $('.changeMaterialType').append('<option value="Epoxy">Epoxy</option>');
-                $('.changeMaterialType').append('<option value="Silicone">Silicone</option>');
-                $('.changeMaterialType').append('<option value="Vinyl">Vinyl</option>');
-                $('.changeMaterialType').append('<option value="Melamine">Melamine</option>');
-                $('.changeMaterialType').append('<option value="Phenolic">Phenolic</option>');
-                $('.changeMaterialType').append('<option value="Urethane">Urethane</option>');
-                $('.changeMaterialType').append('<option value="Fiberglass">Fiberglass</option>');
-                $('.changeMaterialType').append('<option value="Nylon">Nylon</option>');
-                $('.changeMaterialType').append('<option value="Acetate">Acetate</option>');
-            } else if (selectedMaterial === 'Paper and Cardboard') {
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Wallpaper">Wallpaper</option>');
-                $('.changeMaterialType').append('<option value="Cardboard">Cardboard</option>');
-                $('.changeMaterialType').append('<option value="Kraft">Kraft</option>');
-                $('.changeMaterialType').append('<option value="Parchment">Parchment</option>');
-                $('.changeMaterialType').append('<option value="Foil embossed">Foil embossed</option>');
-                $('.changeMaterialType').append('<option value="Textured">Textured</option>');
-                $('.changeMaterialType').append('<option value="Handmade paper">Handmade paper</option>');
-                $('.changeMaterialType').append('<option value="Recycled paper">Recycled paper</option>');
-                $('.changeMaterialType').append('<option value="Flocked paper">Flocked paper</option>');
-                $('.changeMaterialType').append('<option value="Metallic paper">Metallic paper</option>');
-                $('.changeMaterialType').append('<option value="Vellum">Vellum</option>');
-                $('.changeMaterialType').append('<option value="Linen paper">Linen paper</option>');
-                $('.changeMaterialType').append('<option value="Watercolor paper">Watercolor paper</option>');
-                $('.changeMaterialType').append('<option value="Matte">Matte</option>');
-                $('.changeMaterialType').append('<option value="Glossy">Glossy</option>');
-            } else if (selectedMaterial === 'Natural Fibers') {
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Jute">Jute</option>');
-                $('.changeMaterialType').append('<option value="Hemp">Hemp</option>');
-                $('.changeMaterialType').append('<option value="Sisal">Sisal</option>');
-                $('.changeMaterialType').append('<option value="Coir">Coir</option>');
-                $('.changeMaterialType').append('<option value="Bamboo fiber">Bamboo fiber</option>');
-                $('.changeMaterialType').append('<option value="Wool">Wool</option>');
-                $('.changeMaterialType').append('<option value="Cotton">Cotton</option>');
-                $('.changeMaterialType').append('<option value="Linen">Linen</option>');
-                $('.changeMaterialType').append('<option value="Silk">Silk</option>');
-                $('.changeMaterialType').append('<option value="Cashmere">Cashmere</option>');
-                $('.changeMaterialType').append('<option value="Mohair">Mohair</option>');
-                $('.changeMaterialType').append('<option value="Alpaca">Alpaca</option>');
-                $('.changeMaterialType').append('<option value="Seagrass">Seagrass</option>');
-                $('.changeMaterialType').append('<option value="Ramie">Ramie</option>');
-                $('.changeMaterialType').append('<option value="Abaca">Abaca</option>');
-            } else if (selectedMaterial === 'Composite Materials') {
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Concrete">Concrete</option>');
-                $('.changeMaterialType').append('<option value="Plywood">Plywood</option>');
-                $('.changeMaterialType').append('<option value="MDF">MDF</option>');
-                $('.changeMaterialType').append('<option value="Particleboard">Particleboard</option>');
-                $('.changeMaterialType').append('<option value="Fiberglass">Fiberglass</option>');
-                $('.changeMaterialType').append('<option value="Corian">Corian</option>');
-                $('.changeMaterialType').append('<option value="Quartz composite">Quartz composite</option>');
-                $('.changeMaterialType').append('<option value="Terrazzo">Terrazzo</option>');
-                $('.changeMaterialType').append('<option value="Engineered stone">Engineered stone</option>');
-                $('.changeMaterialType').append('<option value="Laminate">Laminate</option>');
-                $('.changeMaterialType').append(
-                    '<option value="Vinyl composite tile">Vinyl composite tile</option>');
-                $('.changeMaterialType').append('<option value="Resin">Resin</option>');
-                $('.changeMaterialType').append('<option value="Acrylic composite">Acrylic composite</option>');
-                $('.changeMaterialType').append('<option value="Carbon fiber">Carbon fiber</option>');
-                $('.changeMaterialType').append(
-                    '<option value="Glass fiber reinforced concrete">Glass fiber reinforced concrete</option>'
-                );
-            } else if (selectedMaterial === 'Facade') {
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Brick">Brick</option>');
-                $('.changeMaterialType').append('<option value="Natural Stone">Natural Stone</option>');
-                $('.changeMaterialType').append('<option value="Granite">Granite</option>');
-                $('.changeMaterialType').append('<option value="Fieldstone">Fieldstone</option>');
-                $('.changeMaterialType').append('<option value="Limestone">Limestone</option>');
-                $('.changeMaterialType').append('<option value="Sandstone">Sandstone</option>');
-                $('.changeMaterialType').append('<option value="Stucco">Stucco</option>');
-                $('.changeMaterialType').append('<option value="Wood">Wood</option>');
-                $('.changeMaterialType').append('<option value="Vinyl">Vinyl</option>');
-                $('.changeMaterialType').append('<option value="Fiber cement">Fiber cement</option>');
-                $('.changeMaterialType').append('<option value="Metal">Metal</option>');
-                $('.changeMaterialType').append('<option value="Glass">Glass</option>');
-            } else if (selectedMaterial === 'Roofing') {
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Asphalt shingles">Asphalt shingles</option>');
-                $('.changeMaterialType').append('<option value="Metal roofing">Metal roofing</option>');
-                $('.changeMaterialType').append('<option value="Clay tiles">Clay tiles</option>');
-                $('.changeMaterialType').append('<option value="Concrete tiles">Concrete tiles</option>');
-                $('.changeMaterialType').append('<option value="Slate tiles">Slate tiles</option>');
-                $('.changeMaterialType').append(
-                    '<option value="Wooden shakes or shingles">Wooden shakes or shingles</option>');
-                $('.changeMaterialType').append('<option value="Solar tiles">Solar tiles</option>');
-                $('.changeMaterialType').append('<option value="Roof Tiles">Roof Tiles</option>');
-            } else if (selectedMaterial === 'Decking and Walkways') {
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Composite decking">Composite decking</option>');
-                $('.changeMaterialType').append(
-                    '<option value="Natural stone pavers">Natural stone pavers</option>');
-                $('.changeMaterialType').append('<option value="Concrete pavers">Concrete pavers</option>');
-                $('.changeMaterialType').append('<option value="Brick pavers">Brick pavers</option>');
-                $('.changeMaterialType').append('<option value="Treated lumber">Treated lumber</option>');
-                $('.changeMaterialType').append('<option value="Teak">Teak</option>');
-                $('.changeMaterialType').append('<option value="Redwood decking">Redwood decking</option>');
-                $('.changeMaterialType').append('<option value="Pea Gravel">Pea Gravel</option>');
-                $('.changeMaterialType').append(
-                    '<option value="Anthracite Grey Deck">Anthracite Grey Deck</option>');
-                $('.changeMaterialType').append('<option value="Crushed Granite">Crushed Granite</option>');
-            } else if (selectedMaterial === 'Outdoor Fixtures and Accents') {
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Wrought iron">Wrought iron</option>');
-                $('.changeMaterialType').append('<option value="Stainless steel">Stainless steel</option>');
-                $('.changeMaterialType').append('<option value="Copper">Copper</option>');
-                $('.changeMaterialType').append('<option value="Natural stone">Natural stone</option>');
-                $('.changeMaterialType').append('<option value="Ceramic tiles">Ceramic tiles</option>');
-            } else if (selectedMaterial === 'Ground Cover Materials') {
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Mulch">Mulch</option>');
-                $('.changeMaterialType').append('<option value="Wood Chips">Wood Chips</option>');
-                $('.changeMaterialType').append('<option value="Grass">Grass</option>');
-                $('.changeMaterialType').append('<option value="Clover">Clover</option>');
-                $('.changeMaterialType').append('<option value="Moss">Moss</option>');
-                $('.changeMaterialType').append('<option value="Lawn">Lawn</option>');
-                $('.changeMaterialType').append('<option value="Pebbles">Pebbles</option>');
-                $('.changeMaterialType').append('<option value="River rocks">River rocks</option>');
-                $('.changeMaterialType').append(
-                    '<option value="Ground cover plants">Ground cover plants</option>');
-                $('.changeMaterialType').append('<option value="thyme">thyme</option>');
-                $('.changeMaterialType').append('<option value="Sedum">Sedum</option>');
-                $('.changeMaterialType').append('<option value="Artificial grass">Artificial grass</option>');
-                $('.changeMaterialType').append(
-                    '<option value="Decomposed granite">Decomposed granite</option>');
-            } else if (selectedMaterial === 'Planters and Edging') {
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Corten steel">Corten steel</option>');
-                $('.changeMaterialType').append('<option value="Stone">Stone</option>');
-                $('.changeMaterialType').append('<option value="Fruit Trees">Fruit Trees</option>');
-                $('.changeMaterialType').append('<option value="Berry Bushes">Berry Bushes</option>');
-                $('.changeMaterialType').append('<option value="Plants">Plants</option>');
-                $('.changeMaterialType').append('<option value="Flowers">Flowers</option>');
-                $('.changeMaterialType').append('<option value="Concrete">Concrete</option>');
-                $('.changeMaterialType').append('<option value="Natural Stone">Natural Stone</option>');
-                $('.changeMaterialType').append('<option value="Recycled plastic">Recycled plastic</option>');
-                $('.changeMaterialType').append('<option value="Bamboo">Bamboo</option>');
-            } else if (selectedMaterial === 'Outdoor Furniture and Decor') {
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Teak">Teak</option>');
-                $('.changeMaterialType').append('<option value="Wrought iron">Wrought iron</option>');
-                $('.changeMaterialType').append('<option value="Rattan">Rattan</option>');
-                $('.changeMaterialType').append('<option value="Fire Pits">Fire Pits</option>');
-                $('.changeMaterialType').append('<option value="Concrete">Concrete</option>');
-                $('.changeMaterialType').append('<option value="Ceramic">Ceramic</option>');
-                $('.changeMaterialType').append('<option value="Brick">Brick</option>');
-            } else if (selectedMaterial === 'Water Features and Structures') {
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="Natural stone">Natural stone</option>');
-                $('.changeMaterialType').append('<option value="Fiberglass">Fiberglass</option>');
-                $('.changeMaterialType').append('<option value="Copper">Copper</option>');
-                $('.changeMaterialType').append('<option value="Wood">Wood</option>');
-                $('.changeMaterialType').append('<option value="Glass">Glass</option>');
-            } else if (selectedMaterial === 'Lighting') {
-                $('.changeMaterialType').append('<option value="">Select Material Types</option>');
-                $('.changeMaterialType').append('<option value="LED lights">LED lights</option>');
-                $('.changeMaterialType').append(
-                    '<option value="Solar-powered lights">Solar-powered lights</option>');
-                $('.changeMaterialType').append(
-                    '<option value="Low-voltage halogen">Low-voltage halogen</option>');
-                $('.changeMaterialType').append('<option value="Fiber optics">Fiber optics</option>');
-            }
-            // Add more conditions as needed for other material options
-        } else {
-            // If no option selected in 'Select Materials', disable 'Select Material Types' and reset its value
-            $('.changeMaterialType').prop('disabled', true);
-        }
-    });
     $(document).ready(function() {
         function handleButtonClick($tabPane) {
             const $colorButton = $tabPane.find('.color-button');
@@ -1005,10 +675,10 @@
                 $materialButton.removeClass('active');
                 $colorDiv.show();
                 $materialDivs.hide();
-                $presetLink.text('Preset Colors');
-                $customLink.text('Custom Colors');
+                $presetLink.text(`${updatePresetColor}`);
+                $customLink.text(`${updateCustomColor}`);
                 $textareas.each(function() {
-                    $(this).attr('placeholder', 'white chalk paint');
+                    $(this).attr('placeholder', '{{ trans('content.white_chalk_paint') }}');
                 });
                 $selectMoreMaterial.hide();
             });
@@ -1018,10 +688,10 @@
                 $colorButton.removeClass('active');
                 $colorDiv.hide();
                 $materialDivs.show();
-                $presetLink.text('Preset Textures');
-                $customLink.text('Custom Textures');
+                $presetLink.text(`${updatePresetTexture}`);
+                $customLink.text(`${updateCustomTexture}`);
                 $textareas.each(function() {
-                    $(this).attr('placeholder', 'Orange peel textured wall');
+                    $(this).attr('placeholder', `${updatePlaceholdercolortext}`);
                 });
                 const hasActiveItems = $materialDivs.find('li.active').length > 0;
                 if (hasActiveItems) {
@@ -1147,16 +817,21 @@
 
     // Handle click events for initial list items
     $(".int_list_item li").click(function() {
+        console.log("clicked");
         var materialInput = document.getElementById('material0');
+        console.log('materialInput: ', materialInput);
         var materialTypeInput = document.getElementById('material_type0');
+        console.log('materialTypeInput: ', materialTypeInput);
         var custom_instruction = document.getElementById('custom_instruction0-change-colors-texture');
         materialTypeInput.value = '';
         if ($(this).hasClass("active")) {
+            console.log("if");
             $(this).removeClass("active");
             materialInput.value = '';
             custom_instruction.disabled = false; // Enable the textarea
             $(".select-more-details-int").slideUp();
         } else {
+            console.log("else");
             $(".int_list_item li").removeClass("active");
             $(this).addClass("active");
             materialInput.value = $(this).data('item');
@@ -1164,6 +839,7 @@
             $(".select-more-details-int").slideDown();
 
             const selectedItem = $(this).data('item');
+            console.log('selectedItem: ', selectedItem);
             updateSubItems(selectedItem, '.int_mate_list_item', 0);
         }
     });
@@ -1214,19 +890,12 @@
         }
     });
 
-
-
-    // Use event delegation for dynamically generated list items
-    // $(document).on('click', '.int_mate_list_item li, .ext_mate_list_item li, .gar_mate_list_item li', function() {
-    //     $(".int_mate_list_item li, .ext_mate_list_item li, .gar_mate_list_item li").removeClass("active");
-    //     $(this).addClass("active");
-    // });
-
     $(".int_mate_list_item").on('click', 'li', function() {
         $(".int_mate_list_item li").removeClass("active");
         $(this).addClass("active");
 
-        const selectedMaterialType = $(this).text();
+        const selectedMaterialType = $(this).data('material-type');
+        console.log('selectedMaterialType: ', selectedMaterialType);
         $('#material_type0').val(selectedMaterialType);
     });
 
@@ -1234,7 +903,7 @@
         $(".ext_mate_list_item li").removeClass("active");
         $(this).addClass("active");
 
-        const selectedMaterialType = $(this).text();
+        const selectedMaterialType = $(this).data('material-type');
         $('#material_type1').val(selectedMaterialType);
     });
 
@@ -1242,13 +911,33 @@
         $(".gar_mate_list_item li").removeClass("active");
         $(this).addClass("active");
 
-        const selectedMaterialType = $(this).text();
+        const selectedMaterialType = $(this).data('material-type');
         $('#material_type2').val(selectedMaterialType);
     });
 
     function updateSubItems(selectedItem, subItemsSelector, sec) {
+        console.log('selectedItem: ', selectedItem);
         const subItems = subItemsMapping[selectedItem] || [];
-        const subItemsHtml = subItems.map(item => `<li>${item}</li>`).join('');
+        console.log('subItems: ', subItems);
+
+        // Generate the `content` object with dynamic keys
+        const content = {};
+        subItems.forEach(item => {
+            const key = item.toLowerCase().replace(/\s+/g,
+            '_'); // Convert to lowercase and replace spaces with underscores
+            content[key] = item; // Add the original value to the content object
+        });
+        console.log('Content Object: ', content);
+
+        // Generate HTML using `{ trans(content.key) }`
+        const subItemsHtml = subItems
+            .map(item => {
+                const key = item.toLowerCase().replace(/\s+/g, '_');
+                // Check if translation exists, else fallback to original item
+                const translation = window.langTranslations.material_types?.[key] || item; // Replace with your actual translation logic
+                return `<li data-material-type='${item}'>${translation}</li>`;
+            })
+            .join('');
         $(subItemsSelector).html(subItemsHtml);
 
         $(`#material${sec}`).val(selectedItem);

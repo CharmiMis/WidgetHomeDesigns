@@ -167,7 +167,7 @@
                                     <div class="gs-refine-manually-single">
                                         <input type="hidden" id="maskingCheckbox" value="true" />
                                         <a href="javascript:void(0)" id="removeMasking" class="removeMasking"
-                                            onclick="toggleMasking(false)">{{ trans('content.remove_masking') }}/a>
+                                            onclick="toggleMasking(false)">{{ trans('content.remove_masking') }}</a>
                                         <a href="javascript:void(0)" id="addMasking" onclick="toggleMasking(true)"
                                             class="active addMasking">{{ trans('content.add_masking') }}</a>
                                     </div>
@@ -220,7 +220,7 @@
                                     <div class="gs-our-preset-color" data-sec="0">
                                         <input type="hidden" id="color_texture_color_swap" name="color_texture0">
                                         <p>{{ trans('content.color_list_text') }}</p>
-                                        @include('web2.designs_options.paint-visualizer')
+                                        @include('widget.designs_options.paint-visualizer')
                                     </div>
                                 </div>
                             </div>

@@ -1,8 +1,4 @@
-<option>Beautiful Redesign</option>
-{{-- <option>Garden Mix</option> --}}
-{{-- <option>Fill Space</option> --}}
-{{-- <option>Empty The Room</option> --}}
-{{-- <option>Change Colors</option> --}}
-<option>Creative Redesign</option>
-<option>Fill The Garden</option>
-<option value="Sketch to Render">Sketch to Render</option>
+<option>{{ trans('garden_mode.beautiful_redesign') }}</option>
+<option>{{ trans('garden_mode.creative_redesign') }}</option>
+<option>{{ trans('garden_mode.fill_the_garden') }}</option>
+<option value="Sketch to Render">{{ trans('garden_mode.sketch_to_render') }}</option>

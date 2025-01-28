@@ -1,4 +1,4 @@
-<option value="very_low">Very Low AI Intervention</option>
-<option value="low">Low AI Intervention</option>
-<option selected="" value="mid">Medium Intervention</option>
-<option value="extreme">Extreme AI Intervention</option>
+<option value="very_low">{{ trans('exterior_ai.very_low') }}</option>
+<option value="low">{{ trans('exterior_ai.low') }}</option>
+<option selected="" value="mid">{{ trans('exterior_ai.mid') }}</option>
+<option value="extreme">{{ trans('exterior_ai.extreme') }}</option>

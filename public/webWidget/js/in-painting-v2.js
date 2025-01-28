@@ -56,20 +56,6 @@ var paintingStagSecElement;
 var resizeImageWidth;
 var resizeImageHeight;
 var mainImage,textureImage = '';
-const uploadColorValidate = translations.getAttribute('data-validation1-type');
-const updateMaskImage = translations.getAttribute('data-validation2-type');
-const updateTextureImage = translations.getAttribute('data-validation3-type');
-const updateMainImage = translations.getAttribute('data-validation4-type');
-const updateRoomType = translations.getAttribute('data-validation5-type');
-const updateHouseAngle = translations.getAttribute('data-validation6-type');
-const updateGardenType = translations.getAttribute('data-validation7-type');
-const updateDesignStyle = translations.getAttribute('data-validation8-type');
-const updateModeType = translations.getAttribute('data-validation9-type');
-const updateCustomElement = translations.getAttribute('data-validation10-type');
-const updateSkyColor = translations.getAttribute('data-validation11-type');
-const updateMaterialType = translations.getAttribute('data-validation12-type');
-const updateOneCustomElement = translations.getAttribute('data-validation13-type');
-const updateImageMerge = translations.getAttribute('data-validation14-type');
 
 // $imgCropPreview.cropper({
 //     aspectRatio: 1 / 1,
@@ -1075,7 +1061,7 @@ async function callInPaintingAPI(sec,el) {
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
     // document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
     if (!imageLayer.hasChildren()) {
-        alert("Oops! You didn't upload your image.");
+        alert(`${updateUploadImage}`);
         enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
         $('.on-gen-disable').removeClass('disable-btn');
         $('.modules_tabs').removeClass('disable-btn');
@@ -1509,10 +1495,10 @@ function generatedImageItem(item) {
     }
     img.src = item.generated_image;
     if (item.design_style !== undefined && item.design_style !== '' && item.design_style != 'N/A') {
-        styleSpan.textContent = "Style: " + item.design_style;
+        styleSpan.textContent = designStyleText + " : " + item.design_style;
     }
     if (item.room_type !== undefined && item.room_type !== '' && item.design_style != 'N/A') {
-        roomTypeSpan.textContent = "Room Type: " + item.room_type;
+        roomTypeSpan.textContent = roomTypeText + " : " + item.room_type;
     }
 
     if (item.hd_image === true) {
@@ -1525,19 +1511,7 @@ function generatedImageItem(item) {
 
     return clone;
 }
-// function previewImage() {
-//     $("#modalImagePreview").modal('show');
-//     var src = $('.inpainting-preview').data('img');
-//     $("#mip").attr('src', src);
-// }
-// $('.inpainting-preview').on('click',function(){
-// })
-// $(document).on('click', '.inpainting-preview', function () {
-//     $("#modalImagePreview").modal('show');
-//     var src = $(this).data('img');
-//     $("#mip_before").attr('src', src);
-//     $("#mip_after").attr('src', src);
-// });
+
 $(document).on('click', '.full_hd_quality', async function () {
     $('#closeModal').addClass('disable-btn');
     var sec = $(this).data('sec');
@@ -1813,7 +1787,7 @@ async function getMaskImage(el) {
     disableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
 
     if (!imageLayer.hasChildren()) {
-        alert('Upload image');
+        alert(`${updateUploadImage}`);
         return;
     }
     if (!hasTransparentPixels) {
@@ -1894,9 +1868,20 @@ async function getNpyImgFile(img) {
             var label = result.label;
             var checkboxId = result.id;
 
+            // Fallback logic to handle translations and potential mismatches
+            const normalizedLabel = label.replace(/,\s*/g, '_').replace(/\s+/g, '_').toLowerCase();
+            translatedLabel = maskingTranslations[normalizedLabel] || label;
+
+            // Check for translated label with commas or spaces and map to original key
+            // if (label.includes(',')) {
+            //     // Remove commas/spaces and try to match the original key
+            //     const normalizedLabel = label.replace(/,\s*/g, '_').replace(/\s+/g, '_').toLowerCase();
+            //     translatedLabel = maskingTranslations[normalizedLabel] || label;
+            // }
+
             var liElement = $('<li>');
             var checkbox = $('<input>', { type: 'checkbox', id: checkboxId, name: 'checkbox', value: checkboxId, class: 'checkbox' }).hide();;
-            var labelElement = $('<label>', { for: checkboxId, text: label });
+            var labelElement = $('<label>', { for: checkboxId, text: translatedLabel }).attr('data-masking-value',label );
 
             liElement.append(checkbox).append(labelElement);
             ulElement.append(liElement);
@@ -1911,7 +1896,8 @@ async function getNpyImgFile(img) {
             checkbox.prop('checked', !isChecked);
             $(this).toggleClass('active', !isChecked);
 
-            var labelText = $(this).find('label').text();
+            var labelText = $(this).find('label').attr('data-masking-value');
+            console.log('labelText: ', labelText);
 
             if (!isChecked) {
                 if (!ids.includes(Number(checkbox.val()))) {
@@ -2381,17 +2367,17 @@ function generatedInPaintingItem(item){
     outputImg.src = item.generated_url;
 
     if (item.style !== undefined && item.style !== '' && item.style != 'N/A') {
-        styleSpan.textContent = "Design Style: " + item.style;
+        styleSpan.textContent = designStyleText + " : " + item.style;
     } else {
         styleSpan.style.background = 'transparent';
     }
     if (item.room_type !== undefined && item.room_type !== '' && item.room_type != 'N/A') {
         if(item.section == 1){
-            roomTypeSpan.textContent = "House Angle: " + item.room_type;
+            roomTypeSpan.textContent = designHouseAngleText + " : " + item.room_type;
         }else if(item.section == 2){
-            roomTypeSpan.textContent = "Garden Type: " + item.room_type;
+            roomTypeSpan.textContent = designGardenTypeText +  " : " + item.room_type;
         }else{
-            roomTypeSpan.textContent = "Room Type: " + item.room_type;
+            roomTypeSpan.textContent = roomTypeText +  " : " + item.room_type;
         }
     } else {
         roomTypeSpan.style.background = 'transparent';
@@ -2474,7 +2460,7 @@ async function _generateStyleTransferDesign(sec,el){
     var mode = modeValue.value;
 
     if (!imageLayer.hasChildren()) {
-        alert('Upload Image');
+        alert(`${updateUploadImage}`);
         generateDesignBtn.disabled = false;
         generateDesignBtn.getElementsByTagName('span')[0].style.display = 'none';
         return;
@@ -2493,7 +2479,7 @@ async function _generateStyleTransferDesign(sec,el){
     }
 
     if (prompt == '') {
-        alert('Add Prompt');
+        alert(`${updatePrompt}`);
         generateDesignBtn.disabled = false;
         generateDesignBtn.getElementsByTagName('span')[0].style.display = 'none';
         return false;

@@ -1,5 +1,5 @@
-<option value="" selected>Select Exterior Materials</option>
-<option value="Facade">Facade</option>
-<option value="Roofing">Roofing</option>
-<option value="Decking and Walkways">Decking and Walkways</option>
-<option value="Outdoor Fixtures and Accents">Outdoor Fixtures and Accents</option>
+<option value="" selected>{{ trans('exteriorMaterials.select_exterior_materials') }}</option>
+<option value="Facade">{{ trans('exteriorMaterials.facade') }}</option>
+<option value="Roofing">{{ trans('exteriorMaterials.roofing') }}</option>
+<option value="Decking and Walkways">{{ trans('exteriorMaterials.decking_and_walkways') }}</option>
+<option value="Outdoor Fixtures and Accents">{{ trans('exteriorMaterials.outdoor_fixtures_and_Accents') }}</option>

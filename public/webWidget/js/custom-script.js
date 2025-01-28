@@ -6,6 +6,42 @@ var selectedImages;
 var ipsValidateImage;
 var ipsValidateTextureImage;
 var getBase64FromUrl;
+            
+const translations = document.getElementById('translations');
+const designStyleText = translations.getAttribute('data-design-styles');
+const designHouseAngleText = translations.getAttribute('data-house-angle-types');
+const designGardenTypeText = translations.getAttribute('data-garden-types');
+const roomTypeText = translations.getAttribute('data-room-types');
+const modeTypeText = translations.getAttribute('data-mode-types');
+const noDesignsText = translations.getAttribute('data-no-text-type');
+const uploadColorValidate = translations.getAttribute('data-validation1-type');
+const updateMaskImage = translations.getAttribute('data-validation2-type');
+const updateTextureImage = translations.getAttribute('data-validation3-type');
+const updateMainImage = translations.getAttribute('data-validation4-type');
+const updateRoomType = translations.getAttribute('data-validation5-type');
+const updateHouseAngle = translations.getAttribute('data-validation6-type');
+const updateGardenType = translations.getAttribute('data-validation7-type');
+const updateDesignStyle = translations.getAttribute('data-validation8-type');
+const updateModeType = translations.getAttribute('data-validation9-type');
+const updateCustomElement = translations.getAttribute('data-validation10-type');
+const updateSkyColor = translations.getAttribute('data-validation11-type');
+const updateMaterialType = translations.getAttribute('data-validation12-type');
+const updateOneCustomElement = translations.getAttribute('data-validation13-type');
+const updateImageMerge = translations.getAttribute('data-validation14-type');
+const updateMoreImages = translations.getAttribute('data-validation15-type');
+const updateUploadImage = translations.getAttribute('data-validation16-type');
+const updateImageExtension = translations.getAttribute('data-validation17-type');
+const updateMinSize = translations.getAttribute('data-validation18-type');
+const updatePrompt = translations.getAttribute('data-validation19-type');
+const updateFurniture = translations.getAttribute('data-validation20-type');
+const updateSimilarProduct = translations.getAttribute('data-validation21-type');
+const updateImageType= translations.getAttribute('data-validation22-type');
+const updateCustomTexture= translations.getAttribute('data-custom-texture-type');
+const updatePresetTexture= translations.getAttribute('data-preset-texture-type');
+const updatePlaceholdercolortext= translations.getAttribute('data-placeholder-colortext-type');
+const updatePresetColor= translations.getAttribute('data-preset-color-type');
+const updateCustomColor= translations.getAttribute('data-custom-color-type');
+
 $('document').ready(function () {
     // Store the value in localStorage
     objectContainer = document.querySelector(".key-objects-result");
@@ -528,13 +564,13 @@ $(".img-upload-outer").on('click touchstart', function () {
 
 function ipsFailOnValidImage(error, min_height_width = 512) {
     if (error == 'type') {
-        let error_message = 'Oops! allowed extensions are: jpeg, jpg and png.';
+        let error_message = `${updateImageExtension}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
     }
 
     if (error == 'size') {
-        let error_message = 'Oops! minimum size should be ' + min_height_width + 'x' + min_height_width;
+        let error_message = `${updateMinSize}` + min_height_width + 'x' + min_height_width;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
     }
@@ -713,7 +749,7 @@ function deleteMultipleImages() {
     if(multipleDownloadImg.length > 0){
         $("#confirm_modal").modal('show');
     }else{
-        let error_message = 'Oops! Please select one or more images to use this functionality.';
+        let error_message = `${updateMoreImages}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
     }
@@ -1017,7 +1053,7 @@ async function _generateDesign(sec, el) {
     var widgetuserid = document.getElementById('widgetUserID').value;
 
     if (image == '') {
-        alert("Oops! You didn't upload your image.");
+        alert(`${updateUploadImage}`);
         $(el).attr('disabled', false);
         $('.gs-continue-btn').removeClass('disable-btn');
         $('.on-gen-disable').removeClass('disable-btn');
@@ -1030,11 +1066,11 @@ async function _generateDesign(sec, el) {
     if (roomType == '') {
         let error_message
         if (sec == 0) {
-            error_message = 'Oops! You didn’t select the room type.';
+            error_message = `${updateRoomType}`;
         } else if (sec == 1) {
-            error_message = 'Oops! You didn’t select the house angle.';
+            error_message = `${updateHouseAngle}`;
         } else {
-            error_message = 'Oops! You didn’t select the garden type.';
+            error_message = `${updateGardenType}`;
         }
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
@@ -1048,7 +1084,7 @@ async function _generateDesign(sec, el) {
     }
 
     if (styleType == '') {
-        let error_message = 'Oops! You didn’t select the design style.';
+        let error_message = `${updateDesignStyle}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
         $(el).attr('disabled', false);
@@ -1066,7 +1102,7 @@ async function _generateDesign(sec, el) {
     }
 
     if (modeType == '') {
-        let error_message = 'Oops! You didn’t select the mode type.';
+        let error_message = `${updateModeType}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
         $(el).attr('disabled', false);
@@ -1091,7 +1127,7 @@ async function _generateDesign(sec, el) {
     }
 
     if (customInstructionData == '' && dataPage == 'convenient-redesign') {
-        let error_message = "Oops! You didn't add a prompt.";
+        let error_message = `${updatePrompt}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
         $(el).attr('disabled', false);
@@ -2342,7 +2378,7 @@ $(".add_to_project_btn").click(function () {
     if(multipleDownloadImg.length > 0){
         $("#addToprojectmodal").modal('show');
     }else{
-        let error_message = 'Oops! Please select one or more images to use this functionality.';
+        let error_message = `${updateMoreImages}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
     }
@@ -2636,7 +2672,7 @@ function removeImagesFromFolder(projectId, subProjectId) {
             $("#confirm_modal").modal('hide');
         });
     }else{
-        let error_message = 'Oops! Please select one or more images to use this functionality.';
+        let error_message = `${updateMoreImages}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
     }
@@ -2676,7 +2712,7 @@ async function _generateProducts(sec, el) {
     let image_type = $container.find("[name='image_type'").val();
     let image = $container.find("[name='image'").val();
     if (image == '') {
-        alert("Oops! You didn't upload your image.");
+        alert(`${updateUploadImage}`);
         $(el).attr('disabled', false);
         return;
     }
@@ -2764,7 +2800,7 @@ async function _generateProducts(sec, el) {
                     });
                     if (response['success'] === false) {
                         // Display an error message
-                        let error_message = 'No Furniture Found. Please try again.';
+                        let error_message = `${updateFurniture}`;
                         $('#errorModal h4').text(error_message);
                         $('#errorModal').modal('show');
                         $('.similar-prod').addClass('d-none');
@@ -3088,25 +3124,25 @@ function generatedRedesignItem(item) {
     // inputImg.src = item.original_url;
     outputImg.src = item.generated_url;
     if (item.style && item.style !== 'N/A') {
-        styleSpan.textContent = "Design Style: " + item.style;
+        styleSpan.textContent = designStyleText + " : " + item.style;
     } else {
         styleSpan.style.background = 'transparent';
         styleSpan.style.display = 'none';
     }
     if (item.room_type && item.room_type !== 'N/A') {
         if (item.section == 1) {
-            roomTypeSpan.textContent = "House Angle: " + item.room_type;
+            roomTypeSpan.textContent = designHouseAngleText + " : " + item.room_type;
         } else if (item.section == 2) {
-            roomTypeSpan.textContent = "Garden Type: " + item.room_type;
+            roomTypeSpan.textContent = designGardenTypeText + " : " + item.room_type;
         } else {
-            roomTypeSpan.textContent = "Room Type: " + item.room_type;
+            roomTypeSpan.textContent = roomTypeText + " : " + item.room_type;
         }
     } else {
         roomTypeSpan.style.background = 'transparent';
         roomTypeSpan.style.display = 'none';
     }
     if (item.mode !== undefined && item.mode !== '' && item.mode != 'N/A') {
-        modeTypeSpan.textContent = "Mode Type: " + item.mode;
+        modeTypeSpan.textContent = modeTypeText + " : " + item.mode;
     } else {
         modeTypeSpan.style.background = 'transparent';
         modeTypeSpan.style.display = 'none';
@@ -3198,7 +3234,7 @@ $(".add_all_images_as_favourite").click(function () {
             }
         });
     }else{
-        let error_message = 'Oops! Please select one or more images to use this functionality.';
+        let error_message = `${updateMoreImages}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
     }
@@ -3224,7 +3260,7 @@ $(".add_all_images_as_favourite").click(function () {
 $(document).on('click', '.continue-parameter', function () {
     if (dataPage == 'collage_to_render'){
         if($(".custom_added_elements").length <= 0 && $(".existing_elements").length <= 0){
-            let error_message = 'Please upload custom elements to proceed.';
+            let error_message = `${upload_custom_element}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
             return;
@@ -3233,7 +3269,7 @@ $(document).on('click', '.continue-parameter', function () {
         const objects = paintingCollageStag.getObjects();
         currLoc = $(location).attr('href');
         if((currLoc.indexOf('room-composer') != -1) && (objects.length <= 1)){
-            let error_message = 'Oops! Please add at least 1 Custom element to proceed.';
+            let error_message = `${updateOneCustomElement}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
             return null;
@@ -3284,12 +3320,12 @@ function _generateFeedback(sec ,el){
     var image = document.getElementById(`input_image-${dataPage}`).value;
 
     if (image == '') {
-        alert("Oops! You didn't upload your image.");
+        alert(`${updateUploadImage}`);
         $(el).attr('disabled', false);
         return;
     }
     if (imageType == null || imageType === "") {
-        let error_message = "Oops! You didn't select image type.";
+        let error_message = `${updateImageType}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
         return;
@@ -3365,7 +3401,7 @@ function _generateFeedback(sec ,el){
 function _generateSmartHome(sec ,el){
     var image = document.getElementById(`input_image-${dataPage}`).value;
     if (image == '') {
-        alert("Oops! You didn't upload your image.");
+        alert(`${updateUploadImage}`);
         $(el).attr('disabled', false);
         return;
     }
@@ -3662,7 +3698,7 @@ $('.second_tab_active').click(function () {
     if(dataPage != 'redesign' && dataPage !='sketchToRender' && dataPage != 'rostMyHome' && dataPage != 'convenient-redesign' && dataPage != 'collage_to_render' && dataPage != 'productSearch'){
 
         if (!imageLayer.hasChildren()) {
-            let error_message = "Oops! You didn't upload your image.";
+            let error_message = `${updateUploadImage}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
             return;
@@ -3671,7 +3707,7 @@ $('.second_tab_active').click(function () {
     if(dataPage == 'collage_to_render'){
         if(mainImage == undefined)
             {
-                let error_message = "Oops! You didn't upload your image.";
+                let error_message = `${updateUploadImage}`;
                 $('#errorModal h4').text(error_message);
                 $('#errorModal').modal('show');
                 return;
@@ -3680,7 +3716,7 @@ $('.second_tab_active').click(function () {
     if(dataPage == 'redesign' || dataPage =='sketchToRender' || dataPage == 'rostMyHome' || dataPage == 'convenient-redesign' || dataPage == 'productSearch'){
         var image = document.getElementById(`input_image-${dataPage}`).value;
         if (image == '') {
-            let error_message = "Oops! You didn't upload your image.";
+            let error_message = `${updateUploadImage}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
             return;
@@ -3708,13 +3744,13 @@ $('.third_tab_active').click(function () {
     if (dataPage == 'collage_to_render'){
         if(mainImage == undefined)
             {
-                let error_message = "Oops! You didn't upload your image.";
+                let error_message = `${updateUploadImage}`;
                 $('#errorModal h4').text(error_message);
                 $('#errorModal').modal('show');
                 return;
             }
         if($(".custom_added_elements").length <= 0 && $(".existing_elements").length <= 0){
-            let error_message = 'Please upload custom elements to proceed.';
+            let error_message = `${upload_custom_element}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
             return;
@@ -3723,21 +3759,21 @@ $('.third_tab_active').click(function () {
         const objects = paintingCollageStag.getObjects();
         currLoc = $(location).attr('href');
         if((currLoc.indexOf('room-composer') != -1) && (objects.length <= 1)){
-            let error_message = 'Oops! Please add at least 1 Custom element to proceed.';
+            let error_message = `${updateOneCustomElement}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
             return null;
         }
     }else if(dataPage == 'productSearch'){
         if(resultArray == ''){
-            let error_message = "Press 'Get Products' button to find similar Products.";
+            let error_message = `${updateSimilarProduct}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
             return;
         }
     }else{
         if (!imageLayer.hasChildren()) {
-            let error_message = "Oops! You didn't upload your image.";
+            let error_message = `${updateUploadImage}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
             return;

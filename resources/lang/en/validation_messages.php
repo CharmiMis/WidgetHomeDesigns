@@ -14,5 +14,13 @@
     'select_material_type' => 'Oops! You didn’t select the material type.',
     'select_one_custom_element' => 'Oops! Please add at least 1 Custom element to proceed.',
     'no_image_merge' => 'No images to merge.',
+    'select_more_image' => 'Oops! Please select one or more images to use this functionality.',
+    'upload_image' => 'Oops! You didn’t upload any image.',
+    'allowed_extension' => 'Oops! allowed extensions are: jpeg, jpg and png.',
+    'min_size_text' => 'Oops! minimum size should be',
+    'update_prompts' => 'Oops! You didn’t add a prompt.',
+    'no_furniture_found' => 'No Furniture Found. Please try again.',
+    'find_similar_product' => 'Press "Get Products" button to find similar Products.',
+    'select_image_type' => 'Oops! You didn’t select image type.',
 
 ];

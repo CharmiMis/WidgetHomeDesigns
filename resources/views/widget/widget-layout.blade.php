@@ -1603,11 +1603,12 @@
     @include('web2.common.design-preview')
     <div 
         id="translations"
-        data-design-style="{{ trans('content.design_style_text') }}"
-        data-room-type="{{ trans('content.room_type_text') }}"
-        data-mode-type="{{ trans('content.mode_type_text') }}"
+        data-design-styles="{{ trans('content.design_style_text') }}"
+        data-room-types="{{ trans('content.room_type_text') }}"
+        data-house-angle-types="{{ trans('content.house_angle_text') }}"
+        data-garden-types="{{ trans('content.garden_type_text') }}"
+        data-mode-types="{{ trans('content.mode_type_text') }}"
         data-no-text-type="{{ trans('content.no_designs_text') }}"
-        data-download-type="{{ trans('content.download_text') }}"
         data-validation1-type="{{ trans('validation_messages.upload_texture_color') }}"
         data-validation2-type="{{ trans('validation_messages.masked_image') }}"
         data-validation3-type="{{ trans('validation_messages.upload_textture_image') }}"
@@ -1620,8 +1621,21 @@
         data-validation10-type="{{ trans('validation_messages.upload_custom_element') }}"
         data-validation11-type="{{ trans('validation_messages.select_sky_Color') }}"
         data-validation12-type="{{ trans('validation_messages.select_material_type') }}"
-        data-validation13-type="{{ trans('validation_messages.select_material_type') }}"
+        data-validation13-type="{{ trans('validation_messages.select_one_custom_element') }}"
         data-validation14-type="{{ trans('validation_messages.no_image_merge') }}"
+        data-validation15-type="{{ trans('validation_messages.select_more_image') }}"
+        data-validation16-type="{{ trans('validation_messages.upload_image') }}"
+        data-validation17-type="{{ trans('validation_messages.allowed_extension') }}"
+        data-validation18-type="{{ trans('validation_messages.min_size_text') }}"
+        data-validation19-type="{{ trans('validation_messages.update_prompts') }}"
+        data-validation20-type="{{ trans('validation_messages.no_furniture_found') }}"
+        data-validation21-type="{{ trans('validation_messages.find_similar_product') }}"
+        data-validation22-type="{{ trans('validation_messages.select_image_type') }}"
+        data-custom-texture-type="{{ trans('content.custom_textures') }}"
+        data-preset-texture-type="{{ trans('content.preset_textures') }}"
+        data-placeholder-colortext-type="{{ trans('content.placholder_Orange_peel_text') }}"
+        data-preset-color-type="{{ trans('content.preset_colors') }}"
+        data-custom-color-type="{{ trans('content.custom_colors') }}"
         >
     </div>
 
@@ -1633,6 +1647,8 @@
 
     @stack('script-stack')
     <script type="text/javascript">
+    const maskingTranslations = @json(__('masking_objects'));
+
         //$productFruits.push(['init', 'jz7YULFHbhRincAX', 'en', { username: '{{$customerName}}' }]);
     </script>
     <script>
@@ -1731,13 +1747,6 @@
     </script>
     <script>
         $(document).ready(function() {
-            
-            const translations = document.getElementById('translations');
-            const designStyleText = translations.getAttribute('data-design-style');
-            const roomTypeText = translations.getAttribute('data-room-type');
-            const modeTypeText = translations.getAttribute('data-mode-type');
-            const modeDownloadText = translations.getAttribute('data-download-type');
-            const noDesignsText = translations.getAttribute('data-no-text-type');
             //Open Drop Down
             $(".custom-select-wrapper p").click(function() {
 

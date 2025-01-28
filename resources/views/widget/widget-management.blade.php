@@ -195,7 +195,7 @@
                                 <div class="ai-upload-optons">
                                     <ul>
                                         <li class="ai-upload-add-project-list">
-                                            <span class="ai-upload-option-tooltip"> Download </span>
+                                            <span class="ai-upload-option-tooltip"> {{ trans('content.download_text') }} </span>
                                             <a class="download" href="javascript:void(0)" data-download-url=""
                                                 title="Download" download data-item="download-output-btn">
                                                 <img
@@ -203,7 +203,7 @@
                                             </a>
                                         </li>
                                         <li class="ai-upload-add-project-list">
-                                            <span class="ai-upload-option-tooltip"> Show </span>
+                                            <span class="ai-upload-option-tooltip"> {{ trans('content.show_text') }} </span>
                                             <a class="ip_img_preview inpainting-preview" href="javascript:void(0)"
                                                 data-img="" data-item="preview-btn-output" title="Open"
                                                 onclick="previewImage()">
@@ -212,7 +212,7 @@
                                             </a>
                                         </li>
                                         <li class="ai-upload-add-project-list on-gen-disable">
-                                            <span class="ai-upload-option-tooltip"> HD </span>
+                                            <span class="ai-upload-option-tooltip"> {{ trans('content.hd_text') }} </span>
                                             <a class="generate_hd_img" href="javascript:void(0)" data-inputimg="" data-img=""
                                                     title="Full Hd Quality" data-sec="" data-item="hd_quality">
                                                 <img src="https://homedesigns-ai.b-cdn.net/web2/images/gs-image-editing-slide-icon8.svg">
@@ -248,14 +248,14 @@
                                 <div class="ai-upload-optons">
                                     <ul>
                                         <li class="ai-upload-add-project-list">
-                                            <span class="ai-upload-option-tooltip"> Download </span>
+                                            <span class="ai-upload-option-tooltip"> {{ trans('content.download_text') }} </span>
                                             <a class="download" href="javascript:void(0)" data-download-url=""
                                                 title="Download" download data-item="download-output-btn">
                                                 <img src="{{ asset('webWidget/images/ai-upload-optons-icon1.svg') }}">
                                             </a>
                                         </li>
                                         <li class="ai-upload-add-project-list">
-                                            <span class="ai-upload-option-tooltip"> Show </span>
+                                            <span class="ai-upload-option-tooltip"> {{ trans('content.show_text') }} </span>
                                             <a class="ip_img_preview inpainting-preview" href="javascript:void(0)"
                                                 data-img="" data-item="preview-btn-output" title="Open"
                                                 onclick="previewImage()">
@@ -263,7 +263,7 @@
                                             </a>
                                         </li>
                                         <li class="ai-upload-add-project-list on-gen-disable">
-                                            <span class="ai-upload-option-tooltip"> HD </span>
+                                            <span class="ai-upload-option-tooltip"> {{ trans('content.hd_text') }} </span>
                                             <a class="full_hd_quality" href="javascript:void(0)" data-img="" data-sec=""
                                                 data-item="hd_quality" title="Full HD Quality">
                                                 <img src="{{ asset('webWidget/images/gs-image-editing-slide-icon8.svg') }}">

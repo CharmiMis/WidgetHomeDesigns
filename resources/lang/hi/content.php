@@ -55,7 +55,18 @@ return [
         'room_type_text' => 'कक्ष प्रकार',
         'mode_type_text' => 'मोड प्रकार',
         'download_text' => 'डाउनलोड करें',
+        'house_angle_text' => 'घर का कोण',
+        'garden_type_text' => 'बग़ीचा प्रकार',
+        'no_designs_text' => 'इस अनुभाग के लिए कोई डिज़ाइन नहीं मिला।',
+        'show_text' => 'दिखाएं',
+        'hd_text' => 'एचडी',
+        'custom_textures' => 'कस्टम बनावट',
+        'preset_textures' => 'पूर्वनिर्धारित बनावट',
+        'placholder_Orange_peel_text' => 'संतरे की छिलके जैसी बनावट वाली दीवार',
+
+
         'no_designs_text' => 'इस खंड के लिए कोई डिज़ाइन नहीं मिला।',
+
         'keep_structural_elements' => 'संरचनात्मक तत्व बनाए रखें',
         'ai_intervention' => 'एआई हस्तक्षेप',
         'intervention_very_low' => 'बहुत कम',
@@ -139,6 +150,7 @@ return [
         'outdoor_furniture_and_decor' => 'आउटडोर फर्नीचर और सजावट',
         'water_features_and_structures' => 'जल विशेषताएँ और संरचनाएँ',
         'lighting' => 'प्रकाश',
+        'white_chalk_paint' => 'सफेद चॉक पेंट',
         'right_tip_redesign_first' => '‘आपकी कस्टम सेटिंग्स’ पर क्लिक करें ताकि आप हमारे ए.आई. को विशिष्ट निर्देश दे सकें।',
         'right_tip_redesign_second' => 'सुंदर पुनः डिज़ाइन में, हमारा ए.आई. तेज और सुंदर परिणाम उत्पन्न करता है, लेकिन इसमें वस्तुओं को जोड़ने या हटाने की स्वतंत्रता कम होती है।',
         'right_tip_redesign_third' => 'चित्र से रेंडर मोड का उपयोग करें ताकि कच्चे चित्रों को फोटो-यथार्थवादी रेंडर में बदला जा सके।',
