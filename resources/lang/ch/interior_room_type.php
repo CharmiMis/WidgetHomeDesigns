@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'all_room_Types' => '所有房间类型',
     'living_room' => '客厅',
     'bedroom' => '卧室',
     'bathroom' => '浴室',
