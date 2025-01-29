@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'all_room_Types' => 'सभी कक्ष प्रकार',
     'living_room' => 'बैठक कक्ष',
     'bedroom' => 'शयनकक्ष',
     'bathroom' => 'स्नानघर',
