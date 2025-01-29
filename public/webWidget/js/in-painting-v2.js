@@ -1162,7 +1162,6 @@ async function callInPaintingAPI(sec,el) {
     if (dataPage == 'change-colors-texture' && color == "" && (prompt == '' ||  $(`#custom_instruction${sec}_${dataPage}`).prop('disabled'))){
         if (dataPage == 'change-colors-texture' && prompt == ''  && color == '' && material_type == '' && material == "") {
             let error_message = `${uploadColorValidate}`;
-            console.log('error_message: ', error_message);
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
             $(el).attr('disabled', false);
@@ -1867,17 +1866,9 @@ async function getNpyImgFile(img) {
         segmentationInfo.forEach(function (result) {
             var label = result.label;
             var checkboxId = result.id;
-
-            // Fallback logic to handle translations and potential mismatches
-            const normalizedLabel = label.replace(/,\s*/g, '_').replace(/\s+/g, '_').toLowerCase();
+            const normalizedLabel = label.trim().replace(/,\s*/g, '_').replace(/[-\s]+(?=\S)/g, '_').toLowerCase();
+            // const normalizedLabel = label.replace(/,\s*/g, '_').replace(/\s+/g, '_').toLowerCase();
             translatedLabel = maskingTranslations[normalizedLabel] || label;
-
-            // Check for translated label with commas or spaces and map to original key
-            // if (label.includes(',')) {
-            //     // Remove commas/spaces and try to match the original key
-            //     const normalizedLabel = label.replace(/,\s*/g, '_').replace(/\s+/g, '_').toLowerCase();
-            //     translatedLabel = maskingTranslations[normalizedLabel] || label;
-            // }
 
             var liElement = $('<li>');
             var checkbox = $('<input>', { type: 'checkbox', id: checkboxId, name: 'checkbox', value: checkboxId, class: 'checkbox' }).hide();;
@@ -1897,7 +1888,6 @@ async function getNpyImgFile(img) {
             $(this).toggleClass('active', !isChecked);
 
             var labelText = $(this).find('label').attr('data-masking-value');
-            console.log('labelText: ', labelText);
 
             if (!isChecked) {
                 if (!ids.includes(Number(checkbox.val()))) {

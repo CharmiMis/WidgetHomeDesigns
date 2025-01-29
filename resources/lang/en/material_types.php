@@ -218,7 +218,7 @@ return [
 
     'teak' => 'Teak',
     'wrought_iron' => 'Wrought Iron',
-    'rattan' => 'Rattan',
+    'rattan' => 'Rattan', 
     'fire_pits' => 'Fire Pits',
     'ceramic' => 'Ceramic',
     'brick' => 'Brick',

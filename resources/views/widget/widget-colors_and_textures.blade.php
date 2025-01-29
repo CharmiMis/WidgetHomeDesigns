@@ -817,21 +817,16 @@
 
     // Handle click events for initial list items
     $(".int_list_item li").click(function() {
-        console.log("clicked");
         var materialInput = document.getElementById('material0');
-        console.log('materialInput: ', materialInput);
         var materialTypeInput = document.getElementById('material_type0');
-        console.log('materialTypeInput: ', materialTypeInput);
         var custom_instruction = document.getElementById('custom_instruction0-change-colors-texture');
         materialTypeInput.value = '';
         if ($(this).hasClass("active")) {
-            console.log("if");
             $(this).removeClass("active");
             materialInput.value = '';
             custom_instruction.disabled = false; // Enable the textarea
             $(".select-more-details-int").slideUp();
         } else {
-            console.log("else");
             $(".int_list_item li").removeClass("active");
             $(this).addClass("active");
             materialInput.value = $(this).data('item');
@@ -839,7 +834,6 @@
             $(".select-more-details-int").slideDown();
 
             const selectedItem = $(this).data('item');
-            console.log('selectedItem: ', selectedItem);
             updateSubItems(selectedItem, '.int_mate_list_item', 0);
         }
     });
@@ -895,7 +889,6 @@
         $(this).addClass("active");
 
         const selectedMaterialType = $(this).data('material-type');
-        console.log('selectedMaterialType: ', selectedMaterialType);
         $('#material_type0').val(selectedMaterialType);
     });
 
@@ -916,23 +909,19 @@
     });
 
     function updateSubItems(selectedItem, subItemsSelector, sec) {
-        console.log('selectedItem: ', selectedItem);
         const subItems = subItemsMapping[selectedItem] || [];
-        console.log('subItems: ', subItems);
 
         // Generate the `content` object with dynamic keys
         const content = {};
         subItems.forEach(item => {
-            const key = item.toLowerCase().replace(/\s+/g,
-            '_'); // Convert to lowercase and replace spaces with underscores
+            const key = item.trim().toLowerCase().replace(/[-\s]+(?=\S)/g, '_'); // Convert to lowercase and replace spaces with underscores
             content[key] = item; // Add the original value to the content object
         });
-        console.log('Content Object: ', content);
 
         // Generate HTML using `{ trans(content.key) }`
         const subItemsHtml = subItems
             .map(item => {
-                const key = item.toLowerCase().replace(/\s+/g, '_');
+                const key = item.trim().toLowerCase().replace(/[-\s]+(?=\S)/g, '_');
                 // Check if translation exists, else fallback to original item
                 const translation = window.langTranslations.material_types?.[key] || item; // Replace with your actual translation logic
                 return `<li data-material-type='${item}'>${translation}</li>`;
