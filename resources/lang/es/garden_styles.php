@@ -1,0 +1,26 @@
+<?php
+return [
+   'all_design_styles' => 'Todos los Estilos de Diseño',
+   'no_style' => 'Sin Estilo - Solo Mejora de Imagen',
+   'city' => 'Ciudad',
+   'contemporary' => 'Contemporáneo',
+   'luxury' => 'Lujo',
+   'apartment' => 'Apartamento',
+   'small' => 'Pequeño',
+   'vegetable' => 'Vegetal',
+   'low_budget' => 'Bajo Presupuesto',
+   'beach' => 'Playa',
+   'wedding' => 'Boda',
+   'rural' => 'Rural',
+   'mediterranean' => 'Mediterráneo',
+   'restaurant' => 'Restaurante',
+   'formal' => 'Formal',
+   'american' => 'Americano',
+   'english' => 'Inglés',
+   'traditional' => 'Tradicional',
+   'christmas' => 'Navidad',
+   'meditation' => 'Meditación',
+   'coastal' => 'Costero',
+   'tropical' => 'Tropical',
+
+];
