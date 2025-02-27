@@ -1,7 +1,7 @@
 <?php
 
 return [
-        'redesign' => 'Redesign',
+        'redesign' => 'Redesenhar',
         'precision' => 'Precisão+',
         'fill_spaces' => 'Preencher Espaços',
         'decor_staging' => 'Encenação de Decoração',
