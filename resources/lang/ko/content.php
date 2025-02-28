@@ -170,6 +170,24 @@ return [
         'right_tip_pricision_second' => '‘수동으로 정밀 조정’ 버튼을 클릭하여 브러시 크기, 모양, 동작을 조정하세요.',
         'right_tip_pricision_third' => '변경하려는 영역만 선택하세요. AI는 선택되지 않은 영역을 무시합니다.',
 
+        'right_tip_paint_visualizer_first' => '자동 선택 또는 수동 선택을 사용하여 페인트할 영역을 선택하세요.',
+        'right_tip_paint_visualizer_second' => '사전 설정된 색상을 선택하거나 색상 선택기를 사용하거나 샘플 색상이 포함된 이미지를 업로드하세요.',
+        'right_tip_paint_visualizer_third' => '최상의 결과를 위해 가능한 한 정확하게 선택하세요.',
+
+        'right_tip_furniture_removal_first' => '제거할 가구 또는 장식을 선택하세요.',
+        'right_tip_furniture_removal_second' => '완전히 제거하려면 구조 요소 및 창을 제외한 모든 항목을 선택하세요.',
+        'right_tip_furniture_removal_third' => '특정 정리를 원하면 제거하려는 항목만 선택하세요.',
+
+        'right_tip_fill_spaces_first' => '자동 선택을 사용한 후 수동 브러시로 선택을 세밀하게 조정하세요.',
+        'right_tip_fill_spaces_second' => '‘수동 조정’을 클릭하여 브러시 크기, 모양 및 동작을 조정하세요.',
+        'right_tip_fill_spaces_third' => '변경하려는 영역만 선택하세요. AI는 선택되지 않은 영역을 무시합니다.',
+
+        'right_tip_color_texture_first' => '수동 또는 자동 선택을 사용하여 변경할 객체를 선택하세요.',
+        'right_tip_color_text ure_second' => '이 AI 모델을 사용하여 실내 또는 실외 객체의 색상이나 질감을 변경할 수 있습니다.',
+        'right_tip_color_texture_third' => '"사용자 정의 색상" 또는 "사용자 정의 질감"을 클릭하여 사용자 정의 색상이나 질감을 추가할 수 있습니다.',
+
+        'or_click_here_to_upload' => '또는 여기를 클릭하여 업로드하세요.',
+
         'heading_title_redesign' => '공간을 즉시 새롭게 디자인하세요!',
         'heading_redesign' => '빠른 변화를 위한 리디자인 모드는 간편하고 효율적인 솔루션을 제공합니다. 창의적인 리디자인, 아름다운 리디자인, 스케치-렌더의 세 가지 하위 유형을 선택하여 공간을 새롭게 바꿔보세요.',
 
