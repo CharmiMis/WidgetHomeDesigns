@@ -294,6 +294,10 @@
     .accordion-post-content-top ul {
         margin: 0 0 15px !important;
     }
+    .lang-ar  .gs-select-room-style-single {
+        margin-right: 0;
+        margin-left: 3%;
+    }
 
 }
 
@@ -497,7 +501,12 @@
         padding: 20px;
         margin: -20px -20px 20px -20px;
     }
-
+/*Language Right direction css start */
+.lang-ar .gs-what-to-edit-left {
+    padding-right: 0;
+    padding-left: 0;
+}
+/*Language Right direction css end */
 }
 
 @media screen and (max-width:991px) {
@@ -820,7 +829,10 @@
     .ai-tool-right-top {
         justify-content: left !important;
     }
-
+.lang-ar  .gs-select-room-style-single {
+    margin-right: 0;
+    margin-left: 2%;
+}
 }
 
 @media screen and (max-width:767px) {
@@ -1801,4 +1813,13 @@
     .gs-redesign-content {
         margin: 8px 0 0;
     }
+
+.lang-ar .gs-dashboard-notice-info-text {
+    padding: 0 0px 0 10px;
+}
+.lang-ar  .gs-select-room-style-single {
+    margin-right: 0;
+    margin-left: 3%;
+}
+
 }
