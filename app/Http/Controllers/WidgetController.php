@@ -229,7 +229,7 @@ class WidgetController extends Controller
         if($preffered_langauge){
             App::setLocale($preffered_langauge);
         }
-        $widgetHtml = view('widget.widget-management', ['widgetData' => $widgetData, 'widgetThemeMode' => $userTheme->light_mode, 'primaryColor' => $widgetData->primary_color])->render();
+        $widgetHtml = view('widget.widget-management', ['widgetData' => $widgetData, 'preffered_langauge' => $preffered_langauge, 'widgetThemeMode' => $userTheme->light_mode, 'primaryColor' => $widgetData->primary_color])->render();
         return response($widgetHtml, 200)->header('Content-Type', 'text/html')
             ->header('X-User-Theme', $userTheme->light_mode);;
         // Render the Blade view to a string

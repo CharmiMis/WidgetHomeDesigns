@@ -19199,18 +19199,24 @@ const apiUrl = "https://widget.homedesigns.ai/";
 
     //   const userTheme = response.headers.get('X-User-Theme');
       const userTheme = document.getElementById('widgetThemeMode').value;
-
+      const preffered_langauge = document.getElementById('preffered_langauge').value;
        // Get all body elements (should ideally be only one)
        const bodyElements = document.getElementsByTagName('body');
 
-       if (bodyElements.length > 0 && userTheme === '1') {
-           // Assuming you want to target the first body element
-           bodyElements[0].classList.add('light-theme');
-           containerDiv.classList.add('light-theme');
-       }else if( userTheme === '1') {
-       document.body.classList.add('light-theme');
-       containerDiv.classList.add('light-theme');
-     }
+	    if(bodyElements.length > 0 && preffered_langauge == 'ar'){
+			bodyElements[0].classList.add('lang-ar');
+		}else{
+			bodyElements[0].classList.remove('lang-ar');
+		}
+
+		if (bodyElements.length > 0 && userTheme === '1') {
+			// Assuming you want to target the first body element
+			bodyElements[0].classList.add('light-theme');
+			containerDiv.classList.add('light-theme');
+		}else if( userTheme === '1') {
+			document.body.classList.add('light-theme');
+			containerDiv.classList.add('light-theme');
+		}
 
         // .map(link => "<link rel='stylesheet' type='text/css' href='" + link.href + "'>")
         // .join("\n");

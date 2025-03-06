@@ -144,6 +144,7 @@
     <input type="hidden" id="widgetUserID" value="{{ $widgetData->user_id }}" />
     <input type="hidden" id="widgetUserNumberOfGeneration" value="{{ $widgetData->number_of_designs }}" />
     <input type="hidden" id="widgetThemeMode" value="{{ $widgetThemeMode }}" />
+    <input type="hidden" id="preffered_langauge" value="{{ $preffered_langauge }}" />
     <input type="hidden" id="widgetFirstModuleDataPage" value="{{ $features[0] ?? '' }}" />
     <input type="hidden" id="widgetAccessedSpaceTypes" value="{{ $widgetData->space_types }}" />
     <div class="ai-tool-wrapper">
