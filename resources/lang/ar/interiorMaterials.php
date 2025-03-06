@@ -1,15 +1,15 @@
 <?php
 
-return[
-    'select_interior_materials' => 'Select Interior Materials',
-    'fabrics' => 'Fabrics',
-    'glass' => 'Glass',
-    'wood' => 'Wood',
-    'stone' => 'Stone',
-    'metal' => 'Metal',
-    'ceramics_and_porcelain' => 'Ceramics and Porcelain',
-    'plastics_and_polymers' => 'Plastics and Polymers',
-    'paper_and_cardboard' => 'Paper and Cardboard',
-    'natural_fibers' => 'Natural Fibers',
-    'composite_materials' => 'Composite Materials',
+return [
+    'select_interior_materials' => 'اختر مواد الديكور الداخلي',
+    'fabrics' => 'الأقمشة',
+    'glass' => 'الزجاج',
+    'wood' => 'الخشب',
+    'stone' => 'الحجر',
+    'metal' => 'المعدن',
+    'ceramics_and_porcelain' => 'السيراميك والخزف',
+    'plastics_and_polymers' => 'البلاستيك والبوليمرات',
+    'paper_and_cardboard' => 'الورق والكرتون',
+    'natural_fibers' => 'الألياف الطبيعية',
+    'composite_materials' => 'المواد المركبة',
 ];

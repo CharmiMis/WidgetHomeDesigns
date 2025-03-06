@@ -1,10 +1,7 @@
 <?php
 
 return [
-    'keep_Struct_tool_tip' => 'If you check this box our AI will maintain the walls, doors and windows without breaking the structure of the space.',
-    'ai_intervention_tool_tip' => 'Control the number of changes you want the AI to make
-                                                                to your upload. For the best results, leave this option
-                                                                to MEDIUM. You can try with LOW and EXTREME if you dont
-                                                                get good results with MEDIUM.',
-    'ai_strength_tool_tip' => 'Adjust how the AI transforms your image using AI Strength. We recommend starting with 5 as the default. If the image looks too distorted, lower the value to 1-4. If it’s not changed enough, increase the value to 6-10.',
+    'keep_Struct_tool_tip' => 'إذا قمت بتحديد هذا المربع، سيحافظ الذكاء الاصطناعي على الجدران والأبواب والنوافذ دون كسر هيكل المساحة.',
+    'ai_intervention_tool_tip' => 'تحكم في عدد التغييرات التي تريد أن يقوم بها الذكاء الاصطناعي على صورتك. للحصول على أفضل النتائج، اترك هذا الخيار على الوضع المتوسط. يمكنك التجربة بالوضع المنخفض أو الشديد إذا لم تحصل على نتائج جيدة مع الوضع المتوسط.',
+    'ai_strength_tool_tip' => 'اضبط كيفية تحويل الذكاء الاصطناعي لصورتك باستخدام قوة الذكاء الاصطناعي. نوصي بالبدء بالقيمة 5 كإعداد افتراضي. إذا بدت الصورة مشوهة جدًا، قم بخفض القيمة إلى 1-4. وإذا لم يكن التغيير كافيًا، قم بزيادة القيمة إلى 6-10.',
 ];

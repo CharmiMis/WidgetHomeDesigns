@@ -1,9 +1,9 @@
 <?php
 return [
-    'select_garden_materials' => 'Select Garden Materials',
-    'ground_cover_materials' => 'Ground Cover Materials',
-    'planters_and_edging' => 'Planters and Edging',
-    'outdoor_furniture_and_decor' => 'Outdoor Furniture and Decor',
-    'water_features_and_structures' => 'Water Features and Structures',
-    'lighting' => 'Lighting',
+    'select_garden_materials' => 'اختر مواد الحديقة',
+    'ground_cover_materials' => 'مواد تغطية الأرض',
+    'planters_and_edging' => 'الأحواض والحدود',
+    'outdoor_furniture_and_decor' => 'الأثاث الخارجي والديكور',
+    'water_features_and_structures' => 'عناصر وهياكل مائية',
+    'lighting' => 'الإضاءة',
 ];

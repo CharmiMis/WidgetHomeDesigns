@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'heading' => 'Loading brilliance',
-    'content' => 'Unleashing the AI magic!',
+    'heading' => 'تحميل التألق',
+    'content' => 'إطلاق سحر الذكاء الاصطناعي!',
 ];

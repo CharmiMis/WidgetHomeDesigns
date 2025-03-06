@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'side_of_house' => 'Side of House',
-    'front_of_house' => 'Front of House',
-    'back_of_house' => 'Back of House',
+    'side_of_house' => 'جانب المنزل',
+    'front_of_house' => 'واجهة المنزل',
+    'back_of_house' => 'خلفية المنزل',
 ];

@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'beautiful_redesign' => 'Beautiful Redesign',
-    'creative_redesign' => 'Creative Redesign',
-    'fill_the_exterior' => 'Fill The Exterior',
-    'sketch_to_render' => 'Sketch to Render',
+    'beautiful_redesign' => 'إعادة تصميم جميلة',
+    'creative_redesign' => 'إعادة تصميم إبداعية',
+    'fill_the_exterior' => 'ملء الجزء الخارجي',
+    'sketch_to_render' => 'من الرسم إلى التصميم الواقعي',
 ];

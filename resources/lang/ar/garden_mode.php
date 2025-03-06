@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'beautiful_redesign' => 'Beautiful Redesign',
-    'creative_redesign' => 'Creative Redesign',
-    'fill_the_garden' => 'Fill the Garden',
-    'sketch_to_render' => 'Sketch to Render',
-    'fill_the_room' => 'Fill the Room',
+    'beautiful_redesign' => 'إعادة تصميم جميلة',
+    'creative_redesign' => 'إعادة تصميم إبداعية',
+    'fill_the_garden' => 'املأ الحديقة',
+    'sketch_to_render' => 'تحويل الرسم إلى تصميم',
+    'fill_the_room' => 'املأ الغرفة',
 ];

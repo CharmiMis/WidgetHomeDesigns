@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'very_low' => 'Very Low AI Intervention',
-    'low' => 'Low AI Intervention',
-    'mid' => 'Medium AI Intervention',
-    'extreme' => 'Extreme AI Intervention',
+    'very_low' => 'تدخل الذكاء الاصطناعي منخفض جدًا',
+    'low' => 'تدخل الذكاء الاصطناعي منخفض',
+    'mid' => 'تدخل الذكاء الاصطناعي متوسط',
+    'extreme' => 'تدخل الذكاء الاصطناعي مرتفع جدًا',
 ];
