@@ -18815,6 +18815,9 @@ body.lang-ar * {
     margin-right: 0%;
     margin-left: 2%;
 }
+body.lang-ar .inpainting-stag-outer * {
+    direction: ltr;
+}
 /*Language Right direction css end */
 /******MEDIA QUERY******/
 @media (max-width: 1600px) {
