@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'all_room_types' => 'Todos los Tipos de Habitaciones',
+    'all_room_Types' => 'Todos los Tipos de Habitaciones',
     'living_room' => 'Sala de Estar',
     'bedroom' => 'Dormitorio',
     'bathroom' => 'Baño',

@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'all_room_types' => 'Alle rumtyper',
+    'all_room_Types' => 'Alle rumtyper',
     'living_room' => 'Stue',
     'bedroom' => 'Soveværelse',
     'bathroom' => 'Badeværelse',
