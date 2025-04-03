@@ -226,7 +226,7 @@ class WidgetController extends Controller
         // }
 
         $preffered_langauge = $widgetData->preferred_lang;
-        if($preffered_langauge){
+        if ($preffered_langauge) {
             App::setLocale($preffered_langauge);
         }
         $widgetHtml = view('widget.widget-management', ['widgetData' => $widgetData, 'preffered_langauge' => $preffered_langauge, 'widgetThemeMode' => $userTheme->light_mode, 'primaryColor' => $widgetData->primary_color])->render();
@@ -648,7 +648,7 @@ class WidgetController extends Controller
                     $user->activeSubscription->save();
 
                     return true;
-                } elseif (($user->activeSubscription->plan_name == 'api-silver' || $user->activeSubscription->plan_name == 'standard-sme-500-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-1000-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-3000-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-10000-api-calls-mo')) {
+                } elseif (($user->activeSubscription->plan_name == 'api-silver' || $user->activeSubscription->plan_name == 'standard-sme-500-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-1000-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-3000-api-calls-mo' || $user->activeSubscription->plan_name == 'lifetime-credits' || $user->activeSubscription->plan_name == 'standard-sme-10000-api-calls-mo')) {
                     if ($apiName == 'furniture_finder') {
                         $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + 5;
                     } else if ($apiName == 'segmentation') {
@@ -659,7 +659,7 @@ class WidgetController extends Controller
                     $user->activeSubscription->save();
 
                     return true;
-                } elseif (($user->activeSubscription->plan_name == 'standard-sme' || $user->activeSubscription->plan_name == 'standard-sme-new' || $user->activeSubscription->plan_name == 'standard-sme-500-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-1000-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-3000-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-10000-api-calls-mo')) {
+                } elseif (($user->activeSubscription->plan_name == 'standard-sme' || $user->activeSubscription->plan_name == 'standard-sme-new' || $user->activeSubscription->plan_name == 'standard-sme-500-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-1000-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-3000-api-calls-mo' || $user->activeSubscription->plan_name == 'lifetime-credits' || $user->activeSubscription->plan_name == 'standard-sme-10000-api-calls-mo')) {
                     if ($apiName == 'furniture_finder') {
                         $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + 2;
                     } else if ($apiName == 'segmentation') {
@@ -670,7 +670,7 @@ class WidgetController extends Controller
                     $user->activeSubscription->save();
 
                     return true;
-                } elseif ($user->activeSubscription->plan_name == 'api-gold' || $user->activeSubscription->plan_name == 'standard-sme-500-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-1000-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-3000-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-10000-api-calls-mo') {
+                } elseif ($user->activeSubscription->plan_name == 'api-gold' || $user->activeSubscription->plan_name == 'standard-sme-500-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-1000-api-calls-mo' || $user->activeSubscription->plan_name == 'standard-sme-3000-api-calls-mo' || $user->activeSubscription->plan_name == 'lifetime-credits' || $user->activeSubscription->plan_name == 'standard-sme-10000-api-calls-mo') {
                     if ($apiName == 'furniture_finder') {
                         $user->activeSubscription->used_credit = $user->activeSubscription->used_credit + 2;
                     } else if ($apiName == 'segmentation') {

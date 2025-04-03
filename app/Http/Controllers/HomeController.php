@@ -1780,7 +1780,7 @@ class HomeController extends Controller
     {
         $startDate = Carbon::now()->subWeek()->format('Y-m-d');
         $endDate = Carbon::now()->format('Y-m-d');
-        $products = ['standard-sme-10000-api-calls-mo', 'standard-sme-500-api-calls-mo', 'standard-sme-3000-api-calls-mo', 'api-bronze', 'standard-sme-new', 'standard-sme', 'standard-sme-1000-api-calls-mo', 'api-silver', 'api-gold'];
+        $products = ['standard-sme-10000-api-calls-mo', 'standard-sme-500-api-calls-mo', 'standard-sme-3000-api-calls-mo', 'lifetime-credits', 'api-bronze', 'standard-sme-new', 'standard-sme', 'standard-sme-1000-api-calls-mo', 'api-silver', 'api-gold'];
         $scope = 'live';
         $created_users = $this->userClass->getAPIUsersByDateFromFastSpring($startDate, $endDate, 'created', $scope, $products);
         $canceled_users = $this->userClass->getAPIUsersByDateFromFastSpring($startDate, $endDate, 'canceled', $scope, $products);
@@ -2234,14 +2234,14 @@ class HomeController extends Controller
                 }
             } elseif ($request->modevalue == 'subproject') {
                 $designs_query = UserProjectImages::where('user_id', $user->id)
-                                ->where('project_id', $request->designType)
-                                ->whereNull('subproject_id')
-                                ->whereHas('publicGallery')
-                                ->with(['publicGallery:id,original_image,generated_image']) // Directly select the required columns
-                                ->orderByDesc('id') // Use the more concise orderByDesc method
-                                ->get()
-                                ->pluck('publicGallery')
-                                ->filter();
+                    ->where('project_id', $request->designType)
+                    ->whereNull('subproject_id')
+                    ->whereHas('publicGallery')
+                    ->with(['publicGallery:id,original_image,generated_image']) // Directly select the required columns
+                    ->orderByDesc('id') // Use the more concise orderByDesc method
+                    ->get()
+                    ->pluck('publicGallery')
+                    ->filter();
                 // $designs_query = UserProjectImages::where('user_id', $user->id)
                 //     ->where('project_id', $request->designType)
                 //     ->whereNull('subproject_id')
@@ -2250,14 +2250,14 @@ class HomeController extends Controller
                 //     ->filter();
             } elseif ($request->modevalue == 'subproject_images') {
                 $designs_query = UserProjectImages::where('user_id', $user->id)
-                                ->where('project_id', $request->designType)
-                                ->where('subproject_id', $request->subProjectId)
-                                ->whereHas('publicGallery')
-                                ->with(['publicGallery:id,original_image,generated_image'])
-                                ->orderByDesc('id')
-                                ->get()
-                                ->pluck('publicGallery') // Extract only the publicGallery relationships
-                                ->filter();
+                    ->where('project_id', $request->designType)
+                    ->where('subproject_id', $request->subProjectId)
+                    ->whereHas('publicGallery')
+                    ->with(['publicGallery:id,original_image,generated_image'])
+                    ->orderByDesc('id')
+                    ->get()
+                    ->pluck('publicGallery') // Extract only the publicGallery relationships
+                    ->filter();
                 // $designs_query = UserProjectImages::where('user_id', $user->id)
                 //     ->where('project_id', $request->designType)
                 //     ->where('subproject_id', $request->subProjectId)
@@ -2722,9 +2722,9 @@ class HomeController extends Controller
             if (!isset($response['output']) || isset($response['output']['errors'])) {
                 return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
             } else {
-                return response()->json(['success' => true, 'data' => 'data:image/png;base64,'.$response['output']]);
+                return response()->json(['success' => true, 'data' => 'data:image/png;base64,' . $response['output']]);
             }
-        }else{
+        } else {
             return json_encode(['error' => 'Something went wrong. Please try again.']);
         }
     }
@@ -3111,18 +3111,19 @@ class HomeController extends Controller
         return view('web.furniture-finder', $details);
     }
 
-    public function getTextToDesign(Request $request){
+    public function getTextToDesign(Request $request)
+    {
         try {
             $user = auth()->user();
             $designs_query = PublicGallery::where('user_uid', $user->id)
-            ->where('design_type', $request->designType)
-            ->where('is_inpainting', $request->modeValue)
-            ->select('id', 'original_image', 'generated_image', 'style', 'mode', 'room_type', 'is_favorite', 'is_inpainting', 'hd_image', 'design_type');
+                ->where('design_type', $request->designType)
+                ->where('is_inpainting', $request->modeValue)
+                ->select('id', 'original_image', 'generated_image', 'style', 'mode', 'room_type', 'is_favorite', 'is_inpainting', 'hd_image', 'design_type');
             $designs = $designs_query->orderBy('id', 'desc')->paginate(config('app.PUBLIC_DESIGNS_COUNT'));
 
             $staticPath = 'https://storage.googleapis.com/generativeartbucket/UserGenerations/cristian/';
             foreach ($designs as $design) {
-                if($design->original_image != 'N/A'){
+                if ($design->original_image != 'N/A') {
                     $design->original_image = $staticPath . $design->original_image;
                 }
                 $design->generated_image = $staticPath . $design->generated_image;
@@ -3144,7 +3145,8 @@ class HomeController extends Controller
         }
     }
 
-    public function runpodTextToDesign(Request $request){
+    public function runpodTextToDesign(Request $request)
+    {
         $payloadData = $request->all();
         $request->merge(['id' => Auth::id()]);
 
@@ -3162,9 +3164,9 @@ class HomeController extends Controller
             ],
         ];
 
-        if($payloadData['apiMode'] == 'faster'){
+        if ($payloadData['apiMode'] == 'faster') {
             $url = \Config::get('app.GPU_SERVERLESS_TEXT_TO_DESIGN_FASTER');
-        }else{
+        } else {
             $url = \Config::get('app.GPU_SERVERLESS_TEXT_TO_DESIGN_SLOWER');
         }
         $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
@@ -3215,7 +3217,8 @@ class HomeController extends Controller
         return $storeData;
     }
 
-    public function getFavoriteDesigns(Request $request){
+    public function getFavoriteDesigns(Request $request)
+    {
         $user = auth()->user();
         $designsQuery = PublicGallery::where('is_favorite', 1)
             ->where('user_uid', $user->id)
@@ -3252,7 +3255,8 @@ class HomeController extends Controller
         ]);
     }
 
-    public function runpodFurnitureCreator(Request $request){
+    public function runpodFurnitureCreator(Request $request)
+    {
         $payloadData = $request->all();
         $request->merge(['id' => Auth::id()]);
 
@@ -3270,9 +3274,9 @@ class HomeController extends Controller
             ],
         ];
 
-        if($payloadData['apiMode'] == 'faster'){
+        if ($payloadData['apiMode'] == 'faster') {
             $url = \Config::get('app.GPU_SERVERLESS_TEXT_TO_DESIGN_FASTER');
-        }else{
+        } else {
             $url = \Config::get('app.GPU_SERVERLESS_TEXT_TO_DESIGN_SLOWER');
         }
         $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
@@ -3305,7 +3309,8 @@ class HomeController extends Controller
         }
     }
 
-    public function showWidget(Request $request) {
+    public function showWidget(Request $request)
+    {
 
         $userId = $request->query('id');
 
@@ -3324,7 +3329,7 @@ class HomeController extends Controller
     {
 
         // Validate that the feature exists
-        $validFeatures = ['redesign', 'precision', 'fill_spaces','colors_and_textures','paint_visualizer','sketch_to_render']; // List all valid features
+        $validFeatures = ['redesign', 'precision', 'fill_spaces', 'colors_and_textures', 'paint_visualizer', 'sketch_to_render']; // List all valid features
 
         if (!in_array($feature, $validFeatures)) {
             abort(404); // Feature not found
