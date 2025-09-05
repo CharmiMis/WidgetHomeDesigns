@@ -57,7 +57,7 @@ return [
         ],
         'gcs' => [
             'driver' => 'gcs',
-            'key_file_path' => storage_path('app/plated-howl-370821-cf0e409bcbaa.json'), // optional: /path/to/service-account.json
+            'key_file_path' => storage_path('app/plated-howl-370821-ce5a90296098.json'), // optional: /path/to/service-account.json
             'key_file' => [], // optional: Array of data that substitutes the .json file (see below)
             'project_id' => env('GOOGLE_CLOUD_PROJECT_ID', 'plated-howl-370821'), // optional: is included in key file
             'bucket' => env('GOOGLE_CLOUD_STORAGE_BUCKET', 'generativeartbucket'),

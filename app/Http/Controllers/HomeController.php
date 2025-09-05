@@ -1816,7 +1816,7 @@ class HomeController extends Controller
 
         try {
             $storage = new StorageClient([
-                'keyFile' => json_decode(file_get_contents(storage_path('app/plated-howl-370821-cf0e409bcbaa.json')), true),
+                'keyFile' => json_decode(file_get_contents(storage_path('app/plated-howl-370821-ce5a90296098.json')), true),
             ]);
             $bucket = $storage->bucket('generativeartbucket');
             $bucket->upload($fileContents, ['name' => $file_name]);
@@ -2490,7 +2490,7 @@ class HomeController extends Controller
 
             try {
                 $storage = new StorageClient([
-                    'keyFile' => json_decode(file_get_contents(storage_path('app/plated-howl-370821-cf0e409bcbaa.json')), true),
+                    'keyFile' => json_decode(file_get_contents(storage_path('app/plated-howl-370821-ce5a90296098.json')), true),
                 ]);
                 $bucket = $storage->bucket('generativeartbucket');
                 $bucket->upload($fileContents, ['name' => $file_name]);
@@ -2685,7 +2685,7 @@ class HomeController extends Controller
             $fileName = $parts[1];
             // Initialize StorageClient
             $storage = new StorageClient([
-                'keyFile' => json_decode(file_get_contents(storage_path('app/plated-howl-370821-cf0e409bcbaa.json')), true),
+                'keyFile' => json_decode(file_get_contents(storage_path('app/plated-howl-370821-ce5a90296098.json')), true),
             ]);
 
             $bucket = $storage->bucket($bucketName);
