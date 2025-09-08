@@ -86,15 +86,15 @@ return [
     'CREDIT_0_PER_REMAIN' => env('CREDIT_0_PER_REMAIN'),
     'googleBucketName' => 'generativeartbucket',
 
-    'custom_script_version' => 4.46, // Set your version number here
-    'in_paint_v2_version' => 4.34, // Set your version number here
-    'script_js_version' => 3.66, // Set your version number here
+    'custom_script_version' => 4.48, // Set your version number here
+    'in_paint_v2_version' => 4.38, // Set your version number here
+    'script_js_version' => 3.67, // Set your version number here
     'style_css_version' => 4.16, // Set your version number here
     'user_dash_css_version' => 3.51, // Set your version number here
     'main_style_css_version' => 3.51, // Set your version number here
     'new_style_css_version' => 2.15, // Set your version number here
-    'custom_js_web2' => 1.30, // Set your version number here
-    'custom_scriptWidget_version' => 1.25, // Set your version number here
+    'custom_js_web2' => 1.31, // Set your version number here
+    'custom_scriptWidget_version' => 1.26, // Set your version number here
     'in_paintWidget_v2_version' => 2.04, // Set your version number here
     'widgetstyle_css_version' =>  1.25,
     'api_version' => env("API_VERSION", 'v2'), // API versioning
