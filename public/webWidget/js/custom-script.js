@@ -6,7 +6,7 @@ var selectedImages;
 var ipsValidateImage;
 var ipsValidateTextureImage;
 var getBase64FromUrl;
-            
+
 const translations = document.getElementById('translations');
 const designStyleText = translations.getAttribute('data-design-styles');
 const designHouseAngleText = translations.getAttribute('data-house-angle-types');
@@ -35,12 +35,12 @@ const updateMinSize = translations.getAttribute('data-validation18-type');
 const updatePrompt = translations.getAttribute('data-validation19-type');
 const updateFurniture = translations.getAttribute('data-validation20-type');
 const updateSimilarProduct = translations.getAttribute('data-validation21-type');
-const updateImageType= translations.getAttribute('data-validation22-type');
-const updateCustomTexture= translations.getAttribute('data-custom-texture-type');
-const updatePresetTexture= translations.getAttribute('data-preset-texture-type');
-const updatePlaceholdercolortext= translations.getAttribute('data-placeholder-colortext-type');
-const updatePresetColor= translations.getAttribute('data-preset-color-type');
-const updateCustomColor= translations.getAttribute('data-custom-color-type');
+const updateImageType = translations.getAttribute('data-validation22-type');
+const updateCustomTexture = translations.getAttribute('data-custom-texture-type');
+const updatePresetTexture = translations.getAttribute('data-preset-texture-type');
+const updatePlaceholdercolortext = translations.getAttribute('data-placeholder-colortext-type');
+const updatePresetColor = translations.getAttribute('data-preset-color-type');
+const updateCustomColor = translations.getAttribute('data-custom-color-type');
 
 $('document').ready(function () {
     // Store the value in localStorage
@@ -396,7 +396,7 @@ $(".cls_menu.menu-link").click(function () {
     closeNav();
 })
 
-$(document).on('dragenter dragover dragleave drop', '.ai-upload-image', function(e) {
+$(document).on('dragenter dragover dragleave drop', '.ai-upload-image', function (e) {
     e.preventDefault()
     e.stopPropagation()
 });
@@ -432,7 +432,7 @@ $("body").on('click', '.use-as-input', async function () {
         $('.top-menu-bar-second').css('display', 'flex');
         $('.image-mask-container').css('display', 'block');
         $('.segment-masking-container').css('display', 'block');
-        if (dataPage == 'redesign' || dataPage =='sketchToRender' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome') {
+        if (dataPage == 'redesign' || dataPage == 'sketchToRender' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome') {
             $('.redesign-designs-tabs').css('display', 'none');
             $("#loading_brilliance").modal('hide');
         }
@@ -454,8 +454,8 @@ $.each(imageUploader, function (index, item) {
         ev.preventDefault();
         var fileInput = $(this).find('input[type="file"]');
         fileInput[0].files = ev.dataTransfer.files;
-            var event = new Event('change', { bubbles: true });
-            fileInput[0].dispatchEvent(event);
+        var event = new Event('change', { bubbles: true });
+        fileInput[0].dispatchEvent(event);
         // if (user == null) {
         //     showLoginModal();
         // } else if (user.is_show_guideline_modal == 0) {
@@ -473,20 +473,20 @@ var iUnderstanClickCount = 0;
 // Display the modal when the div is clicked
 
 
-$(document).on('click', '.ai-upload-image', function(event) {
+$(document).on('click', '.ai-upload-image', function (event) {
     event.stopPropagation(); // Prevent event bubbling
 
     var clickedDiv = $(this);
     var fileInput = clickedDiv.find('input[type="file"]');
 
-    fileInput.one('click', function(e) {
+    fileInput.one('click', function (e) {
         e.stopImmediatePropagation();
     });
 
     fileInput.trigger('click');
 });
 
-$(".dimg-picker, #ipFilePicker, #ipFilePickerPrecision, #ipFilePickerFillSpaces, #ipFilePicker2").on("click", function(event){
+$(".dimg-picker, #ipFilePicker, #ipFilePickerPrecision, #ipFilePickerFillSpaces, #ipFilePicker2").on("click", function (event) {
     event.stopPropagation();
 });
 
@@ -506,9 +506,9 @@ $(".gs-modal-best-inderstand").on('click', function () {
             data: {
                 is_show_guideline_modal: 1
             },
-            success: function(response) {
+            success: function (response) {
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.error('Error updating modal flag:', error);
             }
         });
@@ -530,9 +530,9 @@ $(".gs-modal-dont-show-modal").on('click', function () {
         data: {
             is_show_guideline_modal: 1
         },
-        success: function(response) {
+        success: function (response) {
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error('Error updating modal flag:', error);
         }
     });
@@ -549,7 +549,7 @@ $(document).on('change', '.dimg-picker', function (e) {
     }, (error) => {
         ipsFailOnValidImage(error);
         filePicker.val('');
-        $("#gallery" + section + dataPage ).hide();
+        $("#gallery" + section + dataPage).hide();
         $(".drop-cont" + section).removeAttr("style");
         $(`#input_img_typ-${dataPage}`).val('');
         $(`#input_image-${dataPage}`).val('');
@@ -603,7 +603,7 @@ function ipsPreviewImg(section) {
     // $('#uploading_instruction').modal('show');
     $('#uploading_instruction').modal('hide');
     $('#loading_brilliance').modal('show');
-    var file = $("#fileselect" + section + "-" +dataPage)[0].files[0];
+    var file = $("#fileselect" + section + "-" + dataPage)[0].files[0];
 
     let gallery = document.getElementById(`gallery${section}-${dataPage}`);
     gallery.style.display = 'block';
@@ -638,7 +638,7 @@ function ipsPreviewImg(section) {
         $('.top-menu-bar-second').css('display', 'flex');
         $('.image-mask-container').css('display', 'block');
         $('.segment-masking-container').css('display', 'block');
-        if (dataPage == 'redesign' || dataPage =='sketchToRender' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'convenient-redesign') {
+        if (dataPage == 'redesign' || dataPage == 'sketchToRender' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'convenient-redesign') {
             $('.redesign-designs-tabs').css('display', 'none');
             $("#loading_brilliance").modal('hide');
         }
@@ -710,7 +710,7 @@ function updateFastSpring(userDetail = null) {
     }
 }
 
-function previewImage(beforeSrc,afterSrc,element) {
+function previewImage(beforeSrc, afterSrc, element) {
     var imageIndex = $(element).data('index');
     if (imageIndex !== undefined && imageIndex >= 0 && imageIndex <= editImagesData.length) {
         currentIndex = imageIndex;
@@ -746,9 +746,9 @@ function getMultipleImages(id) {
 }
 //delete multiple images
 function deleteMultipleImages() {
-    if(multipleDownloadImg.length > 0){
+    if (multipleDownloadImg.length > 0) {
         $("#confirm_modal").modal('show');
-    }else{
+    } else {
         let error_message = `${updateMoreImages}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
@@ -756,7 +756,7 @@ function deleteMultipleImages() {
 }
 
 // Event listener for the confirmation button in the modal
-$(".yes-confirm-modal").on('click', function() {
+$(".yes-confirm-modal").on('click', function () {
     var jsonData = JSON.stringify(this.multipleDownloadImg);
     var route = $('#deleteRenderImages').data('route');
     $.ajax({
@@ -767,16 +767,16 @@ $(".yes-confirm-modal").on('click', function() {
         },
         success: function (response) {
             $("#confirm_delete_modal").modal('show');
-            if(dataPage != 'favourite'){
-                if(dataPage == 'redesign' || dataPage =='sketchToRender' || dataPage == 'convenient-redesign'){
+            if (dataPage != 'favourite') {
+                if (dataPage == 'redesign' || dataPage == 'sketchToRender' || dataPage == 'convenient-redesign') {
                     getRedesignGeneratedDesigns();
-                }else{
+                } else {
                     getInPaintingGeneratedDesigns();
                 }
-            }else{
+            } else {
                 getRedesignGeneratedDesigns('favorites');
             }
-            multipleDownloadImg.forEach(function(id) {
+            multipleDownloadImg.forEach(function (id) {
                 $(`.ai-upload-latest-single[data-image-id="${id}"]`).remove();
             });
             multipleDownloadImg = [];
@@ -795,15 +795,15 @@ $(".yes-confirm-modal").on('click', function() {
     $("#confirm_modal").modal('hide');
 });
 
-$(".close-confirm-modal").on('click', function() {
+$(".close-confirm-modal").on('click', function () {
     $("#confirm_modal").modal('hide');
 });
 
-$(".close-confirm-delete-modal").on('click', function() {
+$(".close-confirm-delete-modal").on('click', function () {
     $("#confirm_delete_modal").modal('hide');
 });
 
-$(".close-confirm-project-modal").on('click', function() {
+$(".close-confirm-project-modal").on('click', function () {
     $("#addProjectForm")[0].reset();
     $("#addProjectForm").validate().resetForm();
     $('#subprojectGroup').hide();
@@ -1026,7 +1026,7 @@ async function _generateDesign(sec, el) {
     const editButton = document.querySelectorAll('.edit-button-div');
     const progressBarTabs = document.querySelectorAll('.progress-bar-tab');
 
-    disableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+    disableGenerateButton(generateDesignBtn, spinner, tabs, previousPageButton, editButton, progressBarTabs);
     if (localStorage.getItem('filekey' + sec) !== undefined) {
         localStorage.removeItem('filekey' + sec);
         localStorage.removeItem('oldDetails');
@@ -1045,9 +1045,9 @@ async function _generateDesign(sec, el) {
     const keepStructureElements = document.getElementById(`structural_elements_ck${sec}`) ? document.getElementById(`structural_elements_ck${sec}`).checked : false;
 
     const promptModeType = document.querySelector(`#selectedModeType${sec}-${dataPage}`);
-    var roomType = promptRoomType ? promptRoomType.value : "" ;
-    var styleType = promptStyleType ? promptStyleType.value : "" ;
-    var modeType = promptModeType ? promptModeType.value : "" ;
+    var roomType = promptRoomType ? promptRoomType.value : "";
+    var styleType = promptStyleType ? promptStyleType.value : "";
+    var modeType = promptModeType ? promptModeType.value : "";
     // var noOfDesign = document.getElementById(`no_of_des${sec}`).value;
     var noOfDesign = document.getElementById('widgetUserNumberOfGeneration').value;
     var widgetuserid = document.getElementById('widgetUserID').value;
@@ -1079,7 +1079,7 @@ async function _generateDesign(sec, el) {
         $('.on-gen-disable').removeClass('disable-btn');
         $('.modules_tabs').removeClass('disable-btn');
         $('input[id^="nwtoggle"]').removeClass('disable-btn').prop('disabled', false);
-        enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+        enableGenerateButton(generateDesignBtn, spinner, tabs, previousPageButton, editButton, progressBarTabs);
         return;
     }
 
@@ -1093,11 +1093,11 @@ async function _generateDesign(sec, el) {
         $('.modules_tabs').removeClass('disable-btn');
         $('input[id^="nwtoggle"]').removeClass('disable-btn').prop('disabled', false);
 
-        enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+        enableGenerateButton(generateDesignBtn, spinner, tabs, previousPageButton, editButton, progressBarTabs);
         return;
     }
 
-    if(dataPage == 'convenient-redesign'){
+    if (dataPage == 'convenient-redesign') {
         modeType = 'Convenient Redesign';
     }
 
@@ -1111,7 +1111,7 @@ async function _generateDesign(sec, el) {
         $('.modules_tabs').removeClass('disable-btn');
         $('input[id^="nwtoggle"]').removeClass('disable-btn').prop('disabled', false);
 
-        enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+        enableGenerateButton(generateDesignBtn, spinner, tabs, previousPageButton, editButton, progressBarTabs);
         return;
     }
 
@@ -1134,11 +1134,11 @@ async function _generateDesign(sec, el) {
         $('.gs-continue-btn').removeClass('disable-btn');
         $('.on-gen-disable').removeClass('disable-btn');
         $('.modules_tabs').removeClass('disable-btn');
-        enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+        enableGenerateButton(generateDesignBtn, spinner, tabs, previousPageButton, editButton, progressBarTabs);
         return;
     }
 
-    generationDivLoader(noOfDesign,image);
+    generationDivLoader(noOfDesign, image);
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     // document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
@@ -1152,11 +1152,11 @@ async function _generateDesign(sec, el) {
         aiAPI = "runpodWidget/creative_redesign";
     } else if (modeType == 'Sketch to Render') {
         aiAPI = "runpodWidget/render_realistic";
-    }else if(modeType == 'Convenient Redesign'){
+    } else if (modeType == 'Convenient Redesign') {
         aiAPI = "runpodWidget/intuitive_redesign";
-    } else if(modeType == 'Perfect Redesign'){
+    } else if (modeType == 'Perfect Redesign') {
         aiAPI = "runpodWidget/perfect_redesign";
-    }else {
+    } else {
         aiAPI = "runpodWidget/beautiful_redesign";
     }
     formData.append("data", image);
@@ -1174,8 +1174,8 @@ async function _generateDesign(sec, el) {
     formData.append("custom_instruction", customInstructionData);
 
     formData.append("no_of_Design", noOfDesign);
-    formData.append("widgetuserid",widgetuserid);
-    formData.append("keepStructureElements",keepStructureElements);
+    formData.append("widgetuserid", widgetuserid);
+    formData.append("keepStructureElements", keepStructureElements);
 
     await fetch(SITE_BASE_URL + aiAPI, {
         method: 'POST',
@@ -1200,7 +1200,7 @@ async function _generateDesign(sec, el) {
                     $('.gs-continue-btn').removeClass('disable-btn');
                     $('.on-gen-disable').removeClass('disable-btn');
                     $('.modules_tabs').removeClass('disable-btn');
-                    enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+                    enableGenerateButton(generateDesignBtn, spinner, tabs, previousPageButton, editButton, progressBarTabs);
                     return;
                 });
             }
@@ -1214,13 +1214,13 @@ async function _generateDesign(sec, el) {
             return response.json();
         })
         .then(result => {
-            if (result.requestId && result.status === 'IN_QUEUE') {
-                checkRequestStatus(result.requestId,generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs,sec,roomType,styleType,noOfDesign,modeType,precisionUserValue,keepStructureElements); // Pass the request ID to poll
+            if (result.requestId && (result.status === 'IN_QUEUE' || result.status === 'starting')) {
+                checkRequestStatus(result.requestId, generateDesignBtn, spinner, tabs, previousPageButton, editButton, progressBarTabs, sec, roomType, styleType, noOfDesign, modeType, precisionUserValue, keepStructureElements); // Pass the request ID to poll
                 return;
             }
 
             $('#closeModal').removeClass('disable-btn');
-            enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+            enableGenerateButton(generateDesignBtn, spinner, tabs, previousPageButton, editButton, progressBarTabs);
             $('.gs-continue-btn').removeClass('disable-btn');
             $('.on-gen-disable').removeClass('disable-btn');
             $('.modules_tabs').removeClass('disable-btn');
@@ -1230,7 +1230,7 @@ async function _generateDesign(sec, el) {
                 $('#errorModal h4').text(result.error);
                 $('#errorModal').modal('show');
                 $(el).attr('disabled', false);
-                enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+                enableGenerateButton(generateDesignBtn, spinner, tabs, previousPageButton, editButton, progressBarTabs);
                 removeLoaderDivs(noOfDesign);
                 $('.on-gen-disable').removeClass('disable-btn');
                 return;
@@ -1256,9 +1256,9 @@ async function _generateDesign(sec, el) {
                     hd_image: 0,
                 };
                 let code = generatedRedesignItem(design);
-                 // Add the generated design image to the array
-                 addNewDesignImage(design);
-                 removeLoaderDivs(noOfDesign);
+                // Add the generated design image to the array
+                addNewDesignImage(design);
+                removeLoaderDivs(noOfDesign);
 
                 let data = document.getElementById(`all_data0_${dataPage}`);
 
@@ -1279,7 +1279,7 @@ async function _generateDesign(sec, el) {
             console.error('Error:', error);
         });
 
-        // removeLoaderDivs(noOfDesign);
+    // removeLoaderDivs(noOfDesign);
 
     $(el).attr('disabled', false);
 
@@ -1723,7 +1723,7 @@ $(document).on('click', '.generate_hd_img', async function () {
     // $('.precision_btn').addClass('disable-btn');
     // deleteButton.disabled = true;
 
-    generationDivLoader(1,image_url);
+    generationDivLoader(1, image_url);
     $('.ai-upload-latest-designs')[0].scrollIntoView({ behavior: 'smooth', block: 'start' });
     // document.getElementById(`jumphere0-${dataPage}`).scrollIntoView();
 
@@ -2055,33 +2055,33 @@ $(document).on('click', '.edit_with_precision', function () {
         success: function (response) {
             if (response.success) {
                 // Redirect to the 'precision+' route
-                if(url == 1){
+                if (url == 1) {
                     window.location.href = '/user/precision?imageCacheId=' + response.image_cache_id;
-                }else if(url == 2){
+                } else if (url == 2) {
                     window.location.href = '/user/fill-spaces?imageCacheId=' + response.image_cache_id;
-                }else if(url == 3){
+                } else if (url == 3) {
                     window.location.href = '/user/decor-staging?imageCacheId=' + response.image_cache_id;
-                }else if(url == 4){
+                } else if (url == 4) {
                     window.location.href = '/user/furniture-removal?imageCacheId=' + response.image_cache_id;
-                }else if(url == 5){
+                } else if (url == 5) {
                     window.location.href = '/user/colors-textures?imageCacheId=' + response.image_cache_id;
-                }else if(url == 6){
+                } else if (url == 6) {
                     window.location.href = '/sky-colors?imageCacheId=' + response.image_cache_id;
-                }else if(url == 7){
+                } else if (url == 7) {
                     window.location.href = '/material-swap?imageCacheId=' + response.image_cache_id;
-                }else if(url == 8){
+                } else if (url == 8) {
                     window.location.href = '/paint-visualizer?imageCacheId=' + response.image_cache_id;
-                }else if(url == 9){
+                } else if (url == 9) {
                     window.location.href = '/room-composer?imageCacheId=' + response.image_cache_id;
-                }else if(url == 10){
+                } else if (url == 10) {
                     window.location.href = '/design-transfer?imageCacheId=' + response.image_cache_id;
-                }else if(url == 99){
+                } else if (url == 99) {
                     window.location.href = '/convenient-redesign?imageCacheId=' + response.image_cache_id;
-                }else if(url == 11){
+                } else if (url == 11) {
                     window.location.href = '/floor-editor?imageCacheId=' + response.image_cache_id;
-                }else if(url == 12){
+                } else if (url == 12) {
                     window.location.href = '/user/furniture-finder?imageCacheId=' + response.image_cache_id;
-                }else{
+                } else {
                     window.location.href = '/redesign?imageCacheId=' + response.image_cache_id;
                 }
             }
@@ -2170,7 +2170,7 @@ $('document').ready(function () {
     var url = window.location.href;
     if (url.indexOf('/redesign') !== -1 || url.indexOf('/convenient-redesign') !== -1 || url.indexOf('/user/furniture-finder') !== -1) {
         if (url.indexOf('?imageCacheId=') !== -1) {
-            getImageCache(GetParameterValues('imageCacheId'), function(response, error) {
+            getImageCache(GetParameterValues('imageCacheId'), function (response, error) {
                 if (response.success) {
                     // Redirect to the 'precision+' route
                     loadImageBase64FromInpainting(response.data);
@@ -2242,27 +2242,27 @@ function initComparisons() {
 }
 
 // $(document).ready(function () {
-    // localStorage.removeItem('feedbackModalClosedCount');
-    var feedbackModalClosedCount = localStorage.getItem('feedbackModalClosedCount') || 0;
+// localStorage.removeItem('feedbackModalClosedCount');
+var feedbackModalClosedCount = localStorage.getItem('feedbackModalClosedCount') || 0;
 
-    $("#closefeedbackModal").click(function () {
-        feedbackModalClosedCount++;
-        localStorage.setItem('feedbackModalClosedCount', feedbackModalClosedCount);
-        $("#feedbackModel").hide();
-        if(feedbackModalClosedCount >= 2){
-            var route = $('#feedbackModelRoute').data('route');
-            $.ajax({
-                url: route,
-                type: 'POST',
-                data: {},
-                success: function (response) {
-                },
-                error: function (xhr, status, error) {
-                    console.error('Error increasing count:', error);
-                }
-            });
-        }
-    });
+$("#closefeedbackModal").click(function () {
+    feedbackModalClosedCount++;
+    localStorage.setItem('feedbackModalClosedCount', feedbackModalClosedCount);
+    $("#feedbackModel").hide();
+    if (feedbackModalClosedCount >= 2) {
+        var route = $('#feedbackModelRoute').data('route');
+        $.ajax({
+            url: route,
+            type: 'POST',
+            data: {},
+            success: function (response) {
+            },
+            error: function (xhr, status, error) {
+                console.error('Error increasing count:', error);
+            }
+        });
+    }
+});
 // });
 
 $('#submitFeedbackRating').click(function () {
@@ -2375,9 +2375,9 @@ $("#createProjectForm").submit(function (event) {
 
 
 $(".add_to_project_btn").click(function () {
-    if(multipleDownloadImg.length > 0){
+    if (multipleDownloadImg.length > 0) {
         $("#addToprojectmodal").modal('show');
-    }else{
+    } else {
         let error_message = `${updateMoreImages}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
@@ -2529,14 +2529,14 @@ function deleteProject(projectID) {
     var deleteRoute = $('#deleteProjectRoute').data('route');
     $("#confirm_project_modal").modal('show');
 
-    $(".yes-confirm-project-modal").off('click').on('click', function() {
+    $(".yes-confirm-project-modal").off('click').on('click', function () {
         $.ajax({
             url: deleteRoute.replace('__ID__', projectID),
             type: "POST",
             data: {
                 _token: $('meta[name="csrf-token"]').attr('content'),
             },
-            success: function(response) {
+            success: function (response) {
                 $("#confirm_project_modal").modal('hide');
 
                 $('li[data-encrypted-id="' + projectID + '"]').hide();
@@ -2547,7 +2547,7 @@ function deleteProject(projectID) {
                     window.location.reload();
                 }, 1000);
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 var errorResponse = xhr.responseJSON;
                 Swal.fire(
                     'Oops!',
@@ -2593,14 +2593,14 @@ function deleteSubProject(subProjectID) {
     var deleteRoute = $('#deleteSubProjectRoute').data('route');
     $("#confirm_sub_project_modal").modal('show');
 
-    $(".yes-confirm-sub-project-modal").off('click').on('click', function() {
+    $(".yes-confirm-sub-project-modal").off('click').on('click', function () {
         $.ajax({
             url: deleteRoute.replace('__ID__', subProjectID),
             type: "POST",
             data: {
                 _token: $('meta[name="csrf-token"]').attr('content'),
             },
-            success: function(response) {
+            success: function (response) {
                 $("#confirm_sub_project_modal").modal('hide');
 
                 $('li[data-encrypted-id="' + subProjectID + '"]').hide();
@@ -2611,7 +2611,7 @@ function deleteSubProject(subProjectID) {
                     window.location.reload();
                 }, 1000);
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 var errorResponse = xhr.responseJSON;
                 Swal.fire(
                     'Oops!',
@@ -2624,7 +2624,7 @@ function deleteSubProject(subProjectID) {
 }
 
 function removeImagesFromFolder(projectId, subProjectId) {
-    if(multipleDownloadImg.length > 0){
+    if (multipleDownloadImg.length > 0) {
         var removeImagesRoute = $('#removeImagesFromFolder').data('route');
         $("#confirm_modal").modal('show');
 
@@ -2632,7 +2632,7 @@ function removeImagesFromFolder(projectId, subProjectId) {
         $("#confirm_modal").data('projectId', projectId);
         $("#confirm_modal").data('subProjectId', subProjectId);
 
-        $(".yes-confirm-modal").off('click').on('click', function() {
+        $(".yes-confirm-modal").off('click').on('click', function () {
             var projectId = $("#confirm_modal").data('projectId');
             var subProjectId = $("#confirm_modal").data('subProjectId');
 
@@ -2645,9 +2645,9 @@ function removeImagesFromFolder(projectId, subProjectId) {
                     projectId: projectId,
                     subProjectId: subProjectId
                 },
-                success: function(response) {
+                success: function (response) {
                     $("#confirm_delete_modal").modal('show');
-                    multipleDownloadImg.forEach(function(id) {
+                    multipleDownloadImg.forEach(function (id) {
                         $(`.ai-upload-latest-single[data-image-id="${id}"]`).remove();
                     });
                     multipleDownloadImg = [];
@@ -2658,7 +2658,7 @@ function removeImagesFromFolder(projectId, subProjectId) {
                         getSubFolderImagesData();
                     }
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     var errorResponse = xhr.responseJSON;
                     Swal.fire(
                         'Oops!',
@@ -2671,7 +2671,7 @@ function removeImagesFromFolder(projectId, subProjectId) {
             // Hide the initial confirmation modal
             $("#confirm_modal").modal('hide');
         });
-    }else{
+    } else {
         let error_message = `${updateMoreImages}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
@@ -2686,20 +2686,20 @@ $('#openCreateProjectModal').click(function (e) {
 });
 
 // $(document).ready(function () {
-    var showModal = sessionStorage.getItem('showCreateProjectModal');
-    if (showModal === 'true') {
-        setTimeout(function () {
-            $("#createProjectForm")[0].reset();
-            $("#createProjectForm").validate().resetForm();
-            $('#modalTitle').text('Create New Project');
-            var createRoute = $('#createProjectRoute').data('route');
-            $('#createProjectForm input[name="_method"]').remove();
-            $('#createProjectForm').attr('action', createRoute);
-            $('#create-project-btn').text('Create');
-            $("#createProjectModel").modal('show');
-        }, 500);
-        sessionStorage.setItem('showCreateProjectModal', 'false');
-    }
+var showModal = sessionStorage.getItem('showCreateProjectModal');
+if (showModal === 'true') {
+    setTimeout(function () {
+        $("#createProjectForm")[0].reset();
+        $("#createProjectForm").validate().resetForm();
+        $('#modalTitle').text('Create New Project');
+        var createRoute = $('#createProjectRoute').data('route');
+        $('#createProjectForm input[name="_method"]').remove();
+        $('#createProjectForm').attr('action', createRoute);
+        $('#create-project-btn').text('Create');
+        $("#createProjectModel").modal('show');
+    }, 500);
+    sessionStorage.setItem('showCreateProjectModal', 'false');
+}
 // });
 
 var resultArray = '';
@@ -2806,9 +2806,9 @@ async function _generateProducts(sec, el) {
                         $('.similar-prod').addClass('d-none');
                         $('.gs-simlar-products-list-wrappers').addClass('d-none');
                         $('#googleResults').addClass('d-none');
-                        enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+                        enableGenerateButton(generateDesignBtn, spinner, tabs, previousPageButton, editButton, progressBarTabs);
                         return; // Stop further execution
-                    }else{
+                    } else {
                         $('#googleResults').removeClass('d-none');
                         $('.gs-simlar-products-list-wrappers').removeClass('d-none');
                     }
@@ -3161,9 +3161,9 @@ function generatedRedesignItem(item) {
 $(document).on('click', '.new-page-link', function () {
     page = $(this).attr('data-url').split('=').pop();
     var pageTypes = '';
-    if(dataPage == 'favourite'){
+    if (dataPage == 'favourite') {
         pageTypes = 'favorites';
-    }else{
+    } else {
         pageTypes = '';
     }
     getRedesignGeneratedDesigns(pageTypes);
@@ -3203,7 +3203,7 @@ function getRedesignGeneratedDesigns(type) {
 }
 
 $(".add_all_images_as_favourite").click(function () {
-    if(multipleDownloadImg.length > 0){
+    if (multipleDownloadImg.length > 0) {
         var route = $('#addAllImagesAsFavourite').data('route');
         $.ajax({
             url: route,
@@ -3233,7 +3233,7 @@ $(".add_all_images_as_favourite").click(function () {
                 )
             }
         });
-    }else{
+    } else {
         let error_message = `${updateMoreImages}`;
         $('#errorModal h4').text(error_message);
         $('#errorModal').modal('show');
@@ -3258,8 +3258,8 @@ $(".add_all_images_as_favourite").click(function () {
 //     }, 2000)
 // });
 $(document).on('click', '.continue-parameter', function () {
-    if (dataPage == 'collage_to_render'){
-        if($(".custom_added_elements").length <= 0 && $(".existing_elements").length <= 0){
+    if (dataPage == 'collage_to_render') {
+        if ($(".custom_added_elements").length <= 0 && $(".existing_elements").length <= 0) {
             let error_message = `${upload_custom_element}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
@@ -3268,7 +3268,7 @@ $(document).on('click', '.continue-parameter', function () {
 
         const objects = paintingCollageStag.getObjects();
         currLoc = $(location).attr('href');
-        if((currLoc.indexOf('room-composer') != -1) && (objects.length <= 1)){
+        if ((currLoc.indexOf('room-composer') != -1) && (objects.length <= 1)) {
             let error_message = `${updateOneCustomElement}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
@@ -3294,7 +3294,7 @@ $(document).on('click', '.continue-parameter', function () {
 });
 
 $(".previous_page").click(function () {
-    if (dataPage == 'redesign' || dataPage =='sketchToRender' || $('.top-menu-bar-second').is(':visible')) {
+    if (dataPage == 'redesign' || dataPage == 'sketchToRender' || $('.top-menu-bar-second').is(':visible')) {
         $('.redesign-designs-tabs').css('display', 'block');
         $('.top-menu-bar-second').css('display', 'none');
         $('.image-mask-container').css('display', 'none');
@@ -3315,7 +3315,7 @@ $(".previous_page").click(function () {
 });
 
 
-function _generateFeedback(sec ,el){
+function _generateFeedback(sec, el) {
     var imageType = document.getElementById('imageType').value;
     var image = document.getElementById(`input_image-${dataPage}`).value;
 
@@ -3398,7 +3398,7 @@ function _generateFeedback(sec ,el){
     });
 }
 
-function _generateSmartHome(sec ,el){
+function _generateSmartHome(sec, el) {
     var image = document.getElementById(`input_image-${dataPage}`).value;
     if (image == '') {
         alert(`${updateUploadImage}`);
@@ -3472,7 +3472,7 @@ function _generateSmartHome(sec ,el){
     });
 
 }
-$('.imageFeedbackCopy').click(function() {
+$('.imageFeedbackCopy').click(function () {
     var feedbackText = $('#displayImageFeedback').text();
     var $textarea = $('#displayImageFeedback');
     $textarea.removeAttr('readonly').select();
@@ -3481,7 +3481,7 @@ $('.imageFeedbackCopy').click(function() {
 
     var $copyFeedbackContainer = $('.displayImageFeedbackContainer');
     $copyFeedbackContainer.addClass('active');
-    setTimeout(function() {
+    setTimeout(function () {
         $copyFeedbackContainer.removeClass('active');
     }, 2500);
 
@@ -3492,12 +3492,12 @@ var editImagesData = [];
 var currentIndex = 0;
 // Array of image sources
 // Fetch images from the server
-function fetchAllImages(typeOfDesign,modevalue,subProjectId = null) {
+function fetchAllImages(typeOfDesign, modevalue, subProjectId = null) {
     $.ajax({
         url: '/fetch-images', // URL to your controller method
         method: 'GET',
-        data: { designType: typeOfDesign, modevalue: modevalue, subProjectId:subProjectId},
-        success: function(response) {
+        data: { designType: typeOfDesign, modevalue: modevalue, subProjectId: subProjectId },
+        success: function (response) {
             if (response.success) {
                 editImagesData = response.images;
                 if (editImagesData.length > 0) {
@@ -3507,7 +3507,7 @@ function fetchAllImages(typeOfDesign,modevalue,subProjectId = null) {
                 console.error('Failed to fetch images');
             }
         },
-        error: function(xhr, status, error) {
+        error: function (xhr, status, error) {
             console.error('AJAX error:', error);
         }
     });
@@ -3562,7 +3562,7 @@ function addNewDesignImage(design) {
     updateImages(0); // Update the images on the page, starting from index 0
 }
 
-function getImageCache(cacheid, callback){
+function getImageCache(cacheid, callback) {
     $.ajax({
         type: 'GET',
         url: "/image/cache",
@@ -3573,7 +3573,7 @@ function getImageCache(cacheid, callback){
         success: function (response) {
             callback(response);
         },
-        error: function (error){
+        error: function (error) {
             callback(error);
         }
     });
@@ -3618,14 +3618,14 @@ function loadImageBase64FromInpainting(base64Data) {
         $('.top-menu-bar-second').css('display', 'flex');
         $('.image-mask-container').css('display', 'block');
         $('.segment-masking-container').css('display', 'block');
-        if (dataPage == 'redesign' || dataPage =='sketchToRender' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'convenient-redesign') {
+        if (dataPage == 'redesign' || dataPage == 'sketchToRender' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'convenient-redesign') {
             $('.redesign-designs-tabs').css('display', 'none');
             $("#loading_brilliance").modal('hide');
         }
     }, 2000)
 }
 
-function generationDivLoader(noOfDesign,inputImage){
+function generationDivLoader(noOfDesign, inputImage) {
     var itemHtml = `
         <div class="snippet dot-in-paint-loader" data-title="dot-pulse">
             <div class="ai-upload-loader">
@@ -3695,7 +3695,7 @@ $('.first_tab_active').click(function () {
     $('.category-container').css('display', 'none');
 });
 $('.second_tab_active').click(function () {
-    if(dataPage != 'redesign' && dataPage !='sketchToRender' && dataPage != 'rostMyHome' && dataPage != 'convenient-redesign' && dataPage != 'collage_to_render' && dataPage != 'productSearch'){
+    if (dataPage != 'redesign' && dataPage != 'sketchToRender' && dataPage != 'rostMyHome' && dataPage != 'convenient-redesign' && dataPage != 'collage_to_render' && dataPage != 'productSearch') {
 
         if (!imageLayer.hasChildren()) {
             let error_message = `${updateUploadImage}`;
@@ -3704,16 +3704,15 @@ $('.second_tab_active').click(function () {
             return;
         }
     }
-    if(dataPage == 'collage_to_render'){
-        if(mainImage == undefined)
-            {
-                let error_message = `${updateUploadImage}`;
-                $('#errorModal h4').text(error_message);
-                $('#errorModal').modal('show');
-                return;
-            }
+    if (dataPage == 'collage_to_render') {
+        if (mainImage == undefined) {
+            let error_message = `${updateUploadImage}`;
+            $('#errorModal h4').text(error_message);
+            $('#errorModal').modal('show');
+            return;
+        }
     }
-    if(dataPage == 'redesign' || dataPage =='sketchToRender' || dataPage == 'rostMyHome' || dataPage == 'convenient-redesign' || dataPage == 'productSearch'){
+    if (dataPage == 'redesign' || dataPage == 'sketchToRender' || dataPage == 'rostMyHome' || dataPage == 'convenient-redesign' || dataPage == 'productSearch') {
         var image = document.getElementById(`input_image-${dataPage}`).value;
         if (image == '') {
             let error_message = `${updateUploadImage}`;
@@ -3731,7 +3730,7 @@ $('.second_tab_active').click(function () {
     $('.image-mask-container').css('display', 'block');
     $('.segment-masking-container').css('display', 'block');
     $('.redesign-designs-tabs').css('display', 'block');
-    if (dataPage == 'redesign' || dataPage =='sketchToRender' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'collage_to_render') {
+    if (dataPage == 'redesign' || dataPage == 'sketchToRender' || dataPage == 'productSearch' || dataPage == 'sky-color' || dataPage == 'rostMyHome' || dataPage == 'collage_to_render') {
         $('.redesign-designs-tabs').css('display', 'none');
         $("#loading_brilliance").modal('hide');
     }
@@ -3741,15 +3740,14 @@ $('.second_tab_active').click(function () {
 });
 
 $('.third_tab_active').click(function () {
-    if (dataPage == 'collage_to_render'){
-        if(mainImage == undefined)
-            {
-                let error_message = `${updateUploadImage}`;
-                $('#errorModal h4').text(error_message);
-                $('#errorModal').modal('show');
-                return;
-            }
-        if($(".custom_added_elements").length <= 0 && $(".existing_elements").length <= 0){
+    if (dataPage == 'collage_to_render') {
+        if (mainImage == undefined) {
+            let error_message = `${updateUploadImage}`;
+            $('#errorModal h4').text(error_message);
+            $('#errorModal').modal('show');
+            return;
+        }
+        if ($(".custom_added_elements").length <= 0 && $(".existing_elements").length <= 0) {
             let error_message = `${upload_custom_element}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
@@ -3758,20 +3756,20 @@ $('.third_tab_active').click(function () {
 
         const objects = paintingCollageStag.getObjects();
         currLoc = $(location).attr('href');
-        if((currLoc.indexOf('room-composer') != -1) && (objects.length <= 1)){
+        if ((currLoc.indexOf('room-composer') != -1) && (objects.length <= 1)) {
             let error_message = `${updateOneCustomElement}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
             return null;
         }
-    }else if(dataPage == 'productSearch'){
-        if(resultArray == ''){
+    } else if (dataPage == 'productSearch') {
+        if (resultArray == '') {
             let error_message = `${updateSimilarProduct}`;
             $('#errorModal h4').text(error_message);
             $('#errorModal').modal('show');
             return;
         }
-    }else{
+    } else {
         if (!imageLayer.hasChildren()) {
             let error_message = `${updateUploadImage}`;
             $('#errorModal h4').text(error_message);
@@ -3788,7 +3786,7 @@ $('.third_tab_active').click(function () {
     $('.segment-masking-container').css('display', 'none');
 
     $('.image-mask-container').css('display', 'block');
-    if(dataPage == 'productSearch'){
+    if (dataPage == 'productSearch') {
         $('.image-mask-container').css('display', 'none');
     }
     $('.top-menu-bar-third').css('display', 'flex');
@@ -3797,7 +3795,7 @@ $('.third_tab_active').click(function () {
     $('.searched_product_result').css('display', 'block');
 });
 
-function disableGenerateButton(button, spinner,tabs,previousPageButton,editButton,progressBarTabs){
+function disableGenerateButton(button, spinner, tabs, previousPageButton, editButton, progressBarTabs) {
     button.classList.add('disabled');
     button.style.cursor = 'not-allowed';
     spinner.style.display = 'inline-block';
@@ -3830,7 +3828,7 @@ function disableGenerateButton(button, spinner,tabs,previousPageButton,editButto
     });
 }
 
-function enableGenerateButton(button, spinner,tabs,previousPageButton,editButton,progressBarTabs) {
+function enableGenerateButton(button, spinner, tabs, previousPageButton, editButton, progressBarTabs) {
     button.classList.remove('disabled');
     button.style.cursor = 'pointer';
     spinner.style.display = 'none';
@@ -3876,17 +3874,17 @@ function translateText(text, callback) {
             type: "POST",
             url: SITE_BASE_URL + "translateText",
             data: { text: text },
-            success: function(result) {
+            success: function (result) {
                 resolve(result);  // Resolves the Promise with the result
             },
-            error: function(error) {
+            error: function (error) {
                 reject(error);  // Rejects the Promise on error
             }
         });
     });
 }
 
-function checkRequestStatus(requestId,generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs,sec,roomType,styleType,noOfDesign,modeType,precisionUserValue,keepStructureElements) {
+function checkRequestStatus(requestId, generateDesignBtn, spinner, tabs, previousPageButton, editButton, progressBarTabs, sec, roomType, styleType, noOfDesign, modeType, precisionUserValue, keepStructureElements) {
     const pollInterval = 5000; // 5 seconds
     function checkStatus() {
         $.ajax({
@@ -3896,11 +3894,12 @@ function checkRequestStatus(requestId,generateDesignBtn, spinner,tabs,previousPa
                 _token: $('meta[name="csrf-token"]').attr('content'),
                 requestId: requestId,
                 keepStructureElements: keepStructureElements,
+                modeType: modeType
             },
-            success: function(response) {
+            success: function (response) {
                 const parsedJSON = JSON.parse(response);
-                if (parsedJSON.status === 'COMPLETED') {
-                    enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+                if (parsedJSON.status === 'COMPLETED' || parsedJSON.status === 'succeeded') {
+                    enableGenerateButton(generateDesignBtn, spinner, tabs, previousPageButton, editButton, progressBarTabs);
                     $('.gs-continue-btn').removeClass('disable-btn');
                     $('.on-gen-disable').removeClass('disable-btn');
                     $('input[id^="nwtoggle"]').removeClass('disable-btn').prop('disabled', false);
@@ -3909,7 +3908,7 @@ function checkRequestStatus(requestId,generateDesignBtn, spinner,tabs,previousPa
                         $('#errorModal h4').text(parsedJSON.error);
                         $('#errorModal').modal('show');
                         $(el).attr('disabled', false);
-                        enableGenerateButton(generateDesignBtn, spinner,tabs,previousPageButton,editButton,progressBarTabs);
+                        enableGenerateButton(generateDesignBtn, spinner, tabs, previousPageButton, editButton, progressBarTabs);
                         removeLoaderDivs(noOfDesign);
                         $('.on-gen-disable').removeClass('disable-btn');
                         return;
@@ -3944,12 +3943,12 @@ function checkRequestStatus(requestId,generateDesignBtn, spinner,tabs,previousPa
                     //     getRedesignGeneratedDesigns();
                     //     reapplyCheckboxStates();
                     // }
-                } else if (parsedJSON.status === 'IN_PROGRESS' || parsedJSON.status === 'IN_QUEUE') {
+                } else if (parsedJSON.status === 'IN_PROGRESS' || parsedJSON.status === 'IN_QUEUE' || parsedJSON.status === 'processing' || parsedJSON.status === 'starting') {
                     setTimeout(checkStatus, pollInterval);
                 } else {
                 }
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 // Retry after 5 seconds
                 setTimeout(checkStatus, pollInterval);
             }

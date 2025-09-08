@@ -21,6 +21,7 @@ use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
 
 class WidgetController extends Controller
 {
@@ -171,10 +172,14 @@ class WidgetController extends Controller
         return $uuid . '-' . $time;
     }
 
-    public function storeImageToGoogleBucket($image, $uniqueFileName, $isMask = null, $isTexture = null, $colorTexture = null, $collegeToRender = null)
+    public function storeImageToGoogleBucket($image, $uniqueFileName, $isMask = null, $isTexture = null, $colorTexture = null, $collegeToRender = null, $isPerfectRedesign = null)
     {
         $bucketname = \Config::get('app.googleBucketName');
-        $file_name = 'UserGenerations/cristian/input-' . $uniqueFileName . '.png';
+        if ($isPerfectRedesign) {
+            $file_name = 'UserGenerations/cristian/output-' . $uniqueFileName . '.png';
+        } else {
+            $file_name = 'UserGenerations/cristian/input-' . $uniqueFileName . '.png';
+        }
         if ($isMask) {
             $file_name = 'UserGenerations/cristian/mask/input-' . $uniqueFileName . '.png';
         }
@@ -1224,56 +1229,107 @@ class WidgetController extends Controller
 
     public function runpodWidgetPerfectRedesign(Request $request)
     {
-
         $payloadData = $request->all();
-        $mode = $request->modeType;
-        $Widgetid = $request->widgetuserid;
+        $request->merge(['id' => Auth::id()]);
 
-        $userAccess = $this->checkAccess($payloadData, $Widgetid, $mode);
+        $uniqueFileName = $this->generateUniqueFileName();
+        if (isset($payloadData['data']) && (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0)) {
+            $b64image = base64_encode(file_get_contents($payloadData['data']));
+            $googleStorageFileUrl = $this->storeImageToGoogleBucket($b64image, $uniqueFileName);
+        } elseif (isset($payloadData['data'])) {
+            $googleStorageFileUrl = $this->storeImageToGoogleBucket($payloadData['data'], $uniqueFileName);
+        } else {
+            Log::error('Payload is missing "data" key', ['payload' => $payloadData]);
+            $googleStorageFileUrl = null;
+        }
 
-        if ($userAccess == true) {
-            $uniqueFileName = $this->generateUniqueFileName();
-            if (strpos($payloadData['data'], 'http://') === 0 || strpos($payloadData['data'], 'https://') === 0) {
-                $b64image = base64_encode(file_get_contents($payloadData['data']));
-                $googleStorageFileUrl = $this->storeImageToGoogleBucket($b64image, $uniqueFileName);
-            } else {
-                $googleStorageFileUrl = $this->storeImageToGoogleBucket($payloadData['data'], $uniqueFileName);
-            }
+        if ($googleStorageFileUrl === false) {
+            return response()->json(['error' => 'Failed to upload the file on Cloud Storage']);
+        }
 
-            if ($googleStorageFileUrl === false) {
-                return response()->json(['error' => 'Fail to upload File on Cloud Storage']);
-            }
+        $designStyle = strtolower($request->input('prompt'));
+        $prompt = "{$payloadData['roomtype']}, {$payloadData['custom_instruction']}";
 
+        // Retrieve the appropriate design style prompt
+        $designStyles = [];
+        if ($payloadData['designtype'] == 0) {
+            $designStyles = Config::get('app.INTERIOR_PROMPT_' . strtoupper($payloadData['keepStructureElements']));
+        } elseif ($payloadData['designtype'] == 1) {
+            $designStyles = Config::get('app.EXTERIOR_PROMPT_' . strtoupper($payloadData['keepStructureElements']));
+        } elseif ($payloadData['designtype'] == 2) {
+            $designStyles = Config::get('app.GARDEN_PROMPT_' . strtoupper($payloadData['keepStructureElements']));
+        }
+
+        // Build the final dynamic prompt with the design style
+
+        $designStylePrompt = isset($designStyles[$designStyle]) ? $designStyles[$designStyle] : 'Modern design style prompt';
+        $finalPrompt = strtolower("A {$prompt}, {$designStylePrompt}");
+
+        if ($payloadData['keepStructureElements'] == 'true') {
             $payload = [
                 'input' => [
-                    'image' => $googleStorageFileUrl['url'],
-                    'design_type' => intval($payloadData['designtype']),
-                    'room_type' => strtolower($payloadData['roomtype']),
-                    'design_style' => strtolower($payloadData['prompt']),
-                    'prompt' => !empty($payloadData['custom_instruction']) ? $payloadData['custom_instruction'] : '',
-                    'negative_prompt' => !empty($payloadData['is_custom_negative_instruction']) ? $payloadData['is_custom_negative_instruction'] : '',
-                    'ai_intervention' => $payloadData['strengthType'],
-                    'no_design' => intval($payloadData['no_of_Design']),
-                    'unique_id' => $uniqueFileName,
-                ],
+                    'prompt' => $finalPrompt, // Example prompt
+                    'control_image' => $googleStorageFileUrl['url'], // Image URL from the request
+                    'guidance' => 10,
+                    'num_outputs' => intval($payloadData['no_of_Design']),
+                    'output_format' => 'png',
+                    'num_inference_steps' => 25,
+                ]
+            ];
+            $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_TRUE');
+            // $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
+            $response = $this->curlRequest->serverLessCurlRequests($url, $payload, true);
+        } else {
+            $strengthMapping = [
+                'very_low' => 'VeryLow',
+                'low' => 'Low',
+                'mid' => 'Mid',
+                'extreme' => 'Extreme'
             ];
 
-            if ($payloadData['keepStructureElements'] == 'true') {
-                $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_TRUE') . "/run";
-            } else {
-                $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_FALSE') . "/run";
-            }
-            $response = $this->curlRequest->serverLessCurlRequests($url, $payload);
-            if ($response && isset($response['id']) && $response['status'] === 'IN_QUEUE') {
-                Cache::put("runpod_request_{$response['id']}", $payloadData, 300);
-                return response()->json([
-                    'status' => $response['status'],
-                    'requestId' => $response['id'],
-                ]);
-            }
-        } else {
-            return response()->json($userAccess, 401);
+            // Define the design type mapping
+            $designTypeMapping = [
+                0 => 'interior',
+                1 => 'exterior',
+                2 => 'garden'
+            ];
+            $designTypeKey = $designTypeMapping[$payloadData['designtype']] ?? 'interior';
+            $strengthTypeNormalized = strtolower(str_replace(' ', '_', $request->strengthType));
+
+            $strengthKey = $strengthMapping[$strengthTypeNormalized] ?? 'Low';
+
+            $promptStrengthConfigKey = "{$designTypeKey}{$strengthKey}";
+
+            $promptStrength = config("app.promptStrengthConfigKey.{$promptStrengthConfigKey}", 0.71);
+            $payload = [
+                'input' => [
+                    'prompt' => $finalPrompt, // Example prompt
+                    'image' => $googleStorageFileUrl['url'], // Image URL from the request
+                    'guidance' => 7,
+                    'num_outputs' => intval($payloadData['no_of_Design']),
+                    'output_format' => 'png',
+                    'num_inference_steps' => 25,
+                    "go_fast" => false,
+                    "prompt_strength" => $promptStrength,
+                ]
+            ];
+            $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_FALSE');
+            $response = $this->curlRequest->serverLessCurlRequests($url, $payload, true);
         }
+        if (isset($response['error'])) {
+            Log::error('Status check failed', ['response' => $response]);
+            return response()->json(['error' => 'Something went wrong. Please try again.']);
+        }
+
+        if ($response && isset($response['id'])) {
+            Cache::put("runpod_request_{$response['id']}", $payloadData, 300);
+            Cache::put("perfect_redesign_original_image_{$response['id']}", $googleStorageFileUrl['url'], 300);
+            return response()->json([
+                'status' => $response['status'],
+                'requestId' => $response['id'],
+            ]);
+        }
+        return response()->json(['error' => 'Something went wrong. Please try again.']);
     }
 
     public function checkRequestStatus(Request $request)
@@ -1281,54 +1337,112 @@ class WidgetController extends Controller
         try {
             $requestId = $request->input('requestId');
             $keepStructureElements = $request->input('keepStructureElements');
+            $original_image = Cache::get("perfect_redesign_original_image_{$requestId}");
+            $cleaned_filename = str_replace(
+                ['https://storage.googleapis.com/generativeartbucket/UserGenerations/cristian/input-', '.png'],
+                '',
+                $original_image
+            );
             if ($keepStructureElements == 'true') {
                 $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_TRUE') . "/status/{$requestId}";
             } else {
                 $url = \Config::get('app.GPU_SERVERLESS_NEW_REDESIGN_KEEP_STRUCTURE_FALSE') . "/status/{$requestId}";
             }
-            $response = $this->curlRequest->checkApiStatusCurl($url);
+            if ($request->modeType == 'Perfect Redesign') {
+                $url = \Config::get('app.GPU_SERVERLESS_STATUS_CHECK_KEEP_STRUCTURE_TRUE') . "{$requestId}";
+                $response = $this->curlRequest->checkApiStatusCurl($url, true);
+                if ($response != null) {
+                    if (isset($response['output']) && $response['status'] == 'succeeded') {
+                        $result = [
+                            'status' => 'COMPLETED',
+                            'Sucess' => [
+                                'original_image' => $original_image ?? null,
+                                'generated_image' => [],
+                            ],
+                        ];
+                        // Store the images in Google Storage
+                        $storedImages = [];
 
-            if (isset($response['error']) && $response['error']) {
-                return response()->json(['error' => $response['message']], 500);
-            }
+                        if (!is_array($response['output'])) {
+                            $response['output'] = [$response['output']];
+                        }
 
-            // Handle the status responses
-            if ($response && $response['status'] === 'COMPLETED') {
-                if (!isset($response['output']) || isset($response['output']['errors'])) {
-                    return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+                        foreach ($response['output'] as $index => $imageUrl) { // Track index
+                            // $filename = $this->generateUniqueFileName() . '-' . ($index + 1);
+                            // Convert the image URL to base64 directly
+                            $b64image = base64_encode(file_get_contents($imageUrl));
+                            $imageType = pathinfo($imageUrl, PATHINFO_EXTENSION);
+                            $base64Image = 'data:image/' . $imageType . ';base64,' . $b64image;
+                            $isPerfectRedesign = true;
+                            // Store the base64 image
+                            // $finalFileName = $isPerfectRedesign ? $cleaned_filename : $filename;
+                            $finalFileName = $cleaned_filename . '-' . ($index + 1);
+                            // Store the base64 image
+                            $storedImage = $this->storeImageToGoogleBucket(
+                                $base64Image,
+                                $finalFileName,  // Use the final file name determined above
+                                null,
+                                null,
+                                null,
+                                null,
+                                $isPerfectRedesign
+                            );
+                            if ($storedImage) {
+                                $storedImages[] = $storedImage['url'];
+                            }
+                        }
+
+                        // Add stored image URLs to the result
+                        $result['Sucess']['generated_image'] = $storedImages;
+
+                        Cache::forget("runpod_request_{$requestId}");
+                        Cache::forget("perfect_redesign_original_image_{$requestId}");
+                        return json_encode($result);
+                    } elseif ($response['status'] === 'processing' || $response['status'] === 'starting') {
+                        return json_encode([
+                            'status' => $response['status'],
+                            'id' => $response['id'],
+                        ]);
+                    }
                 } else {
-                    $result = [
-                        'status' => 'COMPLETED',
-                        'Sucess' => [
-                            'original_image' => $response['output']['input_image'],
-                            'generated_image' => $response['output']['output_images'],
-                        ],
-                    ];
-
-                    $payloadData = Cache::get("runpod_request_{$requestId}");
-                    // $storeData = $this->getDataToSaveForRedesign($response, $payloadData);
-                    // $dataSaved = $this->saveData($storeData);
-
-                    Cache::forget("runpod_request_{$requestId}");
-                    return json_encode($result);
-                    // if ($dataSaved) {
-                    //     $result['storedIds'] = $dataSaved['storedIds'];
-
-                    //     return json_encode($result);
-                    // } else {
-
-                    //     return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
-                    // }
+                    Log::error('Status check failed', ['response' => $response]);
+                    return response()->json(['error' => 'Something went wrong. Please try again.']);
                 }
-            } elseif ($response['status'] === 'IN_QUEUE' || $response['status'] === 'IN_PROGRESS') {
-                return json_encode([
-                    'status' => $response['status'],
-                    'id' => $response['id'],
-                ]);
-            }
+            }else{
+                $response = $this->curlRequest->checkApiStatusCurl($url);
 
-            // Handle unexpected statuses
-            return response()->json(['error' => 'Unexpected status'], 500);
+                if (isset($response['error']) && $response['error']) {
+                    return response()->json(['error' => $response['message']], 500);
+                }
+
+                // Handle the status responses
+                if ($response && $response['status'] === 'COMPLETED') {
+                    if (!isset($response['output']) || isset($response['output']['errors'])) {
+                        return json_encode(['error' => 'Something went wrong. Please try again in some time.']);
+                    } else {
+                        $result = [
+                            'status' => 'COMPLETED',
+                            'Sucess' => [
+                                'original_image' => $response['output']['input_image'],
+                                'generated_image' => $response['output']['output_images'],
+                            ],
+                        ];
+
+                        $payloadData = Cache::get("runpod_request_{$requestId}");
+
+                        Cache::forget("runpod_request_{$requestId}");
+                        return json_encode($result);
+                    }
+                } elseif ($response['status'] === 'IN_QUEUE' || $response['status'] === 'IN_PROGRESS') {
+                    return json_encode([
+                        'status' => $response['status'],
+                        'id' => $response['id'],
+                    ]);
+                }
+
+                // Handle unexpected statuses
+                return response()->json(['error' => 'Unexpected status'], 500);
+            }
         } catch (\Exception $e) {
             // Log the exception for debugging purposes
             \Log::error('Error in checkRunpodStatus: ' . $e->getMessage(), [

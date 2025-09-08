@@ -55,11 +55,13 @@ class CurlRequestClass
         }
     }
 
-    public function serverLessCurlRequests($url, $payload)
+    public function serverLessCurlRequests($url, $payload ,$perfectRedesign = false)
     {
         set_time_limit(320);
         $bearer_token = config('app.RUNPOD_SERVERLESS_TOKEN');
-
+        if($perfectRedesign){
+            $bearer_token = config('app.REPLICATE_API_TOKEN');
+        }
         $headers = [
             'Authorization: Bearer '.$bearer_token,
             'Content-Type: application/json',
@@ -138,7 +140,7 @@ class CurlRequestClass
         return $responses;
     }
 
-    public function checkApiStatusCurl($url){
+    public function checkApiStatusCurl($url, $perfectRedesign = false){
         // Initialize cURL session
         $ch = curl_init($url);
         // Convert payload to JSON if it's not empty
@@ -147,7 +149,9 @@ class CurlRequestClass
         }
 
         // Set headers if provided
-        $bearer_token = config('app.RUNPOD_SERVERLESS_TOKEN');
+        $bearer_token = $perfectRedesign 
+        ? config('app.REPLICATE_API_TOKEN') // Use a different token for perfectRedesign
+        : config('app.RUNPOD_SERVERLESS_TOKEN');
 
         $headers = [
             'Authorization: Bearer '.$bearer_token,
